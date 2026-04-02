@@ -1,0 +1,260 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
+import { AuthorBio } from '@/components/author-bio';
+import { SHORT_DISCLAIMER } from '@/data/constants';
+
+const POST_TITLE = 'Ipamorelin vs CJC-1295: Stack Comparison Guide';
+const POST_DESC = 'Compare the mechanisms of GHRP vs GHRH. Explore the synergy of stacking Ipamorelin with CJC-1295 without DAC to safely elevate endogenous growth hormone pulses.';
+const AUTHOR = 'Editorial Team';
+const DATE_PUB = '2026-03-10';
+const DATE_MOD = '2026-04-01';
+
+export const metadata: Metadata = {
+  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  description: POST_DESC,
+  keywords: "ipamorelin vs CJC-1295, ipamorelin CJC-1295 stack, GHRH peptide research, growth hormone peptide stack, best peptide stack for muscle growth",
+  alternates: {
+    canonical: 'https://peptidex.app/blog/ipamorelin-vs-cjc-1295',
+  },
+};
+
+export default function BlogPostTemplate() {
+  
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptidex.app/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://peptidex.app/blog' },
+      { '@type': 'ListItem', position: 3, name: POST_TITLE, item: 'https://peptidex.app/blog/ipamorelin-vs-cjc-1295' },
+    ],
+  };
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: POST_TITLE,
+    description: POST_DESC,
+    keywords: metadata.keywords,
+    image: 'https://peptidex.app/og-image.png',
+    author: { '@type': 'Person', name: AUTHOR },
+    publisher: {
+      '@type': 'Organization',
+      name: 'PeptiDex',
+      logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' }
+    },
+    datePublished: DATE_PUB,
+    dateModified: DATE_MOD,
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Why do researchers stack Ipamorelin and CJC-1295 together?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'They are stacked because they target independent receptors (GHRP and GHRH). Together, they generate a synergistic exponential release of endogenous growth hormone rather than a merely linear additive effect.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does Ipamorelin increase cortisol?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Unlike older GHRPs like GHRP-2 or GHRP-6, Ipamorelin is unique because it is highly selective and does not cause dramatic spikes in cortisol or prolactin.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the role of CJC-1295 no DAC?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'CJC-1295 acts as the GHRH analog that increases the amplitude of basal GH pulses, ensuring the pituitary remains active. It effectively sets the physiological "ceiling" higher for the GHRP to act upon.',
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      <nav className="flex flex-wrap items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-zinc-300 transition-colors">Home</Link>
+        <ChevronRight className="w-4 h-4 flex-shrink-0" />
+        <Link href="/blog" className="hover:text-zinc-300 transition-colors">Blog</Link>
+        <ChevronRight className="w-4 h-4 flex-shrink-0" />
+        <span className="text-zinc-300 font-medium truncate max-w-xs md:max-w-md">{POST_TITLE}</span>
+      </nav>
+
+      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
+        <div className="flex items-start gap-2">
+          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-amber-400/80 leading-relaxed font-medium">
+            <strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}
+          </p>
+        </div>
+      </div>
+
+      <header className="space-y-6 border-b border-zinc-800/50 pb-8">
+        <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">
+          {POST_TITLE}
+        </h1>
+        <div className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">
+           Last Updated: March 2026
+        </div>
+        
+        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+          <div className="flex items-center gap-2">
+            <User className="w-4 h-4 text-violet-400" />
+            <span className="font-semibold text-zinc-200">{AUTHOR}</span>
+          </div>
+          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-zinc-500" />
+            <span>Updated: {DATE_MOD}</span>
+          </div>
+          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+          <div className="flex items-center gap-2">
+            <BookOpen className="w-4 h-4 text-emerald-500" />
+            <span className="text-emerald-400 font-medium">10 Min Read</span>
+          </div>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <aside className="lg:col-span-4 lg:order-2">
+          <div className="sticky top-24 rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 space-y-4 shadow-xl">
+            <h3 className="font-bold text-zinc-100 uppercase tracking-widest text-xs">Table of Contents</h3>
+            <ul className="space-y-3 text-sm font-medium text-zinc-400">
+              <li><a href="#what-are-they" className="hover:text-violet-400 transition-colors block">1. The Secretagogue Spectrum</a></li>
+              <li><a href="#ghrp-vs-ghrh" className="hover:text-violet-400 transition-colors block">2. GHRP vs GHRH Pathways</a></li>
+              <li><a href="#cortisol" className="hover:text-violet-400 transition-colors block">3. Analyzing Cortisol Side-Effects</a></li>
+              <li><a href="#why-stack" className="hover:text-violet-400 transition-colors block">4. The "Bleed" vs. Multiple Pulse Strategy</a></li>
+              <li><a href="#comparison-table" className="hover:text-violet-400 transition-colors block">5. Side-by-Side Reference</a></li>
+            </ul>
+          </div>
+          
+          <div className="mt-8">
+            <h3 className="font-bold text-zinc-100 mb-4 text-sm uppercase tracking-widest">Related Profiles</h3>
+            <div className="space-y-3">
+               <Link href="/peptides/ipamorelin" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+                 <span className="font-semibold text-zinc-200 group-hover:text-violet-400">Ipamorelin</span>
+               </Link>
+               <Link href="/peptides/cjc-1295" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+                 <span className="font-semibold text-zinc-200 group-hover:text-violet-400">CJC-1295</span>
+               </Link>
+               <Link href="/stacks/muscle-growth-stack" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+                 <span className="font-semibold text-zinc-200 group-hover:text-violet-400">Muscle Growth Stack</span>
+               </Link>
+               <Link href="/stacks/body-recomposition-stack" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+                 <span className="font-semibold text-zinc-200 group-hover:text-violet-400">Body Recomposition Stack</span>
+               </Link>
+            </div>
+          </div>
+        </aside>
+
+        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+          <p className="lead text-xl text-zinc-300 font-medium" id="what-are-they">
+            Endogenous growth hormone deployment declines steadily as subjects age past 30. Through precise clinical architecture, researchers target specialized receptors acting on the pituitary gland to reinstate healthy expression rates via a stack involving <strong>Ipamorelin</strong> and <strong>CJC-1295</strong>.
+          </p>
+
+          <h2 id="ghrp-vs-ghrh">GHRP vs GHRH Pathways</h2>
+          <p>
+            You cannot evaluate this stack without understanding its core dichotomy—deploying a GHRP alongside a GHRH. <strong>Ipamorelin</strong> acts explicitly as the Growth Hormone Releasing Peptide (GHRP). It directly mimics the hunger-hormone ghrelin to prompt an acute, massive single pulse of growth hormone out of the pituitary.
+          </p>
+          <p>
+            <strong>CJC-1295 (without DAC)</strong> is entirely different. As a Growth Hormone Releasing Hormone (GHRH) analog, it mimics the natural stimulatory hormones sent from the hypothalamus to the pituitary. It essentially turns up the volume on the subject's baseline, persistent output over a long timeframe.
+          </p>
+
+          <h2 id="why-stack">The Multi-Pulse Synergy and IGF-1 Elevation</h2>
+          <p>
+            When utilizing either compound individually, you isolate the pathway—either maximizing the baseline amplitude (CJC) or initiating powerful episodic spikes (Ipamorelin). Stacking them capitalizes on synergistic amplification: the CJC widens the pituitary capacity for release, and the Ipamorelin strikes the receptor to release massive volume sequentially. Together, they dramatically elevate systemic <strong>IGF-1 (Insulin-Like Growth Factor 1)</strong> into ranges typically observed across optimal musculoskeletal development frameworks.
+          </p>
+
+          <div className="my-10 rounded-2xl bg-gradient-to-br from-violet-900/40 to-zinc-900 border border-violet-500/30 p-6 shadow-xl relative overflow-hidden group">
+            <h4 className="text-xl font-bold text-zinc-100 mb-2 flex flex-wrap items-center gap-2">
+              <AlertCircle className="w-5 h-5 text-violet-400" /> Source These Peptides
+            </h4>
+            <p className="text-sm text-zinc-300 mb-6 max-w-lg leading-relaxed">
+              Find rigorous third-party validated vendors shipping Ipamorelin/CJC-1295 (both individual vials and blended combinations).
+            </p>
+            <Link 
+              href="/vendors" 
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-500/25"
+            >
+              Compare Trusted Vendors <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+
+          <h2 id="cortisol">Cortisol Effects Analysis</h2>
+          <p>
+            Older GHRPs frequently disrupted the somatotropic axis by drastically heightening prolactin and cortisol profiles in tandem with GH release. Over 140+ clinical literature points highlight Ipamorelin as a third-generation GHRP optimized explicitly to decouple from the cortisol/prolactin cascade. 
+          </p>
+
+          <h2 id="comparison-table">Side-by-Side Comparison Array</h2>
+          <div className="overflow-x-auto my-8">
+            <table className="w-full text-left text-sm whitespace-nowrap border-collapse">
+              <thead className="bg-zinc-900 border border-zinc-700 text-zinc-300">
+                <tr>
+                  <th className="px-4 py-3 font-semibold border-b border-zinc-700">Trait</th>
+                  <th className="px-4 py-3 font-semibold border-b border-zinc-700 text-emerald-400">Ipamorelin</th>
+                  <th className="px-4 py-3 font-semibold border-b border-zinc-700 text-violet-400">CJC-1295</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-800">
+                <tr className="hover:bg-zinc-800/20 transition-colors">
+                  <td className="px-4 py-3 font-bold border border-zinc-800">Classification</td>
+                  <td className="px-4 py-3 border border-zinc-800">GHRP (Ghrelin Mimetic)</td>
+                  <td className="px-4 py-3 border border-zinc-800">GHRH (Releasing Hormone)</td>
+                </tr>
+                <tr className="hover:bg-zinc-800/20 transition-colors">
+                  <td className="px-4 py-3 font-bold border border-zinc-800">Release Profile</td>
+                  <td className="px-4 py-3 border border-zinc-800">Sharp acute pulse</td>
+                  <td className="px-4 py-3 border border-zinc-800">Prolonged baseline increase</td>
+                </tr>
+                <tr className="hover:bg-zinc-800/20 transition-colors">
+                  <td className="px-4 py-3 font-bold border border-zinc-800">Cortisol Impact</td>
+                  <td className="px-4 py-3 border border-zinc-800">Negligible/None</td>
+                  <td className="px-4 py-3 border border-zinc-800">None</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </main>
+      </div>
+
+      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+        <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqSchema.mainEntity.map((q, idx) => (
+            <div key={idx} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6">
+              <h3 className="text-md font-bold text-zinc-200 mb-3">{q.name}</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">{q.acceptedAnswer.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <AuthorBio name={AUTHOR} />
+
+      <section className="pt-12 mt-12 border-t border-zinc-800/50">
+         <h2 className="text-2xl font-bold text-zinc-100 mb-6">Related Posts</h2>
+         <div className="flex flex-col md:flex-row gap-4">
+            <Link href="/blog/best-peptides-for-fat-loss" className="flex-1 p-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800 transition-colors">
+               <h3 className="font-bold text-zinc-200 mb-2">Best Peptides for Fat Loss</h3>
+               <p className="text-sm text-zinc-500">Comparing literature on fat oxidation.</p>
+            </Link>
+         </div>
+      </section>
+
+    </div>
+  );
+}
