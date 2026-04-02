@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "build:mobile": "next build && npx cap sync",
+    "build:mobile": "cross-env BUILD_MOBILE=true next build && npx cap sync",
     "cap:ios": "npx cap open ios",
     "cap:android": "npx cap open android",
     "service:scrape": "node scripts/schedule_scraper.js"
@@ -41,6 +41,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "cheerio": "^1.2.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "shadcn": "^3.8.5",
