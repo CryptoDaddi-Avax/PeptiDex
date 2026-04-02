@@ -28,7 +28,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 15,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 64.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 49.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 59.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 64.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 49.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 59.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -41,7 +41,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 20,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 70.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 39.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 70.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 39.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -54,7 +54,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 8,
         notes: "Amino Club is Combo; Soma/Ascension No DAC 5mg.",
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 59.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 29.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 59.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 29.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -67,7 +67,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 10,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 75.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 75.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -80,7 +80,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 20,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 69.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 69.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -93,7 +93,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 10,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 99.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 99.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -106,7 +106,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 25,
         notes: "Ascension is 100mg vial.",
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -119,7 +119,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 10,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 59.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 59.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -132,7 +132,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 30,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 49.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 29.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 49.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 29.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -145,7 +145,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 10,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 79.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 54.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 79.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 54.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -158,7 +158,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 2,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 79.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 54.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 79.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 54.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -171,7 +171,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 20,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 40.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 39.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 40.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 39.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -184,7 +184,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 10,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -197,7 +197,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 5,
         notes: "Amino lists GLP-3 RT; Soma lists RETA.",
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 110.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 149.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 110.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 149.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -210,7 +210,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 5,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 65.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 54.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 65.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 54.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -223,7 +223,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 60,
         notes: "Pricing for 30mg/10mg spray depending on vendor.",
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 55.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 34.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 55.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 34.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -236,7 +236,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 5,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 99.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 99.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -249,7 +249,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 60,
         notes: "Pricing for 30mg/10mg spray depending on vendor.",
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 55.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 34.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 55.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 29.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 34.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -262,7 +262,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 7,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 85.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 85.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -275,7 +275,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 7,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 44.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 44.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -288,7 +288,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 10,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 89.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 89.99, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -301,7 +301,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 8,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 39.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 49.99, in_stock: true, link: "https://somachems.com/" }
         ]
     },
     {
@@ -314,7 +314,7 @@ export const pricingData: PeptidePricing[] = [
         doses_per_vial: 4,
         
         vendors: [
-            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 124.99, in_stock: true, link: "https://soma-chems.com/" }
+            { vendor: "Ascension Peptides", price_usd: 0, in_stock: false, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 0, in_stock: false, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }, { vendor: "Soma Chems", price_usd: 124.99, in_stock: true, link: "https://somachems.com/" }
         ]
     }
 ];

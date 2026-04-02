@@ -105,7 +105,7 @@ export default function VendorsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
+                  <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
                 </td>
               </tr>
               {/* Row 2 */}
@@ -137,7 +137,7 @@ export default function VendorsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
+                  <a href="https://somachems.com/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
                 </td>
               </tr>
             </tbody>
