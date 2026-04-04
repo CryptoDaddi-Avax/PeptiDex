@@ -1,4 +1,4 @@
-﻿const { Client } = require('ssh2');
+const { Client } = require('ssh2');
 
 const config = {
     host: 'peptidex.app',
@@ -8,7 +8,7 @@ const config = {
     readyTimeout: 10000,
 };
 
-const cmds = \
+const cmds = `
 set -e
 echo "Connecting to VPS to pull and build from GitHub..."
 
@@ -39,8 +39,7 @@ else
     pm2 start npm --name "peptidex" -- start
     pm2 save
 fi
-\
-
+`;
 const conn = new Client();
 conn.on('ready', () => {
     conn.exec(cmds, (err, stream) => {

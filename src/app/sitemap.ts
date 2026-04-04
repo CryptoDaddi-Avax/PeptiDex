@@ -52,9 +52,93 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/beginners-guide`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/cycle-planner`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/glossary`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/quiz`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/legal`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/advisor`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/disclaimer`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/peptides`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/compare`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    ...[
+      'ghk-cu-vs-bpc-157',
+      'semaglutide-vs-tirzepatide',
+      'oral-vs-injectable-peptides',
+      'bpc-157-vs-tb-500',
+    ].map((slug) => ({
+      url: `${baseUrl}/compare/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
   ];
 
-  // Blog Post Pages
+  // High-priority trending blog posts
+  const trendingBlogPosts = [
+    'oral-peptide-revolution',
+    'ghk-cu-breakout-peptide-2026',
+  ];
+
+  const trendingBlogUrls = trendingBlogPosts.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // Standard Blog Post Pages
   const blogPosts = [
     'bpc-157-vs-tb-500',
     'best-peptides-for-fat-loss',
@@ -89,5 +173,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls];
+  return [...staticPages, ...trendingBlogUrls, ...blogUrls, ...peptideUrls, ...stackUrls];
 }

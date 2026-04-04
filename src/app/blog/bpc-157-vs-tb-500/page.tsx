@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { AutoLink } from '@/components/auto-link';
+import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
@@ -80,18 +83,15 @@ export default function BlogPostTemplate() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Breadcrumbs */}
-      <nav className="flex flex-wrap items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-zinc-300 transition-colors">Home</Link>
-        <ChevronRight className="w-4 h-4 flex-shrink-0" />
-        <Link href="/blog" className="hover:text-zinc-300 transition-colors">Blog</Link>
-        <ChevronRight className="w-4 h-4 flex-shrink-0" />
-        <span className="text-zinc-300 font-medium truncate max-wxs md:max-w-md">{POST_TITLE}</span>
-      </nav>
+      <Breadcrumbs items={[
+        { name: 'Home', url: 'https://peptidex.app/' },
+        { name: 'Blog', url: 'https://peptidex.app/blog' },
+        { name: '{POST_TITLE}' }
+      ]} />
 
       {/* Top Disclaimer */}
       <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">

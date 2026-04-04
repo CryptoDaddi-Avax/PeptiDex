@@ -4,6 +4,16 @@ import { GitCompare, Calculator, ShieldAlert, ArrowRight, GraduationCap, BookA, 
 
 const tools = [
     {
+        href: "/tools/cycle-planner",
+        icon: ShoppingCart,
+        iconColor: "text-orange-400",
+        bgGradient: "from-orange-600/20 to-amber-800/10",
+        borderColor: "border-orange-500/30",
+        title: "Cycle Planner",
+        description: "Plan your full cycle — get exact vial counts, dosing schedules, and order everything from a trusted vendor.",
+        badge: "NEW",
+    },
+    {
         href: "/tools/compare",
         icon: GitCompare,
         iconColor: "text-violet-400",
@@ -116,7 +126,10 @@ export default function ToolsPage() {
             <div className="space-y-4">
                 {tools.map((tool, i) => (
                     <div key={tool.href}>
-                        <Link href={tool.href} className={`block rounded-2xl border ${tool.borderColor} bg-gradient-to-br ${tool.bgGradient} p-5 md:p-6 hover:scale-[1.01] transition-all duration-200 group`}>
+                        <Link href={tool.href} className={`block rounded-2xl border ${tool.borderColor} bg-gradient-to-br ${tool.bgGradient} p-5 md:p-6 hover:scale-[1.01] transition-all duration-200 group relative overflow-hidden`}>
+                            {(tool as any).badge && (
+                                <div className="absolute top-2 right-3 px-2 py-0.5 rounded-full bg-orange-500/20 border border-orange-500/30 text-[9px] font-bold text-orange-300 uppercase tracking-wider">{(tool as any).badge}</div>
+                            )}
                             <div className="flex items-start gap-4">
                                 <div className={`w-12 h-12 rounded-xl bg-zinc-900/80 flex items-center justify-center flex-shrink-0`}>
                                     <tool.icon className={`w-6 h-6 ${tool.iconColor}`} />

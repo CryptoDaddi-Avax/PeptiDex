@@ -1,185 +1,247 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronRight, Calendar, User, ArrowRight } from 'lucide-react';
+import { ChevronRight, Calendar, User, ArrowRight, Clock, BookOpen, Rss } from 'lucide-react';
+import { getAllPosts, BLOG_CATEGORIES, formatDate } from '@/data/blog';
+import type { BlogCategory } from '@/data/blog';
 
 export const metadata: Metadata = {
-  title: 'Peptide Research Blog | Studies, News & Sourcing Guides, PeptiDex',
-  description: 'Stay current with the latest peptide research. Weekly breakdowns of clinical studies, protocol guides, vendor COA alerts, and sourcing tips.',
+  title: 'PeptideX Blog — Peptide Science, Research News & Analysis',
+  description: 'Stay current with evidence-based peptide research. Expert analysis of clinical studies, emerging compound trends, regulatory updates, and the science behind peptide therapies.',
   alternates: {
     canonical: 'https://peptidex.app/blog',
+    types: { 'application/rss+xml': '/blog/rss.xml' },
+  },
+  openGraph: {
+    title: 'PeptideX Blog — Peptide Science, Research News & Analysis',
+    description: 'Evidence-based peptide research analysis, clinical study breakdowns, and regulatory updates from the PeptideX editorial team.',
+    url: 'https://peptidex.app/blog',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PeptideX Blog — Peptide Science & Research News',
+    description: 'Evidence-based peptide research analysis and clinical study breakdowns.',
+    images: ['/og-image.png'],
   },
 };
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptidex.app/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://peptidex.app/blog' },
-  ],
+const CATEGORY_COLORS: Record<BlogCategory, { bg: string; text: string; border: string }> = {
+  'Research News': { bg: 'bg-emerald-500/15', text: 'text-emerald-300', border: 'border-emerald-500/30' },
+  'Peptide Trends': { bg: 'bg-violet-500/15', text: 'text-violet-300', border: 'border-violet-500/30' },
+  'Science Explainers': { bg: 'bg-blue-500/15', text: 'text-blue-300', border: 'border-blue-500/30' },
+  'Industry Analysis': { bg: 'bg-amber-500/15', text: 'text-amber-300', border: 'border-amber-500/30' },
+  'Regulatory Updates': { bg: 'bg-rose-500/15', text: 'text-rose-300', border: 'border-rose-500/30' },
 };
-
-const CATEGORIES = ['All', 'Research', 'Protocols', 'Vendor News', 'Stacks', 'Beginner Guides'];
-
-const PLACEHOLDER_POSTS = [
-  {
-    title: 'BPC-157 vs TB-500: What the Research Actually Shows',
-    slug: 'bpc-157-vs-tb-500',
-    excerpt: 'An in-depth analysis of the synergistic mechanisms between BPC-157 and TB-500 for musculoskeletal tissue repair and inflammation reduction.',
-    category: 'Research',
-    date: 'March 28, 2026',
-    author: 'Dr. E. Vance',
-    image: '/images/blog/bpc_tb_dna.png'
-  },
-  {
-    title: 'Best Peptides for Fat Loss: A Research Review',
-    slug: 'best-peptides-for-fat-loss',
-    excerpt: 'Comparing GLP-1 agonists, AOD-9604, and MOTS-c across clinical trials to determine the most effective peptide pathways for lipid oxidation.',
-    category: 'Protocols',
-    date: 'March 20, 2026',
-    author: 'Editorial Team',
-    image: '/images/blog/fat_loss_lipid.png'
-  },
-  {
-    title: 'How to Read a Peptide COA (And Why It Matters)',
-    slug: 'how-to-read-a-peptide-coa',
-    excerpt: 'Avoid dangerous synthesis byproducts by learning how to properly analyze independent HPLC and mass spectrometry reports before sourcing.',
-    category: 'Vendor News',
-    date: 'March 15, 2026',
-    author: 'Dr. E. Vance',
-    image: '/images/blog/coa_lab_graph.png'
-  },
-  {
-    title: 'Ipamorelin vs CJC-1295: Stack Comparison Guide',
-    slug: 'ipamorelin-vs-cjc-1295',
-    excerpt: 'Understanding the synergistic GHRP and GHRH relationship that maximizes endogenous growth hormone pulses without cortisol spikes.',
-    category: 'Stacks',
-    date: 'March 10, 2026',
-    author: 'Editorial Team',
-    image: '/images/blog/cjc_growth_hormone.png'
-  },
-  {
-    title: 'Best Peptide Vendors 2026: Our Sourcing Criteria',
-    slug: 'best-peptide-vendors-2026',
-    excerpt: 'A transparent look into our rigorous 5-point vetting process used to evaluate and rank research chemical suppliers globally.',
-    category: 'Vendor News',
-    date: 'March 05, 2026',
-    author: 'Editorial Team',
-    image: '/images/blog/vendor_secure_crate.png'
-  },
-  {
-    title: 'Are Research Peptides Legal? A Country-by-Country Guide',
-    slug: 'are-research-peptides-legal',
-    excerpt: 'Navigating the complex regulatory landscape of purchasing, owning, and researching peptides across North America, Europe, and Australia.',
-    category: 'Beginner Guides',
-    date: 'February 28, 2026',
-    author: 'Legal Dept',
-    image: '/images/blog/legal_gavel_hologram.png'
-  },
-];
 
 export default function BlogIndexPage() {
-  return (
-    <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+  const allPosts = getAllPosts();
 
-      {/* Breadcrumbs UI */}
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptidex.app/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://peptidex.app/blog' },
+    ],
+  };
+
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'PeptideX Blog',
+    description: 'Evidence-based peptide research analysis, clinical study breakdowns, and regulatory updates.',
+    url: 'https://peptidex.app/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'PeptideX',
+      url: 'https://peptidex.app',
+    },
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+
+      {/* Breadcrumbs */}
       <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-8" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-zinc-300 transition-colors">Home</Link>
         <ChevronRight className="w-4 h-4" />
         <span className="text-zinc-300 font-medium">Blog</span>
       </nav>
 
-      {/* Hero Header */}
-      <section className="space-y-6 mb-12">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-100 leading-tight max-w-4xl">
-          Peptide Research Blog, Studies, Protocols &amp; Sourcing News
-        </h1>
-        <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed">
-          Stay current with the latest peptide research. We break down clinical studies, map out protocol frameworks, investigate vendor COA transparency, and provide essential sourcing tips for independent researchers.
+      {/* ═══════ HERO ═══════ */}
+      <header className="space-y-5 mb-12">
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="space-y-3 max-w-3xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">
+              PeptideX Blog
+            </h1>
+            <p className="text-sm text-violet-400 font-semibold uppercase tracking-widest">
+              Peptide Science, Research News &amp; Analysis
+            </p>
+          </div>
+          <Link
+            href="/blog/rss.xml"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-400 hover:text-orange-400 hover:border-orange-500/30 transition-colors"
+          >
+            <Rss className="w-3.5 h-3.5" /> RSS Feed
+          </Link>
+        </div>
+        <p className="text-[15px] text-zinc-400 leading-relaxed max-w-2xl">
+          Evidence-based analysis of clinical studies, emerging compound trends, regulatory developments, and the science behind peptide therapies. Every claim is cited. Every article is reviewed.
         </p>
-      </section>
+      </header>
 
-      {/* Categories Filter */}
-      <section className="mb-12">
-        <div className="flex flex-wrap items-center gap-3">
-          {CATEGORIES.map((cat, idx) => (
-            <button
-              key={idx}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200 border ${
-                idx === 0 
-                  ? 'bg-violet-600 border-violet-500 text-white' 
-                  : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+      {/* ═══════ CATEGORY FILTERS ═══════ */}
+      <section className="mb-10">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="px-4 py-2 rounded-full text-sm font-semibold bg-violet-600 border border-violet-500 text-white">
+            All
+          </span>
+          {BLOG_CATEGORIES.map((cat) => {
+            const colors = CATEGORY_COLORS[cat];
+            return (
+              <span
+                key={cat}
+                className={`px-4 py-2 rounded-full text-sm font-semibold ${colors.bg} ${colors.text} border ${colors.border} cursor-default`}
+              >
+                {cat}
+              </span>
+            );
+          })}
         </div>
       </section>
 
-      {/* Blog Post Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {PLACEHOLDER_POSTS.map((post, idx) => (
-          <article 
-            key={idx} 
-            className="flex flex-col bg-zinc-900/40 border border-zinc-800/60 rounded-2xl overflow-hidden hover:bg-zinc-900 transition-colors duration-300 group"
-          >
-            <Link href={`/blog/${post.slug}`} className="block w-full h-48 border-b border-zinc-800 relative overflow-hidden group/image">
+      {/* ═══════ FEATURED POST ═══════ */}
+      {allPosts.length > 0 && (() => {
+        const featured = allPosts[0];
+        const colors = CATEGORY_COLORS[featured.category];
+        return (
+          <section className="mb-12">
+            <Link
+              href={`/blog/${featured.slug}`}
+              className="block rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900/80 to-zinc-950 overflow-hidden hover:border-violet-500/30 transition-all group"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+                {/* Image */}
+                <div className="md:col-span-2 h-56 md:h-auto relative bg-zinc-800/50 overflow-hidden">
+                  {featured.image ? (
+                    <Image src={featured.image} alt={featured.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 40vw" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-violet-900/30 to-zinc-900 flex items-center justify-center">
+                      <BookOpen className="w-12 h-12 text-violet-500/30" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-950/60 hidden md:block" />
+                </div>
+                {/* Content */}
+                <div className="md:col-span-3 p-6 md:p-8 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-violet-400">Latest</span>
+                    <span className={`px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest ${colors.bg} ${colors.text} rounded-full border ${colors.border}`}>
+                      {featured.category}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-100 mb-3 group-hover:text-violet-400 transition-colors leading-snug">
+                    {featured.title}
+                  </h2>
+                  <p className="text-sm text-zinc-400 leading-relaxed mb-5 line-clamp-2">
+                    {featured.excerpt}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500 font-medium">
+                    <div className="flex items-center gap-1.5">
+                      <User className="w-3.5 h-3.5" />
+                      <span>{featured.author}</span>
+                    </div>
+                    <div className="w-1 h-1 bg-zinc-700 rounded-full" />
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{formatDate(featured.datePublished)}</span>
+                    </div>
+                    <div className="w-1 h-1 bg-zinc-700 rounded-full" />
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>{featured.readingTime}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </section>
+        );
+      })()}
+
+      {/* ═══════ POST GRID ═══════ */}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {allPosts.slice(1).map((post) => {
+          const colors = CATEGORY_COLORS[post.category];
+          return (
+            <article
+              key={post.slug}
+              className="flex flex-col bg-zinc-900/40 border border-zinc-800/60 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all duration-300 group"
+            >
+              {/* Image */}
+              <Link href={`/blog/${post.slug}`} className="block w-full h-48 relative overflow-hidden bg-zinc-800/30">
                 {post.image ? (
-                  <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover/image:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 ) : (
-                  <div className="w-full h-full bg-zinc-800/50" />
+                  <div className="w-full h-full bg-gradient-to-br from-zinc-800/50 to-zinc-900 flex items-center justify-center">
+                    <BookOpen className="w-8 h-8 text-zinc-700" />
+                  </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-4 left-4 z-10">
-                  <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-violet-500/20 text-violet-100 rounded border border-violet-500/40 backdrop-blur-md">
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent" />
+                <div className="absolute bottom-3 left-3 z-10">
+                  <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest ${colors.bg} ${colors.text} rounded border ${colors.border} backdrop-blur-md`}>
                     {post.category}
                   </span>
                 </div>
-            </Link>
-
-            <div className="p-6 flex flex-col flex-grow">
-              <Link href={`/blog/${post.slug}`}>
-                <h2 className="text-xl font-bold text-zinc-100 mb-3 group-hover:text-violet-400 transition-colors line-clamp-2">
-                  {post.title}
-                </h2>
               </Link>
-              <p className="text-sm text-zinc-400 leading-relaxed mb-6 flex-grow line-clamp-3">
-                {post.excerpt}
-              </p>
-              
-              <div className="flex items-center justify-between pt-4 border-t border-zinc-800/50 mt-auto">
-                <div className="flex items-center gap-3 text-xs text-zinc-500 font-medium">
-                  <div className="flex items-center gap-1.5 align-middle">
-                    <User className="w-3.5 h-3.5 mb-[1px]" />
-                    <span>{post.author}</span>
+
+              {/* Content */}
+              <div className="p-5 flex flex-col flex-grow">
+                <Link href={`/blog/${post.slug}`}>
+                  <h2 className="text-lg font-bold text-zinc-100 mb-2 group-hover:text-violet-400 transition-colors line-clamp-2 leading-snug">
+                    {post.title}
+                  </h2>
+                </Link>
+                <p className="text-sm text-zinc-400 leading-relaxed mb-5 flex-grow line-clamp-2">
+                  {post.excerpt}
+                </p>
+
+                <div className="flex items-center justify-between pt-3 border-t border-zinc-800/50 mt-auto">
+                  <div className="flex items-center gap-3 text-[11px] text-zinc-500 font-medium">
+                    <div className="flex items-center gap-1">
+                      <User className="w-3 h-3" />
+                      <span>{post.author}</span>
+                    </div>
+                    <div className="w-1 h-1 bg-zinc-700 rounded-full" />
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      <span>{formatDate(post.datePublished)}</span>
+                    </div>
                   </div>
-                  <div className="w-1 h-1 bg-zinc-700 justify-center rounded-full" />
-                  <div className="flex items-center gap-1.5 align-middle">
-                    <Calendar className="w-3.5 h-3.5 mb-[1px]" />
-                    <span>{post.date}</span>
+                  <div className="flex items-center gap-1 text-[11px] text-zinc-600">
+                    <Clock className="w-3 h-3" />
+                    <span>{post.readingTime}</span>
                   </div>
-                </div>
-                  <Link href={`/blog/${post.slug}`} className="text-violet-500 group-hover:translate-x-1 transition-transform">
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
                 </div>
               </div>
             </article>
-        ))}
+          );
+        })}
       </section>
 
-      {/* SEO Educational Block */}
-      <section className="mt-12 p-6 md:p-8 rounded-3xl bg-zinc-900/30 border border-zinc-800/50">
-        <h3 className="text-xl font-bold text-zinc-100 mb-4">Advancing Medical Research Literacy</h3>
-        <p className="text-sm text-zinc-400 leading-relaxed text-justify">
-          The field of synthetic peptide research is evolving rapidly, with novel clinical trials continuously reshaping our understanding of systemic pharmacology. This blog serves as a centralized educational repository, aggregating independent data sets to provide clear, actionable insights for laboratory researchers. By breaking down complex metabolic signaling pathways, analyzing the synergistic interactions of multi-compound protocols, and keeping a firm pulse on global Vendor standards (like independent HPLC/MS COA vetting), we aim to elevate the standard of scientific literacy within the independent research community. Note that all investigations covered in these publications strictly profile preclinical mechanisms; no compounds discussed herein are intended or authorized for direct human therapeutic use.
+      {/* ═══════ SEO CONTENT BLOCK ═══════ */}
+      <section className="rounded-2xl bg-zinc-900/30 border border-zinc-800/50 p-6 md:p-8 space-y-4">
+        <h2 className="text-lg font-bold text-zinc-100">About This Blog</h2>
+        <p className="text-sm text-zinc-400 leading-relaxed">
+          The PeptideX Blog is a peer-cited educational resource covering the most important developments in peptide science. Our editorial team reviews published research from PubMed-indexed journals, FDA regulatory filings, and registered clinical trials to deliver accurate, accessible analysis. We do not accept paid placements or sponsored content. All claims are supported by cited sources.
+        </p>
+        <p className="text-xs text-zinc-500 leading-relaxed italic">
+          All content is for educational purposes only. PeptideX does not sell peptides or make therapeutic claims. <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
         </p>
       </section>
     </div>

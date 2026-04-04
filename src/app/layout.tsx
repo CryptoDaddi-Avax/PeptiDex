@@ -8,8 +8,15 @@ import { BottomNav } from "@/components/bottom-nav";
 import { DisclaimerBanner } from "@/components/disclaimer-banner";
 import { FirstVisitModal } from "@/components/first-visit-modal";
 import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
+import { Footer } from "@/components/footer";
+import { AutoLinkProvider } from "@/components/auto-link";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-geist-sans" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peptidex.app"),
@@ -69,14 +76,17 @@ export const viewport: Viewport = {
   themeColor: "#09090b",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -85,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@type": "Organization",
               "name": "PeptiDex",
               "url": "https://peptidex.app",
+              "description": "Peptide science education, research news, and compound profiles. Trusted source for evidence-based peptide information.",
               "logo": "https://peptidex.app/logo.png",
               "sameAs": [
                  "https://twitter.com/peptidex",
@@ -118,19 +129,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <FirstVisitModal />
         <PWAInstallPrompt />
-        <main id="main-content" role="main" className="pb-40 min-h-[calc(100vh-64px)]">
-          {children}
-        </main>
-        <div className="hidden md:block fixed bottom-14 left-0 right-0 z-40 pointer-events-none">
-          <DisclaimerBanner />
-        </div>
-        <footer className="hidden md:block fixed bottom-[3.75rem] left-0 right-0 z-40 pointer-events-auto" role="contentinfo">
-          <div className="flex items-center justify-center gap-4 py-2">
-            <Link href="/about" className="text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors">About</Link>
-            <Link href="/about/editorial-policy" className="text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors">Editorial Policy</Link>
-            <Link href="/legal" className="text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors">Privacy &amp; Terms</Link>
+        <AutoLinkProvider>
+          <main id="main-content" role="main" className="pb-16 min-h-[calc(100vh-64px)]">
+            {children}
+          </main>
+          <div className="hidden md:block fixed bottom-14 left-0 right-0 z-40 pointer-events-none">
+            <DisclaimerBanner />
           </div>
-        </footer>
+          <Footer />
+        </AutoLinkProvider>
+
         <BottomNav />
       </body>
     </html>

@@ -24,7 +24,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Research-only. Received GRAS status from FDA as food supplement ingredient. Banned by WADA. Phase 3 trial discontinued due to insufficient efficacy.",
         half_life_hours: 1,
-        dosing: { route: "SubQ", typical_dose_mcg: [300, 500], frequency: "Daily", cycle_weeks: [8, 12], timing: "Morning fasted", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Take on empty stomach. No effect on blood sugar or IGF-1." },
+        dosing: { route: "SubQ", typical_dose_mcg: [300, 300], frequency: "7x/wk", cycle_weeks: [12, 12], timing: "Morning fasted", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Take on empty stomach. No effect on blood sugar or IGF-1." },
         interactions: { synergies: ["MOTS-c", "Semaglutide"], cautions: [], contraindicated: [], notes: "Can be combined with other fat-loss peptides for multi-pathway approach." },
         outcomes_timeline: { week_2_4: "Early lipolysis effects, especially in abdominal area", month_2_3: "Noticeable fat reduction in visceral stores; improved metabolic markers", long_term: "Sustained fat loss; may preserve muscle mass better than caloric restriction alone" },
         side_effects: [
@@ -51,7 +51,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Excellent research safety profile; commonly used for recovery. Not FDA-approved. Most evidence from animal models. FDA restricted use in compounded medications in Sept 2023.",
         half_life_hours: 4,
-        dosing: { route: "SubQ", typical_dose_mcg: [250, 500], frequency: "1-2x daily", cycle_weeks: [4, 12], timing: "Morning or split AM/PM", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Often run 250mcg 2x/day for injuries. Can be injected near injury site." },
+        dosing: { route: "SubQ", typical_dose_mcg: [500, 500], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Morning or split AM/PM", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Often run 250mcg 2x/day for injuries. Can be injected near injury site." },
         interactions: { synergies: ["TB-500", "GHK-Cu", "KPV"], cautions: [], contraindicated: [], notes: "BPC-157 + TB-500 is the most popular healing stack. Synergistic tissue repair." },
         outcomes_timeline: { week_1: "Reduced pain/inflammation at injury site; improved GI comfort if used for gut healing", week_2_4: "Noticeable mobility improvement; significant reduction in injury-site swelling", month_2_3: "Substantial tissue remodeling; most acute injuries showing measurable repair", long_term: "Full tendon/ligament functional recovery in most preclinical models; sustained GI remission" },
         side_effects: [
@@ -103,7 +103,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Often stacked with Ipamorelin; injection site reactions possible. Not FDA-approved.",
         half_life_hours: 168,
-        dosing: { route: "SubQ", typical_dose_mcg: [1000, 2000], frequency: "2-3x/week", cycle_weeks: [8, 16], timing: "Pre-bed or morning fasted", reconstitution_ml: 2, typical_vial_mg: 2, notes: "CJC-1295 DAC version has 7-day half-life. Mod GRF 1-29 (no DAC) has ~30min half-life." },
+        dosing: { route: "SubQ", typical_dose_mcg: [1000, 1000], frequency: "3x/week", cycle_weeks: [8, 8], timing: "Pre-bed or morning fasted", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "CJC-1295 DAC version has 7-day half-life. Mod GRF 1-29 (no DAC) has ~30min half-life." },
         interactions: { synergies: ["Ipamorelin", "Sermorelin", "Tesamorelin"], cautions: ["Semaglutide"], contraindicated: [], notes: "CJC-1295 + Ipamorelin is the most popular GH secretagogue stack." },
         outcomes_timeline: { week_1: "Improved sleep depth; occasional GH flush sensation; increased hunger in morning", week_2_4: "Elevated energy and faster post-workout recovery; mild water retention", month_2_3: "Measurable lean mass improvements; visible fat redistribution; IGF-1 elevation confirmed on bloodwork", long_term: "Sustained GH axis support; anti-aging body composition benefits; improved bone density over 6+ months" },
         side_effects: [
@@ -128,7 +128,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Limited modern data. Most studies from the 1980s-90s. Safety profile incompletely defined.",
         half_life_hours: 0.13,
-        dosing: { route: "SubQ", typical_dose_mcg: [100, 300], frequency: "Daily before bed", cycle_weeks: [2, 4], timing: "30 min before bed", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Very short half-life. Take immediately before sleep. Cycle to avoid tolerance." },
+        dosing: { route: "SubQ", typical_dose_mcg: [100, 100], frequency: "7x/wk", cycle_weeks: [4, 4], timing: "30 min before bed", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Very short half-life. Take immediately before sleep. Cycle to avoid tolerance." },
         interactions: { synergies: ["Ipamorelin", "Selank", "Epitalon"], cautions: [], contraindicated: [], notes: "DSIP + Ipamorelin taken pre-bed maximizes sleep-phase GH release." },
         outcomes_timeline: { week_1: "Improved sleep onset and delta-wave sleep depth", week_2_4: "More restful sleep; potential pain modulation via opioid pathways", month_2_3: "Circadian rhythm stabilization; stress resilience improvement", long_term: "Effects require cycling; cumulative normalization of sleep architecture" },
         side_effects: [
@@ -153,7 +153,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Research-only. Telomerase activation carries theoretical cancer risk. Long-term safety unknown.",
         half_life_hours: 2,
-        dosing: { route: "SubQ", typical_dose_mcg: [5000, 10000], frequency: "Daily", cycle_weeks: [2, 4], timing: "Any time", reconstitution_ml: 2, typical_vial_mg: 10, notes: "Common protocol: 10mg/day for 20 days. Repeat 2-3x/year. Short cycles only." },
+        dosing: { route: "SubQ", typical_dose_mcg: [1000, 1000], frequency: "7x/wk", cycle_weeks: [4, 4], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "Common protocol: 10mg/day for 20 days. Repeat 2-3x/year. Short cycles only." },
         interactions: { synergies: ["GHK-Cu", "MOTS-c", "SS-31"], cautions: [], contraindicated: [], notes: "Epitalon + GHK-Cu is a popular longevity/anti-aging stack." },
         outcomes_timeline: { week_2_4: "Improved sleep quality and circadian rhythm normalization", month_2_3: "Antioxidant enzyme upregulation; potential telomere lengthening", long_term: "Anti-aging effects; melatonin regulation; potential lifespan extension (animal data)" },
         side_effects: [
@@ -178,7 +178,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Research-only. Potent effects   potential for unregulated growth. Limited human safety data. Phase I gene therapy trials show safety.",
         half_life_hours: 6,
-        dosing: { route: "SubQ", typical_dose_mcg: [100, 200], frequency: "Daily", cycle_weeks: [2, 4], timing: "Post-workout or morning", reconstitution_ml: 1, typical_vial_mg: 1, notes: "Very short cycles. 100mcg/day common. Acts via myostatin/activin inhibition   effects compound over days." },
+        dosing: { route: "SubQ", typical_dose_mcg: [100, 100], frequency: "7x/wk", cycle_weeks: [4, 4], timing: "Post-workout or morning", reconstitution_ml: 2.5, typical_vial_mg: 1, notes: "Very short cycles. 100mcg/day common. Acts via myostatin/activin inhibition   effects compound over days." },
         interactions: { synergies: ["IGF-1 LR3", "CJC-1295", "Ipamorelin"], cautions: [], contraindicated: [], notes: "Follistatin + IGF-1 LR3 for maximum growth (hyperplasia + myostatin block). Advanced only." },
         outcomes_timeline: { week_2_4: "Initial myostatin inhibition; muscle fullness and pumps", month_2_3: "Measurable lean mass increase; strength gains", long_term: "Very limited long-term human data; Phase I gene therapy shows safety" },
         side_effects: [
@@ -205,7 +205,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Topical or injectable; low risk. Long history of safe topical use in cosmetics.",
         half_life_hours: 0.5,
-        dosing: { route: "SubQ", typical_dose_mcg: [200, 500], frequency: "Daily", cycle_weeks: [4, 12], timing: "Any time", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Also available topically in serums/creams. Injectable provides systemic effects. Often injected near wound sites." },
+        dosing: { route: "SubQ", typical_dose_mcg: [2000, 2000], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 50, notes: "Also available topically in serums/creams. Injectable provides systemic effects. Often injected near wound sites." },
         interactions: { synergies: ["BPC-157", "TB-500", "Epitalon"], cautions: [], contraindicated: [], notes: "GHK-Cu + BPC-157 + TB-500 is the ultimate healing/anti-aging combo." },
         outcomes_timeline: { week_2_4: "Improved skin texture and elasticity (topical); wound healing acceleration", month_2_3: "Visible collagen synthesis; skin tightening; improved scar appearance", long_term: "Progressive anti-aging effects; hair follicle stimulation with consistent use" },
         side_effects: [
@@ -339,7 +339,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Potent; use caution. Risk of hypoglycemia. Theoretical cancer promotion concern well-documented in literature. Research-only.",
         half_life_hours: 20,
-        dosing: { route: "SubQ", typical_dose_mcg: [20, 50], frequency: "Daily", cycle_weeks: [4, 6], timing: "Post-workout", reconstitution_ml: 1, typical_vial_mg: 1, notes: "Very low doses. Inject post-workout for localized muscle effects. Monitor blood sugar closely. Short cycles only." },
+        dosing: { route: "SubQ", typical_dose_mcg: [50, 50], frequency: "5x/wk", cycle_weeks: [4, 4], timing: "Post-workout", reconstitution_ml: 2.5, typical_vial_mg: 1, notes: "Very low doses. Inject post-workout for localized muscle effects. Monitor blood sugar closely. Short cycles only." },
         interactions: { synergies: ["Follistatin-344", "CJC-1295"], cautions: ["Tesamorelin"], contraindicated: [], notes: "Monitor IGF-1 levels closely. Do not combine with multiple GH secretagogues." },
         outcomes_timeline: { week_1: "Enhanced nutrient partitioning; increased post-workout pumps", week_2_4: "Lean mass and recovery improvements; possible hypoglycemia if undereating", month_2_3: "Significant body composition changes; hyperplasia (new cell creation) possible", long_term: "Theoretical cancer promotion risk with chronic use; short cycles essential" },
         side_effects: [
@@ -366,7 +366,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "One of the safest GH peptides. Side effects may include transient headache, flushing. Not FDA-approved.",
         half_life_hours: 2,
-        dosing: { route: "SubQ", typical_dose_mcg: [200, 300], frequency: "1-3x daily", cycle_weeks: [8, 16], timing: "Pre-bed, morning fasted, or post-workout", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Most commonly dosed at 200-300mcg per injection. Best taken on empty stomach 2+ hrs after eating." },
+        dosing: { route: "SubQ", typical_dose_mcg: [300, 300], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Pre-bed, morning fasted, or post-workout", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Most commonly dosed at 200-300mcg per injection. Best taken on empty stomach 2+ hrs after eating." },
         interactions: { synergies: ["CJC-1295", "Sermorelin", "DSIP"], cautions: [], contraindicated: [], notes: "Ipamorelin + CJC-1295 is the #1 GH peptide combo. Add DSIP for sleep-optimized GH release." },
         outcomes_timeline: { week_1: "Improved sleep quality; increased hunger around dosing window", week_2_4: "Improved recovery and energy; early body composition shifts", month_2_3: "Visible lean mass gains; fat loss (especially combined with CJC-1295)", long_term: "Sustained IGF-1 support; preserved muscle during caloric deficit" },
         side_effects: [
@@ -395,7 +395,7 @@ export const peptides: Peptide[] = [
         safety_notes: "Endogenous human neuropeptide with growing clinical trial data. Tachyphylaxis (desensitization) occurs with continuous dosing; pulsatile/intermittent protocols required. Being investigated as a safer IVF trigger (vs. hCG). Not FDA-approved for therapeutic use. Research-only.",
         half_life_hours: 0.5,
         is_fda_approved: false,
-        dosing: { route: "SubQ", typical_dose_mcg: [100, 400], frequency: "1-2x daily (pulsatile)", cycle_weeks: [4, 12], timing: "Morning or split AM/PM", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Pulsatile dosing critical: continuous administration causes desensitization within 24-48 hours. Clinical studies use 1mcg/kg IV or 100-400mcg SubQ. Cycle 5 days on / 2 days off to prevent tachyphylaxis. Monitor LH, FSH, testosterone/estradiol on bloodwork." },
+        dosing: { route: "SubQ", typical_dose_mcg: [100, 100], frequency: "3x/wk", cycle_weeks: [8, 8], timing: "Morning or split AM/PM", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Pulsatile dosing critical: continuous administration causes desensitization within 24-48 hours. Clinical studies use 1mcg/kg IV or 100-400mcg SubQ. Cycle 5 days on / 2 days off to prevent tachyphylaxis. Monitor LH, FSH, testosterone/estradiol on bloodwork." },
         interactions: { synergies: ["CJC-1295", "Ipamorelin"], cautions: ["Semaglutide"], contraindicated: [], notes: "Kisspeptin-10 addresses the HPG axis while CJC/Ipamorelin addresses the GH axis. Together they form a comprehensive hormonal optimization protocol. Caution with GLP-1 agonists: some evidence they may suppress kisspeptin signaling." },
         outcomes_timeline: { week_1: "Acute LH surge within hours; increase in morning testosterone levels; improved libido in hypogonadal individuals", week_2_4: "Sustained testosterone elevation with pulsatile dosing; improved energy and mood; fertility markers improving", month_2_3: "Stable HPG axis activation; measurable testosterone/LH improvement on bloodwork; improved reproductive parameters", long_term: "Must maintain pulsatile dosing to avoid desensitization; promising IVF trigger data; long-term reproductive axis support" },
         side_effects: [
@@ -422,7 +422,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Excellent profile. Research-only compound with limited human data but strong preclinical safety.",
         half_life_hours: 0.5,
-        dosing: { route: "SubQ", typical_dose_mcg: [200, 500], frequency: "Daily", cycle_weeks: [4, 12], timing: "Any time", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Often used orally in capsules for gut-specific effects. SubQ for systemic anti-inflammatory." },
+        dosing: { route: "SubQ", typical_dose_mcg: [200, 200], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Often used orally in capsules for gut-specific effects. SubQ for systemic anti-inflammatory." },
         interactions: { synergies: ["BPC-157", "Thymosin Alpha-1"], cautions: [], contraindicated: [], notes: "KPV + BPC-157 is the ultimate gut healing combination." },
         outcomes_timeline: { week_1: "Potent anti-inflammatory effect; rapid symptom relief in gut/injury", week_2_4: "Mucosal healing acceleration; reduced IBD flare symptoms", month_2_3: "Wound healing and IBD remission in study models; sustained anti-inflammatory effect" },
         side_effects: [
@@ -451,7 +451,7 @@ export const peptides: Peptide[] = [
         safety_notes: "Endogenous human peptide with well-characterized biology. Cytotoxic to eukaryotic cells at high concentrations (>25mcg/mL). Concentration-dependent effects: low doses immunomodulatory, high doses cytotoxic. Growing research interest in CIRS/mold illness protocols. Not FDA-approved as a therapeutic.",
         half_life_hours: 4,
         is_fda_approved: false,
-        dosing: { route: "SubQ", typical_dose_mcg: [50, 200], frequency: "Daily or 3-5x/week", cycle_weeks: [4, 12], timing: "Any time", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Research doses typically 50-200mcg SubQ. Start low (50mcg) to assess tolerance. Also used topically for wound applications. Practitioners in CIRS protocols often use nebulized delivery for respiratory infections." },
+        dosing: { route: "SubQ", typical_dose_mcg: [100, 100], frequency: "7x/wk", cycle_weeks: [6, 6], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 2, notes: "Research doses typically 50-200mcg SubQ. Start low (50mcg) to assess tolerance. Also used topically for wound applications. Practitioners in CIRS protocols often use nebulized delivery for respiratory infections." },
         interactions: { synergies: ["Thymosin Alpha-1", "BPC-157", "KPV"], cautions: [], contraindicated: [], notes: "LL-37 + Thymosin Alpha-1 is a potent immune defense stack. LL-37 handles direct antimicrobial action while TA-1 modulates adaptive immunity. BPC-157 provides complementary mucosal barrier protection." },
         outcomes_timeline: { week_1: "Immune activation; some users report mild flu-like response as immune system engages", week_2_4: "Reduced infection symptoms; improved wound healing at treatment sites; systemic immune upregulation", month_2_3: "Sustained antimicrobial effects; biofilm disruption in chronic infections; improved mucosal barrier integrity", long_term: "Best used in targeted protocols for active infections or chronic immune challenges; not typically used indefinitely" },
         side_effects: [
@@ -478,7 +478,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Nausea common; research-only. SIGNIFICANT SAFETY CONCERNS: changes to moles, elevated BP. Actively warned against by FDA/TGA.",
         half_life_hours: 1,
-        dosing: { route: "SubQ", typical_dose_mcg: [250, 500], frequency: "Daily during loading, then as needed", cycle_weeks: [2, 4], timing: "Any time", reconstitution_ml: 2, typical_vial_mg: 10, notes: "Loading: 250mcg/day for 7-10 days. Maintenance: as needed for UV exposure. START LOW." },
+        dosing: { route: "SubQ", typical_dose_mcg: [250, 250], frequency: "7x/wk", cycle_weeks: [4, 4], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "Loading: 250mcg/day for 7-10 days. Maintenance: as needed for UV exposure. START LOW." },
         interactions: { synergies: [], cautions: ["PT-141"], contraindicated: [], notes: "Do not combine with PT-141   overlapping MC receptor effects. One or the other." },
         outcomes_timeline: { week_1: "Nausea common during initial dose; spontaneous erections in men; early tanning begins", week_2_4: "Significant skin pigmentation; libido effects", long_term: "Persistent tan maintained with UV exposure; long-term safety concerns with mole changes" },
         side_effects: [
@@ -507,7 +507,7 @@ export const peptides: Peptide[] = [
         safety_notes: "Oral GH secretagogue with extensive clinical data (2+ year RCTs). Key concern: impairs insulin sensitivity and raises fasting glucose, especially in elderly/obese populations. One hip fracture trial in elderly was stopped early due to CHF signals. WADA prohibited. Not FDA-approved. Use caution in pre-diabetic or insulin-resistant individuals.",
         half_life_hours: 24,
         is_fda_approved: false,
-        dosing: { route: "Oral", typical_dose_mcg: [10000, 25000], frequency: "Daily", cycle_weeks: [8, 24], timing: "Pre-bed (optimizes sleep + GH surge)", notes: "Standard dose: 10-25mg once daily. Oral capsule or liquid. Start at 10mg to assess appetite increase and glucose response. Pre-bed dosing leverages natural GH pulse. 5-on/2-off cycles used to manage appetite and insulin sensitivity." },
+        dosing: { route: "Oral", typical_dose_mcg: [12500, 12500], frequency: "7x/wk", cycle_weeks: [12, 12], timing: "Pre-bed (optimizes sleep + GH surge)", reconstitution_ml: 2.5, typical_vial_mg: 25, notes: "Standard dose: 10-25mg once daily. Oral capsule or liquid. Start at 10mg to assess appetite increase and glucose response. Pre-bed dosing leverages natural GH pulse. 5-on/2-off cycles used to manage appetite and insulin sensitivity." },
         interactions: { synergies: ["CJC-1295", "Sermorelin", "DSIP"], cautions: ["Semaglutide", "Tirzepatide", "Retatrutide"], contraindicated: [], notes: "MK-677 replaces injectable GH peptides for oral convenience. Caution stacking with GLP-1 agonists: conflicting appetite/metabolic signals. Do not combine with exogenous HGH (excessive IGF-1). DSIP synergizes well for sleep-optimized GH protocols." },
         outcomes_timeline: { week_1: "Significant appetite increase; deeper sleep onset; vivid dreams; mild water retention", week_2_4: "Sustained IGF-1 elevation confirmed on bloodwork; improved recovery; skin quality improvement; morning puffiness from water retention", month_2_3: "Measurable fat-free mass increase (~1-2 lbs); improved bone turnover markers; hair/nail growth acceleration; monitor fasting glucose", long_term: "2-year clinical data shows sustained IGF-1 without tachyphylaxis; continued body composition benefits; requires ongoing glucose monitoring" },
         side_effects: [
@@ -534,7 +534,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Promising but limited human data. As an endogenous peptide, theoretical biocompatibility favorable.",
         half_life_hours: 4,
-        dosing: { route: "SubQ", typical_dose_mcg: [5000, 10000], frequency: "3-5x/week", cycle_weeks: [4, 12], timing: "Morning or pre-exercise", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Exercise-mimetic. Often taken pre-workout. Higher doses used in research." },
+        dosing: { route: "SubQ", typical_dose_mcg: [2000, 2000], frequency: "5x/week", cycle_weeks: [8, 8], timing: "Morning or pre-exercise", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "Exercise-mimetic. Often taken pre-workout. Higher doses used in research." },
         interactions: { synergies: ["SS-31", "Epitalon", "AOD-9604"], cautions: [], contraindicated: [], notes: "MOTS-c + SS-31 targets mitochondria via complementary mechanisms." },
         outcomes_timeline: { week_1: "Improved insulin sensitivity; increased energy during exercise", week_2_4: "Enhanced exercise performance and endurance; reduced muscle fatigue", month_2_3: "Metabolic adaptations; improved body composition", long_term: "Mitochondrial health optimization; age-related metabolic protection" },
         side_effects: [
@@ -587,7 +587,7 @@ export const peptides: Peptide[] = [
         safety_notes: "Nausea/hypertension possible. FDA-approved (Vyleesi) for HSDD in premenopausal women. Limited to 8 doses/month.",
         is_fda_approved: true,
         half_life_hours: 2.7,
-        dosing: { route: "SubQ", typical_dose_mcg: [1750, 1750], frequency: "As needed", timing: "45 min before activity", notes: "FDA-approved dose: 1.75mg SubQ as needed. Max 1 dose per 24h, 8 doses/month." },
+        dosing: { route: "SubQ", typical_dose_mcg: [1500, 1500], frequency: "2x/wk", timing: "45 min before activity", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "FDA-approved dose: 1.75mg SubQ as needed. Max 1 dose per 24h, 8 doses/month." },
         interactions: { synergies: [], cautions: ["Melanotan II"], contraindicated: [], notes: "Do not combine with Melanotan II   overlapping melanocortin effects." },
         outcomes_timeline: { week_1: "Libido enhancement typically onset within 45 minutes of dosing", week_2_4: "Consistent improvement in sexual response and desire", month_2_3: "Psychological effects may plateau; effectiveness maintained with intermittent use", long_term: "FDA-approved for long-term use; limit to 8 doses/month" },
         side_effects: [
@@ -614,7 +614,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "GI side effects (nausea, diarrhea) common; investigational   not FDA-approved as of 2026. Phase 3 TRIUMPH trials ongoing.",
         half_life_hours: 120,
-        dosing: { route: "SubQ", typical_dose_mcg: [1000, 12000], frequency: "Weekly", cycle_weeks: [12, 48], timing: "Any day, same day each week", notes: "Investigational. Phase 2 doses: 1-12mg weekly with dose escalation. Not commercially available." },
+        dosing: { route: "SubQ", typical_dose_mcg: [2000, 2000], frequency: "1x/wk", cycle_weeks: [12, 12], timing: "Any day, same day each week", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "Investigational. Phase 2 doses: 1-12mg weekly with dose escalation. Not commercially available." },
         interactions: { synergies: [], cautions: ["Tirzepatide", "Semaglutide"], contraindicated: [], notes: "Do NOT combine with other GLP-1 agonists. Overlapping mechanisms = excessive GI effects." },
         outcomes_timeline: { week_1: "GI adjustment; nausea during dose escalation", week_2_4: "Rapid appetite reduction; early weight loss 1-2 lbs/week", month_2_3: "10-15% body weight reduction at therapeutic dose", long_term: "Up to 24.2% weight loss at 48 weeks (NEJM Phase 2 trial, 12mg dose)" },
         side_effects: [
@@ -639,7 +639,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Very safe profile. No reported dependence or withdrawal. Approved as anxiolytic in Russia. Not FDA-approved in US.",
         half_life_hours: 0.5,
-        dosing: { route: "Nasal", typical_dose_mcg: [250, 500], frequency: "1-3x daily", cycle_weeks: [4, 12], timing: "Morning or as needed", notes: "Nasal spray: 1-2 sprays per nostril. Non-addictive; can be used daily." },
+        dosing: { route: "Nasal", typical_dose_mcg: [300, 300], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Morning or as needed", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Nasal spray: 1-2 sprays per nostril. Non-addictive; can be used daily." },
         interactions: { synergies: ["Semax", "DSIP"], cautions: [], contraindicated: [], notes: "Selank + Semax complement each other: anxiolytic + nootropic." },
         outcomes_timeline: { week_1: "Rapid reduction in anxiety within days; improved stress resilience; calmer baseline", week_2_4: "Stable anxiolytic effects without sedation; improved sleep onset", month_2_3: "Adaptive reduction in baseline anxiety; improved immune markers in some studies", long_term: "Effects generally require cycling; tolerance is low compared to benzodiazepines" },
         side_effects: [
@@ -667,7 +667,7 @@ export const peptides: Peptide[] = [
         safety_notes: "FDA-approved for diabetes (Ozempic) and obesity (Wegovy). Well-studied long-term. GI side effects possible. Prescription required.",
         is_fda_approved: true,
         half_life_hours: 168,
-        dosing: { route: "SubQ", typical_dose_mcg: [250, 2400], frequency: "Weekly", cycle_weeks: [16, 52], timing: "Any day, same day each week", notes: "Start 0.25mg weekly, escalate monthly: 0.5 → 1.0 → 1.7 → 2.4mg. Oral: 3mg → 7mg → 14mg daily." },
+        dosing: { route: "SubQ", typical_dose_mcg: [250, 250], frequency: "1x/wk", cycle_weeks: [12, 12], timing: "Any day, same day each week", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Start 0.25mg weekly, escalate monthly: 0.5 → 1.0 → 1.7 → 2.4mg. Oral: 3mg → 7mg → 14mg daily." },
         interactions: { synergies: ["AOD-9604"], cautions: ["Tirzepatide", "Retatrutide", "CJC-1295"], contraindicated: [], notes: "Do NOT combine with other GLP-1 agonists. May blunt GH secretagogue effects." },
         outcomes_timeline: { week_1: "GI adjustment; appetite suppression significant from week 1", week_2_4: "0.5-1 lb/week weight loss; improved blood sugar control", month_2_3: "~10-14% body weight reduction; cardiovascular markers improving", long_term: "14.9% mean weight loss at 68 weeks (STEP 1 trial); 20% reduction in major CV events" },
         side_effects: [
@@ -694,7 +694,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Nasal spray common; well-tolerated. Approved in Russia/Ukraine. Not FDA-approved in the US.",
         half_life_hours: 0.33,
-        dosing: { route: "Nasal", typical_dose_mcg: [200, 600], frequency: "1-2x daily", cycle_weeks: [4, 12], timing: "Morning", notes: "Nasal spray: 1-2 sprays per nostril. Can cycle 5 days on/2 off." },
+        dosing: { route: "Nasal", typical_dose_mcg: [300, 300], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Morning", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Nasal spray: 1-2 sprays per nostril. Can cycle 5 days on/2 off." },
         interactions: { synergies: ["Selank"], cautions: [], contraindicated: [], notes: "Semax + Selank is a popular nootropic stack for cognition + anxiety relief." },
         outcomes_timeline: { week_1: "Noticeable cognitive enhancement: sharper focus, mental clarity, faster recall within days", week_2_4: "BDNF-mediated improvements in memory consolidation and mood stability", month_2_3: "Neuroprotective adaptation; reduced cognitive fatigue under stress", long_term: "Sustained cognitive baseline improvement; may support neurogenesis" },
         side_effects: [
@@ -718,7 +718,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Very safe; mimics physiology. Previously FDA-approved for GH deficiency diagnosis. Well-tolerated.",
         half_life_hours: 0.2,
-        dosing: { route: "SubQ", typical_dose_mcg: [200, 500], frequency: "Daily", cycle_weeks: [8, 26], timing: "Pre-bed", reconstitution_ml: 2, typical_vial_mg: 2, notes: "Inject before bed for maximum GH pulse during sleep. Very short half-life = frequent dosing." },
+        dosing: { route: "SubQ", typical_dose_mcg: [300, 300], frequency: "7x/wk", cycle_weeks: [12, 12], timing: "Pre-bed", reconstitution_ml: 2.5, typical_vial_mg: 2, notes: "Inject before bed for maximum GH pulse during sleep. Very short half-life = frequent dosing." },
         interactions: { synergies: ["Ipamorelin", "CJC-1295"], cautions: [], contraindicated: [], notes: "Sermorelin + Ipamorelin is a clean GH stack. Add DSIP for sleep optimization." },
         outcomes_timeline: { week_1: "Improved sleep depth; GH pulse enhancement during sleep", week_2_4: "Increased energy and recovery; some users report improved skin quality", month_2_3: "Body composition improvements; IGF-1 elevation on bloodwork", long_term: "Sustained GH axis support with physiologic (non-suppressive) mechanism" },
         side_effects: [
@@ -746,7 +746,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Well-tolerated in multiple Phase 2/3 trials. Granted Fast Track and Orphan Drug designations by FDA.",
         half_life_hours: 4,
-        dosing: { route: "SubQ", typical_dose_mcg: [5000, 40000], frequency: "Daily", cycle_weeks: [4, 12], timing: "Morning", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Clinical trial doses: 4-40mg SubQ daily. Higher doses for cardiac indications." },
+        dosing: { route: "SubQ", typical_dose_mcg: [4000, 4000], frequency: "7x/wk", cycle_weeks: [4, 4], timing: "Morning", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "Clinical trial doses: 4-40mg SubQ daily. Higher doses for cardiac indications." },
         interactions: { synergies: ["MOTS-c", "Epitalon"], cautions: [], contraindicated: [], notes: "SS-31 + MOTS-c = comprehensive mitochondrial support from two different mechanisms." },
         outcomes_timeline: { week_1: "Improved mitochondrial efficiency; reduced exercise-induced oxidative stress", week_2_4: "Improved exercise capacity and recovery; reduced fatigue", month_2_3: "Cardioprotective adaptations; improved VO2 markers in clinical trials", long_term: "Sustained mitochondrial protection; FDA Fast Track designation for cardiac indications" },
         side_effects: [
@@ -772,7 +772,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Research-only; well-tolerated in Phase I/II trials. Not FDA-approved for systemic use.",
         half_life_hours: 2,
-        dosing: { route: "SubQ", typical_dose_mcg: [2000, 5000], frequency: "2x/week", cycle_weeks: [4, 8], timing: "Any time", reconstitution_ml: 2, typical_vial_mg: 5, notes: "Loading phase: 5mg 2x/week for 4 weeks. Maintenance: 2.5mg 2x/week." },
+        dosing: { route: "SubQ", typical_dose_mcg: [2500, 2500], frequency: "2x/wk", cycle_weeks: [8, 8], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Loading phase: 5mg 2x/week for 4 weeks. Maintenance: 2.5mg 2x/week." },
         interactions: { synergies: ["BPC-157", "GHK-Cu"], cautions: [], contraindicated: [], notes: "TB-500 + BPC-157 is the gold-standard healing stack." },
         outcomes_timeline: { week_1: "Systemic anti-inflammatory effect; improved muscle pliability and reduced stiffness", week_2_4: "Improved range of motion; reduced recovery time after training", month_2_3: "Enhanced tissue repair; measurable improvement in chronic injury sites", long_term: "Improved recovery baseline; potential stem cell mobilization benefits" },
         side_effects: [
@@ -800,7 +800,7 @@ export const peptides: Peptide[] = [
         safety_notes: "FDA-approved for lipodystrophy; GI side effects possible. Contraindicated in active malignancy.",
         is_fda_approved: true,
         half_life_hours: 0.43,
-        dosing: { route: "SubQ", typical_dose_mcg: [2000, 2000], frequency: "Daily", cycle_weeks: [12, 26], timing: "Morning", reconstitution_ml: 2, typical_vial_mg: 2, notes: "FDA-approved dose: 2mg SubQ daily. Prescription required." },
+        dosing: { route: "SubQ", typical_dose_mcg: [1000, 1000], frequency: "7x/week", cycle_weeks: [12, 12], timing: "Morning", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "FDA-approved dose: 2mg SubQ daily. Prescription required." },
         interactions: { synergies: ["CJC-1295", "Ipamorelin"], cautions: ["IGF-1 LR3"], contraindicated: [], notes: "Can be combined with other GH secretagogues but monitor IGF-1 levels." },
         outcomes_timeline: { week_2_4: "Early GH-related effects; initial fluid retention possible", month_2_3: "Measurable visceral fat reduction (avg 15% in FDA trial at this point)", long_term: "Sustained visceral fat reduction and metabolic improvement; IGF-1 normalization" },
         side_effects: [
@@ -827,7 +827,7 @@ export const peptides: Peptide[] = [
         safety_notes: "Approved in 35+ countries for hep B/C. One of the most extensively studied peptides. Not FDA-approved in US.",
         is_fda_approved: false,
         half_life_hours: 2,
-        dosing: { route: "SubQ", typical_dose_mcg: [1600, 3200], frequency: "2x/week", cycle_weeks: [8, 24], timing: "Any time", reconstitution_ml: 1, typical_vial_mg: 5, notes: "Standard dose: 1.6mg 2x/week. Approved in 35+ countries. Higher doses for active infection." },
+        dosing: { route: "SubQ", typical_dose_mcg: [1500, 1500], frequency: "2x/wk", cycle_weeks: [12, 12], timing: "Any time", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Standard dose: 1.6mg 2x/week. Approved in 35+ countries. Higher doses for active infection." },
         interactions: { synergies: ["BPC-157", "KPV"], cautions: [], contraindicated: [], notes: "Can be combined with gut-healing peptides for comprehensive immune + GI support." },
         outcomes_timeline: { week_1: "NK cell and T-cell activation begins; improved energy if immune-suppressed", week_2_4: "Enhanced immune response to pathogens; reduced frequency of illness", month_2_3: "Sustained immune modulation; improved recovery from illness", long_term: "Long-term immune resilience; approved use in 35+ countries for hepatitis therapy" },
         side_effects: [
@@ -853,7 +853,7 @@ export const peptides: Peptide[] = [
         safety_notes: "FDA-approved for type 2 diabetes (Mounjaro) and obesity (Zepbound). GI side effects common but manageable. Well-studied long-term safety.",
         is_fda_approved: true,
         half_life_hours: 120,
-        dosing: { route: "SubQ", typical_dose_mcg: [2500, 15000], frequency: "Weekly", cycle_weeks: [12, 52], timing: "Any day, same day each week", notes: "Start 2.5mg weekly, escalate every 4 weeks: 5mg → 7.5mg → 10mg → 12.5mg → 15mg. Prescription required." },
+        dosing: { route: "SubQ", typical_dose_mcg: [2500, 2500], frequency: "1x/wk", cycle_weeks: [12, 12], timing: "Any day, same day each week", reconstitution_ml: 2.5, typical_vial_mg: 10, notes: "Start 2.5mg weekly, escalate every 4 weeks: 5mg → 7.5mg → 10mg → 12.5mg → 15mg. Prescription required." },
         interactions: { synergies: [], cautions: ["Semaglutide", "Retatrutide"], contraindicated: [], notes: "Do NOT combine with other GLP-1 agonists." },
         outcomes_timeline: { week_1: "GI adjustment period; appetite suppression begins", week_2_4: "5-8% weight reduction at therapeutic dose", month_2_3: "15-20% body weight reduction at 15mg", long_term: "22.5% weight loss at 72 weeks (SURMOUNT-1); superior to semaglutide in head-to-head" },
         side_effects: [
@@ -862,6 +862,113 @@ export const peptides: Peptide[] = [
             { name: "Vomiting", incidence: "~20% of users", severity: "moderate" },
             { name: "Constipation", incidence: "~18% of users", severity: "mild" },
             { name: "Hypoglycemia", incidence: "~5% of users", severity: "moderate", note: "Risk higher when combined with insulin" },
+        ],
+    }),
+    
+    // ─── NEXT-GEN EXPANSION ───,
+    p({
+        name: "Retatrutide",
+        aliases: ["LY3437943", "Triple-G"],
+        category: "Metabolic",
+        category_icon: "\u{1F525}",
+        primary_benefits: "Unprecedented weight loss, metabolic reset, liver fat reduction",
+        mechanism: "First-in-class triple agonist targeting GLP-1, GIP, and Glucagon receptors. Glucagon agonism specifically increases resting energy expenditure and dramatically reduces hepatic steatosis (liver fat).",
+        key_studies: [
+            { title: "Retatrutide Phase 2 trial in Obesity", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/37366315/", summary: "Phase 2 RCT showing 24.2% body weight loss at 48 weeks on 12mg dose. Highest weight loss ever recorded in a metabolic drug trial.", evidence_level: "strong" },
+            { title: "Retatrutide clears hepatic steatosis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/37366315/", summary: "Sub-study showing complete resolution of fatty liver disease in 85%+ of patients at high doses.", evidence_level: "strong" },
+        ],
+        safety_notes: "Research-only. Currently in Phase 3 trials (TRIUMPH). Heart rate elevation observed in early trials due to glucagon receptor activation.",
+        half_life_hours: 144,
+        is_fda_approved: false,
+        dosing: { route: "SubQ", typical_dose_mcg: [2000, 12000], frequency: "1x/wk", cycle_weeks: [24, 48], timing: "Any day, same day each week", reconstitution_ml: 2, typical_vial_mg: 10, notes: "Escalation protocol: 2mg for 4 weeks, 4mg for 4 weeks, etc. Do not rush titration." },
+        interactions: { synergies: ["MOTS-c"], cautions: ["Semaglutide", "Tirzepatide"], contraindicated: [], notes: "Do NOT stack with other GLP-1 agonists." },
+        outcomes_timeline: { week_2_4: "Immediate appetite suppression and massive liver fat mobilization", month_2_3: "10-15% body weight reduction", long_term: "24%+ reduction at 48 weeks, normalized lipid levels" },
+        side_effects: [
+            { name: "Nausea", incidence: "~30% of users", severity: "moderate" },
+            { name: "Elevated Heart Rate", incidence: "~15% of users", severity: "mild", note: "Resolves after titration" }
+        ],
+    }),
+    p({
+        name: "MOTS-c",
+        aliases: ["Mitochondrial open reading frame of the 12S rRNA-c"],
+        category: "Mitochondrial",
+        category_icon: "\u{26A1}",
+        primary_benefits: "Elite energy production, insulin sensitivity, exercise endurance",
+        mechanism: "Mitochondrial-derived peptide (MDP) that translocates to the nucleus to regulate metabolic genes. Activates AMPK pathways, bypassing the mTOR pathway to force cellular energy expenditure.",
+        key_studies: [
+            { title: "MOTS-c promotes metabolic homeostasis and reduces obesity", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/", summary: "Landmark study showing MOTS-c targets skeletal muscle to enhance insulin sensitivity and prevent age-dependent and diet-induced insulin resistance.", evidence_level: "strong" },
+        ],
+        safety_notes: "Very safe research profile. Often injected near active muscle bellies pre-workout. Highly unstable, must be kept frozen as raw powder.",
+        half_life_hours: 0.5,
+        is_fda_approved: false,
+        dosing: { route: "SubQ", typical_dose_mcg: [5000, 10000], frequency: "3x/wk", cycle_weeks: [4, 6], timing: "30 mins Pre-workout", reconstitution_ml: 1, typical_vial_mg: 10, notes: "Requires injection right before intense exercise." },
+        interactions: { synergies: ["SS-31", "Retatrutide"], cautions: [], contraindicated: [], notes: "Pairs perfectly with GLP-1s to prevent muscle loss." },
+        outcomes_timeline: { week_1: "Massive acute localized energy during workouts", month_2_3: "Systemic insulin sensitivity improvements" },
+        side_effects: [
+            { name: "Injection site pain", incidence: "~10% of users", severity: "mild", note: "Common if reconstituted poorly" }
+        ],
+    }),
+    p({
+        name: "PT-141",
+        aliases: ["Bremelanotide", "Vyleesi"],
+        category: "Melanocortin",
+        category_icon: "\u{2764}\uFE0F",
+        primary_benefits: "Unprecedented libido enhancement for both men and women",
+        mechanism: "Non-selective agonist of melanocortin receptors (MC3R and MC4R) in the central nervous system. Unlike Viagra (which targets vascular blood flow), PT-141 targets the brain to induce genuine sexual desire.",
+        key_studies: [
+            { title: "Bremelanotide for HSDD in premenopausal women", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/31580159/", summary: "Phase 3 trials leading to FDA approval; showed significant increases in sexual desire scores and decreases in distress.", evidence_level: "very-strong" },
+        ],
+        safety_notes: "FDA-approved (Vyleesi). Nausea is extremely common. Can cause transient elevated blood pressure.",
+        half_life_hours: 2.7,
+        is_fda_approved: true,
+        dosing: { route: "SubQ", typical_dose_mcg: [1000, 2000], frequency: "As needed", cycle_weeks: [1, 52], timing: "4-6 hours prior to desired effect", reconstitution_ml: 1, typical_vial_mg: 10, notes: "Do not exceed 8 doses per month." },
+        interactions: { synergies: [], cautions: ["PDE5 Inhibitors"], contraindicated: ["Nitrates"], notes: "Can be carefully stacked with PDE5s for extreme cases." },
+        outcomes_timeline: { week_1: "Acute arousal and profound libido spike within 4-6 hours post-injection" },
+        side_effects: [
+            { name: "Severe Nausea", incidence: "~40% of users", severity: "moderate", note: "Anti-nausea meds often required for first use" },
+            { name: "Flushing", incidence: "~20% of users", severity: "mild" }
+        ],
+    }),
+    p({
+        name: "SS-31",
+        aliases: ["Elamipretide", "Bendavia"],
+        category: "Mitochondrial",
+        category_icon: "\u{1F9EC}",
+        primary_benefits: "Cellular repair, anti-aging, mitochondrial bioenergetics",
+        mechanism: "Penetrates the inner mitochondrial membrane and selectively binds to cardiolipin. Restores electron transport chain efficiency, dramatically reducing reactive oxygen species (ROS) leaking.",
+        key_studies: [
+            { title: "Elamipretide targets cardiolipin to restore mitochondrial function", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26657805/", summary: "Shows SS-31 directly reverses age-related mitochondrial dysfunction by stabilizing the cristae structure.", evidence_level: "moderate" },
+        ],
+        safety_notes: "Research-only. Expensive and heavily faked. Generally excellent safety profile.",
+        half_life_hours: 2,
+        is_fda_approved: false,
+        dosing: { route: "SubQ", typical_dose_mcg: [4000, 4000], frequency: "Daily", cycle_weeks: [4, 8], timing: "Morning", reconstitution_ml: 2, typical_vial_mg: 50, notes: "High daily doses required. Often run for 4-8 weeks then cycled off." },
+        interactions: { synergies: ["MOTS-c", "NAD+"], cautions: [], contraindicated: [], notes: "Run SS-31 alongside MOTS-c for the ultimate mitochondrial reset." },
+        outcomes_timeline: { week_2_4: "Noticeable reduction in brain fog and chronic fatigue", month_2_3: "Cellular age-marker improvements" },
+        side_effects: [
+            { name: "Injection site reaction", incidence: "~5% of users", severity: "mild" }
+        ],
+    }),
+    p({
+        name: "Tesofensine",
+        aliases: ["NS2330"],
+        category: "Small Molecule",
+        category_icon: "\u{1F9E0}",
+        primary_benefits: "Extreme fat loss and appetite suppression without GLP-1 side effects",
+        mechanism: "Triple monoamine reuptake inhibitor (inhibits reuptake of serotonin, noradrenaline, and dopamine). Originates as an Alzheimer's/Parkinson's drug but abandoned due to massive weight loss profiles.",
+        key_studies: [
+            { title: "Tesofensine induces profound weight loss", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18950803/", summary: "Phase 2 Lancet study showing 12.8 kg (10.6%) weight loss over 24 weeks at 1mg dose.", evidence_level: "strong" },
+        ],
+        safety_notes: "Research-only. Potent CNS stimulant. Can cause insomnia, elevated heart rate, and dry mouth. Half-life is extremely long, leading to accumulation in the system.",
+        half_life_hours: 216,
+        is_fda_approved: false,
+        dosing: { route: "Oral", typical_dose_mcg: [250, 500], frequency: "Daily", cycle_weeks: [12, 24], timing: "Early Morning", reconstitution_ml: 0, typical_vial_mg: 0, notes: "Do not exceed 0.5mg/day due to heart rate spikes. Taken via capsule, not injected." },
+        interactions: { synergies: [], cautions: ["Stimulants", "Caffeine"], contraindicated: ["MAOIs", "SSRIs"], notes: "Do NOT mix with anti-depressants due to serotonin syndrome risk." },
+        outcomes_timeline: { week_1: "Complete abolition of hunger cravings, massive energy", month_2_3: "10%+ body weight loss" },
+        side_effects: [
+            { name: "Insomnia", incidence: "~15% of users", severity: "moderate" },
+            { name: "Dry Mouth", incidence: "~20% of users", severity: "mild" },
+            { name: "Elevated Heart Rate", incidence: "~12% of users", severity: "moderate" }
         ],
     })
 ];

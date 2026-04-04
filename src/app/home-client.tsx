@@ -63,6 +63,25 @@ export default function HomePage() {
         </p>
       </motion.div>
 
+      {/* Beginners Guide CTA */}
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.05 }} className="mb-12 max-w-xl mx-auto px-2">
+        <Link href="/beginners-guide" className="block relative group overflow-hidden rounded-2xl p-[1px]">
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-orange-500 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative flex flex-col md:flex-row items-center gap-4 bg-zinc-950/90 backdrop-blur-xl rounded-[15px] p-5 border border-white/5 group-hover:bg-zinc-900/90 transition-colors">
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-violet-500/20 flex items-center justify-center border border-violet-500/30">
+              <Sparkles className="w-6 h-6 text-violet-400" />
+            </div>
+            <div className="text-center md:text-left flex-1">
+              <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-1">New to Peptides?</h3>
+              <p className="text-sm text-zinc-400">Read our Complete Beginner's Guide on reconstitution, pinning, and supplies.</p>
+            </div>
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 group-hover:bg-violet-500/20 text-zinc-400 group-hover:text-violet-300 transition-colors mt-2 md:mt-0">
+              <ArrowRight className="w-5 h-5" />
+            </div>
+          </div>
+        </Link>
+      </motion.div>
+
       {/* Goal Selector Header */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-5">
         <h2 className="text-xl md:text-2xl font-bold text-zinc-100">What are your health goals?</h2>

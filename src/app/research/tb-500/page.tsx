@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { 
-    Dna, Settings, ShieldAlert, Activity, 
-    ArrowRight, Microscope, Info, GitMerge, FileText, Table as TableIcon, AlertTriangle 
+import {
+    Dna, Settings, ShieldAlert, Activity,
+    ArrowRight, Microscope, Info, GitMerge, FileText, Table as TableIcon, AlertTriangle
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function TB500ReferencePage() {
     return (
         <div className="max-w-4xl mx-auto px-4 py-8 md:py-16">
-            
+
             {/* Header Section */}
             <header className="mb-12">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -28,7 +28,7 @@ export default function TB500ReferencePage() {
             </header>
 
             <article className="space-y-12">
-                
+
                 {/* SECTION 1: WHAT IS TB-500? */}
                 <section>
                     <div className="flex items-center gap-3 mb-4">
@@ -96,7 +96,7 @@ export default function TB500ReferencePage() {
                         </div>
                         <h2 className="text-2xl font-bold text-zinc-100">TB-500 vs BPC-157: Key Differences</h2>
                     </div>
-                    
+
                     <div className="overflow-x-auto rounded-xl border border-zinc-800 mb-6">
                         <table className="w-full text-left text-sm text-zinc-300">
                             <thead className="text-xs uppercase bg-zinc-900 text-zinc-400 border-b border-zinc-800">
@@ -135,7 +135,7 @@ export default function TB500ReferencePage() {
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <p className="text-zinc-300 leading-relaxed text-[15px]">
                         TB-500 and BPC-157 are frequently studied together because they operate through highly complementary mechanisms. While BPC-157 excels at localized, rapid repair—particularly in tendons, ligaments, and the gut—TB-500 handles broad, systemic overall recovery. Together, they create a synergistic environment where BPC-157 targets the acute injury site while TB-500 supports the surrounding whole-body healing process.
                     </p>
@@ -153,8 +153,8 @@ export default function TB500ReferencePage() {
                         <p className="text-zinc-300 leading-relaxed text-[15px] mb-6">
                             The flagship combination in regenerative research is the <strong>TB-500 and BPC-157 stack</strong>. This represents the most extensively researched pairing for comprehensive injury recovery, as the localized tissue repair of BPC-157 synergizes perfectly with the systemic, anti-inflammatory reach of TB-500. Another prominent area of study involves stacking TB-500 with Ipamorelin. In this combination, researchers investigate the compounded effects of TB-500&apos;s tissue regeneration and Ipamorelin&apos;s gentle amplification of natural growth hormone pulses for sustained recovery support.
                         </p>
-                        <Link 
-                            href="/stacks" 
+                        <Link
+                            href="/stacks"
                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-medium transition-colors text-sm"
                         >
                             Explore the full Injury Recovery Stack in the PeptiDex app <ArrowRight className="w-4 h-4" />
@@ -170,12 +170,12 @@ export default function TB500ReferencePage() {
                         </div>
                         <h2 className="text-2xl font-bold text-zinc-100">Safety & Regulatory Status</h2>
                     </div>
-                    
+
                     <div className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 space-y-4">
                         <p className="text-zinc-300 text-[15px] leading-relaxed">
                             TB-500 is strictly an experimental compound and holds <strong>no FDA approval</strong> for human consumption or medical use. In competitive sports, the World Anti-Doping Agency (WADA) actively prohibits TB-500 at all times (including the 2026 prohibited list) due to its potential performance and recovery-enhancing properties.
                         </p>
-                        
+
                         <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/20 flex gap-3 my-4">
                             <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                             <div className="text-sm text-zinc-300 leading-relaxed space-y-2">
