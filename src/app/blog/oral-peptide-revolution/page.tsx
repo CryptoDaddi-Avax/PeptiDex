@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
     description: 'FDA approves two oral GLP-1 medications in 3 months. Full independent analysis of Wegovy pill vs Foundayo (orforglipron).',
     url: 'https://peptidex.app/blog/oral-peptide-revolution',
     type: 'article',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/api/og?title=The%20Oral%20Peptide%20Revolution%20Has%20Arrived', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'The Oral Peptide Revolution Has Arrived',
     description: 'FDA approves two oral GLP-1 medications in 3 months. Full independent analysis with 15 clinical sources.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/api/og?title=The%20Oral%20Peptide%20Revolution%20Has%20Arrived'],
   },
 };
 

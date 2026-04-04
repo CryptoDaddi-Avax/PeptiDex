@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import { ChevronRight, ShieldAlert, ExternalLink } from 'lucide-react';
@@ -129,6 +130,8 @@ export default function GhkCuVsBpc157Page() {
           <li className="flex gap-2"><span className="text-violet-400 font-bold">•</span>They are frequently combined in research due to complementary, non-overlapping mechanisms.</li>
         </ul>
       </section>
+
+      <ShareBar title={TITLE} url={`https://peptidex.app/compare/${SLUG}`} />
 
       {/* ═══════ FAQ ═══════ */}
       <section>

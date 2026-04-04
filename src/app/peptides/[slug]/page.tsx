@@ -13,6 +13,7 @@ import { SHORT_DISCLAIMER } from '@/data/constants';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import { RelatedPeptides } from '@/components/related-peptides';
+import { ShareBar } from '@/components/share-bar';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -37,13 +38,13 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
         description,
         url: `https://peptidex.app/peptides/${slug}`,
         type: 'article',
-        images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+        images: [{ url: `https://peptidex.app/api/og?title=${encodeURIComponent(peptide.name)}&type=profile`, width: 1200, height: 630 }],
       },
       twitter: {
         card: 'summary_large_image',
         title: `${peptide.name} — Research Profile | PeptideX`,
         description,
-        images: ['/og-image.png'],
+        images: [`https://peptidex.app/api/og?title=${encodeURIComponent(peptide.name)}&type=profile`],
       },
     };
   });
@@ -626,6 +627,8 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
       </AutoLink>
 
       {/* ═══════ SECTION 10: FOOTER ELEMENTS ═══════ */}
+
+      <ShareBar title={peptide.name} url={`https://peptidex.app/peptides/${slug}`} />
 
       {/* Related Profiles */}
       <RelatedPeptides currentSlug={peptide.slug} />

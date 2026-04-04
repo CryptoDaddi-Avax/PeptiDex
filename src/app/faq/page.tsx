@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description: 'Expert answers to 20+ FAQs about peptides: safety, FDA approval, GLP-1 peptides, GHK-Cu, oral peptides, and more.',
     url: 'https://peptidex.app/faq',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/api/og?title=Frequently%20Asked%20Questions&type=default', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Peptide FAQ — 20+ Expert Answers | PeptideX',
     description: 'Evidence-based answers about peptide safety, FDA status, GLP-1, GHK-Cu, oral peptides, and more.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/api/og?title=Frequently%20Asked%20Questions&type=default'],
   },
 };
 

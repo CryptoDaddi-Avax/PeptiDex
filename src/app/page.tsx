@@ -16,7 +16,13 @@ export const metadata: Metadata = {
     description: 'Research-backed peptide education. Compare stacks, explore studies, and find the best peptide vendors for your goals.',
     url: 'https://peptidex.app',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/api/og?type=default', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PeptiDex, The #1 Peptide Research & Sourcing Hub',
+    description: 'Research-backed peptide education. Compare stacks, explore studies, and find the best peptide vendors for your goals.',
+    images: ['https://peptidex.app/api/og?type=default'],
   },
 };
 
@@ -44,7 +50,7 @@ export default function Page() {
         name: 'PeptiDex',
         url: 'https://peptidex.app',
         logo: 'https://peptidex.app/logo.png',
-        image: 'https://peptidex.app/og-image.png',
+        image: 'https://peptidex.app/api/og?type=default',
         description: 'Explore 33 research peptides, 12 expert stacks, and 140+ studies. Find goal-based peptide protocols and trusted vendors, all in one research hub. Educational use only.',
       },
       {

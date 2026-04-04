@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import { ChevronRight, ShieldAlert } from 'lucide-react';
@@ -132,6 +133,8 @@ export default function Bpc157VsTb500Page() {
           <li className="flex gap-2"><span className="text-emerald-400 font-bold">•</span>Neither is FDA-approved. Both are investigational research compounds.</li>
         </ul>
       </section>
+
+      <ShareBar title={TITLE} url={`https://peptidex.app/compare/${SLUG}`} />
 
       {/* ═══════ FAQ ═══════ */}
       <section>

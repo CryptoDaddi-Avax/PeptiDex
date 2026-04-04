@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import { ChevronRight, ShieldAlert } from 'lucide-react';
@@ -130,6 +131,8 @@ export default function SemaglutideVsTirzepatidePage() {
           <li className="flex gap-2"><span className="text-emerald-400 font-bold">•</span>Semaglutide has the advantage of oral availability (Rybelsus/oral Wegovy); tirzepatide is injection-only for now.</li>
         </ul>
       </section>
+
+      <ShareBar title={TITLE} url={`https://peptidex.app/compare/${SLUG}`} />
 
       {/* ═══════ FAQ ═══════ */}
       <section>

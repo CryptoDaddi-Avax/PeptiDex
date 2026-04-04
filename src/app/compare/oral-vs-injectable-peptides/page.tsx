@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import { ChevronRight, ShieldAlert } from 'lucide-react';
@@ -130,6 +131,8 @@ export default function OralVsInjectablePage() {
           <li className="flex gap-2"><span className="text-blue-400 font-bold">•</span>Most research peptides still require injection; BPC-157 and MK-677 are notable exceptions with oral activity.</li>
         </ul>
       </section>
+
+      <ShareBar title={TITLE} url={`https://peptidex.app/compare/${SLUG}`} />
 
       {/* ═══════ FAQ ═══════ */}
       <section>

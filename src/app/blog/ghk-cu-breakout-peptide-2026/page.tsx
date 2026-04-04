@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
     description: 'An independent analysis of GHK-Cu, the copper tripeptide seeing a 1,000% surge in anti-aging, longevity, and skin regeneration research in 2026.',
     url: 'https://peptidex.app/blog/ghk-cu-breakout-peptide-2026',
     type: 'article',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/api/og?title=GHK-Cu%3A%20The%20Breakout%20Peptide%20of%202026', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GHK-Cu: The Breakout Peptide of 2026',
     description: 'The copper tripeptide seeing a 1,000% surge in anti-aging research. Full analysis with 15 peer-reviewed sources.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/api/og?title=GHK-Cu%3A%20The%20Breakout%20Peptide%20of%202026'],
   },
 };
 
