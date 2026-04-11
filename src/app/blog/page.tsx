@@ -129,7 +129,7 @@ export default function BlogIndexPage() {
                 {/* Image */}
                 <div className="md:col-span-2 h-56 md:h-auto relative bg-zinc-800/50 overflow-hidden">
                   {featured.image ? (
-                    <Image src={featured.image} alt={featured.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 40vw" />
+                    <Image src={featured.image} alt={featured.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 40vw" unoptimized referrerPolicy="no-referrer" />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-violet-900/30 to-zinc-900 flex items-center justify-center">
                       <BookOpen className="w-12 h-12 text-violet-500/30" />
@@ -186,7 +186,7 @@ export default function BlogIndexPage() {
               {/* Image */}
               <Link href={`/blog/${post.slug}`} className="block w-full h-48 relative overflow-hidden bg-zinc-800/30">
                 {post.image ? (
-                  <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" unoptimized referrerPolicy="no-referrer" />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-zinc-800/50 to-zinc-900 flex items-center justify-center">
                     <BookOpen className="w-8 h-8 text-zinc-700" />
