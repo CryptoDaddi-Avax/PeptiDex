@@ -38,6 +38,8 @@ export interface CycleCardData {
     goalName: string;
     peptides: { name: string; doseMcg: number; cycleWeeks: number; vialsNeeded: number }[];
     totalVials: number;
+    totalCost: number;
+    maxWeeks: number;
 }
 
 export interface EvidenceCardData {
@@ -446,7 +448,7 @@ export function renderCycleCard(ctx: CanvasRenderingContext2D, data: CycleCardDa
     ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
     ctx.fillStyle = COLORS.orange400;
     ctx.textAlign = "center";
-    ctx.fillText("MY CYCLE PLAN", centerX, startY);
+    ctx.fillText(`MY ${data.maxWeeks}-WEEK ${data.goalName.toUpperCase()} CYCLE — $${data.totalCost.toFixed(2)} TOTAL`, centerX, startY);
 
     // Stack name
     ctx.font = "bold 44px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -454,10 +456,7 @@ export function renderCycleCard(ctx: CanvasRenderingContext2D, data: CycleCardDa
     const sn = data.stackName.length > 28 ? data.stackName.substring(0, 26) + "..." : data.stackName;
     ctx.fillText(sn, centerX, startY + 60);
 
-    // Goal
-    ctx.font = "18px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.zinc400;
-    ctx.fillText(data.goalName, centerX, startY + 90);
+    // The goal name was moved to the title, so we can skip printing it here to save vertical space.
 
     // Peptide timeline bars
     const barY = startY + 130;

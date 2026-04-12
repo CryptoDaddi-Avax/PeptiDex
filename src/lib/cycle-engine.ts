@@ -15,6 +15,7 @@ export interface CyclePeptideConfig {
 
 export interface CyclePeptideResult {
     peptideName: string;
+    vialMg: number;               // added for receipt
     concentration: number;        // mcg per ml
     doseVolumeMl: number;         // ml per injection
     syringeUnits: number;         // U-100 insulin syringe
@@ -48,6 +49,19 @@ export interface ShoppingListSummary {
     vendorTotals: { vendor: string; total: number; originalTotal?: number; discountCode?: string; link: string }[];
     totalBacWaterMl: number;
     totalSyringes: number;
+    
+    // New Cost Breakdown Properties
+    maxCycleWeeks: number;
+    supplies: {
+        bacWater: { quantity: number; unitPrice: number; subtotal: number };
+        syringes: { quantity: number; unitPrice: number; subtotal: number };
+        swabs:    { quantity: number; unitPrice: number; subtotal: number };
+    };
+    peptideSubtotal: number;
+    suppliesSubtotal: number;
+    grandTotal: number;
+    costPerWeek: number;
+    costPerDay: number;
 }
 
 /* ───────────────────── FREQUENCY PARSER ────────────────── */
@@ -121,10 +135,11 @@ export function calculateCycle(config: CyclePeptideConfig): CyclePeptideResult {
         inStock: v.in_stock,
     }));
 
-    const avgCost = pricing ? pricing.avg_price_usd : null;
+    const avgCost = pricing && pricing.avg_price_usd ? pricing.avg_price_usd : 49.99; // Fallback price
 
     return {
         peptideName: config.peptideName,
+        vialMg: config.vialMg,
         concentration,
         doseVolumeMl,
         syringeUnits,
@@ -134,7 +149,7 @@ export function calculateCycle(config: CyclePeptideConfig): CyclePeptideResult {
         bacWaterMlNeeded,
         vialDaysLast: Math.round(vialDaysLast),
         costPerVial: avgCost,
-        totalCost: avgCost ? parseFloat((avgCost * vialsNeeded).toFixed(2)) : null,
+        totalCost: parseFloat((avgCost * vialsNeeded).toFixed(2)),
         vendorPrices,
         cycleWeeks,
         doseMcg,
@@ -148,15 +163,20 @@ export function calculateCycle(config: CyclePeptideConfig): CyclePeptideResult {
 
 /* ──────────────────── SHOPPING LIST ───────────────────── */
 
-export function generateShoppingList(results: CyclePeptideResult[]): ShoppingListSummary {
+export function generateShoppingList(results: CyclePeptideResult[], includeSupplies: boolean = true): ShoppingListSummary {
     // Aggregate per-vendor totals
     const vendorMap = new Map<string, { total: number; link: string }>();
     let totalBacWaterMl = 0;
     let totalSyringes = 0;
+    let maxCycleWeeks = 0;
+    let peptideSubtotal = 0;
 
     results.forEach(r => {
         totalBacWaterMl += r.bacWaterMlNeeded;
         totalSyringes += r.totalInjections;
+        peptideSubtotal += (r.totalCost || 0);
+        if (r.cycleWeeks > maxCycleWeeks) maxCycleWeeks = r.cycleWeeks;
+
         r.vendorPrices.forEach(vp => {
             const existing = vendorMap.get(vp.vendor);
             if (existing) {
@@ -189,7 +209,39 @@ export function generateShoppingList(results: CyclePeptideResult[]): ShoppingLis
         })
         .sort((a, b) => a.total - b.total); // cheapest first
 
-    return { peptides: results, vendorTotals, totalBacWaterMl, totalSyringes };
+    // Supply logic & pricing constants
+    const BAC_UNIT_PRICE = 12.00;
+    const SYRINGE_BOX_PRICE = 15.00; // 100 ct
+    const SWAB_BOX_PRICE = 8.00;     // 200 ct
+
+    const bacWaterQuantity = Math.ceil(totalBacWaterMl / 30) || (results.length > 0 ? 1 : 0);
+    const syringesQuantity = Math.ceil(totalSyringes / 100) || (results.length > 0 ? 1 : 0);
+    const swabsQuantity = Math.ceil(totalSyringes / 200) || (results.length > 0 ? 1 : 0);
+
+    const supplies = {
+        bacWater: { quantity: bacWaterQuantity, unitPrice: BAC_UNIT_PRICE, subtotal: bacWaterQuantity * BAC_UNIT_PRICE },
+        syringes: { quantity: syringesQuantity, unitPrice: SYRINGE_BOX_PRICE, subtotal: syringesQuantity * SYRINGE_BOX_PRICE },
+        swabs: { quantity: swabsQuantity, unitPrice: SWAB_BOX_PRICE, subtotal: swabsQuantity * SWAB_BOX_PRICE }
+    };
+
+    const suppliesSubtotal = includeSupplies ? (supplies.bacWater.subtotal + supplies.syringes.subtotal + supplies.swabs.subtotal) : 0;
+    const grandTotal = peptideSubtotal + suppliesSubtotal;
+    const costPerWeek = maxCycleWeeks > 0 ? (grandTotal / maxCycleWeeks) : 0;
+    const costPerDay = costPerWeek / 7;
+
+    return { 
+        peptides: results, 
+        vendorTotals, 
+        totalBacWaterMl, 
+        totalSyringes,
+        maxCycleWeeks,
+        supplies,
+        peptideSubtotal,
+        suppliesSubtotal,
+        grandTotal,
+        costPerWeek,
+        costPerDay
+    };
 }
 
 /* ──────────────── DEFAULT CONFIG FROM PEPTIDE ─────────── */

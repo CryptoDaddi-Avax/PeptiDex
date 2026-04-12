@@ -34,6 +34,8 @@ export default function CyclePlannerPage() {
     const [enabledPeptides, setEnabledPeptides] = useState<Set<string>>(new Set());
     const [configs, setConfigs] = useState<Map<string, CyclePeptideConfig>>(new Map());
     const [expandedCard, setExpandedCard] = useState<string | null>(null);
+    const [includeSupplies, setIncludeSupplies] = useState(true);
+    const [globalCycleLength, setGlobalCycleLength] = useState<number>(8);
 
     /* ──── Step 1: Goal Selection ──── */
     const handleGoalSelect = useCallback((goal: Goal) => {
@@ -47,7 +49,7 @@ export default function CyclePlannerPage() {
 
             const newConfigs = new Map<string, CyclePeptideConfig>();
             stack.peptides.forEach(sp => {
-                newConfigs.set(sp.name, getDefaultConfig(sp.name));
+                newConfigs.set(sp.name, { ...getDefaultConfig(sp.name), cycleWeeks: 8 });
             });
             setConfigs(newConfigs);
         }
@@ -87,7 +89,18 @@ export default function CyclePlannerPage() {
             .filter((r): r is CyclePeptideResult => r !== null);
     }, [enabledPeptides, configs]);
 
-    const shoppingList: ShoppingListSummary = useMemo(() => generateShoppingList(results), [results]);
+    const updateGlobalCycleLength = useCallback((weeks: number) => {
+        setGlobalCycleLength(weeks);
+        setConfigs(prev => {
+            const next = new Map(prev);
+            for (const [name, config] of next.entries()) {
+                next.set(name, { ...config, cycleWeeks: weeks });
+            }
+            return next;
+        });
+    }, []);
+
+    const shoppingList: ShoppingListSummary = useMemo(() => generateShoppingList(results, includeSupplies), [results, includeSupplies]);
 
     const handleDownloadIcs = useCallback(() => {
         if (results.length === 0) return;
@@ -225,8 +238,45 @@ export default function CyclePlannerPage() {
                             <ArrowLeft className="w-3 h-3" /> Review Stack
                         </button>
 
-                        <h2 className="text-sm font-semibold text-zinc-300 mb-3 uppercase tracking-wider">Configure Each Peptide</h2>
+                        <h2 className="text-sm font-semibold text-zinc-300 mb-3 uppercase tracking-wider">Configure Cycle</h2>
 
+                        {/* Global Settings */}
+                        <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-4 mb-5">
+                            <div className="flex flex-col sm:flex-row justify-between gap-4">
+                                <div className="flex-1">
+                                    <label className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
+                                        <Calendar className="w-3.5 h-3.5 text-orange-400" /> Cycle Length
+                                    </label>
+                                    <select 
+                                        value={globalCycleLength}
+                                        onChange={(e) => updateGlobalCycleLength(parseInt(e.target.value))}
+                                        className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-orange-500"
+                                    >
+                                        <option value={4}>4 Weeks</option>
+                                        <option value={6}>6 Weeks</option>
+                                        <option value={8}>8 Weeks</option>
+                                        <option value={10}>10 Weeks</option>
+                                        <option value={12}>12 Weeks</option>
+                                    </select>
+                                </div>
+                                <div className="flex-[1.5]">
+                                    <label className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
+                                        <Package className="w-3.5 h-3.5 text-blue-400" /> Include Supplies in Cost
+                                    </label>
+                                    <button 
+                                        onClick={() => setIncludeSupplies(!includeSupplies)}
+                                        className={`w-full flex items-center justify-between px-3 py-2 rounded-lg border transition-all ${
+                                            includeSupplies ? "border-emerald-500/30 bg-emerald-950/20 text-emerald-300" : "border-zinc-700 bg-zinc-800 text-zinc-500"
+                                        }`}
+                                    >
+                                        <span className="text-sm font-medium">BAC Water, Syringes &amp; Swabs</span>
+                                        {includeSupplies ? <ToggleRight className="w-5 h-5 text-emerald-400" /> : <ToggleLeft className="w-5 h-5" />}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Individual Peptide Protocols</h3>
                         <div className="space-y-3">
                             {Array.from(enabledPeptides).map(name => {
                                 const config = configs.get(name);
@@ -319,138 +369,119 @@ export default function CyclePlannerPage() {
                     </motion.div>
                 )}
 
-                {/* ═══════════ STEP 3: SHOPPING LIST ═══════════ */}
+                {/* ═══════════ STEP 3: COST BREAKDOWN ═══════════ */}
                 {step === 3 && (
                     <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <button onClick={() => setStep(2)} className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-300 mb-3 transition-colors">
-                            <ArrowLeft className="w-3 h-3" /> Adjust Configuration
-                        </button>
-
-                        <div className="rounded-2xl border border-orange-500/25 bg-gradient-to-br from-orange-900/20 to-amber-950/10 p-4 mb-4">
-                            <div className="flex items-center gap-2 mb-2">
-                                <ShoppingCart className="w-5 h-5 text-orange-400" />
-                                <h2 className="text-base font-bold text-orange-300">Your Full Cycle Order</h2>
-                            </div>
-                            <p className="text-xs text-zinc-400">{selectedGoal?.icon} {selectedStack?.stack_name} — {results.length} peptide{results.length !== 1 ? "s" : ""}</p>
-                        </div>
-
-                        {/* Per-Peptide Breakdown */}
-                        <div className="space-y-2 mb-5">
-                            {results.map(r => (
-                                <div key={r.peptideName} className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-3">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm font-bold text-zinc-100">{r.peptideName}</span>
-                                        <span className="text-xs font-bold text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded-full">{r.vialsNeeded} vial{r.vialsNeeded !== 1 ? "s" : ""}</span>
-                                    </div>
-                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-2 gap-x-1 text-[10px] text-zinc-400">
-                                        <div><span className="text-zinc-600">Dose:</span> <span className="text-zinc-300">{r.doseMcg}mcg</span></div>
-                                        <div><span className="text-zinc-600">Freq:</span> <span className="text-zinc-300">{r.injectionsPerWeek}x/wk</span></div>
-                                        <div><span className="text-zinc-600">Cycle:</span> <span className="text-zinc-300">{r.cycleWeeks}wk</span></div>
-                                        <div><span className="text-zinc-600">Draw:</span> <span className="text-zinc-300">{r.syringeUnits}u</span></div>
-                                    </div>
-
-                                    {/* Cycle timeline bar */}
-                                    <div className="mt-2 h-4 rounded-full bg-zinc-800 overflow-hidden relative">
-                                        <motion.div
-                                            className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${Math.min((r.cycleWeeks / 16) * 100, 100)}%` }}
-                                            transition={{ duration: 0.8, ease: "easeOut" }}
-                                        />
-                                        <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-white drop-shadow-sm">
-                                            {r.cycleWeeks} weeks on-cycle
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Vendor Comparison */}
-                        <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Order from a Trusted Vendor</h3>
-                        <div className="space-y-2 mb-4">
-                            {shoppingList.vendorTotals.map((vt, i) => (
-                                <a
-                                    key={vt.vendor}
-                                    href={vt.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`block rounded-xl border p-4 transition-all hover:scale-[1.01] ${
-                                        i === 0
-                                            ? "border-emerald-500/30 bg-gradient-to-r from-emerald-900/20 to-emerald-950/10"
-                                            : "border-zinc-800 bg-zinc-900/60 hover:border-zinc-700"
-                                    }`}
-                                >
-                                    <div className="flex items-center justify-between gap-1">
-                                        <div className="flex items-start gap-3">
-                                            <DollarSign className={`w-5 h-5 mt-0.5 flex-shrink-0 ${i === 0 ? "text-emerald-400" : "text-zinc-500"}`} />
-                                            <div className="flex flex-col items-start gap-1.5">
-                                                <div className="flex flex-wrap items-center gap-2">
-                                                    <span className={`text-sm font-bold ${i === 0 ? "text-emerald-300" : "text-zinc-200"}`}>{vt.vendor}</span>
-                                                    {i === 0 && <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold uppercase">Best Price</span>}
-                                                </div>
-                                                {vt.discountCode && <span className="text-[10px] px-2 py-0.5 rounded-md border border-emerald-500/30 bg-emerald-950/30 text-emerald-400 font-mono font-bold">Use Code: {vt.discountCode} (-20%)</span>}
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col items-end">
-                                            {vt.originalTotal && (
-                                                <span className="text-[10px] text-red-500/90 line-through font-semibold mb-0.5">
-                                                    ${vt.originalTotal.toFixed(2)}
-                                                </span>
-                                            )}
-                                            <div className="flex items-center gap-1.5">
-                                                <span className={`text-lg font-black ${i === 0 ? "text-emerald-400" : "text-zinc-300"}`}>${vt.total.toFixed(2)}</span>
-                                                <ExternalLink className="w-3.5 h-3.5 text-zinc-600 mb-0.5" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Per-peptide breakdown for this vendor */}
-                                    <div className="mt-2 pt-2 border-t border-zinc-800/50 grid grid-cols-2 gap-x-4 gap-y-0.5 text-[10px] text-zinc-500">
-                                        {results.map(r => {
-                                            const vp = r.vendorPrices.find(v => v.vendor === vt.vendor);
-                                            return vp ? (
-                                                <span key={r.peptideName}>{r.peptideName}: {r.vialsNeeded}× ${vp.pricePerVial} = <span className="text-zinc-400">${vp.totalCost.toFixed(2)}</span></span>
-                                            ) : null;
-                                        })}
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-
-                        {/* Apple/Google Calendar Export Box */}
-                        <div className="rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-900/20 to-blue-950/10 p-4 mb-4 text-center">
-                            <div className="flex justify-center mb-2">
-                                <div className="p-2 bg-blue-500/20 rounded-full">
-                                    <Calendar className="w-5 h-5 text-blue-400" />
-                                </div>
-                            </div>
-                            <h3 className="text-sm font-bold text-blue-300 mb-1">Set Up Injection Reminders</h3>
-                            <p className="text-[10px] md:text-xs text-blue-400/70 mb-3 px-4">Download your protocol to Apple or Google Calendar to receive native push notifications when it&apos;s time to pin.</p>
-                            <button onClick={handleDownloadIcs} className="py-2.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors shadow-lg shadow-blue-900/20">
-                                Add to Calendar (.ics)
+                        <div className="flex justify-between items-center mb-3">
+                            <button onClick={() => setStep(2)} className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-300 transition-colors hide-on-print">
+                                <ArrowLeft className="w-3 h-3" /> Adjust Configuration
+                            </button>
+                            <button onClick={() => window.print()} className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors hide-on-print">
+                                Save as PDF <ExternalLink className="w-3 h-3" />
                             </button>
                         </div>
 
-                        {/* Summary Box */}
-                        <div className="rounded-2xl border border-zinc-700 bg-zinc-900/80 p-4 mb-4">
-                            <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 text-center">Cycle Supply Summary</h3>
-                            <div className="grid grid-cols-3 gap-2 text-center divide-x divide-zinc-800">
-                                <div>
-                                    <p className="text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Peptide Vials</p>
-                                    <p className="text-xl sm:text-2xl font-black text-orange-400">{results.reduce((sum, r) => sum + r.vialsNeeded, 0)}</p>
-                                </div>
-                                <div>
-                                    <p className="text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-1">BAC Water</p>
-                                    <p className="text-xl sm:text-2xl font-black text-emerald-400">{shoppingList.totalBacWaterMl}<span className="text-xs font-bold text-emerald-400/50 ml-0.5">ml</span></p>
-                                </div>
-                                <div>
-                                    <p className="text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Syringes</p>
-                                    <p className="text-xl sm:text-2xl font-black text-blue-400">{shoppingList.totalSyringes}</p>
-                                </div>
+                        <div className="rounded-2xl border border-orange-500/25 bg-gradient-to-br from-orange-900/20 to-amber-950/10 p-4 mb-4">
+                            <div className="flex items-center gap-2 mb-2">
+                                <DollarSign className="w-5 h-5 text-orange-400" />
+                                <h2 className="text-base font-bold text-orange-300">Cost Breakdown & Order Summary</h2>
                             </div>
-                            <div className="mt-3 pt-3 border-t border-zinc-800 text-center text-[10px] text-zinc-500 leading-relaxed">
-                                You need <span className="font-bold text-zinc-300">{Math.ceil(shoppingList.totalBacWaterMl / 30)}</span> standard 30ml bottle(s) of BAC water and at least <span className="font-bold text-zinc-300">{shoppingList.totalSyringes}</span> 1ml (U-100) insulin syringes.
+                            <p className="text-xs text-zinc-400">{selectedGoal?.icon} {selectedStack?.stack_name} — {shoppingList.maxCycleWeeks} Weeks</p>
+                        </div>
+
+                        {/* Itemized Table */}
+                        <div className="rounded-2xl border border-zinc-700 bg-zinc-900/70 overflow-hidden mb-6">
+                            <table className="w-full text-left text-sm">
+                                <thead className="bg-zinc-800/80 border-b border-zinc-700 text-xs text-zinc-400 uppercase tracking-wider">
+                                    <tr>
+                                        <th className="px-4 py-3 font-semibold w-full">Item</th>
+                                        <th className="px-4 py-3 font-semibold text-center hidden sm:table-cell">Qty</th>
+                                        <th className="px-4 py-3 font-semibold text-right hidden sm:table-cell">Price</th>
+                                        <th className="px-4 py-3 font-semibold text-right whitespace-nowrap">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-zinc-800/50">
+                                    {results.map(r => (
+                                        <tr key={r.peptideName} className="hover:bg-zinc-800/20 transition-colors">
+                                            <td className="px-4 py-3">
+                                                <div className="font-bold text-zinc-200">{r.peptideName} <span className="text-[10px] text-zinc-500 font-normal">({r.vialMg}mg)</span></div>
+                                                <div className="text-[10px] text-zinc-500 hide-on-print">{r.doseMcg}mcg {r.injectionsPerWeek}x/wk for {r.cycleWeeks}wks</div>
+                                            </td>
+                                            <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{r.vialsNeeded}</td>
+                                            <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${r.costPerVial?.toFixed(2)}</td>
+                                            <td className="px-4 py-3 text-right font-medium text-zinc-200">${r.totalCost?.toFixed(2)}</td>
+                                        </tr>
+                                    ))}
+                                    {includeSupplies && (
+                                        <>
+                                            <tr className="hover:bg-zinc-800/20 transition-colors">
+                                                <td className="px-4 py-3">
+                                                    <div className="font-bold text-zinc-200">BAC Water <span className="text-[10px] text-zinc-500 font-normal">(30ml)</span></div>
+                                                </td>
+                                                <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{shoppingList.supplies.bacWater.quantity}</td>
+                                                <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${shoppingList.supplies.bacWater.unitPrice.toFixed(2)}</td>
+                                                <td className="px-4 py-3 text-right font-medium text-zinc-200">${shoppingList.supplies.bacWater.subtotal.toFixed(2)}</td>
+                                            </tr>
+                                            <tr className="hover:bg-zinc-800/20 transition-colors">
+                                                <td className="px-4 py-3">
+                                                    <div className="font-bold text-zinc-200">Insulin Syringes <span className="text-[10px] text-zinc-500 font-normal">(100ct)</span></div>
+                                                </td>
+                                                <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{shoppingList.supplies.syringes.quantity}</td>
+                                                <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${shoppingList.supplies.syringes.unitPrice.toFixed(2)}</td>
+                                                <td className="px-4 py-3 text-right font-medium text-zinc-200">${shoppingList.supplies.syringes.subtotal.toFixed(2)}</td>
+                                            </tr>
+                                            <tr className="hover:bg-zinc-800/20 transition-colors">
+                                                <td className="px-4 py-3">
+                                                    <div className="font-bold text-zinc-200">Alcohol Swabs <span className="text-[10px] text-zinc-500 font-normal">(200ct)</span></div>
+                                                </td>
+                                                <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{shoppingList.supplies.swabs.quantity}</td>
+                                                <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${shoppingList.supplies.swabs.unitPrice.toFixed(2)}</td>
+                                                <td className="px-4 py-3 text-right font-medium text-zinc-200">${shoppingList.supplies.swabs.subtotal.toFixed(2)}</td>
+                                            </tr>
+                                        </>
+                                    )}
+                                </tbody>
+                                <tfoot className="bg-zinc-950/50 border-t-2 border-zinc-700">
+                                    <tr>
+                                        <td colSpan={3} className="px-4 py-4 text-right hidden sm:table-cell">
+                                            <div className="text-xs text-zinc-500 uppercase tracking-widest mb-1">Cost Per Week</div>
+                                            <div className="text-sm font-semibold text-zinc-400">${shoppingList.costPerWeek.toFixed(2)} / wk</div>
+                                        </td>
+                                        <td colSpan={1} className="px-4 py-4 text-right">
+                                            <div className="text-xs text-emerald-500 uppercase tracking-widest mb-1">Grand Total</div>
+                                            <div className="text-2xl font-black text-emerald-400">${shoppingList.grandTotal.toFixed(2)}</div>
+                                            <div className="text-xs font-semibold text-zinc-400 sm:hidden mt-1">${shoppingList.costPerWeek.toFixed(2)} / wk</div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            {/* Mobile notice for pricing accuracy */}
+                            <div className="px-4 py-2 bg-zinc-900 border-t border-zinc-800 text-center hide-on-print">
+                                <p className="text-[9px] text-zinc-500">Prices are estimates based on default market averages and may vary.</p>
                             </div>
+                        </div>
+
+                        {/* Affiliate CTA */}
+                        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-5 mb-5 text-center hide-on-print">
+                            <h3 className="text-base font-bold text-emerald-300 mb-2">Need to source these peptides?</h3>
+                            <p className="text-xs text-zinc-300 mb-4 px-4">Amino Club offers 99%+ pure, COA-verified peptides with fast US shipping. We independently verify their test results.</p>
+                            <a 
+                                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" 
+                                target="_blank" rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-sm hover:brightness-110 hover:-translate-y-0.5 transition-all shadow-lg shadow-emerald-900/40"
+                            >
+                                Source this Cycle <ExternalLink className="w-4 h-4" />
+                            </a>
+                            <p className="text-[10px] text-zinc-500 mt-3">Use code <span className="font-mono text-emerald-400 font-bold">PEPTIDEX</span> at checkout for 20% off.</p>
+                        </div>
+                        
+                        {/* Apple/Google Calendar Export Box */}
+                        <div className="rounded-xl border border-blue-500/20 bg-blue-950/20 p-4 mb-4 text-center hide-on-print">
+                            <h3 className="text-sm font-bold text-blue-300 mb-1 flex items-center justify-center gap-2"><Calendar className="w-4 h-4" /> Injection Reminders</h3>
+                            <p className="text-[10px] md:text-xs text-blue-400/70 mb-3 px-4">Download your protocol to Calendar to receive push notifications when it&apos;s time to pin.</p>
+                            <button onClick={handleDownloadIcs} className="py-2 px-6 rounded-lg bg-blue-600/80 hover:bg-blue-500 text-white font-bold text-xs transition-colors">
+                                Add to Calendar (.ics)
+                            </button>
                         </div>
 
                         {/* Share My Cycle */}
@@ -466,13 +497,15 @@ export default function CyclePlannerPage() {
                                     vialsNeeded: r.vialsNeeded,
                                 })),
                                 totalVials: results.reduce((sum, r) => sum + r.vialsNeeded, 0),
+                                totalCost: shoppingList.grandTotal,
+                                maxWeeks: shoppingList.maxCycleWeeks,
                             };
                             return (
-                                <div className="mb-4 flex justify-center">
+                                <div className="mb-4 flex justify-center hide-on-print">
                                     <ShareModal
                                         data={cycleData}
                                         shareUrl="https://peptidex.app/tools/cycle-planner"
-                                        shareText={`My ${selectedStack?.stack_name || "peptide"} cycle plan — built on PeptiDex \uD83E\uDDEC`}
+                                        shareText={`My ${shoppingList.maxCycleWeeks}-week ${selectedStack?.stack_name || "peptide"} cycle plan — built on PeptiDex \uD83E\uDDEC`}
                                         buttonLabel="Share My Cycle"
                                     />
                                 </div>

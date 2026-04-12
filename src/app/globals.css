@@ -131,3 +131,59 @@
     transform: translateY(0);
   }
 }
+
+/* ───────────────────── PRINT STYLES ───────────────────── */
+@media print {
+  /* Hide UI controls and navbar */
+  .hide-on-print,
+  nav,
+  footer,
+  button:not(.print-keep),
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Base print adjustments */
+  body {
+    background-color: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Force background colors and remove dark borders */
+  * {
+    border-color: #e5e7eb !important;
+  }
+
+  .bg-zinc-900, .bg-zinc-800, .bg-zinc-950, .bg-gradient-to-br, .bg-gradient-to-r {
+    background: #f9fafb !important;
+    color: black !important;
+  }
+  
+  .text-zinc-200, .text-zinc-300, .text-zinc-400, .text-zinc-500 {
+    color: #374151 !important;
+  }
+  
+  .text-orange-300, .text-orange-400, .text-emerald-300, .text-emerald-400, .text-blue-300, .text-blue-400 {
+    color: #000000 !important;
+    font-weight: 800 !important;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+
+  tfoot td {
+    border-top: 2px solid #000 !important;
+  }
+
+  .mt-12 {
+    margin-top: 0 !important;
+  }
+}
