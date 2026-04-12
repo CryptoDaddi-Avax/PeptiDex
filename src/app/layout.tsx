@@ -10,6 +10,7 @@ import { FirstVisitModal } from "@/components/first-visit-modal";
 import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
 import { Footer } from "@/components/footer";
 import { AutoLinkProvider } from "@/components/auto-link";
+import { LeadMagnetPopup } from "@/components/lead-magnet-popup";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -140,6 +141,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </AutoLinkProvider>
 
+        <LeadMagnetPopup source="global_exit_intent" />
         <BottomNav />
       </body>
     </html>

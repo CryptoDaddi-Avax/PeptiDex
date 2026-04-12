@@ -8,7 +8,7 @@ import { useSavedStacks } from "@/hooks/useSavedStacks";
 import { SHORT_DISCLAIMER } from "@/data/constants";
 import { ArrowLeft, ExternalLink, ShieldAlert, Scale, Info, Beaker, BookOpen, BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles } from "lucide-react";
 import { HalfLifeChart } from "@/components/half-life-chart";
-import { NewsletterSignup } from "@/components/newsletter-signup";
+import { LeadMagnetInline } from "@/components/lead-magnet-inline";
 import { CiteThisPage } from "@/components/cite-page";
 import { legalData, legalStatusColors, legalStatusLabels } from "@/data/legal-status";
 import { PeptideFAQ } from "@/components/peptide-faq";
@@ -182,9 +182,9 @@ export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Pepti
                 <CiteThisPage peptideName={peptide.name} slug={peptide.slug} />
             </motion.div>
 
-            {/* Newsletter */}
+            {/* Lead Magnet */}
             <div className="mt-6">
-                <NewsletterSignup variant="banner" source={`library_${peptide.slug}`} />
+                <LeadMagnetInline source={`library_${peptide.slug}`} />
             </div>
         </div>
     );
