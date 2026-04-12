@@ -1,7 +1,15 @@
 import { ExternalLink, ShieldCheck } from "lucide-react";
 
 export function AffiliateSource({ peptideName, slug }: { peptideName: string, slug: string }) {
-    const affiliateUrl = `https://www.aminoclub.com/us/products/${slug}?utm_source=affiliate_marketing&code=PEPTIDEX`;
+    // Map internal application slugs to explicit AminoClub storefront aliases
+    const vendorSlugMap: Record<string, string> = {
+        "retatrutide": "glp-3"
+    };
+    
+    // Fallback to exactly the local slug if no override is provided
+    const targetSlug = vendorSlugMap[slug] || slug;
+    
+    const affiliateUrl = `https://www.aminoclub.com/us/products/${targetSlug}?utm_source=affiliate_marketing&code=PEPTIDEX`;
 
     return (
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-900/10 to-indigo-900/10 p-5 mb-8 relative overflow-hidden">
