@@ -92,7 +92,28 @@ export default function VendorsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-800/50">
-              {/* Row 1 */}
+              {/* Row 1 — Amino Club (Editor's Choice) */}
+              <tr className="bg-violet-500/5 border-l-4 border-l-violet-500">
+                <td className="px-6 py-4">
+                  <div className="flex flex-col">
+                    <span className="font-bold text-zinc-100">Amino Club</span>
+                    <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-violet-500/20 text-violet-300 rounded-md border border-violet-500/30 w-fit">Editor&apos;s Choice</span>
+                  </div>
+                </td>
+                <td className="px-6 py-4 text-zinc-400">40+ Compounds</td>
+                <td className="px-6 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
+                <td className="px-6 py-4 text-zinc-400">$$</td>
+                <td className="px-6 py-4">
+                  <div className="flex gap-0.5 text-amber-400 items-center">
+                    <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
+                    <span className="text-xs text-zinc-400 ml-2">4.9/5</span>
+                  </div>
+                </td>
+                <td className="px-6 py-4 text-right">
+                  <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold transition-colors">Visit <ExternalLink className="w-3 h-3" /></a>
+                </td>
+              </tr>
+              {/* Row 2 — Ascension Peptides */}
               <tr className="hover:bg-zinc-800/20 transition-colors">
                 <td className="px-6 py-4 font-bold text-zinc-100">Ascension Peptides</td>
                 <td className="px-6 py-4 text-zinc-400">60+ Compounds</td>
@@ -101,27 +122,11 @@ export default function VendorsPage() {
                 <td className="px-6 py-4">
                   <div className="flex gap-0.5 text-amber-400 items-center">
                     <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
-                    <span className="text-xs text-zinc-400 ml-2">4.8/5</span>
+                    <span className="text-xs text-zinc-400 ml-2">4.7/5</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
                   <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
-                </td>
-              </tr>
-              {/* Row 2 */}
-              <tr className="hover:bg-zinc-800/20 transition-colors">
-                <td className="px-6 py-4 font-bold text-zinc-100">Amino Club</td>
-                <td className="px-6 py-4 text-zinc-400">30+ Compounds</td>
-                <td className="px-6 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
-                <td className="px-6 py-4 text-zinc-400">$$</td>
-                <td className="px-6 py-4">
-                  <div className="flex gap-0.5 text-amber-400 items-center">
-                    <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
-                    <span className="text-xs text-zinc-400 ml-2">4.8/5</span>
-                  </div>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
                 </td>
               </tr>
               {/* Row 3 */}
@@ -150,7 +155,45 @@ export default function VendorsPage() {
         <h2 className="text-3xl font-bold text-zinc-100 border-b border-zinc-800 pb-4">Detailed Source Reviews</h2>
         <div className="grid grid-cols-1 gap-8">
           
-          {/* Card 1: Ascension Peptides */}
+          {/* Card 1: Amino Club (Editor's Choice) */}
+          <div className="flex flex-col rounded-2xl border-2 border-violet-500/30 bg-gradient-to-br from-violet-900/10 to-zinc-900 p-6 md:p-8 shadow-xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-violet-500/10 blur-[60px] rounded-full pointer-events-none" />
+            <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-4 flex items-center gap-3 flex-wrap">
+              Amino Club
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-violet-500/20 text-violet-300 rounded-md border border-violet-500/30">
+                Editor&apos;s Choice
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30">
+                <CheckCircle2 className="w-3 h-3"/> PeptiDex Verified
+              </span>
+            </h3>
+            <p className="text-base text-zinc-300 leading-relaxed mb-8 flex-grow">
+              Amino Club has earned our #1 recommendation for 2026 through a consistent track record of verified purity, transparent batch-specific COA documentation, and reliable US fulfillment. Their catalog covers 40+ of the most in-demand research compounds — all backed by independent third-party HPLC and mass spectrometry testing. Competitive pricing, typically 15-30% below premium-tier competitors, makes them the best overall value in the market.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-zinc-800/50 pt-6">
+              <div>
+                <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-4 block">Pros</span>
+                <ul className="space-y-3">
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Batch-specific third-party COAs on every product</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Consistently ≥99% HPLC purity</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Competitive pricing (15-30% below premium tier)</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Fast domestic US shipping (2-4 business days)</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Top-rated across independent research forums</li>
+                </ul>
+              </div>
+              <div>
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-widest mb-4 block">Cons</span>
+                <ul className="space-y-3">
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> Catalog still growing (40+ vs 60+ for legacy competitors)</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> International shipping available but US is primary strength</li>
+                </ul>
+              </div>
+            </div>
+            <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-600/25 text-lg">
+              Visit Amino Club <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* Card 2: Ascension Peptides */}
           <div className="flex flex-col rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8 shadow-xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-violet-500/20" />
             <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-4 flex items-center gap-3 flex-wrap">
@@ -160,15 +203,14 @@ export default function VendorsPage() {
               </span>
             </h3>
             <p className="text-base text-zinc-400 leading-relaxed mb-8 flex-grow">
-              Ascension Peptides has established itself as a premier destination for research-grade peptides, offering an extensive catalogue of verified compounds backed by rigorous third-party COA documentation. Trusted by independent researchers for purity consistency, fast fulfilment, and transparent batch testing across a wide range of peptides including BPC-157, TB-500, and GLP-1 analogs.
-            </p>
+              Ascension Peptides has established itself as a premier destination for research-grade peptides, offering an extensive catalogue of 60+ verified compounds backed by rigorous third-party COA documentation. The premium pricing is the main trade-off — they position themselves at the top tier, which is justified by catalog breadth.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-zinc-800/50 pt-6">
               <div>
                 <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-4 block">Pros</span>
                 <ul className="space-y-3">
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Extensive peptide catalog</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Largest peptide catalog (60+ compounds)</li>
                   <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Third-party COA verified</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Fast shipping</li>
+                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Fast US shipping</li>
                   <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Strong researcher reputation</li>
                 </ul>
               </div>
@@ -179,41 +221,7 @@ export default function VendorsPage() {
                 </ul>
               </div>
             </div>
-            <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-600/25">
-              View Vendor <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
-
-          {/* Card 2: Amino Club */}
-          <div className="flex flex-col rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8 shadow-xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-violet-500/20" />
-            <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-4 flex items-center gap-3 flex-wrap">
-              Amino Club
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30">
-                <CheckCircle2 className="w-3 h-3"/> PeptiDex Verified
-              </span>
-            </h3>
-            <p className="text-base text-zinc-400 leading-relaxed mb-8 flex-grow">
-              Amino Club has earned strong trust within the independent research community for delivering verified research-grade peptides at accessible pricing. Their catalogue covers the most in-demand compounds, all backed by transparent third-party COA documentation and a commitment to quality that makes them a top recommendation for independent researchers.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-zinc-800/50 pt-6">
-              <div>
-                <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-4 block">Pros</span>
-                <ul className="space-y-3">
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Highly rated by the research community</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Transparent COA documentation</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Competitive pricing</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Reliable fulfilment</li>
-                </ul>
-              </div>
-              <div>
-                <span className="text-xs font-bold text-amber-500 uppercase tracking-widest mb-4 block">Cons</span>
-                <ul className="space-y-3">
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> Smaller catalog than larger suppliers</li>
-                </ul>
-              </div>
-            </div>
-            <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-600/25">
+            <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-bold transition-all">
               View Vendor <ArrowRight className="w-4 h-4" />
             </a>
           </div>
