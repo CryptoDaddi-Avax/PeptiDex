@@ -19,7 +19,7 @@ export function AffiliateSource({ peptideName }: { peptideName: string }) {
                 </p>
 
                 <a
-                    href="https://aminoclubs.com/?ref=peptidex"
+                    href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors mb-2 gap-2 shadow-lg shadow-violet-900/20"
