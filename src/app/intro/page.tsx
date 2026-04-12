@@ -174,7 +174,7 @@ export default function IntroPage() {
                 <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="text-center">
                     <Image
                         src="/logo.png"
-                        alt="PeptiDex Logo"
+                        alt="PeptiDex - Peptide Research and Education Platform"
                         width={120}
                         height={120}
                         className="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32 rounded-2xl object-contain drop-shadow-[0_0_30px_rgba(124,58,237,0.3)]"

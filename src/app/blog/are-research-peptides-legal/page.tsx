@@ -8,6 +8,7 @@ import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertC
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
+import { getAuthorSlug } from '@/data/authors';
 
 const POST_TITLE = 'Are Research Peptides Legal? A Country-by-Country Guide';
 const POST_DESC = 'Navigating the complex regulatory landscape of purchasing, owning, and researching peptides across North America, Europe, and Australia.';
@@ -115,7 +116,7 @@ export default function BlogPostTemplate() {
         <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-violet-400" />
-            <span className="font-semibold text-zinc-200">{AUTHOR}</span>
+            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
           </div>
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <div className="flex items-center gap-2">

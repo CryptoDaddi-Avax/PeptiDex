@@ -1,28 +1,22 @@
 import Link from 'next/link';
-import { User, ArrowRight } from 'lucide-react';
-
-const AUTHOR_DATA: Record<string, { title: string; bio: string }> = {
-  'Dr. E. Vance': {
-    title: 'Editorial Lead, PeptiDex',
-    bio: 'Dr. E. Vance leads PeptiDex\'s editorial division, ensuring all published research summaries meet rigorous preclinical citation standards. With a background in molecular pharmacology, Dr. Vance oversees the platform\'s commitment to evidence-based peptide education.',
-  },
-  'Editorial Team': {
-    title: 'Research Division, PeptiDex',
-    bio: 'The PeptiDex Editorial Team is a cross-disciplinary group of researchers specializing in peptide pharmacology and clinical literature review. Every article undergoes multi-stage fact-checking against PubMed-indexed sources before publication.',
-  },
-  'Legal Dept': {
-    title: 'Regulatory Analysis, PeptiDex',
-    bio: 'PeptiDex\'s Legal Department monitors international research chemical regulations to keep researchers informed of evolving compliance frameworks. All regulatory summaries are reviewed quarterly against active government databases.',
-  },
-};
+import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
+import { getAuthorByName, getAuthorSlug, type Author } from '@/data/authors';
 
 export function AuthorBio({ name }: { name: string }) {
-  const data = AUTHOR_DATA[name] ?? {
-    title: 'Contributor, PeptiDex',
-    bio: 'A contributor to the PeptiDex research platform, dedicated to delivering evidence-based peptide education.',
-  };
+  const author = getAuthorByName(name);
+  const slug = getAuthorSlug(name);
 
-  const initials = name
+  // Fallback data if no match
+  const displayName = author?.name ?? name;
+  const displayTitle = author?.title ?? 'Contributor, PeptiDex';
+  const displayBio = author?.bio
+    ? author.bio.slice(0, 250) + (author.bio.length > 250 ? '...' : '')
+    : 'A contributor to the PeptiDex research platform, dedicated to delivering evidence-based peptide education.';
+  const displayImage = author?.image;
+  const displayImageAlt = author?.imageAlt ?? `${displayName} — PeptiDex contributor`;
+
+  const initials = displayName
     .split(' ')
     .map((w) => w[0])
     .join('')
@@ -32,15 +26,16 @@ export function AuthorBio({ name }: { name: string }) {
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name,
-    jobTitle: data.title,
+    name: displayName,
+    jobTitle: displayTitle,
     worksFor: {
       '@type': 'Organization',
       name: 'PeptiDex',
       url: 'https://peptidex.app',
     },
-    description: data.bio,
-    url: 'https://peptidex.app/about',
+    description: displayBio,
+    url: `https://peptidex.app/about/${slug}`,
+    ...(author?.image ? { image: `https://peptidex.app${author.image}` } : {}),
   };
 
   return (
@@ -51,18 +46,37 @@ export function AuthorBio({ name }: { name: string }) {
       />
       <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-5">About the Author</h3>
       <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-full bg-violet-500/15 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
-          <span className="text-sm font-bold text-violet-400">{initials}</span>
-        </div>
+        {/* Avatar — image or fallback initials */}
+        <Link href={`/about/${slug}`} className="flex-shrink-0 group">
+          {displayImage ? (
+            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-violet-500/30 group-hover:border-violet-500/60 transition-colors relative bg-zinc-800">
+              <Image
+                src={displayImage}
+                alt={displayImageAlt}
+                fill
+                className="object-cover"
+                sizes="56px"
+                unoptimized
+              />
+            </div>
+          ) : (
+            <div className="w-14 h-14 rounded-full bg-violet-500/15 border-2 border-violet-500/30 group-hover:border-violet-500/60 flex items-center justify-center transition-colors">
+              <span className="text-sm font-bold text-violet-400">{initials}</span>
+            </div>
+          )}
+        </Link>
+
         <div className="flex-1 min-w-0">
-          <p className="text-base font-bold text-zinc-100">{name}</p>
-          <p className="text-sm text-violet-400 font-medium mb-3">{data.title}</p>
-          <p className="text-sm text-zinc-400 leading-relaxed mb-4">{data.bio}</p>
+          <Link href={`/about/${slug}`} className="hover:text-violet-400 transition-colors">
+            <p className="text-base font-bold text-zinc-100">{displayName}</p>
+          </Link>
+          <p className="text-sm text-violet-400 font-medium mb-3">{displayTitle}</p>
+          <p className="text-sm text-zinc-400 leading-relaxed mb-4">{displayBio}</p>
           <Link
-            href="/about"
+            href={`/about/${slug}`}
             className="inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors group"
           >
-            Learn about our editorial standards
+            View full author profile
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>

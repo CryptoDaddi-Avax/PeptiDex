@@ -8,6 +8,7 @@ import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertC
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
+import { getAuthorSlug } from '@/data/authors';
 
 const POST_TITLE = 'Ipamorelin vs CJC-1295: Stack Comparison Guide';
 const POST_DESC = 'Compare the mechanisms of GHRP vs GHRH. Explore the synergy of stacking Ipamorelin with CJC-1295 without DAC to safely elevate endogenous growth hormone pulses.';
@@ -115,7 +116,7 @@ export default function BlogPostTemplate() {
         <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-violet-400" />
-            <span className="font-semibold text-zinc-200">{AUTHOR}</span>
+            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
           </div>
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <div className="flex items-center gap-2">

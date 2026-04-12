@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight, Shield, BookOpen, Search, Scale, ArrowRight, Mail, Users, Microscope, GraduationCap, ExternalLink, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -28,6 +29,8 @@ const TEAM_MEMBERS = [
     name: 'Dr. E. Vance',
     title: 'Editorial Director',
     initials: 'EV',
+    slug: 'dr-e-vance',
+    image: '/images/authors/dr-e-vance.png',
     bio: 'Dr. Vance leads PeptideX\'s editorial division and is responsible for ensuring all published research summaries meet rigorous citation standards. With a background in molecular pharmacology and over 12 years of experience in preclinical peptide research, Dr. Vance oversees the platform\'s commitment to accuracy and scientific integrity across every compound profile, blog article, and educational guide.',
     credentials: [
       { label: 'PubMed Author Profile', url: '#' },
@@ -38,6 +41,8 @@ const TEAM_MEMBERS = [
     name: 'Jordan Wei, M.S.',
     title: 'Research Analyst',
     initials: 'JW',
+    slug: null,
+    image: null,
     bio: 'Jordan specializes in GLP-1 receptor agonists and metabolic peptide research. He is responsible for maintaining the accuracy of compound profiles related to weight management, insulin signaling, and mitochondrial-derived peptides. Jordan holds a Master\'s degree in Biochemistry and has contributed to published research on incretin mimetics and oral peptide delivery systems.',
     credentials: [
       { label: 'Google Scholar', url: '#' },
@@ -48,6 +53,8 @@ const TEAM_MEMBERS = [
     name: 'Dr. Priya Anand',
     title: 'Clinical Review Lead',
     initials: 'PA',
+    slug: null,
+    image: null,
     bio: 'Dr. Anand reviews all clinical trial data referenced across PeptideX, ensuring proper characterization of evidence levels (Phase I through Phase III), safety profiles, and regulatory status. She holds a PharmD and previously worked in clinical pharmacovigilance at a major pharmaceutical firm before joining our editorial team.',
     credentials: [
       { label: 'LinkedIn', url: '#' },
@@ -231,14 +238,24 @@ export default function AboutPage() {
             <div key={member.name} className="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 md:p-8 hover:border-zinc-700 transition-colors">
               <div className="flex items-start gap-5">
                 {/* Avatar */}
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500/20 to-blue-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
-                  <span className="text-lg font-bold text-violet-300">{member.initials}</span>
-                </div>
+                {member.image ? (
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden border border-violet-500/30 flex-shrink-0 relative bg-zinc-800">
+                    <Image src={member.image} alt={`${member.name} — ${member.title} at PeptiDex`} fill className="object-cover" sizes="64px" unoptimized />
+                  </div>
+                ) : (
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500/20 to-blue-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
+                    <span className="text-lg font-bold text-violet-300">{member.initials}</span>
+                  </div>
+                )}
 
                 <div className="flex-1 space-y-3">
                   {/* Name & Title */}
                   <div>
-                    <h3 className="text-lg font-bold text-zinc-100">{member.name}</h3>
+                    {member.slug ? (
+                      <Link href={`/about/${member.slug}`} className="text-lg font-bold text-zinc-100 hover:text-violet-400 transition-colors">{member.name}</Link>
+                    ) : (
+                      <h3 className="text-lg font-bold text-zinc-100">{member.name}</h3>
+                    )}
                     <p className="text-sm text-violet-400 font-medium">{member.title}</p>
                   </div>
 
@@ -247,8 +264,17 @@ export default function AboutPage() {
                     {member.bio}
                   </p>
 
-                  {/* Credential Links */}
+                  {/* Credential Links + Profile Link */}
                   <div className="flex flex-wrap gap-3 pt-1">
+                    {member.slug && (
+                      <Link
+                        href={`/about/${member.slug}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-400 hover:text-violet-300 transition-colors border border-violet-500/30 rounded-lg px-3 py-1.5 hover:border-violet-500/50 bg-violet-950/30"
+                      >
+                        <ArrowRight className="w-3 h-3" />
+                        View Full Profile
+                      </Link>
+                    )}
                     {member.credentials.map((cred) => (
                       <a
                         key={cred.label}

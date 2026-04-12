@@ -12,6 +12,7 @@ export interface BlogPost {
   author: string;
   readingTime: string;     // e.g., "8 min read"
   image: string | null;    // path to featured image or null
+  imageAlt?: string;       // Descriptive alt text with primary keyword
   tags: string[];          // lowercase keyword tags
 }
 
@@ -54,6 +55,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '12 min read',
     image: '/images/blog/semaglutide_vs_tirzepatide.png',
+    imageAlt: 'Scientific comparison diagram of semaglutide and tirzepatide peptide molecular structures for weight loss research',
     tags: ['semaglutide', 'tirzepatide', 'glp-1', 'weight loss', 'comparison', 'wegovy', 'mounjaro'],
   },
   {
@@ -66,6 +68,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '11 min read',
     image: '/images/blog/retatrutide_triple_agonist.png',
+    imageAlt: 'Futuristic triple-helix molecular structure representing the retatrutide triple agonist peptide mechanism',
     tags: ['retatrutide', 'triple agonist', 'glp-1', 'gip', 'glucagon', 'weight loss', 'eli lilly'],
   },
   {
@@ -78,6 +81,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Dr. E. Vance',
     readingTime: '10 min read',
     image: '/images/blog/peptide_safety_research.png',
+    imageAlt: 'Laboratory safety concept showing a protected peptide solution highlighting research peptide safety and purity',
     tags: ['safety', 'side effects', 'bpc-157', 'ghk-cu', 'semaglutide', 'purity', 'coa', 'research peptides'],
   },
   {
@@ -90,6 +94,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '11 min read',
     image: '/images/blog/muscle_growth_peptides.png',
+    imageAlt: 'Anatomical silhouette with growth hormone pathways demonstrating the best peptides for muscle growth like CJC-1295 and Ipamorelin',
     tags: ['muscle growth', 'cjc-1295', 'ipamorelin', 'mk-677', 'follistatin', 'igf-1', 'growth hormone'],
   },
   {
@@ -102,6 +107,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '9 min read',
     image: '/images/blog/mk677_vs_ipamorelin.png',
+    imageAlt: 'Comparison of a pill capsule and syringe representing oral MK-677 vs injectable Ipamorelin growth hormone secretagogues',
     tags: ['mk-677', 'ipamorelin', 'growth hormone', 'secretagogue', 'comparison', 'ibutamoren'],
   },
   {
@@ -114,6 +120,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '9 min read',
     image: '/images/blog/cjc_vs_sermorelin.png',
+    imageAlt: 'Pituitary gland receiving different growth hormone releasing signals demonstrating CJC-1295 vs Sermorelin mechanisms',
     tags: ['cjc-1295', 'sermorelin', 'ghrh', 'growth hormone', 'comparison', 'dac', 'anti-aging'],
   },
   {
@@ -126,6 +133,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '10 min read',
     image: '/images/blog/peptide_stacking_guide.png',
+    imageAlt: 'Glowing molecular test tubes visualizing a peptide stacking protocol for safe combination research',
     tags: ['stacking', 'bpc-157', 'tb-500', 'cjc-1295', 'ipamorelin', 'combinations', 'protocols'],
   },
   {
@@ -138,6 +146,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '10 min read',
     image: '/images/blog/mots_c_mitochondrial.png',
+    imageAlt: 'Glowing mitochondria emitting energy waves demonstrating the MOTS-c mitochondrial peptide mechanism',
     tags: ['mots-c', 'mitochondria', 'ampk', 'exercise mimetic', 'metabolism', 'longevity', 'aging'],
   },
   {
@@ -150,6 +159,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '10 min read',
     image: '/images/blog/oral_vs_injectable.png',
+    imageAlt: 'Split visualization comparing oral pill absorption barriers versus injectable peptide bloodstream delivery',
     tags: ['oral peptides', 'injectable', 'bioavailability', 'semaglutide', 'snac', 'delivery', 'orforglipron'],
   },
   {
@@ -162,6 +172,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '10 min read',
     image: '/images/blog/fda_reclassification_2026.png',
+    imageAlt: 'Scales of justice intertwined with peptide molecular structures representing the FDA peptide reclassification 2026 regulation',
     tags: ['fda', 'reclassification', 'bpc-157', 'ghk-cu', 'legal', 'category 1', 'compounding pharmacy', 'regulation'],
   },
   {
@@ -198,6 +209,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Dr. E. Vance',
     readingTime: '9 min read',
     image: '/images/blog/bpc_tb_dna.png',
+    imageAlt: 'Molecular comparison diagram of BPC-157 and TB-500 peptide structures for tissue repair research',
     tags: ['bpc-157', 'tb-500', 'healing', 'tissue repair', 'comparison'],
   },
   {
@@ -210,6 +222,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '11 min read',
     image: '/images/blog/fat_loss_lipid.png',
+    imageAlt: 'Lipid oxidation molecular pathways representing the best peptides for fat loss like GLP-1 and AOD-9604',
     tags: ['fat loss', 'weight loss', 'semaglutide', 'aod-9604', 'mots-c', 'glp-1'],
   },
   {
@@ -222,6 +235,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Dr. E. Vance',
     readingTime: '7 min read',
     image: '/images/blog/coa_lab_graph.png',
+    imageAlt: 'HPLC and Mass spectrometry readouts illustrating how to read a peptide COA for quality sourcing',
     tags: ['coa', 'hplc', 'mass spectrometry', 'vendor', 'quality', 'sourcing'],
   },
   {
@@ -234,6 +248,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '8 min read',
     image: '/images/blog/cjc_growth_hormone.png',
+    imageAlt: 'Endogenous growth hormone pulses representing the Ipamorelin and CJC-1295 peptide stack comparison',
     tags: ['ipamorelin', 'cjc-1295', 'growth hormone', 'stacking', 'ghrp', 'ghrh'],
   },
   {
@@ -246,6 +261,7 @@ export const blogPosts: BlogPost[] = [
     author: 'PeptideX Editorial',
     readingTime: '6 min read',
     image: '/images/blog/vendor_secure_crate.png',
+    imageAlt: 'Secure scientific crate representing safe sourcing from the best peptide vendors 2026',
     tags: ['vendors', 'sourcing', 'coa', 'quality', 'review'],
   },
   {

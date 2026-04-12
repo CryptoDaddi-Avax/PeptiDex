@@ -6,6 +6,7 @@ import { Calendar, User, ShieldAlert, BookOpen, AlertCircle, ArrowRight } from '
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
+import { getAuthorSlug } from '@/data/authors';
 
 const POST_TITLE = 'Semaglutide vs Tirzepatide: Complete Research Comparison';
 const POST_DESC = 'A head-to-head comparison of semaglutide and tirzepatide — mechanisms, clinical trial data, weight loss efficacy, side effect profiles, and which GLP-1 performs better in research models.';
@@ -114,7 +115,7 @@ export default function SemaglutideVsTirzepatidePage() {
         <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-violet-400" />
-            <span className="font-semibold text-zinc-200">{AUTHOR}</span>
+            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
           </div>
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <div className="flex items-center gap-2">

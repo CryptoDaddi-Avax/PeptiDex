@@ -6,6 +6,7 @@ import { Calendar, User, ShieldAlert, BookOpen, AlertCircle, ArrowRight } from '
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
+import { getAuthorSlug } from '@/data/authors';
 
 const POST_TITLE = 'Peptide Stacking 101: How to Combine Peptides Safely';
 const POST_DESC = 'A research-backed guide to peptide stacking — covering principles of safe combination, popular stacks for recovery, body composition, and longevity, timing protocols, and contraindications.';
@@ -50,7 +51,7 @@ export default function PeptideStackingGuidePage() {
       <header className="space-y-6">
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">{POST_TITLE}</h1>
         <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><span className="font-semibold text-zinc-200">{AUTHOR}</span></div>
+          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link></div>
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-zinc-500" /><span>Updated: {DATE_MOD}</span></div>
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />

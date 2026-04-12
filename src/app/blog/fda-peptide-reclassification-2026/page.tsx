@@ -7,6 +7,7 @@ import { ChevronRight, Calendar, User, ArrowLeft, ArrowRight, Clock, ShieldAlert
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
+import { getAuthorSlug } from '@/data/authors';
 
 const POST_TITLE = '14 Peptides Are Going Legal Again in 2026: What the FDA Reclassification Means';
 const POST_DESC = 'The FDA is reclassifying 14 restricted peptides from Category 2 back to Category 1 in 2026. Learn which peptides are affected, what it means for patients and clinics, and how to access them safely.';
@@ -203,7 +204,7 @@ export default function FDAReclassificationArticle() {
         <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-rose-400" />
-            <span className="font-semibold text-zinc-200">{AUTHOR}</span>
+            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
           </div>
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <div className="flex items-center gap-2">
