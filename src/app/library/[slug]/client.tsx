@@ -11,6 +11,8 @@ import { HalfLifeChart } from "@/components/half-life-chart";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { CiteThisPage } from "@/components/cite-page";
 import { legalData, legalStatusColors, legalStatusLabels } from "@/data/legal-status";
+import { PeptideFAQ } from "@/components/peptide-faq";
+import { RelatedArticles } from "@/components/related-articles";
 
 export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Peptide; relatedStacks: Stack[] }) {
     const { saveStack, removeStack, isStackSaved } = useSavedStacks();
@@ -154,6 +156,12 @@ export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Pepti
                         <SideEffectsBlock effects={peptide.side_effects} />
                     </Section>
                 )}
+
+                {/* FAQ Section */}
+                <PeptideFAQ peptide={peptide} />
+
+                {/* Related Blog Articles */}
+                <RelatedArticles peptideName={peptide.name} aliases={peptide.aliases} />
 
                 {/* Related Stacks */}
                 {relatedStacks.length > 0 && (

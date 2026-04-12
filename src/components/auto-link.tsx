@@ -61,7 +61,7 @@ function replaceText(text: string, contextSet: Set<string> | null): React.ReactN
                 nextNodes.push(
                     <Link
                         key={`${slug}-${i}`} 
-                        href={`/peptides/${slug}`} 
+                        href={`/library/${slug}`} 
                         className="text-violet-400 font-semibold hover:underline"
                         title={`View ${matchedText} Research Profile`}
                     >

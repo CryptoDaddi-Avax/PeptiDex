@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { LibraryCallout } from '@/components/library-callout';
 
 const POST_TITLE = 'Best Peptides for Fat Loss: A Research Review';
 const POST_DESC = 'Comparing GLP-1 agonists like semaglutide peptide, AOD-9604 research, and MOTS-c across clinical trials to determine the most effective peptide pathways for lipid oxidation and peptide weight loss research.';
@@ -177,6 +178,7 @@ export default function BlogPostTemplate() {
         </aside>
 
         {/* Prose Content */}
+        <AutoLink>
         <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="introduction">
             When isolating the <strong>best peptides for fat loss</strong> within preclinical and clinical environments, researchers observe several distinct metabolic pathways. The literature reveals a major shift from compounds mimicking raw growth hormone output into highly elegant, localized metabolic switches.
@@ -237,10 +239,14 @@ export default function BlogPostTemplate() {
           </p>
 
         </main>
+        </AutoLink>
       </div>
 
       {/* FAQ Wrap-Up */}
-      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+      
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="best-peptides-for-fat-loss" peptides={[{"name":"Semaglutide","slug":"semaglutide"},{"name":"Tirzepatide","slug":"tirzepatide"},{"name":"AOD-9604","slug":"aod-9604"}]} />
+<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (

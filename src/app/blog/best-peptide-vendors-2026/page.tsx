@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, Search } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { LibraryCallout } from '@/components/library-callout';
 
 const POST_TITLE = 'Best Peptide Vendors 2026: Our Sourcing Criteria';
 const POST_DESC = 'An inside look at the PeptiDex 5-point rigorous evaluation standard for trusted peptide suppliers, exploring exactly what makes a vendor legitimately safe for research.';
@@ -142,6 +143,7 @@ export default function BlogPostTemplate() {
           </div>
         </aside>
 
+        <AutoLink>
         <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="introduction">
             In 2026, the marketplace for research chemical sourcing is heavily fractured. Discover exactly how our editorial team filters out dangerous counterfeiters to recommend authentic synthesis laboratories.
@@ -181,9 +183,13 @@ export default function BlogPostTemplate() {
           </p>
 
         </main>
+        </AutoLink>
       </div>
 
-      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+      
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="best-peptide-vendors-2026" peptides={[{"name":"BPC-157","slug":"bpc-157"},{"name":"TB-500","slug":"tb-500"}]} />
+<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (

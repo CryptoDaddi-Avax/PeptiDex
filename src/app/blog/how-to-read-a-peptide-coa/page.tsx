@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle, Search } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { LibraryCallout } from '@/components/library-callout';
 
 const POST_TITLE = 'How to Read a Peptide COA (And Why It Matters)';
 const POST_DESC = 'Learn how to properly read independent HPLC and mass spectrometry reports on a Peptide Certificate of Analysis (COA) to guarantee >98% research grade purity.';
@@ -145,6 +146,7 @@ export default function BlogPostTemplate() {
           </div>
         </aside>
 
+        <AutoLink>
         <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="what-is-a-coa">
             In the research chemical industry, sourcing raw material blindly can severely contaminate laboratory findings. To guarantee molecular integrity, independent laboratories rely heavily on a <strong>Peptide Certificate of Analysis (COA)</strong> to establish the precise biochemical profile.
@@ -225,9 +227,13 @@ export default function BlogPostTemplate() {
           </div>
 
         </main>
+        </AutoLink>
       </div>
 
-      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+      
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="how-to-read-a-peptide-coa" peptides={[{"name":"BPC-157","slug":"bpc-157"},{"name":"Semaglutide","slug":"semaglutide"}]} />
+<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (

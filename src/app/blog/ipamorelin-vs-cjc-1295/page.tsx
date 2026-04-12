@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { LibraryCallout } from '@/components/library-callout';
 
 const POST_TITLE = 'Ipamorelin vs CJC-1295: Stack Comparison Guide';
 const POST_DESC = 'Compare the mechanisms of GHRP vs GHRH. Explore the synergy of stacking Ipamorelin with CJC-1295 without DAC to safely elevate endogenous growth hormone pulses.';
@@ -161,6 +162,7 @@ export default function BlogPostTemplate() {
           </div>
         </aside>
 
+        <AutoLink>
         <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="what-are-they">
             Endogenous growth hormone deployment declines steadily as subjects age past 30. Through precise clinical architecture, researchers target specialized receptors acting on the pituitary gland to reinstate healthy expression rates via a stack involving <strong>Ipamorelin</strong> and <strong>CJC-1295</strong>.
@@ -230,9 +232,13 @@ export default function BlogPostTemplate() {
           </div>
 
         </main>
+        </AutoLink>
       </div>
 
-      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+      
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="ipamorelin-vs-cjc-1295" peptides={[{"name":"Ipamorelin","slug":"ipamorelin"},{"name":"CJC-1295","slug":"cjc-1295"},{"name":"Sermorelin","slug":"sermorelin"}]} />
+<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (

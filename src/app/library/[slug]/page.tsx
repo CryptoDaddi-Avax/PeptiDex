@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
             : "";
         const title = `${peptide.name} â€” Dosage, Half-Life & Research Guide`;
         const description = `${peptide.name} research guide: mechanism of action, dosing (${peptide.dosing?.typical_dose_mcg?.[0] ?? ""}â€“${peptide.dosing?.typical_dose_mcg?.[1] ?? ""}mcg), ${halfLifeStr}, clinical studies, and safety profile. ${peptide.mechanism.slice(0, 100)}`;
-        const url = `http://76.13.26.209/library/${slug}`;
+        const url = `https://peptidex.app/library/${slug}`;
 
         return {
             title,

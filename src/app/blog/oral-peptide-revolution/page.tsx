@@ -5,6 +5,7 @@ import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
+import { LibraryCallout } from '@/components/library-callout';
 
 export const metadata: Metadata = {
   title: 'The Oral Peptide Revolution Has Arrived | PeptiDex Blog',
@@ -224,6 +225,9 @@ export default function OralPeptideArticle() {
 
       </article>
       </AutoLink>
+
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="oral-peptide-revolution" peptides={[{"name":"Semaglutide","slug":"semaglutide"},{"name":"Retatrutide","slug":"retatrutide"},{"name":"Tirzepatide","slug":"tirzepatide"}]} />
 
       {/* Disclaimer block */}
       <div className="mt-16 p-6 rounded-2xl bg-zinc-900 border border-zinc-800 flex flex-col gap-2">

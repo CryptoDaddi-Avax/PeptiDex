@@ -5,21 +5,40 @@ import Link from "next/link";
 import { PeptideCard } from "@/components/peptide-card";
 import { peptides, searchPeptides } from "@/data/peptides";
 import { peptideBlends } from "@/data/blends";
-import { Search, BookOpen, FlaskConical, ChevronRight } from "lucide-react";
+import { Search, BookOpen, FlaskConical, ChevronRight, TrendingUp } from "lucide-react";
+import { EvidenceBadge } from "@/components/peptide-card";
+import { BadgeCheck } from "lucide-react";
 
 const categories = [...new Set(peptides.map((p) => p.category))];
+
+// Slugs to feature in the Trending section
+const FEATURED_SLUGS = ["retatrutide", "mots-c", "pt-141", "ss-31"];
 
 export default function LibraryPage() {
     const [query, setQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
+    // Deduplicate peptides by slug (first occurrence wins)
+    const uniquePeptides = useMemo(() => {
+        const seen = new Set<string>();
+        return peptides.filter((p) => {
+            if (seen.has(p.slug)) return false;
+            seen.add(p.slug);
+            return true;
+        });
+    }, []);
+
+    const featuredPeptides = useMemo(() =>
+        FEATURED_SLUGS.map((slug) => uniquePeptides.find((p) => p.slug === slug)).filter(Boolean),
+    [uniquePeptides]);
+
     const filtered = useMemo(() => {
-        let results = query ? searchPeptides(query) : peptides;
+        let results = query ? searchPeptides(query) : uniquePeptides;
         if (selectedCategory) {
             results = results.filter((p) => p.category === selectedCategory);
         }
         return results;
-    }, [query, selectedCategory]);
+    }, [query, selectedCategory, uniquePeptides]);
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -37,8 +56,44 @@ export default function LibraryPage() {
                     <BookOpen className="w-4 h-4 md:w-5 md:h-5 text-violet-400" />
                     <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Peptide Library</h1>
                 </div>
-                <p className="text-xs md:text-sm text-zinc-400">{peptides.length} compounds • Tap any card for details</p>
+                <p className="text-xs md:text-sm text-zinc-400">{uniquePeptides.length} compounds • Tap any card for details</p>
             </motion.div>
+
+            {/* Trending / Featured Section */}
+            {!query && !selectedCategory && featuredPeptides.length > 0 && (
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 }}
+                    className="mb-6"
+                >
+                    <div className="flex items-center gap-2 mb-3">
+                        <TrendingUp className="w-4 h-4 text-rose-400" />
+                        <h2 className="text-sm font-bold text-zinc-200 uppercase tracking-wider">Trending Peptides</h2>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
+                        {featuredPeptides.map((peptide) => peptide && (
+                            <Link key={peptide.slug} href={`/library/${peptide.slug}`} className="group block">
+                                <div className="relative overflow-hidden rounded-xl border border-rose-500/20 bg-gradient-to-br from-rose-500/5 via-zinc-900/80 to-violet-500/5 p-3.5 transition-all duration-300 hover:border-rose-500/40 hover:shadow-lg hover:shadow-rose-500/5 hover:-translate-y-0.5">
+                                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-rose-500/10 to-transparent rounded-bl-full" />
+                                    <div className="flex items-center gap-1.5 mb-2">
+                                        <h3 className="text-sm font-bold text-zinc-100 group-hover:text-rose-300 transition-colors truncate">{peptide.name}</h3>
+                                        {peptide.is_fda_approved && (
+                                            <BadgeCheck className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                                        )}
+                                    </div>
+                                    <p className="text-[10px] text-rose-400/70 font-medium uppercase tracking-wider mb-1.5">{peptide.category}</p>
+                                    <p className="text-[11px] text-zinc-400 leading-snug line-clamp-2">{peptide.primary_benefits}</p>
+                                    <div className="mt-2.5 flex items-center gap-1">
+                                        <span className="text-[9px] font-bold text-rose-400/60 uppercase tracking-widest">Trending</span>
+                                        <TrendingUp className="w-3 h-3 text-rose-400/50" />
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </motion.div>
+            )}
 
             {/* Blends Banner */}
             <Link href="/library/blends">

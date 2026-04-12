@@ -5,6 +5,7 @@ import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
+import { LibraryCallout } from '@/components/library-callout';
 
 export const metadata: Metadata = {
   title: 'GHK-Cu: The Breakout Peptide of 2026 | PeptiDex Blog',
@@ -233,6 +234,9 @@ export default function GHKCuArticle() {
 
       </article>
       </AutoLink>
+
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="ghk-cu-breakout-peptide-2026" peptides={[{"name":"GHK-Cu","slug":"ghk-cu"},{"name":"BPC-157","slug":"bpc-157"},{"name":"Epitalon","slug":"epitalon"}]} />
 
       {/* Disclaimer block */}
       <div className="mt-16 p-6 rounded-2xl bg-zinc-900 border border-zinc-800 flex flex-col gap-2">

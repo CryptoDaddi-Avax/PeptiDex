@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { LibraryCallout } from '@/components/library-callout';
 
 const POST_TITLE = 'Are Research Peptides Legal? A Country-by-Country Guide';
 const POST_DESC = 'Navigating the complex regulatory landscape of purchasing, owning, and researching peptides across North America, Europe, and Australia.';
@@ -141,6 +142,7 @@ export default function BlogPostTemplate() {
           </div>
         </aside>
 
+        <AutoLink>
         <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="research-only">
             It is imperative to understand the boundary conditions surrounding the procurement of peptide compounds, which broadly sit behind a protective, yet fragile, barrier known as the "For Research Use Only" (FRUO) exemption.
@@ -220,9 +222,13 @@ export default function BlogPostTemplate() {
           </p>
 
         </main>
+        </AutoLink>
       </div>
 
-      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+      
+      {/* Explore in Our Library */}
+      <LibraryCallout currentSlug="are-research-peptides-legal" peptides={[{"name":"BPC-157","slug":"bpc-157"},{"name":"Semaglutide","slug":"semaglutide"},{"name":"Thymosin Alpha-1","slug":"thymosin-alpha-1"}]} />
+<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (
