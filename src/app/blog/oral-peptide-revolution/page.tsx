@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 export const metadata: Metadata = {
   title: 'The Oral Peptide Revolution Has Arrived | PeptiDex Blog',

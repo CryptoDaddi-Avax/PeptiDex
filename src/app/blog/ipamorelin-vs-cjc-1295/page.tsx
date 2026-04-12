@@ -9,6 +9,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Ipamorelin vs CJC-1295: Stack Comparison Guide';
 const POST_DESC = 'Compare the mechanisms of GHRP vs GHRH. Explore the synergy of stacking Ipamorelin with CJC-1295 without DAC to safely elevate endogenous growth hormone pulses.';
@@ -173,6 +174,10 @@ export default function BlogPostTemplate() {
           <p>
             You cannot evaluate this stack without understanding its core dichotomy—deploying a GHRP alongside a GHRH. <strong>Ipamorelin</strong> acts explicitly as the Growth Hormone Releasing Peptide (GHRP). It directly mimics the hunger-hormone ghrelin to prompt an acute, massive single pulse of growth hormone out of the pituitary.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <p>
             <strong>CJC-1295 (without DAC)</strong> is entirely different. As a Growth Hormone Releasing Hormone (GHRH) analog, it mimics the natural stimulatory hormones sent from the hypothalamus to the pituitary. It essentially turns up the volume on the subject's baseline, persistent output over a long timeframe.
           </p>
@@ -250,6 +255,8 @@ export default function BlogPostTemplate() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

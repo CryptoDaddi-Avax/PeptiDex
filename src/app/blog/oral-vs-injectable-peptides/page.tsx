@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Oral Peptides vs Injectable Peptides: What You Need to Know';
 const POST_DESC = 'A research-backed comparison of oral vs injectable peptide delivery — covering bioavailability, new oral formulations (SNAC, orforglipron), absorption challenges, pros and cons, and what the future of peptide delivery looks like.';
@@ -90,6 +91,10 @@ export default function OralVsInjectablePage() {
           <p>
             This guide compares the two delivery methods — oral vs injectable — covering the science of why injection has dominated, the technologies now enabling oral delivery, and the practical pros and cons for each route.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="why-inject">Why Most Peptides Require Injection</h2>
           <p>
@@ -196,6 +201,7 @@ export default function OralVsInjectablePage() {
           {faqSchema.mainEntity.map((q, idx) => (<div key={idx} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6"><h3 className="text-md font-bold text-zinc-200 mb-3">{q.name}</h3><p className="text-zinc-400 text-sm leading-relaxed">{q.acceptedAnswer.text}</p></div>))}
         </div>
       </section>
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
       <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. Peptide medications require prescriptions. PeptiDex does not sell pharmaceuticals. Consult a healthcare provider.</p></div>
     </div>

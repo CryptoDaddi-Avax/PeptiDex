@@ -9,6 +9,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Best Peptide Vendors 2026: Our Sourcing Criteria';
 const POST_DESC = 'An inside look at the PeptiDex 5-point rigorous evaluation standard for trusted peptide suppliers, exploring exactly what makes a vendor legitimately safe for research.';
@@ -154,6 +155,10 @@ export default function BlogPostTemplate() {
           <p>
             The fundamental requirement for making our <Link href="/vendors">Trusted Vendors</Link> list is the transparent publication of independent HPLC verification. Suppliers utilizing internally-doctored lab reports or claiming they test compounds structurally on faith are immediately blacklisted.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <p>
             The vendors we recommend frequently rotate their batch reports through MZ Biolabs or Janoshik Analytical, delivering consistent testing documentation with un-obscured Lot identification data to trace back to molecular roots.
           </p>
@@ -201,6 +206,8 @@ export default function BlogPostTemplate() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

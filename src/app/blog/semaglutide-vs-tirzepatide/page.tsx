@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Semaglutide vs Tirzepatide: Complete Research Comparison';
 const POST_DESC = 'A head-to-head comparison of semaglutide and tirzepatide — mechanisms, clinical trial data, weight loss efficacy, side effect profiles, and which GLP-1 performs better in research models.';
@@ -171,6 +172,10 @@ export default function SemaglutideVsTirzepatidePage() {
           <p>
             This article provides a research-backed, head-to-head comparison of these two incretin-based therapies, covering mechanisms, efficacy data from Phase 3 trials, side effect profiles, and available formulations as of 2026.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="mechanisms">Mechanism of Action: Single vs Dual Agonism</h2>
           <p>
@@ -361,6 +366,8 @@ export default function SemaglutideVsTirzepatidePage() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

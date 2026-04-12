@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Retatrutide: The Triple-Agonist Peptide Explained';
 const POST_DESC = 'A comprehensive research guide to retatrutide — the first GLP-1/GIP/glucagon triple receptor agonist, its Phase 3 trial status, mechanism of action, dosing protocols, and what it means for the future of metabolic medicine.';
@@ -190,6 +191,10 @@ export default function RetatrutideExplainedPage() {
           </p>
 
           <h2 id="safety">Safety & Side Effect Profile</h2>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <p>
             The Phase 2 side effect profile was broadly consistent with the GLP-1 agonist class. The most common treatment-emergent adverse events at the 12 mg dose were:
           </p>
@@ -231,6 +236,8 @@ export default function RetatrutideExplainedPage() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

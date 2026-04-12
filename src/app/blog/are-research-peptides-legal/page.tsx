@@ -9,6 +9,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Are Research Peptides Legal? A Country-by-Country Guide';
 const POST_DESC = 'Navigating the complex regulatory landscape of purchasing, owning, and researching peptides across North America, Europe, and Australia.';
@@ -151,6 +152,10 @@ export default function BlogPostTemplate() {
           <p>
             Operating dynamically outside FDA approval mandates, chemical suppliers are legally permitted to synthesize and transport laboratory chemicals explicitly and exclusively to institutions and private researchers analyzing the properties in a controlled layout.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="table">Country-by-Country Legal Landscape</h2>
           <div className="overflow-x-auto my-8">
@@ -240,6 +245,8 @@ export default function BlogPostTemplate() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Best Peptides for Muscle Growth: Research-Backed Guide';
 const POST_DESC = 'A research-backed comparison of the best peptides for muscle growth including CJC-1295, Ipamorelin, MK-677, Follistatin-344, and IGF-1 LR3 — covering mechanisms, clinical data, stacking strategies, and safety profiles.';
@@ -98,6 +99,10 @@ export default function BestPeptidesMusclePage() {
           <p>
             This guide compares the five most researched peptide compounds for lean mass accrual: the CJC-1295/Ipamorelin stack, MK-677, Follistatin-344, and IGF-1 LR3.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="cjc-ipa">CJC-1295 + Ipamorelin: The Gold Standard GH Stack</h2>
           <p>
@@ -209,6 +214,8 @@ export default function BestPeptidesMusclePage() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

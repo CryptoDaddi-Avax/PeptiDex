@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Are Peptides Safe? What the Research Says in 2026';
 const POST_DESC = 'A research-backed safety analysis of popular peptides including BPC-157, semaglutide, and GHK-Cu — covering clinical safety data, purity risks, side effect profiles, and how to evaluate peptide quality.';
@@ -92,6 +93,10 @@ export default function ArePeptidesSafePage() {
           </p>
 
           <h2 id="approved">FDA-Approved Peptides: Extensive Safety Data</h2>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <p>
             As of 2026, over 100 peptide-based drugs have received FDA approval, including insulin (the most widely used peptide drug in history), <Link href="/library/semaglutide">semaglutide</Link>, <Link href="/library/tirzepatide">tirzepatide</Link>, and <Link href="/library/tesamorelin">tesamorelin</Link>. These compounds have undergone Phase 1-3 clinical trials involving tens of thousands of participants, post-marketing surveillance, and real-world evidence collection.¹
           </p>
@@ -209,6 +214,8 @@ export default function ArePeptidesSafePage() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

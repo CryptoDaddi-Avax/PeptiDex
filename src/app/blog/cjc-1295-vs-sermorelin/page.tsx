@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'CJC-1295 vs Sermorelin: GHRH Analog Comparison';
 const POST_DESC = 'A research-backed comparison of CJC-1295 and Sermorelin — two GHRH analogs used for growth hormone optimization. Covers mechanisms, DAC vs no-DAC, half-life differences, dosing protocols, and clinical outcomes.';
@@ -88,6 +89,10 @@ export default function CJCVsSermorelin() {
             <strong>CJC-1295</strong> and <strong>Sermorelin</strong> are both synthetic analogs of growth hormone-releasing hormone (GHRH), the hypothalamic hormone that tells the pituitary gland to produce and release GH. But they differ dramatically in half-life, dosing frequency, and the nature of the GH release they produce.
           </p>
           <p>Understanding these differences is essential for researchers and clinicians selecting the appropriate GHRH analog for specific protocols — whether the goal is anti-aging optimization, body composition improvement, or recovery support.</p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="sermorelin">Sermorelin: The Pioneer GHRH Analog</h2>
           <p>
@@ -180,6 +185,7 @@ export default function CJCVsSermorelin() {
           {faqSchema.mainEntity.map((q, idx) => (<div key={idx} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6"><h3 className="text-md font-bold text-zinc-200 mb-3">{q.name}</h3><p className="text-zinc-400 text-sm leading-relaxed">{q.acceptedAnswer.text}</p></div>))}
         </div>
       </section>
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
       <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. Consult a healthcare provider before using any peptide compound. PeptiDex does not sell peptides.</p></div>
     </div>

@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Peptide Stacking 101: How to Combine Peptides Safely';
 const POST_DESC = 'A research-backed guide to peptide stacking — covering principles of safe combination, popular stacks for recovery, body composition, and longevity, timing protocols, and contraindications.';
@@ -147,6 +148,10 @@ export default function PeptideStackingGuidePage() {
           </div>
 
           <h2 id="contraindications">Contraindications & Safety Rules</h2>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <ul>
             <li><strong>Never stack two GLP-1 agonists</strong> (e.g., semaglutide + tirzepatide) — severe GI side effects and hypoglycemia risk</li>
             <li><strong>Avoid IGF-1 LR3 with any history of malignancy</strong> — supraphysiological growth factor levels may promote tumor growth</li>
@@ -174,6 +179,7 @@ export default function PeptideStackingGuidePage() {
           {faqSchema.mainEntity.map((q, idx) => (<div key={idx} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6"><h3 className="text-md font-bold text-zinc-200 mb-3">{q.name}</h3><p className="text-zinc-400 text-sm leading-relaxed">{q.acceptedAnswer.text}</p></div>))}
         </div>
       </section>
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
       <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. Peptide stacking should be done under the guidance of a qualified healthcare provider. PeptiDex does not sell peptides.</p></div>
     </div>

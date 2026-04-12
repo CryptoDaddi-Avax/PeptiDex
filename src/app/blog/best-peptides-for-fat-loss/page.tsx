@@ -9,6 +9,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Best Peptides for Fat Loss: A Research Review';
 const POST_DESC = 'Comparing GLP-1 agonists like semaglutide peptide, AOD-9604 research, and MOTS-c across clinical trials to determine the most effective peptide pathways for lipid oxidation and peptide weight loss research.';
@@ -187,6 +188,10 @@ export default function BlogPostTemplate() {
           <p>
             Understanding the peptide weight loss research involves dissecting mechanisms across three primary categories: appetite suppression (GLP-1s), direct lipolytic action (AOD-9604), and intracellular energy metabolism (MOTS-c). Here, we review the scientific consensus on how these peptides operate individually and synergistically.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="glp-1">GLP-1 Agonists: Dominating the Data</h2>
           <p>
@@ -260,6 +265,7 @@ export default function BlogPostTemplate() {
       </section>
 
       {/* Author Bio */}
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
 
       {/* Bottom Disclaimer */}

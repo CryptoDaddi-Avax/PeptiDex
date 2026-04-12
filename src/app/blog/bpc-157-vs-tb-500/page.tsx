@@ -9,6 +9,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'BPC-157 vs TB-500: What the Research Actually Shows';
 const POST_DESC = 'An in-depth clinical analysis comparing the mechanisms, half-lives, and synergistic tissue repair effects of combining BPC-157 with TB-500 in preclinical models.';
@@ -170,6 +171,10 @@ export default function BlogPostTemplate() {
           <p>
             While both peptides are celebrated for accelerating recovery in animal subjects, they achieve these outcomes through fundamentally different biological pathways. Understanding these distinct pathways is critical for researchers aiming to deploy synergistic protocols.
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="mechanisms">Divergent Cellular Mechanisms</h2>
           <p>
@@ -238,6 +243,7 @@ export default function BlogPostTemplate() {
       </section>
 
       {/* Author Bio */}
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
 
     </div>

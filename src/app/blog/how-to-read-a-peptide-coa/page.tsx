@@ -9,6 +9,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'How to Read a Peptide COA (And Why It Matters)';
 const POST_DESC = 'Learn how to properly read independent HPLC and mass spectrometry reports on a Peptide Certificate of Analysis (COA) to guarantee >98% research grade purity.';
@@ -193,6 +194,10 @@ export default function BlogPostTemplate() {
           </div>
 
           <h2 id="purity-thresholds">Ideal Purity Percentages</h2>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <p>
             The benchmark acceptable purity for advanced biological testing stands rigorously at <strong>&gt;98%</strong> purity. In high-stakes experimental models, fractions of a percentage point carry sweeping differences due to truncated synthetic chains—often generating unpredictable antigen responses from the test subject. Leading labs will consistently deliver batches surpassing <strong>99.3%+</strong> purity levels.
           </p>
@@ -245,6 +250,8 @@ export default function BlogPostTemplate() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 

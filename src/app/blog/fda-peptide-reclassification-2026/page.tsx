@@ -8,6 +8,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = '14 Peptides Are Going Legal Again in 2026: What the FDA Reclassification Means';
 const POST_DESC = 'The FDA is reclassifying 14 restricted peptides from Category 2 back to Category 1 in 2026. Learn which peptides are affected, what it means for patients and clinics, and how to access them safely.';
@@ -301,6 +302,10 @@ export default function FDAReclassificationArticle() {
         </p>
 
         <h2 id="safety-debate">The Safety Debate: Two Perspectives</h2>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
         <p>
           The reclassification is not without controversy. Former FDA officials have pushed back on the characterization that the original Category 2 designations were baseless, noting that insufficient clinical data is itself a safety concern. ProPublica reported that some officials believe reversing the restrictions could lend an unwarranted appearance of safety to compounds with limited human trial data.
         </p>
@@ -397,6 +402,7 @@ export default function FDAReclassificationArticle() {
       </section>
 
       {/* ═══════ AUTHOR BIO ═══════ */}
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
 
       {/* ═══════ DISCLAIMER ═══════ */}

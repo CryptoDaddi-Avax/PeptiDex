@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'MOTS-c: The Mitochondrial Peptide for Energy & Metabolism';
 const POST_DESC = 'A deep dive into MOTS-c — the mitochondrial-derived peptide that mimics exercise, activates AMPK, and shows remarkable potential for metabolic regulation, longevity, and age-related disease prevention.';
@@ -90,6 +91,10 @@ export default function MOTSCDeepDivePage() {
           <p>
             First identified in 2015 by Dr. Changhan David Lee&apos;s lab at the University of Southern California, <Link href="/library/mots-c">MOTS-c</Link> is a 16-amino acid peptide encoded within the mitochondrial 12S rRNA gene. Unlike virtually all other peptides in the body (which are encoded by nuclear DNA), MOTS-c originates from the mitochondrial genome — making it part of a small but rapidly growing class of molecules called mitochondrial-derived peptides (MDPs).¹
           </p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
           <p>
             What makes MOTS-c remarkable is its role as a metabolic regulator that effectively <strong>mimics the molecular benefits of exercise</strong>. In an era where metabolic disease is the leading driver of chronic illness worldwide, a naturally occurring compound that mimics exercise at the cellular level has captured the attention of researchers across endocrinology, gerontology, and sports science.
           </p>
@@ -205,6 +210,7 @@ export default function MOTSCDeepDivePage() {
           {faqSchema.mainEntity.map((q, idx) => (<div key={idx} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6"><h3 className="text-md font-bold text-zinc-200 mb-3">{q.name}</h3><p className="text-zinc-400 text-sm leading-relaxed">{q.acceptedAnswer.text}</p></div>))}
         </div>
       </section>
+      <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
       <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. MOTS-c is investigational and not FDA-approved. PeptiDex does not sell peptides. Consult a healthcare provider.</p></div>
     </div>

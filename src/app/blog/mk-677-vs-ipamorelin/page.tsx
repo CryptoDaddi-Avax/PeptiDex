@@ -7,6 +7,7 @@ import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
+import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'MK-677 vs Ipamorelin: Which GH Secretagogue Is Better?';
 const POST_DESC = 'A research-backed comparison of MK-677 (ibutamoren) vs ipamorelin — oral vs injectable GH secretagogues compared on mechanism, side effects, half-life, IGF-1 elevation, and stacking protocols.';
@@ -95,6 +96,10 @@ export default function MK677VsIpamorelinPage() {
             <strong>MK-677</strong> and <strong>ipamorelin</strong> both stimulate growth hormone release through the ghrelin receptor (GHS-R1a). But the similarities end there. One is an oral small molecule with 24-hour activity and significant metabolic side effects. The other is an injectable pentapeptide with precise, pulsatile GH release and a remarkably clean profile.
           </p>
           <p>This comparison provides a detailed, research-backed breakdown of how these two GH secretagogues differ in mechanism, clinical outcomes, side effects, and stacking compatibility.</p>
+          <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+          </p>
+
 
           <h2 id="mechanism">Mechanism Comparison</h2>
           <h3 className="flex items-center gap-2 text-violet-300 border-b border-zinc-800 pb-2">MK-677: Sustained Oral Agonism</h3>
@@ -182,6 +187,8 @@ export default function MK677VsIpamorelinPage() {
           ))}
         </div>
       </section>
+
+      <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
 
