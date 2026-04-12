@@ -1,12 +1,13 @@
 import { MetadataRoute } from 'next';
 import { peptides } from '@/data/peptides';
 import { stacks } from '@/data/stacks';
+import { blogPosts } from '@/data/blog';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://peptidex.app';
-  const currentDate = new Date('2026-04-15');
+  const currentDate = new Date();
 
   // Core Static Pages
   const staticPages = [
@@ -112,46 +113,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
-    ...[
-      'ghk-cu-vs-bpc-157',
-      'semaglutide-vs-tirzepatide',
-      'oral-vs-injectable-peptides',
-      'bpc-157-vs-tb-500',
-    ].map((slug) => ({
-      url: `${baseUrl}/compare/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    })),
   ];
-
-  // High-priority trending blog posts
-  const trendingBlogPosts = [
-    'oral-peptide-revolution',
-    'ghk-cu-breakout-peptide-2026',
-  ];
-
-  const trendingBlogUrls = trendingBlogPosts.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
 
   // Standard Blog Post Pages
-  const blogPosts = [
-    'bpc-157-vs-tb-500',
-    'best-peptides-for-fat-loss',
-    'how-to-read-a-peptide-coa',
-    'ipamorelin-vs-cjc-1295',
-    'best-peptide-vendors-2026',
-    'are-research-peptides-legal',
-  ];
-
-  const blogUrls = blogPosts.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
+  const blogUrls = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.dateModified || post.datePublished),
+    changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
@@ -180,5 +148,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...trendingBlogUrls, ...blogUrls, ...peptideUrls, ...stackUrls];
+  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls];
 }
