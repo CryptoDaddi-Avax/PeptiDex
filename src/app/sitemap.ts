@@ -123,14 +123,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Dynamic Peptides Pages (deduplicated by slug)
-  const seenSlugs = new Set<string>();
+  // Dynamic Peptides Pages
   const peptideUrls = peptides
-    .filter((peptide) => {
-      if (seenSlugs.has(peptide.slug)) return false;
-      seenSlugs.add(peptide.slug);
-      return true;
-    })
     .map((peptide) => ({
       url: `${baseUrl}/library/${peptide.slug}`,
       lastModified: currentDate,

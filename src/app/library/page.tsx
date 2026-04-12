@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PeptideCard } from "@/components/peptide-card";
@@ -12,33 +13,24 @@ import { BadgeCheck } from "lucide-react";
 const categories = [...new Set(peptides.map((p) => p.category))];
 
 // Slugs to feature in the Trending section
-const FEATURED_SLUGS = ["retatrutide", "mots-c", "pt-141", "ss-31"];
+const FEATURED_SLUGS = ["retatrutide", "mots-c", "pt-141", "ss-31", "tesofensine"];
 
 export default function LibraryPage() {
+    const router = useRouter();
     const [query, setQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-    // Deduplicate peptides by slug (first occurrence wins)
-    const uniquePeptides = useMemo(() => {
-        const seen = new Set<string>();
-        return peptides.filter((p) => {
-            if (seen.has(p.slug)) return false;
-            seen.add(p.slug);
-            return true;
-        });
-    }, []);
-
     const featuredPeptides = useMemo(() =>
-        FEATURED_SLUGS.map((slug) => uniquePeptides.find((p) => p.slug === slug)).filter(Boolean),
-    [uniquePeptides]);
+        FEATURED_SLUGS.map((slug) => peptides.find((p) => p.slug === slug)).filter(Boolean),
+    []);
 
     const filtered = useMemo(() => {
-        let results = query ? searchPeptides(query) : uniquePeptides;
+        let results = query ? searchPeptides(query) : peptides;
         if (selectedCategory) {
             results = results.filter((p) => p.category === selectedCategory);
         }
         return results;
-    }, [query, selectedCategory, uniquePeptides]);
+    }, [query, selectedCategory]);
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -56,7 +48,7 @@ export default function LibraryPage() {
                     <BookOpen className="w-4 h-4 md:w-5 md:h-5 text-violet-400" />
                     <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Peptide Library</h1>
                 </div>
-                <p className="text-xs md:text-sm text-zinc-400">{uniquePeptides.length} compounds • Tap any card for details</p>
+                <p className="text-xs md:text-sm text-zinc-400">{peptides.length} compounds • Tap any card for details</p>
             </motion.div>
 
             {/* Trending / Featured Section */}
@@ -69,11 +61,17 @@ export default function LibraryPage() {
                 >
                     <div className="flex items-center gap-2 mb-3">
                         <TrendingUp className="w-4 h-4 text-rose-400" />
-                        <h2 className="text-sm font-bold text-zinc-200 uppercase tracking-wider">Trending Peptides</h2>
+                        <h2 className="text-sm font-bold text-zinc-200 uppercase tracking-wider">Trending in 2026</h2>
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
                         {featuredPeptides.map((peptide) => peptide && (
-                            <Link key={peptide.slug} href={`/library/${peptide.slug}`} className="group block">
+                            <div 
+                                key={peptide.slug} 
+                                onClick={() => router.push(`/library/${peptide.slug}`)} 
+                                className="group block cursor-pointer"
+                                role="button"
+                                tabIndex={0}
+                            >
                                 <div className="relative overflow-hidden rounded-xl border border-rose-500/20 bg-gradient-to-br from-rose-500/5 via-zinc-900/80 to-violet-500/5 p-3.5 transition-all duration-300 hover:border-rose-500/40 hover:shadow-lg hover:shadow-rose-500/5 hover:-translate-y-0.5">
                                     <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-rose-500/10 to-transparent rounded-bl-full" />
                                     <div className="flex items-center gap-1.5 mb-2">
@@ -89,7 +87,7 @@ export default function LibraryPage() {
                                         <TrendingUp className="w-3 h-3 text-rose-400/50" />
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 </motion.div>
