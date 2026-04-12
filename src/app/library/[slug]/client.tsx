@@ -159,7 +159,7 @@ export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Pepti
                 )}
 
                 {/* Affiliate CTA */}
-                <AffiliateSource peptideName={peptide.name} />
+                <AffiliateSource peptideName={peptide.name} slug={peptide.slug} />
 
                 {/* FAQ Section */}
                 <PeptideFAQ peptide={peptide} />
