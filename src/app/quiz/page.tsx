@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { stacks } from "@/data/stacks";
@@ -8,6 +8,8 @@ import {
     ChevronRight, ChevronLeft, RotateCcw,
     FlaskConical, ArrowRight, Sparkles, CheckCircle2
 } from "lucide-react";
+import { ShareModal } from "@/components/share-card/share-modal";
+import type { QuizCardData } from "@/components/share-card/card-templates";
 
 /* ──────── Quiz Data ──────── */
 
@@ -178,6 +180,27 @@ export default function QuizPage() {
 
     const results = showResults ? scoreStacks(answers) : [];
 
+    // Build share card data from the top result
+    const shareCardData: QuizCardData | null = useMemo(() => {
+        if (!results.length) return null;
+        const top = results[0];
+        const goalAnswer = answers.goal?.[0] || "";
+        const emojiMap: Record<string, string> = {
+            "fat-loss": "🔥", "body-recomp": "🔥", "healing": "🩹", "recovery": "🩹",
+            "muscle": "💪", "cognitive": "🧠", "nootropic": "🧠", "sleep": "🌙",
+            "longevity": "⌛", "anti-aging": "⌛", "immune": "🛡️", "skin": "✨",
+            "gut": "🫁", "hormonal": "⚡",
+        };
+        return {
+            type: "quiz" as const,
+            stackName: top.stack.stack_name,
+            peptides: top.stack.peptides.map(p => p.name),
+            matchPercent: Math.round((top.score / 13) * 100),
+            goalEmoji: emojiMap[goalAnswer] || "🧬",
+            goalLabel: top.stack.goal.length > 60 ? top.stack.goal.substring(0, 58) + "..." : top.stack.goal,
+        };
+    }, [results, answers]);
+
     return (
         <div className="max-w-2xl mx-auto px-4 py-6 md:py-10">
             <AnimatePresence mode="wait">
@@ -312,8 +335,20 @@ export default function QuizPage() {
                             ))}
                         </div>
 
+                        {/* Share Card */}
+                        {shareCardData && (
+                            <div className="mt-6 flex justify-center">
+                                <ShareModal
+                                    data={shareCardData}
+                                    shareUrl="https://peptidex.app/quiz"
+                                    shareText={`I just found my ideal peptide stack on PeptiDex: ${shareCardData.stackName} \uD83E\uDDEC`}
+                                    buttonLabel="Share My Stack"
+                                />
+                            </div>
+                        )}
+
                         {/* Actions */}
-                        <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                        <div className="mt-4 flex flex-col sm:flex-row gap-3">
                             <Link
                                 href="/stacks"
                                 className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-600 text-white text-sm font-semibold hover:brightness-110 transition-all"

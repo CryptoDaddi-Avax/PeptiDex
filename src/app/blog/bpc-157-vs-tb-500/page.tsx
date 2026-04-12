@@ -5,6 +5,7 @@ import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
+import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
@@ -22,6 +23,23 @@ export const metadata: Metadata = {
   description: POST_DESC,
   alternates: {
     canonical: 'https://peptidex.app/blog/bpc-157-vs-tb-500',
+  },
+  openGraph: {
+    title: `${POST_TITLE} | PeptiDex Research`,
+    description: POST_DESC,
+    url: 'https://peptidex.app/blog/bpc-157-vs-tb-500',
+    type: 'article',
+    images: [{
+      url: `https://peptidex.app/api/og?type=blog&title=${encodeURIComponent(POST_TITLE)}`,
+      width: 1200,
+      height: 630,
+      alt: POST_TITLE,
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${POST_TITLE} | PeptiDex Research`,
+    description: POST_DESC,
   },
 };
 
@@ -129,6 +147,7 @@ export default function BlogPostTemplate() {
             <span className="text-emerald-400 font-medium">8 Min Read</span>
           </div>
         </div>
+        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/bpc-157-vs-tb-500`} />
       </header>
 
       {/* Main Content Layout */}
@@ -230,7 +249,12 @@ export default function BlogPostTemplate() {
       
       {/* Explore in Our Library */}
       <LibraryCallout currentSlug="bpc-157-vs-tb-500" peptides={[{"name":"BPC-157","slug":"bpc-157"},{"name":"TB-500","slug":"tb-500"},{"name":"GHK-Cu","slug":"ghk-cu"}]} />
-<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+{/* Citations */}
+      <div className="mb-12">
+        <CiteThisPage title={POST_TITLE} url={`https://peptidex.app/blog/bpc-157-vs-tb-500`} />
+      </div>
+
+      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (
@@ -243,6 +267,8 @@ export default function BlogPostTemplate() {
       </section>
 
       {/* Author Bio */}
+      
+      <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/bpc-157-vs-tb-500`} />
       <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
 

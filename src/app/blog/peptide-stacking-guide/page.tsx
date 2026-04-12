@@ -3,6 +3,8 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import { Calendar, User, ShieldAlert, BookOpen, AlertCircle, ArrowRight } from 'lucide-react';
+import { ShareBar } from '@/components/share-bar';
+import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
@@ -20,6 +22,23 @@ export const metadata: Metadata = {
   description: POST_DESC,
   keywords: 'peptide stacking, how to stack peptides, peptide combinations, BPC-157 TB-500 stack, CJC-1295 ipamorelin stack, peptide timing, peptide contraindications',
   alternates: { canonical: 'https://peptidex.app/blog/peptide-stacking-guide' },
+  openGraph: {
+    title: `${POST_TITLE} | PeptiDex Research`,
+    description: POST_DESC,
+    url: 'https://peptidex.app/blog/peptide-stacking-guide',
+    type: 'article',
+    images: [{
+      url: `https://peptidex.app/api/og?type=blog&title=${encodeURIComponent(POST_TITLE)}`,
+      width: 1200,
+      height: 630,
+      alt: POST_TITLE,
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${POST_TITLE} | PeptiDex Research`,
+    description: POST_DESC,
+  },
 };
 
 export default function PeptideStackingGuidePage() {
@@ -58,6 +77,7 @@ export default function PeptideStackingGuidePage() {
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <div className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-emerald-500" /><span className="text-emerald-400 font-medium">10 Min Read</span></div>
         </div>
+        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/peptide-stacking-guide`} />
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -173,12 +193,19 @@ export default function PeptideStackingGuidePage() {
 
       <LibraryCallout currentSlug="peptide-stacking-guide" peptides={[{"name":"BPC-157","slug":"bpc-157"},{"name":"CJC-1295","slug":"cjc-1295"},{"name":"Ipamorelin","slug":"ipamorelin"}]} />
 
+      {/* Citations */}
+      <div className="mb-12">
+        <CiteThisPage title={POST_TITLE} url={`https://peptidex.app/blog/peptide-stacking-guide`} />
+      </div>
+
       <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (<div key={idx} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6"><h3 className="text-md font-bold text-zinc-200 mb-3">{q.name}</h3><p className="text-zinc-400 text-sm leading-relaxed">{q.acceptedAnswer.text}</p></div>))}
         </div>
       </section>
+      
+      <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/peptide-stacking-guide`} />
       <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
       <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. Peptide stacking should be done under the guidance of a qualified healthcare provider. PeptiDex does not sell peptides.</p></div>

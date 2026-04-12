@@ -4,6 +4,8 @@ import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, Calendar, User, ArrowLeft, ArrowRight, Clock, ShieldAlert, BookOpen, AlertCircle, Scale, FlaskConical, TrendingUp, Landmark } from 'lucide-react';
+import { ShareBar } from '@/components/share-bar';
+import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
@@ -223,6 +225,7 @@ export default function FDAReclassificationArticle() {
             <span className="text-rose-300 font-medium">Health &amp; Science</span>
           </div>
         </div>
+        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/fda-peptide-reclassification-2026`} />
       </header>
 
       {/* ═══════ MAIN CONTENT ═══════ */}
@@ -389,7 +392,12 @@ export default function FDAReclassificationArticle() {
       
       {/* Explore in Our Library */}
       <LibraryCallout currentSlug="fda-peptide-reclassification-2026" peptides={[{"name":"BPC-157","slug":"bpc-157"},{"name":"GHK-Cu","slug":"ghk-cu"},{"name":"Thymosin Alpha-1","slug":"thymosin-alpha-1"}]} />
-<section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
+{/* Citations */}
+      <div className="mb-12">
+        <CiteThisPage title={POST_TITLE} url={`https://peptidex.app/blog/fda-peptide-reclassification-2026`} />
+      </div>
+
+      <section className="border-t border-zinc-800 pt-12 mt-12 pb-8">
         <h2 className="text-2xl font-bold text-zinc-100 text-center mb-8">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqSchema.mainEntity.map((q, idx) => (
@@ -402,6 +410,8 @@ export default function FDAReclassificationArticle() {
       </section>
 
       {/* ═══════ AUTHOR BIO ═══════ */}
+      
+      <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/fda-peptide-reclassification-2026`} />
       <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
 

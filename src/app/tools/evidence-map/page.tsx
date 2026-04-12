@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { peptides } from "@/data/peptides";
 import { EvidenceMapClient } from "./client";
 import { Beaker, Calendar } from "lucide-react";
+import { EmbedModal } from "@/components/embed-modal";
 
 export const metadata: Metadata = {
     title: "Peptide Evidence Map: 33 Compounds Ranked by Scientific Evidence [2026]",
@@ -127,7 +128,7 @@ export default function EvidenceMapPage() {
                     research. Filter by goal, compare evidence tiers, and
                     explore clinical data.
                 </p>
-                <div className="flex items-center justify-center gap-4 text-xs text-zinc-500">
+                <div className="flex items-center justify-center gap-4 text-xs text-zinc-500 mb-6">
                     <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
                         Last updated: April 2026
@@ -136,6 +137,10 @@ export default function EvidenceMapPage() {
                     <span>{totalStudies} referenced studies</span>
                     <span>&bull;</span>
                     <span>{fdaCount} FDA-approved</span>
+                </div>
+                
+                <div className="flex justify-center mt-6">
+                    <EmbedModal title="Peptide Evidence Map" path="/tools/evidence-map" />
                 </div>
             </header>
 

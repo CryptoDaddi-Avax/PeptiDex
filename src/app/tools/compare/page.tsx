@@ -13,6 +13,9 @@ import {
     ArrowRight, Sparkles, X, Search, Beaker, ChevronRight, Zap
 } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
+import { EmbedModal } from "@/components/embed-modal";
+import { ShareModal } from "@/components/share-card/share-modal";
+import type { CompareCardData } from "@/components/share-card/card-templates";
 import type { Peptide } from "@/data/types";
 
 /* ═══════════════════════════════════════════════════════════
@@ -333,6 +336,23 @@ function ComparePageInner() {
         [compared]
     );
 
+    // Build share card data for branded image
+    const compareShareData: CompareCardData | null = useMemo(() => {
+        if (compared.length < 2) return null;
+        return {
+            type: "compare" as const,
+            peptides: compared.map(p => ({
+                name: p.name,
+                category: p.category,
+                evidence: EVIDENCE_SCALE[p.key_studies[0]?.evidence_level]?.label || "Preclinical",
+                benefits: p.primary_benefits,
+            })),
+            synergies: compared.flatMap(p =>
+                compared.filter(q => q.slug !== p.slug && p.interactions?.synergies.includes(q.name)).map(q => `${p.name} + ${q.name}`)
+            ).filter((v, i, a) => a.indexOf(v) === i),
+        };
+    }, [compared]);
+
     const addSlot = () => {
         if (selected.length < 3) {
             const next = [...selected, ""];
@@ -494,29 +514,43 @@ function ComparePageInner() {
                         </div>
                     </div>
 
-                    {/* Share button */}
-                    {compared.length >= 2 && (
-                        <motion.button
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            onClick={handleShare}
-                            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                                copied
-                                    ? "bg-emerald-500/20 border border-emerald-500/40 text-emerald-400"
-                                    : "bg-zinc-800 border border-zinc-700 text-zinc-300 hover:border-violet-500/40 hover:text-violet-300"
-                            }`}
-                        >
-                            {copied ? (
-                                <>
-                                    <Check className="w-4 h-4" /> Link Copied!
-                                </>
-                            ) : (
-                                <>
-                                    <Share2 className="w-4 h-4" /> Share Comparison
-                                </>
-                            )}
-                        </motion.button>
-                    )}
+                    <div className="flex flex-wrap items-center gap-3">
+                        <EmbedModal title="Peptide Comparison Tool" path="/tools/compare" />
+                        
+                        {/* Share branded card */}
+                        {compared.length >= 2 && compareShareData && (
+                            <ShareModal
+                                data={compareShareData}
+                                shareUrl={`https://peptidex.app/tools/compare?p=${compared.map(p => p.slug).join(",")}`}
+                                shareText={`Comparing ${compared.map(p => p.name).join(" vs ")} on PeptiDex \uD83E\uDDEC`}
+                                buttonLabel="Share Results"
+                            />
+                        )}
+
+                        {/* Share link button */}
+                        {compared.length >= 2 && (
+                            <motion.button
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                onClick={handleShare}
+                                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                                    copied
+                                        ? "bg-emerald-500/20 border border-emerald-500/40 text-emerald-400"
+                                        : "bg-zinc-800 border border-zinc-700 text-zinc-300 hover:border-violet-500/40 hover:text-violet-300"
+                                }`}
+                            >
+                                {copied ? (
+                                    <>
+                                        <Check className="w-4 h-4" /> Link Copied!
+                                    </>
+                                ) : (
+                                    <>
+                                        <Share2 className="w-4 h-4" /> Copy Link
+                                    </>
+                                )}
+                            </motion.button>
+                        )}
+                    </div>
                 </div>
             </motion.div>
 

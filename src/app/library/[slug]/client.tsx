@@ -179,7 +179,7 @@ export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Pepti
                 )}
 
                 {/* Cite This Page */}
-                <CiteThisPage peptideName={peptide.name} slug={peptide.slug} />
+                <CiteThisPage title={peptide.name} url={`https://peptidex.app/library/${peptide.slug}`} />
             </motion.div>
 
             {/* Lead Magnet */}

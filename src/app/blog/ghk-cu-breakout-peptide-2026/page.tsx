@@ -5,6 +5,7 @@ import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
+import { CiteThisPage } from '@/components/cite-page';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
 import { BlogVendorCallout } from '@/components/blog-vendor-callout';
@@ -105,6 +106,7 @@ export default function GHKCuArticle() {
             <span>April 2026</span>
           </div>
         </div>
+        <ShareBar title="GHK-Cu: The Breakout Peptide of 2026" url={`https://peptidex.app/blog/ghk-cu-breakout-peptide-2026`} />
       </header>
 
       {/* Article Content */}

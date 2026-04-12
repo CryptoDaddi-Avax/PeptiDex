@@ -6,6 +6,8 @@ import { peptides } from "@/data/peptides";
 import { EvidenceLevel } from "@/data/types";
 import { BarChart3, Filter } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
+import { ShareModal } from "@/components/share-card/share-modal";
+import type { EvidenceCardData } from "@/components/share-card/card-templates";
 
 const evidenceRank: Record<string, number> = {
     "very-strong": 6, "strong": 5, "moderate-strong": 4, "moderate": 3, "emerging": 2, "preclinical": 1, "anecdotal": 0,
@@ -48,6 +50,27 @@ export default function EvidencePage() {
         peptides.map((p) => ({ ...p, highestEvidence: getHighestEvidence(p.key_studies) })),
         []);
 
+    // Build share card data for Evidence tier list
+    const evidenceShareData: EvidenceCardData = useMemo(() => {
+        const tierMap: Record<string, string[]> = {
+            "very-strong": [], "strong": [], "moderate-strong": [], "moderate": [],
+            "emerging": [], "preclinical": [], "anecdotal": [],
+        };
+        peptidesWithEvidence.forEach(p => {
+            if (tierMap[p.highestEvidence]) tierMap[p.highestEvidence].push(p.name);
+        });
+        return {
+            type: "evidence" as const,
+            tiers: [
+                { label: "FDA Approved", color: "emerald", peptides: peptides.filter(p => p.is_fda_approved).map(p => p.name) },
+                { label: "Strong Clinical", color: "blue", peptides: [...tierMap["very-strong"], ...tierMap["strong"]].filter(n => !peptides.find(p => p.name === n)?.is_fda_approved) },
+                { label: "Moderate / Preclinical", color: "amber", peptides: [...tierMap["moderate-strong"], ...tierMap["moderate"], ...tierMap["preclinical"]] },
+                { label: "Emerging / Limited", color: "zinc", peptides: [...tierMap["emerging"], ...tierMap["anecdotal"]] },
+            ],
+            totalPeptides: peptides.length,
+        };
+    }, [peptidesWithEvidence]);
+
     const sorted = useMemo(() => {
         let list = [...peptidesWithEvidence];
         if (filterCategory !== "all") list = list.filter((p) => p.category === filterCategory);
@@ -75,6 +98,16 @@ export default function EvidencePage() {
                 </div>
                 <p className="text-xs md:text-sm text-zinc-400">All {peptides.length} peptides ranked by strength of clinical evidence</p>
             </motion.div>
+
+            {/* Share My Results */}
+            <div className="mb-4 flex justify-start">
+                <ShareModal
+                    data={evidenceShareData}
+                    shareUrl="https://peptidex.app/tools/evidence"
+                    shareText="Peptide Evidence Tier List — 33 compounds ranked by scientific proof \uD83E\uDDEC peptidex.app/tools/evidence"
+                    buttonLabel="Share Tier List"
+                />
+            </div>
 
             {/* Legend */}
             <div className="flex flex-wrap gap-3 mb-4">

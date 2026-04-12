@@ -20,6 +20,8 @@ import {
     ExternalLink, ArrowLeft, CheckCircle2, ToggleRight, ToggleLeft, Calendar,
 } from "lucide-react";
 import { Goal, GoalId, Stack } from "@/data/types";
+import { ShareModal } from "@/components/share-card/share-modal";
+import type { CycleCardData } from "@/components/share-card/card-templates";
 
 /* ═══════════════════════════════════════════════════════════ */
 
@@ -450,6 +452,32 @@ export default function CyclePlannerPage() {
                                 You need <span className="font-bold text-zinc-300">{Math.ceil(shoppingList.totalBacWaterMl / 30)}</span> standard 30ml bottle(s) of BAC water and at least <span className="font-bold text-zinc-300">{shoppingList.totalSyringes}</span> 1ml (U-100) insulin syringes.
                             </div>
                         </div>
+
+                        {/* Share My Cycle */}
+                        {results.length > 0 && (() => {
+                            const cycleData: CycleCardData = {
+                                type: "cycle",
+                                stackName: selectedStack?.stack_name || "Custom Cycle",
+                                goalName: selectedGoal?.label || "Peptide Research",
+                                peptides: results.map(r => ({
+                                    name: r.peptideName,
+                                    doseMcg: r.doseMcg,
+                                    cycleWeeks: r.cycleWeeks,
+                                    vialsNeeded: r.vialsNeeded,
+                                })),
+                                totalVials: results.reduce((sum, r) => sum + r.vialsNeeded, 0),
+                            };
+                            return (
+                                <div className="mb-4 flex justify-center">
+                                    <ShareModal
+                                        data={cycleData}
+                                        shareUrl="https://peptidex.app/tools/cycle-planner"
+                                        shareText={`My ${selectedStack?.stack_name || "peptide"} cycle plan — built on PeptiDex \uD83E\uDDEC`}
+                                        buttonLabel="Share My Cycle"
+                                    />
+                                </div>
+                            );
+                        })()}
                     </motion.div>
                 )}
             </AnimatePresence>

@@ -6,6 +6,9 @@ import { peptideBlends, PeptideBlend } from "@/data/blends";
 import { SHORT_DISCLAIMER } from "@/data/constants";
 import { Calculator, ShieldAlert, ChevronDown, Syringe, Droplets, FlaskConical } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
+import { EmbedModal } from "@/components/embed-modal";
+import { ShareModal } from "@/components/share-card/share-modal";
+import type { CalculatorCardData } from "@/components/share-card/card-templates";
 
 type SelectionType = "peptide" | "blend";
 
@@ -106,11 +109,18 @@ export default function CalculatorPage() {
             </div>
 
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-                <div className="flex items-center gap-2 mb-1">
-                    <Calculator className="w-5 h-5 text-emerald-400" />
-                    <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Dosage Calculator</h1>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <div className="flex items-center gap-2 mb-1">
+                            <Calculator className="w-5 h-5 text-emerald-400" />
+                            <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Dosage Calculator</h1>
+                        </div>
+                        <p className="text-xs md:text-sm text-zinc-400">Calculate reconstitution and syringe units for peptides &amp; blends</p>
+                    </div>
+                    <div>
+                        <EmbedModal title="Peptide Dosage Calculator" path="/tools/calculator" />
+                    </div>
                 </div>
-                <p className="text-xs md:text-sm text-zinc-400">Calculate reconstitution and syringe units for peptides &amp; blends</p>
             </motion.div>
 
             {/* Peptide / Blend Selector */}
@@ -327,6 +337,35 @@ export default function CalculatorPage() {
 
                 </motion.div>
             )}
+
+            {/* Share My Results */}
+            {concentration && syringeUnits !== null && (() => {
+                const pepName = peptide?.name || blend?.name || "Peptide";
+                const vMg = parseFloat(vialMg) || 0;
+                const bMl = parseFloat(bacWaterMl) || 0;
+                const dMcg = parseFloat(desiredDoseMcg) || 0;
+                const dosesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
+                const shareData: CalculatorCardData = {
+                    type: "calculator",
+                    peptideName: pepName,
+                    vialMg: vMg,
+                    bacWaterMl: bMl,
+                    doseMcg: dMcg,
+                    syringeUnits: syringeUnits,
+                    concentration: concentration,
+                    dosesPerVial: dosesPerVial,
+                };
+                return (
+                    <div className="mt-4 mb-6 flex justify-center">
+                        <ShareModal
+                            data={shareData}
+                            shareUrl="https://peptidex.app/tools/calculator"
+                            shareText={`My ${pepName} dosage protocol — calculated on PeptiDex \uD83E\uDDEC`}
+                            buttonLabel="Share My Protocol"
+                        />
+                    </div>
+                );
+            })()}
 
             {/* Peptide Dosing Info */}
             {peptide?.dosing && (

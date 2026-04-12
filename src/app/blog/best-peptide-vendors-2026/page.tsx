@@ -3,6 +3,8 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import { Calendar, User, ShieldAlert, BookOpen, ArrowRight, ExternalLink, Star, CheckCircle2, AlertTriangle, FlaskConical, Award, ShieldCheck, Truck, DollarSign, Users } from 'lucide-react';
+import { ShareBar } from '@/components/share-bar';
+import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
@@ -114,6 +116,7 @@ export default function BestPeptideVendors2026Page() {
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
           <span className="text-xs text-zinc-500">Originally published: January 2026 · Updated monthly</span>
         </div>
+        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/best-peptide-vendors-2026`} />
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -153,6 +156,11 @@ export default function BestPeptideVendors2026Page() {
       </div>
 
       {/* Full-width comparison table outside grid */}
+      {/* Citations */}
+      <div className="mb-12">
+        <CiteThisPage title={POST_TITLE} url={`https://peptidex.app/blog/best-peptide-vendors-2026`} />
+      </div>
+
       <section className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
@@ -397,6 +405,8 @@ export default function BestPeptideVendors2026Page() {
         </div>
       </section>
 
+      
+      <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/best-peptide-vendors-2026`} />
       <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
