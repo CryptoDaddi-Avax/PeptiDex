@@ -26,6 +26,7 @@ set -e
 cd ${REMOTE}
 tar -xzf sync.tar.gz
 rm sync.tar.gz
+rm -rf .next
 npm run build
 pm2 restart peptidex
 `;

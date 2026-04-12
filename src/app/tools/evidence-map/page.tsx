@@ -122,7 +122,7 @@ export default function EvidenceMapPage() {
                     Peptide Evidence Map
                 </h1>
                 <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-                    {peptides.length} research peptides ranked by scientific
+                    {peptides.length}{" "}research peptides ranked by scientific
                     evidence &mdash; from FDA-approved compounds to emerging
                     research. Filter by goal, compare evidence tiers, and
                     explore clinical data.
