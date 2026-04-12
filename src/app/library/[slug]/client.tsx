@@ -13,6 +13,7 @@ import { CiteThisPage } from "@/components/cite-page";
 import { legalData, legalStatusColors, legalStatusLabels } from "@/data/legal-status";
 import { PeptideFAQ } from "@/components/peptide-faq";
 import { RelatedArticles } from "@/components/related-articles";
+import { AffiliateSource } from "@/components/affiliate-source";
 
 export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Peptide; relatedStacks: Stack[] }) {
     const { saveStack, removeStack, isStackSaved } = useSavedStacks();
@@ -156,6 +157,9 @@ export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Pepti
                         <SideEffectsBlock effects={peptide.side_effects} />
                     </Section>
                 )}
+
+                {/* Affiliate CTA */}
+                <AffiliateSource peptideName={peptide.name} />
 
                 {/* FAQ Section */}
                 <PeptideFAQ peptide={peptide} />
