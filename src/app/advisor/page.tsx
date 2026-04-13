@@ -36,13 +36,22 @@ export default function AdvisorPage() {
     const renderContent = (text: string) => {
         return text.split("\n").map((line, i) => {
             const processFormatting = (str: string) => {
-                const boldRegex = /\*\*(.*?)\*\*/g;
+                // Combined regex for bold and markdown links
+                const combinedRegex = /\*\*(.*?)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
                 let lastIdx = 0;
                 let match;
                 const result: React.ReactNode[] = [];
-                while ((match = boldRegex.exec(str)) !== null) {
+                while ((match = combinedRegex.exec(str)) !== null) {
                     if (match.index > lastIdx) result.push(str.slice(lastIdx, match.index));
-                    result.push(<strong key={lastIdx} className="text-zinc-100 font-bold">{match[1]}</strong>);
+                    if (match[1] !== undefined) {
+                        // Bold match
+                        result.push(<strong key={`b-${match.index}`} className="text-zinc-100 font-bold">{match[1]}</strong>);
+                    } else if (match[2] !== undefined && match[3] !== undefined) {
+                        // Link match [text](url)
+                        result.push(
+                            <a key={`a-${match.index}`} href={match[3]} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors">{match[2]}</a>
+                        );
+                    }
                     lastIdx = match.index + match[0].length;
                 }
                 if (lastIdx < str.length) result.push(str.slice(lastIdx));
@@ -170,7 +179,8 @@ export default function AdvisorPage() {
                         <Send className="w-4 h-4 text-white ml-0.5" />
                     </button>
                 </form>
-                <p className="text-[10px] text-zinc-500 text-center mt-3">Educational AI tool. Not medical advice. Hallucinations may occur.</p>
+                <p className="text-[10px] text-zinc-500 text-center mt-2">Educational AI tool. Not medical advice. Hallucinations may occur.</p>
+                <p className="text-[9px] text-zinc-600 text-center mt-1">Sourcing recommendations powered by PeptiDex&apos;s independent vendor evaluation. We may earn a commission.</p>
             </div>
         </div>
     );
