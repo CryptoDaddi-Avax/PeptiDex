@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { stacks, getStackBySlug } from '@/data/stacks';
+import { getPeptideByName } from '@/data/peptides';
 import { ShieldAlert, BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { AuthorBio } from '@/components/author-bio';
@@ -212,21 +213,85 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
         </section>
 
         {/* Section 4: Vendors (Affiliate CTA) */}
-        <section className="mt-12">
-          <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-violet-500/20 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-violet-600/10 blur-[100px] rounded-full pointer-events-none" />
+        <section className="mt-16">
+          <div className="flex items-center gap-2 mb-6">
+            <ShoppingBag className="w-6 h-6 text-emerald-400" />
+            <h2 className="text-2xl font-bold text-zinc-100 flex items-center flex-wrap gap-3">
+              Source This Stack
+              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
+                Amino Club — Editor's Choice
+              </span>
+            </h2>
+          </div>
+          
+          <div className="space-y-4 mb-8">
+            {stack.peptides.map((p) => {
+              const pepData = getPeptideByName(p.name);
+              let pepSlug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+              
+              // Formatting dosage and vial size
+              let dosageDisplay = "Research protocol";
+              if (pepData?.dosing) {
+                const dose = pepData.dosing.typical_dose_mcg;
+                dosageDisplay = `${dose[0]}${dose[0] !== dose[1] ? `-${dose[1]}` : ''}mcg / ${pepData.dosing.frequency.toLowerCase()}`;
+              }
+              const vialDisplay = pepData?.dosing?.typical_vial_mg ? `${pepData.dosing.typical_vial_mg}mg vial` : "Varies by vendor";
+
+              const aminoUrl = `https://www.aminoclub.com/us/products/${pepSlug}?utm_source=affiliate_marketing&code=PEPTIDEX`;
+
+              return (
+                <div key={p.name} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/15 hover:border-emerald-500/30 transition-colors">
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-100">{p.name}</h3>
+                    <div className="flex items-center gap-3 mt-1.5 text-xs text-zinc-400">
+                      <span className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
+                        {dosageDisplay}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400/50" />
+                        {vialDisplay}
+                      </span>
+                    </div>
+                  </div>
+                  <a 
+                    href={aminoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 font-semibold text-sm transition-all sm:w-auto w-full"
+                  >
+                    Buy from Amino Club <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-zinc-900 to-zinc-950 border border-emerald-500/20 text-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
             
-            <ShoppingBag className="w-8 h-8 text-violet-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-zinc-100 mb-3">Source These Peptides</h2>
-            <p className="text-zinc-400 leading-relaxed max-w-lg mx-auto mb-8 text-[15px]">
-              Purchasing ultra-high purity, laboratory-grade peptides is critical for verifiable research. We only recommend vendors providing third-party HPLC Certificates of Analysis (COA). Look for "stack bundles" or individual components.
-            </p>
-            <Link 
-              href="/vendors" 
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-all shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40"
+            <a 
+              href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:brightness-110 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 text-lg w-full sm:w-auto relative z-10"
             >
-              View Trusted Vendors <ChevronRight className="w-4 h-4" />
-            </Link>
+              Order Full Stack <ArrowRight className="w-5 h-5" />
+            </a>
+
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-6 text-xs font-medium text-emerald-400/80 relative z-10">
+              <span>✓ Third-party COA tested</span>
+              <span className="hidden sm:inline">&middot;</span>
+              <span>✓ &ge;99% purity</span>
+              <span className="hidden sm:inline">&middot;</span>
+              <span>✓ US shipping</span>
+              <span className="hidden sm:inline">&middot;</span>
+              <span>✓ Editor's Choice 2026</span>
+            </div>
+
+            <p className="text-[10px] text-zinc-600 mt-6 max-w-lg mx-auto leading-relaxed relative z-10">
+              <strong>Disclosure:</strong> PeptiDex is reader-supported. When you purchase through links on our site, we may earn an affiliate commission at no additional cost to you. We only recommend vendors that provide verifiable third-party testing for purity.
+            </p>
           </div>
         </section>
 
