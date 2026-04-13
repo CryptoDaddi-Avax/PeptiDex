@@ -10,6 +10,9 @@ import {
 } from "lucide-react";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { QuizCardData } from "@/components/share-card/card-templates";
+import { aminoClubProductMapping } from "@/data/affiliates";
+import { ShoppingBag, ShieldCheck } from "lucide-react";
+import { getPeptideByName } from "@/data/peptides";
 
 /* ──────── Quiz Data ──────── */
 
@@ -335,9 +338,78 @@ export default function QuizPage() {
                             ))}
                         </div>
 
+                        {/* Source Your Stack */}
+                        {results.length > 0 && (
+                            <motion.div 
+                                initial={{ opacity: 0, y: 16 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="mt-8 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/20 relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+                                
+                                <div className="flex items-center justify-center gap-3 mb-4 relative z-10">
+                                    <ShoppingBag className="w-8 h-8 text-emerald-400" />
+                                </div>
+                                
+                                <h2 className="text-2xl font-bold text-zinc-100 mb-2 relative z-10 text-center">
+                                    Get started with your {results[0].stack.stack_name.replace('Stack', '').trim()} stack
+                                </h2>
+                                <p className="text-[15px] text-zinc-400 max-w-lg mx-auto mb-8 relative z-10 text-center leading-relaxed">
+                                    Sourcing is everything. Here are the exact products we recommend to confidently run your personalized protocol.
+                                </p>
+                                
+                                <div className="space-y-3 mb-8 relative z-10">
+                                    {results[0].stack.peptides.map(p => {
+                                        const fullPeptide = getPeptideByName(p.name);
+                                        const slug = fullPeptide?.slug || p.name.toLowerCase().replace(/\s+/g, '-');
+                                        const benefits = fullPeptide?.primary_benefits || p.role_in_stack;
+                                        
+                                        const baseSlug = aminoClubProductMapping[slug] || "https://aminoclub.com";
+                                        const ctaParams = baseSlug.includes("?") 
+                                            ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
+                                            : "?utm_source=affiliate_marketing&code=PEPTIDEX";
+                                        const affiliateUrl = `${baseSlug}${ctaParams}`;
+
+                                        return (
+                                            <div key={slug} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 gap-4 hover:border-emerald-500/30 transition-colors">
+                                                <div>
+                                                    <h4 className="font-bold text-zinc-200">{p.name}</h4>
+                                                    <p className="text-xs text-zinc-400 mt-1 line-clamp-1">{benefits}</p>
+                                                </div>
+                                                <a 
+                                                    href={affiliateUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center justify-center whitespace-nowrap gap-2 px-5 py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 font-semibold transition-colors text-sm border border-emerald-500/20 shrink-0"
+                                                >
+                                                    Buy from Amino Club <ArrowRight className="w-4 h-4" />
+                                                </a>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                
+                                <div className="relative z-10 space-y-4 pt-4 border-t border-zinc-800/50">
+                                    <a 
+                                        href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center w-full gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold transition-all shadow-lg hover:shadow-emerald-500/20 hover:brightness-110 text-base"
+                                    >
+                                        Order Full Stack from Amino Club <ArrowRight className="w-5 h-5" />
+                                    </a>
+                                    <div className="flex items-center justify-center gap-1.5 text-xs text-zinc-500 font-medium pb-2 text-center">
+                                        <ShieldCheck className="w-4 h-4 text-emerald-400/70" />
+                                        Amino Club — PeptiDex Editor's Choice 2026 · COA verified · 99%+ purity
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
                         {/* Share Card */}
                         {shareCardData && (
-                            <div className="mt-6 flex justify-center">
+                            <div className="mt-8 flex justify-center pb-4">
                                 <ShareModal
                                     data={shareCardData}
                                     shareUrl="https://peptidex.app/quiz"
