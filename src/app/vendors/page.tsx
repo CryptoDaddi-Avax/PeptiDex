@@ -129,22 +129,7 @@ export default function VendorsPage() {
                   <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
                 </td>
               </tr>
-              {/* Row 3 */}
-              <tr className="hover:bg-zinc-800/20 transition-colors">
-                <td className="px-6 py-4 font-bold text-zinc-100">Soma Chems</td>
-                <td className="px-6 py-4 text-zinc-400">30+ Compounds</td>
-                <td className="px-6 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
-                <td className="px-6 py-4 text-zinc-400">$$</td>
-                <td className="px-6 py-4">
-                  <div className="flex gap-0.5 text-amber-400 items-center">
-                    <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-zinc-700 text-zinc-700" />
-                    <span className="text-xs text-zinc-400 ml-2">4.4/5</span>
-                  </div>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <a href="https://somachems.com/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>
@@ -226,39 +211,7 @@ export default function VendorsPage() {
             </a>
           </div>
           
-          {/* Card 3: Soma Chems */}
-          <div className="flex flex-col rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8 shadow-xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-violet-500/20" />
-            <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-4 flex items-center gap-3 flex-wrap">
-              Soma Chems
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30">
-                <CheckCircle2 className="w-3 h-3"/> PeptiDex Verified
-              </span>
-            </h3>
-            <p className="text-base text-zinc-400 leading-relaxed mb-8 flex-grow">
-              Soma Chems has built a strong reputation in the independent research community for clean synthesis and transparent COA reporting. They specialise in core recovery and hormonal peptides, offering strong value for independent researchers who prioritise verified purity over brand recognition.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-zinc-800/50 pt-6">
-              <div>
-                <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-4 block">Pros</span>
-                <ul className="space-y-3">
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Transparent COA reporting</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Strong community reputation</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Good value pricing</li>
-                </ul>
-              </div>
-              <div>
-                <span className="text-xs font-bold text-amber-500 uppercase tracking-widest mb-4 block">Cons</span>
-                <ul className="space-y-3">
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> Smaller catalog</li>
-                  <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> Limited exotic or niche compounds</li>
-                </ul>
-              </div>
-            </div>
-            <a href="https://somachems.com/" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-600/25">
-              View Vendor <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+
 
         </div>
       </section>

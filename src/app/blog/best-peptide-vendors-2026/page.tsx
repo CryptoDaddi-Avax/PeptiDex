@@ -219,18 +219,7 @@ export default function BestPeptideVendors2026Page() {
                   <a href="https://swisschems.is?ref=PeptiDex" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold text-xs">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
                 </td>
               </tr>
-              {/* Soma Chems — #4 */}
-              <tr className="hover:bg-zinc-800/20 transition-colors">
-                <td className="px-5 py-4 font-bold text-zinc-100">Soma Chems</td>
-                <td className="px-5 py-4"><Stars rating={4.4} /></td>
-                <td className="px-5 py-4 text-emerald-400 font-semibold">≥98%</td>
-                <td className="px-5 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
-                <td className="px-5 py-4 text-zinc-300">3-6 days (US)</td>
-                <td className="px-5 py-4 text-zinc-300">$$</td>
-                <td className="px-5 py-4 text-right">
-                  <a href="https://somachems.com/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold text-xs">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>
@@ -323,21 +312,7 @@ export default function BestPeptideVendors2026Page() {
           </div>
         </div>
 
-        {/* Soma Chems */}
-        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
-          <div className="flex flex-wrap items-center gap-3 mb-3">
-            <h3 className="text-xl font-bold text-zinc-100">#4 — Soma Chems</h3>
-            <Stars rating={4.4} />
-          </div>
-          <p className="text-sm text-zinc-400 leading-relaxed mb-4">
-            Soma Chems is a solid budget option with transparent COA reporting and a focus on core recovery and hormonal peptides. Their catalog is more focused than larger competitors — they carry the essential compounds (BPC-157, TB-500, GH secretagogues) rather than niche peptides. Good value for researchers who know exactly what they need and prioritize verifiable purity over extensive selection.
-          </p>
-          <div className="flex gap-4 text-sm">
-            <span className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Budget-friendly</span>
-            <span className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Transparent COAs</span>
-            <span className="text-amber-400 flex items-center gap-1"><AlertTriangle className="w-3.5 h-3.5" /> Limited catalog</span>
-          </div>
-        </div>
+
       </section>
 
       {/* ─── HOW WE EVALUATE VENDORS ─── */}
