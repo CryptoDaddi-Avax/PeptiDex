@@ -10,8 +10,10 @@ import { SHORT_DISCLAIMER, EVIDENCE_SCALE } from "@/data/constants";
 import {
     GitCompare, ChevronDown, ShieldAlert, Clock, Syringe, Activity,
     Share2, Link2, Check, AlertTriangle, Layers, FlaskConical,
-    ArrowRight, Sparkles, X, Search, Beaker, ChevronRight, Zap
+    ArrowRight, Sparkles, X, Search, Beaker, ChevronRight, Zap,
+    ShoppingBag, ShieldCheck, Crown, ExternalLink
 } from "lucide-react";
+import { aminoClubProductMapping } from "@/data/affiliates";
 import { getCategoryIcon } from "@/data/category-icons";
 import { EmbedModal } from "@/components/embed-modal";
 import { ShareModal } from "@/components/share-card/share-modal";
@@ -946,6 +948,105 @@ function ComparePageInner() {
                             ))}
                         </ComparisonRow>
                     </div>
+
+                    {/* ── AFFILIATE CTA: SOURCE THESE PEPTIDES ── */}
+                    {compared.length >= 2 && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="mt-10 mb-6 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/20 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+                            
+                            <div className="flex items-center gap-3 mb-6 relative z-10">
+                                <ShoppingBag className="w-6 h-6 text-emerald-400" />
+                                <h2 className="text-xl md:text-2xl font-bold text-zinc-100">
+                                    Source These Peptides
+                                </h2>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 relative z-10">
+                                {(() => {
+                                    const evidenceScores: Record<string, number> = { "very-strong": 5, "strong": 4, "moderate-strong": 3, "moderate": 2, "preclinical": 1, "emerging": 1, "anecdotal": 0 };
+                                    let topScore = -1;
+                                    let topIndex = -1;
+                                    compared.forEach((p, i) => {
+                                        const ev = p.key_studies[0]?.evidence_level || "preclinical";
+                                        let score = evidenceScores[ev] || 0;
+                                        score += p.key_studies.length * 0.1;
+                                        if (score > topScore) { topScore = score; topIndex = i; }
+                                    });
+
+                                    return compared.map((p, i) => {
+                                        const baseSlug = aminoClubProductMapping[p.slug] || "https://aminoclub.com";
+                                        const ctaParams = baseSlug.includes("?") 
+                                            ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
+                                            : "?utm_source=affiliate_marketing&code=PEPTIDEX";
+                                        const affiliateUrl = `${baseSlug}${ctaParams}`;
+                                        
+                                        const isWinner = i === topIndex;
+
+                                        return (
+                                            <div key={p.slug} className={`flex flex-col p-5 rounded-xl border relative transition-colors ${isWinner ? 'bg-zinc-900/90 border-emerald-500/40 shadow-lg shadow-emerald-500/5' : 'bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/20'}`}>
+                                                {isWinner && (
+                                                    <div className="absolute -top-3 left-4 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-md">
+                                                        <Crown className="w-3 h-3" /> Top Rated
+                                                    </div>
+                                                )}
+                                                
+                                                <div className="flex-1 mb-4 pt-1">
+                                                    <h4 className="font-bold text-zinc-100 text-lg">{p.name}</h4>
+                                                    <p className="text-xs text-zinc-400 mt-1 pb-3 border-b border-zinc-800/60 line-clamp-2">
+                                                        <span className="text-emerald-400 font-semibold uppercase tracking-wider text-[10px] block mb-1">Key Strength</span>
+                                                        {isWinner ? `Strongest clinical evidence (${p.key_studies.length} studies)` : p.primary_benefits}
+                                                    </p>
+                                                </div>
+                                                
+                                                <a 
+                                                    href={affiliateUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all text-sm border ${isWinner ? 'bg-emerald-600 hover:bg-emerald-500 text-white border-transparent' : 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border-emerald-500/20'}`}
+                                                >
+                                                    Buy {p.name} <ArrowRight className="w-4 h-4" />
+                                                </a>
+                                            </div>
+                                        );
+                                    });
+                                })()}
+                            </div>
+                            
+                            <div className="relative z-10 pt-5 border-t border-zinc-800/50">
+                                <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+                                    <div>
+                                        <div className="flex items-center gap-1.5 text-sm text-zinc-200 font-semibold mb-1">
+                                            <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                                            All peptides available from Amino Club — PeptiDex Editor's Choice 2026
+                                        </div>
+                                        <p className="text-[11px] font-medium text-emerald-400/80 mb-2 flex flex-wrap items-center gap-2">
+                                            <span>✓ COA verified</span>
+                                            <span className="hidden sm:inline">·</span>
+                                            <span>✓ 99%+ purity</span>
+                                            <span className="hidden sm:inline">·</span>
+                                            <span>✓ US shipping</span>
+                                        </p>
+                                        <p className="text-[10px] text-zinc-600 italic">
+                                            <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases made through affiliate links. This does not affect our editorial independence or recommendations.
+                                        </p>
+                                    </div>
+                                    <a 
+                                        href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center shrink-0 gap-2 px-5 py-2.5 rounded-lg border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors text-xs font-semibold"
+                                    >
+                                        Visit Amino Club <ExternalLink className="w-3.5 h-3.5" />
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     {/* ── SHARE CTA ── */}
                     <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-5 text-center">
