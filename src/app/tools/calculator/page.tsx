@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { peptides } from "@/data/peptides";
 import { peptideBlends, PeptideBlend } from "@/data/blends";
 import { SHORT_DISCLAIMER } from "@/data/constants";
-import { Calculator, ShieldAlert, ChevronDown, Syringe, Droplets, FlaskConical } from "lucide-react";
+import { Calculator, ShieldAlert, ChevronDown, Syringe, Droplets, FlaskConical, ShoppingBag, ShieldCheck, ArrowRight, ExternalLink } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { EmbedModal } from "@/components/embed-modal";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { CalculatorCardData } from "@/components/share-card/card-templates";
+import { aminoClubProductMapping } from "@/data/affiliates";
 
 type SelectionType = "peptide" | "blend";
 
@@ -360,10 +361,120 @@ export default function CalculatorPage() {
                         <ShareModal
                             data={shareData}
                             shareUrl="https://peptidex.app/tools/calculator"
-                            shareText={`My ${pepName} dosage protocol — calculated on PeptiDex \uD83E\uDDEC`}
+                            shareText={`My ${pepName} dosage protocol — calculated on PeptiDex 🧪`}
                             buttonLabel="Share My Protocol"
                         />
                     </div>
+                );
+            })()}
+
+            {/* Source These Peptides Affiliate Block */}
+            {concentration && syringeUnits !== null && (() => {
+                const pepName = peptide?.name || blend?.name || "Peptide";
+                const slug = peptide?.slug || blend?.slug || "";
+                const vMg = parseFloat(vialMg) || 0;
+                const dMcg = parseFloat(desiredDoseMcg) || 0;
+                const dosesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
+                
+                // Estimate needed vials based on cycle
+                const getFrequencyMultiplier = (freq: string) => {
+                    const f = freq.toLowerCase();
+                    if (f.includes('daily')) return 7;
+                    if (f.includes('2x/week')) return 2;
+                    if (f.includes('5 on')) return 5;
+                    return 7;
+                };
+
+                let cycleLengthText = "";
+                let dosingEstimateText = "";
+
+                if (peptide?.dosing && dosesPerVial > 0) {
+                    const cycleLength = peptide.dosing.cycle_weeks?.[0] || 8;
+                    const dosesPerWeek = getFrequencyMultiplier(peptide.dosing.frequency || "daily");
+                    const totalDosesNeeded = dosesPerWeek * cycleLength;
+                    const neededVials = Math.ceil(totalDosesNeeded / dosesPerVial);
+                    
+                    dosingEstimateText = `Based on a ${cycleLength}-week cycle (${peptide.dosing.frequency}), you'll need approx. ${neededVials} vial${neededVials !== 1 ? 's' : ''}.`;
+                }
+
+                const baseSlug = aminoClubProductMapping[slug] || "https://aminoclub.com";
+                const ctaParams = baseSlug.includes("?") 
+                    ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
+                    : "?utm_source=affiliate_marketing&code=PEPTIDEX";
+                const affiliateUrl = `${baseSlug}${ctaParams}`;
+
+                return (
+                    <motion.div 
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="mb-8 p-6 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/20 relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+                        
+                        <div className="flex items-center gap-2 mb-4 relative z-10">
+                            <ShoppingBag className="w-5 h-5 text-emerald-400" />
+                            <h2 className="text-lg font-bold text-zinc-100">
+                                Need {pepName}?
+                            </h2>
+                        </div>
+                        
+                        <div className="relative z-10 grid gap-4 p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-emerald-500/20 transition-colors">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <h4 className="font-bold text-zinc-100 text-[15px]">Source COA-verified {pepName}</h4>
+                                    {dosingEstimateText && (
+                                        <p className="text-xs font-semibold text-emerald-400 mt-1">
+                                            {dosesPerVial} doses per vial. {dosingEstimateText}
+                                        </p>
+                                    )}
+                                </div>
+                                <a 
+                                    href={affiliateUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center shrink-0 w-full md:w-auto gap-2 px-5 py-2.5 rounded-xl font-bold transition-all text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-500/10"
+                                >
+                                    Buy from Amino Club <ArrowRight className="w-4 h-4" />
+                                </a>
+                            </div>
+                            
+                            <div className="pt-4 mt-2 border-t border-zinc-800 flex items-center flex-wrap gap-2 text-xs font-semibold">
+                                <span className="text-zinc-500">Also order:</span>
+                                <a 
+                                    href="https://aminoclub.com/us/products/bacteriostatic-water?utm_source=affiliate_marketing&code=PEPTIDEX"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
+                                >
+                                    Bacteriostatic Water <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
+                                </a>
+                                <a 
+                                    href="https://aminoclub.com/us/products/insulin-syringes?utm_source=affiliate_marketing&code=PEPTIDEX"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
+                                >
+                                    Insulin Syringes <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div className="mt-5 relative z-10">
+                            <div className="flex items-center gap-1.5 text-xs text-zinc-200 font-semibold mb-1">
+                                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                                Amino Club — PeptiDex Editor's Choice 2026
+                            </div>
+                            <p className="text-[10px] font-medium text-emerald-400/80 mb-2 flex items-center gap-2">
+                                <span>✓ COA verified</span>
+                                <span>·</span>
+                                <span>✓ 99%+ purity</span>
+                            </p>
+                            <p className="text-[10px] text-zinc-600 italic">
+                                <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases made through affiliate links.
+                            </p>
+                        </div>
+                    </motion.div>
                 );
             })()}
 
