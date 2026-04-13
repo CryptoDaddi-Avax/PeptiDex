@@ -531,62 +531,69 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
         )}
 
         {/* ═══════ VENDOR PRICING ═══════ */}
-        {(() => {
-          const pricing = pricingData.find(p => p.slug === peptide.slug);
-          return (
-            <section id="vendors">
-              <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-violet-500/20 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-violet-600/10 blur-[80px] rounded-full pointer-events-none" />
-                <div className="flex items-center gap-3 mb-4">
-                  <ShoppingBag className="w-6 h-6 text-violet-400" />
-                  <h2 className="text-xl font-bold text-zinc-100">Where to Source {peptide.name}</h2>
-                </div>
-                <p className="text-sm text-zinc-400 mb-6 max-w-lg">
-                  When sourcing research-grade peptides, independent third-party COA verification is non-negotiable.
-                </p>
-                {pricing ? (
-                  <div className="bg-zinc-950/80 rounded-xl border border-zinc-800/60 overflow-hidden">
-                    <div className="bg-zinc-900/40 p-4 border-b border-zinc-800/50 flex items-center justify-between">
-                      <span className="font-semibold text-zinc-200">{peptide.name} ({pricing.typical_vial_mg}mg)</span>
-                      <span className="text-xs uppercase font-bold tracking-wider text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded">Avg: ${pricing.avg_price_usd}</span>
-                    </div>
-                    <div className="divide-y divide-zinc-800/40">
-                      {pricing.vendors?.map((v, idx) => (
-                        <div key={idx} className="flex flex-col md:flex-row items-center justify-between p-4 md:px-6 hover:bg-zinc-800/20 transition-colors gap-4">
-                          <div className="flex items-center gap-3 w-full md:w-auto">
-                            <span className="w-2 h-2 rounded-full bg-violet-500 shrink-0" />
-                            <div>
-                              <p className="font-bold text-zinc-200">{v.vendor}</p>
-                              <p className="text-[10px] text-zinc-500 border border-zinc-700/50 inline-block px-1.5 rounded bg-zinc-800/30 mt-1">Verified COAs</p>
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
-                            <div className="text-left md:text-right">
-                              <p className="text-sm text-zinc-500">Price/Vial</p>
-                              <p className="text-lg font-bold text-zinc-100">${v.price_usd}</p>
-                            </div>
-                            <Link
-                              href={v.link}
-                              rel={v.link.startsWith('http') ? "nofollow noopener sponsored" : ""}
-                              target={v.link.startsWith('http') ? "_blank" : "_self"}
-                              className="px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-800 hover:bg-violet-600 text-zinc-200 hover:text-white transition-all border border-zinc-700 hover:border-violet-500 shrink-0"
-                            >
-                              Buy Now
-                            </Link>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+        {/* ═══════ SECTION 7: VENDOR AFFILIATE CTA ═══════ */}
+        <section id="vendors">
+          <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/20 relative overflow-hidden text-center">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+            
+            <div className="flex items-center justify-center gap-3 mb-4 relative z-10">
+              <ShoppingBag className="w-8 h-8 text-emerald-400" />
+            </div>
+            
+            <h2 className="text-2xl font-bold text-zinc-100 mb-3 relative z-10">Where to Source {peptide.name} for Research</h2>
+            <p className="text-[15px] text-zinc-400 max-w-lg mx-auto mb-8 relative z-10 leading-relaxed">
+              Purchasing ultra-high purity, laboratory-grade peptides is critical for verifiable research. We only recommend vendors providing independent, third-party HPLC Certificates of Analysis (COA).
+            </p>
+
+            {(() => {
+              // DATA-DRIVEN MAPPING INJECTED
+              const affiliateMapping: Record<string, string> = {
+                "bpc-157": "https://www.aminoclub.com/us/products/bpc-157",
+                "tb-500": "https://www.aminoclub.com/us/products/tb-500",
+                "ghk-cu": "https://www.aminoclub.com/us/products/ghk-cu",
+                "ipamorelin": "https://www.aminoclub.com/us/products/ipamorelin",
+                "cjc-1295": "https://www.aminoclub.com/us/products/cjc-1295",
+                "dsip": "https://www.aminoclub.com/us/products/dsip",
+                "pt-141": "https://www.aminoclub.com/us/products/pt-141",
+                "retatrutide": "https://www.aminoclub.com/us/products/retatrutide",
+                "semaglutide": "https://www.aminoclub.com/us/products/semaglutide",
+                "tirzepatide": "https://www.aminoclub.com/us/products/tirzepatide",
+                "thymosin-alpha-1": "https://www.aminoclub.com/us/products/thymosin-alpha-1",
+              };
+              
+              const baseSlug = affiliateMapping[peptide.slug] || "https://aminoclub.com";
+              const ctaParams = baseSlug.includes("?") 
+                ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
+                : "?utm_source=affiliate_marketing&code=PEPTIDEX";
+              const ctaUrl = `${baseSlug}${ctaParams}`;
+
+              return (
+                <div className="relative z-10">
+                  <a 
+                    href={ctaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:brightness-110 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 text-lg w-full sm:w-auto"
+                  >
+                    View COA-Verified {peptide.name} <ArrowRight className="w-5 h-5" />
+                  </a>
+
+                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-6 text-xs font-medium text-emerald-400/80">
+                    <span>✓ Third-party tested</span>
+                    <span className="hidden sm:inline">&middot;</span>
+                    <span>✓ US shipping</span>
+                    <span className="hidden sm:inline">&middot;</span>
+                    <span>✓ COA on every batch</span>
                   </div>
-                ) : (
-                  <Link href="/vendors" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-all shadow-lg">
-                    View Verified Vendors <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
-              </div>
-            </section>
-          );
-        })()}
+
+                  <p className="text-[10px] text-zinc-600 mt-6 max-w-lg mx-auto leading-relaxed">
+                    <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases. This does not affect our recommendations. We exclusively feature vendors that pass our strict quality verification protocols.
+                  </p>
+                </div>
+              );
+            })()}
+          </div>
+        </section>
 
         {/* ═══════ SECTION 8: FAQ ═══════ */}
         <section>
