@@ -195,11 +195,11 @@ export function LeadMagnetPopup({ source = "welcome_popup" }: Props) {
                                             <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Welcome Offer</span>
                                         </div>
 
-                                        <h2 className="text-2xl md:text-[28px] font-extrabold text-zinc-100 mb-2 leading-tight">
-                                            Get <span className="text-emerald-400">20% Off</span> Your First Peptide Order
+                                        <h2 className="text-2xl md:text-[26px] font-extrabold text-zinc-100 mb-3 leading-tight tracking-tight">
+                                            Join our Newsletter & receive <span className="text-emerald-400">20% off</span> your purchase from Amino Club!
                                         </h2>
                                         <p className="text-sm text-zinc-400 leading-relaxed mb-5">
-                                            Join the PeptiDex newsletter and receive an exclusive discount code for <span className="text-zinc-200 font-semibold">Amino Club</span> — our trusted, COA-verified peptide supplier.
+                                            Plus, get instant access to our <span className="text-zinc-200 font-semibold">2026 Peptide Stack Cheat Sheet</span> — featuring 12 research-backed stacks with exact dosages and cycle lengths.
                                         </p>
 
                                         {/* Benefits grid */}
