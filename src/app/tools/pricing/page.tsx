@@ -98,7 +98,6 @@ export default function PricingPage() {
                                         <div className="col-span-6 md:col-span-5 flex items-center gap-2">
                                             {v.vendor === "Ascension Peptides" && <span className="w-1.5 h-1.5 rounded-full bg-violet-500"></span>}
                                             {v.vendor === "Amino Club" && <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>}
-                                            {v.vendor === "Soma Chems" && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>}
                                             <span className="text-xs md:text-sm font-semibold text-zinc-300">{v.vendor}</span>
                                         </div>
                                         <div className="col-span-3 md:col-span-4 text-center">

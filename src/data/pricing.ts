@@ -52,7 +52,7 @@ export const pricingData: PeptidePricing[] = [
         price_range_usd: [29.99, 59.99],
         cost_per_dose_usd: 5.83,
         doses_per_vial: 8,
-        notes: "Amino Club is Combo; Soma/Ascension No DAC 5mg.",
+        notes: "Amino Club is Combo; Ascension offers No DAC 5mg.",
         vendors: [
             { vendor: "Ascension Peptides", price_usd: 50.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 59.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }
         ]
@@ -195,7 +195,7 @@ export const pricingData: PeptidePricing[] = [
         price_range_usd: [69.99, 149.99],
         cost_per_dose_usd: 22.00,
         doses_per_vial: 5,
-        notes: "Amino lists GLP-3 RT; Soma lists RETA.",
+        notes: "Amino lists GLP-3 RT.",
         vendors: [
             { vendor: "Ascension Peptides", price_usd: 110.00, in_stock: true, link: "https://ascensionpeptides.com/ref/PeptiDex/" }, { vendor: "Amino Club", price_usd: 69.99, in_stock: true, link: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" }
         ]
