@@ -17,7 +17,7 @@ import { generateCycleIcs } from "@/lib/ics-generator";
 import {
     ShieldAlert, Target, ChevronRight, ChevronDown, ChevronUp,
     ShoppingCart, Package, Syringe, Clock, Droplets, DollarSign,
-    ExternalLink, ArrowLeft, CheckCircle2, ToggleRight, ToggleLeft, Calendar,
+    ExternalLink, ArrowLeft, ArrowRight, CheckCircle2, ToggleRight, ToggleLeft, Calendar,
 } from "lucide-react";
 import { Goal, GoalId, Stack } from "@/data/types";
 import { ShareModal } from "@/components/share-card/share-modal";
@@ -188,6 +188,7 @@ export default function CyclePlannerPage() {
                         <div className="rounded-2xl border border-orange-500/20 bg-gradient-to-br from-orange-900/20 to-orange-950/10 p-4 mb-4">
                             <h2 className="text-base font-bold text-orange-300 mb-1">{selectedGoal?.icon} {selectedStack.stack_name}</h2>
                             <p className="text-xs text-zinc-400 leading-relaxed">{selectedStack.goal}</p>
+                            <p className="text-xs text-emerald-400/80 mt-2 font-medium">✨ All peptides in this stack are available from our recommended source, Amino Club.</p>
                         </div>
 
                         <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Toggle peptides for your cycle</h3>
@@ -389,90 +390,125 @@ export default function CyclePlannerPage() {
                             <p className="text-xs text-zinc-400">{selectedGoal?.icon} {selectedStack?.stack_name} — {shoppingList.maxCycleWeeks} Weeks</p>
                         </div>
 
-                        {/* Itemized Table */}
-                        <div className="rounded-2xl border border-zinc-700 bg-zinc-900/70 overflow-hidden mb-6">
-                            <table className="w-full text-left text-sm">
-                                <thead className="bg-zinc-800/80 border-b border-zinc-700 text-xs text-zinc-400 uppercase tracking-wider">
-                                    <tr>
-                                        <th className="px-4 py-3 font-semibold w-full">Item</th>
-                                        <th className="px-4 py-3 font-semibold text-center hidden sm:table-cell">Qty</th>
-                                        <th className="px-4 py-3 font-semibold text-right hidden sm:table-cell">Price</th>
-                                        <th className="px-4 py-3 font-semibold text-right whitespace-nowrap">Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-zinc-800/50">
-                                    {results.map(r => (
-                                        <tr key={r.peptideName} className="hover:bg-zinc-800/20 transition-colors">
-                                            <td className="px-4 py-3">
-                                                <div className="font-bold text-zinc-200">{r.peptideName} <span className="text-[10px] text-zinc-500 font-normal">({r.vialMg}mg)</span></div>
-                                                <div className="text-[10px] text-zinc-500 hide-on-print">{r.doseMcg}mcg {r.injectionsPerWeek}x/wk for {r.cycleWeeks}wks</div>
-                                            </td>
-                                            <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{r.vialsNeeded}</td>
-                                            <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${r.costPerVial?.toFixed(2)}</td>
-                                            <td className="px-4 py-3 text-right font-medium text-zinc-200">${r.totalCost?.toFixed(2)}</td>
-                                        </tr>
-                                    ))}
-                                    {includeSupplies && (
-                                        <>
-                                            <tr className="hover:bg-zinc-800/20 transition-colors">
-                                                <td className="px-4 py-3">
-                                                    <div className="font-bold text-zinc-200">BAC Water <span className="text-[10px] text-zinc-500 font-normal">(30ml)</span></div>
-                                                </td>
-                                                <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{shoppingList.supplies.bacWater.quantity}</td>
-                                                <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${shoppingList.supplies.bacWater.unitPrice.toFixed(2)}</td>
-                                                <td className="px-4 py-3 text-right font-medium text-zinc-200">${shoppingList.supplies.bacWater.subtotal.toFixed(2)}</td>
-                                            </tr>
-                                            <tr className="hover:bg-zinc-800/20 transition-colors">
-                                                <td className="px-4 py-3">
-                                                    <div className="font-bold text-zinc-200">Insulin Syringes <span className="text-[10px] text-zinc-500 font-normal">(100ct)</span></div>
-                                                </td>
-                                                <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{shoppingList.supplies.syringes.quantity}</td>
-                                                <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${shoppingList.supplies.syringes.unitPrice.toFixed(2)}</td>
-                                                <td className="px-4 py-3 text-right font-medium text-zinc-200">${shoppingList.supplies.syringes.subtotal.toFixed(2)}</td>
-                                            </tr>
-                                            <tr className="hover:bg-zinc-800/20 transition-colors">
-                                                <td className="px-4 py-3">
-                                                    <div className="font-bold text-zinc-200">Alcohol Swabs <span className="text-[10px] text-zinc-500 font-normal">(200ct)</span></div>
-                                                </td>
-                                                <td className="px-4 py-3 text-center text-zinc-300 hidden sm:table-cell">{shoppingList.supplies.swabs.quantity}</td>
-                                                <td className="px-4 py-3 text-right text-zinc-400 hidden sm:table-cell">${shoppingList.supplies.swabs.unitPrice.toFixed(2)}</td>
-                                                <td className="px-4 py-3 text-right font-medium text-zinc-200">${shoppingList.supplies.swabs.subtotal.toFixed(2)}</td>
-                                            </tr>
-                                        </>
-                                    )}
-                                </tbody>
-                                <tfoot className="bg-zinc-950/50 border-t-2 border-zinc-700">
-                                    <tr>
-                                        <td colSpan={3} className="px-4 py-4 text-right hidden sm:table-cell">
-                                            <div className="text-xs text-zinc-500 uppercase tracking-widest mb-1">Cost Per Week</div>
-                                            <div className="text-sm font-semibold text-zinc-400">${shoppingList.costPerWeek.toFixed(2)} / wk</div>
-                                        </td>
-                                        <td colSpan={1} className="px-4 py-4 text-right">
-                                            <div className="text-xs text-emerald-500 uppercase tracking-widest mb-1">Grand Total</div>
-                                            <div className="text-2xl font-black text-emerald-400">${shoppingList.grandTotal.toFixed(2)}</div>
-                                            <div className="text-xs font-semibold text-zinc-400 sm:hidden mt-1">${shoppingList.costPerWeek.toFixed(2)} / wk</div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                            {/* Mobile notice for pricing accuracy */}
-                            <div className="px-4 py-2 bg-zinc-900 border-t border-zinc-800 text-center hide-on-print">
-                                <p className="text-[9px] text-zinc-500">Prices are estimates based on default market averages and may vary.</p>
+                        <div className="space-y-3 mb-6">
+                            {results.map(r => {
+                                const pepSlug = r.peptideName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+                                const productUrl = `https://www.aminoclub.com/us/products/${pepSlug}?utm_source=affiliate_marketing&code=PEPTIDEX`;
+                                
+                                return (
+                                    <div key={r.peptideName} className="p-4 sm:p-5 rounded-2xl border border-zinc-800 bg-zinc-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hide-on-print-bg">
+                                        <div>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h3 className="text-base font-bold text-zinc-100">{r.peptideName}</h3>
+                                                <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-xs font-semibold text-orange-400">{r.vialsNeeded}x vials</span>
+                                            </div>
+                                            <p className="text-xs text-zinc-400">{r.vialMg}mg vial • {r.doseMcg}mcg {r.injectionsPerWeek}x/wk for {r.cycleWeeks}wks</p>
+                                            <p className="text-xs font-semibold text-zinc-300 mt-1 sm:hidden">Est. Total: ${r.totalCost?.toFixed(2)}</p>
+                                        </div>
+                                        <div className="flex flex-col sm:items-end gap-2 shrink-0">
+                                            <p className="text-sm font-bold text-zinc-200 hidden sm:block">${r.totalCost?.toFixed(2)} <span className="text-[10px] text-zinc-500 font-normal ml-1">est.</span></p>
+                                            <a 
+                                                href={productUrl}
+                                                target="_blank" rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs font-bold transition-colors w-full sm:w-auto"
+                                            >
+                                                Buy from Amino Club <ExternalLink className="w-3 h-3" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+
+                            {includeSupplies && (
+                                <>
+                                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-800 bg-zinc-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hide-on-print-bg">
+                                        <div>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h3 className="text-sm font-bold text-zinc-100">Bacteriostatic Water</h3>
+                                                <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-[10px] text-zinc-400">{shoppingList.supplies.bacWater.quantity}x 30ml</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col sm:items-end gap-2 shrink-0">
+                                            <p className="text-sm font-bold text-zinc-300 hidden sm:block">${shoppingList.supplies.bacWater.subtotal.toFixed(2)} <span className="text-[10px] text-zinc-500 font-normal ml-1">est.</span></p>
+                                            <a href="https://aminoclub.com/collections/accessories?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs font-semibold transition-colors w-full sm:w-auto">
+                                                Buy from Amino Club <ExternalLink className="w-3 h-3" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-800 bg-zinc-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hide-on-print-bg">
+                                        <div>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h3 className="text-sm font-bold text-zinc-100">Insulin Syringes</h3>
+                                                <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-[10px] text-zinc-400">{shoppingList.supplies.syringes.quantity}x Box</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col sm:items-end gap-2 shrink-0">
+                                            <p className="text-sm font-bold text-zinc-300 hidden sm:block">${shoppingList.supplies.syringes.subtotal.toFixed(2)} <span className="text-[10px] text-zinc-500 font-normal ml-1">est.</span></p>
+                                            <a href="https://aminoclub.com/collections/accessories?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs font-semibold transition-colors w-full sm:w-auto">
+                                                Buy from Amino Club <ExternalLink className="w-3 h-3" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-800 bg-zinc-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hide-on-print-bg">
+                                        <div>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h3 className="text-sm font-bold text-zinc-100">Alcohol Swabs</h3>
+                                                <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-[10px] text-zinc-400">{shoppingList.supplies.swabs.quantity}x Box</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col sm:items-end gap-2 shrink-0">
+                                            <p className="text-sm font-bold text-zinc-300 hidden sm:block">${shoppingList.supplies.swabs.subtotal.toFixed(2)} <span className="text-[10px] text-zinc-500 font-normal ml-1">est.</span></p>
+                                            <a href="https://aminoclub.com/collections/accessories?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs font-semibold transition-colors w-full sm:w-auto">
+                                                Buy from Amino Club <ExternalLink className="w-3 h-3" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+
+                        {/* Grand Total Box */}
+                        <div className="rounded-2xl bg-zinc-950 border border-zinc-800 p-5 mb-8 flex justify-between items-center hide-on-print-bg">
+                            <div>
+                                <div className="text-xs text-zinc-500 uppercase tracking-widest mb-1">Estimated Grand Total</div>
+                                <div className="text-2xl font-black text-emerald-400">${shoppingList.grandTotal.toFixed(2)}</div>
+                                <p className="text-[10px] text-zinc-600 mt-1 hide-on-print">Prices are estimates based on default market averages.</p>
+                            </div>
+                            <div className="text-right">
+                                <div className="text-xs text-zinc-500 uppercase tracking-widest mb-1">Prorated Cost</div>
+                                <div className="text-sm font-semibold text-zinc-400">${shoppingList.costPerWeek.toFixed(2)} / wk</div>
                             </div>
                         </div>
 
-                        {/* Affiliate CTA */}
-                        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-5 mb-5 text-center hide-on-print">
-                            <h3 className="text-base font-bold text-emerald-300 mb-2">Need to source these peptides?</h3>
-                            <p className="text-xs text-zinc-300 mb-4 px-4">Amino Club offers 99%+ pure, COA-verified peptides with fast US shipping. We independently verify their test results.</p>
+                        {/* Order Full Cycle CTA */}
+                        <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-zinc-900 to-zinc-950 border border-emerald-500/20 text-center relative overflow-hidden mb-6 hide-on-print">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+                            
+                            <h2 className="text-2xl font-bold text-zinc-100 mb-2 relative z-10">Ready to start?</h2>
+                            <p className="text-zinc-400 text-sm mb-6 relative z-10 max-w-md mx-auto">Purchase all peptides and supplies directly from Amino Club. Use code <span className="font-bold text-emerald-400">PEPTIDEX</span> at checkout to apply your 20% discount.</p>
+                            
                             <a 
-                                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" 
-                                target="_blank" rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-sm hover:brightness-110 hover:-translate-y-0.5 transition-all shadow-lg shadow-emerald-900/40"
+                                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:brightness-110 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 text-lg w-full relative z-10"
                             >
-                                Source this Cycle <ExternalLink className="w-4 h-4" />
+                                Order Full Cycle from Amino Club <ArrowRight className="w-5 h-5" />
                             </a>
-                            <p className="text-[10px] text-zinc-500 mt-3">Use code <span className="font-mono text-emerald-400 font-bold">PEPTIDEX</span> at checkout for 20% off.</p>
+
+                            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-6 text-xs font-medium text-emerald-400/80 relative z-10">
+                                <span>✓ COA-verified</span>
+                                <span className="hidden sm:inline">&middot;</span>
+                                <span>✓ 99%+ purity</span>
+                                <span className="hidden sm:inline">&middot;</span>
+                                <span>✓ Fast US shipping</span>
+                                <span className="hidden sm:inline">&middot;</span>
+                                <span>✓ PeptiDex Editor's Choice 2026</span>
+                            </div>
+
+                            <p className="text-[10px] text-zinc-600 mt-6 max-w-lg mx-auto leading-relaxed relative z-10">
+                                <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases. This does not affect our recommendations.
+                            </p>
                         </div>
                         
                         {/* Apple/Google Calendar Export Box */}
