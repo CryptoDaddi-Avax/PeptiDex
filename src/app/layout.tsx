@@ -13,6 +13,7 @@ import { Footer } from "@/components/footer";
 import { AutoLinkProvider } from "@/components/auto-link";
 import { LeadMagnetPopup } from "@/components/lead-magnet-popup";
 import { GlobalEmbedHandler } from "@/components/global-embed-handler";
+import { MobileSourcingBar } from "@/components/mobile-sourcing-bar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -144,6 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </AutoLinkProvider>
 
         <div id="site-lead-container"><LeadMagnetPopup source="global_exit_intent" /></div>
+        <div id="site-mobilesource-container"><MobileSourcingBar /></div>
         <div id="site-bottomnav-container"><BottomNav /></div>
         
         <Suspense fallback={null}>
