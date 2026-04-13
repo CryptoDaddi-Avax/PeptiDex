@@ -45,7 +45,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Both peptides have excellent safety profiles individually. The combination is the most widely used peptide stack. Not FDA-approved. Research-only.",
         dosing_notes: "Common protocol: BPC-157 250-500mcg + TB-500 2-5mg, injected SubQ 1-2x daily. BPC near injury site, TB-500 anywhere. Cycle 4-12 weeks.",
-        popular_vendors: ["Swiss Chems", "Peptide Sciences", "Limitless Life Nootropics"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Reduced inflammation and pain at injury site; improved mobility",
             week_2_4: "Significant tissue repair; noticeable reduction in swelling and stiffness",
@@ -70,7 +70,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "One of the safest GH peptide combinations. No significant cortisol or prolactin elevation. Not FDA-approved.",
         dosing_notes: "Inject together SubQ, pre-bed or morning fasted. CJC-1295 DAC: 2x/week. Mod GRF 1-29 (no DAC): 1-3x daily with Ipamorelin. Cycle 8-16 weeks.",
-        popular_vendors: ["Swiss Chems", "Peptide Sciences", "Paradigm Peptides"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Improved sleep depth; GH flush sensation; increased appetite",
             week_2_4: "Enhanced recovery and energy; early body composition changes",
@@ -95,7 +95,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "All three peptides have excellent individual safety profiles. Triple combination is popular among advanced users. Not FDA-approved.",
         dosing_notes: "BPC-157 250-500mcg + TB-500 2-5mg + GHK-Cu 200-500mcg. SubQ daily or split. Cycle 4-12 weeks. GHK-Cu also available topically.",
-        popular_vendors: ["Swiss Chems", "Limitless Life Nootropics"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Rapid reduction in inflammation; improved wound healing",
             week_2_4: "Visible tissue repair; improved skin quality from GHK-Cu",
@@ -120,7 +120,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Both approved in Russia. Excellent safety profiles. Non-addictive. Nasal spray administration.",
         dosing_notes: "Both administered as nasal sprays. Semax AM for focus, Selank AM/PM for anxiety. Can be used together or alternated. Cycle 4-12 weeks.",
-        popular_vendors: ["Cosmic Nootropic", "Science.bio", "Limitless Life Nootropics"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Rapid cognitive enhancement from Semax; anxiety relief from Selank within days",
             week_2_4: "Stable nootropic effects; improved stress resilience; better sleep onset",
@@ -145,7 +145,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "More aggressive than CJC/Ipa alone. GHRP-6 increases appetite and may raise cortisol slightly. Monitor blood glucose. Not FDA-approved.",
         dosing_notes: "Inject SubQ pre-bed or morning fasted. GHRP-6 adds hunger — useful for bulking. Cycle 8-16 weeks. More advanced protocol.",
-        popular_vendors: ["Swiss Chems", "Peptide Sciences"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Pronounced GH flush; increased appetite from GHRP-6; deeper sleep",
             week_2_4: "Rapid recovery; early lean mass gains; noticeable hunger increase",
@@ -170,7 +170,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Both peptides have excellent safety profiles. KPV can be taken orally for gut-specific effects. Not FDA-approved.",
         dosing_notes: "BPC-157 250-500mcg SubQ + KPV 200-500mcg orally or SubQ. KPV oral capsules target gut directly. Cycle 4-12 weeks.",
-        popular_vendors: ["Swiss Chems", "Limitless Life Nootropics", "Tailor Made Compounding"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Rapid reduction in gut inflammation; improved GI comfort",
             week_2_4: "Mucosal healing; reduced bloating and IBS/IBD symptoms",
@@ -195,7 +195,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Both well-tolerated. Epitalon cycles should be short (2-4 weeks, 2-3x/year). GHK-Cu can be used longer term.",
         dosing_notes: "Epitalon 10mg/day for 20 days, repeat 2-3x/year. GHK-Cu 200-500mcg daily ongoing. Both SubQ.",
-        popular_vendors: ["Swiss Chems", "Peptide Sciences"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_2_4: "Improved sleep quality and circadian rhythm; skin texture improvement",
             month_2_3: "Visible anti-aging effects; collagen synthesis from GHK-Cu; antioxidant upregulation",
@@ -219,7 +219,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Thymosin Alpha-1 approved in 35+ countries. Both peptides well-tolerated. Excellent safety profiles.",
         dosing_notes: "Tα1 1.6mg SubQ 2x/week + BPC-157 250-500mcg SubQ daily. Cycle 8-24 weeks. Ideal during cold/flu season or post-illness.",
-        popular_vendors: ["Swiss Chems", "Tailor Made Compounding"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Immune activation; NK cell and T-cell enhancement begins",
             week_2_4: "Improved immune response; gut healing supports immune function",
@@ -244,7 +244,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Both well-tolerated. SS-31 has been through multiple Phase 2/3 trials. MOTS-c has limited human data but is endogenous.",
         dosing_notes: "MOTS-c 5-10mg SubQ 3-5x/week (morning/pre-exercise). SS-31 5-10mg SubQ daily. Cycle 4-12 weeks.",
-        popular_vendors: ["Swiss Chems", "Peptide Sciences"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Improved insulin sensitivity; reduced exercise fatigue",
             week_2_4: "Enhanced exercise capacity; improved endurance and recovery",
@@ -269,7 +269,7 @@ export const peptideBlends: PeptideBlend[] = [
         ],
         safety_notes: "Both individually well-tolerated. Take together right before bed. Not FDA-approved.",
         dosing_notes: "Inject both SubQ 30 minutes before bed. Ipamorelin 200-300mcg + DSIP 100-300mcg. Cycle DSIP 2-4 weeks; Ipamorelin can run longer.",
-        popular_vendors: ["Swiss Chems", "Peptide Sciences"],
+        popular_vendors: ["Amino Club", "Ascension Peptides"],
         outcomes_timeline: {
             week_1: "Improved sleep onset and depth; enhanced GH release during sleep",
             week_2_4: "Restorative sleep; better recovery; potential pain modulation from DSIP",

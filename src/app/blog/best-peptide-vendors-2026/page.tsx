@@ -207,18 +207,7 @@ export default function BestPeptideVendors2026Page() {
                   <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold text-xs">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
                 </td>
               </tr>
-              {/* Swiss Chems — #3 */}
-              <tr className="hover:bg-zinc-800/20 transition-colors">
-                <td className="px-5 py-4 font-bold text-zinc-100">Swiss Chems</td>
-                <td className="px-5 py-4"><Stars rating={4.5} /></td>
-                <td className="px-5 py-4 text-emerald-400 font-semibold">≥98%</td>
-                <td className="px-5 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
-                <td className="px-5 py-4 text-zinc-300">5-10 days (Intl)</td>
-                <td className="px-5 py-4 text-zinc-300">$$</td>
-                <td className="px-5 py-4 text-right">
-                  <a href="https://swisschems.is?ref=PeptiDex" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold text-xs">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
-                </td>
-              </tr>
+
 
             </tbody>
           </table>
@@ -296,21 +285,7 @@ export default function BestPeptideVendors2026Page() {
           </div>
         </div>
 
-        {/* Swiss Chems */}
-        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
-          <div className="flex flex-wrap items-center gap-3 mb-3">
-            <h3 className="text-xl font-bold text-zinc-100">#3 — Swiss Chems</h3>
-            <Stars rating={4.5} />
-          </div>
-          <p className="text-sm text-zinc-400 leading-relaxed mb-4">
-            Swiss Chems is the strongest option for international researchers who need reliable delivery outside the US. Based in Europe with global shipping infrastructure, they maintain verified independent COAs and competitive pricing. The trade-off is transit time — international orders typically take 5-10 business days. Their product range covers most popular research compounds with consistent purity verification.
-          </p>
-          <div className="flex gap-4 text-sm">
-            <span className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Best for international</span>
-            <span className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Competitive pricing</span>
-            <span className="text-amber-400 flex items-center gap-1"><AlertTriangle className="w-3.5 h-3.5" /> Longer shipping</span>
-          </div>
-        </div>
+
 
 
       </section>
