@@ -8,7 +8,7 @@ import { peptides } from "@/data/peptides";
 import { stacks } from "@/data/stacks";
 import { GoalId } from "@/data/types";
 import { SHORT_DISCLAIMER } from "@/data/constants";
-import { Sparkles, ArrowRight, ShieldAlert } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldAlert, Crown, ShieldCheck, ExternalLink } from "lucide-react";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 
 export default function HomePage() {
@@ -121,17 +121,51 @@ export default function HomePage() {
       </motion.div>
 
       {/* Vendors Teaser */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mt-10 md:mt-12 p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-center">
-        <h2 className="text-xl md:text-2xl font-bold text-zinc-100 mb-3">Trusted Peptide Vendors, Sourcing Guide</h2>
-        <p className="text-sm md:text-[15px] text-zinc-400 leading-relaxed max-w-lg mx-auto mb-6">
-          Finding a reliable source for your laboratory is critical. We independently review and recommend the best peptide vendors who provide transparent, third-party Certificate of Analysis (COA) testing.
-        </p>
-        <button 
-          onClick={() => router.push('/vendors')}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-sm font-semibold transition-colors"
-        >
-          View Trusted Vendors <ArrowRight className="w-4 h-4" />
-        </button>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mt-10 md:mt-12">
+        <div className="p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-center mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-zinc-100 mb-3">Trusted Peptide Vendors</h2>
+          <p className="text-sm md:text-[15px] text-zinc-400 leading-relaxed max-w-lg mx-auto mb-6">
+            Finding a reliable source for your laboratory is critical. We independently review and recommend the best peptide vendors who provide transparent, third-party Certificate of Analysis (COA) testing.
+          </p>
+
+          {/* Editor's Choice Card */}
+          <div className="max-w-md mx-auto mb-6 p-[1px] rounded-2xl bg-gradient-to-b from-emerald-500/30 to-zinc-800">
+            <div className="bg-zinc-950 rounded-[15px] p-6 border border-emerald-500/10 shadow-xl shadow-emerald-500/5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-[10px] font-bold text-white uppercase tracking-wider mb-4 shadow-md">
+                <Crown className="w-3 h-3" /> Our #1 Rated Source for 2026
+              </div>
+              <h3 className="text-2xl font-extrabold text-white mb-1">Amino Club</h3>
+              <p className="text-xs text-emerald-400 font-semibold mb-4">4.9/5 — PeptiDex Rating</p>
+              
+              <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-[11px] text-zinc-300 font-medium mb-6">
+                <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> COA-verified</span>
+                <span className="hidden sm:inline text-zinc-700 font-black">·</span>
+                <span className="flex items-center gap-1"><Sparkles className="w-3.5 h-3.5 text-emerald-500" /> 99%+ purity</span>
+                <span className="hidden sm:inline text-zinc-700 font-black">·</span>
+                <span className="flex items-center gap-1"><ArrowRight className="w-3.5 h-3.5 text-emerald-500" /> Fast US shipping</span>
+              </div>
+
+              <a 
+                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 mb-3"
+              >
+                Visit Amino Club <ExternalLink className="w-4 h-4 text-emerald-200" />
+              </a>
+              <p className="text-[9px] text-zinc-500 italic">Disclosure: PeptiDex may earn a commission from purchases made through this link.</p>
+            </div>
+          </div>
+          
+          <div className="pt-4 border-t border-zinc-800/50">
+            <button 
+              onClick={() => router.push('/vendors')}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
+            >
+              Compare All Vendor Reviews <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
       </motion.div>
 
       {/* SEO Educational Block */}
