@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import HomeClient from './home-client';
+import NewHomeClient from './new-home-client';
 
 export const metadata: Metadata = {
   title: 'PeptiDex: Peptide Research, Stacks & Vendor Data Hub',
@@ -107,7 +107,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <HomeClient />
+      <NewHomeClient />
     </>
   );
 }

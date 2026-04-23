@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronRight, GitCompare, ArrowRight } from 'lucide-react';
+import { ChevronRight, GitCompare, ArrowRight, Store } from 'lucide-react';
+import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 
 export const metadata: Metadata = {
   title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptideX',
@@ -46,11 +47,22 @@ const COMPARISONS = [
   },
 ];
 
+const VENDOR_COMPARISONS = [
+  {
+    slug: 'amino-club-vs-ascension-peptides',
+    title: 'Amino Club vs Ascension Peptides',
+    subtitle: 'Side-by-side pricing, purity, and shipping — which vendor wins in 2026?',
+    tags: ['Vendor', 'Pricing', 'COA Verified'],
+    color: 'teal',
+  },
+];
+
 const COLOR_MAP: Record<string, { bg: string; border: string; text: string; badge: string }> = {
   violet: { bg: 'from-violet-900/20 to-zinc-900', border: 'border-violet-500/20 hover:border-violet-500/40', text: 'text-violet-400', badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30' },
   emerald: { bg: 'from-emerald-900/20 to-zinc-900', border: 'border-emerald-500/20 hover:border-emerald-500/40', text: 'text-emerald-400', badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
   blue: { bg: 'from-blue-900/20 to-zinc-900', border: 'border-blue-500/20 hover:border-blue-500/40', text: 'text-blue-400', badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30' },
   amber: { bg: 'from-amber-900/20 to-zinc-900', border: 'border-amber-500/20 hover:border-amber-500/40', text: 'text-amber-400', badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
+  teal: { bg: 'from-teal-900/20 to-zinc-900', border: 'border-teal-500/20 hover:border-teal-500/40', text: 'text-teal-400', badge: 'bg-teal-500/15 text-teal-300 border-teal-500/30' },
 };
 
 export default function CompareIndexPage() {
@@ -111,6 +123,43 @@ export default function CompareIndexPage() {
           );
         })}
       </div>
+
+      {/* Vendor Comparisons */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <Store className="w-5 h-5 text-teal-400" />
+          <h2 className="text-xl font-bold text-zinc-100">Vendor Comparisons</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {VENDOR_COMPARISONS.map((comp) => {
+            const colors = COLOR_MAP[comp.color];
+            return (
+              <Link
+                key={comp.slug}
+                href={`/compare/vendors/${comp.slug}`}
+                className={`block rounded-2xl bg-gradient-to-br ${colors.bg} border ${colors.border} p-6 transition-all group`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <Store className={`w-5 h-5 ${colors.text}`} />
+                  <h3 className={`text-lg font-bold text-zinc-100 group-hover:${colors.text} transition-colors`}>{comp.title}</h3>
+                </div>
+                <p className="text-sm text-zinc-400 mb-4">{comp.subtitle}</p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {comp.tags.map((tag) => (
+                    <span key={tag} className={`px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest ${colors.badge} rounded border`}>{tag}</span>
+                  ))}
+                </div>
+                <span className={`inline-flex items-center gap-1 text-xs font-semibold ${colors.text} group-hover:gap-2 transition-all`}>
+                  Compare vendors <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ═══════ RESEARCH CONTEXT SIDEBAR ═══════ */}
+      <ResearchContextSidebar />
 
       <section className="rounded-2xl bg-zinc-900/30 border border-zinc-800/50 p-6 space-y-3">
         <h2 className="text-lg font-bold text-zinc-100">About Our Comparisons</h2>

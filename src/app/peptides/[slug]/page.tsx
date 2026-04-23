@@ -4,16 +4,18 @@ import { notFound } from 'next/navigation';
 import { peptides, getPeptideBySlug } from '@/data/peptides';
 import { stacks } from '@/data/stacks';
 import { pricingData } from '@/data/pricing';
+import { vendorPricing } from '@/data/vendor-pricing';
 import {
   ShieldAlert, BookOpen, ChevronRight, ShoppingBag, Beaker, Layers,
   DollarSign, Activity, FlaskConical, Syringe, AlertTriangle, ArrowRight,
-  Calendar, GitCompare, HelpCircle, ExternalLink, Clock, FileText
+  Calendar, GitCompare, HelpCircle, ExternalLink, Clock, FileText, CheckCircle2
 } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import { RelatedPeptides } from '@/components/related-peptides';
 import { ShareBar } from '@/components/share-bar';
+import { COABadge } from '@/components/coa-badge-modal';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -252,6 +254,13 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
                   </div>
                 )}
               </dl>
+              <Link
+                href={`/learn/${peptide.slug}`}
+                className="flex items-center gap-2 px-3 py-2 mt-2 rounded-xl border border-blue-500/20 bg-blue-500/5 text-blue-400 text-xs font-semibold hover:bg-blue-500/10 transition-colors"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                Read Educational Guide
+              </Link>
             </div>
           </aside>
         </div>
@@ -566,6 +575,13 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
                 ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
                 : "?utm_source=affiliate_marketing&code=PEPTIDEX";
               const ctaUrl = `${baseSlug}${ctaParams}`;
+              
+              // Find the specific pricing data for this peptide
+              const pricingEntry = vendorPricing.find((vp) => vp.slug === peptide.slug);
+              // Pick the primary vendor or fallback to the first
+              const primaryVendor = pricingEntry?.vendors.find((v) => v.vendor === "Amino Club") || pricingEntry?.vendors[0];
+              
+              const hasCoa = Boolean(primaryVendor?.coaUrl || primaryVendor?.lastTestedDate);
 
               return (
                 <div className="relative z-10">
@@ -578,12 +594,22 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
                     View COA-Verified {peptide.name} <ArrowRight className="w-5 h-5" />
                   </a>
 
-                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-6 text-xs font-medium text-emerald-400/80">
-                    <span>✓ Third-party tested</span>
-                    <span className="hidden sm:inline">&middot;</span>
-                    <span>✓ US shipping</span>
-                    <span className="hidden sm:inline">&middot;</span>
-                    <span>✓ COA on every batch</span>
+                  <div className="flex flex-col items-center justify-center gap-3 mt-6">
+                    {hasCoa ? (
+                      <COABadge
+                        vendorName={primaryVendor?.vendor || "Vendor"}
+                        coaUrl={primaryVendor?.coaUrl}
+                        lastTestedDate={primaryVendor?.lastTestedDate}
+                      />
+                    ) : (
+                      <COABadge vendorName={primaryVendor?.vendor || "Vendor"} />
+                    )}
+
+                    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-zinc-400/80">
+                      <span>✓ Third-party tested</span>
+                      <span className="hidden sm:inline">&middot;</span>
+                      <span>✓ US shipping</span>
+                    </div>
                   </div>
 
                   <p className="text-[10px] text-zinc-600 mt-6 max-w-lg mx-auto leading-relaxed">

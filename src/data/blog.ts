@@ -21,7 +21,8 @@ export type BlogCategory =
   | 'Peptide Trends'
   | 'Science Explainers'
   | 'Industry Analysis'
-  | 'Regulatory Updates';
+  | 'Regulatory Updates'
+  | 'GH Peptide Analysis';
 
 export const BLOG_CATEGORIES: BlogCategory[] = [
   'Research News',
@@ -29,6 +30,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
   'Science Explainers',
   'Industry Analysis',
   'Regulatory Updates',
+  'GH Peptide Analysis',
 ];
 
 // Map old categories to new for backwards compatibility
@@ -45,6 +47,45 @@ function mapCategory(old: string): BlogCategory {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: 'Tesamorelin: What Sets It Apart from Every Other Growth Hormone Peptide',
+    slug: 'tesamorelin-growth-hormone-peptide-comparison',
+    excerpt: 'A deep-dive comparison of Tesamorelin vs Sermorelin, CJC-1295, Ipamorelin, and MK-677. Covers FDA approval, visceral fat specificity, clinical evidence, and who Tesamorelin is actually best suited for.',
+    category: 'GH Peptide Analysis',
+    datePublished: '2026-04-13',
+    dateModified: '2026-04-13',
+    author: 'PeptideX Editorial',
+    readingTime: '15 min read',
+    image: '/images/blog/tesamorelin_growth_hormone_comparison.png',
+    imageAlt: 'A single glowing amber peptide vial on a dark obsidian surface with GHRH molecular chain diagrams etched around it',
+    tags: ['tesamorelin', 'tesamorelin vs sermorelin', 'tesamorelin vs cjc-1295', 'tesamorelin vs ipamorelin', 'growth hormone peptides 2026', 'visceral fat reduction', 'gh peptide comparison', 'ghrh analogs', 'peptide therapy for fat loss', 'tesamorelin anti-aging'],
+  },
+  {
+    title: 'Peptide Stacking in 2026: Why Combination Protocols Are Redefining Results',
+    slug: 'peptide-stacking-2026-combination-protocols',
+    excerpt: 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and how to combine compounds effectively.',
+    category: 'Science Explainers',
+    datePublished: '2026-04-13',
+    dateModified: '2026-04-13',
+    author: 'PeptideX Editorial',
+    readingTime: '12 min read',
+    image: '/images/blog/peptide_stacking_2026_protocols.png',
+    imageAlt: 'Glowing translucent peptide vials arranged in an interlocking double-helix formation representing combination therapy stacking',
+    tags: ['peptide stacking', 'bpc-157 tb-500 stack', 'cjc-1295 ipamorelin combination', 'growth hormone peptides', 'peptide therapy protocols 2026', 'wolverine stack', 'longevity peptides', 'mots-c', 'semax selank', 'combination peptide therapy'],
+  },
+  {
+    title: 'The 2026 FDA Peptide Reclassification: What It Means for Patients, Providers, and the Future of Peptide Therapy',
+    slug: 'fda-peptide-reclassification-patients-providers',
+    excerpt: 'A comprehensive analysis of the 2026 FDA peptide reclassification — which 14 peptides are returning to Category 1, what it means for patients and providers, and how to navigate peptide therapy safely.',
+    category: 'Regulatory Updates',
+    datePublished: '2026-04-13',
+    dateModified: '2026-04-13',
+    author: 'PeptideX Editorial',
+    readingTime: '14 min read',
+    image: '/images/blog/fda_peptide_patients_providers.png',
+    imageAlt: 'FDA Peptide Reclassification 2026 — gavel with DNA helices and peptide vials representing regulatory change for patients and providers',
+    tags: ['peptide therapy 2026', 'fda peptide reclassification', 'bpc-157 legal status', 'peptide compounding', 'growth hormone peptides', 'peptide regulation', 'category 1 peptides', 'tb-500', 'cjc-1295', 'ipamorelin'],
+  },
   {
     title: 'Semaglutide vs Tirzepatide: Complete Research Comparison',
     slug: 'semaglutide-vs-tirzepatide',

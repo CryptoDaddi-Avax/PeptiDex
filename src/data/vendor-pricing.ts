@@ -11,6 +11,8 @@ export interface VendorPrice {
     inStock: boolean;
     affiliateUrl: string;
     badge?: "Best Price" | "Editor's Pick" | "Best for Intl";
+    coaUrl?: string; // Link to Certificate of Analysis
+    lastTestedDate?: string; // e.g. "April 2026"
 }
 
 export interface PeptideVendorPricing {
@@ -30,14 +32,18 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "badge": "Editor's Pick",
+                "coaUrl": "https://aminoclub.com/coa/bpc-157-latest.pdf",
+                "lastTestedDate": "2026-04-10"
             },
             {
                 "vendor": "Ascension Peptides",
                 "price_usd": 70,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+                "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/",
+                "coaUrl": "https://ascensionpeptides.com/coa/bpc157.pdf",
+                "lastTestedDate": "2026-03-24"
             }
         ]
     },

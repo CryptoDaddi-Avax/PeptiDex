@@ -113,6 +113,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/learn`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
   ];
 
   // Standard Blog Post Pages
@@ -142,5 +148,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls];
+  // Dynamic Learn (Educational Hub) Pages
+  const learnUrls = peptides.map((peptide) => ({
+    url: `${baseUrl}/learn/${peptide.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls, ...learnUrls];
 }

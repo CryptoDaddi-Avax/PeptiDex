@@ -5,6 +5,7 @@ import { ShoppingCart, ChevronDown, ChevronUp, ExternalLink, CheckCircle, Trendi
 import Link from "next/link";
 import { getVendorPricing } from "@/data/vendor-pricing";
 import { getPeptideBySlug } from "@/data/peptides";
+import { trackOutboundClick } from "@/lib/ga4-events";
 
 interface StackPeptide {
     name: string;
@@ -126,7 +127,8 @@ export function StackPriceAggregator({ peptides, stackName }: Props) {
                                                             <div className="flex items-center gap-2">
                                                                 <span className="text-sm font-bold text-zinc-100">${v.price_usd}</span>
                                                                 <a href={v.affiliateUrl} target="_blank" rel="noopener noreferrer"
-                                                                    className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-violet-500/15 border border-violet-500/25 text-[11px] font-semibold text-violet-300 hover:bg-violet-500/25 transition-colors">
+                                                                    onClick={() => trackOutboundClick(v.vendor, v.affiliateUrl, `stack_price_${p.name}`)}
+                                                                    className="flex items-center gap-1 px-3 py-2.5 min-h-[44px] rounded-lg bg-violet-500/15 border border-violet-500/25 text-[11px] font-semibold text-violet-300 hover:bg-violet-500/25 transition-colors">
                                                                     Buy <ExternalLink className="w-3 h-3" />
                                                                 </a>
                                                             </div>

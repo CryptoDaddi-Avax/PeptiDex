@@ -54,6 +54,18 @@ export default function BestPeptideVendors2026Page() {
     datePublished: DATE_PUB, dateModified: DATE_MOD,
   };
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Amino Club', url: 'https://aminoclub.com' },
+      { '@type': 'ListItem', position: 2, name: 'Ascension Peptides', url: 'https://ascensionpeptides.com' },
+      { '@type': 'ListItem', position: 3, name: 'Limitless Life', url: 'https://limitlesslifenootropics.com' },
+      { '@type': 'ListItem', position: 4, name: 'Core Peptides', url: 'https://corepeptides.com' },
+      { '@type': 'ListItem', position: 5, name: 'Swiss Chems', url: 'https://swisschems.com' },
+    ]
+  };
+
   const faqSchema = {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: [
@@ -80,6 +92,7 @@ export default function BestPeptideVendors2026Page() {
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
       <Breadcrumbs items={[
         { name: 'Home', url: 'https://peptidex.app/' },
@@ -119,6 +132,25 @@ export default function BestPeptideVendors2026Page() {
         <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/best-peptide-vendors-2026`} />
       </header>
 
+      {/* ─── QUICK SUMMARY ─── */}
+      <div className="bg-gradient-to-r from-violet-900/20 to-zinc-900/40 border-l-4 border-l-violet-500 border-y border-r border-zinc-800 rounded-lg p-6 my-8 shadow-xl">
+        <h2 className="text-xl font-bold text-zinc-100 flex items-center gap-2 mb-3">
+          <BookOpen className="w-5 h-5 text-violet-400" />
+          Quick Summary: Top 5 Vendors
+        </h2>
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded bg-zinc-800/80 text-zinc-300 text-xs font-semibold">
+          <Calendar className="w-3.5 h-3.5 text-violet-400" />
+          Last Updated: April 2026
+        </div>
+        <ul className="space-y-2 text-zinc-300 text-sm font-medium list-disc list-inside">
+          <li><strong>#1. Amino Club</strong> — Editor's Choice, ≥99% HPLC Purity</li>
+          <li><strong>#2. Ascension Peptides</strong> — Extensive 60+ Compound Catalog</li>
+          <li><strong>#3. Limitless Life Nootropics</strong> — Best for BPC-157 & Blends</li>
+          <li><strong>#4. Core Peptides</strong> — Solid US-Based Domestic Options</li>
+          <li><strong>#5. Swiss Chems</strong> — Good for Bulking/Oral Options</li>
+        </ul>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
           <div className="sticky top-24 rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 space-y-4 shadow-xl">
@@ -150,7 +182,7 @@ export default function BestPeptideVendors2026Page() {
           </p>
 
           {/* ─── COMPARISON TABLE ─── */}
-          <h2 id="comparison">2026 Vendor Comparison Table</h2>
+          <h2 id="comparison">2026 Vendor Comparison Table (Fastest Shipping & Highest Purity)</h2>
         </main>
         </AutoLink>
       </div>
@@ -214,7 +246,13 @@ export default function BestPeptideVendors2026Page() {
         </div>
       </section>
 
+      {/* ─── TOP 5 LISTICLE ─── */}
+      <ol itemScope itemType="https://schema.org/ItemList" className="list-none p-0 m-0 space-y-12">
+      
       {/* ─── AMINO CLUB DETAILED REVIEW (Editor's Choice) ─── */}
+      <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+        <meta itemProp="position" content="1" />
+        <meta itemProp="name" content="Amino Club" />
       <section id="amino-club" className="rounded-2xl border-2 border-violet-500/30 bg-gradient-to-br from-violet-900/10 to-zinc-900 p-6 md:p-10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-48 h-48 bg-violet-500/10 blur-[80px] rounded-full pointer-events-none" />
         <div className="relative z-10">
@@ -224,7 +262,7 @@ export default function BestPeptideVendors2026Page() {
             </span>
             <Stars rating={4.9} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-100 mb-4">Amino Club Review</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-100 mb-4">Amino Club Review: Highest Purity & Best Value GLP-1 Source</h2>
           <p className="text-lg text-zinc-300 leading-relaxed mb-6">
             Amino Club has earned our top recommendation for 2026 through a consistent track record of verified purity, transparent documentation, and reliable fulfillment. In an industry where trust is scarce, they&apos;ve built credibility by doing what most vendors won&apos;t: <strong>publishing batch-specific third-party COAs for every single product</strong> and inviting independent verification.
           </p>
@@ -264,10 +302,14 @@ export default function BestPeptideVendors2026Page() {
           </div>
         </div>
       </section>
+      </li>
 
       {/* ─── OTHER VENDOR REVIEWS ─── */}
+      <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+        <meta itemProp="position" content="2" />
+        <meta itemProp="name" content="Ascension Peptides" />
       <section id="other-vendors" className="space-y-8">
-        <h2 className="text-2xl font-bold text-zinc-100 border-b border-zinc-800 pb-4">Other Vendors Reviewed</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 border-b border-zinc-800 pb-4">Other Vendors Reviewed for Fastest Shipping</h2>
 
         {/* Ascension Peptides */}
         <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
@@ -284,11 +326,55 @@ export default function BestPeptideVendors2026Page() {
             <span className="text-amber-400 flex items-center gap-1"><AlertTriangle className="w-3.5 h-3.5" /> Premium pricing</span>
           </div>
         </div>
-
-
-
-
       </section>
+      </li>
+
+      {/* Limitless Life */}
+      <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+        <meta itemProp="position" content="3" />
+        <meta itemProp="name" content="Limitless Life Nootropics" />
+        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <h3 className="text-xl font-bold text-zinc-100">#3 — Limitless Life Nootropics</h3>
+            <Stars rating={4.6} />
+          </div>
+          <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+            Solid standing for established peptides. Offers an array of blends and standalone research chemicals. Reliable fulfillment but occasionally misses batch COAs on newer items.
+          </p>
+        </div>
+      </li>
+
+      {/* Core Peptides */}
+      <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+        <meta itemProp="position" content="4" />
+        <meta itemProp="name" content="Core Peptides" />
+        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <h3 className="text-xl font-bold text-zinc-100">#4 — Core Peptides</h3>
+            <Stars rating={4.4} />
+          </div>
+          <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+            Reliable selection with good domestic shipping. Has had mixed community reviews regarding customer service wait times, but testing remains within acceptable specifications.
+          </p>
+        </div>
+      </li>
+
+      {/* Swiss Chems */}
+      <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+        <meta itemProp="position" content="5" />
+        <meta itemProp="name" content="Swiss Chems" />
+        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <h3 className="text-xl font-bold text-zinc-100">#5 — Swiss Chems</h3>
+            <Stars rating={4.2} />
+          </div>
+          <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+            Best known for oral variants and PCT compounds. Peptide catalog is decent but lacks the independent verification rigor of Amino Club and Ascension Peptides.
+          </p>
+        </div>
+      </li>
+
+      </ol>
 
       {/* ─── HOW WE EVALUATE VENDORS ─── */}
       <section id="how-we-evaluate" className="bg-zinc-900/40 border border-zinc-800 rounded-3xl p-8 md:p-10 space-y-8">

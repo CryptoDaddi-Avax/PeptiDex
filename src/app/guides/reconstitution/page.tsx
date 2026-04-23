@@ -50,7 +50,7 @@ const steps = [
             "Invert the vial and slowly draw out the desired amount of BAC water",
             "Remove air bubbles by tapping the syringe gently",
         ],
-        tip: "Use our Dosage Calculator to determine the ideal reconstitution volume for your target dose.",
+        tip: "Use our Reconstitution Calculator to determine the ideal reconstitution volume for your target concentration.",
     },
     {
         number: 4,
@@ -246,7 +246,7 @@ export default function ReconstitutionGuidePage() {
                     href="/tools/calculator"
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-cyan-600 text-white text-sm font-semibold hover:brightness-110 transition-all"
                 >
-                    Full Dosage Calculator <ArrowRight className="w-4 h-4" />
+                    Full Reconstitution Calculator <ArrowRight className="w-4 h-4" />
                 </Link>
             </div>
         </div>

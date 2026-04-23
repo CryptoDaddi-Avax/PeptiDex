@@ -566,7 +566,7 @@ export default function IntroPage() {
                             <BookOpen className="w-4 h-4" /> Peptide Library
                         </Link>
                         <Link href="/tools/calculator" className="flex items-center justify-center gap-2 p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/50 text-zinc-300 hover:border-violet-500/40 hover:text-violet-300 transition-all">
-                            <FlaskConical className="w-4 h-4" /> Dosage Calculator
+                            <FlaskConical className="w-4 h-4" /> Reconstitution Calculator
                         </Link>
                         <Link href="/stacks" className="flex items-center justify-center gap-2 p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/50 text-zinc-300 hover:border-violet-500/40 hover:text-violet-300 transition-all">
                             <Flame className="w-4 h-4" /> Browse Stacks

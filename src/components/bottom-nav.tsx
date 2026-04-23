@@ -25,7 +25,7 @@ export function BottomNav() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className="relative flex flex-col items-center gap-0.5 py-1 px-3 min-w-[60px]"
+                            className="relative flex flex-col items-center justify-center gap-0.5 py-1.5 px-3 min-w-[60px] min-h-[44px]"
                             aria-label={item.label}
                             aria-current={isActive ? "page" : undefined}
                         >

@@ -33,7 +33,7 @@ export function StackCard({ stack, index = 0, isSaved, onSave, onRemove }: Stack
                     {onSave && onRemove && (
                         <button
                             onClick={() => isSaved ? onRemove(stack.stack_name) : onSave(stack)}
-                            className="p-2 rounded-xl hover:bg-zinc-800 transition-colors"
+                            className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl hover:bg-zinc-800 transition-colors"
                         >
                             {isSaved
                                 ? <BookmarkCheck className="w-5 h-5 text-violet-400" />

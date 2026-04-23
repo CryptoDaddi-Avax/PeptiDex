@@ -34,6 +34,7 @@ const CATEGORY_COLORS: Record<BlogCategory, { bg: string; text: string; border: 
   'Science Explainers': { bg: 'bg-blue-500/15', text: 'text-blue-300', border: 'border-blue-500/30' },
   'Industry Analysis': { bg: 'bg-amber-500/15', text: 'text-amber-300', border: 'border-amber-500/30' },
   'Regulatory Updates': { bg: 'bg-rose-500/15', text: 'text-rose-300', border: 'border-rose-500/30' },
+  'GH Peptide Analysis': { bg: 'bg-amber-500/15', text: 'text-amber-300', border: 'border-amber-500/30' },
 };
 
 export default function BlogIndexPage() {

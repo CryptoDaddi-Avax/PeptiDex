@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ShieldAlert, CheckCircle2, XCircle, ArrowRight, ExternalLink, Star, FlaskConical, AlertTriangle } from 'lucide-react';
+import { ShieldAlert, CheckCircle2, XCircle, ArrowRight, ExternalLink, Star, FlaskConical, AlertTriangle, Activity, Clock, BarChart3, Beaker } from 'lucide-react';
+import { COABadge } from '@/components/coa-badge-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { vendorProfiles } from '@/data/vendor-comparison';
+import { vendorPricing } from '@/data/vendor-pricing';
+import { ResearchContextSidebar } from '@/components/research-context-sidebar';
+import { VendorOutboundLink } from './vendor-outbound-link';
 
 // --- SEO METADATA ---
 export const metadata: Metadata = {
@@ -53,9 +58,48 @@ export default function VendorsPage() {
     ],
   };
 
+  // --- AggregateOffer Schema for Rich Snippets ---
+  const TOP_PEPTIDES = ['bpc-157', 'tb-500', 'ipamorelin', 'tesamorelin', 'ghk-cu'];
+  const aggregateOfferSchema = {
+    '@context': 'https://schema.org',
+    '@graph': TOP_PEPTIDES.map(slug => {
+      const pricing = vendorPricing.find(v => v.slug === slug);
+      if (!pricing || pricing.vendors.length === 0) return null;
+      const prices = pricing.vendors.filter(v => v.inStock).map(v => v.price_usd);
+      if (prices.length === 0) return null;
+      return {
+        '@type': 'Product',
+        name: `${pricing.name} Research Peptide`,
+        description: `Research-grade ${pricing.name} peptide for laboratory use. Compare prices from verified COA-tested vendors.`,
+        category: 'Research Chemical',
+        offers: {
+          '@type': 'AggregateOffer',
+          lowPrice: Math.min(...prices).toFixed(2),
+          highPrice: Math.max(...prices).toFixed(2),
+          priceCurrency: 'USD',
+          offerCount: prices.length,
+          availability: 'https://schema.org/InStock',
+        },
+      };
+    }).filter(Boolean),
+  };
+
+  // --- Article/Review Schema with dateModified ---
+  const reviewSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Best Peptide Vendors 2026 — Trusted Research-Grade Sources Reviewed',
+    datePublished: '2026-01-15',
+    dateModified: '2026-04-13',
+    author: { '@type': 'Organization', name: 'PeptiDex' },
+    publisher: { '@type': 'Organization', name: 'PeptiDex', url: 'https://peptidex.app' },
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateOfferSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
 
       {/* Top Disclaimer */}
       <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
@@ -69,12 +113,43 @@ export default function VendorsPage() {
 
       {/* Hero Section */}
       <section className="text-center space-y-6">
+        {/* Last Updated Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          <Clock className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-xs font-semibold text-emerald-400 tracking-wide">Last Updated: April 2026</span>
+        </div>
+
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-100 leading-tight">
-          Best Peptide Vendors 2026,<br/> <span className="text-violet-400">Trusted Research-Grade Sources Reviewed</span>
+          Best Peptide Vendors 2026,<br/> <span className="text-violet-400">Lab-Tested Research Sources &amp; Category 1 Compounding</span>
         </h1>
         <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl mx-auto">
-          Finding the <strong>best peptide vendor 2026</strong> requires more than just searching for low prices; it requires verifying strict <strong>COA testing</strong> protocols. Navigating the unregulated market means researchers must independently validate <strong>research-grade peptides</strong> for purity and molecular accuracy. Our comprehensive review compares the most <strong>trusted peptide sources</strong>, analyzing independent mass spectrometry reports, shipping reliability, and customer service to ensure your laboratory receives uncompromised biological compounds for your in vitro and in vivo studies.
+          Finding the <strong>best peptide vendor 2026</strong> requires more than just searching for low prices; it requires verifying strict <strong>COA testing</strong> protocols. Navigating the unregulated market and new restrictions regarding <strong>Category 1 Compounding</strong> means researchers must independently validate <strong>lab-tested research sources</strong> for purity and molecular accuracy. Our comprehensive review compares the most <strong>trusted peptide sources</strong>, analyzing independent mass spectrometry reports, shipping reliability, and customer service to ensure your laboratory receives uncompromised biological compounds for your in vitro and in vivo studies.
         </p>
+
+        {/* Quick Summary Strip */}
+        <div className="flex flex-wrap justify-center gap-3 pt-2">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-800">
+            <BarChart3 className="w-4 h-4 text-emerald-400" />
+            <div className="text-left">
+              <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">Best Value</p>
+              <p className="text-xs font-bold text-zinc-200">Amino Club</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-800">
+            <ArrowRight className="w-4 h-4 text-blue-400" />
+            <div className="text-left">
+              <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">Fastest Shipping</p>
+              <p className="text-xs font-bold text-zinc-200">2-4 Business Days</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-800">
+            <Beaker className="w-4 h-4 text-violet-400" />
+            <div className="text-left">
+              <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">Highest Purity</p>
+              <p className="text-xs font-bold text-zinc-200">99%+ HPLC Verified</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Comparison Table */}
@@ -101,7 +176,15 @@ export default function VendorsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-zinc-400">40+ Compounds</td>
-                <td className="px-6 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
+                <td className="px-6 py-4">
+                  <COABadge
+                    vendorName={vendorProfiles['amino-club'].name}
+                    coaUrl={vendorProfiles['amino-club'].coaUrl}
+                    lastTestedDate={vendorProfiles['amino-club'].lastTestedDate}
+                    testingMethods={vendorProfiles['amino-club'].testingMethods}
+                    purity={vendorProfiles['amino-club'].purity}
+                  />
+                </td>
                 <td className="px-6 py-4 text-zinc-400">$$</td>
                 <td className="px-6 py-4">
                   <div className="flex gap-0.5 text-amber-400 items-center">
@@ -110,14 +193,22 @@ export default function VendorsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold transition-colors">Visit <ExternalLink className="w-3 h-3" /></a>
+                  <VendorOutboundLink href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" vendorName="Amino Club" location="comparison_table" className="inline-flex items-center gap-1 px-4 py-2.5 min-h-[44px] rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold transition-colors">Visit <ExternalLink className="w-3 h-3" /></VendorOutboundLink>
                 </td>
               </tr>
               {/* Row 2 — Ascension Peptides */}
               <tr className="hover:bg-zinc-800/20 transition-colors">
                 <td className="px-6 py-4 font-bold text-zinc-100">Ascension Peptides</td>
                 <td className="px-6 py-4 text-zinc-400">60+ Compounds</td>
-                <td className="px-6 py-4"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></td>
+                <td className="px-6 py-4">
+                  <COABadge
+                    vendorName={vendorProfiles['ascension-peptides'].name}
+                    coaUrl={vendorProfiles['ascension-peptides'].coaUrl}
+                    lastTestedDate={vendorProfiles['ascension-peptides'].lastTestedDate}
+                    testingMethods={vendorProfiles['ascension-peptides'].testingMethods}
+                    purity={vendorProfiles['ascension-peptides'].purity}
+                  />
+                </td>
                 <td className="px-6 py-4 text-zinc-400">$$$</td>
                 <td className="px-6 py-4">
                   <div className="flex gap-0.5 text-amber-400 items-center">
@@ -126,7 +217,7 @@ export default function VendorsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="inline-flex items-center gap-1 text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></a>
+                  <VendorOutboundLink href="https://ascensionpeptides.com/ref/PeptiDex/" vendorName="Ascension Peptides" location="comparison_table" className="inline-flex items-center gap-1 px-4 py-2.5 min-h-[44px] text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></VendorOutboundLink>
                 </td>
               </tr>
 
@@ -137,7 +228,7 @@ export default function VendorsPage() {
 
       {/* Vendor Review Cards */}
       <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-zinc-100 border-b border-zinc-800 pb-4">Detailed Source Reviews</h2>
+        <h2 className="text-3xl font-bold text-zinc-100 border-b border-zinc-800 pb-4">Detailed Lab-Tested Research Sources Reviews</h2>
         <div className="grid grid-cols-1 gap-8">
           
           {/* Card 1: Amino Club (Editor's Choice) */}
@@ -148,9 +239,13 @@ export default function VendorsPage() {
               <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-violet-500/20 text-violet-300 rounded-md border border-violet-500/30">
                 Editor&apos;s Choice
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30">
-                <CheckCircle2 className="w-3 h-3"/> PeptiDex Verified
-              </span>
+              <COABadge
+                vendorName={vendorProfiles['amino-club'].name}
+                coaUrl={vendorProfiles['amino-club'].coaUrl}
+                lastTestedDate={vendorProfiles['amino-club'].lastTestedDate}
+                testingMethods={vendorProfiles['amino-club'].testingMethods}
+                purity={vendorProfiles['amino-club'].purity}
+              />
             </h3>
             <p className="text-base text-zinc-300 leading-relaxed mb-8 flex-grow">
               Amino Club has earned our #1 recommendation for 2026 through a consistent track record of verified purity, transparent batch-specific COA documentation, and reliable US fulfillment. Their catalog covers 40+ of the most in-demand research compounds — all backed by independent third-party HPLC and mass spectrometry testing. Competitive pricing, typically 15-30% below premium-tier competitors, makes them the best overall value in the market.</p>
@@ -173,9 +268,12 @@ export default function VendorsPage() {
                 </ul>
               </div>
             </div>
-            <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-600/25 text-lg">
-              Visit Amino Club <ArrowRight className="w-5 h-5" />
-            </a>
+            <VendorOutboundLink href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" vendorName="Amino Club" location="vendor_card_amino_club" className="w-full flex items-center justify-center gap-2 py-4 min-h-[48px] rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg hover:shadow-violet-600/25 text-lg">
+              Compare Prices at Amino Club <ArrowRight className="w-5 h-5" />
+            </VendorOutboundLink>
+            <VendorOutboundLink href={vendorProfiles['amino-club']?.coaUrl || "#"} vendorName="Amino Club" location="vendor_card_amino_club_coa" className="w-full flex items-center justify-center gap-2 py-3 min-h-[44px] rounded-xl bg-emerald-600/15 hover:bg-emerald-600/25 border border-emerald-500/30 text-emerald-400 font-semibold transition-all text-sm mt-2">
+              <Beaker className="w-4 h-4" /> View Lab Test Results (COA)
+            </VendorOutboundLink>
           </div>
 
           {/* Card 2: Ascension Peptides */}
@@ -183,9 +281,13 @@ export default function VendorsPage() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-violet-500/20" />
             <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-4 flex items-center gap-3 flex-wrap">
               Ascension Peptides 
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30">
-                <CheckCircle2 className="w-3 h-3"/> PeptiDex Verified
-              </span>
+              <COABadge
+                vendorName={vendorProfiles['ascension-peptides'].name}
+                coaUrl={vendorProfiles['ascension-peptides'].coaUrl}
+                lastTestedDate={vendorProfiles['ascension-peptides'].lastTestedDate}
+                testingMethods={vendorProfiles['ascension-peptides'].testingMethods}
+                purity={vendorProfiles['ascension-peptides'].purity}
+              />
             </h3>
             <p className="text-base text-zinc-400 leading-relaxed mb-8 flex-grow">
               Ascension Peptides has established itself as a premier destination for research-grade peptides, offering an extensive catalogue of 60+ verified compounds backed by rigorous third-party COA documentation. The premium pricing is the main trade-off — they position themselves at the top tier, which is justified by catalog breadth.</p>
@@ -206,9 +308,14 @@ export default function VendorsPage() {
                 </ul>
               </div>
             </div>
-            <a href="https://ascensionpeptides.com/ref/PeptiDex/" rel="nofollow noopener sponsored" className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-bold transition-all">
-              View Vendor <ArrowRight className="w-4 h-4" />
-            </a>
+            <VendorOutboundLink href="https://ascensionpeptides.com/ref/PeptiDex/" vendorName="Ascension Peptides" location="vendor_card_ascension" className="w-full flex items-center justify-center gap-2 py-4 min-h-[48px] rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-bold transition-all">
+              Compare Prices at Ascension <ArrowRight className="w-4 h-4" />
+            </VendorOutboundLink>
+            {vendorProfiles['ascension-peptides']?.coaUrl && (
+              <VendorOutboundLink href={vendorProfiles['ascension-peptides'].coaUrl} vendorName="Ascension Peptides" location="vendor_card_ascension_coa" className="w-full flex items-center justify-center gap-2 py-3 min-h-[44px] rounded-xl bg-emerald-600/15 hover:bg-emerald-600/25 border border-emerald-500/30 text-emerald-400 font-semibold transition-all text-sm mt-2">
+                <Beaker className="w-4 h-4" /> View Lab Test Results (COA)
+              </VendorOutboundLink>
+            )}
           </div>
           
 
@@ -262,6 +369,9 @@ export default function VendorsPage() {
         ))}
         
       </section>
+
+      {/* ═══════ RESEARCH CONTEXT SIDEBAR ═══════ */}
+      <ResearchContextSidebar />
 
       {/* Footer Internal Links & Affil disclaimer */}
       <footer className="pt-8 border-t border-zinc-800 space-y-6">

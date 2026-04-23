@@ -14,12 +14,16 @@ import { legalData, legalStatusColors, legalStatusLabels } from "@/data/legal-st
 import { PeptideFAQ } from "@/components/peptide-faq";
 import { RelatedArticles } from "@/components/related-articles";
 import { AffiliateSource } from "@/components/affiliate-source";
+import { StickyQuickCompare } from "@/components/sticky-quick-compare";
 
 export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Peptide; relatedStacks: Stack[] }) {
     const { saveStack, removeStack, isStackSaved } = useSavedStacks();
     const benefits = peptide.primary_benefits.split(",").map((b) => b.trim());
 
     return (
+        <>
+        {/* Sticky compare bar — rendered outside scrollable div so fixed positioning works correctly */}
+        <StickyQuickCompare peptideSlug={peptide.slug} peptideName={peptide.name} />
         <div className="max-w-2xl mx-auto px-4 py-6">
             <Link href="/library" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors mb-6">
                 <ArrowLeft className="w-4 h-4" /> Back to Library
@@ -187,6 +191,7 @@ export function PeptideDetailClient({ peptide, relatedStacks }: { peptide: Pepti
                 <LeadMagnetInline source={`library_${peptide.slug}`} />
             </div>
         </div>
+        </>
     );
 }
 

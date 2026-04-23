@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useTransition, useDeferredValue, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -19,18 +19,28 @@ export default function LibraryPage() {
     const router = useRouter();
     const [query, setQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
+    // Deferred values allow input to stay snappy while grid re-render catches up
+    const deferredQuery = useDeferredValue(query);
+    const deferredCategory = useDeferredValue(selectedCategory);
+    // Track whether this is the very first render — only stagger on initial mount
+    const isInitialMount = useRef(true);
 
     const featuredPeptides = useMemo(() =>
         FEATURED_SLUGS.map((slug) => peptides.find((p) => p.slug === slug)).filter(Boolean),
     []);
 
     const filtered = useMemo(() => {
-        let results = query ? searchPeptides(query) : peptides;
-        if (selectedCategory) {
-            results = results.filter((p) => p.category === selectedCategory);
+        let results = deferredQuery ? searchPeptides(deferredQuery) : peptides;
+        if (deferredCategory) {
+            results = results.filter((p) => p.category === deferredCategory);
         }
         return results;
-    }, [query, selectedCategory]);
+    }, [deferredQuery, deferredCategory]);
+
+    // After the first committed render, mark initial mount as done
+    // subsequent filter changes won't stagger
+    const isStaggered = isInitialMount.current;
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -127,15 +137,27 @@ export default function LibraryPage() {
                     type="text"
                     placeholder="Search peptides, benefits, categories..."
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-colors"
+                    onChange={(e) => {
+                        const val = e.target.value;
+                        // Update display immediately — deferred value handles the expensive re-render
+                        setQuery(val);
+                        // Mark that we are no longer on initial mount after first interaction
+                        isInitialMount.current = false;
+                    }}
+                    className={`w-full pl-11 pr-4 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-colors ${isPending ? 'opacity-70' : ''}`}
                 />
+                {isPending && (
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-violet-500/60 border-t-transparent animate-spin" />
+                )}
             </div>
 
             {/* Category Filter */}
             <div className="flex gap-2 overflow-x-auto pb-3 mb-6 scrollbar-hide">
                 <button
-                    onClick={() => setSelectedCategory(null)}
+                    onClick={() => startTransition(() => {
+                        setSelectedCategory(null);
+                        isInitialMount.current = false;
+                    })}
                     className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${!selectedCategory ? "bg-violet-500/20 text-violet-300 border border-violet-500/30" : "bg-zinc-900 text-zinc-400 border border-zinc-800"
                         }`}
                 >
@@ -144,7 +166,10 @@ export default function LibraryPage() {
                 {categories.map((cat) => (
                     <button
                         key={cat}
-                        onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+                        onClick={() => startTransition(() => {
+                            setSelectedCategory(selectedCategory === cat ? null : cat);
+                            isInitialMount.current = false;
+                        })}
                         className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors whitespace-nowrap ${selectedCategory === cat ? "bg-violet-500/20 text-violet-300 border border-violet-500/30" : "bg-zinc-900 text-zinc-400 border border-zinc-800"
                             }`}
                     >
@@ -153,10 +178,10 @@ export default function LibraryPage() {
                 ))}
             </div>
 
-            {/* Results */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {/* Results — opacity transitions during pending state give user immediate feedback */}
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 transition-opacity duration-150 ${isPending ? 'opacity-60' : 'opacity-100'}`}>
                 {filtered.map((peptide, i) => (
-                    <PeptideCard key={peptide.slug} peptide={peptide} index={i} />
+                    <PeptideCard key={peptide.slug} peptide={peptide} index={i} animate={isStaggered} />
                 ))}
             </div>
 

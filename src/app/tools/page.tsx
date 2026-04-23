@@ -28,8 +28,8 @@ const tools = [
         iconColor: "text-emerald-400",
         bgGradient: "from-emerald-600/20 to-emerald-800/10",
         borderColor: "border-emerald-500/30",
-        title: "Dosage Calculator",
-        description: "Calculate reconstitution volumes, syringe units, and dosing schedules for any peptide.",
+        title: "Reconstitution Calculator",
+        description: "Calculate solution concentrations and volumetric measurements for peptide reconstitution protocols.",
     },
     {
         href: "/tools/interactions",

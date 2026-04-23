@@ -8,8 +8,13 @@ import { peptides } from "@/data/peptides";
 import { stacks } from "@/data/stacks";
 import { GoalId } from "@/data/types";
 import { SHORT_DISCLAIMER } from "@/data/constants";
-import { Sparkles, ArrowRight, ShieldAlert, Crown, ShieldCheck, ExternalLink } from "lucide-react";
+import {
+  Sparkles, ArrowRight, ShieldAlert, Crown, ShieldCheck, ExternalLink,
+  GraduationCap, Store, Beaker, BarChart3, BookOpen, FlaskConical,
+  CheckCircle2, Search, Zap
+} from "lucide-react";
 import { NewsletterSignup } from "@/components/newsletter-signup";
+import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
 
 export default function HomePage() {
   const router = useRouter();
@@ -20,7 +25,6 @@ export default function HomePage() {
     const slug = mainStack.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     return `/stacks/${slug}`;
   }
-
 
   // Collect all unique studies
   const totalStudies = peptides.reduce((acc, p) => acc + p.key_studies.length, 0);
@@ -40,7 +44,12 @@ export default function HomePage() {
           33% { transform: translate(30px, -20px) scale(1.1); }
           66% { transform: translate(-20px, 15px) scale(0.95); }
         }
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); }
+          50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); }
+        }
       `}</style>
+
       {/* Disclaimer */}
       <div className="rounded-xl md:rounded-2xl bg-amber-950/25 border border-amber-500/20 p-2.5 md:p-3 mb-4 md:mb-6">
         <div className="flex items-start gap-2">
@@ -50,7 +59,7 @@ export default function HomePage() {
       </div>
 
       {/* Hero */}
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8 md:mb-12">
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-6 md:mb-10">
         <div className="inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 md:py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-3 md:mb-5">
           <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-violet-400" />
           <span className="text-[11px] md:text-xs font-medium text-violet-300">Research-backed peptide education</span>
@@ -59,12 +68,76 @@ export default function HomePage() {
           Research-Grade Peptide Education, Stacks & Trusted Vendor Sourcing
         </h1>
         <p className="text-[13px] md:text-[15px] text-zinc-400 max-w-2xl mx-auto leading-relaxed px-2 md:px-0">
-          PeptiDex is your independent research hub for peptide education. Explore 33 <strong className="text-zinc-300 font-medium">research peptides</strong>, 12 expert-curated <strong className="text-zinc-300 font-medium">peptide stacks</strong>, and 140+ peer-reviewed studies. Whether you're researching recovery, fat loss, or longevity, find the right peptide protocols and <strong className="text-zinc-300 font-medium">trusted vendors</strong>, all in one place. For educational purposes only.
+          PeptiDex is your independent research hub for peptide education. Explore 33 <strong className="text-zinc-300 font-medium">research peptides</strong>, 12 expert-curated <strong className="text-zinc-300 font-medium">peptide stacks</strong>, and 140+ peer-reviewed studies.
         </p>
       </motion.div>
 
+      {/* ═══════ QUICK ACTION BAR ═══════ */}
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="flex flex-wrap gap-2 justify-center mb-8">
+        <Link
+          href="/vendors"
+          onClick={() => trackCTAClick("Compare Prices", "/vendors")}
+          className="flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-xl bg-emerald-600/15 border border-emerald-500/30 text-emerald-400 text-sm font-semibold hover:bg-emerald-600/25 transition-all"
+        >
+          <BarChart3 className="w-4 h-4" /> Compare Prices
+        </Link>
+        <Link
+          href="/library"
+          onClick={() => trackCTAClick("Browse Library", "/library")}
+          className="flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-xl bg-violet-600/15 border border-violet-500/30 text-violet-400 text-sm font-semibold hover:bg-violet-600/25 transition-all"
+        >
+          <Search className="w-4 h-4" /> Browse Library
+        </Link>
+        <Link
+          href="/quiz"
+          onClick={() => trackCTAClick("Find Your Stack", "/quiz")}
+          className="flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-xl bg-pink-600/15 border border-pink-500/30 text-pink-400 text-sm font-semibold hover:bg-pink-600/25 transition-all"
+        >
+          <Zap className="w-4 h-4" /> Find Your Stack
+        </Link>
+      </motion.div>
+
+      {/* ═══════ TWO PATHS SECTION ═══════ */}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
+        {/* Path 1: Learn */}
+        <Link href="/learn" className="group block p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-blue-900/5 hover:border-blue-500/40 transition-all">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <GraduationCap className="w-5 h-5 text-blue-400" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-zinc-100">I want to learn</h3>
+              <p className="text-xs text-zinc-500">Educational Hub</p>
+            </div>
+          </div>
+          <ul className="space-y-2 text-sm text-zinc-400">
+            <li className="flex items-center gap-2"><BookOpen className="w-3.5 h-3.5 text-blue-400" /> Peptide 101 Guides</li>
+            <li className="flex items-center gap-2"><FlaskConical className="w-3.5 h-3.5 text-blue-400" /> Evidence Dashboard</li>
+            <li className="flex items-center gap-2"><Beaker className="w-3.5 h-3.5 text-blue-400" /> Clinical Studies</li>
+          </ul>
+        </Link>
+
+        {/* Path 2: Source */}
+        <Link href="/vendors" className="group block p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-600/10 to-emerald-900/5 hover:border-emerald-500/40 transition-all">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+              <Store className="w-5 h-5 text-emerald-400" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-zinc-100">I want to source</h3>
+              <p className="text-xs text-zinc-500">Commercial Tools</p>
+            </div>
+          </div>
+          <ul className="space-y-2 text-sm text-zinc-400">
+            <li className="flex items-center gap-2"><BarChart3 className="w-3.5 h-3.5 text-emerald-400" /> Vendor Price Comparison</li>
+            <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> COA-Verified Sources</li>
+            <li className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Lab Purity Reports</li>
+          </ul>
+        </Link>
+      </motion.div>
+
       {/* Beginners Guide CTA */}
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.05 }} className="mb-12 max-w-xl mx-auto px-2">
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="mb-10 max-w-xl mx-auto px-2">
         <Link href="/beginners-guide" className="block relative group overflow-hidden rounded-2xl p-[1px]">
           <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-orange-500 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative flex flex-col md:flex-row items-center gap-4 bg-zinc-950/90 backdrop-blur-xl rounded-[15px] p-5 border border-white/5 group-hover:bg-zinc-900/90 transition-colors">
@@ -75,7 +148,7 @@ export default function HomePage() {
               <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-1">New to Peptides?</h3>
               <p className="text-sm text-zinc-400">Read our Complete Beginner's Guide on reconstitution, pinning, and supplies.</p>
             </div>
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 group-hover:bg-violet-500/20 text-zinc-400 group-hover:text-violet-300 transition-colors mt-2 md:mt-0">
+            <div className="flex items-center justify-center w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-white/5 group-hover:bg-violet-500/20 text-zinc-400 group-hover:text-violet-300 transition-colors mt-2 md:mt-0">
               <ArrowRight className="w-5 h-5" />
             </div>
           </div>
@@ -83,17 +156,17 @@ export default function HomePage() {
       </motion.div>
 
       {/* Goal Selector Header */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-5">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="text-center mb-5">
         <h2 className="text-xl md:text-2xl font-bold text-zinc-100">What are your health goals?</h2>
       </motion.div>
 
-      {/* Goal Chips */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex flex-wrap gap-2 md:gap-2.5 justify-center mb-6 md:mb-10 px-1 md:px-0">
+      {/* Goal Chips — min 44px height */}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-wrap gap-2 md:gap-2.5 justify-center mb-6 md:mb-10 px-1 md:px-0">
         {goals.map((goal) => (
           <Link
             key={goal.id} 
             href={getGoalStackRoute(goal)}
-            className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-xl border transition-all text-sm md:text-base border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-violet-300"
+            className="flex items-center gap-2 px-3 py-2.5 md:px-4 md:py-2.5 min-h-[44px] rounded-xl border transition-all text-sm md:text-base border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-violet-300"
           >
             <span className="text-lg">{goal.icon}</span>
             <span className="font-semibold">{goal.label}</span>
@@ -120,7 +193,7 @@ export default function HomePage() {
         ))}
       </motion.div>
 
-      {/* Vendors Teaser */}
+      {/* ═══════ VENDORS TEASER — Action-Oriented ═══════ */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mt-10 md:mt-12">
         <div className="p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-center mb-4">
           <h2 className="text-xl md:text-2xl font-bold text-zinc-100 mb-3">Trusted Peptide Vendors</h2>
@@ -129,7 +202,7 @@ export default function HomePage() {
           </p>
 
           {/* Editor's Choice Card */}
-          <div className="max-w-md mx-auto mb-6 p-[1px] rounded-2xl bg-gradient-to-b from-emerald-500/30 to-zinc-800">
+          <div className="max-w-md mx-auto mb-6 p-[1px] rounded-2xl bg-gradient-to-b from-emerald-500/30 to-zinc-800" style={{ animation: 'pulse-glow 3s ease-in-out infinite' }}>
             <div className="bg-zinc-950 rounded-[15px] p-6 border border-emerald-500/10 shadow-xl shadow-emerald-500/5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-[10px] font-bold text-white uppercase tracking-wider mb-4 shadow-md">
                 <Crown className="w-3 h-3" /> Our #1 Rated Source for 2026
@@ -139,31 +212,43 @@ export default function HomePage() {
               
               <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-[11px] text-zinc-300 font-medium mb-6">
                 <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> COA-verified</span>
-                <span className="hidden sm:inline text-zinc-700 font-black">·</span>
+                <span className="hidden sm:inline text-zinc-700 font-black">&middot;</span>
                 <span className="flex items-center gap-1"><Sparkles className="w-3.5 h-3.5 text-emerald-500" /> 99%+ purity</span>
-                <span className="hidden sm:inline text-zinc-700 font-black">·</span>
+                <span className="hidden sm:inline text-zinc-700 font-black">&middot;</span>
                 <span className="flex items-center gap-1"><ArrowRight className="w-3.5 h-3.5 text-emerald-500" /> Fast US shipping</span>
               </div>
 
+              {/* Two action buttons instead of one */}
               <a 
                 href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 mb-3"
+                onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX", "home_hero_card")}
+                className="flex items-center justify-center gap-2 w-full py-3.5 min-h-[48px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 mb-2"
               >
-                Visit Amino Club <ExternalLink className="w-4 h-4 text-emerald-200" />
+                Compare Prices <ExternalLink className="w-4 h-4 text-emerald-200" />
               </a>
-              <p className="text-[9px] text-zinc-500 italic">Disclosure: PeptiDex may earn a commission from purchases made through this link.</p>
+              <a
+                href="https://aminoclub.com/coa/bpc-157-latest.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com/coa/bpc-157-latest.pdf", "home_hero_coa")}
+                className="flex items-center justify-center gap-2 w-full py-2.5 min-h-[44px] rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 text-sm font-semibold transition-all"
+              >
+                <Beaker className="w-4 h-4" /> View Lab Test Results (COA)
+              </a>
+              <p className="text-[9px] text-zinc-500 italic mt-3">Disclosure: PeptiDex may earn a commission from purchases made through this link.</p>
             </div>
           </div>
           
           <div className="pt-4 border-t border-zinc-800/50">
-            <button 
-              onClick={() => router.push('/vendors')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
+            <Link 
+              href="/vendors"
+              onClick={() => trackCTAClick("Compare All Vendor Reviews", "/vendors")}
+              className="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
             >
               Compare All Vendor Reviews <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </Link>
           </div>
         </div>
       </motion.div>

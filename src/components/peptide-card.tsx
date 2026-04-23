@@ -24,14 +24,15 @@ function EvidenceBadge({ level }: { level: EvidenceLevel }) {
 
 export { EvidenceBadge };
 
-export function PeptideCard({ peptide, index = 0 }: { peptide: Peptide; index?: number }) {
+export function PeptideCard({ peptide, index = 0, animate = true }: { peptide: Peptide; index?: number; animate?: boolean }) {
     const benefits = peptide.primary_benefits.split(",").map((b) => b.trim()).slice(0, 2);
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            // Only stagger on initial mount — skip animation during filter/search changes for instant INP
+            initial={animate ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.04, duration: 0.3 }}
+            transition={animate ? { delay: index * 0.04, duration: 0.3 } : { duration: 0 }}
         >
             <Link href={`/library/${peptide.slug}`} className="block group">
                 <div className="relative overflow-hidden rounded-xl md:rounded-2xl border border-zinc-800 bg-zinc-900/80 backdrop-blur-sm p-4 md:p-5 transition-all duration-300 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-500/5 hover:-translate-y-0.5">

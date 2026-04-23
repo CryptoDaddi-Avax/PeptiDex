@@ -1,15 +1,16 @@
 "use client";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
 import { peptideBlends, PeptideBlend } from "@/data/blends";
 import { SHORT_DISCLAIMER } from "@/data/constants";
-import { Calculator, ShieldAlert, ChevronDown, Syringe, Droplets, FlaskConical, ShoppingBag, ShieldCheck, ArrowRight, ExternalLink } from "lucide-react";
+import { Calculator, ShieldAlert, ChevronDown, Droplets, FlaskConical, ShoppingBag, ShieldCheck, ArrowRight, ExternalLink, Info, Beaker, GraduationCap, TestTubeDiagonal } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { EmbedModal } from "@/components/embed-modal";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { CalculatorCardData } from "@/components/share-card/card-templates";
 import { aminoClubProductMapping } from "@/data/affiliates";
+import { trackOutboundClick } from "@/lib/ga4-events";
 
 type SelectionType = "peptide" | "blend";
 
@@ -22,9 +23,10 @@ export default function CalculatorPage() {
     const [selection, setSelection] = useState<Selection | null>(null);
     const [vialMg, setVialMg] = useState("");
     const [bacWaterMl, setBacWaterMl] = useState("");
-    const [desiredDoseMcg, setDesiredDoseMcg] = useState("");
+    const [targetConcentrationMcg, setTargetConcentrationMcg] = useState("");
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [showMathTooltip, setShowMathTooltip] = useState(false);
 
     const peptide = useMemo(() =>
         selection?.type === "peptide" ? peptides.find((p) => p.slug === selection.slug) : null,
@@ -39,24 +41,31 @@ export default function CalculatorPage() {
     const selectedName = peptide ? `${getCategoryIcon(peptide.category)} ${peptide.name}` : blend ? `${getCategoryIcon(blend.category)} ${blend.name}` : null;
 
     // Parse first mcg value from blend's typical_ratio (e.g. "BPC-157 500mcg + TB-500 2.5mg")
-    function parseBlendDose(blend: PeptideBlend): number | null {
+    function parseBlendConcentration(blend: PeptideBlend): number | null {
         const match = blend.typical_ratio.match(/(\d+(?:\.\d+)?)\s*mcg/i);
         return match ? parseFloat(match[1]) : null;
     }
 
+    // Reconstitution concentration: total mcg in vial / diluent volume
     const concentration = useMemo(() => {
         const v = parseFloat(vialMg);
         const w = parseFloat(bacWaterMl);
         if (!v || !w || w === 0) return null;
-        return (v * 1000) / w; // mcg per ml
+        return (v * 1000) / w; // mcg per mL
     }, [vialMg, bacWaterMl]);
 
-    const syringeUnits = useMemo(() => {
-        const dose = parseFloat(desiredDoseMcg);
-        if (!concentration || !dose) return null;
-        const ml = dose / concentration;
-        return Math.round(ml * 100); // 100-unit insulin syringe
-    }, [concentration, desiredDoseMcg]);
+    // Volume to dispense for the target concentration
+    const dispenseMl = useMemo(() => {
+        const target = parseFloat(targetConcentrationMcg);
+        if (!concentration || !target) return null;
+        return target / concentration;
+    }, [concentration, targetConcentrationMcg]);
+
+    // Tick units on a graduated 1mL pipette (100 graduations)
+    const graduatedUnits = useMemo(() => {
+        if (dispenseMl === null) return null;
+        return Math.round(dispenseMl * 100);
+    }, [dispenseMl]);
 
     const selectPeptide = (slug: string) => {
         setSelection({ type: "peptide", slug });
@@ -66,7 +75,7 @@ export default function CalculatorPage() {
         if (p?.dosing) {
             if (p.dosing.typical_vial_mg) setVialMg(String(p.dosing.typical_vial_mg));
             if (p.dosing.reconstitution_ml) setBacWaterMl(String(p.dosing.reconstitution_ml));
-            setDesiredDoseMcg(String(p.dosing.typical_dose_mcg[0]));
+            setTargetConcentrationMcg(String(p.dosing.typical_dose_mcg[0]));
         }
     };
 
@@ -76,10 +85,8 @@ export default function CalculatorPage() {
         setSearchQuery("");
         const b = peptideBlends.find((x) => x.slug === slug);
         if (b) {
-            // Try to parse dose from typical_ratio
-            const dose = parseBlendDose(b);
-            if (dose) setDesiredDoseMcg(String(dose));
-            // Reset vial/water — blends vary
+            const conc = parseBlendConcentration(b);
+            if (conc) setTargetConcentrationMcg(String(conc));
             setVialMg("");
             setBacWaterMl("");
         }
@@ -102,6 +109,7 @@ export default function CalculatorPage() {
 
     return (
         <div className="max-w-2xl mx-auto px-3 py-4 md:px-4 md:py-6">
+            {/* Research-Only Disclaimer */}
             <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-2.5 mb-4">
                 <div className="flex items-start gap-2">
                     <ShieldAlert className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 mt-0.5" />
@@ -109,26 +117,87 @@ export default function CalculatorPage() {
                 </div>
             </div>
 
+            {/* Lab Context Banner */}
+            <div className="rounded-xl bg-blue-950/20 border border-blue-500/15 p-3 mb-4">
+                <div className="flex items-start gap-2">
+                    <Beaker className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <p className="text-[10px] md:text-[11px] text-blue-300/80 leading-relaxed">
+                        <strong className="text-blue-300">Laboratory Use Only.</strong> This tool calculates reconstitution concentrations for research-grade lyophilized peptides. All values are intended for in-vitro and authorized laboratory applications only. Not for human or animal use.
+                    </p>
+                </div>
+            </div>
+
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                     <div>
                         <div className="flex items-center gap-2 mb-1">
-                            <Calculator className="w-5 h-5 text-emerald-400" />
-                            <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Dosage Calculator</h1>
+                            <FlaskConical className="w-5 h-5 text-emerald-400" />
+                            <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Reconstitution & Concentration Calculator</h1>
                         </div>
-                        <p className="text-xs md:text-sm text-zinc-400">Calculate reconstitution and syringe units for peptides &amp; blends</p>
+                        <p className="text-xs md:text-sm text-zinc-400">Calculate solution concentrations and volumetric measurements for peptide reconstitution</p>
                     </div>
                     <div>
-                        <EmbedModal title="Peptide Dosage Calculator" path="/tools/calculator" />
+                        <EmbedModal title="Peptide Reconstitution Calculator" path="/tools/calculator" />
                     </div>
                 </div>
             </motion.div>
 
-            {/* Peptide / Blend Selector */}
+            {/* ═══════ DILUTION MATH TOOLTIP ═══════ */}
+            <div className="mb-6">
+                <button
+                    onClick={() => setShowMathTooltip(!showMathTooltip)}
+                    className="flex items-center gap-2 px-3 py-2.5 min-h-[44px] rounded-xl border border-zinc-700 bg-zinc-900/50 text-xs font-semibold text-zinc-300 hover:border-blue-500/40 hover:bg-blue-500/5 transition-all w-full"
+                >
+                    <GraduationCap className="w-4 h-4 text-blue-400" />
+                    <span>How Peptide Dilution Math Works</span>
+                    <Info className="w-3.5 h-3.5 ml-auto text-zinc-500" />
+                </button>
+                <AnimatePresence>
+                    {showMathTooltip && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className="mt-2 rounded-xl bg-zinc-900/80 border border-blue-500/20 p-5">
+                                <h3 className="text-sm font-bold text-blue-300 mb-3 flex items-center gap-2">
+                                    <TestTubeDiagonal className="w-4 h-4" /> Reconstitution Science
+                                </h3>
+                                <div className="space-y-3 text-xs text-zinc-400 leading-relaxed">
+                                    <div className="p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 font-mono text-center">
+                                        <p className="text-emerald-400 font-bold text-sm mb-1">Concentration (mcg/mL) = Peptide Mass (mg) × 1000 ÷ Diluent Volume (mL)</p>
+                                    </div>
+                                    <p>
+                                        <strong className="text-zinc-300">Step 1 — Reconstitution:</strong> A lyophilized peptide arrives as a freeze-dried powder. Adding bacteriostatic water (BAC water) dissolves the peptide into a homogenous solution. The ratio of peptide mass to diluent volume determines the <em>solution concentration</em>.
+                                    </p>
+                                    <p>
+                                        <strong className="text-zinc-300">Step 2 — Concentration Calculation:</strong> Example: A 5mg vial reconstituted with 2mL of BAC water produces a solution with a concentration of <span className="text-emerald-400 font-semibold">2,500 mcg/mL</span> (5 × 1000 ÷ 2).
+                                    </p>
+                                    <div className="p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 font-mono text-center">
+                                        <p className="text-emerald-400 font-bold text-sm mb-1">Volume to Dispense (mL) = Target Amount (mcg) ÷ Concentration (mcg/mL)</p>
+                                    </div>
+                                    <p>
+                                        <strong className="text-zinc-300">Step 3 — Volumetric Measurement:</strong> To dispense a specific amount of peptide, divide the target amount by the solution concentration. Example: To dispense 250 mcg from a 2,500 mcg/mL solution, measure <span className="text-emerald-400 font-semibold">0.10 mL</span> (250 ÷ 2,500).
+                                    </p>
+                                    <p>
+                                        <strong className="text-zinc-300">Step 4 — Graduated Pipette Reading:</strong> On a standard 1mL graduated pipette with 100 tick marks, each tick = 0.01 mL. So 0.10 mL = <span className="text-emerald-400 font-semibold">10 tick marks</span>.
+                                    </p>
+                                    <p className="text-[10px] text-zinc-500 italic mt-2 pt-2 border-t border-zinc-800">
+                                        All calculations are based on standard C₁V₁ = C₂V₂ dilution principles. Always verify concentrations with HPLC or mass spectrometry for critical research applications.
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+
+            {/* Compound Selector */}
             <div className="relative mb-6">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Select Peptide or Blend</label>
+                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Select Research Compound</label>
                 <button onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-sm text-zinc-200 hover:border-emerald-500/40 transition-colors">
+                    className="w-full flex items-center justify-between px-4 py-3 min-h-[44px] rounded-xl border border-zinc-700 bg-zinc-900 text-sm text-zinc-200 hover:border-emerald-500/40 transition-colors">
                     <span>{selectedName || "Choose a peptide or blend..."}</span>
                     <ChevronDown className={`w-4 h-4 text-zinc-500 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
                 </button>
@@ -138,7 +207,7 @@ export default function CalculatorPage() {
                         <div className="sticky top-0 bg-zinc-900 border-b border-zinc-800 p-2">
                             <input
                                 type="text"
-                                placeholder="Search peptides & blends..."
+                                placeholder="Search compounds..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 autoFocus
@@ -155,7 +224,7 @@ export default function CalculatorPage() {
                                 {filteredPeptides.map((p) => (
                                     <button key={p.slug} onClick={() => selectPeptide(p.slug)}
                                         className={`w-full text-left px-4 py-2.5 text-sm transition-colors border-b border-zinc-800/50 last:border-0 ${selection?.type === "peptide" && selection.slug === p.slug ? "bg-emerald-500/15 text-emerald-300" : "text-zinc-200 hover:bg-emerald-500/10"}`}>
-                                        {getCategoryIcon(p.category)} {p.name} <span className="text-zinc-500 text-xs ml-1">({p.dosing?.route})</span>
+                                        {getCategoryIcon(p.category)} {p.name}
                                     </button>
                                 ))}
                             </>
@@ -188,19 +257,22 @@ export default function CalculatorPage() {
             {/* Input Fields */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 <div>
-                    <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Vial Size (mg)</label>
+                    <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Lyophilized Mass (mg)</label>
                     <input type="number" value={vialMg} onChange={(e) => setVialMg(e.target.value)} placeholder="e.g. 5"
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                        className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                    <p className="text-[9px] text-zinc-600 mt-1">Total peptide content per vial</p>
                 </div>
                 <div>
-                    <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">BAC Water (ml)</label>
+                    <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Diluent Volume (mL)</label>
                     <input type="number" value={bacWaterMl} onChange={(e) => setBacWaterMl(e.target.value)} placeholder="e.g. 2"
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                        className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                    <p className="text-[9px] text-zinc-600 mt-1">BAC water or sterile water volume</p>
                 </div>
                 <div>
-                    <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Desired Dose (mcg)</label>
-                    <input type="number" value={desiredDoseMcg} onChange={(e) => setDesiredDoseMcg(e.target.value)} placeholder="e.g. 250"
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                    <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 block">Target Amount (mcg)</label>
+                    <input type="number" value={targetConcentrationMcg} onChange={(e) => setTargetConcentrationMcg(e.target.value)} placeholder="e.g. 250"
+                        className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                    <p className="text-[9px] text-zinc-600 mt-1">Desired amount of peptide to dispense</p>
                 </div>
             </div>
 
@@ -214,32 +286,34 @@ export default function CalculatorPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <p className="text-xs text-zinc-500 mb-1">Concentration</p>
-                                <p className="text-xl font-bold text-emerald-400">{Math.round(concentration).toLocaleString()} mcg/ml</p>
+                                <p className="text-xs text-zinc-500 mb-1">Solution Concentration</p>
+                                <p className="text-xl font-bold text-emerald-400">{Math.round(concentration).toLocaleString()} mcg/mL</p>
                             </div>
-                            {syringeUnits !== null && (
+                            {dispenseMl !== null && (
                                 <div>
-                                    <p className="text-xs text-zinc-500 mb-1">Syringe Units (U-100)</p>
-                                    <p className="text-xl font-bold text-emerald-400">{syringeUnits} IU</p>
-                                    <p className="text-[10px] text-zinc-500 mt-0.5">= {(syringeUnits / 100).toFixed(2)} ml</p>
+                                    <p className="text-xs text-zinc-500 mb-1">Volume to Dispense</p>
+                                    <p className="text-xl font-bold text-emerald-400">{dispenseMl.toFixed(3)} mL</p>
+                                    {graduatedUnits !== null && (
+                                        <p className="text-[10px] text-zinc-500 mt-0.5">= {graduatedUnits} graduated units (1mL pipette)</p>
+                                    )}
                                 </div>
                             )}
                         </div>
                     </div>
 
-                    {/* Visual Syringe */}
-                    {syringeUnits !== null && syringeUnits <= 100 && (
+                    {/* Visual Graduated Pipette */}
+                    {graduatedUnits !== null && graduatedUnits <= 100 && (
                         <div className="rounded-2xl bg-zinc-900/60 border border-emerald-500/20 p-5">
                             <div className="flex items-center gap-2 mb-4">
-                                <Syringe className="w-4 h-4 text-emerald-400" />
-                                <span className="text-sm font-semibold text-emerald-300">Visual Syringe Guide</span>
-                                <span className="ml-auto text-xs text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded-full">U-100 Insulin Syringe</span>
+                                <TestTubeDiagonal className="w-4 h-4 text-emerald-400" />
+                                <span className="text-sm font-semibold text-emerald-300">Visual Pipette Guide</span>
+                                <span className="ml-auto text-xs text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded-full">1mL Graduated Pipette</span>
                             </div>
 
-                            {/* SVG Syringe */}
+                            {/* SVG Graduated Pipette */}
                             <div className="relative w-full overflow-x-auto">
                                 <svg viewBox="0 0 480 110" className="w-full max-w-lg mx-auto" preserveAspectRatio="xMidYMid meet">
-                                    {/* Needle */}
+                                    {/* Pipette tip */}
                                     <rect x="14" y="47" width="26" height="16" rx="2" fill="#a1a1aa" />
                                     <polygon points="14,51 14,59 4,55" fill="#a1a1aa" />
 
@@ -247,15 +321,15 @@ export default function CalculatorPage() {
                                     <rect x="40" y="35" width="360" height="40" rx="6" fill="#18181b" stroke="#3f3f46" strokeWidth="1.5" />
 
                                     {/* Liquid fill */}
-                                    <clipPath id="syringeClip">
+                                    <clipPath id="pipetteClip">
                                         <rect x="41" y="36" width="358" height="38" rx="5" />
                                     </clipPath>
                                     <motion.rect
                                         x="41" y="36" height="38" rx="5"
                                         fill="url(#liquidGrad)"
-                                        clipPath="url(#syringeClip)"
+                                        clipPath="url(#pipetteClip)"
                                         initial={{ width: 0 }}
-                                        animate={{ width: (Math.min(Math.max(syringeUnits, 0), 100) / 100) * 358 }}
+                                        animate={{ width: (Math.min(Math.max(graduatedUnits, 0), 100) / 100) * 358 }}
                                         transition={{ duration: 0.8, ease: "easeOut" }}
                                     />
                                     <defs>
@@ -287,7 +361,7 @@ export default function CalculatorPage() {
                                     {/* Plunger */}
                                     <motion.g
                                         initial={{ x: 0 }}
-                                        animate={{ x: (Math.min(Math.max(syringeUnits, 0), 100) / 100) * 358 }}
+                                        animate={{ x: (Math.min(Math.max(graduatedUnits, 0), 100) / 100) * 358 }}
                                         transition={{ duration: 0.8, ease: "easeOut" }}
                                     >
                                         <rect x="399" y="30" width="8" height="50" rx="2" fill="#52525b" />
@@ -295,10 +369,10 @@ export default function CalculatorPage() {
                                         <rect x="439" y="36" width="8" height="38" rx="2" fill="#27272a" />
                                     </motion.g>
 
-                                    {/* Dose callout */}
-                                    <rect x="160" y="13" width="160" height="22" rx="6" fill="#065f46" fillOpacity="0.8" />
+                                    {/* Measurement callout */}
+                                    <rect x="150" y="13" width="180" height="22" rx="6" fill="#065f46" fillOpacity="0.8" />
                                     <text x="240" y="28" textAnchor="middle" fontSize="11" fill="#34d399" fontWeight="bold">
-                                        {`Draw to ${syringeUnits} units`}
+                                        {`Measure to ${graduatedUnits} units (${dispenseMl!.toFixed(2)} mL)`}
                                     </text>
 
                                     {/* Arrow pointing to the level */}
@@ -308,9 +382,9 @@ export default function CalculatorPage() {
                                         transition={{ delay: 0.9 }}
                                     >
                                         <motion.line
-                                            x1={41 + (Math.min(Math.max(syringeUnits, 0), 100) / 100) * 358}
+                                            x1={41 + (Math.min(Math.max(graduatedUnits, 0), 100) / 100) * 358}
                                             y1={23}
-                                            x2={41 + (Math.min(Math.max(syringeUnits, 0), 100) / 100) * 358}
+                                            x2={41 + (Math.min(Math.max(graduatedUnits, 0), 100) / 100) * 358}
                                             y2={35}
                                             stroke="#34d399"
                                             strokeWidth="1.5"
@@ -321,17 +395,17 @@ export default function CalculatorPage() {
                             </div>
 
                             <div className="mt-4 flex items-center justify-between text-xs text-zinc-400">
-                                <span>0 units</span>
+                                <span>0.00 mL</span>
                                 <div className="text-center">
-                                    <span className="text-2xl font-black text-emerald-400">{syringeUnits}</span>
-                                    <span className="text-zinc-400 ml-1">/ 100 units</span>
-                                    <p className="text-[10px] text-zinc-500 mt-0.5">= {(syringeUnits / 100).toFixed(3)} ml</p>
+                                    <span className="text-2xl font-black text-emerald-400">{dispenseMl!.toFixed(3)}</span>
+                                    <span className="text-zinc-400 ml-1">mL</span>
+                                    <p className="text-[10px] text-zinc-500 mt-0.5">= {graduatedUnits} graduated units</p>
                                 </div>
-                                <span>100 units</span>
+                                <span>1.00 mL</span>
                             </div>
 
-                            {syringeUnits > 50 && (
-                                <p className="text-[10px] text-amber-400/80 mt-3 text-center">&#x26A0;&#xFE0F; Large volume — consider splitting into 2 injection sites</p>
+                            {dispenseMl! > 0.5 && (
+                                <p className="text-[10px] text-amber-400/80 mt-3 text-center">&#x26A0;&#xFE0F; Large dispense volume — verify total vial concentration is sufficient for research protocol</p>
                             )}
                         </div>
                     )}
@@ -340,61 +414,52 @@ export default function CalculatorPage() {
             )}
 
             {/* Share My Results */}
-            {concentration && syringeUnits !== null && (() => {
+            {concentration && dispenseMl !== null && (() => {
                 const pepName = peptide?.name || blend?.name || "Peptide";
                 const vMg = parseFloat(vialMg) || 0;
                 const bMl = parseFloat(bacWaterMl) || 0;
-                const dMcg = parseFloat(desiredDoseMcg) || 0;
-                const dosesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
+                const dMcg = parseFloat(targetConcentrationMcg) || 0;
+                const dispensesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
                 const shareData: CalculatorCardData = {
                     type: "calculator",
                     peptideName: pepName,
                     vialMg: vMg,
                     bacWaterMl: bMl,
                     doseMcg: dMcg,
-                    syringeUnits: syringeUnits,
+                    syringeUnits: graduatedUnits || 0,
                     concentration: concentration,
-                    dosesPerVial: dosesPerVial,
+                    dosesPerVial: dispensesPerVial,
                 };
                 return (
                     <div className="mt-4 mb-6 flex justify-center">
                         <ShareModal
                             data={shareData}
                             shareUrl="https://peptidex.app/tools/calculator"
-                            shareText={`My ${pepName} dosage protocol — calculated on PeptiDex 🧪`}
-                            buttonLabel="Share My Protocol"
+                            shareText={`${pepName} reconstitution protocol — calculated on PeptiDex`}
+                            buttonLabel="Share Reconstitution Protocol"
                         />
                     </div>
                 );
             })()}
 
-            {/* Source These Peptides Affiliate Block */}
-            {concentration && syringeUnits !== null && (() => {
+            {/* Source These Compounds — Affiliate Block */}
+            {concentration && dispenseMl !== null && (() => {
                 const pepName = peptide?.name || blend?.name || "Peptide";
                 const slug = peptide?.slug || blend?.slug || "";
                 const vMg = parseFloat(vialMg) || 0;
-                const dMcg = parseFloat(desiredDoseMcg) || 0;
-                const dosesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
+                const dMcg = parseFloat(targetConcentrationMcg) || 0;
+                const dispensesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
                 
-                // Estimate needed vials based on cycle
-                const getFrequencyMultiplier = (freq: string) => {
-                    const f = freq.toLowerCase();
-                    if (f.includes('daily')) return 7;
-                    if (f.includes('2x/week')) return 2;
-                    if (f.includes('5 on')) return 5;
-                    return 7;
-                };
+                let supplyEstimate = "";
 
-                let cycleLengthText = "";
-                let dosingEstimateText = "";
-
-                if (peptide?.dosing && dosesPerVial > 0) {
+                if (peptide?.dosing && dispensesPerVial > 0) {
                     const cycleLength = peptide.dosing.cycle_weeks?.[0] || 8;
-                    const dosesPerWeek = getFrequencyMultiplier(peptide.dosing.frequency || "daily");
-                    const totalDosesNeeded = dosesPerWeek * cycleLength;
-                    const neededVials = Math.ceil(totalDosesNeeded / dosesPerVial);
+                    const freq = (peptide.dosing.frequency || "daily").toLowerCase();
+                    const perWeek = freq.includes('daily') ? 7 : freq.includes('2x/week') ? 2 : freq.includes('5 on') ? 5 : 7;
+                    const totalNeeded = perWeek * cycleLength;
+                    const neededVials = Math.ceil(totalNeeded / dispensesPerVial);
                     
-                    dosingEstimateText = `Based on a ${cycleLength}-week cycle (${peptide.dosing.frequency}), you'll need approx. ${neededVials} vial${neededVials !== 1 ? 's' : ''}.`;
+                    supplyEstimate = `${dispensesPerVial} measurements per vial. For a ${cycleLength}-week research protocol, approximately ${neededVials} vial${neededVials !== 1 ? 's' : ''} required.`;
                 }
 
                 const baseSlug = aminoClubProductMapping[slug] || "https://aminoclub.com";
@@ -415,17 +480,17 @@ export default function CalculatorPage() {
                         <div className="flex items-center gap-2 mb-4 relative z-10">
                             <ShoppingBag className="w-5 h-5 text-emerald-400" />
                             <h2 className="text-lg font-bold text-zinc-100">
-                                Need {pepName}?
+                                Source {pepName} for Research
                             </h2>
                         </div>
                         
                         <div className="relative z-10 grid gap-4 p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-emerald-500/20 transition-colors">
                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div>
-                                    <h4 className="font-bold text-zinc-100 text-[15px]">Source COA-verified {pepName}</h4>
-                                    {dosingEstimateText && (
+                                    <h4 className="font-bold text-zinc-100 text-[15px]">COA-verified {pepName}</h4>
+                                    {supplyEstimate && (
                                         <p className="text-xs font-semibold text-emerald-400 mt-1">
-                                            {dosesPerVial} doses per vial. {dosingEstimateText}
+                                            {supplyEstimate}
                                         </p>
                                     )}
                                 </div>
@@ -433,29 +498,32 @@ export default function CalculatorPage() {
                                     href={affiliateUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center shrink-0 w-full md:w-auto gap-2 px-5 py-2.5 rounded-xl font-bold transition-all text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-500/10"
+                                    onClick={() => trackOutboundClick("Amino Club", affiliateUrl, "calculator_source_cta")}
+                                    className="inline-flex items-center justify-center shrink-0 w-full md:w-auto gap-2 px-5 py-2.5 min-h-[44px] rounded-xl font-bold transition-all text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-500/10"
                                 >
-                                    Buy from Amino Club <ArrowRight className="w-4 h-4" />
+                                    Source from Amino Club <ArrowRight className="w-4 h-4" />
                                 </a>
                             </div>
                             
                             <div className="pt-4 mt-2 border-t border-zinc-800 flex items-center flex-wrap gap-2 text-xs font-semibold">
-                                <span className="text-zinc-500">Also order:</span>
+                                <span className="text-zinc-500">Lab supplies:</span>
                                 <a 
                                     href="https://aminoclub.com/us/products/bacteriostatic-water?utm_source=affiliate_marketing&code=PEPTIDEX"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
+                                    onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com/us/products/bacteriostatic-water", "calculator_bac_water")}
+                                    className="px-3 py-1.5 min-h-[44px] flex items-center rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
                                 >
                                     Bacteriostatic Water <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
                                 </a>
                                 <a 
-                                    href="https://aminoclub.com/us/products/insulin-syringes?utm_source=affiliate_marketing&code=PEPTIDEX"
+                                    href="https://aminoclub.com/us/products/graduated-pipettes?utm_source=affiliate_marketing&code=PEPTIDEX"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
+                                    onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com/us/products/graduated-pipettes", "calculator_pipettes")}
+                                    className="px-3 py-1.5 min-h-[44px] flex items-center rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
                                 >
-                                    Insulin Syringes <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
+                                    Graduated Pipettes <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
                                 </a>
                             </div>
                         </div>
@@ -463,12 +531,12 @@ export default function CalculatorPage() {
                         <div className="mt-5 relative z-10">
                             <div className="flex items-center gap-1.5 text-xs text-zinc-200 font-semibold mb-1">
                                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                                Amino Club — PeptiDex Editor's Choice 2026
+                                Amino Club — PeptiDex Editor&apos;s Choice 2026
                             </div>
                             <p className="text-[10px] font-medium text-emerald-400/80 mb-2 flex items-center gap-2">
-                                <span>✓ COA verified</span>
-                                <span>·</span>
-                                <span>✓ 99%+ purity</span>
+                                <span>&#x2713; COA verified</span>
+                                <span>&middot;</span>
+                                <span>&#x2713; 99%+ purity</span>
                             </p>
                             <p className="text-[10px] text-zinc-600 italic">
                                 <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases made through affiliate links.
@@ -478,22 +546,22 @@ export default function CalculatorPage() {
                 );
             })()}
 
-            {/* Peptide Dosing Info */}
+            {/* Compound Reference Data */}
             {peptide?.dosing && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-5">
-                    <h3 className="text-sm font-semibold text-zinc-200 mb-3">&#x1F4CB; {peptide.name} Dosing Reference</h3>
+                    <h3 className="text-sm font-semibold text-zinc-200 mb-3">&#x1F4CB; {peptide.name} Research Reference</h3>
                     <div className="grid grid-cols-2 gap-3 text-xs">
-                        <div><span className="text-zinc-500">Route:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.route}</span></div>
-                        <div><span className="text-zinc-500">Range:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.typical_dose_mcg[0]}-{peptide.dosing.typical_dose_mcg[1]} mcg</span></div>
+                        <div><span className="text-zinc-500">Delivery Method:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.route}</span></div>
+                        <div><span className="text-zinc-500">Typical Range:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.typical_dose_mcg[0]}-{peptide.dosing.typical_dose_mcg[1]} mcg</span></div>
                         <div><span className="text-zinc-500">Frequency:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.frequency}</span></div>
                         {peptide.dosing.timing && <div><span className="text-zinc-500">Timing:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.timing}</span></div>}
-                        {peptide.dosing.cycle_weeks && <div className="col-span-2"><span className="text-zinc-500">Cycle:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.cycle_weeks[0]}-{peptide.dosing.cycle_weeks[1]} weeks</span></div>}
+                        {peptide.dosing.cycle_weeks && <div className="col-span-2"><span className="text-zinc-500">Protocol Duration:</span> <span className="text-zinc-300 ml-1">{peptide.dosing.cycle_weeks[0]}-{peptide.dosing.cycle_weeks[1]} weeks</span></div>}
                         {peptide.dosing.notes && <div className="col-span-2 mt-2 p-2 rounded-lg bg-zinc-800/50"><span className="text-zinc-400">{peptide.dosing.notes}</span></div>}
                     </div>
                 </motion.div>
             )}
 
-            {/* Blend Dosing Info */}
+            {/* Blend Reference Data */}
             {blend && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3">
                     <div className="rounded-2xl bg-gradient-to-br from-violet-900/20 to-violet-950/10 border border-violet-500/20 p-5">
@@ -517,7 +585,7 @@ export default function CalculatorPage() {
                                 </div>
                             </div>
                             <div className="col-span-full mt-2 p-3 rounded-xl bg-zinc-800/50 border border-zinc-700/50">
-                                <span className="text-zinc-500 font-semibold block mb-1">Dosing Notes:</span>
+                                <span className="text-zinc-500 font-semibold block mb-1">Protocol Notes:</span>
                                 <span className="text-zinc-300 leading-relaxed">{blend.dosing_notes}</span>
                             </div>
                             <div className="col-span-full p-3 rounded-xl bg-zinc-800/50 border border-zinc-700/50">
