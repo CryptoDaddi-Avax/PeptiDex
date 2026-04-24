@@ -61,6 +61,24 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     coaUrl: "https://ascensionpeptides.com/coa/bpc157.pdf",
     lastTestedDate: "2026-03-24",
   },
+  "limitless-life": {
+    slug: "limitless-life",
+    name: "Limitless Life",
+    rating: 4.8,
+    ratingCount: "300+",
+    affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
+    purity: "99%+",
+    coaStatus: "Batch-specific COA",
+    testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
+    shippingSpeed: "3–5 business days (US)",
+    shippingCost: "Free over $100",
+    shipsTo: ["USA"],
+    catalogSize: "90+ compounds",
+    paymentMethods: ["Credit Card", "Crypto"],
+    returnPolicy: "Satisfaction guarantee",
+    badge: "USA Made",
+    lastTestedDate: "2026-04-01",
+  },
 };
 
 /** The top peptides used for head-to-head price comparison tables. */
@@ -78,6 +96,8 @@ export const TOP_COMPARISON_PEPTIDES = [
  */
 export const VALID_VENDOR_COMPARISONS = [
   "amino-club-vs-ascension-peptides",
+  "amino-club-vs-limitless-life",
+  "ascension-peptides-vs-limitless-life",
 ] as const;
 
 export function getVendorPair(slug: string): [VendorProfile, VendorProfile] | null {

@@ -44,6 +44,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/",
                 "coaUrl": "https://ascensionpeptides.com/coa/bpc157.pdf",
                 "lastTestedDate": "2026-03-24"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 49.99,
+                "vial_mg": 5,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -65,6 +73,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 5,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 44.99,
+                "vial_mg": 5,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -100,6 +116,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 5,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 54.99,
+                "vial_mg": 5,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -121,6 +145,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 44.99,
+                "vial_mg": 30,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -142,6 +174,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 44.99,
+                "vial_mg": 30,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -163,6 +203,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 100,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 39.99,
+                "vial_mg": 50,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -226,6 +274,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 64.99,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },
@@ -358,6 +414,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Limitless Life",
+                "price_usd": 54.99,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
+                "lastTestedDate": "2026-04-01"
             }
         ]
     },

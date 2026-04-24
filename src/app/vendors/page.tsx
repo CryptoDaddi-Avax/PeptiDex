@@ -220,6 +220,34 @@ export default function VendorsPage() {
                   <VendorOutboundLink href="https://ascensionpeptides.com/ref/PeptiDex/" vendorName="Ascension Peptides" location="comparison_table" className="inline-flex items-center gap-1 px-4 py-2.5 min-h-[44px] text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></VendorOutboundLink>
                 </td>
               </tr>
+              {/* Row 3 — Limitless Life */}
+              <tr className="hover:bg-zinc-800/20 transition-colors">
+                <td className="px-6 py-4">
+                  <div className="flex flex-col">
+                    <span className="font-bold text-zinc-100">Limitless Life</span>
+                    <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-emerald-500/15 text-emerald-300 rounded-md border border-emerald-500/25 w-fit">USA Made</span>
+                  </div>
+                </td>
+                <td className="px-6 py-4 text-zinc-400">90+ Compounds</td>
+                <td className="px-6 py-4">
+                  <COABadge
+                    vendorName={vendorProfiles['limitless-life'].name}
+                    lastTestedDate={vendorProfiles['limitless-life'].lastTestedDate}
+                    testingMethods={vendorProfiles['limitless-life'].testingMethods}
+                    purity={vendorProfiles['limitless-life'].purity}
+                  />
+                </td>
+                <td className="px-6 py-4 text-zinc-400">$$</td>
+                <td className="px-6 py-4">
+                  <div className="flex gap-0.5 text-amber-400 items-center">
+                    <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
+                    <span className="text-xs text-zinc-400 ml-2">4.8/5</span>
+                  </div>
+                </td>
+                <td className="px-6 py-4 text-right">
+                  <VendorOutboundLink href="https://www.kb6dp3dq.com/PEPTIDEX/" vendorName="Limitless Life" location="comparison_table" className="inline-flex items-center gap-1 px-4 py-2.5 min-h-[44px] text-violet-400 hover:text-violet-300 font-semibold">Visit <ExternalLink className="w-3.5 h-3.5" /></VendorOutboundLink>
+                </td>
+              </tr>
 
             </tbody>
           </table>
@@ -320,6 +348,50 @@ export default function VendorsPage() {
           
 
 
+        </div>
+      </section>
+
+      {/* Card 3: Limitless Life */}
+      <section className="space-y-8">
+        <div className="flex flex-col rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8 shadow-xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-emerald-500/20" />
+          <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-4 flex items-center gap-3 flex-wrap">
+            Limitless Life
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-emerald-500/15 text-emerald-300 rounded-md border border-emerald-500/25">
+              USA Made
+            </span>
+            <COABadge
+              vendorName={vendorProfiles['limitless-life'].name}
+              lastTestedDate={vendorProfiles['limitless-life'].lastTestedDate}
+              testingMethods={vendorProfiles['limitless-life'].testingMethods}
+              purity={vendorProfiles['limitless-life'].purity}
+            />
+          </h3>
+          <p className="text-base text-zinc-400 leading-relaxed mb-8 flex-grow">
+            Limitless Life (Limitless Biotech) stands out as one of the few vendors offering <strong className="text-zinc-300">100% USA-manufactured</strong> research peptides under full GMP protocols. With 90+ compounds — including peptide capsules, blends, bioregulators, and sprays — their catalog breadth rivals the best in the industry. Every batch is independently tested via HPLC, LC-MS, and endotoxin screens before release. Use code <strong className="text-emerald-400">PEPTIDEX</strong> for 15% off your order.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-zinc-800/50 pt-6">
+            <div>
+              <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-4 block">Pros</span>
+              <ul className="space-y-3">
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> 100% USA-manufactured under GMP standards</li>
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Largest catalog: 90+ compounds (capsules, blends, bioregulators)</li>
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> HPLC + LC-MS + Endotoxin testing on every batch</li>
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> Batch-specific COA with every order</li>
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" /> 15% discount with code PEPTIDEX</li>
+              </ul>
+            </div>
+            <div>
+              <span className="text-xs font-bold text-amber-500 uppercase tracking-widest mb-4 block">Cons</span>
+              <ul className="space-y-3">
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> US domestic shipping only</li>
+                <li className="flex gap-3 text-sm text-zinc-300 items-start"><AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" /> 3–5 business day dispatch</li>
+              </ul>
+            </div>
+          </div>
+          <VendorOutboundLink href="https://www.kb6dp3dq.com/PEPTIDEX/" vendorName="Limitless Life" location="vendor_card_limitless_life" className="w-full flex items-center justify-center gap-2 py-4 min-h-[48px] rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-bold transition-all">
+            Shop Limitless Life (Code: PEPTIDEX) <ArrowRight className="w-4 h-4" />
+          </VendorOutboundLink>
         </div>
       </section>
 

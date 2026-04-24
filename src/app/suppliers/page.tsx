@@ -48,6 +48,21 @@ const suppliers: Supplier[] = [
         specialties: ["BPC-157", "TB-500", "NAD+", "MOTS-c", "KPV", "Semax", "Selank", "AOD-9604", "DSIP", "Epitalon", "Thymosin Alpha-1", "GHK-Cu", "SS-31", "Tesamorelin", "Ipamorelin", "PT-141", "Melanotan II", "Glutathione", "Sermorelin"],
         minPurity: "98%+",
         notes: "Wide selection of 50+ research peptides with competitive pricing. COAs available for all batches. Offers 10% lifetime recurring commissions through their affiliate program. Use code PEPTIDEX for your first purchase.",
+    },
+    {
+        name: "Limitless Life",
+        url: "https://limitlesslifenootropics.com",
+        affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
+        affiliateCommission: "Affiliate partner",
+        rating: 4.8,
+        thirdPartyTested: true,
+        coaAvailable: true,
+        testingMethod: ["HPLC", "LC-MS", "Endotoxin"],
+        shipsTo: ["USA"],
+        specialties: ["BPC-157", "TB-500", "GHK-Cu", "Ipamorelin", "MOTS-c", "KPV", "Semax", "Selank", "Epitalon", "PT-141", "Melanotan II", "Peptide Capsules", "Peptide Blends", "Bioregulators"],
+        minPurity: "99%+",
+        notes: "USA-manufactured peptides under GMP protocols with 90+ research compounds. Every batch receives third-party HPLC, LC-MS, and endotoxin testing. Certificates of analysis included with every order. Use code PEPTIDEX for 15% off your order.",
+        badge: "USA Made",
     }
 ];
 
