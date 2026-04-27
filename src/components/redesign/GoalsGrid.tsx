@@ -22,7 +22,7 @@ export default function GoalsGrid() {
             <a
               key={goal.id}
               className="goal-card"
-              href={`/goals/${goal.id}`}
+              href={`/best/${goal.id}`}
             >
               <div className="goal-icon">{goal.icon}</div>
               <div className="goal-content">

@@ -6,6 +6,8 @@ import { getPeptideByName } from '@/data/peptides';
 import { ShieldAlert, BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { AuthorBio } from '@/components/author-bio';
+import RedesignLayout from '@/components/redesign/RedesignLayout';
+import './stack-detail-redesign.css';
 
 export function generateStaticParams() {
   return stacks.map((s) => ({ slug: s.slug }));
@@ -114,122 +116,111 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 relative">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+    <RedesignLayout>
+      <div className="stack-detail-wrap">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex items-center space-x-2 text-[13px] text-zinc-500">
-          <li>
-            <Link href="/" className="hover:text-violet-400 transition-colors">Home</Link>
-          </li>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <li>
-            <Link href="/stacks" className="hover:text-violet-400 transition-colors">Stacks</Link>
-          </li>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <li className="text-zinc-300 font-medium" aria-current="page">{stack.stack_name}</li>
-        </ol>
-      </nav>
+        {/* ═══ BREADCRUMBS ═══ */}
+        <nav aria-label="Breadcrumb" className="stack-breadcrumbs">
+          <ul className="stack-breadcrumb-list">
+            <li><Link href="/" className="stack-breadcrumb-link">Home</Link></li>
+            <ChevronRight className="stack-breadcrumb-sep" />
+            <li><Link href="/stacks" className="stack-breadcrumb-link">Stacks</Link></li>
+            <ChevronRight className="stack-breadcrumb-sep" />
+            <li className="stack-breadcrumb-current" aria-current="page">{stack.stack_name}</li>
+          </ul>
+        </nav>
 
-      {/* Top Disclaimer */}
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-3 mb-8">
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-xs text-amber-400/80 leading-relaxed font-medium">
-            <strong>RESEARCH & EDUCATIONAL USE ONLY:</strong> {SHORT_DISCLAIMER} The compounds and protocols discussed on this page are strictly for academic, laboratory, and preclinical investigation. Multi-peptide stacks exponentially increase experimental variability.
+        {/* ═══ DISCLAIMER ═══ */}
+        <div className="stack-detail-disclaimer">
+          <ShieldAlert />
+          <p>
+            <strong>RESEARCH &amp; EDUCATIONAL USE ONLY:</strong> {SHORT_DISCLAIMER}{' '}
+            The compounds and protocols discussed on this page are strictly for academic,
+            laboratory, and preclinical investigation. Multi-peptide stacks exponentially
+            increase experimental variability.
           </p>
         </div>
-      </div>
 
-      {/* Header */}
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 mb-4 leading-tight">
-        Best Peptide Stack for {goalName}, Research-Backed Protocols
-      </h1>
-      <p className="text-sm text-zinc-500 mb-8">Last Updated: April 2026</p>
+        {/* ═══ HEADER ═══ */}
+        <h1 className="stack-detail-title">
+          Best Peptide Stack for {goalName}, Research-Backed Protocols
+        </h1>
+        <p className="stack-detail-date">Last Updated: April 2026</p>
 
-      <article className="space-y-12">
-        {/* Section 1: Components */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Layers className="w-6 h-6 text-violet-400" />
-            <h2 className="text-2xl font-bold text-zinc-100">What Peptides Are Used in {goalName} Research?</h2>
+        {/* ═══ SECTION 1: COMPONENTS ═══ */}
+        <section className="stack-section">
+          <div className="stack-section-header">
+            <Layers />
+            <h2 className="stack-section-heading">What Peptides Are Used in {goalName} Research?</h2>
           </div>
-          <p className="text-zinc-400 leading-relaxed text-[15px] mb-5">
-            {stack.goal} To achieve these targeted research outcomes, this specific combination relies on the synergistic interactions of the following compounds:
+          <p className="stack-section-desc">
+            {stack.goal} To achieve these targeted research outcomes, this specific combination
+            relies on the synergistic interactions of the following compounds:
           </p>
-          <ul className="space-y-3 pl-1">
+          <ul className="stack-pep-list">
             {stack.peptides.map((p) => {
               const pepSlug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
               return (
-                <li key={p.name} className="flex flex-col gap-1.5 text-zinc-300 text-sm bg-zinc-900/40 p-4 rounded-lg border border-zinc-800/50">
-                  <div className="flex items-center justify-between">
-                    <strong className="text-zinc-100">{p.name}</strong>
-                    <Link href={`/peptides/${pepSlug}`} className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1 group">
-                      View Profile <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                <li key={p.name} className="stack-pep-item">
+                  <div className="stack-pep-item-header">
+                    <span className="stack-pep-item-name">{p.name}</span>
+                    <Link href={`/peptides/${pepSlug}`} className="stack-pep-item-link">
+                      View Profile <ArrowRight />
                     </Link>
                   </div>
-                  <span className="text-zinc-400 text-sm leading-relaxed">{p.role_in_stack}</span>
+                  <p className="stack-pep-item-role">{p.role_in_stack}</p>
                 </li>
               );
             })}
           </ul>
         </section>
 
-        {/* Section 2: Synergy Mechanism */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Beaker className="w-6 h-6 text-violet-400" />
-            <h2 className="text-2xl font-bold text-zinc-100">How This Stack Is Used in Research</h2>
+        {/* ═══ SECTION 2: SYNERGY ═══ */}
+        <section className="stack-section">
+          <div className="stack-section-header">
+            <Beaker />
+            <h2 className="stack-section-heading">How This Stack Is Used in Research</h2>
           </div>
-          <div className="p-5 rounded-xl border border-zinc-800 bg-zinc-900/30">
-            <p className="text-zinc-400 text-[15px] leading-relaxed">
-              {stack.synergy_rationale}
-            </p>
+          <div className="stack-synergy-box">
+            <p>{stack.synergy_rationale}</p>
           </div>
         </section>
 
-        {/* Section 3: Study References */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <BookOpen className="w-6 h-6 text-violet-400" />
-            <h2 className="text-2xl font-bold text-zinc-100">Study References</h2>
+        {/* ═══ SECTION 3: STUDIES ═══ */}
+        <section className="stack-section">
+          <div className="stack-section-header">
+            <BookOpen />
+            <h2 className="stack-section-heading">Study References</h2>
           </div>
-          <div className="space-y-4">
-            {stack.supporting_studies?.slice(0, 3).map((study, idx) => (
-              <a key={idx} href={study.pubmed_url} target="_blank" rel="noopener noreferrer" className="block p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-violet-500/30 transition-colors group">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-medium text-sm text-zinc-300 group-hover:text-violet-300 transition-colors leading-relaxed">
-                    <Quote className="inline-block w-4 h-4 text-zinc-600 mr-2 -mt-1" />
-                    {study.description}
-                  </h3>
-                  <ChevronRight className="w-4 h-4 text-zinc-500 flex-shrink-0 mt-0.5" />
-                </div>
+          <div className="stack-study-list">
+            {stack.supporting_studies?.map((study, idx) => (
+              <a key={idx} href={study.pubmed_url} target="_blank" rel="noopener noreferrer" className="stack-study-card">
+                <p className="stack-study-text">
+                  <Quote className="stack-study-icon" />
+                  {study.description}
+                </p>
+                <ChevronRight className="stack-study-arrow" />
               </a>
             ))}
           </div>
         </section>
 
-        {/* Section 4: Vendors (Affiliate CTA) */}
-        <section className="mt-16">
-          <div className="flex items-center gap-2 mb-6">
-            <ShoppingBag className="w-6 h-6 text-emerald-400" />
-            <h2 className="text-2xl font-bold text-zinc-100 flex items-center flex-wrap gap-3">
-              Source This Stack
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
-                Amino Club — Editor's Choice
-              </span>
-            </h2>
+        {/* ═══ SECTION 4: SOURCE (AFFILIATE) ═══ */}
+        <section className="stack-section">
+          <div className="stack-source-heading">
+            <ShoppingBag />
+            <h2>Source This Stack</h2>
+            <span className="stack-source-badge">Amino Club — Editor&apos;s Choice</span>
           </div>
-          
-          <div className="space-y-4 mb-8">
+
+          <div className="stack-source-items">
             {stack.peptides.map((p) => {
               const pepData = getPeptideByName(p.name);
-              let pepSlug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+              const pepSlug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
               
-              // Formatting dosage and vial size
               let dosageDisplay = "Research protocol";
               if (pepData?.dosing) {
                 const dose = pepData.dosing.typical_dose_mcg;
@@ -240,99 +231,96 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
               const aminoUrl = `https://www.aminoclub.com/us/products/${pepSlug}?utm_source=affiliate_marketing&code=PEPTIDEX`;
 
               return (
-                <div key={p.name} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/15 hover:border-emerald-500/30 transition-colors">
-                  <div>
-                    <h3 className="text-lg font-bold text-zinc-100">{p.name}</h3>
-                    <div className="flex items-center gap-3 mt-1.5 text-xs text-zinc-400">
-                      <span className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
+                <div key={p.name} className="stack-source-item">
+                  <div className="stack-source-info">
+                    <h3>{p.name}</h3>
+                    <div className="stack-source-meta">
+                      <div className="stack-source-meta-item">
+                        <div className="stack-source-dot blue" />
                         {dosageDisplay}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400/50" />
+                      </div>
+                      <div className="stack-source-meta-item">
+                        <div className="stack-source-dot purple" />
                         {vialDisplay}
-                      </span>
+                      </div>
                     </div>
                   </div>
-                  <a 
-                    href={aminoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 font-semibold text-sm transition-all sm:w-auto w-full"
-                  >
-                    Buy from Amino Club <ArrowRight className="w-4 h-4" />
+                  <a href={aminoUrl} target="_blank" rel="noopener noreferrer" className="stack-source-btn">
+                    Buy from Amino Club <ArrowRight />
                   </a>
                 </div>
               );
             })}
           </div>
 
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-zinc-900 to-zinc-950 border border-emerald-500/20 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
-            
+          <div className="stack-promo-box">
             <a 
               href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:brightness-110 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 text-lg w-full sm:w-auto relative z-10"
+              className="stack-promo-main-btn"
             >
-              Order Full Stack <ArrowRight className="w-5 h-5" />
+              Order Full Stack <ArrowRight />
             </a>
-
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-6 text-xs font-medium text-emerald-400/80 relative z-10">
-              <span>✓ Third-party COA tested</span>
-              <span className="hidden sm:inline">&middot;</span>
-              <span>✓ &ge;99% purity</span>
-              <span className="hidden sm:inline">&middot;</span>
-              <span>✓ US shipping</span>
-              <span className="hidden sm:inline">&middot;</span>
-              <span>✓ Editor's Choice 2026</span>
+            <div className="stack-promo-features">
+              <span className="stack-promo-feature">✓ Third-party COA tested</span>
+              <span className="stack-promo-sep">•</span>
+              <span className="stack-promo-feature">✓ &ge;99% purity</span>
+              <span className="stack-promo-sep">•</span>
+              <span className="stack-promo-feature">✓ US shipping</span>
+              <span className="stack-promo-sep">•</span>
+              <span className="stack-promo-feature">✓ Editor&apos;s Choice 2026</span>
             </div>
-
-            <p className="text-[10px] text-zinc-600 mt-6 max-w-lg mx-auto leading-relaxed relative z-10">
-              <strong>Disclosure:</strong> PeptiDex is reader-supported. When you purchase through links on our site, we may earn an affiliate commission at no additional cost to you. We only recommend vendors that provide verifiable third-party testing for purity.
+            <p className="stack-promo-disclaimer">
+              <strong>Disclosure:</strong> PeptiDex is reader-supported. When you purchase
+              through links on our site, we may earn an affiliate commission at no additional
+              cost to you. We only recommend vendors that provide verifiable third-party testing
+              for purity.
             </p>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="mt-12">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-4">
+        {/* ═══ FAQ ═══ */}
+        <section className="stack-section">
+          <h2 className="stack-section-heading" style={{marginBottom: '24px'}}>Frequently Asked Questions</h2>
+          <div className="stack-faq-list">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
-                <h3 className="font-semibold text-zinc-200 mb-2">{faq.name}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div key={i} className="stack-faq-item">
+                <h3>{faq.name}</h3>
+                <p>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Section 5: Explore Other Stacks */}
-        <section className="mt-16 border-t border-zinc-800 pt-10">
-          <h2 className="text-xl font-bold text-zinc-100 mb-6">Explore Other Goal Stacks</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {/* ═══ EXPLORE ═══ */}
+        <section className="stack-section" style={{borderTop: '1px solid var(--line)', paddingTop: '40px'}}>
+          <h2 className="stack-section-heading" style={{marginBottom: '24px'}}>Explore Other Goal Stacks</h2>
+          <div className="stack-explore-grid">
             {stacks.filter(s => s.slug !== stack.slug).map(s => (
-              <Link key={s.slug} href={`/stacks/${s.slug}`} className="p-4 rounded-xl border border-zinc-800/50 bg-zinc-900/20 hover:bg-zinc-900 hover:border-violet-500/30 transition-colors">
-                <p className="text-sm font-semibold text-zinc-300">{s.stack_name}</p>
+              <Link key={s.slug} href={`/stacks/${s.slug}`} className="stack-explore-card">
+                <p>{s.stack_name}</p>
               </Link>
             ))}
           </div>
         </section>
 
-      </article>
+        {/* Author Bio */}
+        <AuthorBio name={AUTHOR} />
 
-      {/* Author Bio */}
-      <div className="mt-12">
-         <AuthorBio name={AUTHOR} />
-      </div>
+        {/* Bottom Disclaimer */}
+        <div className="stack-bottom-disclaimer">
+          <p>
+            <strong>DISCLAIMER:</strong> The information provided in this research guide is intended
+            exclusively for educational, informational, and academic purposes. The compounds discussed
+            are experimental tools not approved by the Food and Drug Administration (FDA) for human
+            diagnosis, treatment, or cure of any disease. Polypharmacy compounding and stacking introduces
+            significant exponential experimental variables. Always consult a licensed medical professional
+            before interacting with any novel biological compounds.
+          </p>
+        </div>
 
-      {/* Bottom Disclaimer */}
-      <div className="mt-12 pt-8 border-t border-zinc-800">
-        <p className="text-xs text-zinc-500 leading-relaxed text-justify">
-          <strong>DISCLAIMER:</strong> The information provided in this research guide is intended exclusively for educational, informational, and academic purposes. The compounds discussed are experimental tools not approved by the Food and Drug Administration (FDA) for human diagnosis, treatment, or cure of any disease. Polypharmacy compounding and stacking introduces significant exponential experimental variables. Always consult a licensed medical professional before interacting with any novel biological compounds.
-        </p>
       </div>
-    </div>
+    </RedesignLayout>
   );
 }
