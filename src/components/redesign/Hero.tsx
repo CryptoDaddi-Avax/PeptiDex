@@ -122,9 +122,17 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
 
       const onResize = () => {
         const w = canvas.clientWidth, h = canvas.clientHeight;
+        if (w === 0 || h === 0) return;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
-        camera.position.z = window.innerWidth <= 768 ? 34 : 30;
+        /* Pull the camera back on narrow viewports so the helix fits the smaller container */
+        if (window.innerWidth <= 480) {
+          camera.position.z = 38;
+        } else if (window.innerWidth <= 768) {
+          camera.position.z = 36;
+        } else {
+          camera.position.z = 30;
+        }
         camera.updateProjectionMatrix();
       };
       window.addEventListener('resize', onResize);
@@ -158,46 +166,56 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
 
   return (
     <header className="hero">
+      {/* Background effects — grid + radial gradients (desktop only molecule labels live here) */}
       <div className="hero-bg">
         <div className="hero-grid" />
-        <canvas ref={canvasRef} id="molecule-canvas" />
-        <div className="molecule-label tl">
-          Backbone chain<br />
-          <span>C₆₂H₉₈N₁₆O₂₂</span>
-        </div>
-        <div className="molecule-label br">
-          BPC-157 — research peptide<br />
-          <span>Tissue repair · Angiogenesis</span>
-        </div>
       </div>
 
-      <div className="hero-content">
-        <div className="hero-eyebrow">
-          <span className="dot" />
-          Research Index · Est. 2026
+      {/* Desktop molecule labels — positioned absolutely over the canvas area */}
+      <div className="molecule-label tl">
+        Backbone chain<br />
+        <span>C₆₂H₉₈N₁₆O₂₂</span>
+      </div>
+      <div className="molecule-label br">
+        BPC-157 — research peptide<br />
+        <span>Tissue repair · Angiogenesis</span>
+      </div>
+
+      {/* Main layout container — on mobile becomes a CSS grid so canvas never overlaps text */}
+      <div className="hero-layout">
+        <div className="hero-content">
+          <div className="hero-eyebrow">
+            <span className="dot" />
+            Research Index · Est. 2026
+          </div>
+          <h1>
+            The reference<br />
+            for <em>peptide</em><br />
+            research.
+          </h1>
+          <p className="hero-sub">
+            An independent index of 33 research peptides, 12 curated stacks, and 140+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
+          </p>
+          <div className="hero-ctas">
+            <a href="#library" className="btn-primary">
+              <span>Enter the library</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </a>
+            <button className="btn-ghost" onClick={onSearchOpen}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginRight: -4 }}>
+                <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" />
+              </svg>
+              Search the index
+            </button>
+          </div>
         </div>
-        <h1>
-          The reference<br />
-          for <em>peptide</em><br />
-          research.
-        </h1>
-        <p className="hero-sub">
-          An independent index of 33 research peptides, 12 curated stacks, and 140+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
-        </p>
-        <div className="hero-ctas">
-          <a href="#library" className="btn-primary">
-            <span>Enter the library</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-          </a>
-          <button className="btn-ghost" onClick={onSearchOpen}>
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginRight: -4 }}>
-              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" />
-            </svg>
-            Search the index
-          </button>
+
+        {/* Canvas is a SIBLING of hero-content — never nested inside an absolute overlay */}
+        <div className="hero-molecule">
+          <canvas ref={canvasRef} id="molecule-canvas" />
         </div>
       </div>
 
