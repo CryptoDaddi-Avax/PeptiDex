@@ -1,0 +1,151 @@
+/* ── PeptideCardRedesign — Editorial index card ── */
+
+.peptide-card-r {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 24px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold shimmer line at top on hover */
+.peptide-card-r::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.peptide-card-r:hover {
+  border-color: rgba(201, 169, 97, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(201, 169, 97, 0.07);
+}
+.peptide-card-r:hover::before {
+  opacity: 1;
+}
+
+/* Category row */
+.pcr-category {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pcr-category-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Peptide name */
+.pcr-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0;
+  transition: color 0.3s;
+}
+.peptide-card-r:hover .pcr-name {
+  color: var(--gold-bright);
+}
+
+/* Benefits list */
+.pcr-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+.pcr-benefit-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.45;
+}
+.pcr-benefit-dot {
+  color: var(--gold);
+  font-size: 7px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Footer with badges + arrow */
+.pcr-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.pcr-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pcr-badge-fda {
+  background: rgba(127, 183, 126, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(127, 183, 126, 0.22);
+}
+.pcr-badge-evidence {
+  background: rgba(201, 169, 97, 0.08);
+  color: var(--gold);
+  border: 1px solid rgba(201, 169, 97, 0.15);
+}
+.pcr-badge-halflife {
+  background: rgba(74, 158, 255, 0.08);
+  color: var(--plasma);
+  border: 1px solid rgba(74, 158, 255, 0.15);
+}
+
+.pcr-arrow {
+  margin-left: auto;
+  color: var(--ink-mute);
+  transition: all 0.3s;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.peptide-card-r:hover .pcr-arrow {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .peptide-card-r {
+    padding: 18px 16px;
+  }
+  .pcr-name {
+    font-size: 18px;
+  }
+}

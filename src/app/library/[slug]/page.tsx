@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { peptides, getPeptideBySlug } from "@/data/peptides";
 import { stacks } from "@/data/stacks";
-import { PeptideDetailClient } from "./client";
+import { PeptideDetailRedesign } from "./client";
 
 export function generateStaticParams() {
     return peptides.map((p) => ({ slug: p.slug }));
@@ -65,5 +65,5 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         s.peptides.some((sp) => sp.name.toLowerCase().includes(peptide.name.toLowerCase()))
     );
 
-    return <PeptideDetailClient peptide={peptide} relatedStacks={relatedStacks} />;
+    return <PeptideDetailRedesign peptide={peptide} relatedStacks={relatedStacks} />;
 }

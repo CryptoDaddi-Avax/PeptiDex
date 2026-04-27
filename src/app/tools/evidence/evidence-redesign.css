@@ -1,0 +1,206 @@
+/* ── Evidence Dashboard — Editorial Redesign ── */
+
+.evi-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* Header */
+.evi-header {
+  margin-bottom: 32px;
+}
+.evi-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.evi-icon-wrap {
+  width: 36px; height: 36px;
+  background: rgba(127, 183, 126, 0.1);
+  border: 1px solid rgba(127, 183, 126, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.evi-icon-wrap svg { width: 18px; height: 18px; color: var(--green); }
+.evi-subtitle {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Colors for Evidence Levels */
+.evi-color-bg-very-strong { background: #10b981; }
+.evi-color-border-very-strong { border-color: rgba(16, 185, 129, 0.3); }
+
+.evi-color-bg-strong { background: #34d399; }
+.evi-color-border-strong { border-color: rgba(52, 211, 153, 0.3); }
+
+.evi-color-bg-moderate-strong { background: #3b82f6; }
+.evi-color-border-moderate-strong { border-color: rgba(59, 130, 246, 0.3); }
+
+.evi-color-bg-moderate { background: #60a5fa; }
+.evi-color-border-moderate { border-color: rgba(96, 165, 250, 0.3); }
+
+.evi-color-bg-emerging { background: #f59e0b; }
+.evi-color-border-emerging { border-color: rgba(245, 158, 11, 0.3); }
+
+.evi-color-bg-preclinical { background: var(--orange); }
+.evi-color-border-preclinical { border-color: rgba(212, 131, 42, 0.3); }
+
+.evi-color-bg-anecdotal { background: #71717a; }
+.evi-color-border-anecdotal { border-color: rgba(113, 113, 122, 0.3); }
+
+/* Legend */
+.evi-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.evi-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.evi-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+}
+.evi-legend-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-dim);
+}
+
+/* Controls (Sort + Filter) */
+.evi-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.evi-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  padding: 4px;
+  border-radius: 10px;
+}
+.evi-control-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.evi-control-label svg { width: 12px; height: 12px; color: var(--gold); }
+.evi-control-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.evi-control-btn.active {
+  background: var(--gold);
+  color: var(--bg);
+}
+.evi-control-btn:hover:not(.active) { color: var(--ink); }
+
+/* Chart List */
+.evi-chart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.evi-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.evi-card:hover { transform: translateX(4px); background: rgba(10, 10, 11, 0.4); }
+.evi-card-icon {
+  font-size: 24px;
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.evi-card-content {
+  flex: 1;
+  min-width: 0;
+}
+.evi-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.evi-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.evi-card-title {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.evi-card:hover .evi-card-title { color: var(--gold); }
+.evi-card-badge {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--bg);
+  text-transform: uppercase;
+}
+.evi-card-count {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-dim);
+  flex-shrink: 0;
+}
+.evi-card-bar-wrap {
+  height: 6px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.evi-card-bar {
+  height: 100%;
+  border-radius: 99px;
+}

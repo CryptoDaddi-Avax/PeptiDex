@@ -5,3 +5,4 @@ export { default as CommandPalette } from './CommandPalette';
 export { default as GoalsGrid } from './GoalsGrid';
 export { default as VendorSection } from './VendorSection';
 export { default as Footer } from './Footer';
+export { default as RedesignLayout } from './RedesignLayout';

@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     },
 };
 
+import RedesignLayout from '@/components/redesign/RedesignLayout';
+
 export default function IntroLayout({ children }: { children: React.ReactNode }) {
-    return <>{children}</>;
+    return <RedesignLayout>{children}</RedesignLayout>;
 }

@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   },
 };
 
+import RedesignLayout from '@/components/redesign/RedesignLayout';
+
 export default function SavedLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <RedesignLayout>{children}</RedesignLayout>;
 }

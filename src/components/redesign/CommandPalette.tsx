@@ -64,7 +64,7 @@ function buildIndex(): IndexItem[] {
       sub: g.description,
       meta: 'Goal',
       tags: [g.label, g.description, ...g.stackNames].join(' ').toLowerCase(),
-      href: `/goals/${g.id}`,
+      href: `/best/${g.id}`,
     });
   });
 
