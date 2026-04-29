@@ -4,67 +4,113 @@ import { BookOpen, ArrowRight, FlaskConical } from 'lucide-react';
 import { blogPosts, getRelatedPosts } from '@/data/blog';
 
 interface LibraryCalloutProps {
-  /** Peptide slugs to feature, e.g. ['bpc-157', 'ghk-cu'] */
   peptides: { name: string; slug: string }[];
-  /** Current blog slug for related post calculation */
   currentSlug: string;
 }
 
-/**
- * "Explore in Our Library" callout box for the bottom of blog posts.
- * Links to 2-3 relevant peptide library pages + 1-2 related blog posts.
- */
 export function LibraryCallout({ peptides, currentSlug }: LibraryCalloutProps) {
   const relatedBlogPosts = getRelatedPosts(currentSlug, 2);
 
   return (
-    <section className="mt-14 mb-10">
-      {/* Peptide Library Links */}
-      <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/5 via-zinc-900/80 to-zinc-900/60 p-6 backdrop-blur-sm">
-        <div className="flex items-center gap-2.5 mb-4">
-          <div className="w-8 h-8 rounded-xl bg-violet-500/20 flex items-center justify-center">
-            <FlaskConical className="w-4 h-4 text-violet-400" />
+    <section style={{ marginTop: 56, marginBottom: 40 }}>
+      <div style={{
+        padding: 32,
+        background: 'rgba(201,169,97,0.04)',
+        border: '1px solid rgba(201,169,97,0.2)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <div style={{
+            width: 32, height: 32, background: 'rgba(201,169,97,0.08)',
+            border: '1px solid rgba(201,169,97,0.2)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <FlaskConical style={{ width: 14, height: 14, color: 'var(--gold)' }} />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-violet-300">Explore in Our Library</h3>
-            <p className="text-[10px] text-zinc-500">Deep-dive research profiles for peptides mentioned in this article</p>
+            <h3 style={{
+              fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 400,
+              color: 'var(--gold)', margin: 0,
+            }}>Explore in Our Library</h3>
+            <p style={{
+              fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.1em',
+              color: 'var(--ink-mute)', margin: 0,
+            }}>Deep-dive research profiles for peptides mentioned in this article</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mb-5">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: 0,
+          border: '1px solid var(--line)',
+          marginBottom: 20,
+        }}>
           {peptides.slice(0, 3).map((p) => (
             <Link
               key={p.slug}
               href={`/library/${p.slug}`}
-              className="group flex items-center gap-3 p-3 rounded-xl bg-zinc-800/50 border border-zinc-700/50 hover:border-violet-500/30 hover:bg-zinc-800/80 transition-all"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: '14px 16px',
+                background: 'var(--bg-soft)',
+                borderRight: '1px solid var(--line)',
+                textDecoration: 'none',
+                transition: 'all 0.3s',
+              }}
             >
-              <div className="w-7 h-7 rounded-lg bg-violet-500/10 flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-3.5 h-3.5 text-violet-400" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-zinc-200 group-hover:text-violet-300 transition-colors truncate">{p.name}</p>
-                <p className="text-[10px] text-zinc-500">Research Profile →</p>
+              <BookOpen style={{ width: 14, height: 14, color: 'var(--gold)', flexShrink: 0 }} />
+              <div style={{ minWidth: 0 }}>
+                <p style={{
+                  fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500,
+                  color: 'var(--ink)', margin: 0,
+                }}>{p.name}</p>
+                <p style={{
+                  fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.1em',
+                  color: 'var(--ink-mute)', margin: 0,
+                }}>Research Profile →</p>
               </div>
             </Link>
           ))}
         </div>
 
-        {/* Related Blog Posts */}
         {relatedBlogPosts.length > 0 && (
-          <div className="border-t border-zinc-800/50 pt-4">
-            <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold mb-2.5">Related Reading</p>
-            <div className="space-y-2">
+          <div style={{ borderTop: '1px solid var(--line)', paddingTop: 16 }}>
+            <p style={{
+              fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.2em',
+              textTransform: 'uppercase', color: 'var(--gold)', fontWeight: 500,
+              marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8,
+            }}>
+              <span style={{ opacity: 0.7 }}>§</span> Related Reading
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {relatedBlogPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-zinc-800/40 transition-colors"
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    padding: '10px 16px',
+                    background: 'var(--bg-soft)',
+                    border: '1px solid var(--line)',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s',
+                  }}
                 >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-violet-500/10 text-violet-400 font-semibold uppercase tracking-wider flex-shrink-0">{post.category.split(' ')[0]}</span>
-                    <span className="text-sm text-zinc-300 group-hover:text-violet-300 transition-colors truncate">{post.title}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+                    <span style={{
+                      padding: '2px 8px',
+                      background: 'rgba(201,169,97,0.08)',
+                      border: '1px solid rgba(201,169,97,0.2)',
+                      fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.1em',
+                      textTransform: 'uppercase', color: 'var(--gold)',
+                      flexShrink: 0,
+                    }}>{post.category.split(' ')[0]}</span>
+                    <span style={{
+                      fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--ink-dim)',
+                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                    }}>{post.title}</span>
                   </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-violet-400 flex-shrink-0 ml-2 transition-colors" />
+                  <ArrowRight style={{ width: 12, height: 12, color: 'var(--ink-mute)', flexShrink: 0, marginLeft: 8 }} />
                 </Link>
               ))}
             </div>

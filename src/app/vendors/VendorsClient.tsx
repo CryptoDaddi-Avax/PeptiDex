@@ -5,7 +5,6 @@ import {
   ShieldAlert, CheckCircle2, ArrowRight, ExternalLink,
   Star, FlaskConical, AlertTriangle, Clock, BarChart3, Beaker,
 } from 'lucide-react';
-import { COABadge } from '@/components/coa-badge-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { vendorProfiles } from '@/data/vendor-comparison';
 import { ResearchContextSidebar } from '@/components/research-context-sidebar';
@@ -13,7 +12,7 @@ import { VendorOutboundLink } from './vendor-outbound-link';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './vendors-redesign.css';
 
-/* ── FAQ data (shared with JSON-LD in page.tsx) ── */
+/* ── FAQ data ── */
 const FAQ_ITEMS = [
   {
     q: 'Where can I buy research peptides?',
@@ -33,398 +32,275 @@ const FAQ_ITEMS = [
   },
 ];
 
-/* ── Stars helper ── */
-function Stars({ count, score }: { count: number; score: string }) {
-  return (
-    <div className="vendor-stars">
-      {Array.from({ length: count }, (_, i) => (
-        <Star key={i} />
-      ))}
-      <span className="vendor-stars-score">{score}</span>
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════
- *  Main Component
- * ═══════════════════════════════════════════════ */
-
 export default function VendorsClient() {
   return (
     <RedesignLayout>
-      <div className="vendors-wrap">
-
-        {/* ═══ DISCLAIMER ═══ */}
-        <div className="vendors-disclaimer">
-          <ShieldAlert />
-          <p>
-            <strong>RESEARCH &amp; EDUCATIONAL USE ONLY:</strong> {SHORT_DISCLAIMER}{' '}
-            The vendors listed below operate as raw chemical and laboratory supply companies.
-            Their products are not FDA-approved for human or animal consumption.
-          </p>
-        </div>
-
-        {/* ═══ HERO ═══ */}
-        <section className="vendors-hero">
-          <div className="vendors-updated-badge">
-            <Clock />
-            <span>Last Updated: April 2026</span>
-          </div>
-          <h1 className="vendors-title">
-            Best Peptide Vendors 2026,<br />
-            <em>Lab-Tested Research Sources</em>
+      {/* ═══ HEADER ═══ */}
+      <header className="vn-page-header">
+        <div className="vn-header-grid" />
+        <div className="vn-header-wrap">
+          <nav className="vn-breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <span className="current">Vendors</span>
+          </nav>
+          <div className="vn-section-label">§ Verified Sourcing</div>
+          <h1 className="vn-page-title">
+            COA-verified <em>vendors</em>.
           </h1>
-          <p className="vendors-subtitle">
-            Finding the <strong>best peptide vendor 2026</strong> requires more than
-            just searching for low prices; it requires verifying strict{' '}
-            <strong>COA testing</strong> protocols. Our comprehensive review compares
-            the most <strong>trusted peptide sources</strong>, analyzing independent
-            mass spectrometry reports, shipping reliability, and customer service.
+          <p className="vn-subtitle">
+            Every vendor in our index is independently verified with third-party Certificates of Analysis.
+            We test purity via HPLC and Mass Spectrometry before any recommendation.
           </p>
+          <div className="vn-page-meta">
+            <div className="vn-meta-item"><strong>3</strong> verified vendors</div>
+            <div className="vn-meta-item"><strong>HPLC</strong> + Mass Spec required</div>
+            <div className="vn-meta-item"><strong>Independent</strong> verification</div>
+          </div>
+        </div>
+      </header>
 
-          <div className="vendors-stats">
-            <div className="vendors-stat">
-              <BarChart3 />
+      {/* ═══ VENDORS LIST ═══ */}
+      <div className="vn-container">
+        <div className="vn-vendor-list reveal">
+          
+          {/* Amino Club */}
+          <div className="vn-vendor-card featured" id="amino-club">
+            <div className="vn-vendor-grid">
               <div>
-                <div className="vendors-stat-label">Best Value</div>
-                <div className="vendors-stat-value">Amino Club</div>
+                <div className="vn-vendor-rank"><span>01</span>Ranked source</div>
+                <div className="vn-vendor-badges">
+                  <span className="vn-tag solid-gold">Editor&apos;s Choice</span>
+                  <span className="vn-tag green">✓ COA Verified</span>
+                </div>
+                <h2 className="vn-vendor-name">Amino Club</h2>
+                
+                <div className="vn-vendor-rating-row">
+                  <div>
+                    <div className="vn-rating-stars">★ 4.9<em>/5</em></div>
+                    <div className="vn-review-count">400+ reviews</div>
+                  </div>
+                  <div className="vn-purity-large">
+                    <div className="vn-purity-num">99%+</div>
+                    <div className="vn-purity-label">Purity verified</div>
+                  </div>
+                </div>
+                
+                <div className="vn-vendor-actions">
+                  <VendorOutboundLink 
+                    href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" 
+                    vendorName="Amino Club" 
+                    location="vendor_card_amino_club" 
+                    className="vn-btn-primary"
+                  >
+                    Shop Amino Club <ArrowRight size={14} />
+                  </VendorOutboundLink>
+                  <VendorOutboundLink 
+                    href={vendorProfiles['amino-club']?.coaUrl || '#'} 
+                    vendorName="Amino Club" 
+                    location="vendor_card_amino_club_coa" 
+                    className="vn-btn-ghost"
+                  >
+                    View sample COA
+                  </VendorOutboundLink>
+                </div>
+                <div className="vn-disclosure">
+                  PeptiDex may earn a commission from qualifying purchases at no cost to you. 
+                  Our recommendations are based on independent verification, not commercial relationships.
+                </div>
+              </div>
+              
+              <div className="vn-vendor-specs">
+                <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> Batch-specific COA</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">HPLC, Mass Spec, Endotoxin</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">2–4 days (US)</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">USA, International</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">40+ compounds</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">Card, Crypto, Zelle</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">60-day money-back</div></div>
               </div>
             </div>
-            <div className="vendors-stat">
-              <ArrowRight />
+          </div>
+
+          {/* Limitless Life */}
+          <div className="vn-vendor-card featured" id="limitless-life">
+            <div className="vn-vendor-grid">
               <div>
-                <div className="vendors-stat-label">Fastest Shipping</div>
-                <div className="vendors-stat-value">2-4 Business Days</div>
+                <div className="vn-vendor-rank"><span>02</span>Ranked source</div>
+                <div className="vn-vendor-badges">
+                  <span className="vn-tag solid-gold">USA Made</span>
+                  <span className="vn-tag green">✓ COA Verified</span>
+                </div>
+                <h2 className="vn-vendor-name">Limitless Life</h2>
+                
+                <div className="vn-vendor-rating-row">
+                  <div>
+                    <div className="vn-rating-stars">★ 4.8<em>/5</em></div>
+                    <div className="vn-review-count">300+ reviews</div>
+                  </div>
+                  <div className="vn-purity-large">
+                    <div className="vn-purity-num">99%+</div>
+                    <div className="vn-purity-label">Purity verified</div>
+                  </div>
+                </div>
+                
+                <div className="vn-vendor-actions">
+                  <VendorOutboundLink 
+                    href="https://www.kb6dp3dq.com/PEPTIDEX/" 
+                    vendorName="Limitless Life" 
+                    location="vendor_card_limitless_life" 
+                    className="vn-btn-primary"
+                  >
+                    Shop Limitless Life <ArrowRight size={14} />
+                  </VendorOutboundLink>
+                  <button className="vn-btn-ghost">View sample COA</button>
+                </div>
+                <div className="vn-disclosure">
+                  PeptiDex may earn a commission from qualifying purchases at no cost to you. 
+                  Our recommendations are based on independent verification, not commercial relationships.
+                </div>
+              </div>
+              
+              <div className="vn-vendor-specs">
+                <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> Batch-specific COA</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">HPLC, LC-MS, Endotoxin</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">3–5 days (US)</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">USA</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">90+ compounds</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">Card, Crypto</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">Satisfaction guarantee</div></div>
               </div>
             </div>
-            <div className="vendors-stat">
-              <Beaker />
+          </div>
+
+          {/* Ascension Peptides */}
+          <div className="vn-vendor-card featured" id="ascension">
+            <div className="vn-vendor-grid">
               <div>
-                <div className="vendors-stat-label">Highest Purity</div>
-                <div className="vendors-stat-value">99%+ HPLC Verified</div>
+                <div className="vn-vendor-rank"><span>03</span>Ranked source</div>
+                <div className="vn-vendor-badges">
+                  <span className="vn-tag green">✓ COA Verified</span>
+                </div>
+                <h2 className="vn-vendor-name">Ascension Peptides</h2>
+                
+                <div className="vn-vendor-rating-row">
+                  <div>
+                    <div className="vn-rating-stars">★ 4.7<em>/5</em></div>
+                    <div className="vn-review-count">250+ reviews</div>
+                  </div>
+                  <div className="vn-purity-large">
+                    <div className="vn-purity-num">98%+</div>
+                    <div className="vn-purity-label">Purity verified</div>
+                  </div>
+                </div>
+                
+                <div className="vn-vendor-actions">
+                  <VendorOutboundLink 
+                    href="https://ascensionpeptides.com/ref/PeptiDex/" 
+                    vendorName="Ascension Peptides" 
+                    location="vendor_card_ascension" 
+                    className="vn-btn-primary"
+                  >
+                    Shop Ascension Peptides <ArrowRight size={14} />
+                  </VendorOutboundLink>
+                  <VendorOutboundLink 
+                    href={vendorProfiles['ascension-peptides']?.coaUrl || '#'} 
+                    vendorName="Ascension Peptides" 
+                    location="vendor_card_ascension_coa" 
+                    className="vn-btn-ghost"
+                  >
+                    View sample COA
+                  </VendorOutboundLink>
+                </div>
+                <div className="vn-disclosure">
+                  PeptiDex may earn a commission from qualifying purchases at no cost to you. 
+                  Our recommendations are based on independent verification, not commercial relationships.
+                </div>
+              </div>
+              
+              <div className="vn-vendor-specs">
+                <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> COA available</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">HPLC, Mass Spec</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">3–5 days (US)</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">USA</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">60+ compounds</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">Card, Crypto</div></div>
+                <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">30-day return</div></div>
               </div>
             </div>
           </div>
-        </section>
 
-        {/* ═══ COMPARISON TABLE ═══ */}
-        <section className="vendors-table-section">
-          <div className="vendors-table-wrap">
-            <div className="vendors-table-scroll">
-              <table className="vendors-table">
-                <thead>
-                  <tr>
-                    <th>Vendor Name</th>
-                    <th>Peptides Offered</th>
-                    <th>COA Verified</th>
-                    <th>Pricing</th>
-                    <th>Our Rating</th>
-                    <th style={{ textAlign: 'right' }}>Link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* Amino Club */}
-                  <tr className="vendor-row-featured">
-                    <td>
-                      <div className="vendor-name-cell">
-                        <span className="vendor-name">Amino Club</span>
-                        <span className="vendor-badge-ec">Editor&apos;s Choice</span>
-                      </div>
-                    </td>
-                    <td>40+ Compounds</td>
-                    <td>
-                      <COABadge
-                        vendorName={vendorProfiles['amino-club'].name}
-                        coaUrl={vendorProfiles['amino-club'].coaUrl}
-                        lastTestedDate={vendorProfiles['amino-club'].lastTestedDate}
-                        testingMethods={vendorProfiles['amino-club'].testingMethods}
-                        purity={vendorProfiles['amino-club'].purity}
-                      />
-                    </td>
-                    <td>$$</td>
-                    <td><Stars count={5} score="4.9/5" /></td>
-                    <td style={{ textAlign: 'right' }}>
-                      <VendorOutboundLink href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" vendorName="Amino Club" location="comparison_table" className="vendor-visit-btn vendor-visit-primary">
-                        Visit <ExternalLink />
-                      </VendorOutboundLink>
-                    </td>
-                  </tr>
-
-                  {/* Ascension Peptides */}
-                  <tr>
-                    <td><span className="vendor-name">Ascension Peptides</span></td>
-                    <td>60+ Compounds</td>
-                    <td>
-                      <COABadge
-                        vendorName={vendorProfiles['ascension-peptides'].name}
-                        coaUrl={vendorProfiles['ascension-peptides'].coaUrl}
-                        lastTestedDate={vendorProfiles['ascension-peptides'].lastTestedDate}
-                        testingMethods={vendorProfiles['ascension-peptides'].testingMethods}
-                        purity={vendorProfiles['ascension-peptides'].purity}
-                      />
-                    </td>
-                    <td>$$$</td>
-                    <td><Stars count={5} score="4.7/5" /></td>
-                    <td style={{ textAlign: 'right' }}>
-                      <VendorOutboundLink href="https://ascensionpeptides.com/ref/PeptiDex/" vendorName="Ascension Peptides" location="comparison_table" className="vendor-visit-btn vendor-visit-secondary">
-                        Visit <ExternalLink />
-                      </VendorOutboundLink>
-                    </td>
-                  </tr>
-
-                  {/* Limitless Life */}
-                  <tr>
-                    <td>
-                      <div className="vendor-name-cell">
-                        <span className="vendor-name">Limitless Life</span>
-                        <span className="vendor-badge-usa">USA Made</span>
-                      </div>
-                    </td>
-                    <td>90+ Compounds</td>
-                    <td>
-                      <COABadge
-                        vendorName={vendorProfiles['limitless-life'].name}
-                        lastTestedDate={vendorProfiles['limitless-life'].lastTestedDate}
-                        testingMethods={vendorProfiles['limitless-life'].testingMethods}
-                        purity={vendorProfiles['limitless-life'].purity}
-                      />
-                    </td>
-                    <td>$$</td>
-                    <td><Stars count={5} score="4.8/5" /></td>
-                    <td style={{ textAlign: 'right' }}>
-                      <VendorOutboundLink href="https://www.kb6dp3dq.com/PEPTIDEX/" vendorName="Limitless Life" location="comparison_table" className="vendor-visit-btn vendor-visit-secondary">
-                        Visit <ExternalLink />
-                      </VendorOutboundLink>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ DETAILED REVIEW CARDS ═══ */}
-        <h2 className="vendors-reviews-heading">Detailed Lab-Tested Research Sources Reviews</h2>
-
-        {/* Amino Club */}
-        <div className="vendor-review-card featured">
-          <h3 className="vendor-review-name">
-            Amino Club
-            <span className="vendor-badge-ec">Editor&apos;s Choice</span>
-            <COABadge
-              vendorName={vendorProfiles['amino-club'].name}
-              coaUrl={vendorProfiles['amino-club'].coaUrl}
-              lastTestedDate={vendorProfiles['amino-club'].lastTestedDate}
-              testingMethods={vendorProfiles['amino-club'].testingMethods}
-              purity={vendorProfiles['amino-club'].purity}
-            />
-          </h3>
-          <p className="vendor-review-desc">
-            Amino Club has earned our #1 recommendation for 2026 through a consistent
-            track record of verified purity, transparent batch-specific COA
-            documentation, and reliable US fulfillment. Their catalog covers 40+ of
-            the most in-demand research compounds — all backed by independent
-            third-party HPLC and mass spectrometry testing. Competitive pricing,
-            typically 15-30% below premium-tier competitors, makes them the best
-            overall value in the market.
-          </p>
-          <div className="vendor-pros-cons">
-            <div>
-              <span className="vendor-pros-label">Pros</span>
-              <ul className="vendor-pro-list">
-                <li className="vendor-pro-item"><CheckCircle2 /> Batch-specific third-party COAs on every product</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Consistently ≥99% HPLC purity</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Competitive pricing (15-30% below premium tier)</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Fast domestic US shipping (2-4 business days)</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Top-rated across independent research forums</li>
-              </ul>
-            </div>
-            <div>
-              <span className="vendor-cons-label">Cons</span>
-              <ul className="vendor-con-list">
-                <li className="vendor-con-item"><AlertTriangle /> Catalog still growing (40+ vs 60+ for legacy competitors)</li>
-                <li className="vendor-con-item"><AlertTriangle /> International shipping available but US is primary strength</li>
-              </ul>
-            </div>
-          </div>
-          <VendorOutboundLink href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" vendorName="Amino Club" location="vendor_card_amino_club" className="vendor-cta-primary">
-            Compare Prices at Amino Club <ArrowRight />
-          </VendorOutboundLink>
-          <VendorOutboundLink href={vendorProfiles['amino-club']?.coaUrl || '#'} vendorName="Amino Club" location="vendor_card_amino_club_coa" className="vendor-cta-secondary">
-            <Beaker /> View Lab Test Results (COA)
-          </VendorOutboundLink>
         </div>
-
-        {/* Ascension Peptides */}
-        <div className="vendor-review-card">
-          <h3 className="vendor-review-name">
-            Ascension Peptides
-            <COABadge
-              vendorName={vendorProfiles['ascension-peptides'].name}
-              coaUrl={vendorProfiles['ascension-peptides'].coaUrl}
-              lastTestedDate={vendorProfiles['ascension-peptides'].lastTestedDate}
-              testingMethods={vendorProfiles['ascension-peptides'].testingMethods}
-              purity={vendorProfiles['ascension-peptides'].purity}
-            />
-          </h3>
-          <p className="vendor-review-desc">
-            Ascension Peptides has established itself as a premier destination for
-            research-grade peptides, offering an extensive catalogue of 60+ verified
-            compounds backed by rigorous third-party COA documentation. The premium
-            pricing is the main trade-off — they position themselves at the top tier,
-            which is justified by catalog breadth.
-          </p>
-          <div className="vendor-pros-cons">
-            <div>
-              <span className="vendor-pros-label">Pros</span>
-              <ul className="vendor-pro-list">
-                <li className="vendor-pro-item"><CheckCircle2 /> Largest peptide catalog (60+ compounds)</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Third-party COA verified</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Fast US shipping</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Strong researcher reputation</li>
-              </ul>
-            </div>
-            <div>
-              <span className="vendor-cons-label">Cons</span>
-              <ul className="vendor-con-list">
-                <li className="vendor-con-item"><AlertTriangle /> Premium pricing tier</li>
-              </ul>
-            </div>
-          </div>
-          <VendorOutboundLink href="https://ascensionpeptides.com/ref/PeptiDex/" vendorName="Ascension Peptides" location="vendor_card_ascension" className="vendor-cta-primary">
-            Compare Prices at Ascension <ArrowRight />
-          </VendorOutboundLink>
-          {vendorProfiles['ascension-peptides']?.coaUrl && (
-            <VendorOutboundLink href={vendorProfiles['ascension-peptides'].coaUrl} vendorName="Ascension Peptides" location="vendor_card_ascension_coa" className="vendor-cta-secondary">
-              <Beaker /> View Lab Test Results (COA)
-            </VendorOutboundLink>
-          )}
-        </div>
-
-        {/* Limitless Life */}
-        <div className="vendor-review-card">
-          <h3 className="vendor-review-name">
-            Limitless Life
-            <span className="vendor-badge-usa">USA Made</span>
-            <COABadge
-              vendorName={vendorProfiles['limitless-life'].name}
-              lastTestedDate={vendorProfiles['limitless-life'].lastTestedDate}
-              testingMethods={vendorProfiles['limitless-life'].testingMethods}
-              purity={vendorProfiles['limitless-life'].purity}
-            />
-          </h3>
-          <p className="vendor-review-desc">
-            Limitless Life (Limitless Biotech) stands out as one of the few vendors
-            offering <strong>100% USA-manufactured</strong> research peptides under
-            full GMP protocols. With 90+ compounds — including peptide capsules,
-            blends, bioregulators, and sprays — their catalog breadth rivals the best
-            in the industry. Every batch is independently tested via HPLC, LC-MS, and
-            endotoxin screens before release. Use code{' '}
-            <strong style={{ color: 'var(--green)' }}>PEPTIDEX</strong> for 15% off
-            your order.
-          </p>
-          <div className="vendor-pros-cons">
-            <div>
-              <span className="vendor-pros-label">Pros</span>
-              <ul className="vendor-pro-list">
-                <li className="vendor-pro-item"><CheckCircle2 /> 100% USA-manufactured under GMP standards</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Largest catalog: 90+ compounds (capsules, blends, bioregulators)</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> HPLC + LC-MS + Endotoxin testing on every batch</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> Batch-specific COA with every order</li>
-                <li className="vendor-pro-item"><CheckCircle2 /> 15% discount with code PEPTIDEX</li>
-              </ul>
-            </div>
-            <div>
-              <span className="vendor-cons-label">Cons</span>
-              <ul className="vendor-con-list">
-                <li className="vendor-con-item"><AlertTriangle /> US domestic shipping only</li>
-                <li className="vendor-con-item"><AlertTriangle /> 3–5 business day dispatch</li>
-              </ul>
-            </div>
-          </div>
-          <VendorOutboundLink href="https://www.kb6dp3dq.com/PEPTIDEX/" vendorName="Limitless Life" location="vendor_card_limitless_life" className="vendor-cta-primary">
-            Shop Limitless Life (Code: PEPTIDEX) <ArrowRight />
-          </VendorOutboundLink>
-        </div>
-
-        {/* ═══ HOW WE VET ═══ */}
-        <section className="vendors-vetting">
-          <h2 className="vendors-vetting-title">How We Vet Peptide Vendors</h2>
-          <div className="vendors-vetting-grid">
-            <div className="vendors-vetting-item">
-              <div className="vendors-vetting-item-icon"><FlaskConical /></div>
-              <h3>Independent COA &amp; HPLC</h3>
-              <p>
-                We mandate that vendors supply verifiable High-Performance Liquid
-                Chromatography (HPLC) and Mass Spectrometry documentation from a
-                recognized third-party analytical laboratory proving purity higher
-                than 99%.
-              </p>
-            </div>
-            <div className="vendors-vetting-item">
-              <div className="vendors-vetting-item-icon"><ShieldAlert /></div>
-              <h3>Secure Payment Options</h3>
-              <p>
-                Due to high-risk processing status, legitimate chemical suppliers
-                often use alternative gateways. We review their payment security
-                infrastructure, favoring companies accepting major credit cards and
-                verified crypto portals securely.
-              </p>
-            </div>
-            <div className="vendors-vetting-item">
-              <div className="vendors-vetting-item-icon"><CheckCircle2 /></div>
-              <h3>Shipping &amp; Fulfillment</h3>
-              <p>
-                We evaluate domestic dispatch speeds to ensure biologically sensitive
-                compounds are not subjected to prolonged transit temperatures. Vendors
-                must guarantee swift fulfillment and provide responsive customer support.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ FAQ ═══ */}
-        <section className="vendors-faq">
-          <h2 className="vendors-faq-title">Frequently Asked Sourcing Questions</h2>
-          {FAQ_ITEMS.map((item, i) => (
-            <div key={i} className="vendors-faq-item">
-              <h3>{item.q}</h3>
-              <p>{item.a}</p>
-            </div>
-          ))}
-        </section>
-
-        {/* Research Context Sidebar */}
-        <ResearchContextSidebar />
-
-        {/* ═══ FOOTER ═══ */}
-        <div className="vendors-footer-links">
-          <span className="vendors-footer-label">Explore Research:</span>
-          <Link href="/peptides/bpc-157" className="vendors-footer-link">BPC-157 Research</Link>
-          <span className="vendors-footer-sep">|</span>
-          <Link href="/peptides/tb-500" className="vendors-footer-link">TB-500 Protocols</Link>
-          <span className="vendors-footer-sep">|</span>
-          <Link href="/stacks/injury-recovery" className="vendors-footer-link">Healing Stacks</Link>
-        </div>
-
-        <div className="vendors-disclosure-box">
-          <p>
-            <strong>AFFILIATE DISCLOSURE:</strong> PeptiDex is a reader-supported
-            independent research hub. When you purchase through links on our site,
-            we may earn an affiliate commission. This helps maintain our database
-            and fund ongoing research operations without impacting our unbiased
-            vetting process.
-          </p>
-          <p>
-            <strong>LABORATORY RESEARCH WARNING:</strong> The vendors endorsed on
-            this page strictly sell raw analytical chemicals intended for licensed
-            professionals and independent laboratory research only. These products
-            are NOT FDA-approved for human diagnostics, treatment, or dietary
-            supplementation.
-          </p>
-        </div>
-
       </div>
+
+      {/* ═══ MATRIX SECTION ═══ */}
+      <section className="vn-matrix-section reveal">
+        <div className="vn-container">
+          <div className="vn-section-label">§ Side-by-Side Comparison</div>
+          <h2 className="vn-matrix-title">The full <em>matrix</em>.</h2>
+          
+          <div className="vn-matrix-table">
+            <div className="vn-matrix-row header">
+              <div className="vn-matrix-cell"></div>
+              <div className="vn-matrix-cell featured">Amino Club</div>
+              <div className="vn-matrix-cell">Limitless Life</div>
+              <div className="vn-matrix-cell">Ascension</div>
+            </div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Rating</div><div className="vn-matrix-cell">★ 4.9</div><div className="vn-matrix-cell">★ 4.8</div><div className="vn-matrix-cell">★ 4.7</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Purity</div><div className="vn-matrix-cell">99%+</div><div className="vn-matrix-cell">99%+</div><div className="vn-matrix-cell">98%+</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">COA</div><div className="vn-matrix-cell">Batch-specific</div><div className="vn-matrix-cell">Batch-specific</div><div className="vn-matrix-cell">Available</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Testing</div><div className="vn-matrix-cell">HPLC, MS, Endotoxin</div><div className="vn-matrix-cell">HPLC, LC-MS, Endotoxin</div><div className="vn-matrix-cell">HPLC, MS</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Shipping</div><div className="vn-matrix-cell">2–4 days (US)</div><div className="vn-matrix-cell">3–5 days (US)</div><div className="vn-matrix-cell">3–5 days (US)</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">International</div><div className="vn-matrix-cell">Yes</div><div className="vn-matrix-cell">No (US only)</div><div className="vn-matrix-cell">No (US only)</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Catalog Size</div><div className="vn-matrix-cell">40+</div><div className="vn-matrix-cell">90+</div><div className="vn-matrix-cell">60+</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Payment</div><div className="vn-matrix-cell">Card · Crypto · Zelle</div><div className="vn-matrix-cell">Card · Crypto</div><div className="vn-matrix-cell">Card · Crypto</div></div>
+            <div className="vn-matrix-row"><div className="vn-matrix-cell">Returns</div><div className="vn-matrix-cell">60-day MBG</div><div className="vn-matrix-cell">Satisfaction</div><div className="vn-matrix-cell">30-day</div></div>
+          </div>
+
+          <div style={{ marginTop: '32px', fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--ink-mute)', letterSpacing: '0.05em' }}>
+            Data verified as of 2026 Q2. Specifications subject to change.
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ HOW WE VET / FAQ (Preserved for SEO) ═══ */}
+      <div className="vn-container">
+        <section className="vn-extra-section">
+          <div className="vn-section-label">§ Our Methodology</div>
+          <h2 className="vn-extra-title">How We Vet Peptide Vendors</h2>
+          <div className="vn-vetting-grid">
+            <div className="vn-vetting-card">
+              <div className="vn-vetting-icon"><FlaskConical size={32} /></div>
+              <h3>Independent COA &amp; HPLC</h3>
+              <p>We mandate verifiable HPLC and Mass Spectrometry documentation from a recognized third-party analytical laboratory proving purity higher than 99%.</p>
+            </div>
+            <div className="vn-vetting-card">
+              <div className="vn-vetting-icon"><ShieldAlert size={32} /></div>
+              <h3>Secure Payment Options</h3>
+              <p>Legitimate chemical suppliers often use alternative gateways. We review their payment security infrastructure, favoring major credit cards and verified crypto portals securely.</p>
+            </div>
+            <div className="vn-vetting-card">
+              <div className="vn-vetting-icon"><CheckCircle2 size={32} /></div>
+              <h3>Shipping &amp; Fulfillment</h3>
+              <p>We evaluate domestic dispatch speeds to ensure biologically sensitive compounds are not subjected to prolonged transit temperatures. Vendors must guarantee swift fulfillment.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="vn-extra-section" style={{ borderBottom: 'none' }}>
+          <div className="vn-section-label">§ Knowledge Base</div>
+          <h2 className="vn-extra-title">Frequently Asked Questions</h2>
+          <div className="vn-faq-list">
+            {FAQ_ITEMS.map((item, i) => (
+              <div key={i} className="vn-faq-item">
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
     </RedesignLayout>
   );
 }

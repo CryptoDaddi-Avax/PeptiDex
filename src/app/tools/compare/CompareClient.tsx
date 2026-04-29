@@ -237,35 +237,51 @@ function CompareClientInner() {
 
     return (
         <RedesignLayout>
-            <div className="cmp-wrap">
+            {/* Editorial Page Header */}
+            <header className="cmp-hero">
+                <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)', backgroundSize: '80px 80px', maskImage: 'radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%)', opacity: 0.4, pointerEvents: 'none' as const }} />
+                <div style={{ maxWidth: 1400, margin: '0 auto', position: 'relative' }}>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--ink-mute)', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <Link href="/" style={{ color: 'var(--ink-mute)', textDecoration: 'none' }}>Home</Link>
+                        <span style={{ color: 'var(--line-strong)' }}>/</span>
+                        <Link href="/tools/evidence" style={{ color: 'var(--ink-mute)', textDecoration: 'none' }}>Tools</Link>
+                        <span style={{ color: 'var(--line-strong)' }}>/</span>
+                        <span style={{ color: 'var(--gold)' }}>Compare</span>
+                    </div>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <span style={{ width: 32, height: 1, background: 'var(--gold)', display: 'inline-block' }} />
+                        § Interactive Tool
+                    </div>
+                    <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(48px, 7vw, 96px)', fontWeight: 300, lineHeight: 1, letterSpacing: '-0.03em', marginBottom: 24, maxWidth: 1100 }}>
+                        Compare <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Peptides</em>.
+                    </h1>
+                    <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 680, lineHeight: 1.6 }}>
+                        Select 2–3 peptides for a side-by-side analysis of evidence, dosing, half-life, synergies, and safety profiles.
+                    </p>
+                </div>
+            </header>
+
+            <div style={{ maxWidth: 1400, margin: '0 auto', padding: '48px 48px 80px' }}>
                 <div className="cmp-disclaimer">
                     <ShieldAlert />
                     <p>{SHORT_DISCLAIMER}</p>
                 </div>
 
-                <div className="cmp-header">
-                    <div>
-                        <h1 className="cmp-title">
-                            <div className="cmp-icon-wrap"><GitCompare /></div>
-                            Peptide Comparison Tool
-                        </h1>
-                        <p className="cmp-subtitle">Select 2-3 peptides \u00b7 Compare research data side-by-side</p>
-                    </div>
-                    <div className="cmp-header-actions">
-                        {compared.length >= 2 && compareShareData && (
-                            <ShareModal
-                                data={compareShareData}
-                                shareUrl={`https://peptidex.app/tools/compare?p=${compared.map(p => p.slug).join(",")}`}
-                                shareText={`Comparing ${compared.map(p => p.name).join(" vs ")} on PeptiDex \uD83E\uDDEC`}
-                                buttonLabel="Share Results"
-                            />
-                        )}
-                        {compared.length >= 2 && (
-                            <button onClick={handleShare} className={`cmp-btn ${copied ? "success" : ""}`}>
-                                {copied ? <><Check style={{width: 14}}/> Copied!</> : <><Share2 style={{width:14}}/> Copy Link</>}
-                            </button>
-                        )}
-                    </div>
+                {/* Actions row */}
+                <div className="cmp-header-actions" style={{ marginBottom: 32 }}>
+                    {compared.length >= 2 && compareShareData && (
+                        <ShareModal
+                            data={compareShareData}
+                            shareUrl={`https://peptidex.app/tools/compare?p=${compared.map(p => p.slug).join(",")}`}
+                            shareText={`Comparing ${compared.map(p => p.name).join(" vs ")} on PeptiDex \uD83E\uDDEC`}
+                            buttonLabel="Share Results"
+                        />
+                    )}
+                    {compared.length >= 2 && (
+                        <button onClick={handleShare} className={`cmp-btn ${copied ? "success" : ""}`}>
+                            {copied ? <><Check style={{width: 14}}/> Copied!</> : <><Share2 style={{width:14}}/> Copy Link</>}
+                        </button>
+                    )}
                 </div>
 
                 <div className="cmp-selectors-wrap">

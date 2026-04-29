@@ -14,7 +14,16 @@ function EvidenceBadge({ level }: { level: EvidenceLevel }) {
         emerging: "bg-violet-500/15 text-violet-400 border-violet-500/30",
         anecdotal: "bg-zinc-500/15 text-zinc-400 border-zinc-500/30",
     };
-    const label = level.replace(/-/g, " ");
+    const EVIDENCE_LABEL: Record<string, string> = {
+        'very-strong': 'Very Strong',
+        'strong': 'Strong',
+        'moderate-strong': 'Moderate-Strong',
+        'moderate': 'Moderate',
+        'preclinical': 'Preclinical',
+        'emerging': 'Emerging',
+        'anecdotal': 'Anecdotal',
+    };
+    const label = EVIDENCE_LABEL[level] || level.replace(/-/g, " ");
     return (
         <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border ${styles[level] || styles.preclinical}`}>
             {label}

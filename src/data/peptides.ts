@@ -51,7 +51,7 @@ export const peptides: Peptide[] = [
         ],
         safety_notes: "Excellent research safety profile; commonly used for recovery. Not FDA-approved. Most evidence from animal models. FDA restricted use in compounded medications in Sept 2023.",
         half_life_hours: 4,
-        dosing: { route: "SubQ", typical_dose_mcg: [500, 500], frequency: "7x/wk", cycle_weeks: [8, 8], timing: "Morning or split AM/PM", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Often run 250mcg 2x/day for injuries. Can be injected near injury site." },
+        dosing: { route: "SubQ", typical_dose_mcg: [250, 500], frequency: "7x/wk", cycle_weeks: [4, 8], timing: "Morning or split AM/PM", reconstitution_ml: 2.5, typical_vial_mg: 5, notes: "Often run 250mcg 2x/day for injuries. Can be injected near injury site." },
         interactions: { synergies: ["TB-500", "GHK-Cu", "KPV"], cautions: [], contraindicated: [], notes: "BPC-157 + TB-500 is the most popular healing stack. Synergistic tissue repair." },
         outcomes_timeline: { week_1: "Reduced pain/inflammation at injury site; improved GI comfort if used for gut healing", week_2_4: "Noticeable mobility improvement; significant reduction in injury-site swelling", month_2_3: "Substantial tissue remodeling; most acute injuries showing measurable repair", long_term: "Full tendon/ligament functional recovery in most preclinical models; sustained GI remission" },
         side_effects: [

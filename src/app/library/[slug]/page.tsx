@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import { peptides, getPeptideBySlug } from "@/data/peptides";
 import { stacks } from "@/data/stacks";
 import { PeptideDetailRedesign } from "./client";
@@ -17,7 +17,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
                 ? `${(peptide.half_life_hours / 24).toFixed(0)}-day half-life`
                 : `${peptide.half_life_hours}h half-life`
             : "";
-        const title = `${peptide.name} â€” Dosage, Half-Life & Research Guide`;
+        const title = `${peptide.name} — Dosage, Half-Life & Research Guide`;
         const description = `${peptide.name} research guide: mechanism of action, dosing (${peptide.dosing?.typical_dose_mcg?.[0] ?? ""}â€“${peptide.dosing?.typical_dose_mcg?.[1] ?? ""}mcg), ${halfLifeStr}, clinical studies, and safety profile. ${peptide.mechanism.slice(0, 100)}`;
         const url = `https://peptidex.app/library/${slug}`;
 

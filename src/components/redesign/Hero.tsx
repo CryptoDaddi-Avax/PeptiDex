@@ -127,9 +127,9 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
         camera.aspect = w / h;
         /* Pull the camera back on narrow viewports so the helix fits the smaller container */
         if (window.innerWidth <= 480) {
-          camera.position.z = 38;
+          camera.position.z = 18; /* Extremely zoomed in to make helix vertically span 'THE' to 'RESEARCH' */
         } else if (window.innerWidth <= 768) {
-          camera.position.z = 36;
+          camera.position.z = 30;
         } else {
           camera.position.z = 30;
         }

@@ -3,8 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { stacks } from "@/data/stacks";
-import { Users, BookmarkPlus, Bookmark, Activity, Beaker, BookOpen } from "lucide-react";
-import { peptides } from "@/data/peptides";
+import { BookmarkPlus, Bookmark } from "lucide-react";
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './stacks-redesign.css';
 
@@ -23,7 +22,8 @@ export default function StacksClient() {
         }
     }, []);
 
-    const toggleSave = (stackName: string) => {
+    const toggleSave = (e: React.MouseEvent, stackName: string) => {
+        e.preventDefault();
         setSavedStackIds((prev) => {
             const next = prev.includes(stackName) ? prev.filter(id => id !== stackName) : [...prev, stackName];
             localStorage.setItem(SAVED_STACKS_KEY, JSON.stringify(next));
@@ -41,107 +41,148 @@ export default function StacksClient() {
 
     return (
         <RedesignLayout>
-            <div className="stacks-wrap">
-                <div className="stacks-header">
-                    <h1 className="stacks-title">
-                        <div className="stacks-title-icon">
-                            <Users />
-                        </div>
-                        Community Stacks
-                    </h1>
-                    <p className="stacks-subtitle">
-                        Curated peptide protocols for specific goals. Learn from community knowledge.
-                    </p>
+            <header className="page-header">
+                <div className="page-header-grid"></div>
+                <div className="page-header-wrap">
+                    <div className="breadcrumb">
+                        <Link href="/">Home</Link><span className="sep">/</span><span className="current">Stacks</span>
+                    </div>
+                    <div className="section-label">§ Curated Protocols</div>
+                    <h1 className="page-title">12 expert-curated <em>stacks</em>.</h1>
+                    <p className="page-subtitle">Each protocol is built around a specific outcome, dosed against published literature, and cross-referenced with sourcing data. Pick a goal, get a stack, plan a cycle.</p>
+                    <div className="page-meta">
+                        <div className="page-meta-item"><strong>{stacks.length}</strong> protocols</div>
+                        <div className="page-meta-item"><strong>{stacks.length}</strong> goal categories</div>
+                        <div className="page-meta-item"><strong>Updated</strong> for 2026</div>
+                    </div>
                 </div>
+            </header>
 
-                <div className="stacks-filters">
+            <div className="container" style={{ paddingTop: '60px', paddingBottom: '80px' }}>
+                <div className="stacks-filters" style={{ display: 'flex', gap: '12px', marginBottom: '32px' }}>
                     <button 
                         onClick={() => setFilter("all")}
-                        className={`stacks-filter-btn ${filter === "all" ? "active" : ""}`}
+                        className={`filter-btn ${filter === "all" ? "active" : ""}`}
+                        style={{
+                            padding: '8px 16px',
+                            borderRadius: '4px',
+                            fontFamily: 'var(--sans)',
+                            fontSize: '13px',
+                            fontWeight: 500,
+                            cursor: 'pointer',
+                            border: '1px solid var(--line)',
+                            background: filter === 'all' ? 'var(--gold)' : 'rgba(244,239,230,0.02)',
+                            color: filter === 'all' ? 'var(--bg)' : 'var(--ink-mute)',
+                            transition: 'all 0.2s'
+                        }}
                     >
                         All Stacks
                     </button>
                     <button 
                         onClick={() => setFilter("saved")}
-                        className={`stacks-filter-btn ${filter === "saved" ? "active" : ""}`}
+                        className={`filter-btn ${filter === "saved" ? "active" : ""}`}
+                        style={{
+                            padding: '8px 16px',
+                            borderRadius: '4px',
+                            fontFamily: 'var(--sans)',
+                            fontSize: '13px',
+                            fontWeight: 500,
+                            cursor: 'pointer',
+                            border: '1px solid var(--line)',
+                            background: filter === 'saved' ? 'var(--gold)' : 'rgba(244,239,230,0.02)',
+                            color: filter === 'saved' ? 'var(--bg)' : 'var(--ink-mute)',
+                            transition: 'all 0.2s'
+                        }}
                     >
                         Saved ({savedStackIds.length})
                     </button>
                 </div>
 
                 <div className="stacks-grid">
-                    {filtered.map((stack, i) => (
-                        <div key={stack.stack_name} className="stack-card">
-                            {/* Header */}
-                            <div className="stack-card-header">
-                                <div>
-                                    <h2 className="stack-card-title">{stack.stack_name}</h2>
-                                    <p className="stack-card-goal">{stack.goal}</p>
-                                </div>
-                                <button 
-                                    onClick={() => toggleSave(stack.stack_name)} 
-                                    className={`stack-save-btn ${savedStackIds.includes(stack.stack_name) ? "saved" : ""}`}
-                                    aria-label="Save stack"
-                                >
-                                    {savedStackIds.includes(stack.stack_name) ? <Bookmark style={{fill: "currentColor"}} /> : <BookmarkPlus />}
-                                </button>
-                            </div>
-
-                            {/* Content */}
-                            <div className="stack-card-content">
-                                {/* Peptides List */}
-                                <div className="stack-section">
-                                    <h3 className="stack-section-title"><Beaker /> Stack Compounds</h3>
-                                    <div className="stack-compounds">
-                                        {stack.peptides.map((p) => {
-                                            const pepData = peptides.find(x => x.name === p.name);
-                                            return (
-                                                <div key={p.name} className="stack-compound">
-                                                    <Link 
-                                                        href={`/library/${pepData?.slug || p.name.toLowerCase()}`} 
-                                                        className="stack-compound-name"
-                                                    >
-                                                        {p.name}
-                                                    </Link>
-                                                    <span className="stack-compound-role">{p.role_in_stack}</span>
-                                                </div>
-                                            );
-                                        })}
+                    {filtered.map((stack, i) => {
+                        const category = stack.stack_name.replace(/ Stack$/i, '');
+                        const isSaved = savedStackIds.includes(stack.stack_name);
+                        return (
+                            <Link key={stack.stack_name} href={`/stacks/${stack.slug}`} className="stack-card">
+                                <div className="stack-header">
+                                    <div className="stack-goal">{category}</div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        {i === 0 && filter === 'all' && <span className="stack-tag">Most popular</span>}
+                                        <button 
+                                            onClick={(e) => toggleSave(e, stack.stack_name)} 
+                                            className="stack-save-btn"
+                                            aria-label="Save stack"
+                                            style={{
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: isSaved ? 'var(--gold)' : 'var(--ink-mute)',
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                padding: '4px',
+                                                transition: 'color 0.2s'
+                                            }}
+                                        >
+                                            {isSaved ? <Bookmark style={{fill: "currentColor"}} size={18} /> : <BookmarkPlus size={18} />}
+                                        </button>
                                     </div>
                                 </div>
-
-                                {/* Synergy */}
-                                <div className="stack-section">
-                                    <h3 className="stack-section-title"><Activity /> Why It Works</h3>
-                                    <p className="stack-text-box">{stack.synergy_rationale}</p>
+                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                    <h3 className="stack-name">{stack.stack_name.replace(/ Stack$/i, '')}</h3>
+                                    <p className="stack-desc">{stack.goal}</p>
                                 </div>
-
-                                {/* Studies */}
-                                <div className="stack-section">
-                                    <h3 className="stack-section-title"><BookOpen /> Key Studies</h3>
-                                    <ul className="stack-studies-list">
-                                        {stack.supporting_studies.map((s, idx) => (
-                                            <li key={idx} className="stack-study-item">
-                                                <span>
-                                                    {s.description}   
-                                                    <a href={s.pubmed_url} target="_blank" rel="noopener noreferrer" className="stack-study-link">PubMed</a>
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <div className="stack-peptides">
+                                    {stack.peptides.map(p => (
+                                        <span key={p.name} className="pep">{p.name}</span>
+                                    ))}
                                 </div>
-                            </div>
-                        </div>
-                    ))}
+                                <div className="stack-meta">
+                                    <span>{stack.peptides.length} compounds</span>
+                                    <span className="stack-arrow">→</span>
+                                </div>
+                            </Link>
+                        );
+                    })}
 
                     {filtered.length === 0 && filter === "saved" && (
-                        <div className="stacks-empty">
-                            <Bookmark />
-                            <h3>No saved stacks yet</h3>
-                            <p>Browse the community stacks and save your favorites.</p>
-                            <button onClick={() => setFilter("all")} className="stacks-empty-btn">Browse All</button>
+                        <div className="stacks-empty" style={{ gridColumn: '1 / -1', padding: '60px 24px', textAlign: 'center', border: '1px dashed var(--line)', background: 'rgba(244,239,230,0.02)', borderRadius: '12px' }}>
+                            <Bookmark size={32} style={{ color: 'var(--ink-mute)', marginBottom: '16px' }} />
+                            <h3 style={{ fontFamily: 'var(--serif)', fontSize: '24px', color: 'var(--ink)', margin: '0 0 12px' }}>No saved stacks yet</h3>
+                            <p style={{ color: 'var(--ink-dim)', marginBottom: '24px' }}>Browse the community stacks and save your favorites.</p>
+                            <button 
+                                onClick={() => setFilter("all")} 
+                                style={{
+                                    padding: '12px 24px',
+                                    background: 'transparent',
+                                    color: 'var(--ink)',
+                                    border: '1px solid var(--line-strong)',
+                                    cursor: 'pointer',
+                                    fontFamily: 'var(--sans)',
+                                    fontSize: '13px',
+                                    letterSpacing: '0.1em',
+                                    textTransform: 'uppercase',
+                                    transition: 'all 0.3s'
+                                }}
+                            >
+                                Browse All
+                            </button>
                         </div>
                     )}
+                </div>
+
+                <div style={{ marginTop: '80px', padding: '48px', background: 'var(--bg-card)', borderLeft: '3px solid var(--gold)' }} className="reveal in">
+                    <div className="section-label">§ Need help choosing?</div>
+                    <h3 style={{ fontFamily: 'var(--serif)', fontSize: '36px', fontWeight: 300, marginBottom: '16px', letterSpacing: '-0.02em' }}>
+                        Try the <em className="text-gold italic">Cycle Planner</em>.
+                    </h3>
+                    <p style={{ color: 'var(--ink-dim)', fontSize: '16px', lineHeight: 1.6, maxWidth: '680px', marginBottom: '24px' }}>
+                        Get a personalized peptide protocol based on your goals, experience level, and timeline. Free, instant, and based on published research dosing.
+                    </p>
+                    <Link href="/tools/cycle-planner" className="btn-primary">
+                        <span>Open the Cycle Planner</span>
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginLeft: '8px' }}><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
+                    </Link>
                 </div>
             </div>
         </RedesignLayout>

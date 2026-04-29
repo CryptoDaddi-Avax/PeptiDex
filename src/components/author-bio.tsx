@@ -39,17 +39,31 @@ export function AuthorBio({ name }: { name: string }) {
   };
 
   return (
-    <section className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 md:p-8">
+    <section style={{
+      padding: 24,
+      background: 'var(--bg-soft)',
+      border: '1px solid var(--line)',
+    }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-5">About the Author</h3>
-      <div className="flex items-start gap-4">
-        {/* Avatar — image or fallback initials */}
-        <Link href={`/about/${slug}`} className="flex-shrink-0 group">
+      <h3 style={{
+        fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.25em',
+        textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 20,
+        display: 'flex', alignItems: 'center', gap: 8,
+      }}>
+        <span style={{ opacity: 0.7 }}>§</span> About the Author
+      </h3>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+        {/* Avatar */}
+        <Link href={`/about/${slug}`} style={{ flexShrink: 0 }}>
           {displayImage ? (
-            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-violet-500/30 group-hover:border-violet-500/60 transition-colors relative bg-zinc-800">
+            <div style={{
+              width: 56, height: 56, overflow: 'hidden',
+              border: '1px solid var(--line)',
+              position: 'relative', background: 'var(--bg)',
+            }}>
               <Image
                 src={displayImage}
                 alt={displayImageAlt}
@@ -60,24 +74,42 @@ export function AuthorBio({ name }: { name: string }) {
               />
             </div>
           ) : (
-            <div className="w-14 h-14 rounded-full bg-violet-500/15 border-2 border-violet-500/30 group-hover:border-violet-500/60 flex items-center justify-center transition-colors">
-              <span className="text-sm font-bold text-violet-400">{initials}</span>
+            <div style={{
+              width: 56, height: 56,
+              background: 'rgba(201,169,97,0.08)',
+              border: '1px solid rgba(201,169,97,0.2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--gold)' }}>{initials}</span>
             </div>
           )}
         </Link>
 
-        <div className="flex-1 min-w-0">
-          <Link href={`/about/${slug}`} className="hover:text-violet-400 transition-colors">
-            <p className="text-base font-bold text-zinc-100">{displayName}</p>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <Link href={`/about/${slug}`} style={{ textDecoration: 'none' }}>
+            <p style={{
+              fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 600,
+              color: 'var(--ink)', margin: 0, transition: 'color 0.2s',
+            }}>{displayName}</p>
           </Link>
-          <p className="text-sm text-violet-400 font-medium mb-3">{displayTitle}</p>
-          <p className="text-sm text-zinc-400 leading-relaxed mb-4">{displayBio}</p>
+          <p style={{
+            fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em',
+            color: 'var(--gold)', marginBottom: 12, marginTop: 2,
+          }}>{displayTitle}</p>
+          <p style={{
+            fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--ink-dim)',
+            lineHeight: 1.6, marginBottom: 16,
+          }}>{displayBio}</p>
           <Link
             href={`/about/${slug}`}
-            className="inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors group"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.15em',
+              textTransform: 'uppercase', color: 'var(--gold)',
+              textDecoration: 'none', transition: 'opacity 0.2s',
+            }}
           >
-            View full author profile
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            View Full Profile <ArrowRight style={{ width: 12, height: 12 }} />
           </Link>
         </div>
       </div>

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { getPeptideBySlug } from "@/data/peptides";
 import { getGoalPage } from "@/data/goal-pages";
-import { ArrowRight, FlaskConical, HelpCircle, ChevronRight, Sparkles } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './best-goal-redesign.css';
@@ -12,95 +11,162 @@ interface BestGoalClientProps {
     slug: string;
 }
 
+/* Dosing role text helper */
+function getPepRole(pep: { category?: string; primary_benefits?: string }, index: number): string {
+    const roles = ['Anchor', 'Support', 'Pulse', 'Modulator', 'Optimizer', 'Auxiliary'];
+    const label = roles[index] || `Compound ${index + 1}`;
+    const desc = pep.primary_benefits || pep.category || '';
+    return `§ ${label} — ${desc}`;
+}
+
 export default function BestGoalClient({ slug }: BestGoalClientProps) {
     const goal = getGoalPage(slug);
     if (!goal) return null; // Server caught 404
 
     const peptides = goal.peptideSlugs.map(getPeptideBySlug).filter(Boolean) as NonNullable<ReturnType<typeof getPeptideBySlug>>[];
 
+    /* Derive a clean display name for the title */
+    const titleText = goal.h1.replace(/^Best Peptides for\s*/i, '');
+
     return (
         <RedesignLayout>
-            <div className="goal-wrap">
-                <div className="goal-header">
-                    <span className="goal-emoji">{goal.emoji}</span>
-                    <h1 className="goal-title">{goal.h1}</h1>
-                    <div className="goal-meta">Updated 2026 \u00b7 Research-backed \u00b7 PeptiDex</div>
-                    <p className="goal-intro">{goal.intro}</p>
+            {/* ═══ HERO ═══ */}
+            <header className="goal-hero">
+                <div className="goal-hero-grid" />
+                <div className="goal-hero-wrap">
+                    <nav className="goal-breadcrumb">
+                        <Link href="/">Home</Link>
+                        <span className="sep">/</span>
+                        <Link href="/stacks">Goals</Link>
+                        <span className="sep">/</span>
+                        <span className="current">{titleText}</span>
+                    </nav>
+                    <div className="goal-icon-large">{goal.emoji}</div>
+                    <div className="goal-section-label">§ Research Goal</div>
+                    <h1 className="goal-page-title">
+                        {titleText.split(' ').slice(0, -1).join(' ')}{' '}
+                        <em>{titleText.split(' ').slice(-1)[0]?.toLowerCase()}</em>.
+                    </h1>
+                    <p className="goal-page-subtitle">{goal.intro}</p>
+                    <div className="goal-page-meta">
+                        <div className="goal-meta-item"><strong>{goal.stackNames.length}</strong> curated stack{goal.stackNames.length !== 1 ? 's' : ''}</div>
+                        <div className="goal-meta-item"><strong>{peptides.length}</strong> peptides involved</div>
+                        <div className="goal-meta-item"><strong>12</strong> week protocol</div>
+                        <div className="goal-meta-item"><strong>Intermediate</strong> level</div>
+                    </div>
                 </div>
+            </header>
 
-                <div className="goal-section-title"><FlaskConical style={{width:16}}/> Top Peptides</div>
-                <div className="goal-pep-list">
-                    {peptides.map(pep => (
-                        <Link key={pep.slug} href={`/library/${pep.slug}`} className="goal-pep-card">
-                            <div className="goal-pep-icon">{getCategoryIcon(pep.category)}</div>
-                            <div className="goal-pep-content">
-                                <div className="goal-pep-top">
-                                    <h3 className="goal-pep-name">{pep.name}</h3>
-                                    <ChevronRight />
-                                </div>
-                                <p className="goal-pep-desc">{pep.primary_benefits}</p>
-                                <p className="goal-pep-mech">{pep.mechanism.slice(0, 150)}...</p>
-                                {pep.dosing && (
-                                    <div className="goal-pep-badges">
-                                        <span className="goal-pep-badge">{pep.dosing.typical_dose_mcg[0]}-{pep.dosing.typical_dose_mcg[1]} mcg</span>
-                                        <span className="goal-pep-badge">{pep.dosing.route}</span>
-                                        <span className="goal-pep-badge">{pep.dosing.frequency}</span>
-                                    </div>
-                                )}
-                            </div>
-                        </Link>
-                    ))}
-                </div>
+            {/* ═══ PROTOCOL SECTION ═══ */}
+            <section className="goal-protocol-section reveal">
+                <div className="goal-container">
+                    <div className="goal-section-label">§ The Protocol</div>
+                    <h2 className="goal-protocol-title">
+                        The <em>{titleText}</em> stack.
+                    </h2>
+                    <p className="goal-protocol-desc">
+                        A balanced protocol engineered for {titleText.toLowerCase()} via targeted peptide synergy.
+                    </p>
 
-                {goal.stackNames.length > 0 && (
-                    <>
-                        <div className="goal-section-title alt1"><Sparkles style={{width:16}}/> Recommended Stacks</div>
-                        <div className="goal-stack-list">
-                            {goal.stackNames.map(name => (
-                                <Link key={name} href="/stacks" className="goal-stack-card">
-                                    <span className="goal-stack-name">{name}</span>
-                                    <ArrowRight />
+                    <div className="goal-protocol-block">
+                        <div className="goal-section-label">§ The Stack</div>
+                        <h3 className="goal-protocol-block-title">
+                            {peptides.length} peptides, <em>precisely</em> sequenced.
+                        </h3>
+                        <p className="goal-protocol-block-desc">
+                            Each peptide plays a specific role. Removing any one breaks the synergy.
+                        </p>
+
+                        <div className="goal-protocol-grid">
+                            {peptides.map((pep, i) => (
+                                <Link key={pep.slug} href={`/library/${pep.slug}`} className="goal-protocol-pep">
+                                    <div className="goal-pep-role">{getPepRole(pep, i)}</div>
+                                    <h4>{pep.name}</h4>
+                                    <p>{pep.mechanism?.slice(0, 180) || pep.primary_benefits}</p>
                                 </Link>
                             ))}
+                            <Link href={`/tools/cycle-planner?goal=${slug}`} className="goal-protocol-pep cta-card">
+                                <div className="goal-pep-role">§ Build your version</div>
+                                <h4>Customize this protocol</h4>
+                                <p>Open this protocol in the Cycle Planner to adjust duration, swap peptides, and generate your reference dosing chart.</p>
+                            </Link>
                         </div>
-                    </>
-                )}
+                    </div>
 
-                <div className="goal-section-title alt2"><HelpCircle style={{width:16}}/> Frequently Asked Questions</div>
-                <div className="goal-faq-list">
-                    {goal.faqs.map((faq, i) => (
-                        <div key={i} className="goal-faq-card">
-                            <h3 className="goal-faq-q">{faq.question}</h3>
-                            <p className="goal-faq-a">{faq.answer}</p>
+                    {/* Expected outcomes */}
+                    <div className="goal-section-label goal-outcomes-label">§ Expected Outcomes</div>
+                    <h3 className="goal-outcomes-title">Based on published <em>trial data</em>.</h3>
+
+                    <div className="goal-expected-results">
+                        <div className="goal-result-card">
+                            <div className="goal-result-label">Primary target</div>
+                            <div className="goal-result-value">{titleText}</div>
+                            <div className="goal-result-desc">Optimized through peptide synergy</div>
                         </div>
-                    ))}
+                        <div className="goal-result-card">
+                            <div className="goal-result-label">Compounds</div>
+                            <div className="goal-result-value">{peptides.length} active</div>
+                            <div className="goal-result-desc">Covering {peptides.length} complementary pathways</div>
+                        </div>
+                        <div className="goal-result-card">
+                            <div className="goal-result-label">Stacks</div>
+                            <div className="goal-result-value">{goal.stackNames.length} curated</div>
+                            <div className="goal-result-desc">{goal.stackNames.join(', ')}</div>
+                        </div>
+                    </div>
+
+                    <div className="goal-cta-row">
+                        <Link href={`/tools/cycle-planner?goal=${slug}`} className="btn-primary">
+                            <span>Plan this cycle</span>
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
+                        </Link>
+                        <Link href="/vendors" className="btn-ghost">Find verified sources</Link>
+                    </div>
                 </div>
+            </section>
 
-                {goal.relatedGoals.length > 0 && (
-                    <div className="goal-related">
-                        <div className="goal-related-title">Related Goals</div>
-                        <div className="goal-related-tags">
+            {/* ═══ FAQ ═══ */}
+            {goal.faqs.length > 0 && (
+                <section className="goal-faq-section">
+                    <div className="goal-container">
+                        <div className="goal-section-label">§ Knowledge Base</div>
+                        <h2 className="goal-faq-title">Frequently asked <em>questions</em>.</h2>
+                        <div className="goal-faq-list">
+                            {goal.faqs.map((faq, i) => (
+                                <div key={i} className="goal-faq-item">
+                                    <h3>{faq.question}</h3>
+                                    <p>{faq.answer}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* ═══ RELATED GOALS ═══ */}
+            {goal.relatedGoals.length > 0 && (
+                <section className="goal-related-section">
+                    <div className="goal-container">
+                        <div className="goal-related-label">§ Related Goals</div>
+                        <div className="goal-related-grid">
                             {goal.relatedGoals.map(rg => {
                                 const related = getGoalPage(rg);
                                 if (!related) return null;
+                                const relatedTitle = related.h1.replace(/^Best Peptides for\s*/i, '');
                                 return (
-                                    <Link key={rg} href={`/best/${rg}`} className="goal-related-tag">
-                                        {related.emoji} {related.h1.replace("Best Peptides for ", "")}
+                                    <Link key={rg} href={`/best/${rg}`} className="goal-related-link">
+                                        {related.emoji} {relatedTitle}
                                     </Link>
-                                )
+                                );
                             })}
                         </div>
                     </div>
-                )}
+                </section>
+            )}
 
-                <div className="goal-cta-wrap">
-                    <Link href="/quiz" className="goal-cta-btn primary">
-                        Find Your Stack <ArrowRight style={{width:16}}/>
-                    </Link>
-                    <Link href="/library" className="goal-cta-btn secondary">
-                        Browse All Peptides
-                    </Link>
-                </div>
+            {/* ═══ DISCLAIMER ═══ */}
+            <div className="goal-disclaimer">
+                ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
             </div>
         </RedesignLayout>
     );

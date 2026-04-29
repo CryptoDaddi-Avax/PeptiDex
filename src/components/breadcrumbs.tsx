@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ChevronRight, Home } from 'lucide-react';
 
 export interface BreadcrumbItem {
   name: string;
@@ -28,23 +27,30 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-zinc-500 mb-6" aria-label="Breadcrumb">
+      <nav
+        className="blog-breadcrumbs"
+        style={{
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12,
+          fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--ink-mute)', marginBottom: 24,
+        }}
+        aria-label="Breadcrumb"
+      >
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (
-            <div key={item.name} className="flex items-center gap-1.5">
-              {index === 0 && <Home className="w-3 h-3 hidden md:block" />}
+            <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               {item.url && !isLast ? (
                 <Link
                   href={item.url.replace('https://peptidex.app', '')}
-                  className="hover:text-zinc-300 transition-colors"
+                  style={{ color: 'var(--ink-mute)', textDecoration: 'none' }}
                 >
                   {item.name}
                 </Link>
               ) : (
-                <span className="text-zinc-300 font-medium">{item.name}</span>
+                <span style={{ color: isLast ? 'var(--gold)' : 'var(--ink-dim)', fontWeight: 500 }}>{item.name}</span>
               )}
-              {!isLast && <ChevronRight className="w-3 h-3 text-zinc-600" />}
+              {!isLast && <span style={{ color: 'var(--line-strong)' }}>/</span>}
             </div>
           );
         })}
