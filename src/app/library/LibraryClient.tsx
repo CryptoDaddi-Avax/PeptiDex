@@ -130,17 +130,17 @@ export default function LibraryClient() {
             available clinical evidence. Filter, search, or browse the full catalog.
           </p>
           <div className="lib-page-meta">
-            <div className="lib-page-meta-item">
-              <strong>{peptides.length}</strong> compounds
+            <div className="lib-page-meta-item" suppressHydrationWarning>
+              <strong suppressHydrationWarning>{peptides.length}</strong> compounds
             </div>
-            <div className="lib-page-meta-item">
-              <strong>{uniqueMechanisms}</strong> mechanism classes
+            <div className="lib-page-meta-item" suppressHydrationWarning>
+              <strong suppressHydrationWarning>{uniqueMechanisms}</strong> mechanism classes
             </div>
-            <div className="lib-page-meta-item">
-              <strong>{totalStudies}+</strong> studies indexed
+            <div className="lib-page-meta-item" suppressHydrationWarning>
+              <strong suppressHydrationWarning>{totalStudies}+</strong> studies indexed
             </div>
-            <div className="lib-page-meta-item">
-              <strong>{fdaApprovedCount}</strong> FDA-approved
+            <div className="lib-page-meta-item" suppressHydrationWarning>
+              <strong suppressHydrationWarning>{fdaApprovedCount}</strong> FDA-approved
             </div>
           </div>
         </div>

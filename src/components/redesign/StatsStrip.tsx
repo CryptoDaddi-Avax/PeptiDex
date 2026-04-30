@@ -16,11 +16,15 @@ const stats = [
 
 export default function StatsStrip() {
   const ref = useRef<HTMLDivElement>(null);
-  // Start with final values so SSR/first-paint always shows real numbers
-  const [counts, setCounts] = useState(stats.map((s) => s.count));
+  // Initialize as null so SSR renders nothing — avoids mismatch when
+  // the animation resets to 0 on first client paint.
+  const [counts, setCounts] = useState<number[] | null>(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
+    // Set real values immediately on mount so non-visible strip shows numbers
+    setCounts(stats.map((s) => s.count));
+
     if (!ref.current || hasAnimated.current) return;
 
     const observer = new IntersectionObserver(
@@ -30,8 +34,7 @@ export default function StatsStrip() {
           hasAnimated.current = true;
           observer.disconnect();
 
-          // Reset to 0 then animate up — this only happens client-side
-          // after the component is visible, so no hydration mismatch.
+          // Animate from 0 to final — entirely client-side, no SSR involved
           setCounts(stats.map(() => 0));
 
           const start = performance.now();
@@ -58,8 +61,8 @@ export default function StatsStrip() {
       <div className="stats-grid">
         {stats.map((s, i) => (
           <div className="stat" key={s.label}>
-            <div className="stat-num">
-              {counts[i]}<em>{s.suffix}</em>
+            <div className="stat-num" suppressHydrationWarning>
+              {counts !== null ? counts[i] : s.count}<em>{s.suffix}</em>
             </div>
             <div className="stat-label">{s.label}</div>
           </div>

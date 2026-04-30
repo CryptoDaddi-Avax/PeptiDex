@@ -95,6 +95,11 @@ interface AutoLinkProps {
 // Recursively walks the children array and replaces text strings with Auto-Links
 export function AutoLink({ children }: AutoLinkProps) {
   const contextSet = useContext(AutoLinkContext);
+  // Mount guard: render children unchanged during SSR / initial hydration.
+  // After mount, React replaces with the link-transformed version.
+  // This eliminates the SSR↔CSR text mismatch warning.
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => { setMounted(true); }, []);
 
   const processNodes = (node: React.ReactNode): React.ReactNode => {
     if (typeof node === 'string') {
@@ -118,5 +123,9 @@ export function AutoLink({ children }: AutoLinkProps) {
     return node;
   };
 
+  // Before mount: render children as-is (matches SSR output exactly)
+  if (!mounted) return <>{children}</>;
+
   return <>{processNodes(children)}</>;
 }
+
