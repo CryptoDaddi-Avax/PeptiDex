@@ -4,6 +4,8 @@ import Link from "next/link";
 import { getPeptideBySlug } from "@/data/peptides";
 import { getGoalPage } from "@/data/goal-pages";
 import { getCategoryIcon } from "@/data/category-icons";
+import { SaveButton } from "@/components/save-button";
+import { NewsletterSignup } from "@/components/newsletter-signup";
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './best-goal-redesign.css';
 
@@ -43,10 +45,13 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                     </nav>
                     <div className="goal-icon-large">{goal.emoji}</div>
                     <div className="goal-section-label">§ Research Goal</div>
-                    <h1 className="goal-page-title">
-                        {titleText.split(' ').slice(0, -1).join(' ')}{' '}
-                        <em>{titleText.split(' ').slice(-1)[0]?.toLowerCase()}</em>.
-                    </h1>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                        <h1 className="goal-page-title">
+                            {titleText.split(' ').slice(0, -1).join(' ')}{' '}
+                            <em>{titleText.split(' ').slice(-1)[0]?.toLowerCase()}</em>.
+                        </h1>
+                        <SaveButton type="goal" slug={slug} title={goal.h1} />
+                    </div>
                     <p className="goal-page-subtitle">{goal.intro}</p>
                     <div className="goal-page-meta">
                         <div className="goal-meta-item"><strong>{goal.stackNames.length}</strong> curated stack{goal.stackNames.length !== 1 ? 's' : ''}</div>
@@ -163,6 +168,11 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                     </div>
                 </section>
             )}
+
+            {/* ═══ NEWSLETTER ═══ */}
+            <div style={{ padding: '0 32px', maxWidth: 800, margin: '0 auto' }}>
+                <NewsletterSignup source={`goal_${slug}`} />
+            </div>
 
             {/* Last Reviewed */}
             <div className="goal-last-reviewed">

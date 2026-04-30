@@ -1,10 +1,12 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
+import { useSavedItems } from '@/hooks/useSavedItems';
 import './Navigation.css';
 
 export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void }) {
   const [shrunk, setShrunk] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { count } = useSavedItems();
 
   useEffect(() => {
     const onScroll = () => setShrunk(window.scrollY > 50);
@@ -51,6 +53,29 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
           <li><a href="/vendors">Vendors</a></li>
           <li><a href="/tools/evidence">Research</a></li>
           <li><a href="/blog">Journal</a></li>
+          <li>
+            <a href="/saved" style={{ position: 'relative' }}>
+              Saved
+              {count > 0 && (
+                <span style={{
+                  position: 'absolute',
+                  top: -6,
+                  right: -14,
+                  width: 18,
+                  height: 18,
+                  borderRadius: '50%',
+                  background: 'var(--gold)',
+                  color: 'var(--bg)',
+                  fontSize: 10,
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: 'var(--mono)',
+                }}>{count}</span>
+              )}
+            </a>
+          </li>
         </ul>
         <div className="nav-right">
           <button className="search-trigger" onClick={onSearchOpen}>
@@ -60,6 +85,17 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
             </svg>
             <span className="placeholder">Search peptides, studies, vendors…</span>
             <span className="kbd">⌘K</span>
+          </button>
+          {/* Mobile search button — 44pt touch target, visible ≤768px */}
+          <button
+            className="mobile-search-btn"
+            onClick={onSearchOpen}
+            aria-label="Search"
+          >
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+            </svg>
           </button>
           <a href="/intro" className="nav-cta">Start</a>
           <button
@@ -91,9 +127,15 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
             </li>
           ))}
           <li>
+            <a href="/saved" onClick={closeMobile}>
+              <span>Saved{count > 0 ? ` (${count})` : ''}</span>
+              <span className="num">§ 06</span>
+            </a>
+          </li>
+          <li>
             <a href="/intro" onClick={closeMobile}>
               <span><em>Subscribe</em></span>
-              <span className="num">§ 06</span>
+              <span className="num">§ 07</span>
             </a>
           </li>
         </ul>
@@ -115,3 +157,4 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
     </>
   );
 }
+

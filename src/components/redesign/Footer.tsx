@@ -1,9 +1,16 @@
+'use client';
+import { NewsletterSignup } from '@/components/newsletter-signup';
 import './Footer.css';
 
 export default function Footer() {
   return (
     <footer>
       <div className="footer-wrap">
+        {/* Newsletter above footer columns */}
+        <div style={{ marginBottom: 48 }}>
+          <NewsletterSignup source="footer" />
+        </div>
+
         <div className="footer-top">
           <div className="footer-brand">
             <h3>Pepti<em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Dex</em></h3>
@@ -54,3 +61,4 @@ export default function Footer() {
     </footer>
   );
 }
+

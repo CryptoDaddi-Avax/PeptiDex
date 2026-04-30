@@ -19,6 +19,7 @@ import { RelatedArticles } from '@/components/related-articles';
 import { AffiliateSource } from '@/components/affiliate-source';
 import { StickyQuickCompare } from '@/components/sticky-quick-compare';
 import { StackCard } from '@/components/stack-card';
+import { SaveButton } from '@/components/save-button';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import { FeedbackModal } from '@/components/feedback-modal';
 import './detail-redesign.css';
@@ -83,6 +84,7 @@ export function PeptideDetailRedesign({
                 <BadgeCheck /> FDA Approved
               </span>
             )}
+            <SaveButton type="peptide" slug={peptide.slug} title={peptide.name} />
           </div>
 
           {peptide.aliases.length > 0 && (
