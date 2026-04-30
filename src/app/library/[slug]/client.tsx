@@ -302,6 +302,27 @@ export function PeptideDetailRedesign({
               </Section>
             )}
 
+            {/* Amino Club Deep Dive Link */}
+            {['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'].includes(peptide.slug) && (
+              <div className="my-8 p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-900/20 to-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 text-[10px] uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded border border-emerald-500/30">Verified Source</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-zinc-100 mb-2">Sourcing {peptide.name} from Amino Club</h3>
+                  <p className="text-sm text-zinc-400 leading-relaxed max-w-lg">
+                    We've independently verified Amino Club's third-party testing standards and pricing for {peptide.name}. Read our full analysis and get 15% off your order.
+                  </p>
+                </div>
+                <Link
+                  href={`/vendors/amino-club/${peptide.slug}`}
+                  className="flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 font-bold transition-all whitespace-nowrap w-full md:w-auto"
+                >
+                  View Sourcing Report <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+
             {/* Affiliate CTA */}
             <AffiliateSource peptideName={peptide.name} slug={peptide.slug} />
 

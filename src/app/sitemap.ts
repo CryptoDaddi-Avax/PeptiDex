@@ -120,6 +120,48 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/vendors/amino-club-review`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/vendors/is-amino-club-legit`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/vendors/amino-club-discount-code`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/vendors/amino-club-vs-limitless-life`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/vendors/amino-club-vs-ascension`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/vendors/amino-club-coa-verification`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/vendors/amino-club-faq`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
   ];
 
   // Standard Blog Post Pages
@@ -165,5 +207,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls, ...learnUrls, ...compareUrls];
+  // Amino Club Dynamic Product Pages
+  const aminoClubProducts = ['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'];
+  const aminoClubUrls = aminoClubProducts.map((slug) => ({
+    url: `${baseUrl}/vendors/amino-club/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls, ...learnUrls, ...compareUrls, ...aminoClubUrls];
 }

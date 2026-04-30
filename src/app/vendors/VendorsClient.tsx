@@ -272,6 +272,55 @@ export default function VendorsClient() {
         </div>
       </div>
 
+      {/* ═══ VENDOR DEEP DIVES ═══ */}
+      <section className="vn-extra-section reveal" style={{ borderTop: 'none', paddingTop: 0 }}>
+        <div className="vn-container">
+          <div className="vn-section-label">§ Deep Dives</div>
+          <h2 className="vn-extra-title">Amino Club Resources</h2>
+          <p className="vn-subtitle" style={{ maxWidth: '600px', marginBottom: '2rem', fontSize: '0.95rem' }}>
+            Looking for more information on our top-rated vendor? Read our comprehensive reviews, comparison guides, and verification reports.
+          </p>
+          <div className="vn-vetting-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+            <Link href="/vendors/amino-club-review" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><Star size={24} /></div>
+              <h3 style={{ color: 'var(--ink)' }}>Full 2026 Review</h3>
+              <p style={{ flex: 1 }}>Read our comprehensive 5,000-word analysis of Amino Club's operations, purity testing, and customer service.</p>
+              <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Read review <ArrowRight size={14} /></span>
+            </Link>
+            <Link href="/vendors/amino-club-discount-code" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><Star size={24} /></div>
+              <h3 style={{ color: 'var(--ink)' }}>Verified Discount Code</h3>
+              <p style={{ flex: 1 }}>Get 15% off your entire order with our exclusive, verified promo code for 2026.</p>
+              <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Get the code <ArrowRight size={14} /></span>
+            </Link>
+            <Link href="/vendors/amino-club-coa-verification" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><FlaskConical size={24} /></div>
+              <h3 style={{ color: 'var(--ink)' }}>COA Verification Guide</h3>
+              <p style={{ flex: 1 }}>Learn how to read Amino Club's third-party HPLC and Mass Spectrometry testing documents.</p>
+              <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Read guide <ArrowRight size={14} /></span>
+            </Link>
+            <Link href="/vendors/is-amino-club-legit" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><ShieldAlert size={24} /></div>
+              <h3 style={{ color: 'var(--ink)' }}>Is Amino Club Legit?</h3>
+              <p style={{ flex: 1 }}>Our independent verification report analyzing their business operations and Trustpilot reviews.</p>
+              <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Read report <ArrowRight size={14} /></span>
+            </Link>
+            <Link href="/vendors/amino-club-vs-limitless-life" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><BarChart3 size={24} /></div>
+              <h3 style={{ color: 'var(--ink)' }}>Amino Club vs Limitless</h3>
+              <p style={{ flex: 1 }}>A head-to-head comparison of our top two vendors. Which one should you choose for your research?</p>
+              <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Compare <ArrowRight size={14} /></span>
+            </Link>
+            <Link href="/vendors/amino-club-faq" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><Beaker size={24} /></div>
+              <h3 style={{ color: 'var(--ink)' }}>Comprehensive FAQ</h3>
+              <p style={{ flex: 1 }}>Answers to common questions regarding shipping times, international delivery, and payment methods.</p>
+              <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Read FAQ <ArrowRight size={14} /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ MATRIX SECTION ═══ */}
       <section className="vn-matrix-section reveal">
         <div className="vn-container">

@@ -30,10 +30,10 @@ export default function Footer() {
             <h4>§ Source</h4>
             <ul>
               <li><a href="/vendors">Vendor Reviews</a></li>
+              <li><a href="/vendors/amino-club-review">Amino Club Review</a></li>
               <li><a href="/tools/pricing">Price Comparison</a></li>
               <li><a href="/tools/compare">Compare Tool</a></li>
               <li><a href="/tools/cycle-planner">Cycle Planner</a></li>
-              <li><a href="/stacks">Community Stacks</a></li>
             </ul>
           </div>
           <div className="footer-col">

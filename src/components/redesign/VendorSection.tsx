@@ -84,6 +84,9 @@ export default function VendorSection() {
         ))}
       </div>
       <div className="vendors-cta-row">
+        <a href="/vendors/amino-club-review" className="btn-primary" style={{ marginRight: '12px' }}>
+          Read our Amino Club Review
+        </a>
         <a href="/vendors" className="btn-ghost">
           Compare all vendors
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
