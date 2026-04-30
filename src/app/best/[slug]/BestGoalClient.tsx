@@ -164,6 +164,11 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                 </section>
             )}
 
+            {/* Last Reviewed */}
+            <div className="goal-last-reviewed">
+                Last reviewed: <time dateTime="2026-04-29">April 29, 2026</time> · PeptiDex Editorial Team
+            </div>
+
             {/* ═══ DISCLAIMER ═══ */}
             <div className="goal-disclaimer">
                 ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved

@@ -38,7 +38,7 @@ export function Footer() {
               <GraduationCap className="w-4 h-4 text-blue-400" /> Learn & Research
             </h3>
             <ul className="space-y-3 text-sm text-zinc-400">
-              <li><Link href="/learn" className="hover:text-blue-400 transition-colors">Peptide 101 Hub</Link></li>
+              <li><Link href="/intro" className="hover:text-blue-400 transition-colors">Peptide 101 Hub</Link></li>
               <li><Link href="/library" className="hover:text-blue-400 transition-colors">Peptide Library</Link></li>
               <li><Link href="/tools/evidence" className="hover:text-blue-400 transition-colors">Evidence Dashboard</Link></li>
               <li><Link href="/blog" className="hover:text-blue-400 transition-colors flex items-center gap-1.5"><BookOpen className="w-3.5 h-3.5"/> Research Blog</Link></li>
@@ -54,7 +54,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-zinc-400">
               <li><Link href="/vendors" className="hover:text-emerald-400 transition-colors">Vendor Reviews</Link></li>
               <li><Link href="/tools/pricing" className="hover:text-emerald-400 transition-colors">Price Comparison</Link></li>
-              <li><Link href="/compare" className="hover:text-emerald-400 transition-colors">Compare Tool</Link></li>
+              <li><Link href="/tools/compare" className="hover:text-emerald-400 transition-colors">Compare Tool</Link></li>
               <li><Link href="/tools/cycle-planner" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><FlaskConical className="w-3.5 h-3.5"/> Cycle Planner</Link></li>
               <li><Link href="/stacks" className="hover:text-emerald-400 transition-colors">Community Stacks</Link></li>
             </ul>
@@ -82,6 +82,7 @@ export function Footer() {
           <p>&copy; {new Date().getFullYear()} PeptiDex. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="/about" className="hover:text-zinc-400 transition-colors">About Us</Link>
+            <Link href="/about/methodology" className="hover:text-zinc-400 transition-colors">Methodology</Link>
             <Link href="/about/editorial-policy" className="hover:text-zinc-400 transition-colors">Editorial Policy</Link>
             <Link href="/disclaimer" className="hover:text-zinc-400 transition-colors">Medical Disclaimer</Link>
             <Link href="/legal" className="hover:text-zinc-400 transition-colors">Privacy &amp; Terms</Link>

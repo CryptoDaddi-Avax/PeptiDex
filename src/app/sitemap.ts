@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { peptides } from '@/data/peptides';
 import { stacks } from '@/data/stacks';
 import { blogPosts } from '@/data/blog';
+import { comparisons } from '@/data/comparisons';
 
 export const dynamic = 'force-static';
 
@@ -156,5 +157,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls, ...learnUrls];
+  // Dynamic Compare Pages
+  const compareUrls = comparisons.map((comp) => ({
+    url: `${baseUrl}/compare/${comp.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls, ...learnUrls, ...compareUrls];
 }

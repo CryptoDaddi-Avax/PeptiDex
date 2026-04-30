@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { peptides } from '@/data/peptides';
 import { stacks } from '@/data/stacks';
 import './StatsStrip.css';
@@ -16,57 +16,50 @@ const stats = [
 
 export default function StatsStrip() {
   const ref = useRef<HTMLDivElement>(null);
+  // Start with final values so SSR/first-paint always shows real numbers
+  const [counts, setCounts] = useState(stats.map((s) => s.count));
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || hasAnimated.current) return;
 
-    // Reveal animation: add 'in' class when stat comes into view
-    const revealEls = ref.current.querySelectorAll<HTMLElement>('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        (e.target as HTMLElement).classList.add('in');
-        revealObserver.unobserve(e.target);
-      });
-    }, { threshold: 0.2 });
-    revealEls.forEach((el) => revealObserver.observe(el));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || hasAnimated.current) return;
+          hasAnimated.current = true;
+          observer.disconnect();
 
-    // Count-up animation: animate numbers when visible
-    const countEls = ref.current.querySelectorAll<HTMLElement>('[data-count]');
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        const el = e.target as HTMLElement;
-        const target = parseInt(el.dataset.count || '0');
-        const suffix = el.dataset.suffix || '';
-        const start = performance.now();
-        const duration = 1400;
-        function tick(now: number) {
-          const progress = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(target * eased);
-          el.innerHTML = `${current}<em>${suffix}</em>`;
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-        countObserver.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    countEls.forEach((el) => countObserver.observe(el));
+          // Reset to 0 then animate up — this only happens client-side
+          // after the component is visible, so no hydration mismatch.
+          setCounts(stats.map(() => 0));
 
-    return () => {
-      revealObserver.disconnect();
-      countObserver.disconnect();
-    };
+          const start = performance.now();
+          const duration = 1400;
+
+          function tick(now: number) {
+            const progress = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCounts(stats.map((s) => Math.round(s.count * eased)));
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section className="stats" ref={ref}>
       <div className="stats-grid">
-        {stats.map((s) => (
+        {stats.map((s, i) => (
           <div className="stat" key={s.label}>
-            <div className="stat-num" data-count={s.count} data-suffix={s.suffix}>
-              0<em>{s.suffix}</em>
+            <div className="stat-num">
+              {counts[i]}<em>{s.suffix}</em>
             </div>
             <div className="stat-label">{s.label}</div>
           </div>

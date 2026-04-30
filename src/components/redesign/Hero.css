@@ -31,20 +31,35 @@
   opacity: 0.4;
 }
 
-/* ─── Layout container: hero-content + hero-molecule ─── */
+/* ─── Layout container ─── */
 .hero-layout {
   position: relative;
   z-index: 2;
-  display: block; /* desktop: just flow content, molecule is abs-positioned */
 }
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 780px;
+
+/* ─── Desktop: hero-top is STATIC so .hero-molecule absolute positions
+     relative to .hero (the nearest positioned ancestor), preserving
+     the original desktop behavior. ─── */
+.hero-top {
+  position: static;
   padding-top: 80px;
 }
 
-/* ─── Molecule wrapper (desktop: absolute like old canvas) ─── */
+/* Desktop: text column */
+.hero-text-col {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+/* Desktop: bottom section (paragraph + CTAs) flows normally */
+.hero-bottom {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+/* ─── Molecule wrapper (desktop: absolute to .hero) ─── */
 .hero-molecule {
   position: absolute;
   right: -3%;
@@ -124,6 +139,18 @@
   font-weight: 300;
   color: var(--gold);
 }
+.hero-kicker {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.8vw, 20px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-dim);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  margin-top: -16px;
+  margin-bottom: 32px;
+  animation: fadeUp 1.2s 0.6s both;
+}
 .hero-sub {
   font-size: 18px;
   max-width: 560px;
@@ -188,79 +215,94 @@
 
 /* ═══════════════════════════════════════════════════════
    MOBILE — ≤ 768px
-   Restructured into a grid to prevent overlap between text and canvas.
+   hero-top becomes a 2-column grid (text left | helix right).
+   hero-bottom (paragraph + CTAs) sits BELOW at full width.
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .hero {
-    min-height: 100vh;
+    min-height: auto;
     padding: 100px 20px 0;
     align-items: flex-start;
     justify-content: flex-start;
+    overflow: visible;
   }
   .molecule-label { display: none; }
 
   .hero-layout {
-    display: grid;
-    /* Adjust this ratio to give text enough room while molecule stays on right */
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-areas:
-      "eyebrow  eyebrow"
-      "headline molecule"
-      "subtext  subtext"
-      "ctas     ctas";
-    gap: 16px 0px;
     width: 100%;
+  }
+
+  /* hero-top: 2-column grid — text left (55%), helix right (45%) */
+  .hero-top {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    align-items: center;
+    gap: 0 12px;
+    padding-top: 0;
+    /* On mobile, hero-top IS the positioning context for the grid */
     position: relative;
   }
-  .hero-content {
-    display: contents; /* Elevates children to grid items */
+
+  .hero-text-col {
+    max-width: none;
   }
-  
+
+  /* CRITICAL: Override ALL desktop absolute positioning.
+     On mobile the molecule is a grid cell — NOT an absolute overlay.
+     align-self: stretch makes it match the grid row height (driven by headline).
+     overflow: hidden clips the canvas so the helix never bleeds into hero-bottom. */
   .hero-molecule {
-    grid-area: molecule;
     position: relative;
-    height: 145%;
-    width: 145%; /* Fill the column with the zoomed-in helix */
-    top: -22%; /* Vertical nudge UP to visually align top with THE */
-    right: -10px;
-    /* Removed min-height so it doesn't overflow grid track into the paragraph */
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
     transform: none;
+    width: 100%;
+    height: 100%;
     opacity: 1;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
     align-self: stretch;
+    justify-self: stretch;
+  }
+  #molecule-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
-  .hero-eyebrow { 
-    grid-area: eyebrow;
-    align-self: end;
-    justify-self: start;
-    margin-bottom: 0px; 
-    font-size: 9px; 
-    padding: 6px 12px; 
+  /* hero-bottom: paragraph + CTAs — full width below the grid */
+  .hero-bottom {
+    max-width: none;
+    margin-top: 24px;
   }
-  
-  .hero h1 { 
-    grid-area: headline;
-    font-size: clamp(32px, 8vw, 48px); 
-    margin-bottom: 0px; 
-    max-width: 100%; 
+
+  .hero-eyebrow {
+    margin-bottom: 16px;
+    font-size: 9px;
+    padding: 6px 12px;
   }
-  
-  .hero-sub { 
-    grid-area: subtext;
-    font-size: 13px; 
-    margin-top: 8px;
-    margin-bottom: 12px; 
-    max-width: none; 
+
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 48px);
+    margin-bottom: 0;
+    max-width: 100%;
   }
-  
-  .hero-ctas { 
-    grid-area: ctas;
-    flex-direction: column; 
-    align-items: stretch; 
-    gap: 10px; 
-    width: 100%; 
+
+  .hero-sub {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    max-width: none;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
   }
   .hero-ctas .btn-primary,
   .hero-ctas .btn-ghost { width: 100%; justify-content: center; padding: 14px 20px; font-size: 11px; }
@@ -280,21 +322,19 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   VERY NARROW — ≤ 480px 
-   Maintain the 2-column headline+molecule layout, just slightly tighter
+   VERY NARROW — ≤ 480px
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   .hero {
     padding: 80px 16px 0;
   }
-  
-  .hero-layout {
-    grid-template-columns: 1.15fr 1fr; /* Give tiny bit more to the molecule on very small screens */
-    gap: 12px 0px;
-  }
-  
-  .hero h1 { font-size: clamp(34px, 10vw, 44px); max-width: 100%; }
-  .hero-sub { font-size: 13px; line-height: 1.5; margin-bottom: 0; }
-  .hero-eyebrow { font-size: 8px; padding: 5px 10px; margin-bottom: 0; }
-}
 
+  .hero-top {
+    grid-template-columns: 55fr 45fr;
+    gap: 0 8px;
+  }
+
+  .hero h1 { font-size: clamp(30px, 9vw, 42px); max-width: 100%; }
+  .hero-sub { font-size: 13px; line-height: 1.5; }
+  .hero-eyebrow { font-size: 8px; padding: 5px 10px; margin-bottom: 12px; }
+}

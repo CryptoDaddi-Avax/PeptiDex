@@ -39,6 +39,9 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        <div className="footer-last-reviewed">
+          Last reviewed: <time dateTime="2026-04-29">April 29, 2026</time> · PeptiDex Editorial Team
+        </div>
         <div className="footer-bottom">
           <div>© 2026 PeptiDex. All rights reserved.</div>
           <div className="footer-bottom-links">

@@ -47,6 +47,7 @@ export interface Peptide {
     category_icon?: string;
     primary_benefits: string;
     mechanism: string;
+    laypersonSummary?: string;       // plain-English "what is X?" sentence for featured snippets + AI
     key_studies: Study[];
     safety_notes: string;
     is_fda_approved?: boolean;
@@ -55,6 +56,7 @@ export interface Peptide {
     interactions?: PeptideInteractions;
     outcomes_timeline?: OutcomesTimeline;
     side_effects?: SideEffect[];
+    lastReviewed?: string;  // ISO date — "Last fact-checked: [date]"
 }
 
 

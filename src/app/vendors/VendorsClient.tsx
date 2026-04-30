@@ -7,10 +7,28 @@ import {
 } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { vendorProfiles } from '@/data/vendor-comparison';
+import { vendorPricing } from '@/data/vendor-pricing';
 import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 import { VendorOutboundLink } from './vendor-outbound-link';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './vendors-redesign.css';
+
+/* ── Price preview helper ───────────────────────────────────────────────────
+ * Returns a string like "BPC-157 from $39.99 · TB-500 from $39.99"
+ * for the 3 most popular peptides that this vendor carries.
+ */
+const PREVIEW_PEPTIDES = ['bpc-157', 'tb-500', 'ipamorelin'];
+
+function vendorPricePreview(vendorName: string): string {
+  const parts: string[] = [];
+  for (const slug of PREVIEW_PEPTIDES) {
+    const entry = vendorPricing.find((p) => p.slug === slug);
+    if (!entry) continue;
+    const row = entry.vendors.find((v) => v.vendor === vendorName && v.inStock);
+    if (row) parts.push(`${entry.name} from $${row.price_usd}`);
+  }
+  return parts.join(' · ');
+}
 
 /* ── FAQ data ── */
 const FAQ_ITEMS = [
@@ -86,6 +104,13 @@ export default function VendorsClient() {
                   </div>
                 </div>
                 
+                {/* Price preview strip */}
+                {vendorPricePreview('Amino Club') && (
+                  <div className="vn-price-preview">
+                    {vendorPricePreview('Amino Club')}
+                  </div>
+                )}
+
                 <div className="vn-vendor-actions">
                   <VendorOutboundLink 
                     href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" 
@@ -144,6 +169,13 @@ export default function VendorsClient() {
                   </div>
                 </div>
                 
+                {/* Price preview strip */}
+                {vendorPricePreview('Limitless Life') && (
+                  <div className="vn-price-preview">
+                    {vendorPricePreview('Limitless Life')}
+                  </div>
+                )}
+
                 <div className="vn-vendor-actions">
                   <VendorOutboundLink 
                     href="https://www.kb6dp3dq.com/PEPTIDEX/" 
@@ -194,6 +226,13 @@ export default function VendorsClient() {
                   </div>
                 </div>
                 
+                {/* Price preview strip */}
+                {vendorPricePreview('Ascension Peptides') && (
+                  <div className="vn-price-preview">
+                    {vendorPricePreview('Ascension Peptides')}
+                  </div>
+                )}
+
                 <div className="vn-vendor-actions">
                   <VendorOutboundLink 
                     href="https://ascensionpeptides.com/ref/PeptiDex/" 

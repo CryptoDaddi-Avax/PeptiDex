@@ -1,31 +1,16 @@
 import { ExternalLink, ShieldCheck } from "lucide-react";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { aminoClubProductMapping } from "@/data/affiliates";
 
-export function AffiliateSource({ peptideName, slug }: { peptideName: string, slug: string }) {
-    // 1. DATA-DRIVEN MAPPING INJECTED
-    // When a new product URL is available on Amino Club, update this mapping.
-    // The component reads from this mapping and auto-updates the page.
-    const affiliateMapping: Record<string, string> = {
-        "bpc-157": "https://www.aminoclub.com/us/products/bpc-157",
-        "tb-500": "https://www.aminoclub.com/us/products/tb-500",
-        "ghk-cu": "https://www.aminoclub.com/us/products/ghk-cu",
-        "ipamorelin": "https://www.aminoclub.com/us/products/ipamorelin",
-        "cjc-1295": "https://www.aminoclub.com/us/products/cjc-1295",
-        "dsip": "https://www.aminoclub.com/us/products/dsip",
-        "pt-141": "https://www.aminoclub.com/us/products/pt-141",
-        "retatrutide": "https://www.aminoclub.com/us/products/glp-3",
-        "semaglutide": "https://www.aminoclub.com/us/products/semaglutide",
-        "tirzepatide": "https://www.aminoclub.com/us/products/tirzepatide",
-        "thymosin-alpha-1": "https://www.aminoclub.com/us/products/thymosin-alpha-1"
-    };
+export function AffiliateSource({ peptideName, slug }: { peptideName: string; slug: string }) {
+    // 1. DATA-DRIVEN MAPPING — prefer per-peptide URL, fall back to homepage
+    const baseUrl = aminoClubProductMapping[slug] ?? "https://aminoclub.com";
 
-    // 2. FALLBACK TO HOMEPAGE FOR UNMAPPED PEPTIDES
-    const baseSlug = affiliateMapping[slug] || "https://aminoclub.com";
-    
-    // 3. APPEND UTM/AFFILIATE PARAMETERS
-    const ctaParams = baseSlug.includes("?") 
-        ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
+    // 2. APPEND UTM/AFFILIATE PARAMETERS
+    const ctaParams = baseUrl.includes("?")
+        ? "&utm_source=affiliate_marketing&code=PEPTIDEX"
         : "?utm_source=affiliate_marketing&code=PEPTIDEX";
-    const affiliateUrl = `${baseSlug}${ctaParams}`;
+    const affiliateUrl = `${baseUrl}${ctaParams}`;
 
     return (
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-900/10 to-indigo-900/10 p-5 mb-8 relative overflow-hidden">
@@ -39,22 +24,25 @@ export function AffiliateSource({ peptideName, slug }: { peptideName: string, sl
                         Where to Source {peptideName} for Research
                     </h3>
                 </div>
-                
+
                 <p className="text-sm text-zinc-300 leading-relaxed mb-4">
                     Finding verified, high-purity {peptideName} requires rigorous COA verification. We independently evaluate vendors based on third-party HPLC testing, purity thresholds (≥98%), and batch-specific documentation.
                 </p>
 
-                {/* 4. EXACT CTA TEXT ("View COA-Verified [Peptide Name]") */}
-                <a
+                {/* CTA — tracked with source="detail_sourcing" */}
+                <AffiliateLink
                     href={affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    vendor="amino_club"
+                    peptide={slug}
+                    source="detail_sourcing"
                     className="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors mb-2 gap-2 shadow-lg shadow-violet-900/20"
+                    id={`affiliate-detail-${slug}`}
+                    aria-label={`Shop COA-verified ${peptideName} at Amino Club`}
                 >
                     View COA-Verified {peptideName} <ExternalLink className="w-4 h-4" />
-                </a>
+                </AffiliateLink>
 
-                {/* 4. EXACT TRUST BADGES */}
+                {/* Trust badges */}
                 <p className="text-[11px] font-medium text-emerald-400/90 mb-3 flex flex-wrap items-center gap-2">
                     <span>✓ Third-party tested</span>
                     <span className="hidden sm:inline">·</span>
@@ -63,7 +51,7 @@ export function AffiliateSource({ peptideName, slug }: { peptideName: string, sl
                     <span>✓ COA on every batch</span>
                 </p>
 
-                {/* 4. AFFILIATE DISCLOSURE */}
+                {/* Affiliate disclosure */}
                 <div className="border-t border-zinc-800/50 pt-3 flex items-start gap-2">
                     <p className="text-[10px] text-zinc-500 italic">
                         <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases made through affiliate links. This does not affect our editorial independence or recommendations. We exclusively feature vendors that pass our strict quality verification protocols.

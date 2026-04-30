@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
+import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
@@ -169,11 +170,11 @@ export default function BlogPostTemplate() {
           <div className="mt-8">
             <h3 className="font-bold text-zinc-100 mb-4 text-sm uppercase tracking-widest">Related Profiles</h3>
             <div className="space-y-3">
-               <Link href="/peptides/bpc-157" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+               <Link href="/library/bpc-157" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
                  <span className="font-semibold text-zinc-200 group-hover:text-violet-400">BPC-157 (PL-14736)</span>
                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-transform" />
                </Link>
-               <Link href="/peptides/tb-500" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+               <Link href="/library/tb-500" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
                  <span className="font-semibold text-zinc-200 group-hover:text-violet-400">TB-500 (Thymosin Beta-4)</span>
                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-transform" />
                </Link>
@@ -271,6 +272,12 @@ export default function BlogPostTemplate() {
       <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/bpc-157-vs-tb-500`} />
       <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
+
+      {/* Fact-checked date + Feedback */}
+      <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
+        <span>Last fact-checked: <time dateTime={DATE_MOD}>{DATE_MOD}</time></span>
+        <FeedbackModal pageUrl="https://peptidex.app/blog/bpc-157-vs-tb-500" />
+      </div>
 
     </div>
   );

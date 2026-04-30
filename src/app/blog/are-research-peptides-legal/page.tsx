@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
+import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
@@ -275,6 +276,12 @@ export default function BlogPostTemplate() {
       <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
+
+      {/* Fact-checked date + Feedback */}
+      <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
+        <span>Last fact-checked: <time dateTime="2026-04-01">2026-04-01</time></span>
+        <FeedbackModal pageUrl="https://peptidex.app/blog/are-research-peptides-legal" />
+      </div>
 
       <section className="pt-12 mt-12 border-t border-zinc-800/50">
          <h2 className="text-2xl font-bold text-zinc-100 mb-6">Related Information</h2>

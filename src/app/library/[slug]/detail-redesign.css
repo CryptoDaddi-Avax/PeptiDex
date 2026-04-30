@@ -96,6 +96,27 @@
   margin: 0 0 8px;
   font-style: italic;
 }
+
+/* ── Layperson Summary Callout ── */
+.pd-layperson-callout {
+  margin: 16px 0 24px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--gold);
+  background: rgba(201, 169, 97, 0.06);
+  border-radius: 0 6px 6px 0;
+  max-width: 680px;
+}
+.pd-layperson-text {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
 .pd-subtitle {
   font-size: 18px;
   color: var(--ink-dim);
@@ -674,6 +695,22 @@
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--amber);
+}
+
+/* ═══════ LAST REVIEWED ═══════ */
+.pd-last-reviewed {
+  padding: 20px 48px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line);
+}
+.pd-last-reviewed time {
+  color: var(--gold);
+  font-weight: 500;
 }
 
 /* ═══════ RESPONSIVE ═══════ */

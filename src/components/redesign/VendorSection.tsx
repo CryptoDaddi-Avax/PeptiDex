@@ -2,7 +2,7 @@
 import { vendorProfiles, type VendorProfile } from '@/data/vendor-comparison';
 import './VendorSection.css';
 
-const vendors = Object.values(vendorProfiles);
+const vendors = Object.values(vendorProfiles).sort((a, b) => b.rating - a.rating);
 
 function VendorCard({ v }: { v: VendorProfile }) {
   return (

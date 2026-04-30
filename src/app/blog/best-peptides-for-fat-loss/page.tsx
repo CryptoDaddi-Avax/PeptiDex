@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar, User, ArrowRight, ShieldAlert, BookOpen, AlertCircle } from 'lucide-react';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
+import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
@@ -178,19 +179,19 @@ export default function BlogPostTemplate() {
           <div className="mt-8">
             <h3 className="font-bold text-zinc-100 mb-4 text-sm uppercase tracking-widest">Related Profiles</h3>
             <div className="space-y-3">
-               <Link href="/peptides/semaglutide" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+               <Link href="/library/semaglutide" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
                  <span className="font-semibold text-zinc-200 group-hover:text-violet-400">Semaglutide</span>
                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-transform" />
                </Link>
-               <Link href="/peptides/tirzepatide" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+               <Link href="/library/tirzepatide" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
                  <span className="font-semibold text-zinc-200 group-hover:text-violet-400">Tirzepatide</span>
                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-transform" />
                </Link>
-               <Link href="/peptides/mots-c" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+               <Link href="/library/mots-c" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
                  <span className="font-semibold text-zinc-200 group-hover:text-violet-400">MOTS-c</span>
                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-transform" />
                </Link>
-               <Link href="/peptides/aod-9604" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
+               <Link href="/library/aod-9604" className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 transition-colors group">
                  <span className="font-semibold text-zinc-200 group-hover:text-violet-400">AOD-9604</span>
                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-transform" />
                </Link>
@@ -293,6 +294,12 @@ export default function BlogPostTemplate() {
       <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/best-peptides-for-fat-loss`} />
       <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
+
+      {/* Fact-checked date + Feedback */}
+      <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
+        <span>Last fact-checked: <time dateTime="2026-04-01">2026-04-01</time></span>
+        <FeedbackModal pageUrl="https://peptidex.app/blog/best-peptides-for-fat-loss" />
+      </div>
 
       {/* Bottom Disclaimer */}
       <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8">

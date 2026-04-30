@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { pricingData } from "@/data/pricing";
 import { ArrowUpDown, Info } from "lucide-react";
+import { AffiliateLink } from "@/components/affiliate-link";
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './pricing-redesign.css';
 
@@ -182,14 +183,17 @@ export default function PricingClient() {
                                                 {v.vendor}
                                             </div>
                                             <div className="prc-vend-price">${v.price_usd}</div>
-                                            <Link
+                                            <AffiliateLink
                                                 href={v.link}
+                                                peptide={p.slug}
+                                                source="pricing_table"
                                                 rel={v.link.startsWith('http') ? "nofollow noopener sponsored" : ""}
                                                 target={v.link.startsWith('http') ? "_blank" : "_self"}
                                                 className="prc-vend-action"
+                                                id={`affiliate-pricing-${p.slug}-${v.vendor.toLowerCase().replace(/\s+/g, '-')}`}
                                             >
                                                 Check Price →
-                                            </Link>
+                                            </AffiliateLink>
                                         </div>
                                     ))}
                                 </div>

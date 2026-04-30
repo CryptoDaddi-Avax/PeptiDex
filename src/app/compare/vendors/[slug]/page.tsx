@@ -460,7 +460,7 @@ export default async function VendorComparisonPage({ params }: { params: Promise
           <span className="text-zinc-700">|</span>
           <Link href="/tools/pricing" className="text-violet-400 hover:text-violet-300 transition-colors">Pricing Tool →</Link>
           <span className="text-zinc-700">|</span>
-          <Link href="/compare" className="text-violet-400 hover:text-violet-300 transition-colors">All Comparisons →</Link>
+          <Link href="/tools/compare" className="text-violet-400 hover:text-violet-300 transition-colors">All Comparisons →</Link>
         </div>
 
         <div className="bg-zinc-900 rounded-xl p-5 border border-zinc-800/50">

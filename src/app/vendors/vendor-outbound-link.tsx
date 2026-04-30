@@ -1,18 +1,21 @@
 "use client";
 
-import { trackOutboundClick } from "@/lib/ga4-events";
+import { type ReactNode } from "react";
+import { trackAffiliateClick, vendorKeyFromUrl } from "@/lib/ga4-events";
 
 interface VendorOutboundLinkProps {
   href: string;
   vendorName: string;
+  /** Legacy 'location' string for back-compat. Maps to source_component in GA4. */
   location: string;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 /**
- * A wrapper around <a> that fires GA4 outbound_click tracking
- * before navigating to the vendor's external site.
+ * Vendor outbound link for /vendors page cards.
+ * Fires both `affiliate_click` (rich segmentation) for revenue attribution.
+ * source_component is always "vendor_card" for /vendors page links.
  */
 export function VendorOutboundLink({
   href,
@@ -21,8 +24,15 @@ export function VendorOutboundLink({
   className,
   children,
 }: VendorOutboundLinkProps) {
+  const vendor = vendorKeyFromUrl(href);
+
   const handleClick = () => {
-    trackOutboundClick(vendorName, href, location);
+    trackAffiliateClick({
+      vendor,
+      peptide: "general",
+      source_component: "vendor_card",
+      url: href,
+    });
   };
 
   return (
@@ -32,6 +42,7 @@ export function VendorOutboundLink({
       rel="nofollow noopener sponsored"
       onClick={handleClick}
       className={className}
+      id={`affiliate-vendor-card-${location}`}
     >
       {children}
     </a>

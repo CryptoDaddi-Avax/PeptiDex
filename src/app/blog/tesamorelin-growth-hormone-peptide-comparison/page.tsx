@@ -11,6 +11,7 @@ import {
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
+import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
@@ -515,6 +516,12 @@ export default function TesamorelinArticle() {
       <ShareBar title={POST_TITLE} url={CANONICAL} />
       <BlogVendorCallout />
       <AuthorBio name={AUTHOR} />
+
+      {/* Fact-checked date + Feedback */}
+      <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
+        <span>Last fact-checked: <time dateTime="2026-04-13">2026-04-13</time></span>
+        <FeedbackModal pageUrl="https://peptidex.app/blog/tesamorelin-growth-hormone-peptide-comparison" />
+      </div>
 
       {/* ══ DISCLAIMER ══ */}
       <div className="mt-16 p-6 rounded-2xl bg-zinc-900 border border-zinc-800 flex flex-col gap-2">

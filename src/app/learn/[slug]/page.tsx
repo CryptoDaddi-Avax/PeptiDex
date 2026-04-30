@@ -325,7 +325,7 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
         {/* ═══════ FULL PROFILE LINK ═══════ */}
         <section>
           <Link
-            href={`/peptides/${slug}`}
+            href={`/library/${slug}`}
             className="block p-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 hover:border-violet-500/30 transition-colors group"
           >
             <div className="flex items-center justify-between">
@@ -379,7 +379,7 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
 
       <div className="text-center">
         <p className="text-xs text-zinc-600">
-          Last updated: {DATE_MOD} · <Link href="/learn" className="text-zinc-500 hover:text-zinc-400 transition-colors">Educational Hub</Link> · <Link href="/about/editorial-policy" className="text-zinc-500 hover:text-zinc-400 transition-colors">Editorial Standards</Link>
+          Last updated: {DATE_MOD} · <Link href="/intro" className="text-zinc-500 hover:text-zinc-400 transition-colors">Educational Hub</Link> · <Link href="/about/editorial-policy" className="text-zinc-500 hover:text-zinc-400 transition-colors">Editorial Standards</Link>
         </p>
       </div>
     </div>

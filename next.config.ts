@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
   // ─── COMPRESSION ───────────────────────────────────────────────
   compress: true,
 
+  // ─── 301 REDIRECTS — Legacy URL migrations ─────────────────────
+  async redirects() {
+    return [
+      { source: '/peptides', destination: '/library', permanent: true },
+      { source: '/peptides/:slug', destination: '/library/:slug', permanent: true },
+      { source: '/compare', destination: '/tools/compare', permanent: true },
+      { source: '/learn', destination: '/intro', permanent: true },
+      { source: '/goals/:slug', destination: '/best/:slug', permanent: true },
+    ];
+  },
+
   // ─── HEADERS ───────────────────────────────────────────────────
   async headers() {
     return [

@@ -61,7 +61,7 @@ export function ResearchContextSidebar({ className = '' }: { className?: string 
 
       {/* View All */}
       <Link
-        href="/learn"
+        href="/intro"
         className="flex items-center justify-center gap-2 mt-5 py-2.5 rounded-xl border border-blue-500/20 bg-blue-500/5 text-blue-400 font-semibold text-xs hover:bg-blue-500/10 transition-colors"
       >
         View All Educational Guides <ArrowRight className="w-3.5 h-3.5" />

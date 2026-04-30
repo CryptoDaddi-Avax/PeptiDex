@@ -122,7 +122,7 @@ export default function ToolsClient() {
                 <div>
                     <h2 className="tools-section-heading">Learn</h2>
                     <div className="tools-small-grid">
-                        <Link href="/learn" className="tool-small-card">
+                        <Link href="/intro" className="tool-small-card">
                             <GraduationCap />
                             <h3 className="tool-small-title">Peptide 101</h3>
                             <p className="tool-small-desc">5 guided modules</p>

@@ -9,9 +9,62 @@ declare global {
   }
 }
 
+// ─── Vendor key type ─────────────────────────────────────────────────────────
+export type AffiliateVendor = "amino_club" | "limitless_life" | "ascension";
+
+// ─── Source component type ────────────────────────────────────────────────────
+export type AffiliateSource =
+  | "vendor_card"      // /vendors page cards + homepage vendor cards
+  | "pricing_table"    // /tools/pricing rows
+  | "detail_sourcing"  // peptide detail page sourcing block
+  | "blog_cta"         // explicit CTA buttons in blog posts
+  | "blog_inline"      // inline text mentions inside blog paragraphs
+  | "footer"           // footer / sidebar mentions
+  | "newsletter"       // email-driven clicks via UTM
+  | "stack_price"      // stack price aggregator (inline on stack pages)
+  | "calculator"       // dosage calculator sourcing CTA
+  | "sticky_bar"       // sticky quick-compare bar on detail pages
+  | "coa_modal";       // COA badge modal external link
+
+// ─── Derive vendor key from URL ───────────────────────────────────────────────
+export function vendorKeyFromUrl(url: string): AffiliateVendor | "unknown" {
+  if (url.includes("aminoclub.com")) return "amino_club";
+  if (url.includes("kb6dp3dq.com")) return "limitless_life";
+  if (url.includes("ascensionpeptides.com")) return "ascension";
+  return "unknown";
+}
+
+// ─── Primary affiliate click event ───────────────────────────────────────────
 /**
- * Track an outbound click to a vendor's external site.
- * Fires a custom GA4 event: `outbound_click`
+ * Fire a GA4 `affiliate_click` event with rich segmentation params.
+ * This is the canonical tracking function — use this for all revenue-driving clicks.
+ */
+export function trackAffiliateClick({
+  vendor,
+  peptide = "general",
+  source_component,
+  url,
+}: {
+  vendor: AffiliateVendor | "unknown";
+  peptide?: string;
+  source_component: AffiliateSource | string;
+  url: string;
+}) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "affiliate_click", {
+      vendor,
+      peptide,
+      source_page: window.location.pathname,
+      source_component,
+      outbound_url: url,
+    });
+  }
+}
+
+/**
+ * Legacy: Track an outbound click to a vendor's external site.
+ * Fires `outbound_click` for backwards compatibility.
+ * Prefer `trackAffiliateClick` for new work.
  */
 export function trackOutboundClick(
   vendorName: string,

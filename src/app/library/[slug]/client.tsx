@@ -1,14 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { Peptide, Stack, EvidenceLevel } from '@/data/types';
 import { useSavedStacks } from '@/hooks/useSavedStacks';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { legalData, legalStatusColors, legalStatusLabels } from '@/data/legal-status';
+import { comparisons } from '@/data/comparisons';
 import {
   ExternalLink, ShieldAlert, Info, Beaker, BookOpen,
-  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles,
+  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight
 } from 'lucide-react';
 import { HalfLifeChart } from '@/components/half-life-chart';
 import { LeadMagnetInline } from '@/components/lead-magnet-inline';
@@ -19,6 +20,7 @@ import { AffiliateSource } from '@/components/affiliate-source';
 import { StickyQuickCompare } from '@/components/sticky-quick-compare';
 import { StackCard } from '@/components/stack-card';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
+import { FeedbackModal } from '@/components/feedback-modal';
 import './detail-redesign.css';
 
 /* ── Evidence helpers ── */
@@ -52,6 +54,11 @@ export function PeptideDetailRedesign({
   const benefits = peptide.primary_benefits.split(',').map((b) => b.trim());
   const halfLife = formatHalfLife(peptide.half_life_hours);
   const studyCount = peptide.key_studies?.length ?? 0;
+  const [visibleStudies, setVisibleStudies] = useState(10);
+
+  const relatedComparisons = comparisons
+    .filter((c) => c.peptideA === peptide.slug || c.peptideB === peptide.slug)
+    .slice(0, 3);
 
   return (
     <RedesignLayout>
@@ -81,6 +88,14 @@ export function PeptideDetailRedesign({
           {peptide.aliases.length > 0 && (
             <p className="pd-aliases">Also known as: {peptide.aliases.join(', ')}</p>
           )}
+
+          {/* ─── LAYPERSON SUMMARY CALLOUT ─── */}
+          {peptide.laypersonSummary && (
+            <div className="pd-layperson-callout">
+              <p className="pd-layperson-text">{peptide.laypersonSummary}</p>
+            </div>
+          )}
+
           <p className="pd-subtitle">{peptide.mechanism.slice(0, 200)}</p>
 
           <div className="pd-page-meta">
@@ -136,7 +151,7 @@ export function PeptideDetailRedesign({
             {/* Key Studies */}
             <Section icon={<BookOpen />} label="§ Clinical Evidence" title="Key Studies">
               <div className="pd-studies-list">
-                {peptide.key_studies.map((s, i) => (
+                {peptide.key_studies.slice(0, visibleStudies).map((s, i) => (
                   <a
                     key={i}
                     href={s.pubmed_url}
@@ -155,6 +170,16 @@ export function PeptideDetailRedesign({
                   </a>
                 ))}
               </div>
+              {studyCount > visibleStudies && (
+                <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+                  <button
+                    onClick={() => setVisibleStudies(v => v + 10)}
+                    className="group relative inline-flex h-10 items-center justify-center gap-2 overflow-hidden rounded-md bg-zinc-800 px-6 font-medium text-zinc-100 transition-all hover:bg-zinc-700"
+                  >
+                    Load More Studies ({studyCount - visibleStudies} remaining)
+                  </button>
+                </div>
+              )}
             </Section>
 
             {/* Safety */}
@@ -162,6 +187,9 @@ export function PeptideDetailRedesign({
               <div className="pd-safety-box">
                 <p>{peptide.safety_notes}</p>
               </div>
+              <p style={{ fontSize: 11, color: 'var(--ink-mute)', marginTop: 8 }}>
+                See our <a href="/about/methodology#evidence-grading" style={{ color: 'var(--gold)' }}>evidence grading methodology</a> for how we evaluate and grade peptide safety data.
+              </p>
             </Section>
 
             {/* Dosing Protocol */}
@@ -281,6 +309,26 @@ export function PeptideDetailRedesign({
             {/* Related Articles */}
             <RelatedArticles peptideName={peptide.name} aliases={peptide.aliases} />
 
+            {/* Compare To */}
+            {relatedComparisons.length > 0 && (
+              <Section icon={<GitCompare />} label="§ Comparisons" title="Compare To">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {relatedComparisons.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/compare/${c.slug}`}
+                      className="group p-4 rounded-xl border border-zinc-800 bg-zinc-900/30 hover:border-violet-500/30 hover:bg-violet-500/5 transition-all"
+                    >
+                      <h4 className="text-sm font-bold text-zinc-200 group-hover:text-zinc-100">{c.title}</h4>
+                      <p className="text-xs text-zinc-500 mt-2 flex items-center gap-1 group-hover:text-violet-400 transition-colors">
+                        Read comparison <ArrowRight className="w-3 h-3" />
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </Section>
+            )}
+
             {/* Related Stacks */}
             {relatedStacks.length > 0 && (
               <Section
@@ -372,6 +420,12 @@ export function PeptideDetailRedesign({
             </div>
           </aside>
         </div>
+      </div>
+
+      {/* Last Reviewed */}
+      <div className="pd-last-reviewed flex items-center justify-between">
+        <span>Last fact-checked: <time dateTime="2026-04-29">April 29, 2026</time> · PeptiDex Editorial Team</span>
+        <FeedbackModal pageUrl={`https://peptidex.app/library/${peptide.slug}`} />
       </div>
 
       {/* Disclaimer Strip */}

@@ -16,36 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-const COMPARISONS = [
-  {
-    slug: 'ghk-cu-vs-bpc-157',
-    title: 'GHK-Cu vs BPC-157',
-    subtitle: 'Anti-aging peptide vs healing peptide — which does what?',
-    tags: ['Anti-Aging', 'Healing', 'Skin'],
-    color: 'violet',
-  },
-  {
-    slug: 'semaglutide-vs-tirzepatide',
-    title: 'Semaglutide vs Tirzepatide',
-    subtitle: 'Single vs dual GLP-1 agonist — clinical trial data compared.',
-    tags: ['Weight Loss', 'GLP-1', 'FDA Approved'],
-    color: 'emerald',
-  },
-  {
-    slug: 'oral-vs-injectable-peptides',
-    title: 'Oral vs Injectable Peptides',
-    subtitle: 'Bioavailability, convenience, and the new oral GLP-1 era.',
-    tags: ['Administration', 'Oral', 'Injectable'],
-    color: 'blue',
-  },
-  {
-    slug: 'bpc-157-vs-tb-500',
-    title: 'BPC-157 vs TB-500',
-    subtitle: 'Two healing peptides, two different mechanisms — full breakdown.',
-    tags: ['Healing', 'Recovery', 'Stacking'],
-    color: 'amber',
-  },
-];
+import { comparisons } from '@/data/comparisons';
 
 const VENDOR_COMPARISONS = [
   {
@@ -98,7 +69,7 @@ export default function CompareIndexPage() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {COMPARISONS.map((comp) => {
+        {comparisons.map((comp) => {
           const colors = COLOR_MAP[comp.color];
           return (
             <Link

@@ -4,12 +4,17 @@ import './Hero.css';
 
 export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
 
     let animId: number;
+    let isVisible = true; // assume visible initially
+    let cleanupResize: (() => void) | undefined;
+    let cleanupObserver: (() => void) | undefined;
 
     // Dynamically load Three.js and init molecule
     const script = document.createElement('script');
@@ -127,18 +132,39 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
         camera.aspect = w / h;
         /* Pull the camera back on narrow viewports so the helix fits the smaller container */
         if (window.innerWidth <= 480) {
-          camera.position.z = 18; /* Extremely zoomed in to make helix vertically span 'THE' to 'RESEARCH' */
+          camera.position.z = 16;
         } else if (window.innerWidth <= 768) {
-          camera.position.z = 30;
+          camera.position.z = 18;
         } else {
           camera.position.z = 30;
         }
         camera.updateProjectionMatrix();
       };
       window.addEventListener('resize', onResize);
+      cleanupResize = () => window.removeEventListener('resize', onResize);
       onResize();
 
+      // ── Bug 5 fix: IntersectionObserver to pause/resume animation ──
+      const visibilityObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isVisible = entry.isIntersecting;
+            if (isVisible) {
+              // Resume: restart the rAF loop
+              clock.start();
+              animId = requestAnimationFrame(animate);
+            }
+            // When not visible, the animate() function will simply not
+            // schedule the next frame, effectively pausing the loop.
+          });
+        },
+        { threshold: 0 }
+      );
+      visibilityObserver.observe(container);
+      cleanupObserver = () => visibilityObserver.disconnect();
+
       function animate() {
+        if (!isVisible) return; // ← stop scheduling frames when off-screen
         animId = requestAnimationFrame(animate);
         const t = clock.getElapsedTime();
         if (entryProgress < 1) {
@@ -161,12 +187,14 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
 
     return () => {
       cancelAnimationFrame(animId);
+      cleanupResize?.();
+      cleanupObserver?.();
     };
   }, []);
 
   return (
     <header className="hero">
-      {/* Background effects — grid + radial gradients (desktop only molecule labels live here) */}
+      {/* Background effects — grid + radial gradients */}
       <div className="hero-bg">
         <div className="hero-grid" />
       </div>
@@ -181,23 +209,38 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
         <span>Tissue repair · Angiogenesis</span>
       </div>
 
-      {/* Main layout container — on mobile becomes a CSS grid so canvas never overlaps text */}
+      {/* Main layout container */}
       <div className="hero-layout">
-        <div className="hero-content">
-          <div className="hero-eyebrow">
-            <span className="dot" />
-            Research Index · Est. 2026
+        {/* Top row: on mobile this becomes a 2-column grid (headline | helix) */}
+        <div className="hero-top">
+          <div className="hero-text-col">
+            <div className="hero-eyebrow">
+              <span className="dot" />
+              Research Index · Est. 2026
+            </div>
+            <h1>
+              The reference<br />
+              for <em>peptide</em><br />
+              research.
+            </h1>
+            <h2 className="hero-kicker">
+              Research peptides indexed: BPC-157, Tesamorelin, Semaglutide, Tirzepatide, and 29 more
+            </h2>
           </div>
-          <h1>
-            The reference<br />
-            for <em>peptide</em><br />
-            research.
-          </h1>
+
+          {/* Three.js canvas — grid cell on mobile, absolute on desktop */}
+          <div className="hero-molecule" ref={containerRef}>
+            <canvas ref={canvasRef} id="molecule-canvas" />
+          </div>
+        </div>
+
+        {/* Below the top row: paragraph + CTAs — always full width, never overlapped */}
+        <div className="hero-bottom">
           <p className="hero-sub">
             An independent index of 33 research peptides, 12 curated stacks, and 140+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
           </p>
           <div className="hero-ctas">
-            <a href="#library" className="btn-primary">
+            <a href="/library" className="btn-primary">
               <span>Enter the library</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
@@ -211,11 +254,6 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
               Search the index
             </button>
           </div>
-        </div>
-
-        {/* Canvas is a SIBLING of hero-content — never nested inside an absolute overlay */}
-        <div className="hero-molecule">
-          <canvas ref={canvasRef} id="molecule-canvas" />
         </div>
       </div>
 

@@ -14,7 +14,7 @@ import {
   CheckCircle2, Search, Zap
 } from "lucide-react";
 import { NewsletterSignup } from "@/components/newsletter-signup";
-import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
+import { trackAffiliateClick, trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
 
 export default function HomePage() {
   const router = useRouter();
@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* ═══════ TWO PATHS SECTION ═══════ */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
         {/* Path 1: Learn */}
-        <Link href="/learn" className="group block p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-blue-900/5 hover:border-blue-500/40 transition-all">
+        <Link href="/intro" className="group block p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-blue-900/5 hover:border-blue-500/40 transition-all">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
               <GraduationCap className="w-5 h-5 text-blue-400" />
@@ -222,18 +222,20 @@ export default function HomePage() {
               <a 
                 href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
                 target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX", "home_hero_card")}
+                rel="nofollow noopener sponsored"
+                onClick={() => trackAffiliateClick({ vendor: "amino_club", peptide: "general", source_component: "vendor_card", url: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" })}
                 className="flex items-center justify-center gap-2 w-full py-3.5 min-h-[48px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 mb-2"
+                id="affiliate-home-vendor-card-amino-club"
               >
                 Compare Prices <ExternalLink className="w-4 h-4 text-emerald-200" />
               </a>
               <a
                 href="https://aminoclub.com/coa/bpc-157-latest.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com/coa/bpc-157-latest.pdf", "home_hero_coa")}
+                rel="nofollow noopener sponsored"
+                onClick={() => trackAffiliateClick({ vendor: "amino_club", peptide: "bpc-157", source_component: "vendor_card", url: "https://aminoclub.com/coa/bpc-157-latest.pdf" })}
                 className="flex items-center justify-center gap-2 w-full py-2.5 min-h-[44px] rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 text-sm font-semibold transition-all"
+                id="affiliate-home-vendor-card-amino-club-coa"
               >
                 <Beaker className="w-4 h-4" /> View Lab Test Results (COA)
               </a>

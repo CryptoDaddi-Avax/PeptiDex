@@ -9,6 +9,7 @@ import { CiteThisPage } from '@/components/cite-page';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
 import { BlogVendorCallout } from '@/components/blog-vendor-callout';
+import { FeedbackModal } from '@/components/feedback-modal';
 
 export const metadata: Metadata = {
   title: 'The Oral Peptide Revolution Has Arrived | PeptiDex Blog',

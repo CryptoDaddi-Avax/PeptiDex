@@ -6,6 +6,7 @@ import { Calendar, User, ShieldAlert, BookOpen, ArrowRight, ExternalLink, Star, 
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
+import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
@@ -446,6 +447,12 @@ export default function BestPeptideVendors2026Page() {
       <BlogVendorCallout />
 
       <AuthorBio name={AUTHOR} />
+
+      {/* Fact-checked date + Feedback */}
+      <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
+        <span>Last fact-checked: <time dateTime="2026-04-12">2026-04-12</time></span>
+        <FeedbackModal pageUrl="https://peptidex.app/blog/best-peptide-vendors-2026" />
+      </div>
 
       {/* ─── AFFILIATE DISCLOSURE & FOOTER ─── */}
       <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800/50 space-y-3">

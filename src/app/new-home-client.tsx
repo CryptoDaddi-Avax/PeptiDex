@@ -1,13 +1,19 @@
 'use client';
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Navigation from '@/components/redesign/Navigation';
-import Hero from '@/components/redesign/Hero';
 import StatsStrip from '@/components/redesign/StatsStrip';
 import CommandPalette from '@/components/redesign/CommandPalette';
 import GoalsGrid from '@/components/redesign/GoalsGrid';
 import VendorSection from '@/components/redesign/VendorSection';
 import Footer from '@/components/redesign/Footer';
 import '@/components/redesign/redesign.css';
+
+// Bug 4 fix: Dynamic import Hero so Three.js only loads on the homepage
+const Hero = dynamic(() => import('@/components/redesign/Hero'), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function NewHomeClient() {
   const [paletteOpen, setPaletteOpen] = useState(false);

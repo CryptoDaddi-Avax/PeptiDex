@@ -115,8 +115,8 @@ export default function OralVsInjectablePage() {
 
         <section>
           <h2>Which Research Peptides Can Be Taken Orally?</h2>
-          <p>Currently, very few research peptides have demonstrated meaningful oral bioavailability. <strong><Link href="/peptides/bpc-157">BPC-157</Link></strong> is a notable exception — its gastric origin gives it unusual stability in acidic environments, and it has shown systemic effects in preclinical models when administered orally.⁵ <strong><Link href="/peptides/mk-677">MK-677</Link></strong> (ibutamoren) is orally active because it is technically a non-peptide growth hormone secretagogue, similar in concept to orforglipron.</p>
-          <p>Most other research peptides — including <Link href="/peptides/ghk-cu">GHK-Cu</Link>, <Link href="/peptides/cjc-1295">CJC-1295</Link>, <Link href="/peptides/ipamorelin">Ipamorelin</Link>, and <Link href="/peptides/tb-500">TB-500</Link> — require injection for systemic effects, though GHK-Cu is highly effective as a topical application for skin-focused outcomes.</p>
+          <p>Currently, very few research peptides have demonstrated meaningful oral bioavailability. <strong><Link href="/library/bpc-157">BPC-157</Link></strong> is a notable exception — its gastric origin gives it unusual stability in acidic environments, and it has shown systemic effects in preclinical models when administered orally.⁵ <strong><Link href="/library/mk-677">MK-677</Link></strong> (ibutamoren) is orally active because it is technically a non-peptide growth hormone secretagogue, similar in concept to orforglipron.</p>
+          <p>Most other research peptides — including <Link href="/library/ghk-cu">GHK-Cu</Link>, <Link href="/library/cjc-1295">CJC-1295</Link>, <Link href="/library/ipamorelin">Ipamorelin</Link>, and <Link href="/library/tb-500">TB-500</Link> — require injection for systemic effects, though GHK-Cu is highly effective as a topical application for skin-focused outcomes.</p>
         </section>
       </article>
       </AutoLink>
