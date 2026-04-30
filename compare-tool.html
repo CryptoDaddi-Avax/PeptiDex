@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<title>Peptide Comparison Tool — Side-by-Side Research Profiles</title>
+<meta name="description" content="Compare any two peptides side by side: mechanism, benefits, dosing, evidence grade, half-life, and molecular weight. Instant cross-reference for 33 compounds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   PEPTIDEX DESIGN SYSTEM
+   Shared styles for all pages
+   ============================================ */
+
+:root{
+  --bg: #0a0a0b;
+  --bg-soft: #111113;
+  --bg-card: #16161a;
+  --bg-elevated: #1a1a1e;
+  --ink: #f4efe6;
+  --ink-dim: #a8a196;
+  --ink-mute: #6b6860;
+  --line: rgba(244,239,230,0.08);
+  --line-strong: rgba(244,239,230,0.16);
+  --gold: #c9a961;
+  --gold-bright: #e8c987;
+  --gold-deep: #8a6f2e;
+  --amber: #d4832a;
+  --plasma: #4a9eff;
+  --green: #7fb77e;
+  --red: #d46969;
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+  min-height: 100vh;
+}
+body.palette-open, body.menu-open{overflow: hidden}
+
+/* Grain overlay */
+body::before{
+  content:'';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ===== NAV ===== */
+nav.main-nav{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(10,10,11,0.6);
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.4s, background 0.4s;
+}
+nav.main-nav.scrolled{
+  padding: 14px 48px;
+  background: rgba(10,10,11,0.92);
+}
+.nav-logo{
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo .mark{
+  width: 28px; height: 28px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-logo .mark::before{
+  content:'';
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.nav-logo em{
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+.nav-links{
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.nav-links a{
+  color: var(--ink-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+  padding: 4px 0;
+}
+.nav-links a::after{
+  content:'';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+.nav-links a:hover, .nav-links a.active{color: var(--ink)}
+.nav-links a:hover::after, .nav-links a.active::after{width: 100%}
+.nav-links a.active{color: var(--gold)}
+.nav-right{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.search-trigger{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px 9px 14px;
+  background: rgba(244,239,230,0.04);
+  border: 1px solid var(--line);
+  color: var(--ink-dim);
+  font-family: var(--sans);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 260px;
+}
+.search-trigger:hover{
+  border-color: var(--line-strong);
+  background: rgba(244,239,230,0.06);
+  color: var(--ink);
+}
+.search-trigger svg{color: var(--ink-mute)}
+.search-trigger .kbd{
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  color: var(--ink-mute);
+  border-radius: 3px;
+  background: rgba(0,0,0,0.3);
+}
+.nav-cta{
+  padding: 10px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background: transparent;
+  cursor: pointer;
+}
+.nav-cta:hover{
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+/* Mobile menu button */
+.mobile-menu-btn{
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  width: 40px; height: 40px;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+}
+.mobile-menu-btn span{
+  position: absolute;
+  left: 10px;
+  width: 18px; height: 1px;
+  background: var(--ink);
+  transition: all 0.3s;
+}
+.mobile-menu-btn span:nth-child(1){top: 14px}
+.mobile-menu-btn span:nth-child(2){top: 19px}
+.mobile-menu-btn span:nth-child(3){top: 24px}
+.mobile-menu-btn.open span:nth-child(1){top: 19px; transform: rotate(45deg); background: var(--gold)}
+.mobile-menu-btn.open span:nth-child(2){opacity: 0}
+.mobile-menu-btn.open span:nth-child(3){top: 19px; transform: rotate(-45deg); background: var(--gold)}
+
+.mobile-menu{
+  position: fixed;
+  top: 0; right: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg);
+  z-index: 99;
+  padding: 100px 32px 32px;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+}
+.mobile-menu.open{transform: translateX(0)}
+.mobile-menu-links{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: auto;
+}
+.mobile-menu-links a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.3s, padding 0.3s;
+}
+.mobile-menu-links a:active,
+.mobile-menu-links a:hover{
+  color: var(--gold);
+  padding-left: 12px;
+}
+.mobile-menu-links a .num{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-mute);
+  font-weight: 400;
+}
+.mobile-menu-links a em{font-style: italic; color: var(--gold)}
+.mobile-menu-footer{
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mobile-menu-footer .meta{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.mobile-menu-footer .search-mobile{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(244,239,230,0.04);
+  border: 1px solid var(--line);
+  color: var(--ink-dim);
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.section-label{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before{
+  content:'';
+  width: 32px; height: 1px;
+  background: var(--gold);
+}
+.section-title{
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  max-width: 900px;
+}
+.section-title em{font-style: italic; color: var(--gold)}
+
+/* ===== BUTTONS ===== */
+.btn-primary{
+  padding: 18px 36px;
+  background: var(--gold);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1);
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
+.btn-primary::before{
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: var(--gold-bright);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+.btn-primary:hover::before{transform: translateX(0)}
+.btn-primary > *{position: relative; z-index: 1}
+.btn-primary svg{transition: transform 0.3s}
+.btn-primary:hover svg{transform: translateX(4px)}
+
+.btn-ghost{
+  padding: 18px 36px;
+  background: transparent;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+.btn-ghost:hover{border-color: var(--ink); background: rgba(244,239,230,0.04)}
+
+.btn-sm{padding: 10px 20px; font-size: 11px}
+
+/* ===== PAGE HEADER (for inner pages) ===== */
+.page-header{
+  padding: 160px 48px 80px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  overflow: hidden;
+}
+.page-header::before{
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(201,169,97,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-header-grid{
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.page-header-wrap{
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+.breadcrumb{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.breadcrumb a{
+  color: var(--ink-mute);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.breadcrumb a:hover{color: var(--gold)}
+.breadcrumb .sep{color: var(--line-strong)}
+.breadcrumb .current{color: var(--gold)}
+.page-title{
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  max-width: 1100px;
+}
+.page-title em{font-style: italic; color: var(--gold)}
+.page-subtitle{
+  font-size: 18px;
+  color: var(--ink-dim);
+  max-width: 680px;
+  line-height: 1.6;
+}
+.page-meta{
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.page-meta-item{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.page-meta-item strong{color: var(--gold); font-weight: 500}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+section.std{padding: 100px 0}
+
+/* ===== CARDS ===== */
+.card{
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover{
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+  background: var(--bg-elevated);
+}
+.card.gold-hover:hover{border-color: var(--gold)}
+
+/* ===== TAGS / BADGES ===== */
+.tag{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  background: rgba(244,239,230,0.02);
+}
+.tag.gold{color: var(--gold); border-color: rgba(201,169,97,0.3); background: rgba(201,169,97,0.06)}
+.tag.green{color: var(--green); border-color: rgba(127,183,126,0.3); background: rgba(127,183,126,0.06)}
+.tag.amber{color: var(--amber); border-color: rgba(212,131,42,0.3); background: rgba(212,131,42,0.06)}
+.tag.plasma{color: var(--plasma); border-color: rgba(74,158,255,0.3); background: rgba(74,158,255,0.06)}
+.tag.solid-gold{color: var(--bg); background: var(--gold); border-color: var(--gold)}
+
+/* Evidence badges */
+.evidence-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.evidence-badge::before{
+  content:'';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.evidence-badge.very-strong{color: var(--green); background: rgba(127,183,126,0.1); border: 1px solid rgba(127,183,126,0.3)}
+.evidence-badge.very-strong::before{background: var(--green)}
+.evidence-badge.strong{color: var(--gold); background: rgba(201,169,97,0.08); border: 1px solid rgba(201,169,97,0.3)}
+.evidence-badge.strong::before{background: var(--gold)}
+.evidence-badge.moderate{color: var(--amber); background: rgba(212,131,42,0.08); border: 1px solid rgba(212,131,42,0.25)}
+.evidence-badge.moderate::before{background: var(--amber)}
+.evidence-badge.preclinical, .evidence-badge.emerging{color: var(--ink-mute); background: rgba(107,104,96,0.1); border: 1px solid var(--line-strong)}
+.evidence-badge.preclinical::before, .evidence-badge.emerging::before{background: var(--ink-mute)}
+
+/* ===== COMMAND PALETTE ===== */
+.palette-backdrop{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(5,5,6,0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.palette-backdrop.open{opacity: 1; visibility: visible}
+.palette{
+  width: 640px;
+  max-width: calc(100vw - 32px);
+  max-height: 70vh;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 1px rgba(201,169,97,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.96) translateY(-12px);
+  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+}
+.palette-backdrop.open .palette{transform: scale(1) translateY(0)}
+.palette-input-wrap{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.palette-input-wrap > svg{color: var(--gold); flex-shrink: 0}
+.palette-input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.palette-input::placeholder{color: var(--ink-mute); font-style: italic}
+.palette-close{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  color: var(--ink-mute);
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+}
+.palette-results{flex: 1; overflow-y: auto; padding: 8px 0}
+.palette-results::-webkit-scrollbar{width: 4px}
+.palette-results::-webkit-scrollbar-thumb{background: var(--line-strong); border-radius: 2px}
+.palette-section{
+  padding: 12px 24px 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.palette-section::before{content:'§'; opacity: 0.6}
+.palette-item{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
+}
+.palette-item.active{
+  background: rgba(201,169,97,0.06);
+  border-left-color: var(--gold);
+}
+.palette-item-icon{
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(244,239,230,0.04);
+  border: 1px solid var(--line);
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.palette-item-content{flex: 1; min-width: 0}
+.palette-item-title{
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.palette-item-sub{
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  margin-top: 2px;
+}
+.palette-item-meta{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+}
+.palette-empty{
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--ink-mute);
+}
+.palette-empty p:first-child{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-dim);
+  margin-bottom: 8px;
+}
+.palette-footer{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  background: rgba(0,0,0,0.2);
+}
+.palette-footer .hint{display: flex; align-items: center; gap: 6px}
+.palette-footer .key{
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--ink-dim);
+}
+
+/* ===== FOOTER ===== */
+footer.main-footer{
+  background: var(--bg);
+  padding: 80px 48px 40px;
+  border-top: 1px solid var(--line);
+  margin-top: 80px;
+}
+.footer-wrap{max-width: 1400px; margin: 0 auto}
+.footer-top{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--line);
+}
+.footer-brand h3{
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.footer-brand h3 em{color: var(--gold); font-style: italic}
+.footer-brand p{
+  color: var(--ink-dim);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 400px;
+}
+.footer-col h4{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-col ul{list-style: none; display: flex; flex-direction: column; gap: 14px}
+.footer-col a{
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.footer-col a:hover{color: var(--gold)}
+.footer-bottom{
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--ink-mute);
+}
+.footer-bottom-links{display: flex; gap: 32px}
+.footer-bottom-links a{color: var(--ink-mute); text-decoration: none; transition: color 0.3s}
+.footer-bottom-links a:hover{color: var(--gold)}
+
+/* ===== DISCLAIMER STRIP ===== */
+.disclaimer-strip{
+  background: rgba(212,131,42,0.04);
+  border-top: 1px solid rgba(212,131,42,0.2);
+  border-bottom: 1px solid rgba(212,131,42,0.2);
+  padding: 16px 48px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.2,0.8,0.2,1), transform 1s cubic-bezier(0.2,0.8,0.2,1);
+}
+.reveal.in{opacity: 1; transform: translateY(0)}
+
+/* ===== UTILITIES ===== */
+.text-gold{color: var(--gold)}
+.text-dim{color: var(--ink-dim)}
+.text-mute{color: var(--ink-mute)}
+.serif{font-family: var(--serif)}
+.mono{font-family: var(--mono)}
+.italic{font-style: italic}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px){
+  .footer-top{grid-template-columns: 1fr 1fr; gap: 40px}
+  .search-trigger{min-width: auto; padding: 9px 12px}
+  .search-trigger .placeholder{display: none}
+  .search-trigger .kbd{margin-left: 0}
+}
+@media (max-width: 768px){
+  nav.main-nav{padding: 16px 20px}
+  nav.main-nav.scrolled{padding: 12px 20px}
+  .nav-links{display: none}
+  .search-trigger{display: none}
+  .nav-cta{display: none}
+  .mobile-menu-btn{display: block}
+
+  .container{padding: 0 20px}
+  section.std{padding: 80px 0}
+  .page-header{padding: 110px 20px 60px}
+  .disclaimer-strip{padding: 14px 20px; font-size: 10px}
+
+  footer.main-footer{padding: 60px 20px 32px}
+  .footer-top{grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px}
+  .footer-bottom{flex-direction: column; align-items: flex-start; gap: 16px; font-size: 10px}
+  .footer-bottom-links{gap: 20px}
+
+  .palette-backdrop{padding-top: 8vh}
+  .palette{width: calc(100vw - 24px); max-height: 84vh}
+  .palette-input{font-size: 17px}
+  .palette-item{padding: 12px 20px; gap: 12px}
+
+  .btn-primary, .btn-ghost{padding: 16px 24px; font-size: 12px}
+}
+
+</style>
+<style>
+.compare-app{margin: 60px 0 100px}
+.compare-selectors{
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+.compare-slot{
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  min-height: 140px;
+}
+.compare-slot:first-child{border-right: none}
+.compare-slot:last-child{border-left: none}
+.compare-slot-label{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.compare-slot select{
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 16px 20px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4 L6 8 L10 4' stroke='%23c9a961' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+}
+.vs-divider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-style: italic;
+  color: var(--gold);
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.vs-divider::before, .vs-divider::after{
+  content:'';
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  background: var(--gold);
+  height: 16px;
+}
+.vs-divider::before{top: 0}
+.vs-divider::after{bottom: 0}
+
+.compare-result{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.compare-side{background: var(--bg-card); padding: 0}
+.compare-head{
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(201,169,97,0.06), transparent);
+  border-bottom: 1px solid var(--line);
+}
+.compare-head h3{
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.compare-head .cat{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.compare-row-block{
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--line);
+}
+.compare-row-block:last-child{border: none}
+.compare-row-label{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+.compare-row-value{
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.compare-row-value.serif-large{
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--gold);
+}
+.compare-row-value ul{list-style: none; display: flex; flex-direction: column; gap: 6px}
+.compare-row-value li{
+  padding-left: 14px;
+  position: relative;
+  font-size: 14px;
+  color: var(--ink-dim);
+}
+.compare-row-value li::before{
+  content:'';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 1px;
+  background: var(--gold);
+}
+
+.compare-takeaway{
+  margin-top: 60px;
+  padding: 48px;
+  background: var(--bg-card);
+  border-left: 3px solid var(--gold);
+}
+.compare-takeaway h3{
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.compare-takeaway h3 em{font-style: italic; color: var(--gold)}
+.compare-takeaway p{color: var(--ink-dim); font-size: 16px; line-height: 1.7; max-width: 800px}
+
+@media (max-width: 1024px){
+  .compare-selectors{grid-template-columns: 1fr; gap: 0}
+  .compare-slot{border: 1px solid var(--line) !important; border-bottom: none !important}
+  .compare-slot:last-child{border-bottom: 1px solid var(--line) !important}
+  .vs-divider{padding: 16px; border-left: 1px solid var(--line); border-right: 1px solid var(--line)}
+  .compare-result{grid-template-columns: 1fr}
+  .compare-head h3{font-size: 28px}
+}
+</style>
+
+<!-- Primary Meta Tags -->
+<meta name="title" content="Peptide Comparison Tool — Side-by-Side Research Profiles">
+<meta name="description" content="Compare any two peptides side by side: mechanism, benefits, dosing, evidence grade, half-life, and molecular weight. Instant cross-reference for 33 compounds.">
+<meta name="keywords" content="compare peptides, Semaglutide vs Tirzepatide, BPC-157 vs TB-500, peptide comparison, peptide differences">
+<meta name="author" content="PeptiDex">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://peptidex.app/tools/compare">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://peptidex.app/tools/compare">
+<meta property="og:title" content="Peptide Comparison Tool — Side-by-Side Research Profiles">
+<meta property="og:description" content="Compare any two peptides side by side: mechanism, benefits, dosing, evidence grade, half-life, and molecular weight. Instant cross-reference for 33 compounds.">
+<meta property="og:image" content="https://peptidex.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PeptiDex — Independent peptide research index">
+<meta property="og:site_name" content="PeptiDex">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peptidex">
+<meta name="twitter:creator" content="@peptidex">
+<meta name="twitter:url" content="https://peptidex.app/tools/compare">
+<meta name="twitter:title" content="Peptide Comparison Tool — Side-by-Side Research Profiles">
+<meta name="twitter:description" content="Compare any two peptides side by side: mechanism, benefits, dosing, evidence grade, half-life, and molecular weight. Instant cross-reference for 33 compounds.">
+<meta name="twitter:image" content="https://peptidex.app/og-image.png">
+
+<!-- iOS / Apple Mobile Web App -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PeptiDex">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c9a961">
+
+<!-- PWA / Mobile -->
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="application-name" content="PeptiDex">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="msapplication-TileColor" content="#0a0a0b">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!-- Performance Hints -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+<!-- AI Crawler Hints (GEO) -->
+<meta name="ai-content-declaration" content="Original editorial content. Independent research index.">
+<meta name="generator" content="PeptiDex Research Index">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PeptiDex",
+  "alternateName": "PeptiDex Research Index",
+  "url": "https://peptidex.app",
+  "logo": "https://peptidex.app/logo.png",
+  "description": "The independent, evidence-based peptide research index. Verified vendors, peer-reviewed studies, curated stacks.",
+  "sameAs": [
+    "https://twitter.com/peptidex"
+  ],
+  "publishingPrinciples": "https://peptidex.app/about/editorial-policy",
+  "knowsAbout": [
+    "Research Peptides",
+    "BPC-157",
+    "Tesamorelin",
+    "Semaglutide",
+    "Tirzepatide",
+    "Peptide Therapy",
+    "Growth Hormone Peptides",
+    "GLP-1 Agonists"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PeptiDex",
+  "url": "https://peptidex.app",
+  "description": "Independent peptide research index with 33 compounds, 12 stacks, and 140+ peer-reviewed studies.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://peptidex.app/library?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PeptiDex",
+    "url": "https://peptidex.app"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://peptidex.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://peptidex.app/tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Compare",
+      "item": "https://peptidex.app/tools/compare"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Comparison Tool \u2014 Side-by-Side Research Profiles",
+  "description": "Compare any two peptides side by side: mechanism, benefits, dosing, evidence grade, half-life, and molecular weight. Instant cross-reference for 33 compounds.",
+  "url": "https://peptidex.app/tools/compare",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "PeptiDex",
+    "url": "https://peptidex.app"
+  },
+  "inLanguage": "en-US"
+}
+</script>
+
+<style>
+/* ===== iOS / MOBILE OPTIMIZATIONS ===== */
+
+/* Use dynamic viewport units (handle iOS Safari URL bar) */
+:root{
+  --vh: 1vh;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+html{
+  /* iOS smooth scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent iOS text size adjust on rotation */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Use 100dvh for true mobile viewport on iOS 15.4+ */
+  min-height: 100dvh;
+}
+
+body{
+  /* Prevent overscroll bounce on iOS that breaks fixed nav */
+  overscroll-behavior-y: none;
+  /* Account for iOS notch/home indicator */
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+/* Eliminate iOS tap highlight (we have custom hover states) */
+*{
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Re-enable callout on actual long-press content */
+p, h1, h2, h3, h4, h5, h6, li, blockquote, code{
+  -webkit-touch-callout: default;
+}
+
+/* All clickable items: ensure 44x44px minimum touch target (Apple HIG) */
+a, button, [role="button"], input[type="submit"], input[type="button"]{
+  touch-action: manipulation; /* Disable iOS double-tap-to-zoom */
+}
+
+/* Buttons should never have iOS native styling */
+button, input[type="submit"], input[type="button"]{
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+/* Prevent iOS auto-zoom on input focus by using 16px minimum font-size */
+input, textarea, select{
+  font-size: 16px !important;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+/* But re-style our specific inputs after the no-zoom rule */
+.palette-input{
+  font-size: 22px !important; /* Already > 16px so no zoom */
+}
+.lib-search input{
+  font-size: 16px !important;
+}
+.price-search input{
+  font-size: 16px !important;
+}
+
+/* iOS Safari fix: smooth scrolling on overflow containers */
+.palette-results,
+.peptide-checks,
+.detail-tabs-wrap,
+.matrix-table,
+.timeline{
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fixed nav with safe-area */
+nav.main-nav{
+  padding-top: max(24px, calc(24px + var(--safe-top)));
+}
+nav.main-nav.scrolled{
+  padding-top: max(14px, calc(14px + var(--safe-top)));
+}
+@media (max-width: 768px){
+  nav.main-nav{
+    padding-top: max(16px, calc(16px + var(--safe-top)));
+    padding-left: max(20px, var(--safe-left));
+    padding-right: max(20px, var(--safe-right));
+  }
+}
+
+/* Mobile menu accounts for notch */
+.mobile-menu{
+  padding-top: max(100px, calc(100px + var(--safe-top)));
+  padding-bottom: max(32px, calc(32px + var(--safe-bottom)));
+}
+
+/* Fix iOS Safari 100vh issue for mobile menu */
+@supports (-webkit-touch-callout: none){
+  .mobile-menu{
+    height: 100dvh; /* Dynamic viewport height — iOS 15.4+ */
+    height: -webkit-fill-available; /* Fallback for older iOS */
+  }
+}
+
+/* Disable iOS pull-to-refresh inside palette */
+.palette-backdrop.open{
+  overscroll-behavior: contain;
+}
+
+/* iOS: prevent body scroll when modal open */
+body.palette-open,
+body.menu-open{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure tap targets are large enough on filter pills */
+.filter-btn, .ev-btn, .goal-pill, .exp-tab,
+.tag, .stack-pill, .palette-close{
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Larger touch targets for mobile menu links (Apple HIG: 44pt) */
+.mobile-menu-links a{
+  min-height: 56px;
+}
+
+/* Bigger search/CTA tap zones on mobile */
+@media (max-width: 768px){
+  .mobile-menu-btn{
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  .nav-logo{
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-primary, .btn-ghost{
+    min-height: 48px;
+  }
+  .tab-link{
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+  }
+  /* iOS detail tabs sticky positioning */
+  .detail-tabs{
+    top: calc(64px + var(--safe-top));
+  }
+  /* Footer with safe-area */
+  footer.main-footer{
+    padding-bottom: max(32px, calc(32px + var(--safe-bottom)));
+  }
+  /* Disclaimer strip with safe-area when at bottom */
+  .disclaimer-strip{
+    padding-left: max(20px, var(--safe-left));
+    padding-right: max(20px, var(--safe-right));
+  }
+}
+
+/* Improve touch responsiveness on cards */
+.peptide-card,
+.stack-card,
+.trending-card,
+.vendor-card,
+.featured-card,
+.featured-main,
+.article-card,
+.related-card,
+.lesson-card,
+.track-card,
+.benefit-card,
+.study-card,
+.dose-cell,
+.protocol-pep{
+  -webkit-tap-highlight-color: transparent;
+  /* Remove hover transform on touch devices to avoid stuck states */
+}
+
+/* Touch-only: disable hover translates that cause stuck states on iOS */
+@media (hover: none) and (pointer: coarse){
+  .peptide-card:hover,
+  .stack-card:hover,
+  .trending-card:hover,
+  .vendor-card:hover,
+  .featured-card:hover,
+  .featured-main:hover,
+  .article-card:hover,
+  .related-card:hover,
+  .lesson-card:hover,
+  .study-card:hover,
+  .protocol-pep:hover{
+    transform: none !important;
+  }
+  /* Use :active for touch feedback instead */
+  .peptide-card:active,
+  .stack-card:active,
+  .trending-card:active,
+  .vendor-card:active,
+  .featured-card:active,
+  .article-card:active{
+    background: var(--bg-elevated);
+    border-color: var(--gold);
+  }
+}
+
+/* Prevent text selection on UI controls (allow on content) */
+.tab-link, .filter-btn, .ev-btn, .goal-pill, .exp-tab,
+nav.main-nav, .palette-footer, .stack-meta, .breadcrumb,
+.section-label, .page-meta-item{
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Allow selection on content */
+p, h1, h2, h3, h4, h5, h6, li, blockquote, span.serif, .lead{
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Improve scroll performance on long pages */
+.peptide-grid,
+.stacks-grid,
+.evidence-table,
+.price-table,
+.studies-grid,
+.benefits-grid{
+  contain: layout style;
+}
+
+/* Reduce motion for accessibility (respects iOS Settings → Accessibility) */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal{
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support (iOS Increase Contrast setting) */
+@media (prefers-contrast: more){
+  :root{
+    --line: rgba(244,239,230,0.2);
+    --line-strong: rgba(244,239,230,0.35);
+    --ink-dim: #d8d3c8;
+    --ink-mute: #9a9489;
+  }
+}
+
+/* iOS PWA standalone mode adjustments */
+@media all and (display-mode: standalone){
+  body{
+    /* Add safe-area padding for status bar in PWA mode */
+    padding-top: var(--safe-top);
+  }
+  nav.main-nav{
+    padding-top: max(16px, var(--safe-top));
+  }
+}
+
+/* iOS dark mode native handling (already dark, but ensure consistency) */
+@media (prefers-color-scheme: light){
+  :root{
+    color-scheme: dark; /* Force dark UI even in light mode */
+  }
+}
+
+/* Prevent double-tap zoom while still allowing pinch zoom */
+button, a, .tag, .filter-btn{
+  touch-action: manipulation;
+}
+
+/* Better scrollbar styling for desktop, hidden on mobile */
+@media (min-width: 769px){
+  ::-webkit-scrollbar{width: 8px; height: 8px}
+  ::-webkit-scrollbar-track{background: var(--bg)}
+  ::-webkit-scrollbar-thumb{background: var(--line-strong); border-radius: 4px}
+  ::-webkit-scrollbar-thumb:hover{background: var(--ink-mute)}
+}
+
+/* Skip link for accessibility (screen readers, keyboard nav) */
+.skip-link{
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--gold);
+  color: var(--bg);
+  padding: 12px 20px;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 9999;
+  transition: top 0.2s;
+  border-radius: 0;
+}
+.skip-link:focus{
+  top: max(16px, var(--safe-top));
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Better focus indicators for keyboard nav (accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* iOS: improve performance on transform-heavy elements */
+.molecule-display svg,
+.btn-primary::before,
+.stack-card::before{
+  will-change: transform;
+  transform: translateZ(0); /* GPU acceleration */
+}
+</style>
+</head>
+<body class="">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<!-- ============================================
+     SHARED CHROME (NAV + FOOTER + PALETTE)
+     Copy this into every page
+     ============================================ -->
+
+<!-- NAV -->
+<nav class="main-nav" id="mainNav">
+  <a href="/" class="nav-logo">
+    <span class="mark"></span>
+    Pepti<em>Dex</em>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/library" data-nav="library">Library</a></li>
+    <li><a href="/stacks" data-nav="stacks">Stacks</a></li>
+    <li><a href="/vendors" data-nav="vendors">Vendors</a></li>
+    <li><a href="/tools/evidence" data-nav="research">Research</a></li>
+    <li><a href="/blog" data-nav="journal">Journal</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="search-trigger" onclick="openPalette()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <span class="placeholder">Search peptides, studies, vendors…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+    <a href="/intro" class="nav-cta">Start</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-menu-links">
+    <li><a href="/library"><span>Library</span><span class="num">§ 01</span></a></li>
+    <li><a href="/stacks"><span>Stacks</span><span class="num">§ 02</span></a></li>
+    <li><a href="/vendors"><span>Vendors</span><span class="num">§ 03</span></a></li>
+    <li><a href="/tools/evidence"><span>Research</span><span class="num">§ 04</span></a></li>
+    <li><a href="/blog"><span>Journal</span><span class="num">§ 05</span></a></li>
+    <li><a href="/intro"><span><em>Start here</em></span><span class="num">§ 06</span></a></li>
+  </ul>
+  <div class="mobile-menu-footer">
+    <div class="meta">§ Search the index</div>
+    <button class="search-mobile" onclick="closeMobileMenu(); setTimeout(openPalette, 300)">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3"/></svg>
+      <span>Peptides, studies, vendors…</span>
+    </button>
+    <div class="meta" style="margin-top: 16px">Vol. I · Edition 2026 · <span style="color:var(--gold)">Independent</span></div>
+  </div>
+</div>
+
+<!-- COMMAND PALETTE -->
+<div class="palette-backdrop" id="palette" onclick="closePalette()">
+  <div class="palette" onclick="event.stopPropagation()">
+    <div class="palette-input-wrap">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" class="palette-input" id="paletteInput" placeholder="Search peptides, studies, vendors, or stacks…" autocomplete="off" spellcheck="false">
+      <button class="palette-close" onclick="closePalette()">esc</button>
+    </div>
+    <div class="palette-results" id="paletteResults"></div>
+    <div class="palette-footer">
+      <div class="hint"><span class="key">↑</span><span class="key">↓</span>Navigate</div>
+      <div class="hint"><span class="key">↵</span>Open</div>
+      <div class="hint"><span class="key">esc</span>Close</div>
+    </div>
+  </div>
+</div>
+
+
+
+<main id="main-content">
+<header class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-wrap">
+    <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/tools/evidence">Tools</a><span class="sep">/</span><span class="current">Compare</span></div>
+    <div class="section-label">§ Side-by-Side</div>
+    <h1 class="page-title">Compare any <em>two</em><br>peptides.</h1>
+    <p class="page-subtitle">Mechanism, benefits, dosing, evidence — the full picture, side by side. Cross-reference any pair in the index.</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="compare-app">
+    <div class="compare-selectors">
+      <div class="compare-slot">
+        <span class="compare-slot-label">Peptide A</span>
+        <select id="compareA"></select>
+      </div>
+      <div class="vs-divider">vs</div>
+      <div class="compare-slot">
+        <span class="compare-slot-label">Peptide B</span>
+        <select id="compareB"></select>
+      </div>
+    </div>
+
+    <div class="compare-result" id="compareResult"></div>
+
+    <div class="compare-takeaway reveal">
+      <div class="section-label" style="margin-bottom: 16px;">§ Takeaway</div>
+      <h3>The <em>verdict</em>.</h3>
+      <p id="takeawayText">Loading...</p>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER STRIP (optional, place above footer) -->
+<div class="disclaimer-strip">
+  ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+</div>
+
+<!-- FOOTER -->
+</main>
+<footer class="main-footer">
+  <div class="footer-wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Pepti<em>Dex</em></h3>
+        <p>The independent, evidence-based peptide research index. Trusted by researchers worldwide for unbiased education and verified sourcing.</p>
+      </div>
+      <div class="footer-col">
+        <h4>§ Learn</h4>
+        <ul>
+          <li><a href="/intro">Peptide 101</a></li>
+          <li><a href="/library">Library</a></li>
+          <li><a href="/tools/evidence">Evidence Dashboard</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Source</h4>
+        <ul>
+          <li><a href="/vendors">Vendor Reviews</a></li>
+          <li><a href="/tools/pricing">Price Comparison</a></li>
+          <li><a href="/tools/compare">Compare Tool</a></li>
+          <li><a href="/tools/cycle-planner">Cycle Planner</a></li>
+          <li><a href="/stacks">Community Stacks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ About</h4>
+        <ul>
+          <li><a href="/about">Our Mission</a></li>
+          <li><a href="/about/editorial-policy">Editorial Policy</a></li>
+          <li><a href="/disclaimer">Medical Disclaimer</a></li>
+          <li><a href="/about">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 PeptiDex. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="/legal">Privacy</a>
+        <a href="/legal">Terms</a>
+        <a href="/disclaimer">Disclosures</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     SHARED JAVASCRIPT
+     ============================================ -->
+<script>
+/* ===== SEARCH INDEX (your real data) ===== */
+const SEARCH_INDEX = [
+  // Peptides (33)
+  {type:'peptide',title:'AOD-9604',sub:'GH Fragment · Fat loss without GH side effects',meta:'preclinical',url:'/library/aod-9604',tags:'aod 9604 fat loss gh fragment'},
+  {type:'peptide',title:'BPC-157',sub:'Body Protective Compound · Injury recovery, gut healing',meta:'preclinical',url:'/library/bpc-157',tags:'bpc 157 body protective compound healing gut tissue'},
+  {type:'peptide',title:'Cagrilintide',sub:'Metabolic · Weight loss, appetite reduction',meta:'strong',url:'/library/cagrilintide',tags:'cagrilintide weight loss appetite metabolic'},
+  {type:'peptide',title:'CJC-1295',sub:'GHRH Analog · Muscle growth, fat loss',meta:'moderate',url:'/library/cjc-1295',tags:'cjc 1295 ghrh muscle growth fat loss'},
+  {type:'peptide',title:'DSIP',sub:'Sleep Peptide · Improved sleep, stress reduction',meta:'moderate',url:'/library/dsip',tags:'dsip sleep delta stress'},
+  {type:'peptide',title:'Epitalon',sub:'Telomerase Activator · Anti-aging, longevity',meta:'preclinical',url:'/library/epitalon',tags:'epitalon epithalon telomere longevity'},
+  {type:'peptide',title:'Follistatin-344',sub:'Myostatin Inhibitor · Muscle hypertrophy',meta:'preclinical',url:'/library/follistatin-344',tags:'follistatin 344 myostatin muscle'},
+  {type:'peptide',title:'GHK-Cu',sub:'Copper Peptide · Skin repair, anti-aging',meta:'moderate',url:'/library/ghk-cu',tags:'ghk cu copper peptide skin hair'},
+  {type:'peptide',title:'GHRP-2',sub:'GHRP · Strongest GH release, muscle growth',meta:'moderate',url:'/library/ghrp-2',tags:'ghrp 2 gh release muscle'},
+  {type:'peptide',title:'GHRP-6',sub:'GHRP · Potent GH release, appetite',meta:'moderate',url:'/library/ghrp-6',tags:'ghrp 6 gh release appetite'},
+  {type:'peptide',title:'Glutathione',sub:'Antioxidant · Detoxification, antioxidant defense',meta:'strong',url:'/library/glutathione',tags:'glutathione antioxidant detox'},
+  {type:'peptide',title:'Hexarelin',sub:'GHRP · Most potent GH release, cardioprotection',meta:'moderate',url:'/library/hexarelin',tags:'hexarelin gh cardio'},
+  {type:'peptide',title:'IGF-1 LR3',sub:'Growth Factor · Muscle growth, recovery',meta:'preclinical',url:'/library/igf-1-lr3',tags:'igf 1 lr3 growth factor muscle'},
+  {type:'peptide',title:'Ipamorelin',sub:'GHRP · GH release, muscle growth',meta:'moderate',url:'/library/ipamorelin',tags:'ipamorelin gh secretagogue'},
+  {type:'peptide',title:'Kisspeptin-10',sub:'Reproductive · LH/FSH stimulation, testosterone',meta:'moderate',url:'/library/kisspeptin-10',tags:'kisspeptin testosterone lh fsh'},
+  {type:'peptide',title:'KPV',sub:'Anti-Inflammatory · Gut/injury healing',meta:'preclinical',url:'/library/kpv',tags:'kpv inflammation gut'},
+  {type:'peptide',title:'LL-37',sub:'Antimicrobial · Broad-spectrum, anti-biofilm',meta:'moderate',url:'/library/ll-37',tags:'ll 37 antimicrobial'},
+  {type:'peptide',title:'Melanotan II',sub:'Melanocortin Agonist · Tanning, libido',meta:'moderate',url:'/library/melanotan-ii',tags:'mt2 melanotan tan'},
+  {type:'peptide',title:'MK-677',sub:'GH Secretagogue (Oral) · Sustained GH/IGF-1',meta:'moderate',url:'/library/mk-677',tags:'mk 677 ibutamoren gh oral'},
+  {type:'peptide',title:'MOTS-c',sub:'Mitochondrial Peptide · Energy, metabolism',meta:'emerging',url:'/library/mots-c',tags:'mots c mitochondria energy'},
+  {type:'peptide',title:'NAD+',sub:'Longevity · Cellular energy, DNA repair',meta:'strong',url:'/library/nad',tags:'nad longevity energy dna'},
+  {type:'peptide',title:'PT-141',sub:'Melanocortin Agonist · Sexual arousal, libido',meta:'very-strong',url:'/library/pt-141',tags:'pt 141 bremelanotide libido'},
+  {type:'peptide',title:'Retatrutide',sub:'Triple Agonist · Superior body recomposition',meta:'strong',url:'/library/retatrutide',tags:'retatrutide triple agonist weight'},
+  {type:'peptide',title:'Selank',sub:'Anxiolytic · Anxiety reduction, mental clarity',meta:'moderate',url:'/library/selank',tags:'selank anxiety focus'},
+  {type:'peptide',title:'Semaglutide',sub:'GLP-1 Agonist · Fat loss, appetite control',meta:'very-strong',url:'/library/semaglutide',tags:'semaglutide ozempic glp 1 weight'},
+  {type:'peptide',title:'Semax',sub:'Cognitive · Mental clarity, focus',meta:'moderate',url:'/library/semax',tags:'semax focus adhd cognitive'},
+  {type:'peptide',title:'Sermorelin',sub:'GHRH Analog · Muscle growth, recovery',meta:'moderate',url:'/library/sermorelin',tags:'sermorelin ghrh muscle'},
+  {type:'peptide',title:'SS-31',sub:'Mitochondrial · Energy, neuroprotection',meta:'moderate',url:'/library/ss-31',tags:'ss 31 mitochondria neuroprotection'},
+  {type:'peptide',title:'TB-500',sub:'Thymosin Beta-4 · Muscle/tissue repair',meta:'preclinical',url:'/library/tb-500',tags:'tb 500 thymosin recovery'},
+  {type:'peptide',title:'Tesamorelin',sub:'GHRH Analog · Visceral fat reduction',meta:'very-strong',url:'/library/tesamorelin',tags:'tesamorelin visceral fat ghrh'},
+  {type:'peptide',title:'Thymosin Alpha-1',sub:'Immune · Immune support, antiviral',meta:'moderate',url:'/library/thymosin-alpha-1',tags:'thymosin alpha 1 immune'},
+  {type:'peptide',title:'Tirzepatide',sub:'Dual Agonist · Weight loss, body recomp',meta:'very-strong',url:'/library/tirzepatide',tags:'tirzepatide mounjaro dual agonist'},
+  {type:'peptide',title:'Tesofensine',sub:'Small Molecule · Extreme fat loss',meta:'strong',url:'/library/tesofensine',tags:'tesofensine fat loss'},
+
+  // Goals/Stacks (12)
+  {type:'goal',title:'Body Recomposition',sub:'1 stack · 3 peptides',meta:'Goal',url:'/goals/body-recomposition',tags:'body recomp cut bulk'},
+  {type:'goal',title:'Injury Recovery',sub:'1 stack · 2 peptides',meta:'Goal',url:'/goals/injury-recovery',tags:'injury healing'},
+  {type:'goal',title:'Mental Clarity',sub:'1 stack · 2 peptides',meta:'Goal',url:'/goals/mental-clarity',tags:'mental focus cognitive'},
+  {type:'goal',title:'Fat Loss',sub:'2 stacks · 6 peptides',meta:'Goal',url:'/goals/fat-loss',tags:'fat loss weight cut'},
+  {type:'goal',title:'Muscle Growth',sub:'2 stacks · 6 peptides',meta:'Goal',url:'/goals/muscle-growth',tags:'muscle gain hypertrophy'},
+  {type:'goal',title:'Immune Support',sub:'1 stack · 2 peptides',meta:'Goal',url:'/goals/immune-support',tags:'immune system'},
+  {type:'goal',title:'Sleep & Recovery',sub:'1 stack · 3 peptides',meta:'Goal',url:'/goals/sleep-recovery',tags:'sleep rest'},
+  {type:'goal',title:'Longevity',sub:'1 stack · 3 peptides',meta:'Goal',url:'/goals/longevity',tags:'longevity antiaging'},
+  {type:'goal',title:'Skin & Aesthetics',sub:'1 stack · 2 peptides',meta:'Goal',url:'/goals/skin-aesthetic',tags:'skin aesthetic beauty'},
+  {type:'goal',title:'Gut Health',sub:'1 stack · 2 peptides',meta:'Goal',url:'/goals/gut-health',tags:'gut stomach'},
+  {type:'goal',title:'Hormonal Optimization',sub:'1 stack · 3 peptides',meta:'Goal',url:'/goals/hormonal-optimization',tags:'hormone testosterone'},
+  {type:'goal',title:'Metabolic Health',sub:'1 stack · 2 peptides',meta:'Goal',url:'/goals/metabolic-health',tags:'metabolic insulin'},
+
+  // Vendors
+  {type:'vendor',title:'Amino Club',sub:'★ #1 Editor\'s Choice · 99%+ purity',meta:'Vendor',url:'/vendors#amino-club',tags:'amino club vendor'},
+  {type:'vendor',title:'Limitless Life',sub:'★ USA Made · 99%+ purity',meta:'Vendor',url:'/vendors#limitless-life',tags:'limitless life usa'},
+  {type:'vendor',title:'Ascension Peptides',sub:'★ 4.7 · 98%+ purity',meta:'Vendor',url:'/vendors#ascension',tags:'ascension peptides'},
+  {type:'vendor',title:'Compare all vendors',sub:'Side-by-side matrix',meta:'Tool',url:'/vendors',tags:'compare vendors'},
+
+  // Tools
+  {type:'tool',title:'Cycle Planner',sub:'Map out your research protocol',meta:'Tool',url:'/tools/cycle-planner',tags:'cycle planner schedule'},
+  {type:'tool',title:'Evidence Dashboard',sub:'Study counts per peptide',meta:'Tool',url:'/tools/evidence',tags:'evidence dashboard studies'},
+  {type:'tool',title:'Compare Tool',sub:'Side-by-side peptide comparison',meta:'Tool',url:'/tools/compare',tags:'compare peptides'},
+  {type:'tool',title:'Price Comparison',sub:'Live prices across the index',meta:'Tool',url:'/tools/pricing',tags:'price comparison'},
+  {type:'tool',title:'Peptide 101',sub:'Beginner-friendly intro',meta:'Guide',url:'/intro',tags:'beginner intro 101 start'},
+
+  // Articles
+  {type:'article',title:'Tesamorelin: What Sets It Apart',sub:'Growth Hormone · 10 min read',meta:'Journal',url:'/blog/tesamorelin-growth-hormone-peptide-comparison',tags:'tesamorelin'},
+  {type:'article',title:'Peptide Stacking in 2026',sub:'Combination Protocols · 14 min read',meta:'Journal',url:'/blog/peptide-stacking-2026-combination-protocols',tags:'stack combination'},
+  {type:'article',title:'FDA Peptide Reclassification 2026',sub:'Regulatory · 18 min read',meta:'Journal',url:'/blog/fda-peptide-reclassification-patients-providers',tags:'fda reclassification'},
+  {type:'article',title:'Semaglutide vs Tirzepatide',sub:'Research Comparison · 12 min',meta:'Journal',url:'/blog/semaglutide-vs-tirzepatide',tags:'semaglutide tirzepatide compare'},
+  {type:'article',title:'Retatrutide Explained',sub:'Triple-Agonist · 8 min read',meta:'Journal',url:'/blog/retatrutide-explained',tags:'retatrutide triple'},
+  {type:'article',title:'Are Peptides Safe?',sub:'Research overview · 15 min read',meta:'Journal',url:'/blog/are-peptides-safe',tags:'safety peptides'},
+];
+
+const ICONS = {
+  peptide: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="8" x2="10" y2="8" stroke="currentColor" stroke-width="1.2"/></svg>',
+  goal: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>',
+  vendor: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 5 L14 5 L13 13 L3 13 Z" stroke="currentColor" stroke-width="1.2"/><path d="M5 5 V3 H11 V5" stroke="currentColor" stroke-width="1.2"/></svg>',
+  study: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2 H11 L13 4 V14 H3 Z" stroke="currentColor" stroke-width="1.2"/></svg>',
+  article: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><line x1="3" y1="4" x2="13" y2="4" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="1.2"/></svg>',
+  tool: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2 L13 5 V11 L8 14 L3 11 V5 Z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg>',
+};
+const LABELS = {peptide:'Peptides',goal:'Research Goals',vendor:'Vendors',study:'Studies',article:'Journal',tool:'Tools & Guides'};
+
+let activeIndex = 0, currentResults = [];
+
+function scoreMatch(item, q){
+  if (!q) return 1;
+  const query = q.toLowerCase();
+  const title = item.title.toLowerCase();
+  const sub = (item.sub||'').toLowerCase();
+  const tags = (item.tags||'').toLowerCase();
+  if (title.startsWith(query)) return 100;
+  if (title.includes(query)) return 80;
+  if (tags.includes(query)) return 60;
+  if (sub.includes(query)) return 40;
+  let ti = 0;
+  for (const c of query){
+    const idx = title.indexOf(c, ti);
+    if (idx === -1){ ti = -1; break; }
+    ti = idx + 1;
+  }
+  if (ti > 0) return 20;
+  return 0;
+}
+
+function renderResults(q){
+  const scored = SEARCH_INDEX
+    .map(item => ({item, score: scoreMatch(item, q)}))
+    .filter(r => r.score > 0)
+    .sort((a,b) => b.score - a.score);
+  currentResults = scored.map(s => s.item);
+  activeIndex = 0;
+  const results = document.getElementById('paletteResults');
+  if (!currentResults.length){
+    results.innerHTML = `<div class="palette-empty"><p>No matches.</p><p style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em">Try: "BPC-157", "fat loss", or "vendor"</p></div>`;
+    return;
+  }
+  const grouped = {};
+  currentResults.forEach((item, i) => {
+    if (!grouped[item.type]) grouped[item.type] = [];
+    grouped[item.type].push({item, i});
+  });
+  const order = ['peptide','goal','vendor','article','tool','study'];
+  let html = '';
+  for (const type of order){
+    if (!grouped[type]) continue;
+    html += `<div class="palette-section">${LABELS[type]||type}</div>`;
+    for (const {item, i} of grouped[type].slice(0, 8)){
+      html += `<a class="palette-item" data-index="${i}" href="${item.url}"><div class="palette-item-icon">${ICONS[item.type]||ICONS.peptide}</div><div class="palette-item-content"><div class="palette-item-title">${item.title}</div><div class="palette-item-sub">${item.sub}</div></div><div class="palette-item-meta">${item.meta}</div></a>`;
+    }
+  }
+  results.innerHTML = html;
+  updateActive();
+  results.querySelectorAll('.palette-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { activeIndex = parseInt(el.dataset.index); updateActive(); });
+  });
+}
+
+function updateActive(){
+  document.querySelectorAll('.palette-item').forEach(el => {
+    const idx = parseInt(el.dataset.index);
+    if (idx === activeIndex){ el.classList.add('active'); el.scrollIntoView({block:'nearest'}); }
+    else el.classList.remove('active');
+  });
+}
+
+function selectActive(){
+  const item = currentResults[activeIndex];
+  if (!item) return;
+  window.location.href = item.url;
+}
+
+function openPalette(){
+  document.getElementById('palette').classList.add('open');
+  document.body.classList.add('palette-open');
+  setTimeout(() => document.getElementById('paletteInput').focus(), 50);
+  renderResults('');
+}
+function closePalette(){
+  document.getElementById('palette').classList.remove('open');
+  document.body.classList.remove('palette-open');
+  const input = document.getElementById('paletteInput');
+  if (input) input.value = '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('paletteInput');
+  if (input){
+    input.addEventListener('input', e => renderResults(e.target.value));
+    input.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown'){ e.preventDefault(); activeIndex = Math.min(activeIndex+1, currentResults.length-1); updateActive(); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); activeIndex = Math.max(activeIndex-1, 0); updateActive(); }
+      else if (e.key === 'Enter'){ e.preventDefault(); selectActive(); }
+      else if (e.key === 'Escape') closePalette();
+    });
+  }
+
+  // Mobile menu
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  if (btn && menu){
+    btn.addEventListener('click', () => {
+      if (menu.classList.contains('open')) closeMobileMenu();
+      else openMobileMenu();
+    });
+    document.querySelectorAll('.mobile-menu-links a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  }
+
+  // Nav shrink
+  const nav = document.getElementById('mainNav');
+  if (nav){
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  }
+
+  // Active nav highlight
+  const path = window.location.pathname;
+  document.querySelectorAll('[data-nav]').forEach(a => {
+    const slug = a.getAttribute('data-nav');
+    if ((slug === 'library' && path.startsWith('/library')) ||
+        (slug === 'stacks' && (path.startsWith('/stacks') || path.startsWith('/goals'))) ||
+        (slug === 'vendors' && path.startsWith('/vendors')) ||
+        (slug === 'research' && path.startsWith('/tools')) ||
+        (slug === 'journal' && path.startsWith('/blog'))) {
+      a.classList.add('active');
+    }
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if (e.isIntersecting){
+        setTimeout(() => e.target.classList.add('in'), i*40);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -80px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+});
+
+function openMobileMenu(){
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileMenuBtn').classList.add('open');
+  document.body.classList.add('menu-open');
+}
+function closeMobileMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileMenuBtn').classList.remove('open');
+  document.body.classList.remove('menu-open');
+}
+
+window.addEventListener('keydown', e => {
+  if ((e.metaKey||e.ctrlKey) && e.key === 'k'){
+    e.preventDefault();
+    if (document.getElementById('palette').classList.contains('open')) closePalette();
+    else openPalette();
+  }
+});
+</script>
+
+
+<script>
+const COMPARE_DB = {
+  'BPC-157': {cat:'Body Protective Compound', mechanism:'Multi-pathway tissue repair via VEGFR2, NO, and dopamine modulation', benefits:['Tendon/ligament repair','Gut healing','Anti-inflammatory'], dose:'250–500 mcg', freq:'1–2x daily', route:'SC', studies:87, evidence:'preclinical', halflife:'~4 hr', mw:'1419.53'},
+  'TB-500': {cat:'Thymosin Beta-4 Fragment', mechanism:'Promotes actin sequestering and cell migration for tissue repair', benefits:['Muscle/tissue repair','Flexibility','Cardiac repair'], dose:'2 mg', freq:'2x weekly', route:'SC/IM', studies:12, evidence:'preclinical', halflife:'~2-3 hr', mw:'4963.44'},
+  'Semaglutide': {cat:'GLP-1 Agonist', mechanism:'GLP-1 receptor agonist; suppresses appetite, slows gastric emptying', benefits:['Fat loss','Appetite control','Insulin sensitivity'], dose:'0.25–2.4 mg', freq:'Weekly', route:'SC', studies:342, evidence:'very-strong', halflife:'~7 days', mw:'4113.58'},
+  'Tirzepatide': {cat:'Dual Agonist (GLP-1/GIP)', mechanism:'Dual GLP-1 + GIP receptor agonism for enhanced metabolic effects', benefits:['Weight loss','Body recomp','Glycemic control'], dose:'2.5–15 mg', freq:'Weekly', route:'SC', studies:187, evidence:'very-strong', halflife:'~5 days', mw:'4813.45'},
+  'Tesamorelin': {cat:'GHRH Analog', mechanism:'GHRH receptor stimulation; pulsatile GH release', benefits:['Visceral fat reduction','Body recomp','GH/IGF-1 elevation'], dose:'1 mg', freq:'Daily', route:'SC', studies:124, evidence:'very-strong', halflife:'~26 min', mw:'5135.79'},
+  'CJC-1295': {cat:'GHRH Analog', mechanism:'Long-acting GHRH analog; sustained GH release', benefits:['Muscle growth','Fat loss','Sleep quality'], dose:'100 mcg', freq:'Daily', route:'SC', studies:32, evidence:'moderate', halflife:'~8 days (DAC)', mw:'3367.98'},
+  'Ipamorelin': {cat:'GHRP', mechanism:'Selective ghrelin receptor agonist; clean GH pulse', benefits:['GH release','Muscle growth','Recovery'], dose:'200–300 mcg', freq:'2–3x daily', route:'SC', studies:28, evidence:'moderate', halflife:'~2 hr', mw:'711.85'},
+  'GHK-Cu': {cat:'Copper Peptide', mechanism:'Copper-binding tripeptide; modulates wound healing genes', benefits:['Skin repair','Hair growth','Anti-aging'], dose:'1–2 mg', freq:'Daily', route:'SC/Topical', studies:34, evidence:'moderate', halflife:'~5 hr', mw:'340.84'},
+  'Retatrutide': {cat:'Triple Agonist', mechanism:'GLP-1 + GIP + Glucagon receptor triple agonism', benefits:['Superior weight loss','Body recomp','Metabolic'], dose:'1–12 mg', freq:'Weekly', route:'SC', studies:42, evidence:'strong', halflife:'~6 days', mw:'~4900'},
+  'PT-141': {cat:'Melanocortin Agonist', mechanism:'MC4R agonist; central nervous system arousal pathway', benefits:['Sexual arousal','Libido','Female sexual dysfunction'], dose:'0.5–2 mg', freq:'PRN', route:'SC/IN', studies:98, evidence:'very-strong', halflife:'~2 hr', mw:'1025.18'},
+  'NAD+': {cat:'Longevity', mechanism:'Cellular cofactor; supports sirtuins, mitochondrial function', benefits:['Energy','DNA repair','Cognitive'], dose:'100–300 mg', freq:'Daily', route:'SC/IV', studies:68, evidence:'strong', halflife:'~hours', mw:'663.43'},
+  'Selank': {cat:'Anxiolytic Peptide', mechanism:'Tuftsin analog; modulates GABAergic and serotonergic systems', benefits:['Anxiety reduction','Mental clarity','Mood'], dose:'250–500 mcg', freq:'Daily', route:'IN/SC', studies:38, evidence:'moderate', halflife:'~30 min', mw:'751.88'},
+  'Semax': {cat:'Cognitive Peptide', mechanism:'ACTH(4-7) analog; BDNF/NGF modulation', benefits:['Mental clarity','Focus','Neuroprotection'], dose:'300–600 mcg', freq:'Daily', route:'IN', studies:36, evidence:'moderate', halflife:'~30 min', mw:'813.94'},
+  'MOTS-c': {cat:'Mitochondrial Peptide', mechanism:'Mitochondrial-derived peptide; AMPK pathway', benefits:['Energy','Metabolism','Longevity'], dose:'5–10 mg', freq:'2–3x weekly', route:'SC', studies:12, evidence:'emerging', halflife:'~unknown', mw:'1735.07'},
+  'Sermorelin': {cat:'GHRH Analog', mechanism:'GHRH(1-29) fragment; pituitary GH release', benefits:['Muscle growth','Recovery','Sleep'], dose:'200–400 mcg', freq:'Daily', route:'SC', studies:76, evidence:'strong', halflife:'~10–20 min', mw:'3357.88'},
+  'Epitalon': {cat:'Telomerase Activator', mechanism:'Stimulates telomerase activity; circadian regulation', benefits:['Anti-aging','Sleep','Longevity'], dose:'5–10 mg', freq:'Daily x 10–20 days', route:'SC', studies:10, evidence:'preclinical', halflife:'~unknown', mw:'390.35'},
+  'DSIP': {cat:'Sleep Peptide', mechanism:'Delta sleep-inducing peptide; HPA modulation', benefits:['Sleep quality','Stress reduction','Pain'], dose:'100–500 mcg', freq:'Pre-bed', route:'SC', studies:24, evidence:'moderate', halflife:'~7–15 min', mw:'848.85'},
+  'Thymosin Alpha-1': {cat:'Immune Peptide', mechanism:'T-cell maturation; Th1 polarization', benefits:['Immune support','Antiviral','Sepsis'], dose:'1.6 mg', freq:'2x weekly', route:'SC', studies:62, evidence:'strong', halflife:'~2 hr', mw:'3108.32'},
+};
+
+const optsHtml = Object.keys(COMPARE_DB).map(k => `<option value="${k}">${k}</option>`).join('');
+
+function renderCompare(){
+  const a = document.getElementById('compareA').value;
+  const b = document.getElementById('compareB').value;
+  const A = COMPARE_DB[a];
+  const B = COMPARE_DB[b];
+  if (!A || !B) return;
+
+  const evLabel = {
+    'very-strong': 'Very Strong',
+    'strong': 'Strong',
+    'moderate': 'Moderate',
+    'preclinical': 'Preclinical',
+    'emerging': 'Emerging'
+  };
+
+  const renderSide = (data) => `
+    <div class="compare-side">
+      <div class="compare-head">
+        <div class="cat">${data.cat}</div>
+        <h3>${a === Object.keys(COMPARE_DB).find(k => COMPARE_DB[k] === data) ? a : b}</h3>
+        <span class="evidence-badge ${data.evidence}">${evLabel[data.evidence]}</span>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Mechanism of Action</div>
+        <div class="compare-row-value">${data.mechanism}</div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Primary Benefits</div>
+        <div class="compare-row-value"><ul>${data.benefits.map(x => '<li>'+x+'</li>').join('')}</ul></div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Typical Dose</div>
+        <div class="compare-row-value serif-large">${data.dose}</div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Frequency</div>
+        <div class="compare-row-value">${data.freq}</div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Route</div>
+        <div class="compare-row-value">${data.route}</div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Half-Life</div>
+        <div class="compare-row-value">${data.halflife}</div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Molecular Weight</div>
+        <div class="compare-row-value mono" style="font-family: var(--mono); font-size: 14px;">${data.mw} g/mol</div>
+      </div>
+      <div class="compare-row-block">
+        <div class="compare-row-label">Studies Indexed</div>
+        <div class="compare-row-value serif-large">${data.studies}</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('compareResult').innerHTML = renderSide(A) + renderSide(B);
+
+  // Generate takeaway
+  let takeaway = '';
+  if (A.evidence === B.evidence){
+    takeaway = `Both compounds carry similar levels of clinical evidence. Selection should depend on mechanism alignment with your research goal and tolerability profile.`;
+  } else {
+    const stronger = A.studies > B.studies ? a : b;
+    takeaway = `${stronger} carries substantially more published evidence. Consider this in your research design when literature support is a priority.`;
+  }
+  document.getElementById('takeawayText').textContent = takeaway;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const a = document.getElementById('compareA');
+  const b = document.getElementById('compareB');
+  a.innerHTML = optsHtml;
+  b.innerHTML = optsHtml;
+  a.value = 'Semaglutide';
+  b.value = 'Tirzepatide';
+  a.addEventListener('change', renderCompare);
+  b.addEventListener('change', renderCompare);
+  renderCompare();
+});
+</script>
+
+</body>
+</html>

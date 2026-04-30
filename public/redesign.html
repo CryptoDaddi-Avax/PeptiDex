@@ -1,0 +1,3228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PeptiDex — The Research Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --bg: #0a0a0b;
+    --bg-soft: #111113;
+    --bg-card: #16161a;
+    --ink: #f4efe6;
+    --ink-dim: #a8a196;
+    --ink-mute: #6b6860;
+    --line: rgba(244,239,230,0.08);
+    --line-strong: rgba(244,239,230,0.16);
+    --gold: #c9a961;
+    --gold-bright: #e8c987;
+    --amber: #d4832a;
+    --plasma: #4a9eff;
+    --green: #7fb77e;
+    --serif: 'Fraunces', 'Times New Roman', serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    cursor: default;
+  }
+  body.palette-open{overflow: hidden}
+
+  /* ===== GRAIN OVERLAY ===== */
+  body::before{
+    content:'';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,11,0.6);
+    border-bottom: 1px solid var(--line);
+    transition: all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .nav-logo{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo .mark{
+    width: 28px; height: 28px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-logo .mark::before{
+    content:'';
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .nav-logo em{
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+  }
+  .nav-links{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .nav-links a{
+    color: var(--ink-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after{
+    content:'';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .nav-links a:hover{color: var(--ink)}
+  .nav-links a:hover::after{width: 100%}
+  .nav-right{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .search-trigger{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 16px 9px 14px;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 260px;
+  }
+  .search-trigger:hover{
+    border-color: var(--line-strong);
+    background: rgba(244,239,230,0.06);
+    color: var(--ink);
+  }
+  .search-trigger svg{color: var(--ink-mute)}
+  .search-trigger .kbd{
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    color: var(--ink-mute);
+    border-radius: 3px;
+    background: rgba(0,0,0,0.3);
+  }
+  .nav-cta{
+    padding: 10px 22px;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    background: transparent;
+    cursor: pointer;
+  }
+  .nav-cta:hover{
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+  }
+
+  /* ===== COMMAND PALETTE ===== */
+  .palette-backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(5,5,6,0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 12vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+  .palette-backdrop.open{
+    opacity: 1;
+    visibility: visible;
+  }
+  .palette{
+    width: 640px;
+    max-width: calc(100vw - 32px);
+    max-height: 70vh;
+    background: #1a1a1e;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 1px rgba(201,169,97,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.96) translateY(-12px);
+    transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .palette-backdrop.open .palette{
+    transform: scale(1) translateY(0);
+  }
+  .palette-input-wrap{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .palette-input-wrap svg{color: var(--gold); flex-shrink: 0}
+  .palette-input{
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+  .palette-input::placeholder{color: var(--ink-mute); font-style: italic}
+  .palette-close{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    color: var(--ink-mute);
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .palette-results{
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+  .palette-results::-webkit-scrollbar{width: 4px}
+  .palette-results::-webkit-scrollbar-track{background: transparent}
+  .palette-results::-webkit-scrollbar-thumb{background: var(--line-strong); border-radius: 2px}
+  .palette-section{
+    padding: 12px 24px 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .palette-section::before{
+    content:'§';
+    opacity: 0.6;
+  }
+  .palette-item{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .palette-item.active{
+    background: rgba(201,169,97,0.06);
+    border-left-color: var(--gold);
+  }
+  .palette-item-icon{
+    width: 32px; height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid var(--line);
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .palette-item-content{flex: 1; min-width: 0}
+  .palette-item-title{
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .palette-item-sub{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .palette-item-meta{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+  }
+  .palette-empty{
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--ink-mute);
+  }
+  .palette-empty p:first-child{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+  }
+  .palette-footer{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    background: rgba(0,0,0,0.2);
+  }
+  .palette-footer .hint{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .palette-footer .key{
+    padding: 2px 6px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink-dim);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+    overflow: hidden;
+  }
+  .hero-bg{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg::before{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(201,169,97,0.10) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(74,158,255,0.05) 0%, transparent 50%);
+  }
+  .hero-grid{
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    opacity: 0.4;
+  }
+
+  /* 3D molecule canvas */
+  #molecule-canvas{
+    position: absolute;
+    right: -3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 62%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .molecule-label{
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    animation: fadeIn 1s 2s forwards;
+  }
+  .molecule-label.tl{top: 20%; right: 32%}
+  .molecule-label.br{bottom: 24%; right: 7%; text-align: right}
+  .molecule-label::before{
+    content:'';
+    position: absolute;
+    width: 40px; height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .molecule-label.tl::before{left: -48px; top: 50%}
+  .molecule-label.br::before{right: -48px; top: 50%}
+  .molecule-label span{display: block; color: var(--ink-dim); margin-top: 4px; font-size: 9px; letter-spacing: 0.15em}
+
+  .hero-content{
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    padding-top: 80px;
+  }
+  .hero-eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    padding: 8px 16px;
+    border: 1px solid rgba(201,169,97,0.3);
+    border-radius: 100px;
+    background: rgba(201,169,97,0.05);
+    animation: fadeUp 1s 0.2s both;
+  }
+  .hero-eyebrow .dot{
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-size: clamp(48px, 7.5vw, 104px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    animation: fadeUp 1.2s 0.4s both;
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    position: relative;
+  }
+  .hero-sub{
+    font-size: 18px;
+    max-width: 560px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+    margin-bottom: 48px;
+    animation: fadeUp 1.2s 0.7s both;
+  }
+  .hero-ctas{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: fadeUp 1.2s 0.9s both;
+  }
+  .btn-primary{
+    padding: 18px 36px;
+    background: var(--gold);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-bright);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .btn-primary:hover::before{transform: translateX(0)}
+  .btn-primary span{position: relative; z-index: 1}
+  .btn-primary svg{position: relative; z-index: 1; transition: transform 0.3s}
+  .btn-primary:hover svg{transform: translateX(4px)}
+
+  .btn-ghost{
+    padding: 18px 36px;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: 1px solid var(--line-strong);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover{border-color: var(--ink); background: rgba(244,239,230,0.04)}
+
+  .hero-meta{
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    right: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    z-index: 2;
+    animation: fadeUp 1.2s 1.2s both;
+  }
+  .hero-meta .scroll-hint{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-meta .scroll-line{
+    width: 1px; height: 40px;
+    background: linear-gradient(var(--ink-mute), transparent);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-meta .scroll-line::after{
+    content:'';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 40%;
+    background: var(--gold);
+    animation: scrollDrop 2s infinite;
+  }
+  @keyframes scrollDrop{
+    0%{transform: translateY(-100%)}
+    100%{transform: translateY(250%)}
+  }
+  @keyframes pulse{
+    0%, 100%{opacity: 1; transform: scale(1)}
+    50%{opacity: 0.4; transform: scale(1.3)}
+  }
+  @keyframes fadeUp{
+    from{opacity: 0; transform: translateY(30px)}
+    to{opacity: 1; transform: translateY(0)}
+  }
+  @keyframes fadeIn{
+    from{opacity: 0}
+    to{opacity: 1}
+  }
+
+  /* ===== SECTION BASE ===== */
+  section{
+    padding: 140px 48px;
+    position: relative;
+  }
+  .section-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before{
+    content:'';
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .section-title{
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+  .section-title em{
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* ===== STATS STRIP ===== */
+  .stats{
+    padding: 80px 48px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-soft);
+    position: relative;
+    overflow: hidden;
+  }
+  .stats::before{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(201,169,97,0.03), transparent);
+  }
+  .stats-grid{
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    position: relative;
+  }
+  .stat{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    padding-left: 24px;
+    border-left: 1px solid var(--line);
+  }
+  .stat-num{
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-num em{
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.6em;
+    vertical-align: top;
+    margin-left: 4px;
+  }
+  .stat-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 8px;
+  }
+
+  /* ===== PATHWAYS ===== */
+  .pathways{
+    background: var(--bg);
+  }
+  .pathways-head{
+    max-width: 1400px;
+    margin: 0 auto 80px;
+  }
+  .pathways-head p{
+    color: var(--ink-dim);
+    font-size: 18px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .pathway-cards{
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .pathway-card{
+    padding: 56px 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.2,0.8,0.2,1);
+    cursor: pointer;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .pathway-card::before{
+    content:'';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .pathway-card:hover{
+    border-color: var(--gold);
+    background: #18181c;
+    transform: translateY(-4px);
+  }
+  .pathway-card:hover::before{transform: translateX(100%)}
+  .pathway-card .ornament{
+    position: absolute;
+    top: 32px; right: 32px;
+    width: 80px; height: 80px;
+    opacity: 0.2;
+    transition: opacity 0.4s;
+  }
+  .pathway-card:hover .ornament{opacity: 0.6}
+  .pathway-card .tag{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .pathway-card h3{
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .pathway-card h3 em{
+    font-style: italic;
+    color: var(--gold);
+  }
+  .pathway-card p{
+    color: var(--ink-dim);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+  .pathway-card .features{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .pathway-card .features li{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    padding-left: 20px;
+    position: relative;
+  }
+  .pathway-card .features li::before{
+    content:'';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 8px; height: 1px;
+    background: var(--gold);
+  }
+  .pathway-card .arrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    transition: gap 0.3s;
+  }
+  .pathway-card:hover .arrow{gap: 20px; color: var(--gold)}
+
+  /* ===== GOALS MOSAIC ===== */
+  .goals{
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+  }
+  .goals-head{
+    max-width: 1400px;
+    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .goals-head .heading{flex: 1; min-width: 400px}
+  .goals-head p{
+    color: var(--ink-dim);
+    max-width: 420px;
+    line-height: 1.7;
+  }
+  .goals-grid{
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .goal{
+    padding: 40px 32px;
+    background: var(--bg-card);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .goal::after{
+    content:'';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .goal:hover{
+    background: #1c1c20;
+    transform: translateY(-2px);
+  }
+  .goal:hover::after{transform: scaleX(1)}
+  .goal .icon{
+    width: 32px; height: 32px;
+    color: var(--gold);
+  }
+  .goal .name{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .goal .meta{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: auto;
+  }
+
+  /* ===== CINEMATIC VENDOR SHOWCASE ===== */
+  .vendor-showcase{
+    background: var(--bg);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .vendor-showcase::before{
+    content:'';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .vendor-intro{
+    padding: 140px 48px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+  .vendor-intro h2{
+    font-family: var(--serif);
+    font-size: clamp(48px, 5.5vw, 84px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .vendor-intro h2 em{font-style: italic; color: var(--gold)}
+  .vendor-intro-copy p{
+    color: var(--ink-dim);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* Comparison Grid */
+  .vendor-comparison{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    position: relative;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .vendor-comparison::before{
+    content: 'VS';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--gold);
+    background: var(--bg);
+    padding: 16px 20px;
+    z-index: 3;
+    letter-spacing: -0.02em;
+  }
+  .vendor-col{
+    padding: 60px 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .vendor-col.featured{
+    background: linear-gradient(180deg, rgba(201,169,97,0.06) 0%, transparent 100%);
+  }
+  .vendor-col.industry{
+    padding-left: 60px;
+  }
+  .vendor-col-divider{
+    background: var(--line);
+    position: relative;
+  }
+  .vendor-col-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .vendor-col-name{
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .vendor-col.featured .vendor-col-name{color: var(--gold)}
+  .vendor-col-tag{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    color: var(--ink-mute);
+  }
+  .vendor-col.featured .vendor-col-tag{
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,169,97,0.06);
+  }
+  .compare-row{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare-row:last-child{border-bottom: none}
+  .compare-label{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .compare-value{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .compare-value.good{color: var(--green)}
+  .compare-value.warn{color: var(--amber)}
+  .compare-value .check{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(127,183,126,0.12);
+    color: var(--green);
+  }
+  .compare-value .x{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(212,131,42,0.12);
+    color: var(--amber);
+  }
+  .compare-value small{
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--ink-mute);
+    margin-left: 4px;
+  }
+
+  /* Product feature / COA preview */
+  .vendor-feature{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .vendor-feature-visual{
+    position: relative;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #1a1a1e 0%, #0f0f12 100%);
+    border: 1px solid var(--line-strong);
+    overflow: hidden;
+  }
+  .vial{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 320px;
+  }
+  .vial-glass{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(244,239,230,0.02) 0%,
+      rgba(244,239,230,0.08) 15%,
+      rgba(201,169,97,0.12) 60%,
+      rgba(201,169,97,0.2) 100%);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: 8px 8px 20px 20px;
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+  }
+  .vial-cap{
+    position: absolute;
+    top: -20px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 28px;
+    background: linear-gradient(180deg, #2a2a2e 0%, #1a1a1e 100%);
+    border: 1px solid var(--line-strong);
+    border-radius: 4px 4px 2px 2px;
+  }
+  .vial-cap::after{
+    content:'';
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(1px);
+  }
+  .vial-liquid{
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(180deg,
+      rgba(201,169,97,0.3) 0%,
+      rgba(201,169,97,0.5) 100%);
+    border-radius: 0 0 18px 18px;
+    animation: liquidMove 6s ease-in-out infinite;
+  }
+  .vial-liquid::before{
+    content:'';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(244,239,230,0.4) 50%,
+      transparent 100%);
+  }
+  @keyframes liquidMove{
+    0%, 100%{height: 50%}
+    50%{height: 52%}
+  }
+  .vial-label{
+    position: absolute;
+    left: 50%;
+    bottom: 80px;
+    transform: translateX(-50%);
+    width: 110px;
+    padding: 12px 8px;
+    background: rgba(10,10,11,0.7);
+    border: 1px solid rgba(201,169,97,0.3);
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+  .vial-label .brand{
+    font-family: var(--serif);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .vial-label .compound{
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink);
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+  .vial-label .purity{
+    font-family: var(--mono);
+    font-size: 7px;
+    color: var(--ink-mute);
+    margin-top: 3px;
+    letter-spacing: 0.15em;
+  }
+  .vial-glow{
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle, rgba(201,169,97,0.3) 0%, transparent 60%);
+    filter: blur(20px);
+    z-index: -1;
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+  @keyframes glowPulse{
+    0%, 100%{opacity: 0.6}
+    50%{opacity: 1}
+  }
+  .vendor-feature-overlay{
+    position: absolute;
+    top: 24px; left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .vendor-feature-overlay .tr{color: var(--gold)}
+  .vendor-feature-footer{
+    position: absolute;
+    bottom: 24px; left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .vendor-feature-copy h3{
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .vendor-feature-copy h3 em{font-style: italic; color: var(--gold)}
+  .vendor-feature-copy p{
+    color: var(--ink-dim);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .vendor-feature-copy .rating-large{
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 24px 0;
+    margin: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .rating-large .num{
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: -0.04em;
+  }
+  .rating-large .num em{
+    font-style: normal;
+    color: var(--ink-mute);
+    font-size: 36px;
+  }
+  .rating-large .text{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    line-height: 1.6;
+  }
+
+  /* COA Preview */
+  .coa-section{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 48px 140px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .coa-copy h3{
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.8vw, 48px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .coa-copy h3 em{font-style: italic; color: var(--gold)}
+  .coa-copy p{
+    color: var(--ink-dim);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .coa-sheet{
+    background: #f4efe6;
+    color: #1a1a1e;
+    padding: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    position: relative;
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.5),
+      0 0 0 1px var(--line-strong);
+    transform: perspective(1600px) rotateY(-6deg) rotateX(2deg);
+    transform-origin: left center;
+    transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .coa-sheet:hover{transform: perspective(1600px) rotateY(-2deg) rotateX(0deg)}
+  .coa-sheet::before{
+    content:'';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 4px;
+    background: #c9a961;
+  }
+  .coa-sheet-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #1a1a1e;
+    margin-bottom: 20px;
+  }
+  .coa-sheet-title{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #1a1a1e;
+    margin-bottom: 4px;
+  }
+  .coa-sheet-sub{font-size: 9px; letter-spacing: 0.15em; color: #555}
+  .coa-stamp{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: #8a6f2e;
+    border: 2px solid #8a6f2e;
+    padding: 8px 16px;
+    transform: rotate(-8deg);
+    opacity: 0.85;
+  }
+  .coa-row{
+    display: grid;
+    grid-template-columns: 140px 1fr 80px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(26,26,30,0.15);
+    font-size: 11px;
+  }
+  .coa-row.header{
+    font-weight: 500;
+    border-bottom: 1px solid #1a1a1e;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 9px;
+    color: #555;
+  }
+  .coa-row .spec{color: #1a1a1e}
+  .coa-row .result{color: #1a1a1e}
+  .coa-row .pass{color: #4a7c3e; font-weight: 500}
+  .coa-footer{
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(26,26,30,0.15);
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.1em;
+  }
+  .coa-hplc{
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(26,26,30,0.05);
+    border-left: 3px solid #c9a961;
+  }
+  .coa-hplc-title{
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .coa-chart{
+    width: 100%;
+    height: 60px;
+  }
+
+  /* ===== MANIFESTO ===== */
+  .manifesto{
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto-wrap{
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .manifesto-quote{
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.8vw, 56px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 48px;
+    color: var(--ink);
+  }
+  .manifesto-quote em{color: var(--gold); font-style: italic}
+  .manifesto-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 1px solid var(--line);
+  }
+  .manifesto-body p{
+    color: var(--ink-dim);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .quote-mark{
+    font-family: var(--serif);
+    font-size: 160px;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -60px; left: -40px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* ===== JOURNAL ===== */
+  .journal{
+    background: var(--bg);
+  }
+  .journal-head{
+    max-width: 1400px;
+    margin: 0 auto 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .journal-head a{
+    color: var(--gold);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: gap 0.3s;
+  }
+  .journal-head a:hover{gap: 20px}
+  .articles{
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .article{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .article:hover{transform: translateY(-8px)}
+  .article-visual{
+    aspect-ratio: 4/3;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .article-visual svg{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .article-visual::after{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(10,10,11,0.8) 100%);
+  }
+  .article-meta{
+    display: flex;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
+  }
+  .article-meta .cat{color: var(--gold)}
+  .article h4{
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    transition: color 0.3s;
+  }
+  .article:hover h4{color: var(--gold)}
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter{
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+    padding: 160px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter::before{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(201,169,97,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(74,158,255,0.04) 0%, transparent 50%);
+  }
+  .newsletter-wrap{
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .newsletter h2{
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+  .newsletter h2 em{font-style: italic; color: var(--gold)}
+  .newsletter p{
+    color: var(--ink-dim);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 48px;
+  }
+  .newsletter-form{
+    display: flex;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .newsletter-input{
+    flex: 1;
+    padding: 20px 24px;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .newsletter-input:focus{border-color: var(--gold)}
+  .newsletter-input::placeholder{color: var(--ink-mute)}
+  .newsletter-note{
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+  }
+
+  /* ===== DISCLAIMER ===== */
+  .disclaimer{
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    padding: 60px 48px;
+  }
+  .disclaimer-wrap{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px;
+    border-left: 2px solid var(--amber);
+    background: rgba(212,131,42,0.03);
+  }
+  .disclaimer-wrap .title{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .disclaimer-wrap p{
+    color: var(--ink-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background: var(--bg);
+    padding: 80px 48px 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-wrap{
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .footer-top{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--line);
+  }
+  .footer-brand h3{
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .footer-brand p{
+    color: var(--ink-dim);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 400px;
+  }
+  .footer-col h4{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .footer-col ul{list-style: none; display: flex; flex-direction: column; gap: 14px}
+  .footer-col a{
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover{color: var(--gold)}
+  .footer-bottom{
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+  }
+  .footer-bottom-links{display: flex; gap: 32px}
+  .footer-bottom-links a{color: var(--ink-mute); text-decoration: none; transition: color 0.3s}
+  .footer-bottom-links a:hover{color: var(--gold)}
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.2,0.8,0.2,1), transform 1s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .reveal.in{opacity: 1; transform: translateY(0)}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px){
+    .stats-grid{grid-template-columns: repeat(2, 1fr); gap: 32px}
+    .pathway-cards{grid-template-columns: 1fr}
+    .goals-grid{grid-template-columns: repeat(2, 1fr)}
+    .articles{grid-template-columns: 1fr; gap: 40px}
+    .manifesto-body{grid-template-columns: 1fr; gap: 32px}
+    .footer-top{grid-template-columns: 1fr 1fr; gap: 40px}
+    #molecule-canvas{opacity: 0.4; width: 100%; right: -30%}
+    .vendor-intro{grid-template-columns: 1fr; gap: 32px}
+    .vendor-comparison{grid-template-columns: 1fr; gap: 0; border: none}
+    .vendor-col-divider{display: none}
+    .vendor-col{border-bottom: 1px solid var(--line); padding: 40px 32px}
+    .vendor-col.industry{padding-left: 32px}
+    .vendor-comparison::before{display: none}
+    .vendor-feature{grid-template-columns: 1fr; gap: 48px}
+    .coa-section{grid-template-columns: 1fr; gap: 48px}
+    .coa-sheet{transform: none}
+    .coa-sheet:hover{transform: none}
+    .molecule-label{display: none}
+    .search-trigger{min-width: auto; padding: 9px 12px}
+    .search-trigger .placeholder{display: none}
+    .search-trigger .kbd{margin-left: 0}
+  }
+
+  /* ===== MOBILE MENU BUTTON (hidden by default) ===== */
+  .mobile-menu-btn{
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    width: 40px; height: 40px;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+  }
+  .mobile-menu-btn span{
+    position: absolute;
+    left: 10px;
+    width: 18px; height: 1px;
+    background: var(--ink);
+    transition: all 0.3s;
+  }
+  .mobile-menu-btn span:nth-child(1){top: 14px}
+  .mobile-menu-btn span:nth-child(2){top: 19px}
+  .mobile-menu-btn span:nth-child(3){top: 24px}
+  .mobile-menu-btn.open span:nth-child(1){top: 19px; transform: rotate(45deg); background: var(--gold)}
+  .mobile-menu-btn.open span:nth-child(2){opacity: 0}
+  .mobile-menu-btn.open span:nth-child(3){top: 19px; transform: rotate(-45deg); background: var(--gold)}
+
+  /* ===== MOBILE MENU DRAWER ===== */
+  .mobile-menu{
+    position: fixed;
+    top: 0; right: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 99;
+    padding: 100px 32px 32px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--line);
+  }
+  .mobile-menu.open{transform: translateX(0)}
+  .mobile-menu-links{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: auto;
+  }
+  .mobile-menu-links li{
+    overflow: hidden;
+  }
+  .mobile-menu-links a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.3s, padding 0.3s;
+  }
+  .mobile-menu-links a:active,
+  .mobile-menu-links a:hover{
+    color: var(--gold);
+    padding-left: 12px;
+  }
+  .mobile-menu-links a .num{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    font-weight: 400;
+  }
+  .mobile-menu-links a em{
+    font-style: italic;
+    color: var(--gold);
+  }
+  .mobile-menu-footer{
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mobile-menu-footer .meta{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .mobile-menu-footer .search-mobile{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  @media (max-width: 768px){
+    /* ===== NAV ===== */
+    nav{padding: 16px 20px}
+    .nav-links{display: none}
+    .search-trigger{display: none}
+    .nav-cta{display: none}
+    .mobile-menu-btn{display: block}
+
+    /* ===== SECTION PADDING ===== */
+    section{padding: 90px 20px}
+
+    /* ===== HERO ===== */
+    .hero{
+      min-height: 100vh;
+      padding: 0 20px;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 90px;
+    }
+    #molecule-canvas{
+      position: relative;
+      top: 0;
+      right: auto;
+      transform: none;
+      width: 100vw;
+      height: 46vh;
+      margin: 0 -20px 12px;
+      opacity: 1;
+      order: 1;
+    }
+    .molecule-label{display: none}
+    .hero-content{
+      order: 2;
+      padding-top: 0;
+      width: 100%;
+    }
+    .hero-eyebrow{
+      margin-bottom: 24px;
+      font-size: 10px;
+      padding: 7px 14px;
+    }
+    .hero h1{
+      font-size: clamp(44px, 11vw, 60px);
+      line-height: 0.98;
+      margin-bottom: 24px;
+    }
+    .hero-sub{
+      font-size: 16px;
+      margin-bottom: 32px;
+      line-height: 1.55;
+    }
+    .hero-ctas{
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      width: 100%;
+    }
+    .hero-ctas .btn-primary,
+    .hero-ctas .btn-ghost{
+      width: 100%;
+      justify-content: center;
+      padding: 18px 24px;
+      font-size: 12px;
+    }
+    .hero-meta{
+      position: static;
+      padding: 40px 0 0;
+      margin-top: 48px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 9px;
+      order: 3;
+    }
+    .hero-meta > div:last-child{text-align: right}
+    .hero-meta .scroll-hint{display: none}
+
+    /* ===== STATS ===== */
+    .stats{padding: 48px 20px}
+    .stats-grid{
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 20px;
+    }
+    .stat{
+      padding-left: 16px;
+    }
+    .stat-num{font-size: 42px}
+    .stat-label{font-size: 9px; letter-spacing: 0.15em}
+
+    /* ===== SECTION HEADERS ===== */
+    .section-label{
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+    }
+    .section-label::before{width: 20px}
+    .section-title{
+      font-size: clamp(32px, 8vw, 44px);
+      margin-bottom: 20px;
+    }
+
+    /* ===== PATHWAYS ===== */
+    .pathways-head{margin-bottom: 48px}
+    .pathways-head p{font-size: 15px}
+    .pathway-card{
+      padding: 36px 24px;
+      min-height: 0;
+    }
+    .pathway-card .ornament{
+      width: 56px; height: 56px;
+      top: 24px; right: 24px;
+    }
+    .pathway-card h3{font-size: 30px}
+    .pathway-card p{font-size: 14px; margin-bottom: 24px}
+    .pathway-card .features{margin-bottom: 24px}
+    .pathway-card .features li{font-size: 11px}
+
+    /* ===== GOALS ===== */
+    .goals-head{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .goals-head .heading{min-width: 0; width: 100%}
+    .goals-head p{font-size: 14px}
+    .goals-grid{
+      grid-template-columns: 1fr 1fr;
+    }
+    .goal{
+      padding: 24px 20px;
+      min-height: 160px;
+      gap: 14px;
+    }
+    .goal .icon{width: 26px; height: 26px}
+    .goal .name{font-size: 17px; line-height: 1.15}
+    .goal .meta{font-size: 9px; letter-spacing: 0.15em}
+
+    /* ===== VENDOR ===== */
+    .vendor-intro{padding: 80px 20px 40px; gap: 24px}
+    .vendor-intro h2{font-size: clamp(36px, 9vw, 48px); line-height: 1.02}
+    .vendor-intro-copy p{font-size: 15px}
+
+    .vendor-comparison{padding: 0 20px}
+    .vendor-col{padding: 32px 0}
+    .vendor-col.industry{padding-left: 0}
+    .vendor-col-header{padding-bottom: 20px}
+    .vendor-col-name{font-size: 24px}
+    .compare-row{
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 12px 0;
+      align-items: center;
+    }
+    .compare-label{font-size: 9px}
+    .compare-value{font-size: 15px}
+    .compare-value small{font-size: 10px}
+
+    /* Add a VS marker for mobile */
+    .vendor-col.featured{position: relative}
+    .vendor-col.featured::after{
+      content: 'versus';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold);
+      background: var(--bg);
+      padding: 4px 16px;
+      z-index: 2;
+      letter-spacing: -0.01em;
+    }
+    .vendor-col.industry{padding-top: 48px}
+
+    .vendor-feature{padding: 60px 20px; gap: 40px}
+    .vendor-feature-visual{aspect-ratio: 4/4.5; max-width: 280px; margin: 0 auto}
+    .vial{
+      width: 100px;
+      height: 220px;
+    }
+    .vial-cap{width: 68px; height: 22px; top: -16px}
+    .vial-label{bottom: 50px; width: 82px; padding: 8px 6px}
+    .vial-label .brand{font-size: 8px}
+    .vial-label .compound{font-size: 8px}
+    .vial-label .purity{font-size: 6px}
+    .vendor-feature-overlay{font-size: 8px; top: 16px; left: 16px; right: 16px}
+    .vendor-feature-footer{font-size: 7px; bottom: 16px; left: 16px; right: 16px}
+    .vendor-feature-copy h3{font-size: clamp(30px, 7.5vw, 40px)}
+    .vendor-feature-copy p{font-size: 15px}
+    .rating-large{padding: 20px 0; margin: 24px 0; gap: 16px}
+    .rating-large .num{font-size: 56px}
+    .rating-large .num em{font-size: 26px}
+    .rating-large .text{font-size: 10px}
+
+    .coa-section{padding: 40px 20px 80px; gap: 32px}
+    .coa-copy h3{font-size: clamp(28px, 7vw, 36px)}
+    .coa-copy p{font-size: 14px}
+    .coa-sheet{padding: 24px 20px; font-size: 10px}
+    .coa-sheet-title{font-size: 16px}
+    .coa-sheet-sub{font-size: 8px}
+    .coa-stamp{font-size: 13px; padding: 6px 12px}
+    .coa-row{
+      grid-template-columns: 80px 1fr 50px;
+      font-size: 9.5px;
+      padding: 6px 0;
+      gap: 6px;
+    }
+    .coa-row.header{font-size: 8px}
+    .coa-hplc{padding: 12px; margin-top: 16px}
+    .coa-hplc-title{font-size: 8px}
+
+    /* ===== MANIFESTO ===== */
+    .manifesto{padding: 80px 20px}
+    .manifesto-quote{
+      font-size: clamp(24px, 6.5vw, 32px);
+      line-height: 1.25;
+      margin-bottom: 32px;
+    }
+    .quote-mark{font-size: 100px; top: -40px; left: -10px}
+    .manifesto-body{margin-top: 40px; padding-top: 40px; gap: 24px}
+    .manifesto-body p{font-size: 14px; line-height: 1.7}
+
+    /* ===== JOURNAL ===== */
+    .journal-head{margin-bottom: 48px}
+    .article{gap: 16px}
+    .article-visual{margin-bottom: 20px}
+    .article h4{font-size: 22px}
+    .article-meta{font-size: 9px; letter-spacing: 0.15em}
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter{padding: 100px 20px}
+    .newsletter h2{font-size: clamp(34px, 9vw, 48px)}
+    .newsletter p{font-size: 15px; margin-bottom: 32px}
+    .newsletter-form{flex-direction: column; gap: 10px}
+    .newsletter-input{padding: 18px 20px; font-size: 14px}
+    .newsletter-form .btn-primary{width: 100%; justify-content: center}
+
+    /* ===== DISCLAIMER ===== */
+    .disclaimer{padding: 40px 20px}
+    .disclaimer-wrap{padding: 20px}
+    .disclaimer-wrap p{font-size: 12px}
+
+    /* ===== FOOTER ===== */
+    footer{padding: 60px 20px 32px}
+    .footer-top{grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px}
+    .footer-brand h3{font-size: 24px}
+    .footer-brand p{font-size: 13px}
+    .footer-col h4{margin-bottom: 18px}
+    .footer-col ul{gap: 12px}
+    .footer-col a{font-size: 13px}
+    .footer-bottom{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 10px;
+    }
+    .footer-bottom-links{gap: 20px}
+
+    /* ===== COMMAND PALETTE ===== */
+    .palette-backdrop{padding-top: 8vh}
+    .palette{
+      width: calc(100vw - 24px);
+      max-height: 84vh;
+    }
+    .palette-input-wrap{padding: 18px 20px; gap: 12px}
+    .palette-input{font-size: 17px}
+    .palette-close{font-size: 9px}
+    .palette-section{padding: 10px 20px 4px; font-size: 9px}
+    .palette-item{padding: 12px 20px; gap: 12px}
+    .palette-item-icon{width: 28px; height: 28px}
+    .palette-item-title{font-size: 15px}
+    .palette-item-sub{font-size: 10px}
+    .palette-item-meta{font-size: 8px; padding: 2px 6px}
+    .palette-footer{
+      padding: 10px 20px;
+      gap: 10px;
+      font-size: 8px;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 400px){
+    .hero h1{font-size: 40px}
+    .goals-grid{grid-template-columns: 1fr}
+    .stats-grid{grid-template-columns: 1fr; gap: 24px}
+    .stat-num{font-size: 48px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">
+    <span class="mark"></span>
+    Pepti<em>Dex</em>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#library">Library</a></li>
+    <li><a href="#stacks">Stacks</a></li>
+    <li><a href="#vendors">Vendors</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#journal">Journal</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="search-trigger" id="searchTrigger">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <span class="placeholder">Search peptides, studies, vendors…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+    <a href="#start" class="nav-cta">Start</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-menu-links">
+    <li><a href="#library" data-num="01"><span>Library</span><span class="num">§ 01</span></a></li>
+    <li><a href="#stacks" data-num="02"><span>Stacks</span><span class="num">§ 02</span></a></li>
+    <li><a href="#vendors" data-num="03"><span>Vendors</span><span class="num">§ 03</span></a></li>
+    <li><a href="#research" data-num="04"><span>Research</span><span class="num">§ 04</span></a></li>
+    <li><a href="#journal" data-num="05"><span>Journal</span><span class="num">§ 05</span></a></li>
+    <li><a href="#start" data-num="06"><span><em>Subscribe</em></span><span class="num">§ 06</span></a></li>
+  </ul>
+  <div class="mobile-menu-footer">
+    <div class="meta">§ Search the index</div>
+    <button class="search-mobile" id="searchMobile">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3"/></svg>
+      <span>Peptides, studies, vendors…</span>
+    </button>
+    <div class="meta" style="margin-top: 16px">Vol. I · Edition 2026 · <span style="color:var(--gold)">Independent</span></div>
+  </div>
+</div>
+
+<!-- ===== COMMAND PALETTE ===== -->
+<div class="palette-backdrop" id="palette">
+  <div class="palette" onclick="event.stopPropagation()">
+    <div class="palette-input-wrap">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" class="palette-input" id="paletteInput" placeholder="Search peptides, studies, vendors, or stacks…" autocomplete="off" spellcheck="false">
+      <button class="palette-close" id="paletteClose">esc</button>
+    </div>
+    <div class="palette-results" id="paletteResults"></div>
+    <div class="palette-footer">
+      <div class="hint"><span class="key">↑</span><span class="key">↓</span>Navigate</div>
+      <div class="hint"><span class="key">↵</span>Open</div>
+      <div class="hint"><span class="key">esc</span>Close</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <canvas id="molecule-canvas"></canvas>
+    <div class="molecule-label tl">
+      Backbone chain<br/>
+      <span>C₆₂H₉₈N₁₆O₂₂</span>
+    </div>
+    <div class="molecule-label br">
+      BPC-157 — research peptide<br/>
+      <span>Tissue repair · Angiogenesis</span>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Research Index · Est. 2026
+    </div>
+    <h1>
+      The reference<br/>
+      for <em>peptide</em><br/>
+      research.
+    </h1>
+    <p class="hero-sub">
+      An independent index of 33 research peptides, 12 curated stacks, and 140+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
+    </p>
+    <div class="hero-ctas">
+      <a href="#library" class="btn-primary">
+        <span>Enter the library</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+      <button class="btn-ghost" onclick="openPalette()">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-right:-4px"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3"/></svg>
+        Search the index
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div>
+      <div>Vol. I · Edition 2026</div>
+      <div style="margin-top:6px;color:var(--gold)">Independent · Evidence-based</div>
+    </div>
+    <div class="scroll-hint">
+      <div>Scroll</div>
+      <div class="scroll-line"></div>
+    </div>
+    <div style="text-align:right">
+      <div>Peer-reviewed index</div>
+      <div style="margin-top:6px">COA-verified sourcing</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal">
+      <div class="stat-num" data-count="33">0<em>+</em></div>
+      <div class="stat-label">Research Peptides</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num" data-count="12">0</div>
+      <div class="stat-label">Curated Stacks</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num" data-count="140">0<em>+</em></div>
+      <div class="stat-label">Peer-Reviewed Studies</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num" data-count="99">0<em>%</em></div>
+      <div class="stat-label">COA Purity Threshold</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATHWAYS ===== -->
+<section class="pathways" id="library">
+  <div class="pathways-head reveal">
+    <div class="section-label">§ 01 — Choose your path</div>
+    <h2 class="section-title">Two libraries.<br/>One <em>mission</em>.</h2>
+    <p>Whether you've come to understand the science or to source the compounds, PeptiDex is structured around the two questions every researcher asks.</p>
+  </div>
+
+  <div class="pathway-cards">
+    <a href="#learn" class="pathway-card reveal">
+      <svg class="ornament" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="38" stroke="#c9a961" stroke-width="0.5"/>
+        <circle cx="40" cy="40" r="28" stroke="#c9a961" stroke-width="0.5"/>
+        <path d="M20 40 L60 40 M40 20 L40 60" stroke="#c9a961" stroke-width="0.5"/>
+        <circle cx="40" cy="40" r="6" fill="#c9a961"/>
+      </svg>
+      <div>
+        <div class="tag">§ I · Educational Hub</div>
+        <h3>I want to <em>learn</em>.</h3>
+        <p>Read structured Peptide 101 guides, browse the Evidence Dashboard, and review annotated clinical studies. Understand before you act.</p>
+      </div>
+      <ul class="features">
+        <li>Peptide 101 primers</li>
+        <li>Evidence dashboard</li>
+        <li>Clinical study archive</li>
+      </ul>
+      <span class="arrow">Enter →</span>
+    </a>
+
+    <a href="#vendors" class="pathway-card reveal">
+      <svg class="ornament" viewBox="0 0 80 80" fill="none">
+        <rect x="10" y="10" width="60" height="60" stroke="#c9a961" stroke-width="0.5"/>
+        <rect x="20" y="20" width="40" height="40" stroke="#c9a961" stroke-width="0.5"/>
+        <circle cx="40" cy="40" r="6" fill="#c9a961"/>
+        <path d="M40 10 L40 30 M40 50 L40 70 M10 40 L30 40 M50 40 L70 40" stroke="#c9a961" stroke-width="0.5"/>
+      </svg>
+      <div>
+        <div class="tag">§ II · Commercial Tools</div>
+        <h3>I want to <em>source</em>.</h3>
+        <p>Compare live pricing across vendors, verify lab-signed Certificates of Analysis, and read independent purity reports. Buy once. Buy clean.</p>
+      </div>
+      <ul class="features">
+        <li>Vendor price comparison</li>
+        <li>COA-verified sources</li>
+        <li>Lab purity reports</li>
+      </ul>
+      <span class="arrow">Enter →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== GOALS ===== -->
+<section class="goals" id="stacks">
+  <div class="goals-head reveal">
+    <div class="heading">
+      <div class="section-label">§ 02 — Protocol library</div>
+      <h2 class="section-title">Find your <em>stack</em>.</h2>
+    </div>
+    <p>Twelve expert-curated protocols, structured around the outcomes researchers are actually investigating. Every stack is cited, dosed, and cross-referenced against primary literature.</p>
+  </div>
+
+  <div class="goals-grid">
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><rect x="6" y="14" width="4" height="4"/><rect x="22" y="14" width="4" height="4"/><line x1="10" y1="16" x2="22" y2="16"/><line x1="2" y1="16" x2="6" y2="16"/><line x1="26" y1="16" x2="30" y2="16"/></svg><div class="name">Body Recomposition</div><div class="meta">03 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 8 L16 4 L26 8 L26 18 L16 28 L6 18 Z"/><path d="M12 14 L16 10 L20 14 M16 10 L16 22"/></svg><div class="name">Injury Recovery</div><div class="meta">04 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><circle cx="16" cy="16" r="10"/><path d="M16 6 C11 11 11 21 16 26 C21 21 21 11 16 6 Z"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg><div class="name">Mental Clarity</div><div class="meta">03 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 4 C12 8 10 14 10 18 C10 23 13 27 16 27 C19 27 22 23 22 18 C22 14 20 8 16 4 Z"/><path d="M16 12 C14 16 14 20 16 23"/></svg><div class="name">Fat Loss</div><div class="meta">04 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M8 20 L8 12 L14 12 L14 6 L18 6 L18 12 L24 12 L24 20 L18 20 L18 26 L14 26 L14 20 Z"/></svg><div class="name">Muscle Growth</div><div class="meta">03 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 4 L24 8 L24 18 C24 23 20 27 16 28 C12 27 8 23 8 18 L8 8 Z"/><path d="M12 16 L15 19 L20 13"/></svg><div class="name">Immune Support</div><div class="meta">02 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 18 A10 10 0 1 1 14 6 A8 8 0 0 0 22 18 Z"/></svg><div class="name">Sleep & Recovery</div><div class="meta">03 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><circle cx="16" cy="16" r="12"/><path d="M16 8 L16 16 L22 20"/></svg><div class="name">Longevity</div><div class="meta">05 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 6 L18 12 L24 12 L19 16 L21 22 L16 18 L11 22 L13 16 L8 12 L14 12 Z"/></svg><div class="name">Skin & Aesthetics</div><div class="meta">04 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 4 C10 4 8 8 8 14 C8 20 10 22 10 26 L22 26 C22 22 24 20 24 14 C24 8 22 4 16 4 Z"/><path d="M14 14 L18 14"/></svg><div class="name">Gut Health</div><div class="meta">03 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 4 L10 16 L16 16 L12 28 L22 12 L16 12 L20 4 Z"/></svg><div class="name">Hormonal Optimization</div><div class="meta">04 peptides</div></a>
+    <a href="#" class="goal reveal"><svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1"><circle cx="16" cy="16" r="10"/><circle cx="16" cy="16" r="4"/><line x1="16" y1="4" x2="16" y2="10"/><line x1="16" y1="22" x2="16" y2="28"/><line x1="4" y1="16" x2="10" y2="16"/><line x1="22" y1="16" x2="28" y2="16"/></svg><div class="name">Metabolic Health</div><div class="meta">03 peptides</div></a>
+  </div>
+</section>
+
+<!-- ===== CINEMATIC VENDOR SHOWCASE ===== -->
+<section class="vendor-showcase" id="vendors">
+  <div class="vendor-intro reveal">
+    <div>
+      <div class="section-label">§ 03 — Sourcing</div>
+      <h2>Purity isn't<br/>a <em>feature</em>.<br/>It's the <em>standard</em>.</h2>
+    </div>
+    <div class="vendor-intro-copy">
+      <p>Most vendors publish marketing copy. The ones we recommend publish <strong style="color:var(--gold);font-weight:400">third-party lab-signed certificates</strong> — HPLC, mass spectrometry, microbial panels. We verify them independently before anything appears in this index.</p>
+      <p style="margin-top:20px">Here's how our #1 rated source compares to the rest of the industry.</p>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="vendor-comparison reveal">
+    <div class="vendor-col featured">
+      <div class="vendor-col-header">
+        <div class="vendor-col-name">Amino Club</div>
+        <div class="vendor-col-tag">★ Our #1</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">COA</div>
+        <div class="compare-value good"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5 L4 7 L8 3" stroke="currentColor" stroke-width="1.5"/></svg></span>Lab-signed <small>· Janoshik</small></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Purity</div>
+        <div class="compare-value good">99.2%<small>HPLC verified</small></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Shipping</div>
+        <div class="compare-value">2–3 days<small>US domestic</small></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Support</div>
+        <div class="compare-value good"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5 L4 7 L8 3" stroke="currentColor" stroke-width="1.5"/></svg></span>Live chat + email</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Payment</div>
+        <div class="compare-value">Card · Crypto · ACH</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Guarantee</div>
+        <div class="compare-value good">Re-test on request</div>
+      </div>
+    </div>
+
+    <div class="vendor-col-divider"></div>
+
+    <div class="vendor-col industry">
+      <div class="vendor-col-header">
+        <div class="vendor-col-name" style="color:var(--ink-dim)">Industry Average</div>
+        <div class="vendor-col-tag">Typical</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">COA</div>
+        <div class="compare-value warn"><span class="x"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 3 L7 7 M7 3 L3 7" stroke="currentColor" stroke-width="1.5"/></svg></span>In-house only</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Purity</div>
+        <div class="compare-value warn">~95%<small>self-reported</small></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Shipping</div>
+        <div class="compare-value">5–10 days<small>overseas</small></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Support</div>
+        <div class="compare-value warn"><span class="x"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 3 L7 7 M7 3 L3 7" stroke="currentColor" stroke-width="1.5"/></svg></span>Email only · slow</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Payment</div>
+        <div class="compare-value">Crypto only</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Guarantee</div>
+        <div class="compare-value warn">None</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Feature -->
+  <div class="vendor-feature reveal">
+    <div class="vendor-feature-visual">
+      <div class="vendor-feature-overlay">
+        <div>Vial · 10mg · Lyophilized</div>
+        <div class="tr">Lot #AC-2026-0412</div>
+      </div>
+      <div class="vial">
+        <div class="vial-glow"></div>
+        <div class="vial-cap"></div>
+        <div class="vial-glass">
+          <div class="vial-liquid"></div>
+        </div>
+        <div class="vial-label">
+          <div class="brand">AMINO CLUB</div>
+          <div class="compound">BPC-157</div>
+          <div class="purity">99.2% PURE</div>
+        </div>
+      </div>
+      <div class="vendor-feature-footer">
+        <div>Store: 2–8°C</div>
+        <div>Research use only</div>
+      </div>
+    </div>
+    <div class="vendor-feature-copy">
+      <div class="section-label">Featured vendor</div>
+      <h3>Amino Club.<br/>The standard we <em>compare against</em>.</h3>
+      <p>Every batch is tested by independent third-party labs — then we verify those results ourselves before listing. No self-reported specs. No marketing math.</p>
+      <div class="rating-large">
+        <div class="num">4.9<em>/5</em></div>
+        <div class="text">PeptiDex<br/>Verified<br/>Rating</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#" class="btn-primary">
+          <span>Compare prices</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="#" class="btn-ghost">Full review</a>
+      </div>
+      <div style="margin-top:16px;font-size:11px;color:var(--ink-mute);font-style:italic">Disclosure: PeptiDex may earn a commission from qualifying purchases.</div>
+    </div>
+  </div>
+
+  <!-- COA Preview -->
+  <div class="coa-section reveal">
+    <div class="coa-copy">
+      <div class="section-label">Verification</div>
+      <h3>Every claim, <em>documented</em>.</h3>
+      <p>This is a real Certificate of Analysis format — HPLC chromatogram, mass spec verification, microbial testing, appearance, and solubility. Every vendor we list publishes these publicly.</p>
+      <p>If you can't see the COA, we can't recommend the vendor. It's that simple.</p>
+      <a href="#" class="btn-ghost" style="margin-top:16px">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 12 L8 7 L13 12 M8 7 L8 14 M3 2 L13 2" stroke="currentColor" stroke-width="1.3"/></svg>
+        View full sample COA (PDF)
+      </a>
+    </div>
+    <div class="coa-sheet">
+      <div class="coa-sheet-head">
+        <div>
+          <div class="coa-sheet-title">Certificate of Analysis</div>
+          <div class="coa-sheet-sub">LAB-SIGNED · HPLC · MASS SPEC</div>
+        </div>
+        <div class="coa-stamp">VERIFIED</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;font-size:10px">
+        <div><strong>Compound:</strong> BPC-157</div>
+        <div><strong>Lot:</strong> #AC-2026-0412</div>
+        <div><strong>Tested:</strong> 02 APR 2026</div>
+        <div><strong>Method:</strong> HPLC · LC-MS</div>
+      </div>
+      <div class="coa-row header">
+        <span>Parameter</span>
+        <span>Specification</span>
+        <span>Result</span>
+      </div>
+      <div class="coa-row">
+        <span>Purity (HPLC)</span>
+        <span class="spec">≥ 99.0%</span>
+        <span class="pass">99.2% ✓</span>
+      </div>
+      <div class="coa-row">
+        <span>Appearance</span>
+        <span class="spec">White powder</span>
+        <span class="pass">Pass ✓</span>
+      </div>
+      <div class="coa-row">
+        <span>Mass (M+H⁺)</span>
+        <span class="spec">1420.48</span>
+        <span class="pass">1420.51 ✓</span>
+      </div>
+      <div class="coa-row">
+        <span>Solubility</span>
+        <span class="spec">Clear in BAC</span>
+        <span class="pass">Pass ✓</span>
+      </div>
+      <div class="coa-row">
+        <span>Microbial</span>
+        <span class="spec">< 100 CFU/g</span>
+        <span class="pass">< 10 ✓</span>
+      </div>
+      <div class="coa-row">
+        <span>Endotoxin</span>
+        <span class="spec">< 0.5 EU/mg</span>
+        <span class="pass">< 0.1 ✓</span>
+      </div>
+      <div class="coa-hplc">
+        <div class="coa-hplc-title">HPLC Chromatogram · 220nm</div>
+        <svg class="coa-chart" viewBox="0 0 300 60" preserveAspectRatio="none">
+          <g stroke="rgba(26,26,30,0.15)" stroke-width="0.3">
+            <line x1="0" y1="15" x2="300" y2="15"/>
+            <line x1="0" y1="30" x2="300" y2="30"/>
+            <line x1="0" y1="45" x2="300" y2="45"/>
+          </g>
+          <path d="M0 55 L40 55 L60 54 L80 53 L100 52 L140 50 L148 8 L155 50 L200 49 L240 48 L300 47"
+                stroke="#c9a961" stroke-width="1.2" fill="none"/>
+          <path d="M148 50 L148 8 L155 50 Z" fill="rgba(201,169,97,0.2)"/>
+          <text x="150" y="6" font-size="6" fill="#8a6f2e" text-anchor="middle">BPC-157</text>
+        </svg>
+      </div>
+      <div class="coa-footer">
+        <div>Signed: Dr. J. Horvat, Janoshik Analytical</div>
+        <div>Page 1 of 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MANIFESTO ===== -->
+<section class="manifesto" id="research">
+  <div class="manifesto-wrap reveal">
+    <div class="quote-mark">"</div>
+    <div class="section-label">§ 04 — Editorial position</div>
+    <p class="manifesto-quote">
+      The field has doubled in a decade — but the <em>signal-to-noise ratio</em> has only gotten worse. We built PeptiDex because the science deserves better than forum anecdotes and affiliate fluff.
+    </p>
+    <div class="manifesto-body">
+      <p>Synthetic peptides are short chains of amino acids that serve as foundational tools for understanding cellular signaling, molecular pathways, and systemic biological responses. When indexed carefully and sourced cleanly, they are one of the most exciting frontiers in research biology.</p>
+      <p>Our sourcing database strictly catalogs suppliers who publish transparent, third-party Certificates of Analysis — ensuring researchers have access to compounds exceeding 99% purity. We pull studies directly from PubMed and peer-reviewed journals. No supplements for sale. No human-use claims. Just the index.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOURNAL ===== -->
+<section class="journal" id="journal">
+  <div class="journal-head reveal">
+    <div>
+      <div class="section-label">§ 05 — The journal</div>
+      <h2 class="section-title">Latest from the <em>index</em>.</h2>
+    </div>
+    <a href="#">All articles →</a>
+  </div>
+
+  <div class="articles">
+    <a href="#" class="article reveal">
+      <div class="article-visual">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c9a961" stop-opacity="0.3"/><stop offset="100%" stop-color="#c9a961" stop-opacity="0"/></linearGradient></defs>
+          <rect width="400" height="300" fill="#16161a"/>
+          <rect width="400" height="300" fill="url(#g1)"/>
+          <g stroke="#c9a961" stroke-opacity="0.6" fill="none" stroke-width="1"><path d="M0 200 Q100 180 200 190 T400 170"/><path d="M0 220 Q100 210 200 215 T400 195" stroke-opacity="0.3"/><path d="M0 240 Q100 230 200 235 T400 215" stroke-opacity="0.2"/></g>
+          <g fill="#c9a961"><circle cx="80" cy="193" r="3"/><circle cx="180" cy="188" r="3"/><circle cx="280" cy="183" r="3"/><circle cx="350" cy="173" r="3"/></g>
+          <text x="32" y="60" fill="#c9a961" font-family="JetBrains Mono" font-size="10" letter-spacing="2">TESAMORELIN · FIG.01</text>
+        </svg>
+      </div>
+      <div class="article-meta">
+        <span class="cat">› Growth Hormone</span>
+        <span>10 min read</span>
+      </div>
+      <h4>Tesamorelin: what sets it apart from every other growth hormone peptide.</h4>
+    </a>
+
+    <a href="#" class="article reveal">
+      <div class="article-visual">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" fill="#16161a"/>
+          <g stroke="#c9a961" stroke-opacity="0.4" fill="none"><circle cx="120" cy="150" r="60"/><circle cx="200" cy="150" r="60"/><circle cx="280" cy="150" r="60"/></g>
+          <g fill="#c9a961" opacity="0.15"><circle cx="200" cy="150" r="40"/></g>
+          <g fill="#c9a961"><circle cx="120" cy="150" r="3"/><circle cx="200" cy="150" r="3"/><circle cx="280" cy="150" r="3"/></g>
+          <g stroke="#c9a961" stroke-width="0.5" stroke-opacity="0.3"><line x1="120" y1="150" x2="200" y2="150"/><line x1="200" y1="150" x2="280" y2="150"/></g>
+          <text x="32" y="60" fill="#c9a961" font-family="JetBrains Mono" font-size="10" letter-spacing="2">STACK ANALYSIS · FIG.02</text>
+        </svg>
+      </div>
+      <div class="article-meta">
+        <span class="cat">› Combination Protocol</span>
+        <span>14 min read</span>
+      </div>
+      <h4>Peptide stacking in 2026: why combination protocols are redefining results.</h4>
+    </a>
+
+    <a href="#" class="article reveal">
+      <div class="article-visual">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" fill="#16161a"/>
+          <g stroke="#c9a961" stroke-opacity="0.3" fill="none" stroke-width="0.5"><line x1="50" y1="50" x2="350" y2="50"/><line x1="50" y1="100" x2="350" y2="100"/><line x1="50" y1="150" x2="350" y2="150"/><line x1="50" y1="200" x2="350" y2="200"/><line x1="50" y1="250" x2="350" y2="250"/><line x1="100" y1="30" x2="100" y2="270"/><line x1="200" y1="30" x2="200" y2="270"/><line x1="300" y1="30" x2="300" y2="270"/></g>
+          <g fill="#c9a961"><rect x="95" y="150" width="10" height="100"/><rect x="195" y="100" width="10" height="150"/><rect x="295" y="70" width="10" height="180"/></g>
+          <text x="32" y="285" fill="#c9a961" font-family="JetBrains Mono" font-size="10" letter-spacing="2">RECLASSIFICATION · FIG.03</text>
+        </svg>
+      </div>
+      <div class="article-meta">
+        <span class="cat">› Regulatory</span>
+        <span>18 min read</span>
+      </div>
+      <h4>The 2026 FDA peptide reclassification: what it means for patients, providers, and the future of therapy.</h4>
+    </a>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter" id="start">
+  <div class="newsletter-wrap">
+    <div class="section-label" style="justify-content:center;display:inline-flex">§ 06 — The digest</div>
+    <h2>Stay ahead<br/>of the <em>research</em>.</h2>
+    <p>A weekly digest of new clinical studies, vendor COA alerts, protocol notes, and peptide news. For researchers who read primary sources.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Demo — form disabled in preview.')">
+      <input type="email" class="newsletter-input" placeholder="your@laboratory.com" required>
+      <button type="submit" class="btn-primary">
+        <span>Subscribe</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </form>
+    <div class="newsletter-note">No spam, ever. Unsubscribe anytime. Research purposes only.</div>
+  </div>
+</section>
+
+<!-- ===== DISCLAIMER ===== -->
+<section class="disclaimer">
+  <div class="disclaimer-wrap">
+    <div class="title">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 L13 12 L1 12 Z" stroke="currentColor" stroke-width="1"/><line x1="7" y1="5" x2="7" y2="8" stroke="currentColor" stroke-width="1"/><circle cx="7" cy="10" r="0.5" fill="currentColor"/></svg>
+      Research Disclaimer
+    </div>
+    <p>All information on PeptiDex is strictly for educational and research purposes. The compounds discussed are not FDA-approved for human consumption, diagnostic, or therapeutic use unless explicitly noted. Vendors listed operate as raw chemical and laboratory supply companies; their products are intended solely for authorized laboratory and educational purposes. PeptiDex does not sell, distribute, or endorse any compound for human or animal use. Always consult a qualified medical professional.</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Pepti<em style="color:var(--gold);font-style:italic">Dex</em></h3>
+        <p>The independent, evidence-based peptide research index. Trusted by researchers worldwide for unbiased education and verified sourcing.</p>
+      </div>
+      <div class="footer-col">
+        <h4>§ Learn</h4>
+        <ul>
+          <li><a href="#">Peptide 101</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Evidence Dashboard</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Source</h4>
+        <ul>
+          <li><a href="#">Vendor Reviews</a></li>
+          <li><a href="#">Price Comparison</a></li>
+          <li><a href="#">Compare Tool</a></li>
+          <li><a href="#">Cycle Planner</a></li>
+          <li><a href="#">Community Stacks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ About</h4>
+        <ul>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Editorial Policy</a></li>
+          <li><a href="#">Medical Disclaimer</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 PeptiDex. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Disclosures</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============================================
+     1. 3D MOLECULE (Three.js)
+     ============================================ */
+  (function() {
+    const canvas = document.getElementById('molecule-canvas');
+    if (!canvas || typeof THREE === 'undefined') return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    camera.position.z = 30;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+
+    // Lights — cinematic
+    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(ambient);
+
+    const keyLight = new THREE.DirectionalLight(0xc9a961, 1.2);
+    keyLight.position.set(5, 8, 10);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x4a9eff, 0.3);
+    fillLight.position.set(-8, -4, 4);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.PointLight(0xe8c987, 2, 30);
+    rimLight.position.set(-5, 3, -8);
+    scene.add(rimLight);
+
+    // Molecule group
+    const molecule = new THREE.Group();
+    scene.add(molecule);
+
+    // Peptide backbone — helix of amino acid residues
+    const atoms = [];
+    const atomData = [];
+    const numResidues = 12;
+    const helixRadius = 2.7;
+    const helixPitch = 0.72;
+    const residuesPerTurn = 4;
+
+    // Atom colors (CPK-inspired but tuned to our palette)
+    const colors = {
+      carbon: 0xd8d2c2,     // ink-ish
+      nitrogen: 0x4a9eff,   // plasma blue
+      oxygen: 0xd4832a,     // amber
+      sulfur: 0xc9a961,     // gold
+      alpha: 0xe8c987       // gold-bright for alpha carbons
+    };
+
+    // Build peptide chain
+    for (let i = 0; i < numResidues; i++) {
+      const t = i / residuesPerTurn;
+      const angle = t * Math.PI * 2;
+      const y = (i - numResidues / 2) * helixPitch;
+      const x = Math.cos(angle) * helixRadius;
+      const z = Math.sin(angle) * helixRadius;
+
+      // Alpha carbon (backbone)
+      const alphaGeo = new THREE.SphereGeometry(0.28, 24, 24);
+      const alphaMat = new THREE.MeshPhongMaterial({
+        color: colors.alpha,
+        shininess: 80,
+        specular: 0xffffff,
+        emissive: 0xc9a961,
+        emissiveIntensity: 0.15
+      });
+      const alpha = new THREE.Mesh(alphaGeo, alphaMat);
+      alpha.position.set(x, y, z);
+      molecule.add(alpha);
+      atoms.push(alpha);
+
+      // Nitrogen (offset slightly)
+      const nGeo = new THREE.SphereGeometry(0.2, 20, 20);
+      const nMat = new THREE.MeshPhongMaterial({
+        color: colors.nitrogen,
+        shininess: 90,
+        specular: 0xaaccff,
+        emissive: 0x1a3a66,
+        emissiveIntensity: 0.2
+      });
+      const n = new THREE.Mesh(nGeo, nMat);
+      const nAngle = angle - 0.3;
+      n.position.set(
+        Math.cos(nAngle) * (helixRadius + 0.6),
+        y + 0.2,
+        Math.sin(nAngle) * (helixRadius + 0.6)
+      );
+      molecule.add(n);
+      atoms.push(n);
+
+      // Oxygen
+      const oGeo = new THREE.SphereGeometry(0.19, 20, 20);
+      const oMat = new THREE.MeshPhongMaterial({
+        color: colors.oxygen,
+        shininess: 100,
+        specular: 0xffaa55,
+        emissive: 0x6b3f14,
+        emissiveIntensity: 0.3
+      });
+      const o = new THREE.Mesh(oGeo, oMat);
+      const oAngle = angle + 0.3;
+      o.position.set(
+        Math.cos(oAngle) * (helixRadius + 0.5),
+        y - 0.15,
+        Math.sin(oAngle) * (helixRadius + 0.5)
+      );
+      molecule.add(o);
+      atoms.push(o);
+
+      // Side chain carbon
+      const sideGeo = new THREE.SphereGeometry(0.17, 18, 18);
+      const sideMat = new THREE.MeshPhongMaterial({
+        color: colors.carbon,
+        shininess: 60,
+        specular: 0xffffff,
+        emissive: 0x2a2a28,
+        emissiveIntensity: 0.2
+      });
+      const side = new THREE.Mesh(sideGeo, sideMat);
+      side.position.set(
+        Math.cos(angle + 0.8) * (helixRadius - 1.4),
+        y + 0.4,
+        Math.sin(angle + 0.8) * (helixRadius - 1.4)
+      );
+      molecule.add(side);
+      atoms.push(side);
+
+      atomData.push({ alpha, n, o, side, position: new THREE.Vector3(x, y, z) });
+    }
+
+    // Backbone bonds — thin cylinders connecting alpha carbons
+    function makeBond(a, b, color = 0xa8a196, radius = 0.06) {
+      const direction = new THREE.Vector3().subVectors(b.position, a.position);
+      const length = direction.length();
+      const geo = new THREE.CylinderGeometry(radius, radius, length, 8);
+      const mat = new THREE.MeshPhongMaterial({
+        color,
+        transparent: true,
+        opacity: 0.7,
+        shininess: 40
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.copy(a.position).add(b.position).multiplyScalar(0.5);
+      mesh.lookAt(b.position);
+      mesh.rotateX(Math.PI / 2);
+      molecule.add(mesh);
+      return mesh;
+    }
+
+    // Backbone
+    for (let i = 0; i < atomData.length - 1; i++) {
+      makeBond(atomData[i].alpha, atomData[i + 1].alpha, 0xc9a961, 0.065);
+    }
+    // Side bonds
+    for (let i = 0; i < atomData.length; i++) {
+      makeBond(atomData[i].alpha, atomData[i].n, 0x6b6860, 0.04);
+      makeBond(atomData[i].alpha, atomData[i].o, 0x6b6860, 0.04);
+      makeBond(atomData[i].alpha, atomData[i].side, 0x6b6860, 0.03);
+    }
+
+    // Floating ambient particles
+    const particleGeo = new THREE.BufferGeometry();
+    const particleCount = 80;
+    const particlePositions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      particlePositions[i * 3] = (Math.random() - 0.5) * 30;
+      particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+      particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+    }
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0xc9a961,
+      size: 0.04,
+      transparent: true,
+      opacity: 0.6,
+      sizeAttenuation: true
+    });
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    // Mouse parallax (desktop only)
+    let mouseX = 0, mouseY = 0;
+    let targetRotX = 0, targetRotY = 0;
+    if (window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5);
+        mouseY = (e.clientY / window.innerHeight - 0.5);
+        targetRotY = mouseX * 0.5;
+        targetRotX = mouseY * 0.3;
+      });
+    }
+
+    // Resize
+    function onResize() {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      // Pull camera back on mobile for full helix visibility
+      camera.position.z = window.innerWidth <= 768 ? 34 : 30;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', onResize);
+    onResize();
+
+    // Entrance animation
+    molecule.scale.set(0.01, 0.01, 0.01);
+    let entryProgress = 0;
+
+    // Animate
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      // Entry scale
+      if (entryProgress < 1) {
+        entryProgress += 0.012;
+        const e = Math.min(1, entryProgress);
+        const eased = 1 - Math.pow(1 - e, 3);
+        molecule.scale.set(eased, eased, eased);
+      }
+
+      // Slow continuous rotation + mouse parallax
+      molecule.rotation.y += 0.003;
+      molecule.rotation.y += (targetRotY - (molecule.rotation.y % (Math.PI * 2)) * 0.001) * 0.02;
+      molecule.rotation.x += (targetRotX * 0.5 - molecule.rotation.x) * 0.04;
+
+      // Gentle breathing
+      const breathe = Math.sin(t * 0.6) * 0.015 + 1;
+      if (entryProgress >= 1) molecule.scale.setScalar(breathe);
+
+      // Particles drift
+      particles.rotation.y += 0.0008;
+      particles.rotation.x += 0.0003;
+
+      // Pulse rim light
+      rimLight.intensity = 2 + Math.sin(t * 1.2) * 0.4;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  })();
+
+  /* ============================================
+     2. COMMAND PALETTE
+     ============================================ */
+  const INDEX = [
+    // Peptides
+    { type: 'peptide', title: 'BPC-157', sub: 'Tissue repair · Angiogenesis · Gut healing', meta: 'GI healing', tags: 'bpc 157 body protection compound stomach gut healing' },
+    { type: 'peptide', title: 'TB-500', sub: 'Thymosin Beta-4 · Systemic recovery', meta: 'Recovery', tags: 'tb500 thymosin beta 4 injury recovery' },
+    { type: 'peptide', title: 'Tesamorelin', sub: 'GHRH analog · Visceral fat reduction', meta: 'GH axis', tags: 'tesamorelin growth hormone ghrh belly fat' },
+    { type: 'peptide', title: 'Ipamorelin', sub: 'Selective GH secretagogue', meta: 'GH axis', tags: 'ipamorelin growth hormone secretagogue' },
+    { type: 'peptide', title: 'CJC-1295', sub: 'GHRH · Long-acting with DAC', meta: 'GH axis', tags: 'cjc 1295 ghrh long acting' },
+    { type: 'peptide', title: 'Semaglutide', sub: 'GLP-1 receptor agonist · Metabolic', meta: 'Metabolic', tags: 'semaglutide glp1 ozempic wegovy weight loss' },
+    { type: 'peptide', title: 'Tirzepatide', sub: 'Dual GIP/GLP-1 agonist', meta: 'Metabolic', tags: 'tirzepatide mounjaro zepbound dual agonist' },
+    { type: 'peptide', title: 'Retatrutide', sub: 'Triple GIP/GLP-1/glucagon agonist', meta: 'Metabolic', tags: 'retatrutide triple agonist' },
+    { type: 'peptide', title: 'GHK-Cu', sub: 'Copper peptide · Skin regeneration', meta: 'Aesthetic', tags: 'ghk cu copper peptide skin hair' },
+    { type: 'peptide', title: 'Melanotan II', sub: 'α-MSH analog · Pigmentation', meta: 'Aesthetic', tags: 'mt2 melanotan tan pigment' },
+    { type: 'peptide', title: 'PT-141', sub: 'Bremelanotide · Libido', meta: 'Sexual health', tags: 'pt141 bremelanotide libido' },
+    { type: 'peptide', title: 'Epitalon', sub: 'Telomerase activator · Longevity', meta: 'Longevity', tags: 'epitalon epithalon telomere longevity' },
+    { type: 'peptide', title: 'Thymosin Alpha-1', sub: 'Immune modulator', meta: 'Immunity', tags: 'thymosin alpha 1 immune' },
+    { type: 'peptide', title: 'Selank', sub: 'Nootropic · Anxiolytic', meta: 'Cognitive', tags: 'selank anxiety focus cognitive' },
+    { type: 'peptide', title: 'Semax', sub: 'ACTH analog · Nootropic', meta: 'Cognitive', tags: 'semax focus cognitive adhd' },
+    { type: 'peptide', title: 'DSIP', sub: 'Delta Sleep Inducing Peptide', meta: 'Sleep', tags: 'dsip sleep delta' },
+    { type: 'peptide', title: 'Hexarelin', sub: 'GH secretagogue · Cardioprotective', meta: 'GH axis', tags: 'hexarelin gh cardio' },
+
+    // Stacks
+    { type: 'stack', title: 'Body Recomposition Stack', sub: '3 peptides · 12-week protocol', meta: 'Stack', tags: 'body recomp cut bulk' },
+    { type: 'stack', title: 'Injury Recovery Stack', sub: 'BPC-157 + TB-500 + GHK-Cu', meta: 'Stack', tags: 'injury recovery healing' },
+    { type: 'stack', title: 'Fat Loss Focus Stack', sub: 'Metabolic + appetite regulation', meta: 'Stack', tags: 'fat loss weight cut' },
+    { type: 'stack', title: 'Muscle Growth Stack', sub: 'GH + IGF pathway', meta: 'Stack', tags: 'muscle gain hypertrophy' },
+    { type: 'stack', title: 'Deep Sleep & Recovery Stack', sub: 'DSIP + Epitalon protocol', meta: 'Stack', tags: 'sleep recovery rest' },
+    { type: 'stack', title: 'Longevity & Anti-Aging Stack', sub: '5 peptides · Long-term cycling', meta: 'Stack', tags: 'longevity antiaging' },
+    { type: 'stack', title: 'Mental Clarity Stack', sub: 'Selank + Semax + supporting', meta: 'Stack', tags: 'cognitive focus mental' },
+    { type: 'stack', title: 'Skin & Aesthetic Stack', sub: 'GHK-Cu + Melanotan + supporting', meta: 'Stack', tags: 'skin aesthetic beauty' },
+    { type: 'stack', title: 'Gut Health Stack', sub: 'BPC-157 centered protocol', meta: 'Stack', tags: 'gut stomach ibs' },
+    { type: 'stack', title: 'Immune Support Stack', sub: 'Thymosin-based', meta: 'Stack', tags: 'immune system' },
+    { type: 'stack', title: 'Hormonal Optimization Stack', sub: 'Male protocol', meta: 'Stack', tags: 'hormone testosterone male' },
+    { type: 'stack', title: 'Metabolic Health Stack', sub: 'Insulin sensitivity focused', meta: 'Stack', tags: 'metabolic insulin glucose' },
+
+    // Vendors
+    { type: 'vendor', title: 'Amino Club', sub: '★ #1 rated · 99.2% purity · US ship', meta: 'Vendor', tags: 'amino club vendor source' },
+    { type: 'vendor', title: 'Compare all vendors', sub: 'Side-by-side vendor matrix', meta: 'Tool', tags: 'compare vendors matrix' },
+    { type: 'vendor', title: 'Price comparison tool', sub: 'Live prices across the index', meta: 'Tool', tags: 'price comparison' },
+
+    // Studies
+    { type: 'study', title: 'BPC-157 angiogenic effects', sub: 'Sikiric et al. · 2018 · PubMed', meta: 'PubMed', tags: 'bpc 157 angiogenesis study' },
+    { type: 'study', title: 'Tesamorelin visceral fat trial', sub: 'Falutz et al. · NEJM · 2007', meta: 'RCT', tags: 'tesamorelin visceral fat study' },
+    { type: 'study', title: 'Semaglutide cardiovascular outcomes', sub: 'SELECT trial · 2023', meta: 'RCT', tags: 'semaglutide cardio select trial' },
+    { type: 'study', title: 'GHK-Cu wound healing meta-analysis', sub: 'Pickart · 2018 review', meta: 'Review', tags: 'ghk copper wound skin' },
+
+    // Articles
+    { type: 'article', title: 'Tesamorelin: what sets it apart', sub: '10 min read · Growth Hormone', meta: 'Journal', tags: 'tesamorelin article' },
+    { type: 'article', title: 'Peptide stacking in 2026', sub: '14 min read · Combination protocols', meta: 'Journal', tags: 'stack combination article' },
+    { type: 'article', title: 'FDA peptide reclassification 2026', sub: '18 min read · Regulatory', meta: 'Journal', tags: 'fda reclassification regulatory' },
+
+    // Tools / actions
+    { type: 'tool', title: 'Cycle Planner', sub: 'Map out your research protocol', meta: 'Tool', tags: 'cycle planner schedule' },
+    { type: 'tool', title: 'Evidence Dashboard', sub: 'Study count per peptide', meta: 'Tool', tags: 'evidence dashboard studies' },
+    { type: 'tool', title: 'Find Your Stack quiz', sub: 'Get a protocol recommendation', meta: 'Tool', tags: 'quiz find stack' },
+    { type: 'tool', title: "Beginner's Guide", sub: 'Reconstitution · Pinning · Supplies', meta: 'Guide', tags: 'beginner guide new intro' },
+  ];
+
+  const typeIcons = {
+    peptide: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="8" x2="10" y2="8" stroke="currentColor" stroke-width="1.2"/></svg>',
+    stack: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="2.5" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="7" width="12" height="2.5" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="11" width="12" height="2.5" stroke="currentColor" stroke-width="1.2"/></svg>',
+    vendor: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 5 L14 5 L13 13 L3 13 Z" stroke="currentColor" stroke-width="1.2"/><path d="M5 5 V3 H11 V5" stroke="currentColor" stroke-width="1.2"/></svg>',
+    study: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2 H11 L13 4 V14 H3 Z" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="7" x2="11" y2="7" stroke="currentColor" stroke-width="1"/><line x1="5" y1="10" x2="11" y2="10" stroke="currentColor" stroke-width="1"/></svg>',
+    article: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><line x1="3" y1="4" x2="13" y2="4" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="1.2"/></svg>',
+    tool: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2 L13 5 V11 L8 14 L3 11 V5 Z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg>',
+  };
+
+  const sectionLabels = {
+    peptide: 'Peptides',
+    stack: 'Stacks',
+    vendor: 'Vendors',
+    study: 'Clinical Studies',
+    article: 'Journal',
+    tool: 'Tools & Guides',
+  };
+
+  const palette = document.getElementById('palette');
+  const paletteInput = document.getElementById('paletteInput');
+  const paletteResults = document.getElementById('paletteResults');
+  const paletteClose = document.getElementById('paletteClose');
+  const searchTrigger = document.getElementById('searchTrigger');
+  let activeIndex = 0;
+  let currentResults = [];
+
+  function scoreMatch(item, q) {
+    if (!q) return 1;
+    const query = q.toLowerCase();
+    const title = item.title.toLowerCase();
+    const sub = item.sub.toLowerCase();
+    const tags = (item.tags || '').toLowerCase();
+    if (title.startsWith(query)) return 100;
+    if (title.includes(query)) return 80;
+    if (tags.includes(query)) return 60;
+    if (sub.includes(query)) return 40;
+    // Fuzzy: all query chars appear in order
+    let ti = 0;
+    for (const c of query) {
+      const idx = title.indexOf(c, ti);
+      if (idx === -1) { ti = -1; break; }
+      ti = idx + 1;
+    }
+    if (ti > 0) return 20;
+    return 0;
+  }
+
+  function renderResults(q) {
+    const scored = INDEX
+      .map(item => ({ item, score: scoreMatch(item, q) }))
+      .filter(r => r.score > 0)
+      .sort((a, b) => b.score - a.score);
+
+    currentResults = scored.map(s => s.item);
+    activeIndex = 0;
+
+    if (!currentResults.length) {
+      paletteResults.innerHTML = `<div class="palette-empty"><p>No matches.</p><p style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em">Try: "BPC-157", "fat loss", or "COA"</p></div>`;
+      return;
+    }
+
+    // Group by type
+    const grouped = {};
+    currentResults.forEach((item, i) => {
+      if (!grouped[item.type]) grouped[item.type] = [];
+      grouped[item.type].push({ item, globalIndex: i });
+    });
+
+    const order = ['peptide', 'stack', 'vendor', 'study', 'article', 'tool'];
+    let html = '';
+    for (const type of order) {
+      if (!grouped[type]) continue;
+      html += `<div class="palette-section">${sectionLabels[type]}</div>`;
+      for (const { item, globalIndex } of grouped[type].slice(0, 8)) {
+        html += `
+          <div class="palette-item" data-index="${globalIndex}">
+            <div class="palette-item-icon">${typeIcons[item.type]}</div>
+            <div class="palette-item-content">
+              <div class="palette-item-title">${item.title}</div>
+              <div class="palette-item-sub">${item.sub}</div>
+            </div>
+            <div class="palette-item-meta">${item.meta}</div>
+          </div>
+        `;
+      }
+    }
+    paletteResults.innerHTML = html;
+    updateActive();
+
+    paletteResults.querySelectorAll('.palette-item').forEach(el => {
+      el.addEventListener('click', () => {
+        activeIndex = parseInt(el.dataset.index);
+        selectActive();
+      });
+      el.addEventListener('mouseenter', () => {
+        activeIndex = parseInt(el.dataset.index);
+        updateActive();
+      });
+    });
+  }
+
+  function updateActive() {
+    paletteResults.querySelectorAll('.palette-item').forEach(el => {
+      const idx = parseInt(el.dataset.index);
+      if (idx === activeIndex) {
+        el.classList.add('active');
+        el.scrollIntoView({ block: 'nearest' });
+      } else {
+        el.classList.remove('active');
+      }
+    });
+  }
+
+  function selectActive() {
+    const item = currentResults[activeIndex];
+    if (!item) return;
+    // In real implementation would route; for demo we close with a visual beat
+    closePalette();
+    // Optional: scroll to relevant section
+    const routes = {
+      peptide: '#library',
+      stack: '#stacks',
+      vendor: '#vendors',
+      article: '#journal',
+      study: '#research',
+      tool: '#library'
+    };
+    const target = document.querySelector(routes[item.type] || '#');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function openPalette() {
+    palette.classList.add('open');
+    document.body.classList.add('palette-open');
+    setTimeout(() => paletteInput.focus(), 50);
+    renderResults('');
+  }
+  function closePalette() {
+    palette.classList.remove('open');
+    document.body.classList.remove('palette-open');
+    paletteInput.value = '';
+  }
+  window.openPalette = openPalette;
+
+  searchTrigger.addEventListener('click', openPalette);
+  paletteClose.addEventListener('click', closePalette);
+  palette.addEventListener('click', closePalette);
+
+  // Mobile menu search trigger
+  const searchMobile = document.getElementById('searchMobile');
+  if (searchMobile) {
+    searchMobile.addEventListener('click', () => {
+      closeMobileMenu();
+      setTimeout(openPalette, 300);
+    });
+  }
+
+  paletteInput.addEventListener('input', (e) => renderResults(e.target.value));
+  paletteInput.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIndex = Math.min(activeIndex + 1, currentResults.length - 1);
+      updateActive();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIndex = Math.max(activeIndex - 1, 0);
+      updateActive();
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      selectActive();
+    } else if (e.key === 'Escape') {
+      closePalette();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      if (palette.classList.contains('open')) closePalette();
+      else openPalette();
+    } else if (e.key === '/' && !palette.classList.contains('open') && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      openPalette();
+    }
+  });
+
+  /* ============================================
+     MOBILE MENU
+     ============================================ */
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMobileMenu(){
+    mobileMenu.classList.add('open');
+    mobileMenuBtn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu(){
+    mobileMenu.classList.remove('open');
+    mobileMenuBtn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('open')) closeMobileMenu();
+      else openMobileMenu();
+    });
+  }
+  // Close menu when any link is tapped
+  document.querySelectorAll('.mobile-menu-links a').forEach(a => {
+    a.addEventListener('click', closeMobileMenu);
+  });
+
+  /* ============================================
+     3. MISC: Scroll reveal, count-up, nav shrink
+     ============================================ */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 40);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Count up stats
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count);
+      const suffix = el.querySelector('em') ? el.querySelector('em').outerHTML : '';
+      let current = 0;
+      const start = performance.now();
+      const duration = 1400;
+      function tick(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        current = Math.round(target * eased);
+        el.innerHTML = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+  // Nav shrink
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    const isMobile = window.innerWidth <= 768;
+    const basePad = isMobile ? '16px 20px' : '24px 48px';
+    const shrunkPad = isMobile ? '12px 20px' : '16px 48px';
+    if (window.scrollY > 50) {
+      nav.style.padding = shrunkPad;
+      nav.style.background = 'rgba(10,10,11,0.85)';
+    } else {
+      nav.style.padding = basePad;
+      nav.style.background = 'rgba(10,10,11,0.6)';
+    }
+  });
+</script>
+</body>
+</html>
