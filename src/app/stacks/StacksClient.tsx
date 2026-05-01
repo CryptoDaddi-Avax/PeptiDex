@@ -179,10 +179,15 @@ export default function StacksClient() {
                     <p style={{ color: 'var(--ink-dim)', fontSize: '16px', lineHeight: 1.6, maxWidth: '680px', marginBottom: '24px' }}>
                         Get a personalized peptide protocol based on your goals, experience level, and timeline. Free, instant, and based on published research dosing.
                     </p>
-                    <Link href="/tools/cycle-planner" className="btn-primary">
-                        <span>Open the Cycle Planner</span>
-                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginLeft: '8px' }}><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
-                    </Link>
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                        <Link href="/tools/cycle-planner" className="btn-primary">
+                            <span>Open the Cycle Planner</span>
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginLeft: '8px' }}><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
+                        </Link>
+                        <Link href="/tools/compare" className="btn-ghost">
+                            Compare peptides
+                        </Link>
+                    </div>
                 </div>
             </div>
         </RedesignLayout>

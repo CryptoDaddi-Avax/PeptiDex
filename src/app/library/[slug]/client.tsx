@@ -9,7 +9,7 @@ import { legalData, legalStatusColors, legalStatusLabels } from '@/data/legal-st
 import { comparisons } from '@/data/comparisons';
 import {
   ExternalLink, ShieldAlert, Info, Beaker, BookOpen,
-  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight
+  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight, Calculator
 } from 'lucide-react';
 import { HalfLifeChart } from '@/components/half-life-chart';
 import { LeadMagnetInline } from '@/components/lead-magnet-inline';
@@ -325,6 +325,24 @@ export function PeptideDetailRedesign({
 
             {/* Affiliate CTA */}
             <AffiliateSource peptideName={peptide.name} slug={peptide.slug} />
+
+            {/* ─── Contextual Tool Callouts ─── */}
+            <div className="pd-tool-callouts">
+              <Link href={`/tools/calculator`} className="pd-tool-cta">
+                <div className="pd-tool-cta-icon"><Calculator /></div>
+                <div className="pd-tool-cta-text">
+                  <span className="pd-tool-cta-label">Reconstitution Calculator</span>
+                  <span className="pd-tool-cta-desc">Calculate reconstitution for {peptide.name} →</span>
+                </div>
+              </Link>
+              <Link href={`/tools/compare`} className="pd-tool-cta">
+                <div className="pd-tool-cta-icon"><GitCompare /></div>
+                <div className="pd-tool-cta-text">
+                  <span className="pd-tool-cta-label">Compare Tool</span>
+                  <span className="pd-tool-cta-desc">Compare {peptide.name} to similar peptides →</span>
+                </div>
+              </Link>
+            </div>
 
             {/* FAQ */}
             <PeptideFAQ peptide={peptide} />

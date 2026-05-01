@@ -129,14 +129,6 @@ function parseShopPage(html: string): ScrapedProduct[] {
   const saleMatch = html.match(/(\d+)%\s*OFF/i);
   const sitewideSalePct = saleMatch ? parseInt(saleMatch[1]) : 0;
   
-  // WooCommerce product blocks — each <li> in the product grid
-  // Pattern 1: Sale items with original + sale price
-  //   "Original price was: $XX.XX...Current price is: $XX.XX. $YY.YY"
-  // Pattern 2: Regular items
-  //   "$XX.XX"
-  // Pattern 3: Out of stock
-  //   "Out of stock" + "Join the Waitlist"
-  
   // Split HTML by product entries
   const productBlocks = html.split(/(?=<li\s[^>]*class="[^"]*product[^"]*")/i);
   
@@ -146,37 +138,37 @@ function parseShopPage(html: string): ScrapedProduct[] {
     if (!urlMatch) continue;
     const productUrl = urlMatch[1];
     
-    // Extract product name from heading or link text
-    const nameMatch = block.match(/<(?:h2|h3|a)[^>]*class="[^"]*woocommerce-loop-product__title[^"]*"[^>]*>([^<]+)/i)
-      || block.match(/<a[^>]*href="[^"]*product\/[^"]*"[^>]*>([^<]+)</i);
-    if (!nameMatch) continue;
-    const name = nameMatch[1].trim();
+    // Extract reliable data from GTM attributes
+    const gtmMatch = block.match(/data-gtm4wp_product_data="([^"]+)"/);
+    if (!gtmMatch) continue;
     
-    // Skip non-peptide items (supplies, creams, bioregulators capsules)
-    if (name.toLowerCase().includes("reconstitution") || name.toLowerCase().includes("bac water")) continue;
-    
-    // Check if it's out of stock
-    const isOutOfStock = block.includes("Out of stock") || block.includes("Join the Waitlist");
-    
-    // Extract prices
-    let originalPrice = 0;
-    let currentPrice = 0;
-    
-    // Pattern: "Original price was: $XX.XX.$XX.XXCurrent price is: $XX.XX. $YY.YY"
-    const salePriceMatch = block.match(/Original price was: \$(\d+(?:\.\d{2})?)[\s\S]*?Current price is:[\s\S]*?\$(\d+(?:\.\d{2})?)/);
-    if (salePriceMatch) {
-      originalPrice = parseFloat(salePriceMatch[1]);
-      currentPrice = parseFloat(salePriceMatch[2]);
-    } else {
-      // Non-sale: just a single price
-      const singlePriceMatch = block.match(/\$(\d+(?:\.\d{2})?)/);
-      if (singlePriceMatch) {
-        originalPrice = parseFloat(singlePriceMatch[1]);
-        currentPrice = originalPrice;
-      }
+    let productData;
+    try {
+      const productDataStr = gtmMatch[1].replace(/&quot;/g, '"');
+      productData = JSON.parse(productDataStr);
+    } catch (e) {
+      continue;
     }
     
-    if (originalPrice === 0) continue;
+    const name = productData.item_name;
+    const isOutOfStock = productData.stockstatus !== "instock";
+    let originalPrice = parseFloat(productData.price);
+    
+    if (isNaN(originalPrice) || originalPrice === 0) continue;
+    
+    // Skip non-peptide items
+    if (name.toLowerCase().includes("reconstitution") || name.toLowerCase().includes("bac water")) continue;
+    
+    // Determine current site price from HTML
+    let currentPrice = originalPrice;
+    const cleanBlock = block.replace(/&#0*36;/g, '$');
+    
+    // Find the first price outside of <del> (which contains the old price)
+    const noDelBlock = cleanBlock.replace(/<del[\s\S]*?<\/del>/ig, '');
+    const priceMatch = noDelBlock.match(/\$[^0-9]*([\d.]+)/);
+    if (priceMatch) {
+      currentPrice = parseFloat(priceMatch[1]);
+    }
     
     // Extract size from name (e.g., "BPC-157 (10mg)" → 10)
     const sizeMatch = name.match(/\((\d+(?:\.\d+)?)\s*(?:mg|mcg)\)/i);
@@ -188,8 +180,6 @@ function parseShopPage(html: string): ScrapedProduct[] {
       t.matchPatterns.some(p => nameLower.includes(p.toLowerCase()))
     );
     
-    // Skip blends and non-target products for the primary pricing table
-    // But still capture them if they match a target
     if (!target) continue;
     
     // Calculate PEPTIDEX stacked price
@@ -266,13 +256,37 @@ async function main() {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     
     // Always-current file (app reads this)
-    fs.writeFileSync(LATEST_FILE, JSON.stringify(output, null, 2));
+    let pricesChanged = true;
+    const newOutputStr = JSON.stringify(output, null, 2);
+    if (fs.existsSync(LATEST_FILE)) {
+      const prevOutputStr = fs.readFileSync(LATEST_FILE, 'utf8');
+      if (prevOutputStr === newOutputStr) {
+        pricesChanged = false;
+      }
+    }
+    
+    fs.writeFileSync(LATEST_FILE, newOutputStr);
     console.log(`   💾 Updated: bll-prices-latest.json`);
     
     // Timestamped audit file
     const auditFile = path.join(OUTPUT_DIR, `bll-prices-${timestamp.replace(/[:.]/g, "-")}.json`);
     fs.writeFileSync(auditFile, JSON.stringify(output, null, 2));
     console.log(`   📁 Archived: ${path.basename(auditFile)}`);
+    
+    if (pricesChanged) {
+      console.log(`\n   🔨 Prices changed! Triggering Next.js rebuild...`);
+      try {
+        // Execute build synchronously, then reload PM2 seamlessly
+        const { execSync } = require("child_process");
+        execSync("NODE_OPTIONS='--max-old-space-size=3072' npm run build", { stdio: "inherit" });
+        execSync("pm2 reload peptidex", { stdio: "inherit" });
+        console.log(`   ✅ Rebuild and PM2 reload complete.`);
+      } catch (err) {
+        console.error(`   ❌ Failed to rebuild app:`, err);
+      }
+    } else {
+      console.log(`\n   📋 Prices unchanged. No rebuild needed.`);
+    }
     
     // 7. Summary
     console.log(`\n   ── Summary ──`);

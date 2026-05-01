@@ -302,6 +302,17 @@ export default function VendorsClient() {
         </div>
       </section>
 
+      {/* ═══ TOOL CALLOUT ═══ */}
+      <div className="vn-container">
+        <Link href="/tools/pricing" className="vn-tool-callout">
+          <div className="vn-tool-callout-icon"><BarChart3 /></div>
+          <div className="vn-tool-callout-text">
+            <span className="vn-tool-callout-label">Price Comparison Tool</span>
+            <span className="vn-tool-callout-desc">See live cross-vendor pricing for all peptides — cost per vial, per dose, and exclusive PEPTIDEX discounts →</span>
+          </div>
+        </Link>
+      </div>
+
       {/* ═══ HOW WE VET / FAQ (Preserved for SEO) ═══ */}
       <div className="vn-container">
         <section className="vn-extra-section">

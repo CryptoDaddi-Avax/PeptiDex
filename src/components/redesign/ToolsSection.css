@@ -1,0 +1,168 @@
+/* ToolsSection — homepage tools grid */
+.tools-home-section {
+  padding: 140px 48px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.tools-home-head {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+}
+.tools-home-sub {
+  color: var(--ink-dim);
+  font-size: 18px;
+  max-width: 520px;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
+/* Grid: 3 across desktop, 2 on tablet, 1 on mobile */
+.tools-home-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Card */
+.tool-home-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.tool-home-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.tool-home-card:hover {
+  border-color: var(--gold);
+  background: #18181c;
+  transform: translateY(-2px);
+}
+.tool-home-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Badge */
+.tool-home-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 3px 10px;
+}
+
+/* Icon */
+.tool-home-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(201, 169, 97, 0.06);
+  border: 1px solid var(--line);
+  color: var(--gold);
+}
+.tool-home-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Text */
+.tool-home-text {
+  flex: 1;
+  min-width: 0;
+}
+.tool-home-text h3 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.tool-home-text p {
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.55;
+}
+
+/* Arrow */
+.tool-home-arrow {
+  flex-shrink: 0;
+  color: var(--ink-mute);
+  transition: color 0.3s, transform 0.3s;
+  margin-top: 2px;
+}
+.tool-home-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+.tool-home-card:hover .tool-home-arrow {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* CTA row */
+.tools-home-cta-row {
+  max-width: 1400px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .tools-home-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .tools-home-section {
+    padding: 80px 20px;
+  }
+  .tools-home-sub {
+    font-size: 15px;
+  }
+  .tools-home-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .tool-home-card {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+  .tool-home-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .tool-home-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .tool-home-text h3 {
+    font-size: 16px;
+  }
+}

@@ -18,7 +18,7 @@ module.exports = {
       name: "peptidex",
       script: "node_modules/.bin/next",
       args: "start -p 3000",
-      cwd: "/home/deploy/peptide-app",
+      cwd: "/var/www/peptidex",
       instances: 1,
       autorestart: true,
       watch: false,
@@ -32,7 +32,7 @@ module.exports = {
       name: "bll-scraper",
       script: "npx",
       args: "tsx scripts/scrape-bll-prices.ts",
-      cwd: "/home/deploy/peptide-app",
+      cwd: "/var/www/peptidex",
       instances: 1,
       autorestart: false,
       // Run every 4 hours: 0 */4 * * *
@@ -42,8 +42,8 @@ module.exports = {
         NODE_ENV: "production",
       },
       // Log output for debugging
-      error_file: "/home/deploy/peptide-app/logs/bll-scraper-error.log",
-      out_file: "/home/deploy/peptide-app/logs/bll-scraper-out.log",
+      error_file: "/var/www/peptidex/logs/bll-scraper-error.log",
+      out_file: "/var/www/peptidex/logs/bll-scraper-out.log",
       log_date_format: "YYYY-MM-DD HH:mm:ss Z",
       // Merge stdout and stderr into one file
       merge_logs: true,

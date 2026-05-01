@@ -27,13 +27,22 @@ export default function Footer() {
             </ul>
           </div>
           <div className="footer-col">
+            <h4>§ Tools</h4>
+            <ul>
+              <li><a href="/tools/cycle-planner">Cycle Planner</a></li>
+              <li><a href="/tools/evidence">Evidence Dashboard</a></li>
+              <li><a href="/tools/compare">Peptide Comparison</a></li>
+              <li><a href="/tools/pricing">Price Comparison</a></li>
+              <li><a href="/tools/calculator">Reconstitution Calc</a></li>
+              <li><a href="/tools/coa">COA Analyzer</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
             <h4>§ Source</h4>
             <ul>
               <li><a href="/vendors">Vendor Reviews</a></li>
               <li><a href="/vendors/amino-club-review">Amino Club Review</a></li>
-              <li><a href="/tools/pricing">Price Comparison</a></li>
-              <li><a href="/tools/compare">Compare Tool</a></li>
-              <li><a href="/tools/cycle-planner">Cycle Planner</a></li>
+              <li><a href="/stacks">Peptide Stacks</a></li>
             </ul>
           </div>
           <div className="footer-col">

@@ -6,20 +6,13 @@ import Footer from './Footer';
 import './redesign.css';
 
 /**
- * RedesignLayout — Shared wrapper for inner pages migrating to the new design system.
+ * RedesignLayout — Shared wrapper for inner pages.
  *
  * What it does:
- *  1. Hides legacy layout shell (Header, BottomNav, Footer, popups) via injected <style>
- *  2. Renders redesign Navigation (sticky, shrink-on-scroll, mobile drawer)
- *  3. Provides CommandPalette (⌘K / Ctrl+K / "/" to open)
- *  4. Renders redesign Footer
- *  5. Wraps {children} in a content region with consistent spacing
- *
- * Usage:
- *   import RedesignLayout from '@/components/redesign/RedesignLayout';
- *   export default function SomePage() {
- *     return <RedesignLayout>{...page content...}</RedesignLayout>;
- *   }
+ *  1. Renders redesign Navigation (sticky, shrink-on-scroll, mobile drawer)
+ *  2. Provides CommandPalette (⌘K / Ctrl+K / "/" to open)
+ *  3. Renders redesign Footer
+ *  4. Wraps {children} in a content region with consistent spacing
  */
 export default function RedesignLayout({ children }: { children: ReactNode }) {
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -55,28 +48,6 @@ export default function RedesignLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* ── Hide legacy layout shell ── */}
-      <style>{`
-        #site-header-container,
-        #site-footer-container,
-        #site-bottomnav-container,
-        #site-lead-container,
-        #site-mobilesource-container,
-        #site-first-visit-container,
-        #site-pwa-container,
-        #site-disclaimer-container {
-          display: none !important;
-        }
-        #main-content {
-          padding-bottom: 0 !important;
-          min-height: 100vh !important;
-        }
-        body {
-          background: var(--bg, #0a0a0b) !important;
-          font-family: var(--sans) !important;
-        }
-      `}</style>
-
       {/* ── Redesign Navigation ── */}
       <Navigation onSearchOpen={() => setPaletteOpen(true)} />
 

@@ -1,6 +1,5 @@
 'use client';
 import { goals } from '@/data/goals';
-import { stacks } from '@/data/stacks';
 import './GoalsGrid.css';
 
 export default function GoalsGrid() {
@@ -14,10 +13,6 @@ export default function GoalsGrid() {
       </div>
       <div className="goals-grid">
         {goals.map((goal) => {
-          // Find the matching stack(s) for this goal
-          const matchingStacks = stacks.filter((s) => goal.stackNames.includes(s.stack_name));
-          const peptideCount = matchingStacks.reduce((sum, s) => sum + s.peptides.length, 0);
-
           return (
             <a
               key={goal.id}
@@ -28,9 +23,6 @@ export default function GoalsGrid() {
               <div className="goal-content">
                 <h3>{goal.label}</h3>
                 <p>{goal.description}</p>
-                <div className="goal-meta">
-                  {matchingStacks.length} stack{matchingStacks.length !== 1 ? 's' : ''} · {peptideCount} peptides
-                </div>
               </div>
               <div className="goal-arrow">→</div>
             </a>

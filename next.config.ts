@@ -64,9 +64,7 @@ const nextConfig: NextConfig = {
   },
 
   // ─── EXPERIMENTAL ──────────────────────────────────────────────
-  experimental: {
-    optimizeCss: true,
-  },
+  experimental: {},
 };
 
 export default nextConfig;

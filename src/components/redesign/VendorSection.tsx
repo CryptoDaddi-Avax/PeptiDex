@@ -1,14 +1,13 @@
 'use client';
-import { vendorProfiles, type VendorProfile } from '@/data/vendor-comparison';
-import { VENDOR_COUNT } from '@/data/vendors';
+import Link from 'next/link';
+import { vendorsSorted, VENDOR_COUNT, type Vendor } from '@/data/vendors';
 import './VendorSection.css';
 
-const allVendors = Object.values(vendorProfiles).sort((a, b) => b.rating - a.rating);
-// Show top 3 on homepage, link to /vendors for the rest
-const displayVendors = allVendors.slice(0, 3);
+// Show top 4 on homepage, link to /vendors for the rest
+const displayVendors = vendorsSorted.slice(0, 4);
 const remainingCount = VENDOR_COUNT - displayVendors.length;
 
-function VendorCard({ v }: { v: VendorProfile }) {
+function VendorCard({ v }: { v: Vendor }) {
   return (
     <a
       className="vendor-card"
@@ -28,6 +27,17 @@ function VendorCard({ v }: { v: VendorProfile }) {
         <div className="vendor-purity">{v.purity} purity verified</div>
       </div>
 
+      {/* Discount callout strip — only for vendors with a discount code */}
+      {v.discountCode && (
+        <div className="vendor-discount-strip">
+          <span className="discount-tag">🏷</span>
+          <span>
+            Use code <strong>{v.discountCode}</strong> for {v.discountPercent}% off
+            {v.discountStackable && <span className="stackable-note"> — stacks with sales</span>}
+          </span>
+        </div>
+      )}
+
       <ul className="vendor-features">
         <li>
           <span className="feature-label">COA</span>
@@ -42,16 +52,8 @@ function VendorCard({ v }: { v: VendorProfile }) {
           <span className="feature-value">{v.shippingSpeed}</span>
         </li>
         <li>
-          <span className="feature-label">Ships To</span>
-          <span className="feature-value">{v.shipsTo.join(', ')}</span>
-        </li>
-        <li>
           <span className="feature-label">Catalog</span>
           <span className="feature-value">{v.catalogSize}</span>
-        </li>
-        <li>
-          <span className="feature-label">Payment</span>
-          <span className="feature-value">{v.paymentMethods.join(', ')}</span>
         </li>
         <li>
           <span className="feature-label">Returns</span>
@@ -88,17 +90,13 @@ export default function VendorSection() {
         ))}
       </div>
       <div className="vendors-cta-row">
-        <a href="/vendors" className="btn-primary">
-          + {remainingCount} more verified vendors
+        <Link href="/vendors" className="btn-primary">
+          <span>View all {VENDOR_COUNT} vendors</span>
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
           </svg>
-        </a>
-        <a href="/vendors/amino-club-review" className="btn-ghost" style={{ marginLeft: '12px' }}>
-          Read our Amino Club Review
-        </a>
+        </Link>
       </div>
     </section>
   );
 }
-

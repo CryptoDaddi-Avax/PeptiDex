@@ -1,6 +1,12 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { peptides } from '@/data/peptides';
+import { stacks } from '@/data/stacks';
 import './Hero.css';
+
+const PEPTIDE_COUNT = peptides.length;
+const STUDY_COUNT = peptides.reduce((sum, p) => sum + p.key_studies.length, 0);
+const STACK_COUNT = stacks.length;
 
 export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -224,7 +230,7 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
               research.
             </h1>
             <h2 className="hero-kicker">
-              Research peptides indexed: BPC-157, Tesamorelin, Semaglutide, Tirzepatide, and 29 more
+              Research peptides indexed: BPC-157, Tesamorelin, Semaglutide, Tirzepatide, and {PEPTIDE_COUNT - 4} more
             </h2>
           </div>
 
@@ -237,7 +243,7 @@ export default function Hero({ onSearchOpen }: { onSearchOpen?: () => void }) {
         {/* Below the top row: paragraph + CTAs — always full width, never overlapped */}
         <div className="hero-bottom">
           <p className="hero-sub">
-            An independent index of 33 research peptides, 12 curated stacks, and 140+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
+            An independent index of {PEPTIDE_COUNT} research peptides, {STACK_COUNT} curated stacks, and {STUDY_COUNT}+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
           </p>
           <div className="hero-ctas">
             <a href="/library" className="btn-primary">

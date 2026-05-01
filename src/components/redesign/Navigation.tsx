@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
+import { Bookmark } from 'lucide-react';
 import { useSavedItems } from '@/hooks/useSavedItems';
 import './Navigation.css';
 
@@ -43,39 +44,16 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
   return (
     <>
       <nav className={shrunk ? 'nav-shrunk' : ''}>
-        <div className="nav-logo">
+        <a href="/" className="nav-logo">
           <span className="mark" />
           Pepti<em>Dex</em>
-        </div>
+        </a>
         <ul className="nav-links">
           <li><a href="/library">Library</a></li>
           <li><a href="/stacks">Stacks</a></li>
+          <li><a href="/tools">Tools</a></li>
           <li><a href="/vendors">Vendors</a></li>
-          <li><a href="/tools/evidence">Research</a></li>
-          <li><a href="/blog">Journal</a></li>
-          <li>
-            <a href="/saved" style={{ position: 'relative' }}>
-              Saved
-              {count > 0 && (
-                <span style={{
-                  position: 'absolute',
-                  top: -6,
-                  right: -14,
-                  width: 18,
-                  height: 18,
-                  borderRadius: '50%',
-                  background: 'var(--gold)',
-                  color: 'var(--bg)',
-                  fontSize: 10,
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'var(--mono)',
-                }}>{count}</span>
-              )}
-            </a>
-          </li>
+          <li><a href="/blog">Blog</a></li>
         </ul>
         <div className="nav-right">
           <button className="search-trigger" onClick={onSearchOpen}>
@@ -97,6 +75,13 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
               <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
             </svg>
           </button>
+          {/* Saved bookmark icon — shows count badge */}
+          <a href="/saved" className="nav-saved-icon" aria-label={`Saved items (${count})`}>
+            <Bookmark size={18} />
+            {count > 0 && (
+              <span className="nav-saved-badge">{count}</span>
+            )}
+          </a>
           <a href="/intro" className="nav-cta">Start</a>
           <button
             className={`mobile-menu-btn ${mobileOpen ? 'open' : ''}`}
@@ -115,9 +100,9 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
           {[
             { label: 'Library', href: '/library' },
             { label: 'Stacks', href: '/stacks' },
+            { label: 'Tools', href: '/tools' },
             { label: 'Vendors', href: '/vendors' },
-            { label: 'Research', href: '/tools/evidence' },
-            { label: 'Journal', href: '/blog' },
+            { label: 'Blog', href: '/blog' },
           ].map(({ label, href }, i) => (
             <li key={label}>
               <a href={href} onClick={closeMobile}>
@@ -126,18 +111,6 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
               </a>
             </li>
           ))}
-          <li>
-            <a href="/saved" onClick={closeMobile}>
-              <span>Saved{count > 0 ? ` (${count})` : ''}</span>
-              <span className="num">§ 06</span>
-            </a>
-          </li>
-          <li>
-            <a href="/intro" onClick={closeMobile}>
-              <span><em>Subscribe</em></span>
-              <span className="num">§ 07</span>
-            </a>
-          </li>
         </ul>
         <div className="mobile-menu-footer">
           <div className="meta">§ Search the index</div>
@@ -157,4 +130,3 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
     </>
   );
 }
-

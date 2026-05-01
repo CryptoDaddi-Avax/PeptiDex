@@ -1,19 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Suspense } from "react";
-import { Header } from "@/components/header";
-import { BottomNav } from "@/components/bottom-nav";
-import { DisclaimerBanner } from "@/components/disclaimer-banner";
-import { FirstVisitModal } from "@/components/first-visit-modal";
-import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
-import { Footer } from "@/components/footer";
 import { AutoLinkProvider } from "@/components/auto-link";
-import { LeadMagnetPopup } from "@/components/lead-magnet-popup";
 import { GlobalEmbedHandler } from "@/components/global-embed-handler";
-import { MobileSourcingBar } from "@/components/mobile-sourcing-bar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -163,23 +154,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-violet-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
           Skip to main content
         </a>
-        <div id="site-header-container"><Header /></div>
-        <div id="site-first-visit-container"><FirstVisitModal /></div>
-        <div id="site-pwa-container"><PWAInstallPrompt /></div>
         <AutoLinkProvider>
-          <main id="main-content" role="main" className="pb-16 min-h-[calc(100vh-64px)]">
+          <main id="main-content" role="main">
             {children}
           </main>
-          <div id="site-disclaimer-container" className="hidden md:block fixed bottom-14 left-0 right-0 z-40 pointer-events-none">
-            <DisclaimerBanner />
-          </div>
-          <div id="site-footer-container"><Footer /></div>
         </AutoLinkProvider>
 
-        <div id="site-lead-container"><LeadMagnetPopup source="global_exit_intent" /></div>
-        <div id="site-mobilesource-container"><MobileSourcingBar /></div>
-        <div id="site-bottomnav-container"><BottomNav /></div>
-        
         <Suspense fallback={null}>
           <GlobalEmbedHandler />
         </Suspense>
