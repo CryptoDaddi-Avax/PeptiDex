@@ -53,8 +53,7 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
         ? (bestVendor.price_usd / bestVendor.vial_mg).toFixed(2)
         : null;
 
-    // The bar height + bottom nav height = 62px (nav) + this bar
-    // We use createPortal to escape any parent transform/filter stacking context
+    // Use createPortal to escape any parent transform/filter stacking context
     // which would otherwise break `position: fixed`
     const bar = (
         <AnimatePresence>
@@ -67,10 +66,10 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
                     transition={{ type: "spring", stiffness: 500, damping: 40, mass: 0.8 }}
                     style={{
                         position: "fixed",
-                        bottom: 62,  // Sits on top of the 62px bottom-nav
+                        bottom: 0,  // Sits at screen bottom (BottomNav removed)
                         left: 0,
                         right: 0,
-                        zIndex: 49,  // Just below the bottom-nav z-50
+                        zIndex: 50,
                     }}
                     className="md:hidden"
                     aria-label="Quick compare bar"
