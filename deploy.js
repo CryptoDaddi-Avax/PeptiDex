@@ -30,6 +30,7 @@ echo "Installing Dependencies..."
 npm install
 
 echo "Building Next.js for production..."
+rm -rf .next
 npm run build
 
 echo "Restarting PM2 Service..."
