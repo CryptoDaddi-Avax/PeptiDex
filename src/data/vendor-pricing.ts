@@ -1,7 +1,14 @@
 /**
+ * @deprecated — Will be consolidated into /data/vendors.ts pricing module.
+ * This file is preserved for backward compatibility. Migration date: 2026-04-30
+ *
  * Vendor-specific pricing for each peptide, keyed by slug.
  * Each entry lists the vendors that carry it and their price + affiliate link.
  * All prices are for a single standard vial at the most common size.
+ *
+ * Bio Longevity Labs prices: current site price (may include sitewide sale).
+ * PEPTIDEX code stacks for an additional 15% off these prices.
+ * Prices auto-updated every 4h via scripts/scrape-bll-prices.ts
  */
 
 export interface VendorPrice {
@@ -52,6 +59,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "inStock": true,
                 "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
                 "lastTestedDate": "2026-04-01"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 69.98,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -81,6 +96,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "inStock": true,
                 "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
                 "lastTestedDate": "2026-04-01"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 115.48,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -95,6 +118,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "inStock": true,
                 "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 69.98,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -124,6 +155,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "inStock": true,
                 "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/",
                 "lastTestedDate": "2026-04-01"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 55.98,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -232,6 +271,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 5,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 104.98,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -295,6 +342,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 66.48,
+                "vial_mg": 20,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -308,6 +363,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://ascensionpeptides.com/ref/PeptiDex/"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 90.98,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -467,6 +530,14 @@ export const vendorPricing: PeptideVendorPricing[] = [
                 "inStock": true,
                 "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
+            },
+            {
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 174.98,
+                "vial_mg": 500,
+                "inStock": true,
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "lastTestedDate": "2026-04-20"
             }
         ]
     },

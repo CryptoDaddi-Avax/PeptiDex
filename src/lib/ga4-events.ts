@@ -10,7 +10,13 @@ declare global {
 }
 
 // ─── Vendor key type ─────────────────────────────────────────────────────────
-export type AffiliateVendor = "amino_club" | "limitless_life" | "ascension";
+export type AffiliateVendor =
+  | "amino_club"
+  | "bio_longevity_labs"
+  | "limitless_life"
+  | "ascension"
+  | "pantheon"
+  | "lvlup_health";
 
 // ─── Source component type ────────────────────────────────────────────────────
 export type AffiliateSource =
@@ -29,8 +35,11 @@ export type AffiliateSource =
 // ─── Derive vendor key from URL ───────────────────────────────────────────────
 export function vendorKeyFromUrl(url: string): AffiliateVendor | "unknown" {
   if (url.includes("aminoclub.com")) return "amino_club";
+  if (url.includes("biolongevitylabs.com")) return "bio_longevity_labs";
   if (url.includes("kb6dp3dq.com")) return "limitless_life";
   if (url.includes("ascensionpeptides.com")) return "ascension";
+  if (url.includes("pantheonpeptides.com")) return "pantheon";
+  if (url.includes("lvluphealth.com")) return "lvlup_health";
   return "unknown";
 }
 
@@ -44,11 +53,13 @@ export function trackAffiliateClick({
   peptide = "general",
   source_component,
   url,
+  discount_code,
 }: {
   vendor: AffiliateVendor | "unknown";
   peptide?: string;
   source_component: AffiliateSource | string;
   url: string;
+  discount_code?: string;
 }) {
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", "affiliate_click", {
@@ -57,6 +68,7 @@ export function trackAffiliateClick({
       source_page: window.location.pathname,
       source_component,
       outbound_url: url,
+      ...(discount_code ? { discount_code } : {}),
     });
   }
 }

@@ -65,6 +65,14 @@ export default function VendorsPage() {
           text: 'The best peptide company in 2026 depends on your specific research needs, but top-tier vendors consistently provide batch-specific COAs, offer a wide variety of compounds, and maintain domestic shipping infrastructure.',
         },
       },
+      {
+        '@type': 'Question',
+        name: 'What is Bio Longevity Labs and why are they triple-tested?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Bio Longevity Labs is a premium injectable peptide vendor that subjects every batch to three independent testing protocols: HPLC purity analysis, LC-MS molecular verification, and endotoxin screening. Their PEPTIDEX discount code stacks with any active sitewide sale for maximum savings.',
+        },
+      },
     ],
   };
 

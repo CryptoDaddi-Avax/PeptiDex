@@ -188,6 +188,59 @@
 .vn-tag.solid-gold { background: var(--gold); color: var(--bg); border: 1px solid var(--gold); }
 .vn-tag.gold { background: rgba(201,169,97,0.1); color: var(--gold); border: 1px solid rgba(201,169,97,0.25); }
 .vn-tag.green { background: rgba(127,183,126,0.1); color: var(--green); border: 1px solid rgba(127,183,126,0.25); }
+.vn-tag.solid-premium { background: linear-gradient(135deg, #c9a961, #e0c278); color: #1a1a1a; border: 1px solid #c9a961; box-shadow: 0 0 8px rgba(201,169,97,0.3); }
+.vn-tag.solid-blue { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+.vn-tag.solid-orange { background: rgba(251,146,60,0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); }
+
+/* Premium highlight card (Bio Longevity Labs) */
+.vn-vendor-card.premium-highlight {
+  border: 1px solid rgba(201,169,97,0.35);
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,169,97,0.03) 100%);
+}
+.vn-vendor-card.premium-highlight::before {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(201,169,97,0.12), transparent 60%);
+}
+.vn-vendor-card.premium-highlight::after {
+  content: '🔬';
+  position: absolute;
+  top: 16px; right: 20px;
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+/* Stackable discount callout */
+.vn-discount-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(201,169,97,0.08), rgba(201,169,97,0.03));
+  border: 1px solid rgba(201,169,97,0.25);
+  border-left: 3px solid var(--gold);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+.vn-discount-callout strong {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.vn-discount-callout em {
+  font-style: italic;
+  color: var(--gold);
+}
+.vn-discount-callout.simple {
+  background: rgba(127,183,126,0.04);
+  border-color: rgba(127,183,126,0.2);
+  border-left-color: var(--green);
+}
+.vn-discount-callout.simple strong {
+  color: var(--green);
+}
 
 .vn-vendor-name {
   font-family: var(--serif);
@@ -374,14 +427,24 @@
 }
 .vn-matrix-title em { font-style: italic; color: var(--gold); }
 
+/* Matrix scroll wrapper for mobile */
+.vn-matrix-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -16px;
+  padding: 0 16px;
+}
 .vn-matrix-table {
   width: 100%;
   border: 1px solid var(--line);
   background: var(--bg-card);
 }
+.vn-matrix-table.wide {
+  min-width: 900px;
+}
 .vn-matrix-row {
   display: grid;
-  grid-template-columns: 200px repeat(3, 1fr);
+  grid-template-columns: 160px repeat(5, 1fr);
   gap: 0;
 }
 .vn-matrix-row.header {
@@ -413,6 +476,18 @@
 .vn-matrix-row.header .vn-matrix-cell.featured { color: var(--gold); }
 .vn-matrix-row:not(.header) { border-top: 1px solid var(--line); }
 .vn-matrix-row:not(.header):hover .vn-matrix-cell:not(:first-child) { background: rgba(201,169,97,0.02); }
+
+/* ═══════ ORAL VENDORS SECTION ═══════ */
+.vn-oral-section {
+  margin-top: 64px;
+  padding: 64px 0;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.vn-oral-section .vn-vendor-list {
+  margin-top: 0;
+}
 
 /* ═══════ SECTIONS (FAQ, ETC) ═══════ */
 .vn-extra-section {
@@ -489,9 +564,7 @@
   .vn-vendor-name { font-size: 32px; }
   .vn-vendor-rating-row { flex-wrap: wrap; gap: 16px; }
   .vn-purity-large { margin-left: 0; text-align: left; }
-  .vn-matrix-table { overflow-x: auto; display: block; }
-  .vn-matrix-row { grid-template-columns: 140px repeat(3, 200px); }
-  .vn-matrix-cell { padding: 14px 16px; font-size: 12px; }
-  .vn-matrix-row.header .vn-matrix-cell { font-size: 16px; }
+  .vn-matrix-cell { padding: 14px 12px; font-size: 11px; }
+  .vn-matrix-row.header .vn-matrix-cell { font-size: 14px; }
   .vn-btn-primary, .vn-btn-ghost { width: 100%; }
 }

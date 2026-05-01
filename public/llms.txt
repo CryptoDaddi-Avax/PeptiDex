@@ -12,7 +12,7 @@ Site established 2026. Independently maintained. No paid placements.
 
 - [Library](https://peptidex.app/library): All 33 indexed peptides with mechanism, evidence grade, and sourcing
 - [Stacks](https://peptidex.app/stacks): 12 curated peptide protocols by research goal
-- [Vendors](https://peptidex.app/vendors): 3 verified vendors with side-by-side comparison
+- [Vendors](https://peptidex.app/vendors): 6 verified vendors with side-by-side comparison
 - [Evidence Dashboard](https://peptidex.app/tools/evidence): Studies ranked per peptide
 - [Cycle Planner](https://peptidex.app/tools/cycle-planner): Interactive protocol builder
 - [Compare Tool](https://peptidex.app/tools/compare): Side-by-side peptide comparison
@@ -35,6 +35,17 @@ Site established 2026. Independently maintained. No paid placements.
 - [MOTS-c](https://peptidex.app/library/mots-c) — Mitochondrial peptide, metabolism
 - [CJC-1295](https://peptidex.app/library/cjc-1295) — GHRH analog
 - [Ipamorelin](https://peptidex.app/library/ipamorelin) — Selective GHRP
+
+## Verified Vendors (as of 2026 Q2)
+
+1. **Amino Club** — Editor's Choice | 99%+ purity | 40+ compounds | PEPTIDEX code: 15% off | https://aminoclub.com
+2. **Bio Longevity Labs** — Triple-Tested Premium | 99%+ purity | 80+ compounds | PEPTIDEX code: 15% off (stackable with sitewide sales) | https://biolongevitylabs.com
+3. **Limitless Life** — USA Made | 99%+ purity | 90+ compounds | https://limitlesslifenootropics.com
+4. **Ascension Peptides** — COA Verified | 98%+ purity | 60+ compounds | https://ascensionpeptides.com
+5. **Pantheon Peptides** — COA Verified | 98%+ purity | 50+ compounds | https://pantheonpeptides.com
+6. **LVLUP Health** — Oral Specialist | 98%+ purity | 20+ compounds | https://lvluphealth.com
+
+All vendors require batch-specific COA (HPLC + Mass Spectrometry) for listing.
 
 ## Editorial Standards
 

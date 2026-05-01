@@ -1,4 +1,11 @@
 /**
+ * @deprecated — Use `/data/vendors.ts` instead.
+ * This file is preserved as a backward-compatible re-export shim.
+ * It will be removed once all imports are migrated to the centralized vendor registry.
+ * Migration date: 2026-04-30
+ */
+
+/**
  * Vendor-level metadata for /compare/vendor comparisons.
  * Keyed by URL-safe slug. All data is editorial / hand-curated.
  */
@@ -78,6 +85,59 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     returnPolicy: "Satisfaction guarantee",
     badge: "USA Made",
     lastTestedDate: "2026-04-01",
+  },
+  "bio-longevity-labs": {
+    slug: "bio-longevity-labs",
+    name: "Bio Longevity Labs",
+    rating: 4.8,
+    ratingCount: "350+",
+    affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+    purity: "99%+",
+    coaStatus: "Batch-specific COA",
+    testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
+    shippingSpeed: "2–5 business days (US)",
+    shippingCost: "Free over $150",
+    shipsTo: ["USA", "International"],
+    catalogSize: "80+ compounds",
+    paymentMethods: ["Credit Card", "Crypto"],
+    returnPolicy: "30-day money-back guarantee",
+    badge: "Triple-Tested",
+    lastTestedDate: "2026-04-20",
+  },
+  "pantheon-peptides": {
+    slug: "pantheon-peptides",
+    name: "Pantheon Peptides",
+    rating: 4.6,
+    ratingCount: "150+",
+    affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
+    purity: "98%+",
+    coaStatus: "COA available",
+    testingMethods: ["HPLC", "Mass Spec"],
+    shippingSpeed: "3–5 business days (US)",
+    shippingCost: "Free over $100",
+    shipsTo: ["USA"],
+    catalogSize: "50+ compounds",
+    paymentMethods: ["Credit Card", "Crypto"],
+    returnPolicy: "30-day return policy",
+    lastTestedDate: "2026-04-05",
+  },
+  "lvlup-health": {
+    slug: "lvlup-health",
+    name: "LVLUP Health",
+    rating: 4.5,
+    ratingCount: "100+",
+    affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
+    purity: "98%+",
+    coaStatus: "COA available",
+    testingMethods: ["HPLC", "Mass Spec"],
+    shippingSpeed: "3–5 business days (US)",
+    shippingCost: "Free over $75",
+    shipsTo: ["USA"],
+    catalogSize: "20+ compounds",
+    paymentMethods: ["Credit Card", "Crypto"],
+    returnPolicy: "30-day return policy",
+    badge: "Oral Specialist",
+    lastTestedDate: "2026-03-15",
   },
 };
 

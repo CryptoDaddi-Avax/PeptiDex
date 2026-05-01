@@ -1,8 +1,12 @@
 'use client';
 import { vendorProfiles, type VendorProfile } from '@/data/vendor-comparison';
+import { VENDOR_COUNT } from '@/data/vendors';
 import './VendorSection.css';
 
-const vendors = Object.values(vendorProfiles).sort((a, b) => b.rating - a.rating);
+const allVendors = Object.values(vendorProfiles).sort((a, b) => b.rating - a.rating);
+// Show top 3 on homepage, link to /vendors for the rest
+const displayVendors = allVendors.slice(0, 3);
+const remainingCount = VENDOR_COUNT - displayVendors.length;
 
 function VendorCard({ v }: { v: VendorProfile }) {
   return (
@@ -79,21 +83,22 @@ export default function VendorSection() {
         </p>
       </div>
       <div className="vendors-grid">
-        {vendors.map((v) => (
+        {displayVendors.map((v) => (
           <VendorCard key={v.slug} v={v} />
         ))}
       </div>
       <div className="vendors-cta-row">
-        <a href="/vendors/amino-club-review" className="btn-primary" style={{ marginRight: '12px' }}>
-          Read our Amino Club Review
-        </a>
-        <a href="/vendors" className="btn-ghost">
-          Compare all vendors
+        <a href="/vendors" className="btn-primary">
+          + {remainingCount} more verified vendors
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
           </svg>
+        </a>
+        <a href="/vendors/amino-club-review" className="btn-ghost" style={{ marginLeft: '12px' }}>
+          Read our Amino Club Review
         </a>
       </div>
     </section>
   );
 }
+

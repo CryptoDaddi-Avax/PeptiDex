@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import {
   ShieldAlert, CheckCircle2, ArrowRight, ExternalLink,
-  Star, FlaskConical, AlertTriangle, Clock, BarChart3, Beaker,
+  Star, FlaskConical, AlertTriangle, Clock, BarChart3, Beaker, Sparkles,
 } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { vendorProfiles } from '@/data/vendor-comparison';
 import { vendorPricing } from '@/data/vendor-pricing';
+import { vendors, injectableVendors, oralVendors, VENDOR_COUNT, type Vendor } from '@/data/vendors';
 import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 import { VendorOutboundLink } from './vendor-outbound-link';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
@@ -48,7 +49,121 @@ const FAQ_ITEMS = [
     q: 'What is the best peptide company in 2026?',
     a: 'The best peptide company in 2026 depends on your specific research needs, but top-tier vendors consistently provide batch-specific COAs, offer a wide variety of compounds (from BPC-157 to TB-500), maintain domestic shipping infrastructure, and accept secure payments.',
   },
+  {
+    q: 'What is Bio Longevity Labs and why are they triple-tested?',
+    a: 'Bio Longevity Labs is a premium injectable peptide vendor that subjects every batch to three independent testing protocols: HPLC purity analysis, LC-MS molecular verification, and endotoxin screening. Their PEPTIDEX discount code stacks with any active sitewide sale for maximum savings.',
+  },
 ];
+
+/* ── Badge style helper ── */
+function getBadgeClass(vendor: Vendor): string {
+  switch (vendor.badgeStyle) {
+    case 'gold': return 'vn-tag solid-gold';
+    case 'premium': return 'vn-tag solid-premium';
+    case 'green': return 'vn-tag green';
+    case 'blue': return 'vn-tag solid-blue';
+    case 'orange': return 'vn-tag solid-orange';
+    default: return 'vn-tag green';
+  }
+}
+
+/* ── Vendor Card (data-driven) ── */
+function VendorCard({ vendor, rank }: { vendor: Vendor; rank: number }) {
+  const profile = vendorProfiles[vendor.slug];
+  const isBLL = vendor.slug === 'bio-longevity-labs';
+  const isFeatured = rank <= 2;
+
+  return (
+    <div 
+      className={`vn-vendor-card ${isFeatured ? 'featured' : ''} ${isBLL ? 'premium-highlight' : ''}`} 
+      id={vendor.slug}
+    >
+      <div className="vn-vendor-grid">
+        <div>
+          <div className="vn-vendor-rank"><span>{String(rank).padStart(2, '0')}</span>Ranked source</div>
+          <div className="vn-vendor-badges">
+            <span className={getBadgeClass(vendor)}>{vendor.badge}</span>
+            <span className="vn-tag green">✓ COA Verified</span>
+          </div>
+          <h2 className="vn-vendor-name">{vendor.name}</h2>
+          
+          <div className="vn-vendor-rating-row">
+            <div>
+              <div className="vn-rating-stars">★ {vendor.rating}<em>/5</em></div>
+              <div className="vn-review-count">{vendor.ratingCount} reviews</div>
+            </div>
+            <div className="vn-purity-large">
+              <div className="vn-purity-num">{vendor.purity}</div>
+              <div className="vn-purity-label">Purity verified</div>
+            </div>
+          </div>
+          
+          {/* Stackable discount callout for BLL */}
+          {isBLL && vendor.discountStackable && (
+            <div className="vn-discount-callout">
+              <Sparkles size={14} />
+              <span>
+                Use code <strong>PEPTIDEX</strong> for {vendor.discountPercent}% off — 
+                <em>stacks with any active sale</em> for up to 40%+ savings
+              </span>
+            </div>
+          )}
+          
+          {/* Regular discount callout */}
+          {!isBLL && vendor.discountCode && (
+            <div className="vn-discount-callout simple">
+              <span>Use code <strong>{vendor.discountCode}</strong> for {vendor.discountPercent}% off</span>
+            </div>
+          )}
+          
+          {/* Price preview strip */}
+          {vendorPricePreview(vendor.name) && (
+            <div className="vn-price-preview">
+              {vendorPricePreview(vendor.name)}
+            </div>
+          )}
+
+          <div className="vn-vendor-actions">
+            <VendorOutboundLink 
+              href={vendor.affiliateUrl} 
+              vendorName={vendor.name} 
+              location={`vendor_card_${vendor.slug.replace(/-/g, '_')}`} 
+              className="vn-btn-primary"
+            >
+              Shop {vendor.name} <ArrowRight size={14} />
+            </VendorOutboundLink>
+            {profile?.coaUrl ? (
+              <VendorOutboundLink 
+                href={profile.coaUrl} 
+                vendorName={vendor.name} 
+                location={`vendor_card_${vendor.slug.replace(/-/g, '_')}_coa`} 
+                className="vn-btn-ghost"
+              >
+                View sample COA
+              </VendorOutboundLink>
+            ) : (
+              <button className="vn-btn-ghost">View sample COA</button>
+            )}
+          </div>
+          <div className="vn-disclosure">
+            PeptiDex may earn a commission from qualifying purchases at no cost to you. 
+            Our recommendations are based on independent verification, not commercial relationships.
+          </div>
+        </div>
+        
+        <div className="vn-vendor-specs">
+          <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> {vendor.coaStatus}</div></div>
+          <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">{vendor.testingMethods.join(', ')}</div></div>
+          <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">{vendor.shippingSpeed}</div></div>
+          <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">{vendor.shipsTo.join(', ')}</div></div>
+          <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">{vendor.catalogSize}</div></div>
+          <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">{vendor.paymentMethods.join(', ')}</div></div>
+          <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">{vendor.returnPolicy}</div></div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function VendorsClient() {
   return (
@@ -71,206 +186,39 @@ export default function VendorsClient() {
             We test purity via HPLC and Mass Spectrometry before any recommendation.
           </p>
           <div className="vn-page-meta">
-            <div className="vn-meta-item"><strong>3</strong> verified vendors</div>
+            <div className="vn-meta-item"><strong>{VENDOR_COUNT}</strong> verified vendors</div>
             <div className="vn-meta-item"><strong>HPLC</strong> + Mass Spec required</div>
             <div className="vn-meta-item"><strong>Independent</strong> verification</div>
           </div>
         </div>
       </header>
 
-      {/* ═══ VENDORS LIST ═══ */}
+      {/* ═══ INJECTABLE VENDORS ═══ */}
       <div className="vn-container">
         <div className="vn-vendor-list reveal">
-          
-          {/* Amino Club */}
-          <div className="vn-vendor-card featured" id="amino-club">
-            <div className="vn-vendor-grid">
-              <div>
-                <div className="vn-vendor-rank"><span>01</span>Ranked source</div>
-                <div className="vn-vendor-badges">
-                  <span className="vn-tag solid-gold">Editor&apos;s Choice</span>
-                  <span className="vn-tag green">✓ COA Verified</span>
-                </div>
-                <h2 className="vn-vendor-name">Amino Club</h2>
-                
-                <div className="vn-vendor-rating-row">
-                  <div>
-                    <div className="vn-rating-stars">★ 4.9<em>/5</em></div>
-                    <div className="vn-review-count">400+ reviews</div>
-                  </div>
-                  <div className="vn-purity-large">
-                    <div className="vn-purity-num">99%+</div>
-                    <div className="vn-purity-label">Purity verified</div>
-                  </div>
-                </div>
-                
-                {/* Price preview strip */}
-                {vendorPricePreview('Amino Club') && (
-                  <div className="vn-price-preview">
-                    {vendorPricePreview('Amino Club')}
-                  </div>
-                )}
-
-                <div className="vn-vendor-actions">
-                  <VendorOutboundLink 
-                    href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" 
-                    vendorName="Amino Club" 
-                    location="vendor_card_amino_club" 
-                    className="vn-btn-primary"
-                  >
-                    Shop Amino Club <ArrowRight size={14} />
-                  </VendorOutboundLink>
-                  <VendorOutboundLink 
-                    href={vendorProfiles['amino-club']?.coaUrl || '#'} 
-                    vendorName="Amino Club" 
-                    location="vendor_card_amino_club_coa" 
-                    className="vn-btn-ghost"
-                  >
-                    View sample COA
-                  </VendorOutboundLink>
-                </div>
-                <div className="vn-disclosure">
-                  PeptiDex may earn a commission from qualifying purchases at no cost to you. 
-                  Our recommendations are based on independent verification, not commercial relationships.
-                </div>
-              </div>
-              
-              <div className="vn-vendor-specs">
-                <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> Batch-specific COA</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">HPLC, Mass Spec, Endotoxin</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">2–4 days (US)</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">USA, International</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">40+ compounds</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">Card, Crypto, Zelle</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">60-day money-back</div></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Limitless Life */}
-          <div className="vn-vendor-card featured" id="limitless-life">
-            <div className="vn-vendor-grid">
-              <div>
-                <div className="vn-vendor-rank"><span>02</span>Ranked source</div>
-                <div className="vn-vendor-badges">
-                  <span className="vn-tag solid-gold">USA Made</span>
-                  <span className="vn-tag green">✓ COA Verified</span>
-                </div>
-                <h2 className="vn-vendor-name">Limitless Life</h2>
-                
-                <div className="vn-vendor-rating-row">
-                  <div>
-                    <div className="vn-rating-stars">★ 4.8<em>/5</em></div>
-                    <div className="vn-review-count">300+ reviews</div>
-                  </div>
-                  <div className="vn-purity-large">
-                    <div className="vn-purity-num">99%+</div>
-                    <div className="vn-purity-label">Purity verified</div>
-                  </div>
-                </div>
-                
-                {/* Price preview strip */}
-                {vendorPricePreview('Limitless Life') && (
-                  <div className="vn-price-preview">
-                    {vendorPricePreview('Limitless Life')}
-                  </div>
-                )}
-
-                <div className="vn-vendor-actions">
-                  <VendorOutboundLink 
-                    href="https://www.kb6dp3dq.com/PEPTIDEX/" 
-                    vendorName="Limitless Life" 
-                    location="vendor_card_limitless_life" 
-                    className="vn-btn-primary"
-                  >
-                    Shop Limitless Life <ArrowRight size={14} />
-                  </VendorOutboundLink>
-                  <button className="vn-btn-ghost">View sample COA</button>
-                </div>
-                <div className="vn-disclosure">
-                  PeptiDex may earn a commission from qualifying purchases at no cost to you. 
-                  Our recommendations are based on independent verification, not commercial relationships.
-                </div>
-              </div>
-              
-              <div className="vn-vendor-specs">
-                <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> Batch-specific COA</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">HPLC, LC-MS, Endotoxin</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">3–5 days (US)</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">USA</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">90+ compounds</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">Card, Crypto</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">Satisfaction guarantee</div></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Ascension Peptides */}
-          <div className="vn-vendor-card featured" id="ascension">
-            <div className="vn-vendor-grid">
-              <div>
-                <div className="vn-vendor-rank"><span>03</span>Ranked source</div>
-                <div className="vn-vendor-badges">
-                  <span className="vn-tag green">✓ COA Verified</span>
-                </div>
-                <h2 className="vn-vendor-name">Ascension Peptides</h2>
-                
-                <div className="vn-vendor-rating-row">
-                  <div>
-                    <div className="vn-rating-stars">★ 4.7<em>/5</em></div>
-                    <div className="vn-review-count">250+ reviews</div>
-                  </div>
-                  <div className="vn-purity-large">
-                    <div className="vn-purity-num">98%+</div>
-                    <div className="vn-purity-label">Purity verified</div>
-                  </div>
-                </div>
-                
-                {/* Price preview strip */}
-                {vendorPricePreview('Ascension Peptides') && (
-                  <div className="vn-price-preview">
-                    {vendorPricePreview('Ascension Peptides')}
-                  </div>
-                )}
-
-                <div className="vn-vendor-actions">
-                  <VendorOutboundLink 
-                    href="https://ascensionpeptides.com/ref/PeptiDex/" 
-                    vendorName="Ascension Peptides" 
-                    location="vendor_card_ascension" 
-                    className="vn-btn-primary"
-                  >
-                    Shop Ascension Peptides <ArrowRight size={14} />
-                  </VendorOutboundLink>
-                  <VendorOutboundLink 
-                    href={vendorProfiles['ascension-peptides']?.coaUrl || '#'} 
-                    vendorName="Ascension Peptides" 
-                    location="vendor_card_ascension_coa" 
-                    className="vn-btn-ghost"
-                  >
-                    View sample COA
-                  </VendorOutboundLink>
-                </div>
-                <div className="vn-disclosure">
-                  PeptiDex may earn a commission from qualifying purchases at no cost to you. 
-                  Our recommendations are based on independent verification, not commercial relationships.
-                </div>
-              </div>
-              
-              <div className="vn-vendor-specs">
-                <div className="vn-spec-row"><div className="vn-spec-key">COA</div><div className="vn-spec-val"><span className="check">✓</span> COA available</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Testing</div><div className="vn-spec-val">HPLC, Mass Spec</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Shipping</div><div className="vn-spec-val">3–5 days (US)</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Ships to</div><div className="vn-spec-val">USA</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">60+ compounds</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">Card, Crypto</div></div>
-                <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">30-day return</div></div>
-              </div>
-            </div>
-          </div>
-
+          {injectableVendors.map((vendor, i) => (
+            <VendorCard key={vendor.slug} vendor={vendor} rank={i + 1} />
+          ))}
         </div>
       </div>
+
+      {/* ═══ ORAL VENDORS SECTION ═══ */}
+      {oralVendors.length > 0 && (
+        <section className="vn-oral-section reveal">
+          <div className="vn-container">
+            <div className="vn-section-label">§ Oral Peptide Sources</div>
+            <h2 className="vn-extra-title">Oral formulation <em>specialists</em>.</h2>
+            <p className="vn-subtitle" style={{ maxWidth: '600px', marginBottom: '2rem', fontSize: '0.95rem' }}>
+              Vendors specializing in oral peptide delivery — capsules, sublingual tablets, and nasal sprays.
+            </p>
+            <div className="vn-vendor-list">
+              {oralVendors.map((vendor, i) => (
+                <VendorCard key={vendor.slug} vendor={vendor} rank={injectableVendors.length + i + 1} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══ VENDOR DEEP DIVES ═══ */}
       <section className="vn-extra-section reveal" style={{ borderTop: 'none', paddingTop: 0 }}>
@@ -284,7 +232,7 @@ export default function VendorsClient() {
             <Link href="/vendors/amino-club-review" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><Star size={24} /></div>
               <h3 style={{ color: 'var(--ink)' }}>Full 2026 Review</h3>
-              <p style={{ flex: 1 }}>Read our comprehensive 5,000-word analysis of Amino Club's operations, purity testing, and customer service.</p>
+              <p style={{ flex: 1 }}>Read our comprehensive 5,000-word analysis of Amino Club&apos;s operations, purity testing, and customer service.</p>
               <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Read review <ArrowRight size={14} /></span>
             </Link>
             <Link href="/vendors/amino-club-discount-code" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -296,7 +244,7 @@ export default function VendorsClient() {
             <Link href="/vendors/amino-club-coa-verification" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><FlaskConical size={24} /></div>
               <h3 style={{ color: 'var(--ink)' }}>COA Verification Guide</h3>
-              <p style={{ flex: 1 }}>Learn how to read Amino Club's third-party HPLC and Mass Spectrometry testing documents.</p>
+              <p style={{ flex: 1 }}>Learn how to read Amino Club&apos;s third-party HPLC and Mass Spectrometry testing documents.</p>
               <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Read guide <ArrowRight size={14} /></span>
             </Link>
             <Link href="/vendors/is-amino-club-legit" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -327,22 +275,25 @@ export default function VendorsClient() {
           <div className="vn-section-label">§ Side-by-Side Comparison</div>
           <h2 className="vn-matrix-title">The full <em>matrix</em>.</h2>
           
-          <div className="vn-matrix-table">
-            <div className="vn-matrix-row header">
-              <div className="vn-matrix-cell"></div>
-              <div className="vn-matrix-cell featured">Amino Club</div>
-              <div className="vn-matrix-cell">Limitless Life</div>
-              <div className="vn-matrix-cell">Ascension</div>
+          <div className="vn-matrix-scroll">
+            <div className="vn-matrix-table wide">
+              <div className="vn-matrix-row header">
+                <div className="vn-matrix-cell"></div>
+                {injectableVendors.map((v) => (
+                  <div key={v.slug} className={`vn-matrix-cell ${v.slug === 'amino-club' ? 'featured' : ''}`}>{v.name}</div>
+                ))}
+              </div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Rating</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">★ {v.rating}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Purity</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.purity}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">COA</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.coaStatus.replace('Batch-specific COA', 'Batch-specific').replace('COA available', 'Available')}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Testing</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.testingMethods.join(', ')}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Shipping</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.shippingSpeed}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">International</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.shipsTo.includes('International') ? 'Yes' : 'No (US only)'}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Catalog Size</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.catalogSize.replace(' compounds', '')}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Payment</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.paymentMethods.join(' · ')}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Returns</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.returnPolicy.replace(' guarantee', '').replace(' policy', '').replace('money-back', 'MBG')}</div>)}</div>
+              <div className="vn-matrix-row"><div className="vn-matrix-cell">Discount</div>{injectableVendors.map(v => <div key={v.slug} className="vn-matrix-cell">{v.discountCode ? `${v.discountPercent}% off${v.discountStackable ? ' (stacks!)' : ''}` : '—'}</div>)}</div>
             </div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Rating</div><div className="vn-matrix-cell">★ 4.9</div><div className="vn-matrix-cell">★ 4.8</div><div className="vn-matrix-cell">★ 4.7</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Purity</div><div className="vn-matrix-cell">99%+</div><div className="vn-matrix-cell">99%+</div><div className="vn-matrix-cell">98%+</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">COA</div><div className="vn-matrix-cell">Batch-specific</div><div className="vn-matrix-cell">Batch-specific</div><div className="vn-matrix-cell">Available</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Testing</div><div className="vn-matrix-cell">HPLC, MS, Endotoxin</div><div className="vn-matrix-cell">HPLC, LC-MS, Endotoxin</div><div className="vn-matrix-cell">HPLC, MS</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Shipping</div><div className="vn-matrix-cell">2–4 days (US)</div><div className="vn-matrix-cell">3–5 days (US)</div><div className="vn-matrix-cell">3–5 days (US)</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">International</div><div className="vn-matrix-cell">Yes</div><div className="vn-matrix-cell">No (US only)</div><div className="vn-matrix-cell">No (US only)</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Catalog Size</div><div className="vn-matrix-cell">40+</div><div className="vn-matrix-cell">90+</div><div className="vn-matrix-cell">60+</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Payment</div><div className="vn-matrix-cell">Card · Crypto · Zelle</div><div className="vn-matrix-cell">Card · Crypto</div><div className="vn-matrix-cell">Card · Crypto</div></div>
-            <div className="vn-matrix-row"><div className="vn-matrix-cell">Returns</div><div className="vn-matrix-cell">60-day MBG</div><div className="vn-matrix-cell">Satisfaction</div><div className="vn-matrix-cell">30-day</div></div>
           </div>
 
           <div style={{ marginTop: '32px', fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--ink-mute)', letterSpacing: '0.05em' }}>
