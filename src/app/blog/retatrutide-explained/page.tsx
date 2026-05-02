@@ -64,30 +64,49 @@ export default function RetatrutideExplainedPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <Breadcrumbs items={[{ name: 'Home', url: 'https://peptidex.app/' }, { name: 'Blog', url: 'https://peptidex.app/blog' }, { name: POST_TITLE }]} />
-
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-400/80 leading-relaxed font-medium"><strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}</p>
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">Retatrutide: The Triple-Agonist Peptide Explained</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            Retatrutide:<br /><em>The Triple-Agonist Peptide Explained</em>.
+          </h1>
+          <p className="page-subtitle">
+            A comprehensive research guide to retatrutide — the first GLP-1/GIP/glucagon triple receptor agonist, its Phase 3 trial status, mechanism of action, dosing protocols, and what it means for the future of metabolic medicine.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-12</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <header className="space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">{POST_TITLE}</h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-zinc-500" /><span>Updated: {DATE_MOD}</span></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-emerald-500" /><span className="text-emerald-400 font-medium">11 Min Read</span></div>
-        </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/retatrutide-explained`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
@@ -122,7 +141,7 @@ export default function RetatrutideExplainedPage() {
         </aside>
 
         <AutoLink>
-        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+        <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="intro">
             In the rapidly evolving landscape of incretin-based metabolic therapies, <strong>retatrutide</strong> stands alone. It is the first — and currently only — molecule to simultaneously activate three hormone receptors: GLP-1, GIP, and glucagon. And its early clinical data has stunned researchers.
           </p>
@@ -130,6 +149,7 @@ export default function RetatrutideExplainedPage() {
             Developed by Eli Lilly under the research designation LY3437943, retatrutide produced the largest weight loss ever documented in a registrational-pathway obesity trial at the time of its Phase 2 publication: <strong>24.2% mean body weight reduction over 48 weeks</strong>.¹ This guide breaks down what makes retatrutide unique, how it compares to existing dual-agonists like <Link href="/library/tirzepatide">tirzepatide</Link>, and what the Phase 3 program means for the future of obesity pharmacotherapy.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 01</div>
           <h2 id="triple-mechanism">The Triple Receptor Mechanism</h2>
           <p>
             Understanding retatrutide requires understanding how each of its three target receptors contributes to metabolic regulation independently — and what happens when all three are activated simultaneously.
@@ -153,6 +173,7 @@ export default function RetatrutideExplainedPage() {
             In summary: GLP-1 reduces intake, GIP optimizes lipid handling, and glucagon burns stored energy. It&apos;s a three-pronged metabolic attack.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 02</div>
           <h2 id="phase-2">Phase 2 Trial Data: Record-Breaking Results</h2>
           <p>
             The Phase 2 dose-finding trial, published in the <em>New England Journal of Medicine</em> in June 2023, enrolled 338 adults with obesity (BMI ≥30) or overweight (BMI ≥27) with at least one weight-related comorbidity.¹
@@ -174,6 +195,7 @@ export default function RetatrutideExplainedPage() {
             Importantly, the weight loss trajectory at 48 weeks had not yet plateaued in the higher-dose groups, suggesting that longer treatment durations could yield even greater reductions.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="vs-tirzepatide">Retatrutide vs Tirzepatide: A Framework Comparison</h2>
           <div className="overflow-x-auto my-8">
             <table className="w-full text-left text-sm border-collapse">
@@ -197,6 +219,7 @@ export default function RetatrutideExplainedPage() {
             A critical differentiator is retatrutide&apos;s impact on hepatic steatosis (fatty liver disease). In the Phase 2 trial, participants with non-alcoholic fatty liver disease (NAFLD) showed mean liver fat reductions exceeding 80% — suggesting retatrutide could become a first-in-class treatment for NASH/MAFLD, a condition with no currently approved pharmacotherapy.⁵
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="phase-3">Phase 3: The TRIUMPH Program</h2>
           <p>
             Eli Lilly has enrolled patients across multiple Phase 3 trials under the TRIUMPH umbrella:
@@ -211,6 +234,7 @@ export default function RetatrutideExplainedPage() {
             Initial Phase 3 readouts are anticipated in late 2026. If the TRIUMPH data confirms the Phase 2 results, retatrutide could receive FDA priority review designation, potentially reaching the market by 2027-2028.⁶
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="safety">Safety & Side Effect Profile</h2>
           <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
             For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
@@ -240,7 +264,7 @@ export default function RetatrutideExplainedPage() {
             <li>Hartman, M.L., et al. &quot;Effects of Novel Dual GIP and GLP-1 Receptor Agonist Tirzepatide on Biomarkers of Nonalcoholic Steatohepatitis.&quot; <em>Diabetes Care</em>, 2020.</li>
             <li>Eli Lilly and Company. &quot;Lilly Initiates TRIUMPH Phase 3 Clinical Program for Retatrutide.&quot; Press release, 2024.</li>
           </ol>
-        </main>
+        </article>
         </AutoLink>
       </div>
 
@@ -275,11 +299,11 @@ export default function RetatrutideExplainedPage() {
         <FeedbackModal pageUrl="https://peptidex.app/blog/retatrutide-explained" />
       </div>
 
-      <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8">
-        <p className="text-xs text-zinc-500 leading-relaxed">
-          This article is for educational purposes only. Retatrutide is an investigational compound not yet approved by any regulatory agency. PeptiDex does not sell pharmaceuticals. Always consult a licensed healthcare provider.
-        </p>
+      
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
       </div>
-    </div>
+    </main>
   );
 }

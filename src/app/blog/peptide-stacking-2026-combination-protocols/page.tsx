@@ -3,11 +3,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  ChevronRight, Calendar, User, ArrowLeft, ArrowRight, Clock,
-  ShieldAlert, BookOpen, AlertCircle, Scale, FlaskConical,
-  TrendingUp, Dna, Activity, Zap, Brain, Shield
-} from 'lucide-react';
+import { ChevronRight, Calendar, User, ArrowLeft, ArrowRight, Clock, ShieldAlert, BookOpen, AlertCircle, Scale, FlaskConical, TrendingUp, Dna, Activity, Zap, Brain, Shield } from 'lucide-react';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
@@ -160,91 +156,55 @@ const GUIDING_PRINCIPLES = [
 
 export default function PeptideStackingArticle() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[
-        { name: 'Home', url: 'https://peptidex.app/' },
-        { name: 'Blog', url: 'https://peptidex.app/blog' },
-        { name: 'Peptide Stacking 2026' }
-      ]} />
-
-      {/* Back Button */}
-      <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors mb-8 group">
-        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        Back to Blog
-      </Link>
-
-      {/* ═══════ HERO IMAGE ═══════ */}
-      <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden border border-zinc-800 mb-4">
-        <Image
-          src="/images/blog/peptide_stacking_2026_protocols.png"
-          alt="Glowing translucent peptide vials arranged in an interlocking double-helix formation representing combination therapy stacking"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 896px"
-          unoptimized
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent" />
-      </div>
-
-      {/* ═══════ TOP DISCLAIMER ═══════ */}
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-400/80 leading-relaxed font-medium">
-            <strong>EDUCATIONAL CONTENT:</strong> {SHORT_DISCLAIMER}
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">Peptide Stacking in 2026: Why Combination Protocols Are Redefining Results</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            Peptide Stacking in 2026:<br /><em>Why Combination Protocols Are Redefining Results</em>.
+          </h1>
+          <p className="page-subtitle">
+            A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and how to combine compounds effectively.
           </p>
-        </div>
-      </div>
-
-      {/* ═══════ ARTICLE HEADER ═══════ */}
-      <header className="space-y-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-violet-500/15 text-violet-300 rounded-full border border-violet-500/30">
-            Peptide Therapy
-          </span>
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-emerald-500/15 text-emerald-300 rounded-full border border-emerald-500/30">
-            Biohacking
-          </span>
-           <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-sky-500/15 text-sky-300 rounded-full border border-sky-500/30">
-            Longevity
-          </span>
-        </div>
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">
-          Peptide Stacking in 2026: Why <span className="text-violet-400">Combination Protocols</span> Are Redefining Results
-        </h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-violet-400" />
-            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-zinc-500" />
-            <span>April 13, 2026</span>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-zinc-500" />
-            <span>12 min read</span>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <FlaskConical className="w-4 h-4 text-violet-400" />
-            <span className="text-violet-300 font-medium">Science Explainers</span>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-13</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
           </div>
         </div>
-        <ShareBar title={POST_TITLE} url={CANONICAL} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       {/* ═══════ MAIN CONTENT ═══════ */}
       <AutoLink>
-      <article className="prose prose-invert prose-zinc max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:text-zinc-200 prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-zinc-800 prose-p:text-zinc-300 prose-p:leading-loose prose-a:text-violet-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-zinc-200 prose-strong:font-bold prose-ul:text-zinc-300 prose-li:marker:text-violet-500">
+      <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
 
         {/* ═══════ LEAD ═══════ */}
         <p className="lead text-xl text-zinc-300 font-medium">
@@ -260,7 +220,8 @@ export default function PeptideStackingArticle() {
         </p>
 
 
-        <h2 id="single-vs-stack">Why Single-Peptide Protocols Are Giving Way to Stacks</h2>
+        <div className="section-label mt-12 mb-2">§ 01</div>
+          <h2 id="single-vs-stack">Why Single-Peptide Protocols Are Giving Way to Stacks</h2>
         <p>
           For years, the standard approach to peptide therapy was straightforward: identify a goal, select a peptide that targets it, and run a protocol. Need tissue repair? BPC-157. Want growth hormone support? CJC-1295 or Ipamorelin. Looking for cognitive enhancement? Semax.
         </p>
@@ -272,7 +233,7 @@ export default function PeptideStackingArticle() {
         </p>
 
         {/* ═══════ POPULAR STACKS GRID ═══════ */}
-        <div className="not-prose my-12 bg-zinc-900/40 p-6 rounded-2xl border border-zinc-800">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
            <h3 className="text-xl font-bold text-zinc-100 mb-6 flex items-center gap-2">
              <Dna className="w-6 h-6 text-violet-400" /> Prominent 2026 Stacking Protocols
            </h3>
@@ -295,7 +256,8 @@ export default function PeptideStackingArticle() {
            </div>
         </div>
 
-        <h2 id="wolverine-stack">The &ldquo;Wolverine Stack&rdquo;: BPC-157 + TB-500</h2>
+        <div className="section-label mt-12 mb-2">§ 02</div>
+          <h2 id="wolverine-stack">The &ldquo;Wolverine Stack&rdquo;: BPC-157 + TB-500</h2>
         <p>
           No peptide combination has generated more interest in 2026 than the pairing of BPC-157 and TB-500, commonly nicknamed the &ldquo;Wolverine Stack&rdquo; for its reputation in recovery-focused protocols.
         </p>
@@ -313,7 +275,8 @@ export default function PeptideStackingArticle() {
         </p>
 
 
-        <h2 id="growth-hormone-stacking">Growth Hormone Stacking: Why Pathway Matters More Than Dose</h2>
+        <div className="section-label mt-12 mb-2">§ 03</div>
+          <h2 id="growth-hormone-stacking">Growth Hormone Stacking: Why Pathway Matters More Than Dose</h2>
         <p>
           Growth hormone optimization is another area where stacking has become standard practice &mdash; but it&apos;s also where improper combinations can backfire.
         </p>
@@ -321,7 +284,7 @@ export default function PeptideStackingArticle() {
           The two primary pathways that regulate growth hormone secretion are the <strong>GHRH pathway</strong> (growth hormone-releasing hormone) and the <strong>ghrelin/GHS-R1a pathway</strong> (growth hormone secretagogue receptors). Compounds like Tesamorelin, CJC-1295, and Sermorelin work through the GHRH pathway. Ipamorelin, GHRP-2, and Hexarelin work through the ghrelin pathway.
         </p>
 
-        <div className="not-prose my-8 bg-rose-950/20 border-l-4 border-rose-500 p-6 rounded-r-xl">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
            <h4 className="text-base font-bold text-rose-400 mb-2 flex items-center gap-2">
              <AlertCircle className="w-5 h-5" /> The Competitive Binding Problem
            </h4>
@@ -338,7 +301,7 @@ export default function PeptideStackingArticle() {
         </p>
 
          {/* ═══════ CTA EMBED ═══════ */}
-        <div className="not-prose my-10 rounded-2xl bg-gradient-to-br from-violet-900/40 to-zinc-900 border border-violet-500/30 p-6 shadow-xl relative overflow-hidden group">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-violet-500/20" />
           <h4 className="text-xl font-bold text-zinc-100 mb-2 flex flex-wrap items-center gap-2">
             <Shield className="w-5 h-5 text-violet-400" /> Validate Your Sources
@@ -355,7 +318,8 @@ export default function PeptideStackingArticle() {
           </Link>
         </div>
 
-        <h2 id="longevity-stack">The Longevity Stack: Epithalon + MOTS-c + NAD+ Support</h2>
+        <div className="section-label mt-12 mb-2">§ 04</div>
+          <h2 id="longevity-stack">The Longevity Stack: Epithalon + MOTS-c + NAD+ Support</h2>
         <p>
           On the longevity and anti-aging front, one of the most talked-about combinations in 2026 involves Epithalon, MOTS-c, and NAD+ precursors.
         </p>
@@ -366,7 +330,8 @@ export default function PeptideStackingArticle() {
           The rationale for combining these with NAD+ support compounds is that each targets a <strong>different dimension of the aging process</strong>: telomere maintenance, mitochondrial function, and cellular energy metabolism. Together, they represent a multi-target approach to longevity that reflects how modern peptide science is moving away from single-pathway interventions.
         </p>
 
-        <h2 id="cognitive-stack">The Cognitive Stack: Semax + Selank</h2>
+        <div className="section-label mt-12 mb-2">§ 05</div>
+          <h2 id="cognitive-stack">The Cognitive Stack: Semax + Selank</h2>
         <p>
           For those focused on cognitive performance and emotional resilience, the Semax and Selank combination has become increasingly popular.
         </p>
@@ -378,13 +343,14 @@ export default function PeptideStackingArticle() {
         </p>
 
 
-        <h2 id="good-vs-bad-stacks">What Makes a Good Stack &mdash; and What to Avoid</h2>
+        <div className="section-label mt-12 mb-2">§ 06</div>
+          <h2 id="good-vs-bad-stacks">What Makes a Good Stack &mdash; and What to Avoid</h2>
         <p>
           Not every combination is a good one. The principles that separate effective stacking from counterproductive mixing can be summarized via these core rules:
         </p>
 
         {/* ═══════ PRINCIPLES LIST ═══════ */}
-        <div className="not-prose my-10 space-y-4">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
            {GUIDING_PRINCIPLES.map((principle, i) => (
              <div key={i} className="flex items-start gap-4 p-5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-violet-500/40 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-violet-500/10 border border-violet-500/30 flex items-center justify-center flex-shrink-0 text-violet-400 font-bold font-mono text-sm">
@@ -398,7 +364,8 @@ export default function PeptideStackingArticle() {
            ))}
         </div>
 
-        <h2 id="personalized-protocols">The Bigger Picture: Personalized Peptide Protocols</h2>
+        <div className="section-label mt-12 mb-2">§ 07</div>
+          <h2 id="personalized-protocols">The Bigger Picture: Personalized Peptide Protocols</h2>
         <p>
           The trend toward combination therapy is part of a larger movement in 2026 toward <strong>personalization in peptide medicine</strong>. Clinics are increasingly using biomarker data, wearable technology, and functional lab testing to design individualized protocols rather than relying on one-size-fits-all prescriptions.
         </p>
@@ -409,7 +376,8 @@ export default function PeptideStackingArticle() {
           Peptide stacking is a natural extension of that philosophy. When you understand the patient&apos;s specific needs at a systems level, you can design a combination that addresses those needs with precision.
         </p>
 
-        <h2 id="bottom-line">The Bottom Line</h2>
+        <div className="section-label mt-12 mb-2">§ 08</div>
+          <h2 id="bottom-line">The Bottom Line</h2>
         <p>
           Peptide stacking in 2026 isn&apos;t a trend driven by hype &mdash; it&apos;s a reflection of where the science is heading. As our understanding of peptide mechanisms grows more sophisticated, so do the protocols designed around them.
         </p>
@@ -461,12 +429,7 @@ export default function PeptideStackingArticle() {
       </div>
 
       {/* ═══════ DISCLAIMER ═══════ */}
-      <div className="mt-16 p-6 rounded-2xl bg-zinc-900 border border-zinc-800 flex flex-col gap-2">
-        <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">Disclaimer</p>
-        <p className="text-sm text-zinc-400 leading-relaxed italic">
-          This article is for informational purposes only and does not constitute medical advice. Peptide therapy requires physician supervision and should be obtained through licensed compounding pharmacies. Consult with a qualified healthcare provider before starting any peptide protocol.
-        </p>
-      </div>
+      
 
       {/* ═══════ RELATED TOPICS ═══════ */}
       <div className="flex flex-wrap gap-2 pt-4">
@@ -476,6 +439,10 @@ export default function PeptideStackingArticle() {
           </span>
         ))}
       </div>
-    </div>
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

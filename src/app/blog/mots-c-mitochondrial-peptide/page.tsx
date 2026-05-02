@@ -63,23 +63,48 @@ export default function MOTSCDeepDivePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Breadcrumbs items={[{ name: 'Home', url: 'https://peptidex.app/' }, { name: 'Blog', url: 'https://peptidex.app/blog' }, { name: POST_TITLE }]} />
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4"><div className="flex items-start gap-2"><ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" /><p className="text-sm text-amber-400/80 leading-relaxed font-medium"><strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}</p></div></div>
-
-      <header className="space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">{POST_TITLE}</h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-zinc-500" /><span>Updated: {DATE_MOD}</span></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-emerald-500" /><span className="text-emerald-400 font-medium">10 Min Read</span></div>
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">MOTS-c: The Mitochondrial Peptide for Energy & Metabolism</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            MOTS-c:<br /><em>The Mitochondrial Peptide for Energy & Metabolism</em>.
+          </h1>
+          <p className="page-subtitle">
+            A deep dive into MOTS-c — the mitochondrial-derived peptide that mimics exercise, activates AMPK, and shows remarkable potential for metabolic regulation, longevity, and age-related disease prevention.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-12</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
+          </div>
         </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/mots-c-mitochondrial-peptide`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
@@ -105,7 +130,7 @@ export default function MOTSCDeepDivePage() {
         </aside>
 
         <AutoLink>
-        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+        <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="intro">
             Your mitochondria don&apos;t just produce energy. They also produce signaling peptides — and <strong>MOTS-c</strong> may be the most consequential one discovered to date.
           </p>
@@ -120,6 +145,7 @@ export default function MOTSCDeepDivePage() {
             What makes MOTS-c remarkable is its role as a metabolic regulator that effectively <strong>mimics the molecular benefits of exercise</strong>. In an era where metabolic disease is the leading driver of chronic illness worldwide, a naturally occurring compound that mimics exercise at the cellular level has captured the attention of researchers across endocrinology, gerontology, and sports science.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 01</div>
           <h2 id="mechanism">Mechanism of Action: Targeting AMPK</h2>
           <p>
             MOTS-c&apos;s primary target is <strong>AMPK (AMP-activated protein kinase)</strong> — widely described as the master metabolic sensor of the cell. AMPK is activated when cellular energy levels drop (i.e., when the AMP:ATP ratio increases), which naturally occurs during exercise.¹
@@ -136,6 +162,7 @@ export default function MOTSCDeepDivePage() {
             This AMPK-centric mechanism places MOTS-c in the same pharmacological category as metformin (the most widely prescribed diabetes drug in the world) and AICAR (a research compound used to study exercise mimicry) — but as an endogenous peptide rather than a synthetic small molecule.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 02</div>
           <h2 id="exercise">The Exercise Mimetic: What the Animal Data Shows</h2>
           <p>
             The most striking preclinical finding came from Dr. Lee&apos;s original 2015 paper in <em>Cell Metabolism</em>: mice administered MOTS-c and fed a high-fat diet completely avoided diet-induced obesity and insulin resistance — effects indistinguishable from regular exercise in control groups.¹
@@ -152,6 +179,7 @@ export default function MOTSCDeepDivePage() {
             The implication is powerful: MOTS-c may represent one of the molecular mechanisms through which exercise produces its metabolic benefits. And if that mechanism can be amplified exogenously, it could have profound applications for patients who cannot exercise due to injury, disability, or severe metabolic disease.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="aging">MOTS-c and Aging</h2>
           <p>
             Circulating MOTS-c levels decline with age.⁴ This decline corroborates the broader observation that mitochondrial function deteriorates as organisms age — and raises the question of whether MOTS-c supplementation could counteract age-related metabolic decline.
@@ -169,6 +197,7 @@ export default function MOTSCDeepDivePage() {
             These findings position MOTS-c alongside other longevity peptides like <Link href="/library/epitalon">Epitalon</Link> and <Link href="/library/ghk-cu">GHK-Cu</Link> — but with a distinct focus on metabolic aging rather than telomere or gene expression dynamics.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="clinical">Human Clinical Data</h2>
           <p>
             In 2024, the first-in-human clinical trial of MOTS-c was published, marking a significant milestone for mitochondrial-derived peptide (MDP) research.⁶ The Phase 1 dose-escalation study evaluated safety and pharmacokinetics of subcutaneous MOTS-c administration in healthy volunteers at multiple dose levels.
@@ -185,6 +214,7 @@ export default function MOTSCDeepDivePage() {
             While this represents early-stage evidence, the clean safety profile supports advancement to Phase 2 efficacy trials targeting metabolic syndrome, type 2 diabetes, and age-related metabolic decline.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="vs-ss31">MOTS-c vs SS-31: Two Mitochondrial Strategies</h2>
           <p>
             Both MOTS-c and <Link href="/library/ss-31">SS-31 (Elamipretide)</Link> target mitochondrial function, but through entirely different mechanisms:
@@ -219,7 +249,7 @@ export default function MOTSCDeepDivePage() {
             <li>von Walden, F., et al. &quot;MOTS-c increases following acute and chronic exercise in humans.&quot; <em>Cell Reports Medicine</em>, 2024.</li>
             <li>Lee, C.D., et al. &quot;First-in-Human Phase 1 Study of the Mitochondrial-Derived Peptide MOTS-c.&quot; <em>Nature Medicine</em>, 2024.</li>
           </ol>
-        </main>
+        </article>
         </AutoLink>
       </div>
 
@@ -246,7 +276,11 @@ export default function MOTSCDeepDivePage() {
         <span>Last fact-checked: <time dateTime="2026-04-12">2026-04-12</time></span>
         <FeedbackModal pageUrl="https://peptidex.app/blog/mots-c-mitochondrial-peptide" />
       </div>
-      <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. MOTS-c is investigational and not FDA-approved. PeptiDex does not sell peptides. Consult a healthcare provider.</p></div>
-    </div>
+      
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

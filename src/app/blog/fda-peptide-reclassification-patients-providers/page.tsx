@@ -3,12 +3,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  ChevronRight, Calendar, User, ArrowLeft, ArrowRight, Clock,
-  ShieldAlert, BookOpen, AlertCircle, Scale, FlaskConical,
-  TrendingUp, Landmark, AlertTriangle, CheckCircle2, Stethoscope,
-  Shield, FileSearch, Activity
-} from 'lucide-react';
+import { ChevronRight, Calendar, User, ArrowLeft, ArrowRight, Clock, ShieldAlert, BookOpen, AlertCircle, Scale, FlaskConical, TrendingUp, Landmark, AlertTriangle, CheckCircle2, Stethoscope, Shield, FileSearch, Activity } from 'lucide-react';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
@@ -166,91 +161,55 @@ const ROADMAP = [
 
 export default function FDAReclassificationPatientsArticle() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[
-        { name: 'Home', url: 'https://peptidex.app/' },
-        { name: 'Blog', url: 'https://peptidex.app/blog' },
-        { name: 'FDA Reclassification: Patients & Providers' }
-      ]} />
-
-      {/* Back Button */}
-      <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors mb-8 group">
-        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        Back to Blog
-      </Link>
-
-      {/* ═══════ HERO IMAGE ═══════ */}
-      <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden border border-zinc-800 mb-4">
-        <Image
-          src="/images/blog/fda_peptide_patients_providers.png"
-          alt="FDA Peptide Reclassification 2026 — gavel with DNA helices and peptide vials representing regulatory change for patients and providers"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 896px"
-          unoptimized
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent" />
-      </div>
-
-      {/* ═══════ TOP DISCLAIMER ═══════ */}
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-400/80 leading-relaxed font-medium">
-            <strong>EDUCATIONAL CONTENT:</strong> {SHORT_DISCLAIMER}
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">The 2026 FDA Peptide Reclassification: What It Means for Patients, Providers, and the Future of Peptide Therapy</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            The 2026 FDA Peptide Reclassification:<br /><em>What It Means for Patients, Providers, and the Future of Peptide Therapy</em>.
+          </h1>
+          <p className="page-subtitle">
+            A comprehensive analysis of the 2026 FDA peptide reclassification — which 14 peptides are returning to Category 1, what it means for patients and providers, and how to navigate peptide therapy safely.
           </p>
-        </div>
-      </div>
-
-      {/* ═══════ ARTICLE HEADER ═══════ */}
-      <header className="space-y-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-rose-500/15 text-rose-300 rounded-full border border-rose-500/30">
-            Regulatory Update
-          </span>
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-violet-500/15 text-violet-300 rounded-full border border-violet-500/30">
-            Peptide Therapy
-          </span>
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-emerald-500/15 text-emerald-300 rounded-full border border-emerald-500/30">
-            Wellness
-          </span>
-        </div>
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">
-          The 2026 FDA Peptide <span className="text-rose-400">Reclassification</span>: What It Means for Patients, Providers, and the Future
-        </h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-rose-400" />
-            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-zinc-500" />
-            <span>April 13, 2026</span>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-zinc-500" />
-            <span>14 min read</span>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Scale className="w-4 h-4 text-rose-400" />
-            <span className="text-rose-300 font-medium">Regulatory News</span>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-13</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
           </div>
         </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/${SLUG}`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       {/* ═══════ MAIN CONTENT ═══════ */}
       <AutoLink>
-      <article className="prose prose-invert prose-zinc max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:text-zinc-200 prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-zinc-800 prose-p:text-zinc-300 prose-p:leading-loose prose-a:text-violet-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-zinc-200 prose-strong:font-bold prose-ul:text-zinc-300 prose-li:marker:text-rose-500">
+      <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
 
         {/* ═══════ LEAD ═══════ */}
         <p className="lead text-xl text-zinc-300 font-medium">
@@ -266,13 +225,14 @@ export default function FDAReclassificationPatientsArticle() {
         </p>
 
         {/* ═══════ CATEGORY EXPLAINER ═══════ */}
-        <h2 id="understanding-categories">Understanding FDA Category 1 vs. Category 2</h2>
+        <div className="section-label mt-12 mb-2">§ 01</div>
+          <h2 id="understanding-categories">Understanding FDA Category 1 vs. Category 2</h2>
 
         <p>
           Before diving into what changed, it helps to understand the regulatory framework at play. The FDA classifies bulk drug substances used by compounding pharmacies into two categories under <strong>Section 503A of the Federal Food, Drug, and Cosmetic Act</strong>.
         </p>
 
-        <div className="not-prose my-8 rounded-2xl bg-zinc-900/60 border border-violet-500/20 p-6 space-y-4">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="flex items-start gap-3">
             <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 rounded border border-emerald-500/30 flex-shrink-0 mt-1">Category 1</span>
             <p className="text-sm text-zinc-300 leading-relaxed">Compounds deemed to have sufficient safety data for use by licensed compounding pharmacies when prescribed by a physician. These can be prepared on an individual-patient basis with proper oversight.</p>
@@ -288,7 +248,8 @@ export default function FDAReclassificationPatientsArticle() {
         </p>
 
         {/* ═══════ WHAT HAPPENED NEXT ═══════ */}
-        <h2 id="what-happened-next">What Happened Next Was Predictable &mdash; and Problematic</h2>
+        <div className="section-label mt-12 mb-2">§ 02</div>
+          <h2 id="what-happened-next">What Happened Next Was Predictable &mdash; and Problematic</h2>
 
         <p>
           With licensed pharmacies unable to compound these peptides, many patients turned to <strong>unregulated gray-market vendors</strong> selling products labeled &ldquo;for research use only.&rdquo; These products lack verified purity, accurate dosing, and sterile manufacturing standards. The very restrictions intended to protect patient safety inadvertently pushed people toward riskier sourcing.
@@ -299,7 +260,7 @@ export default function FDAReclassificationPatientsArticle() {
         </p>
 
         {/* ═══════ TIMELINE ═══════ */}
-        <div className="not-prose relative pl-8 my-10 space-y-8 border-l-2 border-zinc-800">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           {TIMELINE.map((item, i) => (
             <div key={i} className="relative">
               <div className="absolute -left-[25px] top-1.5 w-3 h-3 rounded-full bg-rose-500 border-2 border-zinc-950 ring-4 ring-zinc-950" />
@@ -310,14 +271,15 @@ export default function FDAReclassificationPatientsArticle() {
         </div>
 
         {/* ═══════ WHICH PEPTIDES ═══════ */}
-        <h2 id="which-peptides">Which Peptides Are Coming Back?</h2>
+        <div className="section-label mt-12 mb-2">§ 03</div>
+          <h2 id="which-peptides">Which Peptides Are Coming Back?</h2>
 
         <p>
           The 14 peptides expected to return to Category 1 include some of the most recognized names in regenerative and functional medicine. This represents the <strong>broadest expansion of legal peptide access</strong> since compounding pharmacies first started producing these compounds.
         </p>
 
         {/* ═══════ PEPTIDE GRID ═══════ */}
-        <div className="not-prose grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-10">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           {PEPTIDES.map((p) => (
             <div key={p.name} className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-4 hover:border-rose-500/30 transition-colors group">
               <h4 className="text-sm font-bold text-zinc-100 mb-1 group-hover:text-rose-400 transition-colors flex items-center gap-2">
@@ -329,11 +291,12 @@ export default function FDAReclassificationPatientsArticle() {
         </div>
 
         {/* ═══════ IMPORTANT CAVEATS ═══════ */}
-        <h2 id="important-caveats">Important Caveats to Keep in Mind</h2>
+        <div className="section-label mt-12 mb-2">§ 04</div>
+          <h2 id="important-caveats">Important Caveats to Keep in Mind</h2>
 
         <p>While the announcement is significant, there are critical distinctions every patient and provider must understand.</p>
 
-        <div className="not-prose my-8 space-y-4">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="flex items-start gap-4 bg-zinc-900/40 border border-zinc-800 rounded-xl p-5">
             <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
             <div>
@@ -365,7 +328,8 @@ export default function FDAReclassificationPatientsArticle() {
         </div>
 
         {/* ═══════ WHY THIS MATTERS ═══════ */}
-        <h2 id="future-of-peptide-therapy">Why This Matters for the Future of Peptide Therapy</h2>
+        <div className="section-label mt-12 mb-2">§ 05</div>
+          <h2 id="future-of-peptide-therapy">Why This Matters for the Future of Peptide Therapy</h2>
 
         <p>
           The 2026 reclassification reflects a broader shift in how the medical community and regulatory agencies view peptide therapy. Interest in peptides has surged dramatically over the past several years, driven in part by the success of <strong>GLP-1 medications like semaglutide and tirzepatide</strong>. As those compounds brought peptide science into the mainstream conversation, patients and providers began exploring the wider world of peptide-based therapies for recovery, immune support, cognitive function, and longevity.
@@ -380,7 +344,7 @@ export default function FDAReclassificationPatientsArticle() {
         </p>
 
         {/* ═══════ CTA EMBED ═══════ */}
-        <div className="not-prose my-10 rounded-2xl bg-gradient-to-br from-violet-900/40 to-zinc-900 border border-violet-500/30 p-6 shadow-xl relative overflow-hidden group">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 blur-[50px] rounded-full pointer-events-none transition-all group-hover:bg-violet-500/20" />
           <h4 className="text-xl font-bold text-zinc-100 mb-2 flex flex-wrap items-center gap-2">
             <AlertCircle className="w-5 h-5 text-violet-400" /> Looking for verified peptide sources?
@@ -398,14 +362,15 @@ export default function FDAReclassificationPatientsArticle() {
         </div>
 
         {/* ═══════ WHAT SHOULD YOU DO ═══════ */}
-        <h2 id="what-to-do">What Should You Do Right Now?</h2>
+        <div className="section-label mt-12 mb-2">§ 06</div>
+          <h2 id="what-to-do">What Should You Do Right Now?</h2>
 
         <p>
           If you&apos;ve been interested in peptide therapy or were previously using one of the reclassified compounds, here&apos;s a practical roadmap:
         </p>
 
         {/* ═══════ ROADMAP ═══════ */}
-        <div className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-10">
+        <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           {ROADMAP.map((item) => (
             <div key={item.step} className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5 flex gap-4 items-start">
               <div className="w-10 h-10 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 font-extrabold text-lg flex-shrink-0">
@@ -464,12 +429,7 @@ export default function FDAReclassificationPatientsArticle() {
       </div>
 
       {/* ═══════ DISCLAIMER ═══════ */}
-      <div className="mt-16 p-6 rounded-2xl bg-zinc-900 border border-zinc-800 flex flex-col gap-2">
-        <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">Disclaimer</p>
-        <p className="text-sm text-zinc-400 leading-relaxed italic">
-          This article is for informational purposes only and does not constitute medical advice. Consult a licensed healthcare provider before starting any peptide therapy protocol. Regulatory status of peptides is subject to change as formal FDA guidance is published.
-        </p>
-      </div>
+      
 
       {/* ═══════ RELATED TOPICS ═══════ */}
       <div className="flex flex-wrap gap-2 pt-4">
@@ -479,6 +439,10 @@ export default function FDAReclassificationPatientsArticle() {
           </span>
         ))}
       </div>
-    </div>
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

@@ -63,30 +63,49 @@ export default function MK677VsIpamorelinPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <Breadcrumbs items={[{ name: 'Home', url: 'https://peptidex.app/' }, { name: 'Blog', url: 'https://peptidex.app/blog' }, { name: POST_TITLE }]} />
-
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-400/80 leading-relaxed font-medium"><strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}</p>
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">MK-677 vs Ipamorelin: Which GH Secretagogue Is Better?</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            MK-677 vs Ipamorelin:<br /><em>Which GH Secretagogue Is Better?</em>.
+          </h1>
+          <p className="page-subtitle">
+            A research-backed comparison of MK-677 (ibutamoren) vs ipamorelin — oral vs injectable GH secretagogues compared on mechanism, side effects, half-life, IGF-1 elevation, and stacking protocols.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-12</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <header className="space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">{POST_TITLE}</h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-zinc-500" /><span>Updated: {DATE_MOD}</span></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-emerald-500" /><span className="text-emerald-400 font-medium">9 Min Read</span></div>
-        </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/mk-677-vs-ipamorelin`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
@@ -112,7 +131,7 @@ export default function MK677VsIpamorelinPage() {
         </aside>
 
         <AutoLink>
-        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+        <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="intro">
             <strong>MK-677</strong> and <strong>ipamorelin</strong> both stimulate growth hormone release through the ghrelin receptor (GHS-R1a). But the similarities end there. One is an oral small molecule with 24-hour activity and significant metabolic side effects. The other is an injectable pentapeptide with precise, pulsatile GH release and a remarkably clean profile.
           </p>
@@ -122,6 +141,7 @@ export default function MK677VsIpamorelinPage() {
           </p>
 
 
+          <div className="section-label mt-12 mb-2">§ 01</div>
           <h2 id="mechanism">Mechanism Comparison</h2>
           <h3 className="flex items-center gap-2 text-violet-300 border-b border-zinc-800 pb-2">MK-677: Sustained Oral Agonism</h3>
           <p>
@@ -139,6 +159,7 @@ export default function MK677VsIpamorelinPage() {
             This selectivity means ipamorelin produces &quot;cleaner&quot; GH elevation: you get the GH pulse without the metabolic noise.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 02</div>
           <h2 id="side-effects">Side Effect Comparison</h2>
           <div className="overflow-x-auto my-8">
             <table className="w-full text-left text-sm border-collapse">
@@ -160,6 +181,7 @@ export default function MK677VsIpamorelinPage() {
             </table>
           </div>
 
+          <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="clinical-data">Clinical Data</h2>
           <p>
             MK-677 has the stronger clinical evidence base for long-term use. The 2-year Nass et al. trial demonstrated sustained IGF-1 elevation, increased fat-free mass (+1.6 kg), and improved body composition in elderly adults without exercise intervention.¹ However, it also showed increased fasting glucose and worsened insulin sensitivity.
@@ -168,6 +190,7 @@ export default function MK677VsIpamorelinPage() {
             Ipamorelin has Phase 2 clinical trial data in post-surgical ileus (gut recovery after abdominal surgery) demonstrating safety and GH-releasing efficacy.² Its clinical use as a GH secretagogue for body composition is primarily documented through clinical practice and compounding pharmacy data rather than large registrational trials.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="stacking">Optimal Stacking Protocols</h2>
           <p>
             <strong>MK-677</strong> is typically used as a standalone due to its 24-hour duration. It pairs well with compounds from different pathways — such as BPC-157 for recovery or GHK-Cu for anti-aging — but stacking with additional GH secretagogues adds risk without proportional benefit.
@@ -176,6 +199,7 @@ export default function MK677VsIpamorelinPage() {
             <strong>Ipamorelin</strong> is optimally stacked with <Link href="/library/cjc-1295">CJC-1295</Link> (a GHRH analog). This combination leverages complementary mechanisms: CJC-1295 primes the pituitary to produce GH, while ipamorelin triggers a clean release pulse. The synergistic effect produces 3-6x greater GH output than either compound alone.³ This is widely regarded as the gold standard GH peptide stack in clinical and research settings.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="verdict">Research Verdict</h2>
           <p>
             <strong>Choose MK-677 if:</strong> Convenience (oral dosing) is paramount, you want sustained 24-hour GH/IGF-1 elevation, and you can monitor and manage the metabolic side effects (appetite, glucose, water retention).
@@ -191,7 +215,7 @@ export default function MK677VsIpamorelinPage() {
             <li>Raun, K., et al. &quot;Ipamorelin, the first selective growth hormone secretagogue.&quot; <em>European Journal of Endocrinology</em>, 1998; 139(5): 552-561.</li>
             <li>Teichman, S.L., et al. &quot;Prolonged Stimulation of Growth Hormone and Insulin-Like Growth Factor I Secretion by CJC-1295.&quot; <em>JCEM</em>, 2006; 91(3): 799-805.</li>
           </ol>
-        </main>
+        </article>
         </AutoLink>
       </div>
 
@@ -226,11 +250,11 @@ export default function MK677VsIpamorelinPage() {
         <FeedbackModal pageUrl="https://peptidex.app/blog/mk-677-vs-ipamorelin" />
       </div>
 
-      <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8">
-        <p className="text-xs text-zinc-500 leading-relaxed">
-          This article is for educational and research purposes only. MK-677 and ipamorelin are not FDA-approved for body composition enhancement. Both are banned by WADA in competitive sports. PeptiDex does not sell peptides. Consult a healthcare provider before use.
-        </p>
+      
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
       </div>
-    </div>
+    </main>
   );
 }

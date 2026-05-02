@@ -63,23 +63,48 @@ export default function OralVsInjectablePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Breadcrumbs items={[{ name: 'Home', url: 'https://peptidex.app/' }, { name: 'Blog', url: 'https://peptidex.app/blog' }, { name: POST_TITLE }]} />
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4"><div className="flex items-start gap-2"><ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" /><p className="text-sm text-amber-400/80 leading-relaxed font-medium"><strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}</p></div></div>
-
-      <header className="space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">{POST_TITLE}</h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-zinc-500" /><span>Updated: {DATE_MOD}</span></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-emerald-500" /><span className="text-emerald-400 font-medium">10 Min Read</span></div>
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">Oral Peptides vs Injectable Peptides: What You Need to Know</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            Oral Peptides vs Injectable Peptides:<br /><em>What You Need to Know</em>.
+          </h1>
+          <p className="page-subtitle">
+            A research-backed comparison of oral vs injectable peptide delivery — covering bioavailability, new oral formulations (SNAC, orforglipron), absorption challenges, pros and cons, and what the future of peptide delivery looks like.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-12</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
+          </div>
         </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/oral-vs-injectable-peptides`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
@@ -105,7 +130,7 @@ export default function OralVsInjectablePage() {
         </aside>
 
         <AutoLink>
-        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+        <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="intro">
             For most of pharmaceutical history, peptides and injection needles were inseparable. The digestive tract destroys peptide bonds on contact. But 2025-2026 has fundamentally changed the equation: the FDA has approved two oral GLP-1 medications, and a wave of new delivery technologies is poised to make oral peptides a realistic option for an expanding set of compounds.
           </p>
@@ -117,6 +142,7 @@ export default function OralVsInjectablePage() {
           </p>
 
 
+          <div className="section-label mt-12 mb-2">§ 01</div>
           <h2 id="why-inject">Why Most Peptides Require Injection</h2>
           <p>
             The human digestive system evolved to efficiently break down dietary proteins — and peptides, being small proteins, face the same fate. Three barriers stand between an orally administered peptide and systemic absorption:
@@ -130,6 +156,7 @@ export default function OralVsInjectablePage() {
             Subcutaneous injection bypasses all three barriers entirely, delivering the intact peptide directly into the tissue beneath the skin where it is absorbed into the bloodstream via the capillary network. This is why injection achieves near-100% bioavailability while oral routes typically achieve &lt;1% for peptides.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 02</div>
           <h2 id="oral-tech">Oral Delivery Technologies</h2>
 
           <h3 className="flex items-center gap-2 text-violet-300 border-b border-zinc-800 pb-2">SNAC (Salcaprozate Sodium)</h3>
@@ -156,6 +183,7 @@ export default function OralVsInjectablePage() {
             <li><strong>AI-designed peptides:</strong> Using generative AI to design peptides with intrinsic oral stability from the ground up — cyclic structures, D-amino acid substitutions, and metabolically resistant modifications⁶</li>
           </ul>
 
+          <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="comparison">Injectable vs Oral: Comprehensive Comparison</h2>
           <div className="overflow-x-auto my-8">
             <table className="w-full text-left text-sm border-collapse">
@@ -178,6 +206,7 @@ export default function OralVsInjectablePage() {
             </table>
           </div>
 
+          <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="currently-oral">Peptides & Mimetics Currently Available Orally</h2>
           <ul>
             <li><strong>Oral Semaglutide</strong> (Rybelsus 3/7/14 mg for T2D; Oral Wegovy 25 mg for weight management)</li>
@@ -188,6 +217,7 @@ export default function OralVsInjectablePage() {
             <li><strong>Desmopressin</strong> (synthetic vasopressin analog — oral/sublingual formulations available)</li>
           </ul>
 
+          <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="future">The Future of Oral Peptide Delivery</h2>
           <p>
             The trajectory is clear. Novo Nordisk&apos;s $2.1 billion deal with MIT spinoff Vivtex for oral peptide delivery technology, Roche&apos;s $5.3 billion partnership with Zealand Pharma, and AbbVie&apos;s acquisition of Nimble Therapeutics all signal massive pharmaceutical investment in solving the oral peptide challenge.⁷
@@ -210,7 +240,7 @@ export default function OralVsInjectablePage() {
             <li>Khalid, Rivera-Delgado, von Erlach. &quot;Navigating the Complexity of Oral Peptide Delivery.&quot; <em>Frontiers in Drug Delivery</em>, March 2026.</li>
             <li>Walrath, R. &quot;Novo Nordisk taps start-up for new oral weight-loss drugs.&quot; <em>Chemical & Engineering News</em>, February 2026.</li>
           </ol>
-        </main>
+        </article>
         </AutoLink>
       </div>
 
@@ -237,7 +267,11 @@ export default function OralVsInjectablePage() {
         <span>Last fact-checked: <time dateTime="2026-04-12">2026-04-12</time></span>
         <FeedbackModal pageUrl="https://peptidex.app/blog/oral-vs-injectable-peptides" />
       </div>
-      <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. Peptide medications require prescriptions. PeptiDex does not sell pharmaceuticals. Consult a healthcare provider.</p></div>
-    </div>
+      
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

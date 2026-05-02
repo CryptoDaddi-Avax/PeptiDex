@@ -106,51 +106,49 @@ export default function BlogPostTemplate() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <Breadcrumbs items={[
-        { name: 'Home', url: 'https://peptidex.app/' },
-        { name: 'Blog', url: 'https://peptidex.app/blog' },
-        { name: '{POST_TITLE}' }
-      ]} />
-
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-400/80 leading-relaxed font-medium">
-            <strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">Ipamorelin vs CJC-1295: Stack Comparison Guide</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            Ipamorelin vs CJC-1295:<br /><em>Stack Comparison Guide</em>.
+          </h1>
+          <p className="page-subtitle">
+            Compare the mechanisms of GHRP vs GHRH. Explore the synergy of stacking Ipamorelin with CJC-1295 without DAC to safely elevate endogenous growth hormone pulses.
           </p>
-        </div>
-      </div>
-
-      <header className="space-y-6 border-b border-zinc-800/50 pb-8">
-        <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">
-          {POST_TITLE}
-        </h1>
-        <div className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">
-           Last Updated: March 2026
-        </div>
-        
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-violet-400" />
-            <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-zinc-500" />
-            <span>Updated: {DATE_MOD}</span>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-emerald-500" />
-            <span className="text-emerald-400 font-medium">10 Min Read</span>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/editorial-team`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">Editorial Team</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-03-10</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
           </div>
         </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/ipamorelin-vs-cjc-1295`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
@@ -185,11 +183,12 @@ export default function BlogPostTemplate() {
         </aside>
 
         <AutoLink>
-        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+        <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="what-are-they">
             Endogenous growth hormone deployment declines steadily as subjects age past 30. Through precise clinical architecture, researchers target specialized receptors acting on the pituitary gland to reinstate healthy expression rates via a stack involving <strong>Ipamorelin</strong> and <strong>CJC-1295</strong>.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 01</div>
           <h2 id="ghrp-vs-ghrh">GHRP vs GHRH Pathways</h2>
           <p>
             You cannot evaluate this stack without understanding its core dichotomy—deploying a GHRP alongside a GHRH. <strong>Ipamorelin</strong> acts explicitly as the Growth Hormone Releasing Peptide (GHRP). It directly mimics the hunger-hormone ghrelin to prompt an acute, massive single pulse of growth hormone out of the pituitary.
@@ -202,6 +201,7 @@ export default function BlogPostTemplate() {
             <strong>CJC-1295 (without DAC)</strong> is entirely different. As a Growth Hormone Releasing Hormone (GHRH) analog, it mimics the natural stimulatory hormones sent from the hypothalamus to the pituitary. It essentially turns up the volume on the subject's baseline, persistent output over a long timeframe.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 02</div>
           <h2 id="why-stack">The Multi-Pulse Synergy and IGF-1 Elevation</h2>
           <p>
             When utilizing either compound individually, you isolate the pathway—either maximizing the baseline amplitude (CJC) or initiating powerful episodic spikes (Ipamorelin). Stacking them capitalizes on synergistic amplification: the CJC widens the pituitary capacity for release, and the Ipamorelin strikes the receptor to release massive volume sequentially. Together, they dramatically elevate systemic <strong>IGF-1 (Insulin-Like Growth Factor 1)</strong> into ranges typically observed across optimal musculoskeletal development frameworks.
@@ -222,11 +222,13 @@ export default function BlogPostTemplate() {
             </Link>
           </div>
 
+          <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="cortisol">Cortisol Effects Analysis</h2>
           <p>
             Older GHRPs frequently disrupted the somatotropic axis by drastically heightening prolactin and cortisol profiles in tandem with GH release. Over 140+ clinical literature points highlight Ipamorelin as a third-generation GHRP optimized explicitly to decouple from the cortisol/prolactin cascade. 
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="comparison-table">Side-by-Side Comparison Array</h2>
           <div className="overflow-x-auto my-8">
             <table className="w-full text-left text-sm whitespace-nowrap border-collapse">
@@ -257,7 +259,7 @@ export default function BlogPostTemplate() {
             </table>
           </div>
 
-        </main>
+        </article>
         </AutoLink>
       </div>
 
@@ -294,7 +296,8 @@ export default function BlogPostTemplate() {
       </div>
 
       <section className="pt-12 mt-12 border-t border-zinc-800/50">
-         <h2 className="text-2xl font-bold text-zinc-100 mb-6">Related Posts</h2>
+         <div className="section-label mt-12 mb-2">§ 05</div>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-6">Related Posts</h2>
          <div className="flex flex-col md:flex-row gap-4">
             <Link href="/blog/best-peptides-for-fat-loss" className="flex-1 p-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800 transition-colors">
                <h3 className="font-bold text-zinc-200 mb-2">Best Peptides for Fat Loss</h3>
@@ -303,6 +306,10 @@ export default function BlogPostTemplate() {
          </div>
       </section>
 
-    </div>
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

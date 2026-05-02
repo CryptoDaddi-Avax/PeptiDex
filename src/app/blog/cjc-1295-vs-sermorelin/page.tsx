@@ -63,23 +63,48 @@ export default function CJCVsSermorelin() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Breadcrumbs items={[{ name: 'Home', url: 'https://peptidex.app/' }, { name: 'Blog', url: 'https://peptidex.app/blog' }, { name: POST_TITLE }]} />
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4"><div className="flex items-start gap-2"><ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" /><p className="text-sm text-amber-400/80 leading-relaxed font-medium"><strong>RESEARCH USE ONLY:</strong> {SHORT_DISCLAIMER}</p></div></div>
-
-      <header className="space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">{POST_TITLE}</h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 border-t border-b border-zinc-800/50 py-4">
-          <div className="flex items-center gap-2"><User className="w-4 h-4 text-violet-400" /><Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{AUTHOR}</Link></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-zinc-500" /><span>Updated: {DATE_MOD}</span></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-emerald-500" /><span className="text-emerald-400 font-medium">9 Min Read</span></div>
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">CJC-1295 vs Sermorelin: GHRH Analog Comparison</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            CJC-1295 vs Sermorelin:<br /><em>GHRH Analog Comparison</em>.
+          </h1>
+          <p className="page-subtitle">
+            A research-backed comparison of CJC-1295 and Sermorelin — two GHRH analogs used for growth hormone optimization. Covers mechanisms, DAC vs no-DAC, half-life differences, dosing protocols, and clinical outcomes.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-12</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
+          </div>
         </div>
-        <ShareBar title={POST_TITLE} url={`https://peptidex.app/blog/cjc-1295-vs-sermorelin`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <aside className="lg:col-span-4 lg:order-2">
@@ -105,7 +130,7 @@ export default function CJCVsSermorelin() {
         </aside>
 
         <AutoLink>
-        <main className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-lg prose-a:text-violet-400 hover:prose-a:text-violet-300">
+        <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <p className="lead text-xl text-zinc-300 font-medium" id="intro">
             <strong>CJC-1295</strong> and <strong>Sermorelin</strong> are both synthetic analogs of growth hormone-releasing hormone (GHRH), the hypothalamic hormone that tells the pituitary gland to produce and release GH. But they differ dramatically in half-life, dosing frequency, and the nature of the GH release they produce.
           </p>
@@ -115,6 +140,7 @@ export default function CJCVsSermorelin() {
           </p>
 
 
+          <div className="section-label mt-12 mb-2">§ 01</div>
           <h2 id="sermorelin">Sermorelin: The Pioneer GHRH Analog</h2>
           <p>
             <Link href="/library/sermorelin">Sermorelin</Link> (GRF 1-29 NH₂) is a 29-amino acid synthetic peptide corresponding to the first 29 amino acids of the 44-amino acid native GHRH molecule. It was FDA-approved in 1997 under the brand name Geref for diagnosing and treating pediatric growth hormone deficiency.¹
@@ -129,6 +155,7 @@ export default function CJCVsSermorelin() {
             In adult clinical practice, sermorelin is commonly prescribed by anti-aging and integrative medicine practitioners at doses of 200-300 mcg subcutaneously before bed, leveraging the natural nocturnal GH surge.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 02</div>
           <h2 id="cjc">CJC-1295: The Engineered Upgrade</h2>
           <p>
             <Link href="/library/cjc-1295">CJC-1295</Link> is a 30-amino acid synthetic GHRH analog that exists in two forms:
@@ -145,6 +172,7 @@ export default function CJCVsSermorelin() {
             A pivotal clinical study by Teichman et al. demonstrated that a single subcutaneous injection of CJC-1295 with DAC produced sustained IGF-1 elevation lasting 6-14 days, with peak IGF-1 increase of 1.5-3x baseline. Multiple doses raised mean IGF-1 by 2x with no evidence of tachyphylaxis.²
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="comparison">Head-to-Head Comparison</h2>
           <div className="overflow-x-auto my-8">
             <table className="w-full text-left text-sm border-collapse">
@@ -167,6 +195,7 @@ export default function CJCVsSermorelin() {
             </table>
           </div>
 
+          <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="stacking">Optimal Stacking</h2>
           <p>
             Both sermorelin and CJC-1295 are optimally paired with <Link href="/library/ipamorelin">Ipamorelin</Link> — a selective GHRP that triggers GH release via the complementary ghrelin pathway. This GHRH + GHRP combination produces synergistic GH amplification (3-6x greater pulses) through a dual-pathway mechanism.³
@@ -178,6 +207,7 @@ export default function CJCVsSermorelin() {
             <strong>CJC-1295 (w/DAC) + Ipamorelin:</strong> Best for sustained IGF-1 elevation, body composition goals, and protocols where dosing convenience is important.
           </p>
 
+          <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="verdict">Research Verdict</h2>
           <p>
             <strong>For anti-aging and longevity:</strong> Sermorelin&apos;s shorter half-life and physiological pulsatile release pattern more closely mimic natural GH secretion, which many clinicians prefer for long-term health optimization.
@@ -194,7 +224,7 @@ export default function CJCVsSermorelin() {
             <li>Teichman, S.L., et al. &quot;Prolonged Stimulation of Growth Hormone and Insulin-Like Growth Factor I Secretion by CJC-1295.&quot; <em>JCEM</em>, 2006; 91(3): 799-805.</li>
             <li>Raun, K., et al. &quot;Ipamorelin, the first selective growth hormone secretagogue.&quot; <em>European Journal of Endocrinology</em>, 1998; 139(5): 552-561.</li>
           </ol>
-        </main>
+        </article>
         </AutoLink>
       </div>
 
@@ -221,7 +251,11 @@ export default function CJCVsSermorelin() {
         <span>Last fact-checked: <time dateTime="2026-04-12">2026-04-12</time></span>
         <FeedbackModal pageUrl="https://peptidex.app/blog/cjc-1295-vs-sermorelin" />
       </div>
-      <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6 text-center mt-8"><p className="text-xs text-zinc-500 leading-relaxed">This article is for educational and research purposes only. Consult a healthcare provider before using any peptide compound. PeptiDex does not sell peptides.</p></div>
-    </div>
+      
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

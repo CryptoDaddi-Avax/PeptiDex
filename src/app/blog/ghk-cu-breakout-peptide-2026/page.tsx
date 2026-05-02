@@ -4,7 +4,7 @@ import { ShareBar } from '@/components/share-bar';
 import { AutoLink } from '@/components/auto-link';
 import { RelatedPosts } from '@/components/related-posts';
 import Link from 'next/link';
-import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
+import { ChevronRight, Calendar, User, ArrowLeft, BookOpen } from 'lucide-react';
 import { CiteThisPage } from '@/components/cite-page';
 import { LibraryCallout } from '@/components/library-callout';
 import { getAuthorSlug } from '@/data/authors';
@@ -71,48 +71,52 @@ const breadcrumbSchema = {
 
 export default function GHKCuArticle() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[
-        { name: 'Home', url: 'https://peptidex.app/' },
-        { name: 'Blog', url: 'https://peptidex.app/blog' },
-        { name: 'GHK-Cu: The Breakout Peptide' }
-      ]} />
-
-      {/* Back Button */}
-      <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors mb-8 group">
-        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        Back to Blog
-      </Link>
-
-      {/* Article Header */}
-      <header className="mb-10 sm:mb-14">
-        <div className="flex items-center gap-3 mb-6">
-            <span className="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/40">
-                Research Trends
-            </span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-100 leading-tight mb-6">
-          GHK-Cu: The Breakout Peptide of 2026
-        </h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 font-medium pb-8 border-b border-zinc-800">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-emerald-400" />
-            <span>PeptideX Editorial Staff</span>
+      
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span className="current">GHK-Cu: The Breakout Peptide of 2026</span>
+          </nav>
+          <div className="section-label">§ Blog Article</div>
+          <h1 className="page-title">
+            GHK-Cu:<br /><em>The Breakout Peptide of 2026</em>.
+          </h1>
+          <p className="page-subtitle">
+            An independent analysis of GHK-Cu, the copper tripeptide seeing a 1,000% surge in anti-aging, longevity, and skin regeneration research in 2026.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4 text-amber-400" />
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptiDex Editorial</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500" />
+              <span>2026-04-03</span>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              <span className="text-emerald-400 font-medium">9 Min Read</span>
+            </div>
           </div>
-          <div className="w-1.5 h-1.5 bg-zinc-700 rounded-full" />
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-emerald-400" />
-            <span>April 2026</span>
-          </div>
         </div>
-        <ShareBar title="GHK-Cu: The Breakout Peptide of 2026" url={`https://peptidex.app/blog/ghk-cu-breakout-peptide-2026`} />
       </header>
+
+      <div className="about-content reveal space-y-16">
+
 
       {/* Article Content */}
       <AutoLink>
-      <article className="prose prose-invert prose-zinc max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:text-zinc-200 prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-zinc-800 prose-p:text-zinc-300 prose-p:leading-loose prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-zinc-200 prose-strong:font-bold prose-ul:text-zinc-300 prose-li:marker:text-emerald-500">
+      <article className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
         
         <p>
           If you&apos;ve been paying attention to the peptide space this year, one compound keeps surfacing in conversations across longevity circles, dermatology clinics, and biohacking communities alike: <strong>GHK-Cu</strong> — the copper peptide that researchers first identified over fifty years ago but that is only now entering its true moment.
@@ -124,7 +128,8 @@ export default function GHKCuArticle() {
 
         <p>So what&apos;s behind the surge, and why should you care? Let&apos;s break it down.</p>
 
-        <h2>What Is GHK-Cu?</h2>
+        <div className="section-label mt-12 mb-2">§ 01</div>
+          <h2>What Is GHK-Cu?</h2>
         <p>
           GHK-Cu stands for <strong>glycyl-L-histidyl-L-lysine</strong> bound to a copper (II) ion. It&apos;s a naturally occurring tripeptide — meaning it consists of just three amino acids: glycine, histidine, and lysine — that forms a stable complex with copper. This copper-binding characteristic is central to its biological activity.
         </p>
@@ -135,7 +140,8 @@ export default function GHKCuArticle() {
           GHK-Cu is found naturally in plasma, saliva, and urine. At age 20, average plasma levels sit around 200 ng/mL. By age 60, that figure drops below 80 ng/mL — a decline of more than 60%. As noted in a peer-reviewed paper published in <em>BioMed Research International</em>, this decline &quot;coincides with the noticeable decrease in regenerative capacity of an organism.&quot;⁴
         </p>
 
-        <h2>Why GHK-Cu Is Trending in 2026</h2>
+        <div className="section-label mt-12 mb-2">§ 02</div>
+          <h2>Why GHK-Cu Is Trending in 2026</h2>
         <p>Several factors have converged to push copper peptides to the forefront this year.</p>
 
         <p>
@@ -154,7 +160,8 @@ export default function GHKCuArticle() {
           <strong>Published research continues to expand.</strong> A 2026 review published in <em>Systems Microbiology and Biomanufacturing</em> (Springer Nature) provides a comprehensive synthesis of GHK-Cu&apos;s molecular mechanisms, production strategies, quality-control frameworks, and emerging applications in advanced biomaterials and delivery systems.⁹ The growing body of literature adds further credibility to the compound&apos;s therapeutic potential.
         </p>
 
-        <h2>What Does the Research Say?</h2>
+        <div className="section-label mt-12 mb-2">§ 03</div>
+          <h2>What Does the Research Say?</h2>
         <p>GHK-Cu&apos;s research profile is unusually broad for a peptide of its size. Here are some of the most well-supported areas of investigation.</p>
 
         <p>
@@ -177,7 +184,8 @@ export default function GHKCuArticle() {
           <strong>Gene expression modulation.</strong> Perhaps the most striking finding comes from data generated through the Broad Institute&apos;s Connectivity Map at MIT and Harvard. Researchers found that GHK-Cu influences the expression of over 4,000 human genes — roughly 6% of the human genome — shifting gene expression patterns in aged cells back toward profiles characteristic of younger, healthier tissue.⁵ ¹³ This includes upregulation of genes involved in antioxidant defense, tissue remodeling, and blood vessel growth, and downregulation of genes associated with inflammation and tissue destruction.
         </p>
 
-        <h2>How Is GHK-Cu Used?</h2>
+        <div className="section-label mt-12 mb-2">§ 04</div>
+          <h2>How Is GHK-Cu Used?</h2>
         <p>GHK-Cu is available in two primary forms.</p>
         <p>
           <strong>Topical</strong> formulations — serums and creams — are the most accessible option. Look for products listing &quot;Copper Tripeptide-1&quot; in their ingredient panel, which is the INCI name for GHK-Cu. Topical delivery is best suited for skin-focused goals like improving elasticity, reducing fine lines, and supporting overall complexion quality. Concentrations in the range of 2–4% are common in the consumer market.
@@ -186,7 +194,8 @@ export default function GHKCuArticle() {
           <strong>Injectable</strong> formulations are used in clinical and research contexts. Subcutaneous administration allows the peptide to enter systemic circulation, which is relevant for its broader regenerative and anti-inflammatory effects beyond the skin. This route is typically overseen by medical professionals within the context of peptide therapy protocols.
         </p>
 
-        <h2>What Sets GHK-Cu Apart?</h2>
+        <div className="section-label mt-12 mb-2">§ 05</div>
+          <h2>What Sets GHK-Cu Apart?</h2>
         <p>
           In a peptide landscape increasingly dominated by the GLP-1 class — compounds like semaglutide and tirzepatide that target metabolic pathways — GHK-Cu occupies a distinct niche. It&apos;s not a weight-loss peptide. It&apos;s a <em>repair and regeneration</em> peptide with a uniquely broad mechanism of action.
         </p>
@@ -197,7 +206,8 @@ export default function GHKCuArticle() {
           Another differentiator: GHK-Cu has a strong safety profile. To date, no published research has identified serious safety concerns associated with its use, whether delivered topically or via injection.⁵ Its status as an endogenous compound — something your body already produces — adds an additional layer of biological plausibility to its therapeutic applications.
         </p>
 
-        <h2>The Bigger Picture: Longevity Peptides Are on the Rise</h2>
+        <div className="section-label mt-12 mb-2">§ 06</div>
+          <h2>The Bigger Picture: Longevity Peptides Are on the Rise</h2>
         <p>
           GHK-Cu isn&apos;t trending in isolation. It belongs to a broader category of <strong>longevity peptides</strong> gaining significant traction in 2026. Compounds like MOTS-c (a mitochondria-derived peptide involved in metabolic regulation) and SS-31 (a synthetic peptide targeting the inner mitochondrial membrane) are also experiencing steep growth in research interest and public awareness.¹ ¹⁴
         </p>
@@ -208,7 +218,8 @@ export default function GHKCuArticle() {
           For anyone interested in the intersection of peptides, aging, and regenerative biology, this is a category worth watching closely.
         </p>
 
-        <h2>Final Thoughts</h2>
+        <div className="section-label mt-12 mb-2">§ 07</div>
+          <h2>Final Thoughts</h2>
         <p>
           GHK-Cu has been hiding in plain sight for decades — a naturally occurring molecule with a remarkable research profile that is finally getting the attention it deserves. Whether your interest is skin health, tissue repair, or the broader science of biological aging, copper peptides represent one of the most exciting and well-supported areas in the peptide space today.
         </p>
@@ -244,11 +255,12 @@ export default function GHKCuArticle() {
       <LibraryCallout currentSlug="ghk-cu-breakout-peptide-2026" peptides={[{"name":"GHK-Cu","slug":"ghk-cu"},{"name":"BPC-157","slug":"bpc-157"},{"name":"Epitalon","slug":"epitalon"}]} />
 
       {/* Disclaimer block */}
-      <div className="mt-16 p-6 rounded-2xl bg-zinc-900 border border-zinc-800 flex flex-col gap-2">
-         <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">Disclaimer</p>
-         <p className="text-sm text-zinc-400 leading-relaxed italic">This article is for informational and educational purposes only. It is not intended as medical advice. Peptide therapies should be pursued under the guidance of a licensed healthcare professional. PeptideX does not sell peptides or make therapeutic claims.</p>
-      </div>
+      
 
-    </div>
+          </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }
