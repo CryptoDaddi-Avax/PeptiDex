@@ -31,7 +31,6 @@ if echo "$existing_remote" | grep -q "https://"; then
 fi
 
 echo "Pulling latest code from GitHub..."
-export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 git fetch origin main
 git reset --hard origin/main
 echo "Git reset complete. Current HEAD:"
@@ -56,6 +55,7 @@ echo "=== Deploy complete ==="
 `;
 const conn = new Client();
 conn.on('ready', () => {
+    console.log('SSH connected. Starting git-pull deploy...\n');
     conn.exec(cmds, (err, stream) => {
         if (err) throw err;
         stream.on('close', (code) => {
@@ -73,4 +73,5 @@ conn.on('ready', () => {
     });
 }).on('error', err => {
     console.error('SSH Error:', err);
+    process.exit(1);
 }).connect(config);
