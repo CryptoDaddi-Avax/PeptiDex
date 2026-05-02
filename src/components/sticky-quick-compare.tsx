@@ -3,13 +3,25 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { BarChart3, ShieldCheck, TrendingDown } from "lucide-react";
+import { BarChart3, ShieldCheck, TrendingDown, ShoppingCart } from "lucide-react";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
 
 interface StickyQuickCompareProps {
     peptideSlug: string;
     peptideName: string;
+}
+
+// ── Discount registry: source of truth is /data/vendors.ts discountPercent ──
+const VENDOR_DISCOUNTS: Record<string, { code: string; pct: number }> = {
+    "Amino Club":        { code: "PEPTIDEX", pct: 15 },
+    "Bio Longevity Labs": { code: "PEPTIDEX", pct: 15 },
+};
+
+/** Post-discount price for a given sticker price + vendor name */
+function discountedPrice(vendor: string, price: number): number {
+    const d = VENDOR_DISCOUNTS[vendor];
+    return d ? price * (1 - d.pct / 100) : price;
 }
 
 export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickCompareProps) {
@@ -26,8 +38,14 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
     // Pricing data for this peptide
     const pricing = vendorPricing.find(p => p.slug === peptideSlug);
     const inStockVendors = pricing?.vendors.filter(v => v.inStock) ?? [];
+
+    // Pick best vendor by POST-DISCOUNT price per mg (apples-to-apples)
     const bestVendor = inStockVendors.length > 0
-        ? inStockVendors.reduce((a, b) => a.price_usd < b.price_usd ? a : b)
+        ? inStockVendors.reduce((a, b) => {
+            const aPricePerMg = a.vial_mg > 0 ? discountedPrice(a.vendor, a.price_usd) / a.vial_mg : Infinity;
+            const bPricePerMg = b.vial_mg > 0 ? discountedPrice(b.vendor, b.price_usd) / b.vial_mg : Infinity;
+            return aPricePerMg <= bPricePerMg ? a : b;
+        })
         : null;
 
     useEffect(() => {
@@ -41,7 +59,6 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        // Run once on mount to set initial state
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -49,12 +66,24 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
     // Don't render at all if no pricing data or not mounted
     if (!bestVendor || !mounted) return null;
 
+    const stickerPrice = bestVendor.price_usd;
+    const discount = VENDOR_DISCOUNTS[bestVendor.vendor];
+    const finalPrice = discountedPrice(bestVendor.vendor, stickerPrice);
+    const hasDiscount = !!discount;
+
     const pricePerMg = bestVendor.vial_mg > 0
-        ? (bestVendor.price_usd / bestVendor.vial_mg).toFixed(2)
+        ? (finalPrice / bestVendor.vial_mg).toFixed(2)
         : null;
 
+    const handleBuyNow = () => {
+        trackOutboundClick(
+            bestVendor.vendor,
+            bestVendor.affiliateUrl,
+            `detail_sticky_bar_buy_now`
+        );
+    };
+
     // Use createPortal to escape any parent transform/filter stacking context
-    // which would otherwise break `position: fixed`
     const bar = (
         <AnimatePresence>
             {visible && (
@@ -66,13 +95,13 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
                     transition={{ type: "spring", stiffness: 500, damping: 40, mass: 0.8 }}
                     style={{
                         position: "fixed",
-                        bottom: 0,  // Sits at screen bottom (BottomNav removed)
+                        bottom: 0,
                         left: 0,
                         right: 0,
                         zIndex: 50,
                     }}
                     className="md:hidden"
-                    aria-label="Quick compare bar"
+                    aria-label="Quick buy bar"
                 >
                     {/* Scroll Progress Line */}
                     <div className="h-[3px] bg-zinc-800/80 relative overflow-hidden">
@@ -83,44 +112,50 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
                     </div>
 
                     {/* Main Bar */}
-                    <div className="bg-zinc-950/97 backdrop-blur-xl border-t border-blue-500/25 px-3 py-2.5 shadow-[0_-12px_40px_rgba(0,0,0,0.7)]">
-                        <div className="flex items-center justify-between gap-2 max-w-2xl mx-auto">
+                    <div className="bg-zinc-950/97 backdrop-blur-xl border-t border-blue-500/25 px-3 pt-2.5 pb-3 shadow-[0_-12px_40px_rgba(0,0,0,0.7)]">
+                        <div className="max-w-2xl mx-auto flex flex-col gap-2">
 
-                            {/* Left: Price Info */}
-                            <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-1.5 mb-0.5">
-                                    <TrendingDown className="w-3 h-3 text-blue-400 flex-shrink-0" />
-                                    <span className="text-[9px] font-bold uppercase tracking-widest text-blue-400">
-                                        Best Current Price
-                                    </span>
-                                </div>
-                                <div className="flex items-center gap-2 flex-wrap">
-                                    <span className="text-lg font-black text-white leading-none">
-                                        ${bestVendor.price_usd}
-                                    </span>
-                                    <span className="text-[10px] text-zinc-400">
-                                        / {bestVendor.vial_mg}mg vial
-                                    </span>
-                                    {pricePerMg && (
-                                        <span className="text-[9px] text-zinc-500">
-                                            (${pricePerMg}/mg)
+                            {/* Row 1: Price Info + In Stock + Vendor attribution */}
+                            <div className="flex items-start justify-between gap-2">
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5 mb-0.5">
+                                        <TrendingDown className="w-3 h-3 text-blue-400 flex-shrink-0" />
+                                        <span className="text-[9px] font-bold uppercase tracking-widest text-blue-400">
+                                            Best Current Price
                                         </span>
-                                    )}
-                                    <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                                        <span className="text-[9px] font-bold text-emerald-400">In Stock</span>
-                                    </span>
+                                    </div>
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        {/* Post-discount price (primary) */}
+                                        <span className="text-lg font-black text-amber-400 leading-none">
+                                            ${finalPrice.toFixed(2)}
+                                        </span>
+                                        {/* Sticker price struck through if discounted */}
+                                        {hasDiscount && (
+                                            <span className="text-sm font-medium text-zinc-500 line-through leading-none">
+                                                ${stickerPrice.toFixed(2)}
+                                            </span>
+                                        )}
+                                        <span className="text-[10px] text-zinc-400">
+                                            / {bestVendor.vial_mg}mg vial
+                                        </span>
+                                        {pricePerMg && (
+                                            <span className="text-[9px] text-zinc-500">
+                                                (${pricePerMg}/mg)
+                                            </span>
+                                        )}
+                                        <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                            <span className="text-[9px] font-bold text-emerald-400">In Stock</span>
+                                        </span>
+                                    </div>
+                                    <p className="text-[9px] text-zinc-500 mt-0.5 truncate">
+                                        via {bestVendor.vendor}
+                                        {bestVendor.badge && (
+                                            <span className="ml-1 text-blue-400">· {bestVendor.badge}</span>
+                                        )}
+                                    </p>
                                 </div>
-                                <p className="text-[9px] text-zinc-500 mt-0.5 truncate">
-                                    via {bestVendor.vendor}
-                                    {bestVendor.badge && (
-                                        <span className="ml-1 text-blue-400">· {bestVendor.badge}</span>
-                                    )}
-                                </p>
-                            </div>
 
-                            {/* Right: Action Buttons */}
-                            <div className="flex items-center gap-1.5 flex-shrink-0">
                                 {/* COA Button — only if available */}
                                 {bestVendor.coaUrl && (
                                     <a
@@ -128,32 +163,62 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={() => trackOutboundClick(bestVendor.vendor, bestVendor.coaUrl!, `sticky_bar_coa_${peptideSlug}`)}
-                                        className="flex items-center justify-center gap-1 px-2.5 py-2 min-h-[44px] min-w-[44px] rounded-xl border border-zinc-700 bg-zinc-900 text-[10px] font-semibold text-zinc-300 hover:border-blue-500/40 hover:text-blue-300 transition-all"
+                                        className="flex items-center justify-center gap-1 px-2.5 py-2 min-h-[44px] min-w-[44px] rounded-xl border border-zinc-700 bg-zinc-900 text-[10px] font-semibold text-zinc-300 hover:border-blue-500/40 hover:text-blue-300 transition-all flex-shrink-0"
                                         aria-label="View Certificate of Analysis"
                                     >
                                         <ShieldCheck className="w-3.5 h-3.5" />
                                     </a>
                                 )}
+                            </div>
 
-                                {/* Compare Vendors Button */}
+                            {/* Row 2: Discount callout (only for vendors with discount codes) */}
+                            {hasDiscount && (
+                                <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-amber-500/8 border border-amber-500/20">
+                                    <span className="text-base leading-none">💰</span>
+                                    <span className="text-[10px] text-amber-300 font-medium">
+                                        Save {discount.pct}% with code{" "}
+                                        <strong className="font-bold tracking-wider">{discount.code}</strong>
+                                        {" "}→ final:{" "}
+                                        <strong className="text-amber-400">${finalPrice.toFixed(2)}</strong>
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* Row 3: CTA Buttons */}
+                            <div className="flex items-center gap-2">
+                                {/* PRIMARY: Buy Now */}
+                                <a
+                                    href={bestVendor.affiliateUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={handleBuyNow}
+                                    className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 min-h-[44px] rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 text-[11px] font-black transition-all shadow-lg shadow-amber-500/25 whitespace-nowrap"
+                                    aria-label={`Buy ${peptideName} at ${bestVendor.vendor}`}
+                                >
+                                    <ShoppingCart className="w-3.5 h-3.5" />
+                                    Buy at {bestVendor.vendor} →
+                                </a>
+
+                                {/* SECONDARY: Compare All Vendors */}
                                 <Link
-                                    href={`/vendors#${peptideSlug}`}
-                                    onClick={() => trackCTAClick(`Compare Vendors - ${peptideName}`, `/vendors#${peptideSlug}`)}
-                                    className="flex items-center gap-1.5 px-3 py-2 min-h-[44px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold transition-all shadow-lg shadow-emerald-500/20 whitespace-nowrap"
+                                    href={`/tools/compare?a=${peptideSlug}`}
+                                    onClick={() => trackCTAClick(`Compare Vendors - ${peptideName}`, `/tools/compare?a=${peptideSlug}`)}
+                                    className="flex items-center justify-center gap-1.5 px-3 py-2.5 min-h-[44px] rounded-xl border border-zinc-600 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-[11px] font-bold transition-all whitespace-nowrap"
+                                    aria-label="Compare all vendors"
                                 >
                                     <BarChart3 className="w-3.5 h-3.5" />
-                                    Compare Vendors
+                                    Compare
                                 </Link>
                             </div>
-                        </div>
 
-                        {/* Vendor count context line */}
-                        {inStockVendors.length > 1 && (
-                            <p className="text-[9px] text-zinc-600 text-center mt-1 max-w-2xl mx-auto">
-                                {inStockVendors.length} verified vendors compared ·{" "}
-                                <span className="text-zinc-500">Prices updated April 2026</span>
-                            </p>
-                        )}
+                            {/* Vendor count context line */}
+                            {inStockVendors.length > 1 && (
+                                <p className="text-[9px] text-zinc-600 text-center">
+                                    {inStockVendors.length} verified vendors compared ·{" "}
+                                    <span className="text-zinc-500">Prices updated April 2026</span>
+                                </p>
+                            )}
+                        </div>
                     </div>
                 </motion.div>
             )}
