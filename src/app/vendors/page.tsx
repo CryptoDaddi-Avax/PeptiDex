@@ -35,34 +35,34 @@ export default function VendorsPage() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Where can I buy research peptides?',
+        name: 'Where can I buy peptides legally?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can buy research peptides from specialized online synthesis laboratories. The most reliable suppliers prioritize third-party COA testing and verify amino acid sequence purity. Always ensure you are purchasing for laboratory research use only.',
+          text: 'Research peptides can be purchased legally from specialized synthesis laboratories for laboratory use only. Top vendors include Amino Club, Limitless Life, and Ascension Peptides — all provide COA-verified, HPLC-tested compounds. FDA-approved peptides require a prescription. → Read more at peptidex.app/vendors',
         },
       },
       {
         '@type': 'Question',
-        name: 'What is a COA and why does it matter?',
+        name: 'What is a COA for peptides?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'A COA stands for Certificate of Analysis. It is a laboratory report (typically utilizing HPLC and Mass Spectrometry) that verifies the exact purity percentage and molecular weight of a synthesized peptide batch.',
+          text: 'A Certificate of Analysis (COA) is a lab report verifying peptide purity, typically using HPLC (High-Performance Liquid Chromatography) and Mass Spectrometry. A quality COA confirms >98% purity, correct molecular weight, and absence of endotoxins. Always verify COAs are batch-specific. → Read more at peptidex.app/tools/coa',
         },
       },
       {
         '@type': 'Question',
-        name: 'Are peptide vendors legitimate?',
+        name: 'Are research peptides the same as pharmaceutical peptides?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, legitimate peptide vendors operate as chemical supply companies synthesizing compounds strictly for academic, preclinical, and independent laboratory research.',
+          text: 'Research peptides and pharmaceutical peptides contain the same amino acid sequences, but they differ in regulatory status, manufacturing standards, and intended use. Pharmaceutical peptides (like Ozempic) undergo FDA approval with GMP manufacturing. Research peptides are synthesized for laboratory use and are not approved for human consumption. Quality varies by vendor — always verify with a COA. → Read more at peptidex.app/vendors',
         },
       },
       {
         '@type': 'Question',
-        name: 'What is the best peptide company in 2026?',
+        name: 'Do peptides require a prescription?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The best peptide company in 2026 depends on your specific research needs, but top-tier vendors consistently provide batch-specific COAs, offer a wide variety of compounds, and maintain domestic shipping infrastructure.',
+          text: 'Only FDA-approved peptides require a prescription: Semaglutide (Ozempic/Wegovy), Tirzepatide (Mounjaro/Zepbound), Tesamorelin (Egrifta), and PT-141 (Vyleesi). All other peptides indexed on PeptiDex are research-only compounds sold for laboratory use. → Read more at peptidex.app/faq',
         },
       },
       {
@@ -70,7 +70,7 @@ export default function VendorsPage() {
         name: 'What is Bio Longevity Labs and why are they triple-tested?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Bio Longevity Labs is a premium injectable peptide vendor that subjects every batch to three independent testing protocols: HPLC purity analysis, LC-MS molecular verification, and endotoxin screening. Their PEPTIDEX discount code stacks with any active sitewide sale for maximum savings.',
+          text: 'Bio Longevity Labs is a premium injectable peptide vendor that subjects every batch to three independent testing protocols: HPLC purity analysis, LC-MS molecular verification, and endotoxin screening. Their PEPTIDEX discount code stacks with any active sitewide sale for maximum savings. → Read more at peptidex.app/vendors/bio-longevity-labs-review',
         },
       },
     ],

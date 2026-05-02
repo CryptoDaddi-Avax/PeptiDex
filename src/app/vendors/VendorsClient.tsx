@@ -34,25 +34,25 @@ function vendorPricePreview(vendorName: string): string {
 /* ── FAQ data ── */
 const FAQ_ITEMS = [
   {
-    q: 'Where can I buy research peptides?',
-    a: 'You can buy research peptides from specialized online synthesis laboratories. The most reliable suppliers prioritize third-party COA testing and verify amino acid sequence purity. Always ensure you are purchasing for laboratory research use only.',
+    q: "Where can I buy peptides legally?",
+    a: "Research peptides can be purchased legally from specialized synthesis laboratories for laboratory use only. Top vendors include Amino Club, Limitless Life, and Ascension Peptides — all provide COA-verified, HPLC-tested compounds. FDA-approved peptides require a prescription. → Read more at peptidex.app/vendors"
   },
   {
-    q: 'What is a COA and why does it matter?',
-    a: 'A COA stands for Certificate of Analysis. It is a laboratory report (typically utilizing HPLC and Mass Spectrometry) that verifies the exact purity percentage and molecular weight of a synthesized peptide batch. It matters because it is the only objective proof that a product is pure and free of synthesis byproducts.',
+    q: "What is a COA for peptides?",
+    a: "A Certificate of Analysis (COA) is a lab report verifying peptide purity, typically using HPLC (High-Performance Liquid Chromatography) and Mass Spectrometry. A quality COA confirms >98% purity, correct molecular weight, and absence of endotoxins. Always verify COAs are batch-specific. → Read more at peptidex.app/tools/coa"
   },
   {
-    q: 'Are peptide vendors legitimate?',
-    a: 'Yes, legitimate peptide vendors operate as chemical supply companies synthesizing compounds strictly for academic, preclinical, and independent laboratory research. However, the market is largely unregulated, which is why verifying independent purity testing is critical before purchasing.',
+    q: "Are research peptides the same as pharmaceutical peptides?",
+    a: "Research peptides and pharmaceutical peptides contain the same amino acid sequences, but they differ in regulatory status, manufacturing standards, and intended use. Pharmaceutical peptides (like Ozempic) undergo FDA approval with GMP manufacturing. Research peptides are synthesized for laboratory use and are not approved for human consumption. Quality varies by vendor — always verify with a COA. → Read more at peptidex.app/vendors"
   },
   {
-    q: 'What is the best peptide company in 2026?',
-    a: 'The best peptide company in 2026 depends on your specific research needs, but top-tier vendors consistently provide batch-specific COAs, offer a wide variety of compounds (from BPC-157 to TB-500), maintain domestic shipping infrastructure, and accept secure payments.',
+    q: "Do peptides require a prescription?",
+    a: "Only FDA-approved peptides require a prescription: Semaglutide (Ozempic/Wegovy), Tirzepatide (Mounjaro/Zepbound), Tesamorelin (Egrifta), and PT-141 (Vyleesi). All other peptides indexed on PeptiDex are research-only compounds sold for laboratory use. → Read more at peptidex.app/faq"
   },
   {
-    q: 'What is Bio Longevity Labs and why are they triple-tested?',
-    a: 'Bio Longevity Labs is a premium injectable peptide vendor that subjects every batch to three independent testing protocols: HPLC purity analysis, LC-MS molecular verification, and endotoxin screening. Their PEPTIDEX discount code stacks with any active sitewide sale for maximum savings.',
-  },
+    q: "What is Bio Longevity Labs and why are they triple-tested?",
+    a: "Bio Longevity Labs is a premium injectable peptide vendor that subjects every batch to three independent testing protocols: HPLC purity analysis, LC-MS molecular verification, and endotoxin screening. Their PEPTIDEX discount code stacks with any active sitewide sale for maximum savings. → Read more at peptidex.app/vendors/bio-longevity-labs-review"
+  }
 ];
 
 /* ── Badge style helper ── */

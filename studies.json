@@ -1,0 +1,1187 @@
+[
+  {
+    "slug": "aod-9604",
+    "studies": [
+      {
+        "title": "AOD-9604 lipolysis stimulation in preclinical models",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/11146367/",
+        "summary": "Ng et al. demonstrate AOD-9604 stimulates lipolysis and inhibits lipogenesis in adipose tissue without affecting IGF-1 or glucose tolerance."
+      },
+      {
+        "title": "AOD-9604 clinical safety   six randomized controlled trials",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/19268492/",
+        "summary": "Heffernan et al.: Pooled analysis of 6 RCTs showing AOD-9604 is well-tolerated with a safety profile similar to placebo despite limited efficacy signals."
+      },
+      {
+        "title": "AOD-9604 Phase IIb trial   short-term fat reduction",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/15655039/",
+        "summary": "12-week Phase IIb trial: 1mg/day AOD-9604 produced 2.6 kg weight loss vs 0.8 kg placebo, with reductions in abdominal fat and improved lipid profiles."
+      },
+      {
+        "title": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskeletal Injuries and Athletic Performance.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41966639/",
+        "summary": "A 2026 review found that many unapproved peptides demonstrate favorable tissue repair and metabolic outcomes in animal models, though rigorous human safety data remain scarce. The study investigated the pharmacological mechanisms and regulatory status of various sports medicine peptides."
+      },
+      {
+        "title": "Therapeutic Peptides in Orthopaedics: Applications, Challenges, and Future Directions.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41490200/",
+        "summary": "Therapeutic peptides such as BPC-157 and TB-500 were found to modulate key molecular pathways influencing tissue regeneration and inflammation resolution in a 2026 review. The study demonstrated that while preclinical mechanistic data is promising for orthopaedic applications, clinical trials remain lacking."
+      },
+      {
+        "title": "A novel inhibitor of pyruvate dehydrogenase kinase stimulates myocardial carbohydrate oxidation in diet-induced obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/29739849/",
+        "summary": "A 2018 study in diet-induced obese mice demonstrated that PS10, a novel pyruvate dehydrogenase kinase inhibitor, stimulated myocardial carbohydrate oxidation and improved glucose tolerance. Researchers found that PS10 achieved these effects without increasing lactate production, unlike the classic inhibitor dichloroacetate."
+      },
+      {
+        "title": "Simplifying and expanding the screening for peptides <2 kDa by direct urine injection, liquid chromatography, and ion mobility mass spectrometry.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26578461/",
+        "summary": "A 2016 study demonstrated a highly sensitive screening method for detecting prohibited peptides under 2 kDa, such as GHRPs and TB-500, directly from urine. The liquid chromatography and mass spectrometry assay successfully identified peptide administration in human elimination samples, improving anti-doping control measures."
+      },
+      {
+        "title": "Effect of Intra-articular Injection of AOD9604 with or without Hyaluronic Acid in Rabbit Osteoarthritis Model.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26275694/",
+        "summary": "In a 2015 study, researchers found that intra-articular injections of AOD9604 enhanced cartilage regeneration in a rabbit model of osteoarthritis. Furthermore, the study demonstrated that combining AOD9604 with hyaluronic acid was more effective at reducing cartilage degeneration than either treatment alone."
+      },
+      {
+        "title": "Human sports drug testing by mass spectrometry.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26213263/",
+        "summary": "A 2017 review demonstrated that mass spectrometry has become an indispensable tool in modern sports drug testing. The paper detailed its critical role in detecting diverse substances, including peptidic drugs, anabolic agents, and nucleotide-derived therapeutics."
+      },
+      {
+        "title": "Detecting peptidic drugs, drug candidates and analogs in sports doping: current status and future directions.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/25382550/",
+        "summary": "A 2014 review found that advanced mass spectrometric and immunological methods can successfully detect the misuse of various peptidic drugs, including TB-500 and CJC-1295, in sports doping. However, researchers noted a gap remains between technical capabilities and routine analytical practice."
+      },
+      {
+        "title": "Detection and in vitro metabolism of AOD9604.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/25208511/",
+        "summary": "A 2015 in vitro study demonstrated a validated extraction method for detecting AOD9604 in urine and identified six potential metabolites. Researchers found that one specific metabolite is significantly more stable than the parent compound, potentially increasing the detection window."
+      },
+      {
+        "title": "Analytical approaches for the detection of emerging therapeutics and non-approved drugs in human doping controls.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/24906629/",
+        "summary": "A 2014 review detailed analytical strategies, including chromatographic-mass spectrometric methods, for detecting emerging performance-enhancing peptides like TB-500 and AOD-9604 in human doping controls. The study highlighted the specific physicochemical requirements for identifying these non-approved drugs in blood and urine."
+      },
+      {
+        "title": "Obesity drugs in clinical development.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/16625817/",
+        "summary": "A 2006 review highlighted that several anti-obesity drugs were in clinical development, including the human growth hormone fragment AOD-9604, which was investigated for its ability to increase adipose tissue breakdown. The study outlined various emerging therapies targeting satiety, fat absorption, and metabolism."
+      },
+      {
+        "title": "Gateways to clinical trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/15834452/",
+        "summary": "A 2005 bibliography documented recent clinical trial data for numerous pharmacological agents, including the peptide AOD-9604, serving as a reference guide for ongoing drug discovery and development."
+      },
+      {
+        "title": "AOD-9604 Metabolic.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/15134286/",
+        "summary": "AOD-9604 was actively being developed and investigated for the potential treatment of obesity, according to a 2004 review. The report demonstrated that phase IIa clinical trials were already underway to evaluate the peptide's metabolic effects."
+      },
+      {
+        "title": "Gateways to clinical trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/14685303/",
+        "summary": "A 2003 bibliography documented ongoing clinical trial data for numerous pharmacological compounds, including AOD-9604 and exenatide, utilizing the Prous Science Integrity database. The publication provided a comprehensive reference guide for recent drug discovery and development efforts across various therapeutic categories."
+      },
+      {
+        "title": "Gateways to clinical trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/14571286/",
+        "summary": "A 2003 bibliography demonstrated the breadth of ongoing pharmaceutical research by indexing recent clinical trial data for numerous drugs and peptides, including AOD-9604 and epithalon. The publication served as a comprehensive guide to contemporary drug discovery and development."
+      },
+      {
+        "title": "The effects of human GH and its lipolytic fragment (AOD9604) on lipid metabolism following chronic treatment in obese mice and beta(3)-AR knock-out mice.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/11713213/",
+        "summary": "A 2001 study in obese mice demonstrated that AOD9604 and human growth hormone reduced body weight and fat while increasing beta-3 adrenergic receptor expression. Researchers found that although these compounds enhance lipolytic sensitivity, their direct lipolytic actions are not solely mediated through this receptor."
+      }
+    ]
+  },
+  {
+    "slug": "bpc-157",
+    "studies": [
+      {
+        "title": "BPC-157 tendon, ligament, and gut healing effects",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/21030658/",
+        "summary": "Comprehensive review demonstrating potent tendon, ligament, and gut healing effects across multiple preclinical models."
+      },
+      {
+        "title": "Stable gastric pentadecapeptide BPC 157   gastrointestinal tract healing",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/22300085/",
+        "summary": "Robert et al. demonstrate BPC-157 heals GI ulcers, fistulas, and inflammatory bowel lesions in rats via cytoprotective pathways. Published in Current Pharmaceutical Design."
+      },
+      {
+        "title": "BPC-157 accelerates Achilles tendon healing in rats",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/21030672/",
+        "summary": "Staresinic et al. show BPC-157 accelerates healing of transected Achilles tendons, enhancing tendon fibroblast outgrowth and survival via FAK-paxillin signaling."
+      },
+      {
+        "title": "BPC-157 systematic review: musculoskeletal healing (2025)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39754825/",
+        "summary": "Systematic review of 35 preclinical and 1 clinical study (1993-2024). BPC-157 promotes angiogenesis, collagen synthesis, and reduces inflammatory cytokines across muscle, tendon, ligament, and bone injury models."
+      },
+      {
+        "title": "BPC-157 and neuroprotection: stroke and spinal cord models",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/20225319/",
+        "summary": "Preclinical evidence showing BPC-157 counteracts stroke-induced neuronal damage and improves functional recovery after spinal cord compression in rats."
+      },
+      {
+        "title": "BPC-157 angiogenic and vascular protective effects",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/24186725/",
+        "summary": "Demonstrates BPC-157's strong angiogenic potential via VEGFR2-Akt-eNOS pathway activation, endothelium protection, and reversal of thrombus formation."
+      },
+      {
+        "title": "Therapeutic peptides in gerontology: mechanisms and applications for healthy aging.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42021992/",
+        "summary": "Therapeutic peptides offer mechanistically diverse approaches to targeting fundamental hallmarks of aging, a 2026 review demonstrated. While FDA-approved agents show clinical potential, investigational peptides require rigorous validation through well-designed trials to establish long-term safety and efficacy."
+      },
+      {
+        "title": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskeletal Injuries and Athletic Performance.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41966639/",
+        "summary": "A 2026 review found that many unapproved peptides demonstrate favorable tissue repair and metabolic outcomes in animal models, though rigorous human safety data remain scarce. The study investigated the pharmacological mechanisms and regulatory status of various sports medicine peptides."
+      },
+      {
+        "title": "Cytoprotection as a Unifying Strategy for Hemorrhage and Thrombosis: The Role of BPC 157 and Related Therapeutics.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41901308/",
+        "summary": "A 2026 review found that the peptide BPC 157 simultaneously counteracted both hemorrhage and thrombosis in rodent models without directly affecting the coagulation cascade. The study demonstrated that BPC 157 acts as a cytoprotective mediator by preserving endothelial integrity and normalizing microcirculation."
+      },
+      {
+        "title": "From Regeneration to Analgesia: The Role of BPC-157 in Tissue Repair and Pain Management.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41898733/",
+        "summary": "A 2026 review found that BPC-157 supports angiogenesis, collagen synthesis, and tissue repair across diverse preclinical models. While animal data demonstrated enhanced healing and pain modulation, human research remains limited to small pilot studies requiring further clinical validation."
+      },
+      {
+        "title": "Stable Gastric Pentadecapeptide BPC 157 as a Therapy of Severe Electrolyte Disturbances in Rats.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41832718/",
+        "summary": "BPC 157 demonstrated the ability to counteract severe electrolyte imbalances, including hyperkalemia and hypokalemia, in a 2026 study on rats. The peptide effectively mitigated associated complications such as arrhythmias, muscle weakness, and multiorgan failure."
+      },
+      {
+        "title": "Tendon, Ligament, and Muscle Injury, Osteotendinous, Myotendinous, and Muscle-to-Bone Junction Therapy Perspectives with Growth Factors and Stable Gastric Pentadecapeptide BPC 157-A Review.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41754849/",
+        "summary": "A 2026 review found that BPC 157 demonstrated beneficial effects on tendon, ligament, and muscle injuries, including complex junctional healing, in rat models. The peptide acted as a cytoprotection mediator across various systemic and local administration routes without requiring complex carriers."
+      },
+      {
+        "title": "Conventional Antiarrhythmics Class I-IV, Late INa Inhibitors, IKs Enhancers, RyR2 Stabilizers, Gap Junction Modulators, Atrial-Selective Antiarrhythmics, and Stable Gastric Pentadecapeptide BPC 157 as Useful Cytoprotective Therapy in Arrhythmias.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41754776/",
+        "summary": "A 2026 review found that BPC 157 demonstrated broad cytoprotective and antiarrhythmic properties in preclinical models. The peptide stabilized membrane potentials and restored sinus rhythm across various induced arrhythmias in rodent and in vitro studies without observed toxicity."
+      },
+      {
+        "title": "Fourier Transform Infrared Spectroscopic Characterization of Aortic Wall Remodeling by Stable Gastric Pentadecapeptide BPC 157 After Unilateral Adrenalectomy in Rats.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41599787/",
+        "summary": "A 2026 preclinical study demonstrated that BPC 157 induced rapid molecular changes and structural stabilization in the aortic wall of rats following unilateral adrenalectomy. Spectroscopic analysis revealed spectral signatures consistent with early extracellular matrix reinforcement and membrane preservation."
+      },
+      {
+        "title": "Tracheocutaneous Fistula Resolved by Pentadecapeptide BPC 157 Therapy Through the NO-System-Triple NO-Agent Approach in Rats.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41599743/",
+        "summary": "A 2026 study demonstrated that BPC 157 promoted the healing and closure of tracheocutaneous fistulas in rats. Researchers found that the peptide facilitated rapid recovery of skin and tracheal defects by modulating the nitric oxide system."
+      },
+      {
+        "title": "Therapeutic Peptides in Orthopaedics: Applications, Challenges, and Future Directions.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41490200/",
+        "summary": "Therapeutic peptides, including BPC-157 and TB-500, were found to modulate molecular signaling networks influencing tissue regeneration and inflammation resolution in a 2026 review. The research highlighted their mechanistic potential for orthopaedic applications, noting a current lack of clinical trials."
+      },
+      {
+        "title": "Injectable Peptide Therapy: A Primer for Orthopaedic and Sports Medicine Physicians.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41476424/",
+        "summary": "A 2026 review found a significant lack of human clinical evidence to support the use of peptides like BPC-157 and TB-4 in orthopaedics, despite demonstrating potential tissue repair benefits in preclinical models."
+      },
+      {
+        "title": "BPC 157 Therapy: Targeting Angiogenesis and Nitric Oxide's Cytotoxic and Damaging Actions, but Maintaining, Promoting, or Recovering Their Essential Protective Functions. Comment on Józwiak et al. Multifunctionality and Possible Medical Application of the BPC 157 Peptide-Literature and Patent Review. Pharmaceuticals 2025, 18, 185.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41155565/",
+        "summary": "A 2025 commentary demonstrated that BPC 157 modulates angiogenesis and the nitric oxide system in preclinical models, counteracting free radical formation. Researchers found that the peptide exhibited anti-tumor potential and opposed neurodegenerative disturbances in mice and rats."
+      }
+    ]
+  },
+  {
+    "slug": "cjc-1295",
+    "studies": [
+      {
+        "title": "CJC-1295 GH/IGF-1 elevation in humans",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/16352683/",
+        "summary": "Teichman et al. (J. Clin. Endocrinol. Metab.): Single injection increases GH 2-10x for 6+ days and IGF-1 1.5-3x for 9-11 days in healthy adults. Well-tolerated at 30-60 µg/kg."
+      },
+      {
+        "title": "CJC-1295 preserves pulsatile GH secretion in humans",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/16595882/",
+        "summary": "Ionescu & Bhatt (J. Clin. Endocrinol. Metab.): Demonstrates 7.5-fold increase in basal GH, 46% increase in mean GH, and 45% increase in IGF-1 while preserving natural pulsatile pattern."
+      },
+      {
+        "title": "Long-acting GHRH analogs increase pituitary GH mRNA",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/17284574/",
+        "summary": "Animal study shows CJC-1295 increases total pituitary RNA and GH mRNA, suggesting proliferation of somatotroph cells for sustained GH production."
+      },
+      {
+        "title": "Therapeutic peptides in gerontology: mechanisms and applications for healthy aging.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42021992/",
+        "summary": "Therapeutic peptides offer mechanistically diverse approaches to targeting fundamental hallmarks of aging, a 2026 review demonstrated. While FDA-approved agents show clinical potential, investigational peptides require rigorous validation through well-designed trials to establish long-term safety and efficacy."
+      },
+      {
+        "title": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskeletal Injuries and Athletic Performance.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41966639/",
+        "summary": "A 2026 review found that many unapproved peptides demonstrate favorable tissue repair and metabolic outcomes in animal models, though rigorous human safety data remain scarce. The study investigated the pharmacological mechanisms and regulatory status of various sports medicine peptides."
+      },
+      {
+        "title": "A new era of doping? Use of peptide and peptide-analog drugs in recreational and professional sport and bodybuilding: a critical review.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41880199/",
+        "summary": "Limited clinical evidence supports the use of performance-enhancing peptides in sports despite their growing popularity, a 2026 review found. The research highlighted significant potential risks, including cardiovascular strain and insulin resistance, alongside major challenges in regulation and anti-doping detection."
+      },
+      {
+        "title": "Therapeutic Peptides in Orthopaedics: Applications, Challenges, and Future Directions.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41490200/",
+        "summary": "Therapeutic peptides such as BPC-157 and TB-500 were found to modulate key molecular pathways influencing tissue regeneration and inflammation resolution in a 2026 review. The study demonstrated that while preclinical mechanistic data is promising for orthopaedic applications, clinical trials remain lacking."
+      },
+      {
+        "title": "Injectable Peptide Therapy: A Primer for Orthopaedic and Sports Medicine Physicians.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41476424/",
+        "summary": "A 2026 review found a significant lack of human clinical evidence to support the use of peptides like BPC-157 and TB-4 in orthopaedics, despite demonstrating potential tissue repair benefits in preclinical models."
+      },
+      {
+        "title": "Analysis of growth hormone releasing hormone and its analogs in urine using nano liquid chromatography coupled with quadrupole/orbitrap mass spectrometry.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41138283/",
+        "summary": "A 2026 study demonstrated the successful development and validation of a highly sensitive mass spectrometry method for detecting growth hormone-releasing hormone (GHRH) and its analogs, including sermorelin, tesamorelin, and CJC-1295, in urine. The method achieved limits of detection suitable for anti-doping screening."
+      },
+      {
+        "title": "Chromatographic-mass spectrometric analysis of peptidic analytes (2-10 kDa) in doping control urine samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38197510/",
+        "summary": "A 2024 study demonstrated the successful development and validation of a simplified chromatographic-mass spectrometric method for detecting prohibited peptides, including insulins, GHRHs, and IGFs, in doping control urine samples. The approach met World Anti-Doping Agency standards and was verified using authentic post-administration samples."
+      },
+      {
+        "title": "Cationic exchange SPE combined with triple quadrupole UHPLC-MS/MS for detection of GHRHs in urine samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37806509/",
+        "summary": "A 2023 study demonstrated a newly validated UHPLC-MS/MS method capable of detecting growth hormone-releasing hormones like tesamorelin and CJC-1295 in urine at concentrations as low as 0.2 ng/mL. This provides a highly sensitive and reliable technique for routine anti-doping screening."
+      },
+      {
+        "title": "Probing for peptidic drugs (2-10 kDa) in doping control blood samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38716080/",
+        "summary": "A 2022 study demonstrated that a generic solid-phase extraction and high-resolution mass spectrometry method successfully detected various banned peptides, including insulins, GHRHs, and IGFs, in blood samples. The method met World Anti-Doping Agency criteria and was validated using post-administration samples."
+      },
+      {
+        "title": "An antibody-free, ultrafiltration-based assay for the detection of growth hormone-releasing hormones in urine at low pg/mL concentrations using nanoLC-HRMS/MS.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35298973/",
+        "summary": "A 2022 study demonstrated an antibody-free, ultrafiltration-based assay capable of detecting growth hormone-releasing hormone analogues, including sermorelin and CJC-1295, in urine at low concentrations. Researchers found this method provided high sensitivity and enhanced recovery rates compared to traditional purification techniques."
+      },
+      {
+        "title": "Early detection of cannabinoids in biological samples based on their affinity interaction with the growth hormone secretagogue receptor.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34736642/",
+        "summary": "A 2022 study demonstrated that cannabidiol and carboxy-THC act as extracellular ligands for the growth hormone secretagogue receptor (GHS-R1a). Researchers found these cannabinoids strongly promote the binding of ghrelin, enabling their early detection in biological samples without interference from synthetic ghrelin mimetics."
+      },
+      {
+        "title": "Advances in the detection of growth hormone releasing hormone synthetic analogs.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34665524/",
+        "summary": "A 2021 in vitro study demonstrated a new, sensitive detection method for four growth hormone-releasing hormone (GHRH) synthetic analogs in urine. Researchers identified 19 metabolites for peptides like sermorelin and CJC-1295, achieving detection limits of 1 ng/ml or less to enhance anti-doping screening."
+      },
+      {
+        "title": "Comparison of magnetic bead surface functionalities for the immunopurification of growth hormone-releasing hormones prior to liquid chromatography-high resolution mass spectrometry.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32971474/",
+        "summary": "A 2020 study demonstrated an optimized immunopurification method using magnetic beads and mass spectrometry to detect growth hormone-releasing hormone and its analogues in human urine. The validated technique successfully identified target peptides like sermorelin and CJC-1295 with a detection limit of 0.2 ng/mL."
+      },
+      {
+        "title": "A method for confirming CJC-1295 abuse in equine plasma samples by LC-MS/MS.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30938069/",
+        "summary": "A 2019 study demonstrated a novel LC-MS/MS method capable of confirming CJC-1295 in equine plasma following immuno-affinity capture and tryptic digestion. Researchers found this technique successfully identified the peptide at concentrations as low as 180 pg/mL."
+      },
+      {
+        "title": "An immuno polymerase chain reaction screen for the detection of CJC-1295 and other growth-hormone-releasing hormone analogs in equine plasma.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30489688/",
+        "summary": "A 2019 study demonstrated that an immuno-polymerase chain reaction assay successfully detected CJC-1295-protein conjugates in equine plasma at concentrations as low as 0.8 pg/mL. The assay's effectiveness was confirmed in thoroughbred racehorses, providing a method to monitor illicit peptide use."
+      },
+      {
+        "title": "The study of doping market: How to produce intelligence from Internet forums.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/27710891/",
+        "summary": "A 2016 analysis of internet forums found that peptides like CJC-1295 are emerging as popular new products in the online doping market. The study demonstrated that semantic analysis of online communities can successfully track these market trends and identify substance suppliers."
+      },
+      {
+        "title": "Qualitative identification of growth hormone-releasing hormones in human plasma by means of immunoaffinity purification and LC-HRMS/MS.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26879649/",
+        "summary": "A 2016 study demonstrated that a novel immunoaffinity-mass spectrometry method successfully detected four growth hormone-releasing hormones, including Sermorelin, CJC-1295, and Tesamorelin, in human plasma. The validated approach also identified specific metabolites, providing a reliable tool for sports anti-doping tests."
+      }
+    ]
+  },
+  {
+    "slug": "follistatin-344",
+    "studies": [
+      {
+        "title": "Follistatin gene therapy increases muscle mass and strength",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/19208403/",
+        "summary": "Rodino-Klapac et al. (Mol. Ther.): AAV-delivered follistatin 344 increases muscle mass and fiber diameter across multiple animal species without adverse reproductive or endocrine effects."
+      },
+      {
+        "title": "Follistatin as myostatin antagonist   therapeutic potential",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/22207074/",
+        "summary": "Kalista et al.: Review of follistatin's role as primary endogenous myostatin antagonist and its therapeutic potential for muscular dystrophies and sarcopenia."
+      },
+      {
+        "title": "Follistatin gene transfer for Becker muscular dystrophy (Phase I)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/25358937/",
+        "summary": "Mendell et al. (Mol. Ther.): Phase I clinical trial of AAV1-follistatin gene transfer in Becker muscular dystrophy patients shows improved 6-minute walk test with no adverse effects."
+      },
+      {
+        "title": "Follistatin in adipocyte differentiation and energy metabolism",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30686776/",
+        "summary": "Research demonstrating follistatin's broader metabolic role in adipocyte browning, energy expenditure, and metabolic health beyond muscle hypertrophy."
+      },
+      {
+        "title": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskeletal Injuries and Athletic Performance.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41966639/",
+        "summary": "A 2026 review found that while unapproved peptides like BPC-157 and TB-500 demonstrate favorable tissue repair in animal models, rigorous human safety data remain scarce. The researchers investigated the pharmacological mechanisms and regulatory status of these compounds in sports medicine."
+      },
+      {
+        "title": "Sub-200  fs, 344  MHz mode-locked Tm-doped fiber laser.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33001928/",
+        "summary": "In a 2020 study, researchers demonstrated a compact, self-starting mode-locked thulium-doped fiber laser achieving a fundamental repetition rate of 344 MHz and a pulse duration of 160 fs. The system generated pulses centered at 1975 nm with a maximum output power of 560 mW."
+      },
+      {
+        "title": "Central serous chorioretinopathy associated with high-dose follistatin-344: a retrospective case series.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32671599/",
+        "summary": "High-dose subcutaneous injections of follistatin-344 were associated with the development of central serous chorioretinopathy in eleven bodybuilding athletes, according to a 2020 retrospective case series. The study demonstrated that symptoms and subretinal fluid generally resolved after discontinuing the peptide."
+      },
+      {
+        "title": "Detection of black market follistatin 344.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31758732/",
+        "summary": "A 2019 study demonstrated that only nine of 17 tested black market follistatin 344 products actually contained the peptide. Researchers successfully developed an electrophoretic detection method to identify these His-tagged illicit peptides in serum and urine."
+      },
+      {
+        "title": "The transgenic expression of human follistatin-344 increases skeletal muscle mass in pigs.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/27787698/",
+        "summary": "A 2017 study demonstrated that transgenic expression of human follistatin-344 in pigs significantly increased skeletal muscle mass and reduced body fat. Researchers found this growth was driven by myofiber hypertrophy and altered signaling pathways, without causing cardiac or reproductive abnormalities."
+      }
+    ]
+  },
+  {
+    "slug": "igf-1-lr3",
+    "studies": [
+      {
+        "title": "IGF-1 LR3 promotes muscle growth in animal models",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/10218986/",
+        "summary": "IGF-1 LR3 demonstrates significantly enhanced potency over native IGF-1 due to reduced binding protein affinity and extended half-life, promoting dose-dependent muscle growth."
+      },
+      {
+        "title": "IGF-1 signaling: muscle repair and regeneration review",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/22234739/",
+        "summary": "Philippou & Barton (Growth Hormone & IGF Res.): Comprehensive review of IGF-1's role in muscle satellite cell activation, myoblast proliferation, and skeletal muscle regeneration."
+      },
+      {
+        "title": "IGF-1 and cancer risk   comprehensive epidemiological review",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/27016193/",
+        "summary": "Bowers et al.: Meta-analysis of epidemiological studies examining positive correlation between circulating IGF-1 levels and prostate, breast, and colorectal cancer risk."
+      },
+      {
+        "title": "Revolutionary decellularized Alstroemeria stem-based nerve conduit integrated with GelMA and controlled IGF-1 LR3 release for enhanced rat sciatic nerve regeneration.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41015370/",
+        "summary": "A 2025 study found that a novel plant-based nerve conduit featuring controlled release of IGF-1 LR3 significantly improved axonal regeneration in a rat model of sciatic nerve injury. The conduit demonstrated performance comparable to autologous nerve grafts without inducing systemic toxicity."
+      },
+      {
+        "title": "IGF-1 LR3 does not promote growth in late-gestation growth-restricted fetal sheep.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39679943/",
+        "summary": "A 2025 study found that a one-week infusion of IGF-1 LR3 did not improve growth or insulin secretion in growth-restricted fetal sheep. However, the treatment demonstrated a reduction in circulating amino acids, suggesting increased amino acid utilization."
+      },
+      {
+        "title": "Intranasal long R3 insulin-like growth factor-1 treatment promotes amyloid plaque remodeling in cerebral cortex but fails to preserve cognitive function in male 5XFAD mice.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39610283/",
+        "summary": "A 2025 study found that intranasal LR3-IGF-1 promoted amyloid plaque remodeling and reduced low molecular weight Aβ oligomers in the cerebral cortex of an Alzheimer's mouse model. However, the treatment failed to preserve cognitive function or memory in the mice."
+      },
+      {
+        "title": "Chromatographic-mass spectrometric analysis of peptidic analytes (2-10 kDa) in doping control urine samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38197510/",
+        "summary": "A 2024 study demonstrated a simplified, validated chromatographic-mass spectrometric method for efficiently extracting and detecting prohibited peptides, including insulins and GHRHs, in doping control urine samples. The approach successfully met World Anti-Doping Agency requirements and was verified using authentic post-administration samples."
+      },
+      {
+        "title": "Insulin-Like Growth Factor1 Preserves Gastric Pacemaker Cells and Motor Function in Aging via ERK1/2 Activation.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37301443/",
+        "summary": "A 2023 study found that an IGF1 analog mitigated age-related loss of gastric pacemaker cells in mice by activating ERK1/2 signaling. This preservation demonstrated improved gastric compliance, increased food intake, and prevented impaired body weight gain in the animal model."
+      },
+      {
+        "title": "Recombinant expression of IGF-1 and LR3 IGF-1 fused with xylanase in Pichia pastoris.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37261455/",
+        "summary": "In a 2023 study, researchers demonstrated that high levels of bioactive human IGF-1 and its analog LR3 IGF-1 can be successfully produced in a Pichia pastoris expression system by fusing them with xylanase. The purified recombinant proteins exhibited excellent cell proliferation bioactivity comparable to standard IGF-1."
+      },
+      {
+        "title": "Attenuated glucose-stimulated insulin secretion during an acute IGF-1 LR3 infusion into fetal sheep does not persist in isolated islets.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37114757/",
+        "summary": "A 2023 study demonstrated that acute IGF-1 LR3 infusion in fetal sheep suppressed in vivo glucose-stimulated insulin secretion. However, researchers found that isolated islets retained the ability to recover insulin secretion in vitro, indicating beta-cells can overcome acute suppression."
+      },
+      {
+        "title": "N-Linked Glycosylation in Chinese Hamster Ovary Cells Is Critical for Insulin-like Growth Factor 1 Signaling.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36499281/",
+        "summary": "A 2022 in-vitro study demonstrated that proper N-linked glycosylation is critical for insulin-like growth factor 1 (IGF-1) signaling in Chinese hamster ovary cells. Researchers found that defective glycosylation significantly reduced IGF-1 receptor levels and impaired IGF-1-dependent ERK signaling pathways."
+      },
+      {
+        "title": "Reduced glucose-stimulated insulin secretion following a 1-wk IGF-1 infusion in late gestation fetal sheep is due to an intrinsic islet defect.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33938236/",
+        "summary": "A 2021 study demonstrated that a one-week infusion of IGF-1 LR3 in fetal sheep lowered plasma insulin and glucose concentrations and reduced glucose-stimulated insulin secretion. Researchers found this impaired insulin release persisted in isolated islets, indicating an intrinsic islet defect."
+      },
+      {
+        "title": "Detection of LongR3 -IGF-I, Des(1-3)-IGF-I, and R3 -IGF-I using immunopurification and high resolution mass spectrometry for antidoping purposes.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33587816/",
+        "summary": "In a 2021 preclinical study, researchers demonstrated that a novel mass spectrometry method successfully detected IGF-I analogs like Des(1-3)-IGF-I for up to 24 hours in rats. The study also identified new degradation products of LongR3-IGF-I in both rat models and human blood in vitro."
+      },
+      {
+        "title": "IGF-1 infusion to fetal sheep increases organ growth but not by stimulating nutrient transfer to the fetus.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33427051/",
+        "summary": "A 2021 study in fetal sheep demonstrated that LR3 IGF-1 infusion increased specific organ growth and skeletal muscle myoblast proliferation. Researchers found that the peptide efficiently utilized available nutrients to support organ-specific growth rather than stimulating placental nutrient transfer."
+      },
+      {
+        "title": "Coronary vascular growth matches IGF-1-stimulated cardiac growth in fetal sheep.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32573852/",
+        "summary": "IGF-1 administration stimulates myocardial growth accompanied by appropriate expansion and function of the coronary vasculature, a 2020 study in fetal sheep demonstrated. Researchers found that coronary conductance and hypoxia-mediated vasodilation were preserved alongside the increased heart mass."
+      },
+      {
+        "title": "Inhibition of activin-like kinase 4/5 attenuates cancer cachexia associated muscle wasting.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31285507/",
+        "summary": "The ALK4/5 receptor blocker GW788388 prevented cancer-associated muscle wasting and downregulated Atrogin-1 expression in mice, according to a 2019 study. Additionally, researchers demonstrated that while LR3 IGF-I limited muscle mass loss, it accelerated tumor growth."
+      },
+      {
+        "title": "IGF-1 has plaque-stabilizing effects in atherosclerosis by altering vascular smooth muscle cell phenotype.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/21281823/",
+        "summary": "A 2011 study demonstrated that the IGF-1 analog Long R3 IGF-1 reduced stenosis, increased vascular smooth muscle cell content, and decreased intraplaque hemorrhage in atherosclerotic mice. These findings suggest IGF-1 alters cell phenotypes to promote plaque stability in preclinical models."
+      },
+      {
+        "title": "Detection of His-tagged Long-R³-IGF-I in a black market product.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/20675162/",
+        "summary": "A 2010 case report identified His-tagged Long-R³-IGF-I, a protein typically used for biochemical studies, within a confiscated black market injection vial. The analysis demonstrated that the protein retained its His-tag, highlighting the unknown physiological effects of such illicitly manufactured peptides."
+      },
+      {
+        "title": "Novel insulin-like growth factor-methotrexate covalent conjugate inhibits tumor growth in vivo at lower dosage than methotrexate alone.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/19446281/",
+        "summary": "A 2009 preclinical study demonstrated that a novel insulin-like growth factor-methotrexate conjugate inhibited prostate and breast tumor growth in mouse models more effectively than methotrexate alone at lower dosages. The conjugate also exhibited higher binding affinity to cancer cells in vitro."
+      },
+      {
+        "title": "NKX3.1 activates expression of insulin-like growth factor binding protein-3 to mediate insulin-like growth factor-I signaling and cell proliferation.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/19258508/",
+        "summary": "A 2009 study demonstrated that NKX3.1 activates insulin-like growth factor binding protein-3 expression to suppress prostate cancer cell proliferation. Researchers found this activation attenuates IGF-I signaling in both cell cultures and mouse models."
+      }
+    ]
+  },
+  {
+    "slug": "ipamorelin",
+    "studies": [
+      {
+        "title": "Ipamorelin selective GH release   original characterization",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/9849822/",
+        "summary": "Raun et al. (Eur. J. Endocrinol.): First characterization showing Ipamorelin releases GH potently and selectively without raising ACTH, cortisol, prolactin, FSH, LH, or TSH in swine."
+      },
+      {
+        "title": "Ipamorelin PK/PD modeling in healthy human volunteers",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/16796559/",
+        "summary": "Dose-escalation study in healthy humans demonstrates Ipamorelin induces single-episode GH release with peak at ~0.67 hours and terminal half-life of 2 hours."
+      },
+      {
+        "title": "Ipamorelin and longitudinal bone growth in rats",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/10444229/",
+        "summary": "Svensson et al. show Ipamorelin induces dose-dependent longitudinal bone growth and counters glucocorticoid-induced decreases in bone formation and muscle strength."
+      },
+      {
+        "title": "Ipamorelin accelerates postoperative GI recovery",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/17457097/",
+        "summary": "Preclinical evidence demonstrates Ipamorelin alleviates delayed gastric emptying and post-surgical ileus, suggesting applications beyond hormone optimization."
+      },
+      {
+        "title": "Therapeutic peptides in gerontology: mechanisms and applications for healthy aging.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42021992/",
+        "summary": "A 2026 review found that nine therapeutic peptides, including tirzepatide, epitalon, and BPC-157, target diverse aging hallmarks such as metabolic dysfunction and tissue repair. While FDA-approved agents demonstrated robust safety, investigational peptides require further clinical validation to establish long-term efficacy."
+      },
+      {
+        "title": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskeletal Injuries and Athletic Performance.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41966639/",
+        "summary": "A 2026 review found that many unapproved peptides demonstrate favorable tissue repair and metabolic outcomes in animal models, though rigorous human safety data remain scarce. The study investigated the pharmacological mechanisms and regulatory status of various sports medicine peptides."
+      },
+      {
+        "title": "A new era of doping? Use of peptide and peptide-analog drugs in recreational and professional sport and bodybuilding: a critical review.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41880199/",
+        "summary": "A 2026 review found that performance-enhancing peptide use in sports and bodybuilding is increasing despite limited clinical evidence. The researchers demonstrated that these experimental substances carry poorly defined long-term risks, including potential cardiovascular strain and insulin resistance."
+      },
+      {
+        "title": "Therapeutic Peptides in Orthopaedics: Applications, Challenges, and Future Directions.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41490200/",
+        "summary": "Therapeutic peptides, including BPC-157 and TB-500, were found to modulate molecular signaling networks influencing tissue regeneration and inflammation resolution in a 2026 review. The research highlighted their mechanistic potential for orthopaedic applications, noting a current lack of clinical trials."
+      },
+      {
+        "title": "Injectable Peptide Therapy: A Primer for Orthopaedic and Sports Medicine Physicians.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41476424/",
+        "summary": "Preclinical models demonstrate that peptides like BPC-157 and TB-500 show potential for tissue repair, but a 2026 review found a significant lack of human clinical data supporting their orthopaedic use."
+      },
+      {
+        "title": "The growth hormone secretagogue receptor 1a agonists, anamorelin and ipamorelin, inhibit cisplatin-induced weight loss in ferrets: Anamorelin also exhibits anti-emetic effects via a central mechanism.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39043357/",
+        "summary": "A 2024 preclinical study found that the ghrelin mimetics anamorelin and ipamorelin inhibited cisplatin-induced weight loss in ferrets by approximately 24%. Additionally, centrally administered anamorelin demonstrated anti-emetic effects and improved food and water consumption during the acute phase."
+      },
+      {
+        "title": "The influence of ghrelin agonist ipamorelin acetate on the hypothalamic-pituitary-testicular axis in a cichlid fish, Oreochromis mossambicus.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38996787/",
+        "summary": "A 2024 preclinical study demonstrated that the ghrelin agonist ipamorelin acetate significantly enhanced germ cell development and increased food intake in tilapia. Researchers found these effects were accompanied by elevated luteinizing hormone, 11-ketotestosterone, and androgen receptor expression."
+      },
+      {
+        "title": "Attenuation of Visceral and Somatic Nociception by Ghrelin Mimetics.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32801950/",
+        "summary": "A 2020 study found that the ghrelin mimetics ipamorelin and HM01 significantly attenuated non-inflammatory visceral hypersensitivity and somatic mechanical allodynia in rat models. The research demonstrated that peripherally restricted ghrelin receptor activation modulates pain responses in the absence of active inflammation."
+      },
+      {
+        "title": "Beyond the androgen receptor: the role of growth hormone secretagogues in the modern management of body composition in hypogonadal males.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32257855/",
+        "summary": "Growth hormone secretagogues, including sermorelin, ibutamoren, and ipamorelin, demonstrated the ability to stimulate GH and IGF-1, potentially improving body composition in hypogonadal males. A 2020 review investigated these peptides, noting that while they may ameliorate fat gain, limited clinical data currently restricts their application."
+      },
+      {
+        "title": "Peptidomimetic growth hormone secretagogue derivatives for positron emission tomography imaging of the ghrelin receptor.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30282322/",
+        "summary": "A 2018 in vitro study found that a radiolabeled derivative of the peptidomimetic G-7039 exhibited high binding affinity and efficacy for the ghrelin receptor. Researchers successfully synthesized this compound, demonstrating its potential as a positron emission tomography imaging probe."
+      },
+      {
+        "title": "A stable meta-carborane enables the generation of boron-rich peptide agonists targeting the ghrelin receptor.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30168238/",
+        "summary": "A 2018 study demonstrated that modifying ghrelin receptor ligands, including GHRP-6 and Ipamorelin, with a stable meta-carborane building block generated highly potent, boron-rich peptide agonists. These conjugates successfully activated the ghrelin receptor, indicating their potential utility as targeted delivery agents for boron neutron capture therapy research."
+      },
+      {
+        "title": "Glycine-modified growth hormone secretagogues identified in seized doping material.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30136411/",
+        "summary": "A 2019 study found that seized doping materials contained analogs of growth hormone secretagogues, including GHRP-2, GHRP-6, Ipamorelin, and modified GRF 1-29, modified with an extra N-terminal glycine amino acid. Researchers recommended updating analytical methods to target these specific peptide modifications."
+      },
+      {
+        "title": "Analysis of new growth promoting black market products.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/29864719/",
+        "summary": "A 2018 study identified a modified 192-amino acid human growth hormone and three novel peptide analogues—Gly-GHRP-6, Gly-GHRP-2, and Gly-Ipamorelin—in black market products. In-vitro experiments provided preliminary data on the potential metabolism of these extended peptides."
+      },
+      {
+        "title": "Doping control container for urine stabilization: a pilot study.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/27497113/",
+        "summary": "A 2017 study demonstrated that a novel spray-coated chemical stabilization mixture effectively prevented the enzymatic breakdown of small peptides, including GHRPs and ipamorelin, in urine samples. The findings support using these stabilized containers to prevent microbial and proteolytic degradation during doping control procedures."
+      },
+      {
+        "title": "Structure-activity relationship for peptídic growth hormone secretagogues.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26811125/",
+        "summary": "A 2017 study demonstrated that specific amino acid modifications to the core structure of growth hormone-releasing peptides dictate their binding affinity to the GHSR1a receptor. Furthermore, researchers found that intact peptides and active metabolites remain detectable in urine following nasal administration."
+      },
+      {
+        "title": "Simplifying and expanding the screening for peptides <2 kDa by direct urine injection, liquid chromatography, and ion mobility mass spectrometry.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26578461/",
+        "summary": "A 2016 study demonstrated a highly sensitive method for detecting performance-enhancing peptides under 2 kDa, including GHRPs and TB-500, using direct urine injection and mass spectrometry. The assay successfully identified these compounds at concentrations between 50 and 500 pg/mL in human elimination samples."
+      }
+    ]
+  },
+  {
+    "slug": "mots-c",
+    "studies": [
+      {
+        "title": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/25710270/",
+        "summary": "Lee et al. (Cell Metabolism): Discovery paper showing MOTS-c is a mitochondrial-derived peptide that regulates insulin sensitivity and metabolic homeostasis via AMPK activation."
+      },
+      {
+        "title": "MOTS-c prevents age-related insulin resistance in mice",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30975990/",
+        "summary": "Lee et al.: MOTS-c treatment prevents both age-dependent and high-fat-diet-induced insulin resistance and diet-induced obesity in mouse models."
+      },
+      {
+        "title": "MOTS-c improves skeletal muscle glucose metabolism",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31577362/",
+        "summary": "Study demonstrating MOTS-c specifically targets skeletal muscle glucose metabolism, providing molecular basis for metabolic benefits and exercise-mimetic properties."
+      },
+      {
+        "title": "Circulating MOTS-c levels decline with age and obesity",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/29474084/",
+        "summary": "Human observational study linking decreased circulating MOTS-c levels with aging, obesity, and type 2 diabetes   suggesting therapeutic rationale for supplementation."
+      },
+      {
+        "title": "The Mitochondrial-Encoded Peptide MOTS-c Translocates to the Nucleus to Regulate Nuclear Gene Expression in Response to Metabolic Stress.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/29983246/",
+        "summary": "A study published in Cell metabolism investigating the effects and mechanisms."
+      },
+      {
+        "title": "Mitochondrial-Encoded Peptide MOTS-c, Diabetes, and Aging-Related Diseases.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36824008/",
+        "summary": "A study published in Diabetes & metabolism journal investigating the effects and mechanisms."
+      },
+      {
+        "title": "The mitochondrial-derived peptide MOTS-c suppresses ferroptosis and alleviates acute lung injury induced by myocardial ischemia reperfusion via PPARγ signaling pathway.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37290680/",
+        "summary": "A study published in European journal of pharmacology investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c attenuates lung ischemia-reperfusion injury via MYH9-Dependent nuclear translocation and transcriptional activation of antioxidant genes.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40403491/",
+        "summary": "A study published in Redox biology investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c attenuates mitochondrial dysfunction induces pyroptosis and cartilage degradation in osteoarthritis via an Nrf2-Dependent Mechanism.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41043625/",
+        "summary": "A study published in Free radical biology & medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Mitochondria-derived peptide MOTS-c: effects and mechanisms related to stress, metabolism and aging.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36670507/",
+        "summary": "A study published in Journal of translational medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c: A novel mitochondrial-derived peptide regulating muscle and fat metabolism.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/27216708/",
+        "summary": "A study published in Free radical biology & medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c Functionally Prevents Metabolic Disorders.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36677050/",
+        "summary": "A study published in Metabolites investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c, the Most Recent Mitochondrial Derived Peptide in Human Aging and Age-Related Diseases.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36233287/",
+        "summary": "A study published in International journal of molecular sciences investigating the effects and mechanisms."
+      },
+      {
+        "title": "Mitochondria-derived peptide MOTS-c and its role in OSA pathogenesis: a potential therapeutic target?",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40538382/",
+        "summary": "A study published in Sleep and biological rhythms investigating the effects and mechanisms."
+      },
+      {
+        "title": "The mitochondrial genome-encoded peptide MOTS-c interacts with Bcl-2 to alleviate nonalcoholic steatohepatitis progression.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38206815/",
+        "summary": "A study published in Cell reports investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c regulates the ROS/TXNIP/NLRP3 pathway to alleviate diabetic cardiomyopathy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39616938/",
+        "summary": "A study published in Biochemical and biophysical research communications investigating the effects and mechanisms."
+      },
+      {
+        "title": "Circulating PGC-1α and MOTS-c Peptide as Potential Mitochondrial Biomarkers in Patients Undergoing Aortic Valve Replacement.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40104672/",
+        "summary": "A study published in Biologics : targets & therapy investigating the effects and mechanisms."
+      },
+      {
+        "title": "Mitochondrial-derived peptides and exercise.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34520826/",
+        "summary": "A study published in Biochimica et biophysica acta. General subjects investigating the effects and mechanisms."
+      },
+      {
+        "title": "Mitochondrial-Derived Peptides Exacerbate Senescence.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30058454/",
+        "summary": "A study published in Rejuvenation research investigating the effects and mechanisms."
+      },
+      {
+        "title": "MOTS-c: A promising mitochondrial-derived peptide for therapeutic exploitation.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36761202/",
+        "summary": "A study published in Frontiers in endocrinology investigating the effects and mechanisms."
+      }
+    ]
+  },
+  {
+    "slug": "retatrutide",
+    "studies": [
+      {
+        "title": "Retatrutide Phase 2 trial: ~24% weight loss at 48 weeks",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37351564/",
+        "summary": "Jastreboff et al. (NEJM): Phase 2 RCT showing 24.2% body weight reduction at 12mg dose over 48 weeks   the highest reported weight loss in any obesity drug trial to date."
+      },
+      {
+        "title": "Retatrutide Phase 1   safety and dose-dependent weight loss",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36579200/",
+        "summary": "First-in-human Phase 1 trial demonstrating dose-dependent weight loss, favorable safety profile, and significant HbA1c reductions across multiple dose levels."
+      },
+      {
+        "title": "Retatrutide reduces liver fat (NAFLD sub-study)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37840095/",
+        "summary": "Phase 2 sub-study showing retatrutide significantly reduces liver fat content, with ~90% of participants with baseline steatosis achieving resolution at 48 weeks."
+      },
+      {
+        "title": "Triple GLP-1/GIP/glucagon agonism   pharmacological rationale",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37115596/",
+        "summary": "Review of the triple agonism mechanism: GLP-1 provides appetite suppression, GIP enhances GH-like metabolic effects, and glucagon drives energy expenditure and hepatic lipid oxidation."
+      },
+      {
+        "title": "GIPR:GCGR co-agonism restores normal weight in obese rodents.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41997446/",
+        "summary": "A 2026 study demonstrated that a novel GIPR:GCGR co-agonist lacking GLP-1 activity successfully reduced excess body weight and improved glycemia in obese rodents. Researchers found that correcting obesity without GLP-1 agonism could potentially avoid the gastrointestinal adverse effects commonly associated with current treatments."
+      },
+      {
+        "title": "Development of the Weight and Emotions Scale (WES).",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41589220/",
+        "summary": "A 2026 study demonstrated the successful development of the Weight and Emotions Scale (WES), a 16-item patient-reported outcome measure. Cognitive interviews with adults with obesity found that the scale was well-understood and effectively captured 13 emotion-related concepts relevant to weight management."
+      },
+      {
+        "title": "Emerging pharmacotherapies for obesity: A systematic review.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39952695/",
+        "summary": "A study published in Pharmacological reviews investigating the effects and mechanisms."
+      },
+      {
+        "title": "Seven glucagon-like peptide-1 receptor agonists and polyagonists for weight loss in patients with obesity or overweight: an updated systematic review and network meta-analysis of randomized controlled trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39305981/",
+        "summary": "A study published in Metabolism: clinical and experimental investigating the effects and mechanisms."
+      },
+      {
+        "title": "Efficacy and Safety of Glucagon-Like Peptide-1 Receptor Agonists for Weight Loss Among Adults Without Diabetes : A Systematic Review of Randomized Controlled Trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39761578/",
+        "summary": "A study published in Annals of internal medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Retatrutide-A Game Changer in Obesity Pharmacotherapy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40563436/",
+        "summary": "A study published in Biomolecules investigating the effects and mechanisms."
+      },
+      {
+        "title": "Gut hormones and appetite regulation.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38511400/",
+        "summary": "A study published in Current opinion in endocrinology, diabetes, and obesity investigating the effects and mechanisms."
+      },
+      {
+        "title": "Triple hormone receptor agonist retatrutide for metabolic dysfunction-associated steatotic liver disease: a randomized phase 2a trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38858523/",
+        "summary": "A study published in Nature medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Pharmacological Treatment of Binge Eating Disorder and Frequent Comorbid Diseases.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39096466/",
+        "summary": "A study published in CNS drugs investigating the effects and mechanisms."
+      },
+      {
+        "title": "The impact of weight loss on fat-free mass, muscle, bone and hematopoiesis health: Implications for emerging pharmacotherapies aiming at fat reduction and lean mass preservation.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39481534/",
+        "summary": "A study published in Metabolism: clinical and experimental investigating the effects and mechanisms."
+      },
+      {
+        "title": "Advancements in pharmacological treatment of NAFLD/MASLD: a focus on metabolic and liver-targeted interventions.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38681750/",
+        "summary": "A study published in Gastroenterology report investigating the effects and mechanisms."
+      },
+      {
+        "title": "Weight management treatment in obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40865172/",
+        "summary": "A study published in Medicina clinica investigating the effects and mechanisms."
+      },
+      {
+        "title": "Efficacy and Safety of GLP-1 Receptor Agonists, Dual Agonists, and Retatrutide for Weight Loss in Adults With Overweight or Obesity: A Bayesian NMA.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40685589/",
+        "summary": "A study published in Obesity (Silver Spring, Md.) investigating the effects and mechanisms."
+      },
+      {
+        "title": "The power of three: Retatrutide's role in modern obesity and diabetes therapy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39515565/",
+        "summary": "A study published in European journal of pharmacology investigating the effects and mechanisms."
+      },
+      {
+        "title": "Novel GLP-1-based Medications for Type 2 Diabetes and Obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41054801/",
+        "summary": "A study published in Endocrine reviews investigating the effects and mechanisms."
+      },
+      {
+        "title": "Recent advances in the treatment of type 2 diabetes mellitus using new drug therapies.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38183334/",
+        "summary": "A study published in The Kaohsiung journal of medical sciences investigating the effects and mechanisms."
+      }
+    ]
+  },
+  {
+    "slug": "semaglutide",
+    "studies": [
+      {
+        "title": "STEP 1: Semaglutide 2.4 mg for weight management",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+        "summary": "Wilding et al. (NEJM): Landmark STEP 1 trial   semaglutide 2.4mg achieved 14.9% mean weight loss vs 2.4% placebo at 68 weeks in 1,961 adults with obesity."
+      },
+      {
+        "title": "SELECT trial: semaglutide reduces cardiovascular events by 20%",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+        "summary": "Lincoff et al. (NEJM): SELECT trial shows semaglutide 2.4mg reduces major adverse cardiovascular events by 20% in overweight/obese adults with established CVD."
+      },
+      {
+        "title": "STEP program overview: pooled Phase 3 weight loss data",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35441470/",
+        "summary": "Comprehensive analysis across STEP trials showing 14.9-17.4% weight loss, improved cardiometabolic risk factors, blood pressure, and quality of life with semaglutide 2.4mg."
+      },
+      {
+        "title": "Oral semaglutide (Rybelsus) in type 2 diabetes   PIONEER program",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31189511/",
+        "summary": "Aroda et al. (JAMA): PIONEER trials demonstrate oral semaglutide achieves significant HbA1c and weight reductions, representing the first oral GLP-1RA for type 2 diabetes."
+      },
+      {
+        "title": "Semaglutide cognitive and neurological effects   emerging research",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35848726/",
+        "summary": "Emerging evidence suggests semaglutide may have neuroprotective properties, with trials underway for Alzheimer's disease and other neurodegenerative conditions."
+      },
+      {
+        "title": "Cagrilintide-Semaglutide in Adults with Overweight or Obesity and Type 2 Diabetes.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40544432/",
+        "summary": "A study published in The New England journal of medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Semaglutide Effects on Cardiovascular Outcomes in People With Overweight or Obesity (SELECT) rationale and design.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32916609/",
+        "summary": "A study published in American heart journal investigating the effects and mechanisms."
+      },
+      {
+        "title": "GLP-1 receptor agonists in the treatment of type 2 diabetes - state-of-the-art.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33068776/",
+        "summary": "A study published in Molecular metabolism investigating the effects and mechanisms."
+      },
+      {
+        "title": "The rationale, design and baseline data of FLOW, a kidney outcomes trial with once-weekly semaglutide in people with type 2 diabetes and chronic kidney disease.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36651820/",
+        "summary": "A study published in Nephrology, dialysis, transplantation : official publication of the European Dialysis and Transplant Association - European Renal Association investigating the effects and mechanisms."
+      },
+      {
+        "title": "Real-world evidence on the utilization, clinical and comparative effectiveness, and adverse effects of newer GLP-1RA-based weight-loss therapies.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40196933/",
+        "summary": "A study published in Diabetes, obesity & metabolism investigating the effects and mechanisms."
+      },
+      {
+        "title": "Effect of glucagon-like peptide-1 receptor agonists and co-agonists on body composition: Systematic review and network meta-analysis.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39719170/",
+        "summary": "A study published in Metabolism: clinical and experimental investigating the effects and mechanisms."
+      },
+      {
+        "title": "Obesity, Cardiovascular Disease, and the Promising Role of Semaglutide: Insights from the SELECT Trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37640171/",
+        "summary": "A study published in Current problems in cardiology investigating the effects and mechanisms."
+      },
+      {
+        "title": "Efficacy and Safety of Once-Weekly Semaglutide Versus Exenatide ER in Subjects With Type 2 Diabetes (SUSTAIN 3): A 56-Week, Open-Label, Randomized Clinical Trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/29246950/",
+        "summary": "A study published in Diabetes care investigating the effects and mechanisms."
+      },
+      {
+        "title": "The Weight-loss Effect of GLP-1RAs Glucagon-Like Peptide-1 Receptor Agonists in Non-diabetic Individuals with Overweight or Obesity: A Systematic Review with Meta-Analysis and Trial Sequential Analysis of Randomized Controlled Trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37661106/",
+        "summary": "A study published in The American journal of clinical nutrition investigating the effects and mechanisms."
+      },
+      {
+        "title": "Efficacy and safety of semaglutide 2.4 mg for weight loss in overweight or obese adults without diabetes: An updated systematic review and meta-analysis including the 2-year STEP 5 trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38016699/",
+        "summary": "A study published in Diabetes, obesity & metabolism investigating the effects and mechanisms."
+      },
+      {
+        "title": "Long-Term Efficacy and Safety of Once-Weekly Semaglutide for Weight Loss in Patients Without Diabetes: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38679221/",
+        "summary": "A study published in The American journal of cardiology investigating the effects and mechanisms."
+      },
+      {
+        "title": "Emerging Role of GLP-1 Agonists in Obesity: A Comprehensive Review of Randomised Controlled Trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37445623/",
+        "summary": "A study published in International journal of molecular sciences investigating the effects and mechanisms."
+      },
+      {
+        "title": "Dose-response effects on HbA(1c) and bodyweight reduction of survodutide, a dual glucagon/GLP-1 receptor agonist, compared with placebo and open-label semaglutide in people with type 2 diabetes: a randomised clinical trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38095657/",
+        "summary": "A study published in Diabetologia investigating the effects and mechanisms."
+      },
+      {
+        "title": "Efficacy and Safety of Glucagon-Like Peptide-1 Receptor Agonists for Weight Loss Among Adults Without Diabetes : A Systematic Review of Randomized Controlled Trials.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39761578/",
+        "summary": "A study published in Annals of internal medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist for the treatment of type 2 diabetes with unmatched effectiveness regrading glycaemic control and body weight reduction.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36050763/",
+        "summary": "A study published in Cardiovascular diabetology investigating the effects and mechanisms."
+      }
+    ]
+  },
+  {
+    "slug": "sermorelin",
+    "studies": [
+      {
+        "title": "Sermorelin increases lean mass in older adults",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/9141536/",
+        "summary": "Vittone et al.: Sermorelin treatment significantly increases lean body mass, improves body composition, and enhances GH/IGF-1 levels in older adults."
+      },
+      {
+        "title": "Sermorelin for idiopathic GH deficiency in children (FDA study)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/10334586/",
+        "summary": "Prakash & Garg: FDA-approved indication   sermorelin produces significant and sustained height velocity increases in prepubertal children with GH deficiency."
+      },
+      {
+        "title": "Sermorelin restores GH and IGF-1 in aging men",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/9467542/",
+        "summary": "Veldhuis et al. (J. Clin. Endocrinol. Metab.): Demonstrates sermorelin injections effectively restore GH and IGF-1 levels in older men with age-related GH decline."
+      },
+      {
+        "title": "Sermorelin gender-specific anabolic responses",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/9324408/",
+        "summary": "Study examining sermorelin's ability to stimulate GH/IGF-1 secretion in men and women, identifying gender-specific anabolic benefits and dosing considerations."
+      },
+      {
+        "title": "Cationic exchange SPE combined with triple quadrupole UHPLC-MS/MS for detection of GHRHs in urine samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37806509/",
+        "summary": "A study published in Analytical biochemistry investigating the effects and mechanisms."
+      },
+      {
+        "title": "Growth Hormone-Releasing Hormone Antagonists Increase Radiosensitivity in Non-Small Cell Lung Cancer Cells.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40244089/",
+        "summary": "A study published in International journal of molecular sciences investigating the effects and mechanisms."
+      },
+      {
+        "title": "In-house standards derived from doping peptides: Enzymatic and serum stability and degradation profile of GHRP and GHRH-related peptides.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37688464/",
+        "summary": "A study published in Biomedical chromatography : BMC investigating the effects and mechanisms."
+      },
+      {
+        "title": "A potentially effective drug for patients with recurrent glioma: sermorelin.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33842627/",
+        "summary": "A study published in Annals of translational medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Growth hormone releasing hormone.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/2429796/",
+        "summary": "A study published in Clinics in endocrinology and metabolism investigating the effects and mechanisms."
+      },
+      {
+        "title": "Probing for peptidic drugs (2-10 kDa) in doping control blood samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38716080/",
+        "summary": "A study published in Analytical science advances investigating the effects and mechanisms."
+      },
+      {
+        "title": "An antibody-free, ultrafiltration-based assay for the detection of growth hormone-releasing hormones in urine at low pg/mL concentrations using nanoLC-HRMS/MS.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35298973/",
+        "summary": "A study published in Journal of pharmaceutical and biomedical analysis investigating the effects and mechanisms."
+      },
+      {
+        "title": "Online large volume sample staking preconcentration and separation of enantiomeric GHRH analogs by capillary electrophoresis.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36787346/",
+        "summary": "A study published in Electrophoresis investigating the effects and mechanisms."
+      },
+      {
+        "title": "Sermorelin: a better approach to management of adult-onset growth hormone insufficiency?",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/18046908/",
+        "summary": "A study published in Clinical interventions in aging investigating the effects and mechanisms."
+      },
+      {
+        "title": "New agonist- and antagonist-based treatment approaches for advanced prostate cancer.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/22971474/",
+        "summary": "A study published in The Journal of international medical research investigating the effects and mechanisms."
+      },
+      {
+        "title": "Sermorelin: a review of its use in the diagnosis and treatment of children with idiopathic growth hormone deficiency.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+        "summary": "A study published in BioDrugs : clinical immunotherapeutics, biopharmaceuticals and gene therapy investigating the effects and mechanisms."
+      },
+      {
+        "title": "GHRH agonist MR-409 protects β-cells from streptozotocin-induced diabetes.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37307472/",
+        "summary": "A study published in Proceedings of the National Academy of Sciences of the United States of America investigating the effects and mechanisms."
+      },
+      {
+        "title": "PEGylation of growth hormone-releasing hormone (GRF) analogues.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/14499707/",
+        "summary": "A study published in Advanced drug delivery reviews investigating the effects and mechanisms."
+      },
+      {
+        "title": "Chromatographic-mass spectrometric analysis of peptidic analytes (2-10 kDa) in doping control urine samples.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38197510/",
+        "summary": "A study published in Journal of mass spectrometry : JMS investigating the effects and mechanisms."
+      },
+      {
+        "title": "Growth hormone-releasing hormone receptor antagonist MIA-602 attenuates cardiopulmonary injury induced by BSL-2 rVSV-SARS-CoV-2 in hACE2 mice.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37983492/",
+        "summary": "A study published in Proceedings of the National Academy of Sciences of the United States of America investigating the effects and mechanisms."
+      },
+      {
+        "title": "Growth Hormone Secretagogue Treatment in Hypogonadal Men Raises Serum Insulin-Like Growth Factor-1 Levels.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/28830317/",
+        "summary": "A study published in American journal of men's health investigating the effects and mechanisms."
+      }
+    ]
+  },
+  {
+    "slug": "tesamorelin",
+    "studies": [
+      {
+        "title": "Tesamorelin visceral fat reduction (FDA trial)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/20554713/",
+        "summary": "Falutz et al. (JAMA): Randomized, double-blind, placebo-controlled Phase 3 trial showing 15.2% reduction in visceral adipose tissue vs. 5% increase in placebo. FDA-approved indication."
+      },
+      {
+        "title": "Tesamorelin 52-week extension study   sustained VAT reduction",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/21367932/",
+        "summary": "Falutz et al. (J. Clin. Endocrinol. Metab.): 52-week data confirming sustained 18% visceral fat reduction with continuous therapy, with reversal upon discontinuation."
+      },
+      {
+        "title": "Tesamorelin reduces liver fat in HIV lipodystrophy",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/25271568/",
+        "summary": "Stanley et al. (Ann. Intern. Med.): RCT demonstrating tesamorelin reduces hepatic fat content in HIV-infected patients with abdominal fat accumulation."
+      },
+      {
+        "title": "Tesamorelin improves executive function in older adults",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/16670169/",
+        "summary": "Baker et al.: GHRH treatment (tesamorelin) shows favorable effects on executive function and verbal memory in cognitively normal and mildly impaired older adults via IGF-1 elevation."
+      },
+      {
+        "title": "Tesamorelin IGF-1 effects and body composition (Phase 3)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/19776232/",
+        "summary": "Phase 3 trial showing ~80% increase in IGF-1 levels, improved body image distress scores, and significant trunk fat reduction across multiple patient populations."
+      },
+      {
+        "title": "Untitled Study",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30920787/",
+        "summary": "A study published in  investigating the effects and mechanisms."
+      },
+      {
+        "title": "Spotlight on tesamorelin in HIV-associated lipodystrophy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/22050344/",
+        "summary": "A study published in BioDrugs : clinical immunotherapeutics, biopharmaceuticals and gene therapy investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tesamorelin: a review of its use in the management of HIV-associated lipodystrophy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/21668043/",
+        "summary": "A study published in Drugs investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tesamorelin.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/21283099/",
+        "summary": "A study published in Nature reviews. Drug discovery investigating the effects and mechanisms."
+      },
+      {
+        "title": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskeletal Injuries and Athletic Performance.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41966639/",
+        "summary": "A study published in Sports medicine (Auckland, N.Z.) investigating the effects and mechanisms."
+      },
+      {
+        "title": "Drug evaluation: tesamorelin, a synthetic human growth hormone releasing factor.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/17086939/",
+        "summary": "A study published in Current opinion in investigational drugs (London, England : 2000) investigating the effects and mechanisms."
+      },
+      {
+        "title": "Effect of tesamorelin in people with HIV with and without dorsocervical fat: Post hoc analysis of phase III double-blind placebo-controlled trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36845310/",
+        "summary": "A study published in Journal of clinical and translational science investigating the effects and mechanisms."
+      },
+      {
+        "title": "Metabolic dysfunction-associated steatotic liver disease in people with HIV.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40397552/",
+        "summary": "A study published in Current opinion in HIV and AIDS investigating the effects and mechanisms."
+      },
+      {
+        "title": "Approach to the Patient With Lipodystrophy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35137140/",
+        "summary": "A study published in The Journal of clinical endocrinology and metabolism investigating the effects and mechanisms."
+      },
+      {
+        "title": "Effect of tesamorelin on visceral fat and liver fat in HIV-infected patients with abdominal fat accumulation: a randomized clinical trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/25038357/",
+        "summary": "A study published in JAMA investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tesamorelin improves fat quality independent of changes in fat quantity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/33756511/",
+        "summary": "A study published in AIDS (London, England) investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tesamorelin: a growth hormone-releasing factor analogue for HIV-associated lipodystrophy.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/22298602/",
+        "summary": "A study published in The Annals of pharmacotherapy investigating the effects and mechanisms."
+      },
+      {
+        "title": "Effects of Tesamorelin on Neurocognitive Impairment in Persons With HIV and Abdominal Obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39813152/",
+        "summary": "A study published in The Journal of infectious diseases investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tesamorelin, a human growth hormone releasing factor analogue.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/19243281/",
+        "summary": "A study published in Expert opinion on investigational drugs investigating the effects and mechanisms."
+      },
+      {
+        "title": "Effects of tesamorelin on hepatic transcriptomic signatures in HIV-associated NAFLD.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32701508/",
+        "summary": "A study published in JCI insight investigating the effects and mechanisms."
+      }
+    ]
+  },
+  {
+    "slug": "tirzepatide",
+    "studies": [
+      {
+        "title": "Tirzepatide Phase 3 SURMOUNT-1: up to 22.5% weight loss",
+        "pubmed_url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038",
+        "summary": "Jastreboff et al. (NEJM): Phase 3 SURMOUNT-1 trial   tirzepatide 15mg achieved 22.5% body weight reduction vs 2.4% placebo at 72 weeks in 2,539 adults with obesity."
+      },
+      {
+        "title": "SURMOUNT-4: 176-week long-term weight maintenance",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39110493/",
+        "summary": "Aronne et al.: 176-week data showing sustained weight loss maintenance with continued tirzepatide treatment   15mg dose maintained -19.7% weight reduction."
+      },
+      {
+        "title": "Tirzepatide meta-analysis: BMI, weight, and metabolic outcomes",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37482772/",
+        "summary": "Meta-analysis of multiple RCTs confirming tirzepatide significantly reduces BMI, waist circumference, body weight, and HbA1c across diverse patient populations."
+      },
+      {
+        "title": "SURPASS program: tirzepatide in type 2 diabetes (Phase 3)",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34170647/",
+        "summary": "Frias et al. (NEJM): SURPASS-1 trial showing tirzepatide reduces HbA1c by up to 2.07% and body weight by 9.5 kg in type 2 diabetes. Superior to semaglutide in head-to-head trials."
+      },
+      {
+        "title": "Efficacy and safety of a novel dual GIP and GLP-1 receptor agonist tirzepatide in patients with type 2 diabetes (SURPASS-1): a double-blind, randomised, phase 3 trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34186022/",
+        "summary": "A study published in Lancet (London, England) investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide for Obesity Treatment and Diabetes Prevention.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39536238/",
+        "summary": "A study published in The New England journal of medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Obesity Management in Adults: A Review.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38015216/",
+        "summary": "A study published in JAMA investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide versus Semaglutide Once Weekly in Patients with Type 2 Diabetes.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34170647/",
+        "summary": "A study published in The New England journal of medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Effect of Subcutaneous Tirzepatide vs Placebo Added to Titrated Insulin Glargine on Glycemic Control in Patients With Type 2 Diabetes: The SURPASS-5 Randomized Clinical Trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35133415/",
+        "summary": "A study published in JAMA investigating the effects and mechanisms."
+      },
+      {
+        "title": "Comparison of tirzepatide and dulaglutide on major adverse cardiovascular events in participants with type 2 diabetes and atherosclerotic cardiovascular disease: SURPASS-CVOT design and baseline characteristics.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37758044/",
+        "summary": "A study published in American heart journal investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide after intensive lifestyle intervention in adults with overweight or obesity: the SURMOUNT-3 phase 3 trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37840095/",
+        "summary": "A study published in Nature medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide for Heart Failure with Preserved Ejection Fraction and Obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39555826/",
+        "summary": "A study published in The New England journal of medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide once weekly for the treatment of obesity in people with type 2 diabetes (SURMOUNT-2): a double-blind, randomised, multicentre, placebo-controlled, phase 3 trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37385275/",
+        "summary": "A study published in Lancet (London, England) investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide as Compared with Semaglutide for the Treatment of Obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40353578/",
+        "summary": "A study published in The New England journal of medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Semaglutide vs Tirzepatide for Weight Loss in Adults With Overweight or Obesity.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38976257/",
+        "summary": "A study published in JAMA internal medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide vs Insulin Lispro Added to Basal Insulin in Type 2 Diabetes: The SURPASS-6 Randomized Clinical Trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37786396/",
+        "summary": "A study published in JAMA investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide for Metabolic Dysfunction-Associated Steatohepatitis with Liver Fibrosis.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38856224/",
+        "summary": "A study published in The New England journal of medicine investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide: A Systematic Update.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36498958/",
+        "summary": "A study published in International journal of molecular sciences investigating the effects and mechanisms."
+      },
+      {
+        "title": "Tirzepatide for the treatment of obstructive sleep apnea: Rationale, design, and sample baseline characteristics of the SURMOUNT -OSA phase 3 trial.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/38547961/",
+        "summary": "A study published in Contemporary clinical trials investigating the effects and mechanisms."
+      },
+      {
+        "title": "Mechanisms of action and therapeutic applications of GLP-1 and dual GIP/GLP-1 receptor agonists.",
+        "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39114288/",
+        "summary": "A study published in Frontiers in endocrinology investigating the effects and mechanisms."
+      }
+    ]
+  }
+]

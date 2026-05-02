@@ -145,6 +145,38 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                 </div>
             </section>
 
+            {/* ═══ EXPANDED EDITORIAL CONTENT ═══ */}
+            {(goal.whyThesePeptides || goal.whatResearchShows || goal.howToEvaluate || goal.alternativeApproaches) && (
+                <section className="goal-editorial-section" style={{ padding: '48px 32px', maxWidth: 800, margin: '0 auto', color: '#e4e4e7', lineHeight: 1.6 }}>
+                    {goal.whyThesePeptides && (
+                        <div className="editorial-block mb-12 prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: goal.whyThesePeptides }} />
+                    )}
+                    {goal.whatResearchShows && (
+                        <div className="editorial-block mb-12 prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: goal.whatResearchShows }} />
+                    )}
+                    {goal.howToEvaluate && (
+                        <div className="editorial-block mb-12 prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: goal.howToEvaluate }} />
+                    )}
+                    {goal.alternativeApproaches && (
+                        <div className="editorial-block mb-12 prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: goal.alternativeApproaches }} />
+                    )}
+                </section>
+            )}
+
+            {/* ═══ REFERENCES ═══ */}
+            {goal.references && goal.references.length > 0 && (
+                <section className="goal-references-section" style={{ padding: '0 32px 48px', maxWidth: 800, margin: '0 auto' }}>
+                    <div className="goal-section-label mb-6" style={{ color: '#8b5cf6', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>§ Citations</div>
+                    <ol className="list-decimal pl-5 text-sm text-zinc-400 space-y-3">
+                        {goal.references.map(ref => (
+                            <li key={ref.id}>
+                                {ref.text} <a href={ref.link} target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">PubMed</a>
+                            </li>
+                        ))}
+                    </ol>
+                </section>
+            )}
+
             {/* ═══ FAQ ═══ */}
             {goal.faqs.length > 0 && (
                 <section className="goal-faq-section">
