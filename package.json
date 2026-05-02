@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "deploy": "node deploy.js",
+    "deploy:tarball": "tar -czf sync.tar.gz src public next.config.ts package.json package-lock.json tsconfig.json postcss.config.mjs && node sync_deploy.js",
     "build:mobile": "cross-env BUILD_MOBILE=true next build && npx cap sync",
     "cap:ios": "npx cap open ios",
     "cap:android": "npx cap open android",

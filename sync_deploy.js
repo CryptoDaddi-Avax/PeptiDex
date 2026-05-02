@@ -34,7 +34,12 @@ pm2 restart peptidex
             conn.exec(cmds, (err, stream) => {
                 if (err) throw err;
                 stream.on('close', (code) => {
-                    console.log('Build & Deploy complete! Exit code:', code);
+                    if (code !== 0) {
+                        console.error(`\n❌ DEPLOY FAILED — VPS build exited with code ${code}`);
+                        conn.end();
+                        process.exit(1);
+                    }
+                    console.log('\n✅ Deploy complete! Production is live.');
                     conn.end();
                 }).on('data', (d) => process.stdout.write(d))
                   .stderr.on('data', (d) => process.stderr.write(d));
