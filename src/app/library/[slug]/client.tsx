@@ -5,6 +5,7 @@ import { useState, type ReactNode } from 'react';
 import type { Peptide, Stack, EvidenceLevel } from '@/data/types';
 import { useSavedStacks } from '@/hooks/useSavedStacks';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
 import { legalData, legalStatusColors, legalStatusLabels } from '@/data/legal-status';
 import { comparisons } from '@/data/comparisons';
 import {
@@ -96,7 +97,7 @@ export function PeptideDetailRedesign({
             <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
             <div className="flex items-center gap-2">
               <CalendarIcon className="w-4 h-4 text-zinc-500" />
-              <span>Last reviewed April 29, 2026</span>
+              <span>Last reviewed <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time></span>
             </div>
           </div>
 
@@ -483,7 +484,7 @@ export function PeptideDetailRedesign({
 
       {/* Last Reviewed */}
       <div className="pd-last-reviewed flex items-center justify-between">
-        <span>Last fact-checked: <time dateTime="2026-04-29">April 29, 2026</time> · PeptiDex Editorial Team</span>
+        <span>Last fact-checked: <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time> · PeptiDex Editorial Team</span>
         <FeedbackModal pageUrl={`https://peptidex.app/library/${peptide.slug}`} />
       </div>
 

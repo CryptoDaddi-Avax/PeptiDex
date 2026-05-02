@@ -2,6 +2,10 @@ export const DISCLAIMER_TEXT = "EDUCATIONAL AND INFORMATIONAL ONLY. This app is 
 
 export const SHORT_DISCLAIMER = "⚠️ Educational only · Not medical advice · Consult a doctor · Most peptides are research-only / not FDA-approved for human use";
 
+/** Editorial review date — update this on each content review cycle. */
+export const LAST_REVIEWED_ISO  = "2026-05-02";
+export const LAST_REVIEWED_DATE = "May 2, 2026";
+
 export const EVIDENCE_SCALE: Record<string, { label: string; color: string; description: string }> = {
     "very-strong": { label: "Very Strong", color: "emerald", description: "FDA-approved with extensive Phase 3 RCT data" },
     strong: { label: "Strong", color: "emerald", description: "Multiple human RCTs or FDA-reviewed data" },

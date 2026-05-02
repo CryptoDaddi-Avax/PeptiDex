@@ -8,6 +8,7 @@ import { SaveButton } from "@/components/save-button";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { User as UserIcon, Calendar as CalendarIcon } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
+import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './best-goal-redesign.css';
 
@@ -63,7 +64,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                         <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
                         <div className="flex items-center gap-2">
                             <CalendarIcon className="w-4 h-4 text-zinc-500" />
-                            <span>Last reviewed April 29, 2026</span>
+                            <span>Last reviewed <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time></span>
                         </div>
                     </div>
 
@@ -228,7 +229,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
 
             {/* Last Reviewed */}
             <div className="goal-last-reviewed">
-                Last reviewed: <time dateTime="2026-04-29">April 29, 2026</time> · PeptiDex Editorial Team
+                Last reviewed: <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time> · PeptiDex Editorial Team
             </div>
 
             {/* ═══ DISCLAIMER ═══ */}

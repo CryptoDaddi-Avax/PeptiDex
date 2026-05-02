@@ -1,5 +1,6 @@
 'use client';
 import { NewsletterSignup } from '@/components/newsletter-signup';
+import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
 import './Footer.css';
 
 export default function Footer() {
@@ -56,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-last-reviewed">
-          Last reviewed: <time dateTime="2026-04-29">April 29, 2026</time> · PeptiDex Editorial Team
+          Last reviewed: <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time> · PeptiDex Editorial Team
         </div>
         <div className="footer-bottom">
           <div>© 2026 PeptiDex. All rights reserved.</div>
