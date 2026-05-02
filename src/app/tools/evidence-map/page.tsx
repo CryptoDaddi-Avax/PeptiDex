@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from 'next/link';
 import { peptides } from "@/data/peptides";
 import { EvidenceMapClient } from "./client";
 import { Beaker, Calendar } from "lucide-react";
@@ -103,7 +104,15 @@ export default function EvidenceMapPage() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+        <div className="max-w-3xl mx-auto px-4 py-4 md:py-6">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
+        <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <span className="text-zinc-200 font-medium text-xs">Evidence Map</span>
+      </nav>
+      
             {/* Schema */}
             <script
                 type="application/ld+json"

@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import {
@@ -129,7 +130,15 @@ export default function PKPage() {
         : " ";
 
     return (
-        <div className="max-w-2xl mx-auto px-3 py-4 md:px-4 md:py-6">
+        <div className="max-w-3xl mx-auto px-4 py-4 md:py-6">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
+        <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <span className="text-zinc-200 font-medium text-xs">PK Curve Simulator</span>
+      </nav>
+      
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
                 <div className="flex items-center gap-2 mb-1">
                     <Activity className="w-5 h-5 text-violet-400" />

@@ -47,14 +47,26 @@ export default function CompareIndexPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-10">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <main id="main-content">
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <span className="current">Compare</span>
+          </nav>
+          <div className="section-label">§ Analysis</div>
+          <h1 className="page-title">
+            Peptide Comparisons.
+          </h1>
+          <p className="page-subtitle">Evidence-based head-to-head compound analysis with cited sources and data tables.</p>
+        </div>
+      </header>
 
-      <nav className="flex items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-zinc-300 transition-colors">Home</Link>
-        <ChevronRight className="w-4 h-4" />
-        <span className="text-zinc-300 font-medium">Compare</span>
-      </nav>
+      <div className="about-content reveal space-y-16">
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <header className="space-y-4">
         <div className="flex items-center gap-3">
@@ -141,6 +153,10 @@ export default function CompareIndexPage() {
           <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
         </p>
       </section>
-    </div>
+      </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

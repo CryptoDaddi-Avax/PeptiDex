@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
@@ -108,7 +109,15 @@ export default function CalculatorPage() {
     }, [searchQuery]);
 
     return (
-        <div className="max-w-2xl mx-auto px-3 py-4 md:px-4 md:py-6">
+        <div className="max-w-3xl mx-auto px-4 py-4 md:py-6">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
+        <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <span className="text-zinc-200 font-medium text-xs">Reconstitution Calculator</span>
+      </nav>
+      
             {/* Research-Only Disclaimer */}
             <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-2.5 mb-4">
                 <div className="flex items-start gap-2">

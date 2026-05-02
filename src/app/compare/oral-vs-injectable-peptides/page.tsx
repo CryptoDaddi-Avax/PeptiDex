@@ -49,7 +49,27 @@ export default function OralVsInjectablePage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 md:py-12 space-y-10">
+    <main id="main-content">
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/compare">Compare</Link>
+            <span className="sep">/</span>
+            <span className="current">Oral vs Injectable</span>
+          </nav>
+          <div className="section-label">§ Comparison</div>
+          <h1 className="page-title">
+            Oral vs<br /><em>Injectable Peptides</em>.
+          </h1>
+          <p className="page-subtitle">A research comparison of bioavailability, stability, and efficacy between delivery methods.</p>
+        </div>
+      </header>
+
+      <div className="about-content reveal space-y-16">
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -174,6 +194,10 @@ export default function OralVsInjectablePage() {
         <p>Last updated: {DATE_MOD}</p>
         <Link href="/blog/oral-peptide-revolution" className="text-violet-400 hover:text-violet-300 transition-colors">Read: The Oral Peptide Revolution →</Link>
       </div>
-    </div>
+      </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
   );
 }

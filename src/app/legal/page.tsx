@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: "Privacy Policy & Terms of Use",
@@ -7,7 +8,25 @@ export const metadata: Metadata = {
 
 export default function LegalPage() {
     return (
-        <div className="max-w-3xl mx-auto px-4 py-6 md:py-8">
+        <main id="main-content">
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <span className="current">Legal</span>
+          </nav>
+          <div className="section-label">§ Legal</div>
+          <h1 className="page-title">
+            Privacy Policy<br /><em>& Terms</em>.
+          </h1>
+          <p className="page-subtitle">How we handle your data and the terms governing use of our educational research platform.</p>
+        </div>
+      </header>
+
+      <div className="about-content reveal space-y-16">
+
             <h1 className="text-2xl font-bold text-zinc-100 mb-6">Privacy Policy &amp; Terms of Use</h1>
             <p className="text-xs text-zinc-500 mb-8">Last updated: March 17, 2026</p>
 
@@ -128,6 +147,10 @@ export default function LegalPage() {
                     provided on the site. We aim to respond within 48 hours.
                 </p>
             </section>
-        </div>
-    );
+      </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
+  );
 }

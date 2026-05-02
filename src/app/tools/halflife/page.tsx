@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
@@ -165,7 +166,15 @@ export default function HalfLifePage() {
     );
 
     return (
-        <div className="max-w-3xl mx-auto px-4 py-6 md:py-8">
+    <div className="max-w-3xl mx-auto px-4 py-4 md:py-6">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
+        <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
+        <span className="text-zinc-700 text-xs">/</span>
+        <span className="text-zinc-200 font-medium text-xs">Half-Life Calculator</span>
+      </nav>
+      
             {/* Header */}
             <h1 className="text-xl font-bold text-zinc-100 flex items-center gap-2 mb-1">
                 <Activity className="w-5 h-5 text-cyan-400" /> Half-Life Visualizer

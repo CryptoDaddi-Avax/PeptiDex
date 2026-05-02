@@ -60,7 +60,25 @@ export default function BeginnersGuidePage() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
+        <main id="main-content">
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <span className="current">Beginner's Guide</span>
+          </nav>
+          <div className="section-label">§ Guide</div>
+          <h1 className="page-title">
+            Beginner's Guide<br /><em>to Peptides</em>.
+          </h1>
+          <p className="page-subtitle">Everything you need to know to start your peptide research journey, from mechanisms to safety.</p>
+        </div>
+      </header>
+
+      <div className="about-content reveal space-y-16">
+
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             {/* Header */}
             <div className="text-center mb-10 md:mb-16">
@@ -406,7 +424,10 @@ export default function BeginnersGuidePage() {
                     Go to the Cycle Planner <ArrowRight className="w-4 h-4" />
                 </Link>
             </div>
-
-        </div>
-    );
+      </div>
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+      </div>
+    </main>
+  );
 }
