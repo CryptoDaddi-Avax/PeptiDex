@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { peptides, getPeptideBySlug } from "@/data/peptides";
 import { stacks } from "@/data/stacks";
+import { vendorPricing } from "@/data/vendor-pricing";
+import type { EvidenceLevel } from "@/data/types";
 import { PeptideDetailRedesign } from "./client";
 
 export function generateStaticParams() {
@@ -67,6 +69,20 @@ const FDA_INDICATIONS: Record<string, string> = {
     "pt-141": "Treatment of hypoactive sexual desire disorder (HSDD) in premenopausal women",
 };
 
+/* ── Evidence grade → numeric rating map ────────────────────────────────
+   Scale reflects strength of clinical evidence (not user reviews).
+   Communicated in aggregateRating.description per schema.org guidance.
+   moderate-strong (4.2) sits between moderate (4.0) and strong (4.5). ── */
+const EVIDENCE_RATING: Record<EvidenceLevel, number> = {
+    "very-strong":      4.8,
+    "strong":           4.5,
+    "moderate-strong":  4.2,
+    "moderate":         4.0,
+    "preclinical":      3.5,
+    "emerging":         3.0,
+    "anecdotal":        2.5,
+};
+
 export default async function PeptideDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const peptide = getPeptideBySlug(slug);
@@ -78,6 +94,45 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
 
     // ─── JSON-LD: Drug / PrescriptionDrug Schema ────────────────────
     const isFDA = FDA_APPROVED_SLUGS.has(slug);
+
+    // ── aggregateRating: derived from highest evidence grade across studies
+    const topEvidenceLevel = peptide.key_studies.reduce<EvidenceLevel | null>((best, s) => {
+        if (!best) return s.evidence_level;
+        return EVIDENCE_RATING[s.evidence_level] > EVIDENCE_RATING[best] ? s.evidence_level : best;
+    }, null);
+    const ratingValue = topEvidenceLevel ? EVIDENCE_RATING[topEvidenceLevel] : 3.0;
+    const ratingCount = Math.max(peptide.key_studies.length, 1); // schema.org requires ≥1
+
+    const aggregateRating = {
+        "@type": "AggregateRating",
+        ratingValue: ratingValue.toFixed(1),
+        bestRating: "5",
+        worstRating: "1",
+        ratingCount,
+        description: "Rating reflects strength of clinical evidence indexed by PeptiDex, not consumer reviews.",
+    };
+
+    // ── offers: AggregateOffer pulled from vendor-pricing registry
+    const pricingEntry = vendorPricing.find((p) => p.slug === slug);
+    const inStockVendors = pricingEntry?.vendors.filter((v) => v.inStock) ?? [];
+    const prices = inStockVendors.map((v) => v.price_usd);
+    const aggregateOffer = inStockVendors.length > 0 ? {
+        "@type": "AggregateOffer",
+        lowPrice: Math.min(...prices).toFixed(2),
+        highPrice: Math.max(...prices).toFixed(2),
+        priceCurrency: "USD",
+        offerCount: inStockVendors.length,
+        offers: inStockVendors.map((v) => ({
+            "@type": "Offer",
+            price: v.price_usd.toFixed(2),
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            url: v.affiliateUrl,
+            seller: { "@type": "Organization", name: v.vendor },
+            description: `${v.vial_mg}mg vial`,
+        })),
+    } : null;
+
     const drugSchema: Record<string, unknown> = {
         "@context": "https://schema.org",
         "@type": "Drug",
@@ -89,6 +144,8 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         clinicalPharmacology: `${peptide.mechanism} Primary benefits include ${peptide.primary_benefits.toLowerCase()}.${peptide.half_life_hours ? ` Biological half-life: approximately ${peptide.half_life_hours} hours.` : ""}`,
         warning: peptide.safety_notes,
         url: `https://peptidex.app/library/${slug}`,
+        aggregateRating,
+        ...(aggregateOffer ? { offers: aggregateOffer } : {}),
     };
 
     if (isFDA) {
