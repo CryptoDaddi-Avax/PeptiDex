@@ -54,6 +54,7 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
           <li><a href="/tools">Tools</a></li>
           <li><a href="/vendors">Vendors</a></li>
           <li><a href="/blog">Blog</a></li>
+          <li><a href="/about/methodology">About</a></li>
         </ul>
         <div className="nav-right">
           <button className="search-trigger" onClick={onSearchOpen}>
@@ -103,6 +104,7 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
             { label: 'Tools', href: '/tools' },
             { label: 'Vendors', href: '/vendors' },
             { label: 'Blog', href: '/blog' },
+            { label: 'About', href: '/about/methodology' },
           ].map(({ label, href }, i) => (
             <li key={label}>
               <a href={href} onClick={closeMobile}>

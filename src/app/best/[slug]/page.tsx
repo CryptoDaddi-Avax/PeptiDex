@@ -76,8 +76,21 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
         })),
     } : null;
 
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: goal.title,
+        datePublished: "2026-01-15",
+        dateModified: "2026-04-29",
+        author: { "@type": "Person", name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
+        publisher: { "@type": "Organization", name: "PeptiDex", url: "https://peptidex.app", logo: { "@type": "ImageObject", url: "https://peptidex.app/icon-512.png" } },
+        mainEntityOfPage: `https://peptidex.app/best/${slug}`,
+        description: goal.metaDescription,
+    };
+
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             {medicalConditionSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalConditionSchema) }} />}
             <BestGoalClient slug={slug} />

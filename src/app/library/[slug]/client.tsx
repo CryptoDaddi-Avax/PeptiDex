@@ -9,7 +9,7 @@ import { legalData, legalStatusColors, legalStatusLabels } from '@/data/legal-st
 import { comparisons } from '@/data/comparisons';
 import {
   ExternalLink, ShieldAlert, Info, Beaker, BookOpen,
-  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight, Calculator
+  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight, Calculator, User as UserIcon, Calendar as CalendarIcon
 } from 'lucide-react';
 import { HalfLifeChart } from '@/components/half-life-chart';
 import { LeadMagnetInline } from '@/components/lead-magnet-inline';
@@ -22,6 +22,7 @@ import { StackCard } from '@/components/stack-card';
 import { SaveButton } from '@/components/save-button';
 import RedesignLayout from '@/components/redesign/RedesignLayout';
 import { FeedbackModal } from '@/components/feedback-modal';
+import { AuthorBio } from '@/components/author-bio';
 import './detail-redesign.css';
 
 /* ── Evidence helpers ── */
@@ -85,6 +86,18 @@ export function PeptideDetailRedesign({
               </span>
             )}
             <SaveButton type="peptide" slug={peptide.slug} title={peptide.name} />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 mt-6 mb-2">
+            <div className="flex items-center gap-2">
+              <UserIcon className="w-4 h-4 text-violet-400" />
+              <Link href="/about/dr-e-vance" className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">By Dr. E. Vance, PhD</Link>
+            </div>
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+            <div className="flex items-center gap-2">
+              <CalendarIcon className="w-4 h-4 text-zinc-500" />
+              <span>Last reviewed April 29, 2026</span>
+            </div>
           </div>
 
           {peptide.aliases.length > 0 && (
@@ -461,6 +474,11 @@ export function PeptideDetailRedesign({
             </div>
           </aside>
         </div>
+      </div>
+
+      {/* ═══ AUTHOR BIO ═══ */}
+      <div className="pd-container mb-12">
+        <AuthorBio name="Dr. E. Vance" />
       </div>
 
       {/* Last Reviewed */}

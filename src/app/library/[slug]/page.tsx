@@ -165,7 +165,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         headline: `${peptide.name} — Research Guide, Dosage & Studies`,
         datePublished: "2026-01-15",
         dateModified: "2026-04-29",
-        author: { "@type": "Organization", name: "PeptiDex", url: "https://peptidex.app" },
+        author: { "@type": "Person", name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
         publisher: { "@type": "Organization", name: "PeptiDex", url: "https://peptidex.app", logo: { "@type": "ImageObject", url: "https://peptidex.app/icon-512.png" } },
         mainEntityOfPage: `https://peptidex.app/library/${slug}`,
         description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
