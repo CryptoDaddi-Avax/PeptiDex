@@ -9,7 +9,6 @@ import { NewsletterSignup } from "@/components/newsletter-signup";
 import { User as UserIcon, Calendar as CalendarIcon } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './best-goal-redesign.css';
 
 interface BestGoalClientProps {
@@ -34,7 +33,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
     const titleText = goal.h1.replace(/^Best Peptides for\s*/i, '');
 
     return (
-        <RedesignLayout>
+            <>
             {/* ═══ HERO ═══ */}
             <header className="goal-hero">
                 <div className="goal-hero-grid" />
@@ -236,6 +235,6 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
             <div className="goal-disclaimer">
                 ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
             </div>
-        </RedesignLayout>
+            </>
     );
 }

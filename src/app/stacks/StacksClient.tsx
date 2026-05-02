@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { stacks } from "@/data/stacks";
 import { BookmarkPlus, Bookmark } from "lucide-react";
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './stacks-redesign.css';
 
 const SAVED_STACKS_KEY = "PeptiDex-saved-stacks";
@@ -40,7 +39,7 @@ export default function StacksClient() {
     }, [filter, savedStackIds]);
 
     return (
-        <RedesignLayout>
+            <>
             <header className="page-header">
                 <div className="page-header-grid"></div>
                 <div className="page-header-wrap">
@@ -190,6 +189,6 @@ export default function StacksClient() {
                     </div>
                 </div>
             </div>
-        </RedesignLayout>
+            </>
     );
 }

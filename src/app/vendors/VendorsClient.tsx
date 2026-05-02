@@ -11,7 +11,6 @@ import { vendorPricing } from '@/data/vendor-pricing';
 import { vendors, injectableVendors, oralVendors, VENDOR_COUNT, type Vendor } from '@/data/vendors';
 import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 import { VendorOutboundLink } from './vendor-outbound-link';
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './vendors-redesign.css';
 
 /* ── Price preview helper ───────────────────────────────────────────────────
@@ -74,6 +73,7 @@ function VendorCard({ vendor, rank }: { vendor: Vendor; rank: number }) {
   const isFeatured = rank <= 2;
 
   return (
+    <>
     <div 
       className={`vn-vendor-card ${isFeatured ? 'featured' : ''} ${isBLL ? 'premium-highlight' : ''}`} 
       id={vendor.slug}
@@ -162,12 +162,13 @@ function VendorCard({ vendor, rank }: { vendor: Vendor; rank: number }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
 export default function VendorsClient() {
   return (
-    <RedesignLayout>
+    <>
       {/* ═══ HEADER ═══ */}
       <header className="vn-page-header">
         <div className="vn-header-grid" />
@@ -351,6 +352,6 @@ export default function VendorsClient() {
         </section>
       </div>
 
-    </RedesignLayout>
+    </>
   );
 }

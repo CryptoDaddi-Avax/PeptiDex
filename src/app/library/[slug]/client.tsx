@@ -21,7 +21,6 @@ import { AffiliateSource } from '@/components/affiliate-source';
 import { StickyQuickCompare } from '@/components/sticky-quick-compare';
 import { StackCard } from '@/components/stack-card';
 import { SaveButton } from '@/components/save-button';
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { AuthorBio } from '@/components/author-bio';
 import './detail-redesign.css';
@@ -64,7 +63,7 @@ export function PeptideDetailRedesign({
     .slice(0, 3);
 
   return (
-    <RedesignLayout>
+      <>
       <StickyQuickCompare peptideSlug={peptide.slug} peptideName={peptide.name} />
 
       {/* ═══ PAGE HEADER ═══ */}
@@ -492,7 +491,7 @@ export function PeptideDetailRedesign({
       <div className="pd-disclaimer-strip">
         ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
       </div>
-    </RedesignLayout>
+      </>
   );
 }
 

@@ -14,10 +14,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StacksLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+import RedesignLayout from '@/components/redesign/RedesignLayout';
+
+export default function StacksLayout({ children }: { children: React.ReactNode }) {
+  return <RedesignLayout>{children}</RedesignLayout>;
 }

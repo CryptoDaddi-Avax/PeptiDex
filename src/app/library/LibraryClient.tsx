@@ -3,7 +3,6 @@
 import { useState, useMemo, useTransition, useDeferredValue, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, FlaskConical, ChevronRight, TrendingUp } from 'lucide-react';
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import { peptides, searchPeptides } from '@/data/peptides';
 import { peptideBlends } from '@/data/blends';
 import type { Peptide, EvidenceLevel } from '@/data/types';
@@ -111,7 +110,7 @@ export default function LibraryClient() {
   const showTrending = !query && !selectedCategory && !selectedEvidence;
 
   return (
-    <RedesignLayout>
+      <>
       {/* ═══════ PAGE HEADER ═══════ */}
       <header className="lib-page-header">
         <div className="lib-header-grid" />
@@ -328,6 +327,6 @@ export default function LibraryClient() {
       <div className="lib-disclaimer-strip">
         ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
       </div>
-    </RedesignLayout>
+      </>
   );
 }

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useSavedItems, type SavedItemType } from '@/hooks/useSavedItems';
 import { Heart, BookOpen, Beaker, Target, FileText } from 'lucide-react';
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './saved-redesign.css';
 
 const TYPE_CONFIG: Record<SavedItemType, { label: string; icon: typeof BookOpen; href: (slug: string) => string }> = {
@@ -20,25 +19,23 @@ export default function SavedPage() {
 
     if (!loaded) {
         return (
-            <RedesignLayout>
-                <main id="main-content">
-                    <header className="page-header">
-                        <div className="page-header-grid" />
-                        <div className="page-header-wrap">
-                            <div className="breadcrumb">
-                                <Link href="/">Home</Link>
-                                <span className="sep">/</span>
-                                <span className="current">Saved</span>
-                            </div>
-                            <div className="section-label">§ Your Library</div>
-                            <h1 className="page-title">
-                                Saved <em>items</em><br />&amp; bookmarks.
-                            </h1>
-                            <p className="page-subtitle">Loading your saved items…</p>
+            <main id="main-content">
+                <header className="page-header">
+                    <div className="page-header-grid" />
+                    <div className="page-header-wrap">
+                        <div className="breadcrumb">
+                            <Link href="/">Home</Link>
+                            <span className="sep">/</span>
+                            <span className="current">Saved</span>
                         </div>
-                    </header>
-                </main>
-            </RedesignLayout>
+                        <div className="section-label">§ Your Library</div>
+                        <h1 className="page-title">
+                            Saved <em>items</em><br />&amp; bookmarks.
+                        </h1>
+                        <p className="page-subtitle">Loading your saved items…</p>
+                    </div>
+                </header>
+            </main>
         );
     }
 
@@ -50,8 +47,7 @@ export default function SavedPage() {
     })).filter((g) => g.items.length > 0);
 
     return (
-        <RedesignLayout>
-            <main id="main-content">
+        <main id="main-content">
                 <header className="page-header">
                     <div className="page-header-grid" />
                     <div className="page-header-wrap">
@@ -132,6 +128,5 @@ export default function SavedPage() {
                     ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
                 </div>
             </main>
-        </RedesignLayout>
     );
 }

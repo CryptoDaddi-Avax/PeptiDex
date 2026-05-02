@@ -7,7 +7,6 @@ import {
   Sparkles, Users, TrendingDown, ShieldCheck, Timer, ClipboardList, 
   HelpCircle, FlaskConical, ShoppingCart 
 } from "lucide-react";
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './tools-redesign.css';
 
 const tools = [
@@ -76,7 +75,7 @@ const tools = [
 
 export default function ToolsClient() {
     return (
-        <RedesignLayout>
+            <>
             <div className="tools-wrap">
                 <div className="tools-header">
                     <h1 className="tools-title">Power Tools</h1>
@@ -182,6 +181,6 @@ export default function ToolsClient() {
                     </div>
                 </div>
             </div>
-        </RedesignLayout>
+            </>
     );
 }

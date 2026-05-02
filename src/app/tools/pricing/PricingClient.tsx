@@ -5,7 +5,6 @@ import Link from "next/link";
 import { pricingData } from "@/data/pricing";
 import { ArrowUpDown, Info } from "lucide-react";
 import { AffiliateLink } from "@/components/affiliate-link";
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './pricing-redesign.css';
 
 type SortKey = "name" | "avg_price" | "cost_per_dose" | "doses";
@@ -54,7 +53,7 @@ export default function PricingClient() {
     }, []);
 
     return (
-        <RedesignLayout>
+            <>
             {/* Editorial Page Header */}
             <header className="prc-hero">
                 <div style={{
@@ -222,6 +221,6 @@ export default function PricingClient() {
                     ⚠ Pricing is approximate · Not affiliated with listed suppliers unless stated · Research use only
                 </div>
             </div>
-        </RedesignLayout>
+            </>
     );
 }

@@ -6,7 +6,6 @@ import { getPeptideByName } from '@/data/peptides';
 import { ShieldAlert, BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { AuthorBio } from '@/components/author-bio';
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './stack-detail-redesign.css';
 
 export function generateStaticParams() {
@@ -116,8 +115,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <RedesignLayout>
-      <div className="stack-detail-wrap">
+    <div className="stack-detail-wrap">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -321,6 +319,5 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
         </div>
 
       </div>
-    </RedesignLayout>
   );
 }

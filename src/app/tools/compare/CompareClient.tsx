@@ -19,7 +19,6 @@ import { getCategoryIcon } from "@/data/category-icons";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { CompareCardData } from "@/components/share-card/card-templates";
 import type { Peptide } from "@/data/types";
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './compare-redesign.css';
 
 /* ═══════════════════════════════════════════════════════════
@@ -236,7 +235,7 @@ function CompareClientInner() {
     };
 
     return (
-        <RedesignLayout>
+        <>
             {/* Editorial Page Header */}
             <header className="cmp-hero">
                 <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)', backgroundSize: '80px 80px', maskImage: 'radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%)', opacity: 0.4, pointerEvents: 'none' as const }} />
@@ -441,13 +440,13 @@ function CompareClientInner() {
                     </motion.div>
                 )}
             </div>
-        </RedesignLayout>
+        </>
     );
 }
 
 export default function CompareClient() {
     return (
-        <Suspense fallback={<RedesignLayout><div className="cmp-empty">Loading...</div></RedesignLayout>}>
+        <Suspense fallback={<div className="cmp-empty">Loading...</div>}>
             <CompareClientInner />
         </Suspense>
     );

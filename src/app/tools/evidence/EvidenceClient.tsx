@@ -8,7 +8,6 @@ import { Filter } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { EvidenceCardData } from "@/components/share-card/card-templates";
-import RedesignLayout from '@/components/redesign/RedesignLayout';
 import './evidence-redesign.css';
 
 const evidenceRank: Record<string, number> = {
@@ -103,7 +102,7 @@ export default function EvidenceClient() {
     const strongCount = peptidesWithEvidence.filter(p => evidenceRank[p.highestEvidence] >= 5).length;
 
     return (
-        <RedesignLayout>
+            <>
             {/* ── PAGE HEADER ── */}
             <header className="evi-hero">
                 <div className="page-header-grid" style={{
@@ -316,6 +315,6 @@ export default function EvidenceClient() {
                     ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
                 </div>
             </div>
-        </RedesignLayout>
+            </>
     );
 }
