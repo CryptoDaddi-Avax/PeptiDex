@@ -8,8 +8,8 @@ import { peptides } from '@/data/peptides';
 const AutoLinkContext = createContext<Set<string> | null>(null);
 
 export function AutoLinkProvider({ children }: { children: React.ReactNode }) {
-  // Use a ref to track which peptide slugs have been linked so far on this page
-  // Note: During SSR, this will track per-request organically.
+  // Use a ref to track which peptide slugs have been linked so far on this page.
+  // During SSR this tracks per-request. On the client it persists across re-renders.
   const linkedSlugs = useRef(new Set<string>());
   return (
     <AutoLinkContext.Provider value={linkedSlugs.current}>
@@ -18,86 +18,104 @@ export function AutoLinkProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Build a sorted dictionary mapping search terms to slugs.
-// Sorted by length (longest first) to prevent partial matching 
-// (e.g., matching "BPC" before "BPC-157").
-const DICTIONARY = peptides.flatMap(p => 
-  [p.name, ...(p.aliases || [])].map(alias => ({
-    term: alias,
-    regex: new RegExp(`\\b(${alias.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})\\b`, 'gi'),
-    slug: p.slug
-  }))
-).sort((a, b) => b.term.length - a.term.length);
+// ── Dictionary: sorted longest-first to prevent partial matches ──────────────
+// e.g., "CJC-1295 DAC" must be tested before "CJC-1295" to avoid double-match.
+const DICTIONARY = peptides
+  .flatMap(p =>
+    [p.name, ...(p.aliases || [])].map(alias => ({
+      term: alias,
+      // Word boundary before: require non-word char or start-of-string.
+      // Word boundary after: require non-word char or end-of-string.
+      // Flags: case-insensitive, but NOT global — we only want the FIRST match.
+      regex: new RegExp(
+        `(?<![\\w-])(${alias.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})(?![\\w-])`,
+        'i'
+      ),
+      slug: p.slug,
+    }))
+  )
+  .sort((a, b) => b.term.length - a.term.length);
 
-// Helper function to non-destructively replace strings with React Nodes
+// ── replaceText ──────────────────────────────────────────────────────────────
+// Scans a plain text string and replaces the FIRST occurrence of each unlinked
+// peptide name with a React <Link>. Returns an array of strings + ReactNodes.
 function replaceText(text: string, contextSet: Set<string> | null): React.ReactNode[] {
-  let nodes: (string | React.ReactNode)[] = [text];
+  // Start with the full string; we'll split it as we find matches.
+  let segments: (string | React.ReactNode)[] = [text];
 
   for (const { regex, slug } of DICTIONARY) {
-    if (contextSet?.has(slug)) continue; // Already linked on this page
-    if (!regex.test(text)) continue;
+    // Skip this peptide if we've already linked it somewhere on the page.
+    if (contextSet?.has(slug)) continue;
 
-    // Reset regex index
-    regex.lastIndex = 0;
-    
-    let nextNodes: (string | React.ReactNode)[] = [];
-    let matchedInLoop = false;
+    // Run through current segments, replacing strings only.
+    let matched = false;
+    const nextSegments: (string | React.ReactNode)[] = [];
 
-    for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i];
-        if (typeof node === 'string') {
-            // Find the *first* match only in this string block per dictionary item
-            const match = regex.exec(node);
-            if (match && !matchedInLoop) {
-                // Record that we found it
-                contextSet?.add(slug);
-                matchedInLoop = true;
-                
-                const before = node.substring(0, match.index);
-                const matchedText = match[0];
-                const after = node.substring(match.index + matchedText.length);
-                
-                if (before) nextNodes.push(before);
-                nextNodes.push(
-                    <Link
-                        key={`${slug}-${i}`} 
-                        href={`/library/${slug}`} 
-                        className="text-violet-400 font-semibold hover:underline"
-                        title={`View ${matchedText} Research Profile`}
-                    >
-                        {matchedText}
-                    </Link>
-                );
-                if (after) {
-                    nextNodes.push(after);
-                }
-            } else {
-                nextNodes.push(node);
-            }
-        } else {
-            nextNodes.push(node);
-        }
+    for (const seg of segments) {
+      // Non-string nodes (already-created React links etc.) pass through unchanged.
+      if (typeof seg !== 'string') {
+        nextSegments.push(seg);
+        continue;
+      }
+
+      // Already matched this slug in a previous segment — just pass through.
+      if (matched) {
+        nextSegments.push(seg);
+        continue;
+      }
+
+      const m = regex.exec(seg);
+      if (!m) {
+        nextSegments.push(seg);
+        continue;
+      }
+
+      // Found a match — record it and split the segment around it.
+      contextSet?.add(slug);
+      matched = true;
+
+      const before = seg.slice(0, m.index);
+      const matchedText = m[0];
+      const after = seg.slice(m.index + matchedText.length);
+
+      if (before) nextSegments.push(before);
+      nextSegments.push(
+        <Link
+          key={`al-${slug}`}
+          href={`/library/${slug}`}
+          className="al-link"
+          title={`View ${matchedText} Research Profile`}
+        >
+          {matchedText}
+        </Link>
+      );
+      if (after) nextSegments.push(after);
     }
-    nodes = nextNodes;
-    // If we matched it, we stop processing this slug across the rest of the string block
-    if (matchedInLoop) {
-        break; // Note: We only break out of this dictionary item loop. We continue checking other dictionary items.
-    }
+
+    segments = nextSegments;
+    // NOTE: do NOT break here — continue checking remaining DICTIONARY entries
+    // so that multiple peptides within the same text block all get linked.
   }
 
-  return nodes;
+  return segments;
 }
 
 interface AutoLinkProps {
   children: React.ReactNode;
 }
 
-// Recursively walks the children array and replaces text strings with Auto-Links
+// ── AutoLink ─────────────────────────────────────────────────────────────────
+// Wraps article content and recursively processes all text nodes, replacing
+// the first occurrence of each peptide name with a /library/[slug] link.
+//
+// Rules enforced:
+//  - Skips existing <a>, <Link>, and heading tags (h1/h2/h3)
+//  - One link per peptide per page (tracked via AutoLinkContext)
+//  - Client-only: hydration guard eliminates SSR/CSR mismatch
 export function AutoLink({ children }: AutoLinkProps) {
   const contextSet = useContext(AutoLinkContext);
   // Mount guard: render children unchanged during SSR / initial hydration.
   // After mount, React replaces with the link-transformed version.
-  // This eliminates the SSR↔CSR text mismatch warning.
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => { setMounted(true); }, []);
 
@@ -109,23 +127,34 @@ export function AutoLink({ children }: AutoLinkProps) {
       return node.map((n, i) => <React.Fragment key={i}>{processNodes(n)}</React.Fragment>);
     }
     if (React.isValidElement(node)) {
-      // Don't auto-link inside existing links or headings
-      if (node.type === 'a' || node.type === Link || node.type === 'h1' || node.type === 'h2' || node.type === 'h3') {
+      const el = node as React.ReactElement<{ children?: React.ReactNode; className?: string }>;
+      const type = el.type;
+
+      // Never auto-link inside existing links, headings, or code blocks
+      if (
+        type === 'a' ||
+        type === Link ||
+        type === 'h1' ||
+        type === 'h2' ||
+        type === 'h3' ||
+        type === 'h4' ||
+        type === 'code' ||
+        type === 'pre'
+      ) {
         return node;
       }
-      if (node.props && (node.props as any).children) {
-        return React.cloneElement(node, {
-          ...(node.props as any),
-          children: processNodes((node.props as any).children)
-        } as any);
+
+      if (el.props?.children != null) {
+        return React.cloneElement(el, {
+          ...el.props,
+          children: processNodes(el.props.children),
+        } as React.HTMLAttributes<HTMLElement>);
       }
     }
     return node;
   };
 
-  // Before mount: render children as-is (matches SSR output exactly)
   if (!mounted) return <>{children}</>;
 
   return <>{processNodes(children)}</>;
 }
-

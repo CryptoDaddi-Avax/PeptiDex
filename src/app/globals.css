@@ -206,3 +206,18 @@
     margin-top: 0 !important;
   }
 }
+
+/* -- Auto-link: peptide name auto-links in article content -- */
+.al-link {
+  color: var(--gold);
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+.al-link:hover {
+  color: var(--gold-bright);
+  text-decoration-color: var(--gold);
+}
