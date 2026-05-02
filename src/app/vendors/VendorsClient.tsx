@@ -195,7 +195,7 @@ export default function VendorsClient() {
 
       {/* ═══ INJECTABLE VENDORS ═══ */}
       <div className="vn-container">
-        <div className="vn-vendor-list reveal">
+        <div className="vn-vendor-list">
           {injectableVendors.map((vendor, i) => (
             <VendorCard key={vendor.slug} vendor={vendor} rank={i + 1} />
           ))}
@@ -204,7 +204,7 @@ export default function VendorsClient() {
 
       {/* ═══ ORAL VENDORS SECTION ═══ */}
       {oralVendors.length > 0 && (
-        <section className="vn-oral-section reveal">
+        <section className="vn-oral-section">
           <div className="vn-container">
             <div className="vn-section-label">§ Oral Peptide Sources</div>
             <h2 className="vn-extra-title">Oral formulation <em>specialists</em>.</h2>
@@ -221,7 +221,7 @@ export default function VendorsClient() {
       )}
 
       {/* ═══ VENDOR DEEP DIVES ═══ */}
-      <section className="vn-extra-section reveal" style={{ borderTop: 'none', paddingTop: 0 }}>
+      <section className="vn-extra-section" style={{ borderTop: 'none', paddingTop: 0 }}>
         <div className="vn-container">
           <div className="vn-section-label">§ Deep Dives</div>
           <h2 className="vn-extra-title">Amino Club Resources</h2>
@@ -270,7 +270,7 @@ export default function VendorsClient() {
       </section>
 
       {/* ═══ MATRIX SECTION ═══ */}
-      <section className="vn-matrix-section reveal">
+      <section className="vn-matrix-section">
         <div className="vn-container">
           <div className="vn-section-label">§ Side-by-Side Comparison</div>
           <h2 className="vn-matrix-title">The full <em>matrix</em>.</h2>
