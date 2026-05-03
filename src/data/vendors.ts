@@ -105,7 +105,7 @@ export const vendors: Vendor[] = [
     category: "injectable",
     affiliateUrl: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
     discountCode: "PEPTIDEX",
-    discountPercent: 15,
+    discountPercent: 20,
     discountStackable: false,
     rating: 4.9,
     ratingCount: "400+",

@@ -2,9 +2,15 @@ export const DISCLAIMER_TEXT = "EDUCATIONAL AND INFORMATIONAL ONLY. This app is 
 
 export const SHORT_DISCLAIMER = "⚠️ Educational only · Not medical advice · Consult a doctor · Most peptides are research-only / not FDA-approved for human use";
 
-/** Editorial review date — update this on each content review cycle. */
-export const LAST_REVIEWED_ISO  = "2026-05-02";
-export const LAST_REVIEWED_DATE = "May 2, 2026";
+/** Editorial review date — auto-computed from last git commit at build time.
+ *  NEXT_PUBLIC_BUILD_DATE is injected by next.config.ts via `git log -1 --format=%cI`.
+ *  Falls back to hardcoded date only when env var is absent (e.g. plain `tsc` runs).
+ */
+const _buildDate = new Date(process.env.NEXT_PUBLIC_BUILD_DATE ?? "2026-05-02T00:00:00Z");
+export const LAST_REVIEWED_ISO  = _buildDate.toISOString().slice(0, 10);
+export const LAST_REVIEWED_DATE = _buildDate.toLocaleDateString("en-US", {
+  month: "long", day: "numeric", year: "numeric",
+});
 
 export const EVIDENCE_SCALE: Record<string, { label: string; color: string; description: string }> = {
     "very-strong": { label: "Very Strong", color: "emerald", description: "FDA-approved with extensive Phase 3 RCT data" },

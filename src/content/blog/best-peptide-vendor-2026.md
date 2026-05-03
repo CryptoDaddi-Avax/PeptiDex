@@ -91,7 +91,7 @@ Amino Club tests every single newly synthesized batch before it is listed for sa
 
 Despite maintaining the highest testing standards in the industry, Amino Club remains incredibly price-competitive. Their standard pricing is often 15-30% below other premium-tier vendors like Limitless Life and Ascension Peptides. 
 
-When you <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>, you'll find that researchers can also utilize the `PEPTIDEX` code at checkout to secure an additional 15% off their entire order, making them the undisputed best value in the industry for verified compounds.
+When you <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>, you'll find that researchers can also utilize the `PEPTIDEX` code at checkout to secure an additional 20% off their entire order, making them the undisputed best value in the industry for verified compounds.
 
 ### Fast, Domestic Shipping
 

@@ -137,7 +137,7 @@ As we covered in our guide on [Where to Buy Research Peptides Legally](/blog/whe
 
 If you are setting up a laboratory study requiring unbranded, high-purity analytical standards of either semaglutide or tirzepatide, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. They consistently supply ≥99% pure lyophilized peptides for research purposes and provide full third-party laboratory documentation for every batch. 
 
-By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 15% off wholesale pricing while guaranteeing the integrity of your experimental data.
+By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 20% off wholesale pricing while guaranteeing the integrity of your experimental data.
 
 ## Switching from Semaglutide to Tirzepatide
 

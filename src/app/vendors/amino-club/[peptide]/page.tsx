@@ -43,7 +43,7 @@ export function generateMetadata({ params }: { params: { peptide: string } }): M
       break;
     case 'retatrutide':
       title = 'Buy Retatrutide: Amino Club Pricing & Independent Testing (2026)';
-      description = "Sourcing Retatrutide for research? Amino Club offers verifiable 99%+ pure Retatrutide shipped from the US. Apply promo code PEPTIDEX at checkout for 15% off.";
+      description = "Sourcing Retatrutide for research? Amino Club offers verifiable 99%+ pure Retatrutide shipped from the US. Apply promo code PEPTIDEX at checkout for 20% off.";
       break;
     case 'tesamorelin':
       title = 'Buy Tesamorelin: Amino Club Pricing & COA Verification (2026)';
@@ -51,7 +51,7 @@ export function generateMetadata({ params }: { params: { peptide: string } }): M
       break;
     case 'semaglutide':
       title = 'Buy Semaglutide Online: Amino Club Pricing & COA Verification (2026)';
-      description = "Looking for research-grade Semaglutide? Amino Club provides batch-tested vials with US-based shipping. Get 15% off your entire order with code PEPTIDEX.";
+      description = "Looking for research-grade Semaglutide? Amino Club provides batch-tested vials with US-based shipping. Get 20% off your entire order with code PEPTIDEX.";
       break;
     default:
       title = `Buy ${name}: Amino Club Pricing & COA Verification`;

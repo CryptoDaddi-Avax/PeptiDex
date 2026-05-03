@@ -199,7 +199,7 @@ export default function AminoClubVsAscension() {
           <div className="section-label">§ 2026 Pricing Data</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Pricing comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Pricing between these two vendors is highly competitive. Both offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 15% off, Ascension: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-indigo-300">PeptiDex</code> for 15% off).
+            Pricing between these two vendors is highly competitive. Both offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 20% off, Ascension: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-indigo-300">PeptiDex</code> for 15% off).
           </p>
           <div className="overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/50">
             <table className="w-full text-sm">

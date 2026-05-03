@@ -239,7 +239,7 @@ export default function VendorsClient() {
             <Link href="/vendors/amino-club-discount-code" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div className="vn-vetting-icon" style={{ color: 'var(--accent-1)' }}><Star size={24} /></div>
               <h3 style={{ color: 'var(--ink)' }}>Verified Discount Code</h3>
-              <p style={{ flex: 1 }}>Get 15% off your entire order with our exclusive, verified promo code for 2026.</p>
+              <p style={{ flex: 1 }}>Get 20% off your entire Amino Club order with our exclusive, verified promo code for 2026.</p>
               <span style={{ color: 'var(--accent-1)', fontSize: '0.85rem', fontWeight: 600, marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Get the code <ArrowRight size={14} /></span>
             </Link>
             <Link href="/vendors/amino-club-coa-verification" className="vn-vetting-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>

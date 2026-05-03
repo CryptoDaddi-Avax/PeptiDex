@@ -126,7 +126,7 @@ If you are looking for verified, accurately dosed 5mg vials for your laboratory,
 
 When conducting a study, the purity of your raw materials dictates the validity of your data. If you mix your BPC-157 and the solution turns cloudy or milky, the peptide has degraded, or the synthesis was heavily contaminated with byproducts. High-purity BPC-157 should reconstitute completely clear within seconds.
 
-You can secure 15% off wholesale pricing for these high-purity analytical standards by utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>. Utilizing verified sources is the only way to guarantee your research is not compromised by heavy metals or truncated amino acid sequences.
+You can secure 20% off wholesale pricing for these high-purity analytical standards by utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>. Utilizing verified sources is the only way to guarantee your research is not compromised by heavy metals or truncated amino acid sequences.
 
 ## Systemic vs. Local Administration
 

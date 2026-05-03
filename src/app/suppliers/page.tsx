@@ -61,7 +61,7 @@ const suppliers: Supplier[] = [
         shipsTo: ["USA"],
         specialties: ["BPC-157", "TB-500", "GHK-Cu", "Ipamorelin", "MOTS-c", "KPV", "Semax", "Selank", "Epitalon", "PT-141", "Melanotan II", "Peptide Capsules", "Peptide Blends", "Bioregulators"],
         minPurity: "99%+",
-        notes: "USA-manufactured peptides under GMP protocols with 90+ research compounds. Every batch receives third-party HPLC, LC-MS, and endotoxin testing. Certificates of analysis included with every order. Use code PEPTIDEX for 15% off your order.",
+        notes: "USA-manufactured peptides under GMP protocols with 90+ research compounds. Every batch receives third-party HPLC, LC-MS, and endotoxin testing. Certificates of analysis included with every order. Use code PEPTIDEX for 20% off your order.",
         badge: "USA Made",
     }
 ];

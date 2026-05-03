@@ -129,7 +129,7 @@ If you require unbranded, raw analytical standards of CJC-1295, Ipamorelin, or a
 
 Amino Club is one of the few domestic chemical suppliers that provides full MZ Biolabs or Janoshik Analytical documentation for every single batch they produce, ensuring your reagents are free of heavy metals and synthesis byproducts. 
 
-By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 15% off wholesale pricing while guaranteeing the integrity and validity of your experimental hypertrophy data.
+By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 20% off wholesale pricing while guaranteeing the integrity and validity of your experimental hypertrophy data.
 
 ## 3. The Hyperplasia Agents: IGF-1 LR3 and PEG-MGF
 

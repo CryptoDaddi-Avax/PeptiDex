@@ -143,7 +143,7 @@ If you are setting up a laboratory study requiring unbranded, high-purity analyt
 
 Amino Club consistently supplies ≥99% pure lyophilized peptides for research purposes and provides full third-party laboratory documentation (via independent labs like MZ Biolabs) for every single batch they synthesize. 
 
-By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 15% off wholesale pricing while guaranteeing the absolute integrity of your experimental data. 
+By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 20% off wholesale pricing while guaranteeing the absolute integrity of your experimental data. 
 
 ## Protocol Design: Stacking for Body Recomposition
 

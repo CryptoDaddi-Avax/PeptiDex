@@ -200,7 +200,7 @@ export default function AminoClubVsLimitlessLife() {
           <div className="section-label">§ 2026 Pricing Data</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Pricing comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Both vendors offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 15% off, Limitless Life: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 15% off). The following comparison reflects standard pricing <em>before</em> the discount is applied.
+            Both vendors offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 20% off, Limitless Life: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 15% off). The following comparison reflects standard pricing <em>before</em> the discount is applied.
           </p>
           <div className="overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/50">
             <table className="w-full text-sm">

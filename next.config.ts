@@ -1,4 +1,14 @@
 import type { NextConfig } from "next";
+import { execSync } from "child_process";
+
+// Build-time git commit date — used in footer "Last reviewed" stamp
+const gitDate = (() => {
+  try {
+    return execSync("git log -1 --format=%cI", { encoding: "utf8" }).trim();
+  } catch {
+    return new Date().toISOString();
+  }
+})();
 
 const nextConfig: NextConfig = {
   output: process.env.BUILD_MOBILE === 'true' ? 'export' : undefined,
@@ -65,6 +75,12 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+
+  // ─── BUILD DATE ─────────────────────────────────────────────────
+  // Exposed to the browser so Footer can display a dynamic review date.
+  env: {
+    NEXT_PUBLIC_BUILD_DATE: gitDate,
   },
 
   // ─── EXPERIMENTAL ──────────────────────────────────────────────
