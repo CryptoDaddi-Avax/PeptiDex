@@ -109,47 +109,73 @@ export default function CalculatorPage() {
     }, [searchQuery]);
 
     return (
-        <div className="max-w-3xl mx-auto px-4 py-4 md:py-6">
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
-        <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
-        <span className="text-zinc-700 text-xs">/</span>
-        <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
-        <span className="text-zinc-700 text-xs">/</span>
-        <span className="text-zinc-200 font-medium text-xs">Reconstitution Calculator</span>
-      </nav>
-      
-            {/* Research-Only Disclaimer */}
-            <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-2.5 mb-4">
-                <div className="flex items-start gap-2">
-                    <ShieldAlert className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 mt-0.5" />
-                    <p className="text-[10px] md:text-[11px] text-amber-400/80 leading-relaxed">{SHORT_DISCLAIMER}</p>
-                </div>
-            </div>
-
-            {/* Lab Context Banner */}
-            <div className="rounded-xl bg-blue-950/20 border border-blue-500/15 p-3 mb-4">
-                <div className="flex items-start gap-2">
-                    <Beaker className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-[10px] md:text-[11px] text-blue-300/80 leading-relaxed">
-                        <strong className="text-blue-300">Laboratory Use Only.</strong> This tool calculates reconstitution concentrations for research-grade lyophilized peptides. All values are intended for in-vitro and authorized laboratory applications only. Not for human or animal use.
-                    </p>
-                </div>
-            </div>
-
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                    <div>
-                        <div className="flex items-center gap-2 mb-1">
-                            <FlaskConical className="w-5 h-5 text-emerald-400" />
-                            <h1 className="text-xl md:text-2xl font-bold text-zinc-100">Reconstitution & Concentration Calculator</h1>
-                        </div>
-                        <p className="text-xs md:text-sm text-zinc-400">Calculate solution concentrations and volumetric measurements for peptide reconstitution</p>
+        <>
+            {/* Editorial Page Header */}
+            <header className="cmp-hero" style={{ position: 'relative', overflow: 'hidden', padding: '64px 24px 48px', background: 'var(--bg)', borderBottom: '1px solid var(--line)' }}>
+                <div style={{
+                    position: 'absolute', inset: 0,
+                    backgroundImage: 'linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)',
+                    backgroundSize: '80px 80px',
+                    maskImage: 'radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse at 70% 30%, black 0%, transparent 70%)',
+                    opacity: 0.4, pointerEvents: 'none' as const
+                }} />
+                <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative' }}>
+                    <div style={{
+                        fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.2em',
+                        textTransform: 'uppercase' as const, color: 'var(--ink-mute)',
+                        marginBottom: 32, display: 'flex', alignItems: 'center', gap: 12
+                    }}>
+                        <Link href="/" style={{ color: 'var(--ink-mute)', textDecoration: 'none' }}>Home</Link>
+                        <span style={{ color: 'var(--line-strong)' }}>/</span>
+                        <Link href="/tools" style={{ color: 'var(--ink-mute)', textDecoration: 'none' }}>Tools</Link>
+                        <span style={{ color: 'var(--line-strong)' }}>/</span>
+                        <span style={{ color: 'var(--gold)' }}>Calculator</span>
                     </div>
-                    <div>
+                    <div style={{
+                        fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
+                        textTransform: 'uppercase' as const, color: 'var(--gold)',
+                        marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12
+                    }}>
+                        <span style={{ width: 32, height: 1, background: 'var(--gold)', display: 'inline-block' }} />
+                        § Interactive Tool
+                    </div>
+                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                        <h1 style={{
+                            fontFamily: 'var(--serif)', fontSize: 'clamp(40px, 6vw, 64px)',
+                            fontWeight: 300, lineHeight: 1, letterSpacing: '-0.03em',
+                            margin: 0, maxWidth: 600
+                        }}>
+                            Reconstitution <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Calculator</em>.
+                        </h1>
+                        <div className="mt-2 hidden sm:block">
+                            <EmbedModal title="Peptide Reconstitution Calculator" path="/tools/calculator" />
+                        </div>
+                    </div>
+                    <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 680, lineHeight: 1.6 }}>
+                        Calculate solution concentrations and volumetric measurements for peptide reconstitution.
+                    </p>
+                    
+                    <div className="sm:hidden mt-6">
                         <EmbedModal title="Peptide Reconstitution Calculator" path="/tools/calculator" />
                     </div>
                 </div>
-            </motion.div>
+            </header>
+
+            <div className="max-w-3xl mx-auto px-4 py-8 md:py-12 relative z-10">
+                {/* Research-Only Disclaimer */}
+                <div style={{ display: 'flex', gap: 12, padding: 16, background: 'rgba(212, 131, 42, 0.05)', border: '1px solid rgba(212, 131, 42, 0.2)', borderRadius: 12, marginBottom: 24 }}>
+                    <ShieldAlert style={{ width: 16, height: 16, color: 'var(--amber)', flexShrink: 0, marginTop: 2 }} />
+                    <p style={{ fontSize: 13, color: 'var(--amber)', margin: 0, lineHeight: 1.5 }}>{SHORT_DISCLAIMER}</p>
+                </div>
+
+                {/* Lab Context Banner */}
+                <div style={{ display: 'flex', gap: 12, padding: 16, background: 'rgba(56, 189, 248, 0.05)', border: '1px solid rgba(56, 189, 248, 0.2)', borderRadius: 12, marginBottom: 32 }}>
+                    <Beaker style={{ width: 16, height: 16, color: '#38bdf8', flexShrink: 0, marginTop: 2 }} />
+                    <p style={{ fontSize: 13, color: '#bae6fd', margin: 0, lineHeight: 1.5 }}>
+                        <strong style={{ color: '#38bdf8' }}>Laboratory Use Only.</strong> This tool calculates reconstitution concentrations for research-grade lyophilized peptides. All values are intended for in-vitro and authorized laboratory applications only. Not for human or animal use.
+                    </p>
+                </div>
 
             {/* ═══════ DILUTION MATH TOOLTIP ═══════ */}
             <div className="mb-6">
@@ -606,5 +632,6 @@ export default function CalculatorPage() {
                 </motion.div>
             )}
         </div>
+        </>
     );
 }
