@@ -9,6 +9,7 @@ import { SHORT_DISCLAIMER } from '@/data/constants';
 import { vendorProfiles } from '@/data/vendor-comparison';
 import { vendorPricing } from '@/data/vendor-pricing';
 import { vendors, injectableVendors, oralVendors, VENDOR_COUNT, type Vendor } from '@/data/vendors';
+import { verificationBySlug, getTierLabel, getTierColor } from '@/data/verification-data';
 import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 import { VendorOutboundLink } from './vendor-outbound-link';
 import './vendors-redesign.css';
@@ -84,6 +85,25 @@ function VendorCard({ vendor, rank }: { vendor: Vendor; rank: number }) {
           <div className="vn-vendor-badges">
             <span className={getBadgeClass(vendor)}>{vendor.badge}</span>
             <span className="vn-tag green">✓ COA Verified</span>
+            {vendor.verificationTier && (() => {
+              const vData = verificationBySlug[vendor.slug];
+              const color = getTierColor(vendor.verificationTier);
+              return (
+                <Link href={`/coa#verify-${vendor.slug}`} style={{ textDecoration: 'none' }}>
+                  <span style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                    padding: '3px 10px', borderRadius: '99px', fontSize: '10px',
+                    fontFamily: 'var(--mono)', letterSpacing: '0.08em', textTransform: 'uppercase',
+                    background: `${color}18`, border: `1px solid ${color}40`, color,
+                    cursor: 'pointer', transition: 'opacity 0.2s',
+                  }}>
+                    <ShieldAlert size={10} />
+                    {getTierLabel(vendor.verificationTier)}
+                    {vData && ` · ${vData.stats.totalIndependentTests} tests`}
+                  </span>
+                </Link>
+              );
+            })()}
           </div>
           <h2 className="vn-vendor-name">{vendor.name}</h2>
           
@@ -159,6 +179,18 @@ function VendorCard({ vendor, rank }: { vendor: Vendor; rank: number }) {
           <div className="vn-spec-row"><div className="vn-spec-key">Catalog</div><div className="vn-spec-val">{vendor.catalogSize}</div></div>
           <div className="vn-spec-row"><div className="vn-spec-key">Payment</div><div className="vn-spec-val">{vendor.paymentMethods.join(', ')}</div></div>
           <div className="vn-spec-row"><div className="vn-spec-key">Returns</div><div className="vn-spec-val">{vendor.returnPolicy}</div></div>
+          {verificationBySlug[vendor.slug] && (
+            <Link href={`/coa#verify-${vendor.slug}`} style={{
+              display: 'flex', alignItems: 'center', gap: 6, marginTop: 12,
+              padding: '8px 12px', borderRadius: 8,
+              background: 'rgba(201,169,97,0.06)', border: '1px solid rgba(201,169,97,0.15)',
+              color: 'var(--gold)', fontSize: 11, fontFamily: 'var(--mono)',
+              letterSpacing: '0.06em', textDecoration: 'none', transition: 'background 0.2s',
+            }}>
+              <FlaskConical size={12} />
+              View verification dashboard →
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: "PeptiDex: Independent Peptide Research",
-    template: "%s | PeptiDex",
+    default: "PeptiDex – Peptide Research Index",
+    template: "PeptiDex – Peptide Research Index | %s",
   },
-  description: "Explore 30+ research peptides like BPC-157 and Tirzepatide. Access clinical studies, reconstitution tools, half-life graphs, and COA databases.",
+  description: "PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
   keywords: [
     "peptide research", "BPC-157", "TB-500", "Semaglutide", "CJC-1295", "Ipamorelin",
     "peptide reconstitution calculator", "peptide half-life", "research peptides", "peptide COA",
@@ -122,12 +122,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "PeptiDex",
+              "alternateName": ["PeptiDex Research Index", "peptidex.app"],
               "url": "https://peptidex.app",
-              "description": "Peptide science education, research news, and compound profiles. Trusted source for evidence-based peptide information.",
+              "description": "PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
               "logo": "https://peptidex.app/logo.png",
               "sameAs": [
                  "https://twitter.com/peptidex",
-                 "https://facebook.com/peptidex"
+                 "https://facebook.com/peptidex",
+                 "https://github.com/peptidex",
+                 "https://www.crunchbase.com/organization/peptidex"
               ]
             })
           }}
@@ -138,10 +141,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
              __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "name": "PeptiDex",
               "url": "https://peptidex.app/",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://peptidex.app/search?q={search_term_string}",
+                "target": "https://peptidex.app/library?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

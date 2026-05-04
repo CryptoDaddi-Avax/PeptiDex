@@ -89,6 +89,10 @@ export interface Vendor {
   gaKey: string;
   /** URL domain substring for vendorKeyFromUrl matching */
   domainMatch: string;
+  /** Finnrick vendor slug for data linking (if available) */
+  finnrickSlug?: string;
+  /** Verification tier computed from verification-data.ts */
+  verificationTier?: "gold" | "silver" | "bronze" | "unverified";
 }
 
 // ── Vendor Data ──────────────────────────────────────────────────────────────
@@ -122,6 +126,8 @@ export const vendors: Vendor[] = [
     lastTestedDate: "2026-04-10",
     gaKey: "amino_club",
     domainMatch: "aminoclub.com",
+    finnrickSlug: "amino-club",
+    verificationTier: "gold",
   },
 
   // ── #2: Bio Longevity Labs ──────────────────────────────────────────────
@@ -152,6 +158,8 @@ export const vendors: Vendor[] = [
     lastTestedDate: "2026-04-20",
     gaKey: "bio_longevity_labs",
     domainMatch: "biolongevitylabs.com",
+    finnrickSlug: "bio-longevity-labs",
+    verificationTier: "gold",
   },
 
   // ── #3: Limitless Life ──────────────────────────────────────────────────
@@ -178,6 +186,8 @@ export const vendors: Vendor[] = [
     lastTestedDate: "2026-04-01",
     gaKey: "limitless_life",
     domainMatch: "kb6dp3dq.com",
+    finnrickSlug: "limitless-life",
+    verificationTier: "silver",
   },
 
   // ── #4: Ascension Peptides ──────────────────────────────────────────────
@@ -205,6 +215,8 @@ export const vendors: Vendor[] = [
     lastTestedDate: "2026-03-24",
     gaKey: "ascension",
     domainMatch: "ascensionpeptides.com",
+    finnrickSlug: "ascension-peptides",
+    verificationTier: "silver",
   },
 
   // ── #5: Pantheon Peptides ───────────────────────────────────────────────
@@ -231,6 +243,8 @@ export const vendors: Vendor[] = [
     lastTestedDate: "2026-04-05",
     gaKey: "pantheon",
     domainMatch: "pantheonpeptides.com",
+    finnrickSlug: "pantheon-peptides",
+    verificationTier: "bronze",
   },
 
   // ── #6: LVLUP Health (Oral) ─────────────────────────────────────────────
@@ -257,6 +271,8 @@ export const vendors: Vendor[] = [
     lastTestedDate: "2026-03-15",
     gaKey: "lvlup_health",
     domainMatch: "lvluphealth.com",
+    finnrickSlug: "lvlup-health",
+    verificationTier: "bronze",
   },
 ];
 

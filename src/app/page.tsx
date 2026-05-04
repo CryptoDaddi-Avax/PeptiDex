@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import NewHomeClient from './new-home-client';
 
 export const metadata: Metadata = {
-  title: 'PeptiDex: Peptide Research, Stacks & Vendor Data Hub',
-  description: 'Independent index of 33 research peptides — BPC-157, Tesamorelin, Semaglutide, Tirzepatide. Verified vendors with COA testing. Evidence-based protocols and dosing references.',
+  title: 'PeptiDex – Peptide Research Index, Stacks & Vendor Data Hub',
+  description: 'PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.',
   alternates: {
     canonical: 'https://peptidex.app',
   },
