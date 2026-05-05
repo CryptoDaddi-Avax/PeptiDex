@@ -4,6 +4,8 @@ import { stacks } from "@/data/stacks";
 import { vendorPricing } from "@/data/vendor-pricing";
 import type { EvidenceLevel } from "@/data/types";
 import { PeptideDetailRedesign } from "./client";
+import { PeptideExpandedContent } from "@/components/peptide-expanded";
+import { getAuthorBySlug, getPersonSchema } from "@/lib/authors";
 
 export function generateStaticParams() {
     return peptides.map((p) => ({ slug: p.slug }));
@@ -216,13 +218,16 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     }
 
     // ─── JSON-LD: Article Schema ────────────────────────────────────
+    const authorRecord = getAuthorBySlug(peptide.author ?? "peptidex-research");
     const articleSchema = {
         "@context": "https://schema.org",
         "@type": "Article",
         headline: `${peptide.name} — Research Guide, Dosage & Studies`,
         datePublished: "2026-01-15",
-        dateModified: "2026-04-29",
-        author: { "@type": "Person", name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
+        dateModified: peptide.lastReviewed ?? "2026-04-29",
+        author: authorRecord
+            ? getPersonSchema(authorRecord)
+            : { "@type": "Person", name: "PeptiDex Research", url: "https://peptidex.app/team/peptidex-research" },
         publisher: { "@type": "Organization", name: "PeptiDex", url: "https://peptidex.app", logo: { "@type": "ImageObject", url: "https://peptidex.app/icon-512.png" } },
         mainEntityOfPage: `https://peptidex.app/library/${slug}`,
         description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
@@ -234,6 +239,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
             {howToSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
             <PeptideDetailRedesign peptide={peptide} relatedStacks={relatedStacks} />
+            <PeptideExpandedContent slug={slug} />
         </>
     );
 }

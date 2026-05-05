@@ -1,0 +1,310 @@
+---
+# ─── PEPTIDE PROFILE FRONTMATTER ──────────────────────────────────
+# Required fields. Copy this file to <slug>.mdx and fill in.
+slug: "<peptide-slug>"            # e.g., "bpc-157" — must match peptides.ts
+displayName: "<Peptide Name>"      # e.g., "BPC-157"
+title: "<Peptide Name> – Mechanism, Dosing, Research & Safety"
+quickAnswer: |
+  Three-sentence summary that an AI Overview / featured snippet can lift verbatim.
+  Sentence 1: what the compound is. Sentence 2: what it's been studied for. Sentence 3:
+  the regulatory/educational caveat ("research compound, not approved for human use").
+
+# Author and review trail (mirrors getPersonSchema())
+author: "peptidex-research"
+medicallyReviewedBy: null          # leave null until a real clinician reviews
+factCheckedBy: null
+reviewedDate: "YYYY-MM-DD"
+
+# Internal-link targets — fill in real slugs that exist in your data
+relatedStacks:                     # at least 2; must exist under /stacks/
+  - "<stack-slug-1>"
+  - "<stack-slug-2>"
+relatedGoals:                      # at least 1; must exist under /best/
+  - "<goal-slug>"
+relatedComparisons:                # any /vs/ pages you have
+  - "<vs-slug>"
+
+# References — every inline [n] citation must map to an entry below.
+# Use ONLY peer-reviewed primary sources, FDA labels, or registered ClinicalTrials.gov entries.
+# Do NOT cite blog posts, vendor pages, Reddit, or AI-generated summaries.
+references:
+  - id: 1
+    authors: "Lastname AB, Lastname CD."
+    year: 2019
+    title: "Full study title as published."
+    journal: "Journal Name. Year;Vol(Issue):Pages."
+    url: "https://pubmed.ncbi.nlm.nih.gov/<PMID>/"
+    type: "rct"                    # rct | observational | animal | invitro | review | meta | fda-label | trial-registry
+  - id: 2
+    # …
+---
+
+{/*
+  Template usage notes:
+
+  - Word target: 2,000–3,000 (Google rewards depth, not padding).
+  - Every numeric or mechanistic claim needs a [n] citation. If a citation
+    cannot be found, replace the claim with a TODO block (see below) — DO NOT
+    publish unverified claims as fact.
+  - Dosing must always be framed as observed in published research, never as
+    a recommendation. Required wording template:
+      "In a 2019 randomized trial (n=54), participants received [X] mg/kg
+       twice daily for 8 weeks [1]."
+  - All FAQs (8–12) must answer in 50–150 words and be lifted verbatim from
+    the body, so the FAQPage JSON-LD matches visible text.
+  - For unverified claims, insert this exact comment block instead of fact:
+
+    {/* TODO: Verify with source. Current claim: [claim]. Likely sources:
+        [PubMed search terms]. */}
+
+  - When you cite [n], the references[] array in frontmatter MUST contain a
+    matching id. The schema builder validates this at build time.
+*/}
+
+## Quick Answer
+
+> {frontmatter.quickAnswer}
+
+---
+
+## What is [Peptide Name]?
+
+A 1–2 paragraph explainer. Cover: chemical class, peptide sequence length / source
+species (if relevant), how it was discovered, why researchers became interested in it.
+Cite the original characterization paper if available [1].
+
+If the peptide is FDA-approved for any indication, state the indication and the
+brand name(s) here, with a citation to the FDA label [2]. If not approved, state that
+plainly: "Not approved by the FDA for human use; classified as a research compound."
+
+---
+
+## How [Peptide] Works (Mechanism of Action)
+
+### Receptor binding and pathway
+
+Describe the primary target — receptor name, downstream pathway, where it acts in the
+body. Use plain language ("activates the GLP-1 receptor on pancreatic beta cells,
+which increases insulin secretion in response to glucose") rather than dense
+biochemistry. Cite the canonical mechanism review or original receptor-binding paper [n].
+
+If the mechanism is contested or has multiple proposed pathways, say so.
+
+### Pharmacokinetics summary
+
+A short paragraph or compact table:
+
+| Property | Reported value | Source |
+|---|---|---|
+| Half-life (subcutaneous) | X hours | [n] |
+| Time to peak plasma concentration | X hours | [n] |
+| Bioavailability (route) | X% | [n] |
+| Primary clearance route | renal / hepatic / proteolytic | [n] |
+| Plasma protein binding | X% | [n] |
+
+Where a value is debated or has been reported across a range, give the range and the
+sources that bracket it.
+
+---
+
+## Clinical & Preclinical Evidence
+
+### Human studies
+
+Lead with the highest-quality human evidence available. If there are no human trials,
+say so explicitly and move to the animal section.
+
+| Study (year) | Population | n | Dose | Duration | Key outcome | Citation |
+|---|---|---|---|---|---|---|
+| Smith et al. (2020) | adults with X | 120 | 0.5 mg weekly SC | 26 weeks | −7.2% body weight vs placebo | [n] |
+| Jones et al. (2022) | … | … | … | … | … | [n] |
+
+Where data is sparse: "As of [reviewedDate], only [N] human trials have been published
+on this compound. The most rigorously designed is …"
+
+### Animal and preclinical studies
+
+Use this section when human evidence is sparse or absent. Be explicit that animal
+findings do not necessarily translate to humans:
+
+> Findings from animal models may not translate to human outcomes. The studies below
+> describe what was observed in research models, not predictions for human use.
+
+| Model | Dose | Outcome | Source |
+|---|---|---|---|
+| Sprague-Dawley rat | X µg/kg IP | … | [n] |
+
+---
+
+## Dosing in Research Settings
+
+> **Important.** The numbers below describe doses used in published research, not
+> recommendations. Decisions about peptide use must be made with a licensed physician.
+
+### Reported dosing ranges
+
+For each route of administration with published data:
+
+- **Subcutaneous.** In a [year] [trial type] (n=[N]), participants received [X] mg
+  [frequency] for [duration] [n].
+- **Oral.** [Same frame.]
+- **Intramuscular.** [Same frame.]
+
+Quote each cited study verbatim where possible: dose, frequency, duration, n.
+
+### Half-life and timing
+
+Restate the half-life from the PK table and explain what it implies for dosing
+intervals **as observed in studies** — never as a recommendation. Example:
+"The reported subcutaneous half-life of approximately X hours is consistent with the
+once-weekly dosing used in the Phase 3 program [n]."
+
+### Reconstitution
+
+Lyophilized peptides require reconstitution before injection. Use the
+[reconstitution calculator](/tools/calculator) to convert vial size, BAC water
+volume, and target dose into mL-per-injection.
+
+---
+
+## Stacking & Synergies
+
+### Common stacks
+
+Reference the stacks already published on the site:
+
+- [`<Stack 1 name>`](/stacks/<stack-slug-1>) — rationale in 1 sentence with citation.
+- [`<Stack 2 name>`](/stacks/<stack-slug-2>) — rationale in 1 sentence with citation.
+
+### Interactions to be aware of
+
+Use the [interaction checker](/tools/interactions) for compound-by-compound risk
+flags. Known interactions in published literature:
+
+- [Compound]: [reported interaction] [n].
+
+If a stacking pattern appears in vendor marketing or forum posts but has no
+peer-reviewed support, state that plainly:
+
+> The combination of [A] and [B] is widely discussed in research-community forums but
+> has not, as of [reviewedDate], been studied in a published controlled trial.
+
+---
+
+## Safety, Side Effects & Contraindications
+
+### Reported adverse events
+
+Pull from controlled-trial safety data when available:
+
+| Event | Frequency reported | Severity | Source |
+|---|---|---|---|
+| Nausea | X% (vs Y% placebo) | mild–moderate | [n] |
+| Injection-site reaction | X% | mild | [n] |
+
+When the only safety data is from animal models or case reports, label the table
+accordingly and explain the limit ("These figures are from animal studies and
+preclinical pharmacovigilance; comparable human safety data has not been published").
+
+### Populations who should avoid
+
+Cite: pregnancy, pediatric, hepatic impairment, renal impairment, history of relevant
+cancers, etc. Each restriction needs a source — the FDA label is the gold standard
+where available [n].
+
+### Drug interactions
+
+List clinically significant interactions reported in the literature, each with a
+citation. If interaction data is absent ("no formal drug-interaction studies have
+been published for this compound"), say so.
+
+---
+
+## Legal & Regulatory Status
+
+### FDA status
+
+State the current US status in one sentence: approved for indication X (brand name)
+[n], or "research chemical, not approved by the FDA for human use." Mention DEA
+scheduling if relevant.
+
+Wording for unapproved compounds:
+
+> [Peptide] is not approved by the FDA for any therapeutic indication. It is sold by
+> research-chemical suppliers labeled "for research use only" and is not intended for
+> human consumption.
+
+### Country-specific notes
+
+| Region | Status | Notes |
+|---|---|---|
+| United States | … | … |
+| United Kingdom | … | MHRA classification |
+| European Union | … | EMA status |
+| Australia | … | TGA classification |
+
+For any country where the legal status is uncertain or regional, mark with a TODO.
+
+---
+
+## [Peptide] vs Alternatives
+
+Pick 2–3 closely-related compounds with their own profile pages or vs articles, and
+compare on the dimensions that actually matter for the research question:
+
+| Dimension | This peptide | Alternative A | Alternative B |
+|---|---|---|---|
+| Primary target | … | … | … |
+| Half-life | … | … | … |
+| FDA status | … | … | … |
+| Strongest evidence base | … | … | … |
+| Reported AE profile | … | … | … |
+
+Link to detailed comparison pages where they exist:
+[`<This> vs <Alt A>`](/vs/<vs-slug>).
+
+---
+
+## Where to Source for Research
+
+> **Affiliate disclosure.** PeptiDex maintains affiliate relationships with some
+> research-chemical suppliers. When a reader purchases through one of our links, we
+> may receive a commission. This does not affect editorial coverage. See the full
+> disclosure on the [editorial process page](/editorial-process).
+
+Compounds for laboratory research are typically sourced from suppliers who publish
+third-party Certificates of Analysis (COAs). Verify any COA against the
+[COA analyzer](/tools/coa) before purchase. Reviewed suppliers and their current
+verification status are listed on the [vendors page](/vendors).
+
+---
+
+## Frequently Asked Questions
+
+> Each Q/A below must be answered in 50–150 words and lifted verbatim from the body
+> sections above. The FAQPage JSON-LD on this page is generated from these entries,
+> and search engines penalize visible/structured-data mismatches.
+
+**Q1. What is the half-life of [Peptide]?**
+[50–150 word answer pulled from the PK section.]
+
+**Q2. Can [Peptide] be taken orally?**
+[…]
+
+**Q3. How long do [Peptide] cycles last in research?**
+[…]
+
+[…8–12 questions total. Use the FAQ-suggestion list in the spec for each peptide.]
+
+---
+
+## References
+
+1. Lastname AB, Lastname CD. *Full study title.* Journal Name. 2019;42(3):123–145.
+   [PubMed](https://pubmed.ncbi.nlm.nih.gov/<PMID>/)
+2. [FDA label] *Drug Name (Brand Name) — Prescribing Information.*
+   U.S. Food & Drug Administration. Approved YYYY.
+   [FDA](https://www.accessdata.fda.gov/drugsatfda_docs/label/...)
+3. […]
+
+{/* End of template. Word count target: 2,000–3,000 (excluding tables). */}
