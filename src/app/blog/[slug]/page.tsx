@@ -8,9 +8,10 @@ import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorBio } from '@/components/author-bio';
 import { FeedbackModal } from '@/components/feedback-modal';
-import { SHORT_DISCLAIMER } from '@/data/constants';
-import { getAuthorSlug } from '@/data/authors';
+import { getAuthorSlug, getAuthorBySlug, getPersonSchema } from '@/lib/authors';
 import { getPostBySlug, getAllSlugs } from '@/lib/markdown';
+import { Byline } from '@/components/byline';
+import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import ReactMarkdown from 'react-markdown';
 import { AffiliateLink } from '@/components/affiliate-link';
 
@@ -44,15 +45,23 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const { title, description, publishDate, lastReviewed, author, faqSchema, readingTime } = post.frontmatter;
+  const { title, description, publishDate, lastReviewed, author, faqSchema, readingTime, medicallyReviewedBy, factCheckedBy, reviewedDate } = post.frontmatter;
   const canonical = `https://peptidex.app/blog/${params.slug}`;
+
+  const authorSlug = getAuthorSlug(author || 'PeptiDex Editorial');
+  const authorRecord = getAuthorBySlug(authorSlug);
+  const reviewerRecord = medicallyReviewedBy ? getAuthorBySlug(medicallyReviewedBy) : undefined;
 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description: description,
-    author: { '@type': 'Person', name: author || 'PeptiDex Editorial', url: `https://peptidex.app/about/${getAuthorSlug(author || 'PeptiDex Editorial')}` },
+    author: authorRecord
+      ? getPersonSchema(authorRecord)
+      : { '@type': 'Person', name: author || 'PeptiDex Editorial', url: `https://peptidex.app/team/${authorSlug}` },
+    ...(reviewerRecord ? { reviewedBy: getPersonSchema(reviewerRecord) } : {}),
+    ...(reviewedDate ? { lastReviewed: reviewedDate } : {}),
     publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' } },
     datePublished: publishDate,
     dateModified: lastReviewed,
@@ -84,16 +93,19 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         { name: title }
       ]} />
 
-      <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">
-        <p className="text-sm text-amber-400/80 leading-relaxed font-medium">
-          <strong>EDUCATIONAL CONTENT:</strong> {SHORT_DISCLAIMER}
-        </p>
-      </div>
+      <MedicalDisclaimer variant="callout" className="my-0" />
 
       <header className="space-y-6 border-b border-zinc-800/50 pb-8">
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 leading-tight">
           {title}
         </h1>
+        <Byline
+          author={authorSlug}
+          medicallyReviewedBy={medicallyReviewedBy}
+          factCheckedBy={factCheckedBy}
+          reviewedDate={reviewedDate}
+          publishedDate={publishDate}
+        />
         <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-violet-400" />

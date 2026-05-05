@@ -1,0 +1,18 @@
+{
+  "slug": "peptidex-research",
+  "name": "PeptiDex Research",
+  "title": "Independent researcher, not a medical professional",
+  "role": "editor",
+  "credentials": [],
+  "specialties": [
+    "Peptide research literature review",
+    "Primary-source aggregation",
+    "Evidence-grading"
+  ],
+  "bio": "PeptiDex Research is the byline used by the independent researcher who builds and maintains PeptiDex. The site is a one-person research project — there is no editorial board, no medical reviewers, and no clinical staff. Content is produced by reading peer-reviewed primary sources (PubMed/MEDLINE, ClinicalTrials.gov, FDA filings, EMA assessment reports) and synthesizing them into educational reference material with direct links so any reader can verify the underlying claims themselves.\n\nThe person behind PeptiDex Research is not a medical professional. Not a doctor, pharmacist, nurse practitioner, or any other licensed clinician. Nothing on this site is medical advice. Decisions about peptides — whether to use them, where to source them, dosing, cycle length, interactions, monitoring — must be made with a licensed physician who knows your individual medical history. PeptiDex cannot replace a clinician, cannot verify your individual safety, and cannot guarantee that any compound discussed is safe for human use. Most peptides covered on the site are research chemicals not approved by the FDA for human consumption.\n\nWhat the site does well: it aggregates published literature on each compound, links every claim back to its primary source, grades evidence transparently (clinical trial vs. animal study vs. anecdotal), and discloses which vendors PeptiDex has affiliate relationships with. What the site explicitly does not do: provide medical advice, recommend protocols for individual readers, or vouch for any particular vendor's product safety beyond linking to their published Certificates of Analysis.\n\nIf you find an error or an outdated citation, the corrections page is the place to report it. Every correction is logged publicly with the original statement, the corrected statement, and the date of the change — the site does not silently overwrite substantive claims.",
+  "photo": "/images/authors/peptidex-research.png",
+  "imageAlt": "PeptiDex Research — independent peptide research project",
+  "sameAs": [],
+  "alumniOf": [],
+  "worksFor": "PeptiDex (independent)"
+}

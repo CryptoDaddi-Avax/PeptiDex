@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight, ExternalLink, ArrowRight, BookOpen, Calendar, BadgeCheck, Award } from 'lucide-react';
-import { authors, getAllAuthorSlugs, getAuthorBySlug, getAuthorSlug } from '@/data/authors';
+import { getAllAuthorSlugs, getAuthorBySlug, getAuthorSlug, getCanonicalSlug } from '@/data/authors';
 import { blogPosts, formatDate } from '@/data/blog';
 
 interface Props {
@@ -19,16 +19,18 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const author = getAuthorBySlug(slug);
   if (!author) return {};
 
+  const canonicalSlug = getCanonicalSlug(slug);
+
   return {
     title: `${author.name} — ${author.title} | PeptiDex`,
     description: author.bio.slice(0, 160),
     alternates: {
-      canonical: `https://peptidex.app/about/${slug}`,
+      canonical: `https://peptidex.app/team/${canonicalSlug}`,
     },
     openGraph: {
       title: `${author.name} — ${author.title}`,
       description: author.bio.slice(0, 160),
-      url: `https://peptidex.app/about/${slug}`,
+      url: `https://peptidex.app/team/${canonicalSlug}`,
       type: 'profile',
       images: [{ url: author.image, width: 400, height: 400 }],
     },
@@ -128,7 +130,7 @@ export default async function AuthorProfilePage(props: Props) {
 
             {/* Credential Links */}
             <div className="flex flex-wrap gap-2.5 pt-1">
-              {author.credentials.map((cred) => (
+              {author.links.map((cred) => (
                 <a
                   key={cred.label}
                   href={cred.url}

@@ -3,9 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { stacks, getStackBySlug } from '@/data/stacks';
 import { getPeptideByName } from '@/data/peptides';
-import { ShieldAlert, BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
-import { SHORT_DISCLAIMER } from '@/data/constants';
+import { BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { AuthorBio } from '@/components/author-bio';
+import { Byline } from '@/components/byline';
+import { MedicalDisclaimer } from '@/components/medical-disclaimer';
+import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
 import './stack-detail-redesign.css';
 
 export function generateStaticParams() {
@@ -45,9 +47,12 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
   const stack = getStackBySlug(slug);
   if (!stack) notFound();
 
-  const DATE_MOD = '2026-04-01';
-  const AUTHOR = 'Editorial Team';
+  const DATE_MOD = stack.reviewedDate ?? '2026-04-01';
   const goalName = stack.stack_name.replace(' Stack', '');
+
+  const authorSlug = stack.author ?? getAuthorSlug('PeptiDex Editorial');
+  const authorRecord = getAuthorBySlug(authorSlug);
+  const reviewerRecord = stack.medicallyReviewedBy ? getAuthorBySlug(stack.medicallyReviewedBy) : undefined;
 
   // --- JSON-LD SCHEMAS ---
   const breadcrumbSchema = {
@@ -65,11 +70,15 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
     '@type': 'Article',
     headline: `Best Peptide Stack for ${goalName}, Research-Backed Protocols`,
     description: `Explore the optimal peptide combinations for ${goalName.toLowerCase()}, with synergy rationale and preclinical study data.`,
-    author: {
-      '@type': 'Organization',
-      name: 'PeptiDex Educational Team',
-      url: 'https://peptidex.app',
-    },
+    author: authorRecord
+      ? getPersonSchema(authorRecord)
+      : {
+          '@type': 'Organization',
+          name: 'PeptiDex Editorial Team',
+          url: 'https://peptidex.app/team',
+        },
+    ...(reviewerRecord ? { reviewedBy: getPersonSchema(reviewerRecord) } : {}),
+    ...(stack.reviewedDate ? { lastReviewed: stack.reviewedDate } : {}),
     publisher: {
       '@type': 'Organization',
       name: 'PeptiDex',
@@ -132,21 +141,20 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
         </nav>
 
         {/* ═══ DISCLAIMER ═══ */}
-        <div className="stack-detail-disclaimer">
-          <ShieldAlert />
-          <p>
-            <strong>RESEARCH &amp; EDUCATIONAL USE ONLY:</strong> {SHORT_DISCLAIMER}{' '}
-            The compounds and protocols discussed on this page are strictly for academic,
-            laboratory, and preclinical investigation. Multi-peptide stacks exponentially
-            increase experimental variability.
-          </p>
-        </div>
+        <MedicalDisclaimer variant="callout" />
 
         {/* ═══ HEADER ═══ */}
         <h1 className="stack-detail-title">
           Best Peptide Stack for {goalName}, Research-Backed Protocols
         </h1>
         <p className="stack-detail-date">Last Updated: April 2026</p>
+        <Byline
+          author={authorSlug}
+          medicallyReviewedBy={stack.medicallyReviewedBy}
+          factCheckedBy={stack.factCheckedBy}
+          reviewedDate={stack.reviewedDate}
+          publishedDate="2026-03-31"
+        />
 
         {/* ═══ SECTION 1: COMPONENTS ═══ */}
         <section className="stack-section">
@@ -304,7 +312,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
         </section>
 
         {/* Author Bio */}
-        <AuthorBio name={AUTHOR} />
+        <AuthorBio name={authorRecord?.name ?? 'PeptiDex Editorial'} />
 
         {/* Bottom Disclaimer */}
         <div className="stack-bottom-disclaimer">

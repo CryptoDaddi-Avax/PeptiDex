@@ -57,6 +57,10 @@ export interface Peptide {
     outcomes_timeline?: OutcomesTimeline;
     side_effects?: SideEffect[];
     lastReviewed?: string;  // ISO date — "Last fact-checked: [date]"
+    author?: string;                // author slug from src/content/authors/
+    medicallyReviewedBy?: string;   // reviewer slug
+    factCheckedBy?: string;         // fact-checker slug
+    reviewedDate?: string;          // ISO date when last clinically reviewed
 }
 
 
@@ -77,6 +81,10 @@ export interface Stack {
     peptides: StackPeptide[];
     synergy_rationale: string;
     supporting_studies: StackStudy[];
+    author?: string;
+    medicallyReviewedBy?: string;
+    factCheckedBy?: string;
+    reviewedDate?: string;
 }
 
 export type GoalId =
