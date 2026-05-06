@@ -13,6 +13,7 @@ import { getAuthorSlug } from '@/data/authors';
 import { getPostBySlug, getAllSlugs } from '@/lib/markdown';
 import ReactMarkdown from 'react-markdown';
 import { AffiliateLink } from '@/components/affiliate-link';
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -47,26 +48,20 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const { title, description, publishDate, lastReviewed, author, faqSchema, readingTime } = post.frontmatter;
   const canonical = `https://peptidex.app/blog/${params.slug}`;
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+  const articleSchema = buildArticleSchema({
     headline: title,
     description: description,
-    author: { '@type': 'Person', name: author || 'PeptiDex Editorial', url: `https://peptidex.app/about/${getAuthorSlug(author || 'PeptiDex Editorial')}` },
-    publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' } },
     datePublished: publishDate,
     dateModified: lastReviewed,
-  };
+    author: { name: author || 'PeptiDex Editorial', url: `https://peptidex.app/about/${getAuthorSlug(author || 'PeptiDex Editorial')}` },
+    url: canonical
+  });
 
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptidex.app/' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://peptidex.app/blog' },
-      { '@type': 'ListItem', position: 3, name: title, item: canonical },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: 'https://peptidex.app/' },
+    { name: 'Blog', url: 'https://peptidex.app/blog' },
+    { name: title, url: canonical }
+  ]);
 
   const parsedFaqSchema = typeof faqSchema === 'string' ? JSON.parse(faqSchema) : faqSchema;
 

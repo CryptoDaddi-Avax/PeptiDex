@@ -6,6 +6,7 @@ import { getPeptideByName } from '@/data/peptides';
 import { ShieldAlert, BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { AuthorBio } from '@/components/author-bio';
+import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema } from '@/lib/schema';
 import './stack-detail-redesign.css';
 
 export function generateStaticParams() {
@@ -50,75 +51,41 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
   const goalName = stack.stack_name.replace(' Stack', '');
 
   // --- JSON-LD SCHEMAS ---
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptidex.app' },
-      { '@type': 'ListItem', position: 2, name: 'Stacks', item: 'https://peptidex.app/stacks' },
-      { '@type': 'ListItem', position: 3, name: stack.stack_name, item: `https://peptidex.app/stacks/${slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: 'https://peptidex.app/' },
+    { name: 'Stacks', url: 'https://peptidex.app/stacks' },
+    { name: stack.stack_name, url: `https://peptidex.app/stacks/${slug}` }
+  ]);
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+  const articleSchema = buildArticleSchema({
     headline: `Best Peptide Stack for ${goalName}, Research-Backed Protocols`,
     description: `Explore the optimal peptide combinations for ${goalName.toLowerCase()}, with synergy rationale and preclinical study data.`,
-    author: {
-      '@type': 'Organization',
-      name: 'PeptiDex Educational Team',
-      url: 'https://peptidex.app',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'PeptiDex',
-      logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' },
-    },
     datePublished: '2026-03-31',
     dateModified: DATE_MOD,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://peptidex.app/stacks/${slug}`,
-    },
-  };
+    author: { name: 'PeptiDex Educational Team', url: 'https://peptidex.app' },
+    url: `https://peptidex.app/stacks/${slug}`
+  });
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: `What peptides are in the ${stack.stack_name}?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `This research stack primarily utilizes ${stack.peptides.map(p => p.name).join(' and ')} to target ${goalName.toLowerCase()}.`,
-        },
-      },
-      {
-        '@type': 'Question',
-        name: `How do these peptides work synergistically for ${goalName.toLowerCase()}?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: stack.synergy_rationale,
-        },
-      },
-      {
-        '@type': 'Question',
-        name: `Are these peptides safe to stack?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `All compound combinations carry cumulative experimental risks. These protocols are derived strictly from controlled preclinical literature and are not intended for human medical application. Researchers should evaluate the safety profiles of each individual peptide.`,
-        },
-      },
-    ],
-  };
+  const faqSchema = buildFAQPageSchema([
+    {
+      q: `What peptides are in the ${stack.stack_name}?`,
+      a: `This research stack primarily utilizes ${stack.peptides.map(p => p.name).join(' and ')} to target ${goalName.toLowerCase()}.`
+    },
+    {
+      q: `How do these peptides work synergistically for ${goalName.toLowerCase()}?`,
+      a: stack.synergy_rationale
+    },
+    {
+      q: `Are these peptides safe to stack?`,
+      a: `All compound combinations carry cumulative experimental risks. These protocols are derived strictly from controlled preclinical literature and are not intended for human medical application. Researchers should evaluate the safety profiles of each individual peptide.`
+    }
+  ]);
 
   return (
     <div className="stack-detail-wrap">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
         {/* ═══ BREADCRUMBS ═══ */}
         <nav aria-label="Breadcrumb" className="stack-breadcrumbs">
@@ -282,7 +249,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
         <section className="stack-section">
           <h2 className="stack-section-heading" style={{marginBottom: '24px'}}>Frequently Asked Questions</h2>
           <div className="stack-faq-list">
-            {faqSchema.mainEntity.map((faq, i) => (
+            {faqSchema?.mainEntity.map((faq, i) => (
               <div key={i} className="stack-faq-item">
                 <h3>{faq.name}</h3>
                 <p>{faq.acceptedAnswer.text}</p>

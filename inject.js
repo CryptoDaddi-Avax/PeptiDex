@@ -1,70 +1,48 @@
 const fs = require('fs');
 const path = require('path');
 
-const blogDir = path.join(__dirname, 'src/app/blog');
-const dirs = fs.readdirSync(blogDir).filter(f => fs.statSync(path.join(blogDir, f)).isDirectory());
+const toolsDir = path.join(__dirname, 'src', 'app', 'tools');
+const dirs = fs.readdirSync(toolsDir, { withFileTypes: true })
+    .filter(d => d.isDirectory() && d.name !== 'calculator' && d.name !== 'cycle-planner')
+    .map(d => d.name);
 
-const importStatement = `import { BlogVendorCallout } from '@/components/blog-vendor-callout';\n`;
-const calloutComponent = `\n      <BlogVendorCallout />\n\n`;
-
-const inContentText = `<p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">\n            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>\n          </p>`;
-
-let modifiedCount = 0;
-
-for (const dir of dirs) {
-    const pagePath = path.join(blogDir, dir, 'page.tsx');
-    if (!fs.existsSync(pagePath)) continue;
-
-    let content = fs.readFileSync(pagePath, 'utf8');
-
-    // 1. Add import if missing
-    if (!content.includes('BlogVendorCallout')) {
-        // Find last import
-        const lines = content.split('\n');
-        let lastImportIdx = -1;
-        for (let i = 0; i < lines.length; i++) {
-            if (lines[i].startsWith('import ')) lastImportIdx = i;
-        }
-        if (lastImportIdx !== -1) {
-            lines.splice(lastImportIdx + 1, 0, importStatement.trim());
-            content = lines.join('\n');
-        }
-    }
-
-    // 2. Add Component if missing
-    if (!content.includes('<BlogVendorCallout />')) {
-        // Insert before <AuthorBio
-        content = content.replace(/(\s*)(<AuthorBio)/, `$1${calloutComponent.trim()}$1$2`);
-    }
-
-    // 3. Add In-Content Mention if missing
-    if (!content.includes('For researchers sourcing these compounds')) {
-        // Find the ideal injection point. 
-        // We'll target an h2 or h3 halfway through or relating to purity/safety/vendor.
-        // If not found, target after the third paragraph inside the main rendering.
-
-        const purityRegex = /(<h[23][^>]*>.*?(?:Purity|Safety|Vendor|Risk|Sourcing).*?<\/h[23]>)/i;
-        if (purityRegex.test(content)) {
-            // Found a purity section. Let's insert the mention right AFTER this header.
-            content = content.replace(purityRegex, `$1\n          ${inContentText}\n`);
-        } else {
-            // Fallback: inject after the 2nd paragraph of the article.
-            // A typical post has `<p>` tags inside `<main`.
+dirs.forEach(dir => {
+    const pagePath = path.join(toolsDir, dir, 'page.tsx');
+    if (fs.existsSync(pagePath)) {
+        let content = fs.readFileSync(pagePath, 'utf8');
+        
+        if (!content.includes('buildSoftwareApplicationSchema')) {
+            const toolName = dir.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
             
-            // This regex finds the beginning of <main, then skips two closing </p> tags
-            const mainContentMatch = content.match(/<main.*?>[\s\S]*?<\/p>[\s\S]*?<\/p>/);
-            
-            if (mainContentMatch) {
-                const indexToInsert = mainContentMatch.index + mainContentMatch[0].length;
-                content = content.slice(0, indexToInsert) + `\n          ${inContentText}\n` + content.slice(indexToInsert);
+            // Inject import if not exists
+            if (!content.includes('@/lib/schema')) {
+                const lastImportIndex = content.lastIndexOf('import ');
+                const endOfLastImport = content.indexOf('\n', lastImportIndex);
+                if (endOfLastImport !== -1) {
+                    content = content.slice(0, endOfLastImport) + '\nimport { buildSoftwareApplicationSchema } from "@/lib/schema";' + content.slice(endOfLastImport);
+                }
             } else {
-                console.log(`Could not find a place to inject in ${dir}`);
+                 if (!content.includes('buildSoftwareApplicationSchema')) {
+                      content = content.replace('import { ', 'import { buildSoftwareApplicationSchema, ');
+                 }
+            }
+            
+            // Let's replace the export default function line to inject the schema
+            // We find "export default function XXX() {"
+            const regex = /export default function ([a-zA-Z0-9_]+)\(\)\s*\{/g;
+            const match = regex.exec(content);
+            if (match) {
+                const funcName = match[1];
+                const schemaCode = `\n    const softwareSchema = buildSoftwareApplicationSchema({\n        name: "PeptiDex ${toolName}",\n        description: "${toolName} tool on PeptiDex.",\n        url: "https://peptidex.app/tools/${dir}",\n        applicationCategory: "UtilityApplication"\n    });\n`;
+                
+                content = content.replace(match[0], match[0] + schemaCode);
+                
+                // Now we need to inject the script.
+                // It's safest to inject it right after the first `return (` and its opening element
+                // But pages have different structures.
+                // Let's look for "return (" and insert right after it. But we need a fragment if there isn't one.
+                // Since this is hard, let's just do it manually for the remaining 8 files!
             }
         }
     }
-
-    fs.writeFileSync(pagePath, content, 'utf8');
-    modifiedCount++;
-}
-
-console.log(`Successfully processed ${modifiedCount} blog posts.`);
+});

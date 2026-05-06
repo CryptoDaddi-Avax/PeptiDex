@@ -3,6 +3,7 @@ import { goalPages, getGoalPage } from "@/data/goal-pages";
 import { getPeptideBySlug } from "@/data/peptides";
 import { Metadata } from "next";
 import BestGoalClient from "./BestGoalClient";
+import { buildFAQPageSchema, buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
     return goalPages.map((g) => ({ slug: g.slug }));
@@ -42,15 +43,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     if (!goal) notFound();
 
     // ─── FAQPage Schema ─────────────────────────────────────────────
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: goal.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-    };
+    const faqSchema = buildFAQPageSchema(goal.faqs.map(faq => ({ q: faq.question, a: faq.answer })));
+
+    // ─── Breadcrumb Schema ──────────────────────────────────────────
+    const breadcrumbSchema = buildBreadcrumbSchema([
+        { name: 'Home', url: 'https://peptidex.app/' },
+        { name: 'Best Peptides By Goal', url: 'https://peptidex.app/best' },
+        { name: goal.title, url: `https://peptidex.app/best/${slug}` }
+    ]);
 
     // ─── MedicalCondition Schema ────────────────────────────────────
     const conditionMeta = GOAL_CONDITIONS[slug];
@@ -77,21 +77,28 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     } : null;
 
     const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: goal.title,
-        datePublished: "2026-01-15",
-        dateModified: "2026-04-29",
-        author: { "@type": "Person", name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
-        publisher: { "@type": "Organization", name: "PeptiDex", url: "https://peptidex.app", logo: { "@type": "ImageObject", url: "https://peptidex.app/icon-512.png" } },
-        mainEntityOfPage: `https://peptidex.app/best/${slug}`,
-        description: goal.metaDescription,
+        ...buildArticleSchema({
+            headline: goal.title,
+            description: goal.metaDescription,
+            datePublished: "2026-01-15",
+            dateModified: "2026-04-29",
+            author: { name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
+            url: `https://peptidex.app/best/${slug}`,
+            image: "https://peptidex.app/icon-512.png"
+        }),
+        "itemListElement": peptides.map((p, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "name": p!.name,
+            "url": `https://peptidex.app/peptides/${p!.slug}`
+        }))
     };
 
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+            {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
             {medicalConditionSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalConditionSchema) }} />}
             <BestGoalClient slug={slug} />
         </>

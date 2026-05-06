@@ -12,6 +12,7 @@ import { ShareModal } from "@/components/share-card/share-modal";
 import type { CalculatorCardData } from "@/components/share-card/card-templates";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { trackOutboundClick } from "@/lib/ga4-events";
+import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/schema";
 
 type SelectionType = "peptide" | "blend";
 
@@ -108,8 +109,30 @@ export default function CalculatorPage() {
         );
     }, [searchQuery]);
 
+    const softwareSchema = buildSoftwareApplicationSchema({
+        name: "PeptiDex Reconstitution Calculator",
+        description: "Calculate solution concentrations and volumetric measurements for peptide reconstitution.",
+        url: "https://peptidex.app/tools/calculator",
+        applicationCategory: "UtilityApplication"
+    });
+
+    const howToSchema = buildHowToSchema({
+        name: "How to Reconstitute Peptides",
+        description: "Step-by-step guide to calculating and measuring peptide reconstitution.",
+        totalTime: "PT5M",
+        supply: ["Lyophilized Peptide", "Bacteriostatic Water"],
+        tool: ["Graduated Pipette"],
+        steps: [
+            { name: "Step 1: Reconstitution", text: "Add bacteriostatic water to the lyophilized peptide. The ratio determines the concentration." },
+            { name: "Step 2: Concentration Calculation", text: "Divide total peptide mass by diluent volume to find the concentration in mcg/mL." },
+            { name: "Step 3: Volumetric Measurement", text: "Divide the target dose by the concentration to find the volume to dispense in mL." }
+        ]
+    });
+
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             {/* Editorial Page Header */}
             <header className="cmp-hero" style={{ position: 'relative', overflow: 'hidden', padding: '64px 24px 48px', background: 'var(--bg)', borderBottom: '1px solid var(--line)' }}>
                 <div style={{

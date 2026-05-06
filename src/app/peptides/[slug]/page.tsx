@@ -16,6 +16,7 @@ import { AutoLink } from '@/components/auto-link';
 import { RelatedPeptides } from '@/components/related-peptides';
 import { ShareBar } from '@/components/share-bar';
 import { COABadge } from '@/components/coa-badge-modal';
+import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBreadcrumbSchema } from '@/lib/schema';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -93,28 +94,29 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
 
   // ─── JSON-LD SCHEMAS ────────────────────────────────────────
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalWebPage',
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: 'https://peptidex.app/' },
+    { name: 'Peptide Library', url: 'https://peptidex.app/peptides' },
+    { name: peptide.category },
+    { name: peptide.name }
+  ]);
+
+  const drugSchema = buildDrugSchema({
+    name: peptide.name,
+    alternateName: peptide.aliases,
+    description: peptide.primary_benefits,
+    mechanismOfAction: peptide.mechanism,
+    clinicalPharmacology: peptide.half_life_hours ? `Half-life: ${peptide.half_life_hours} hours. Route: ${peptide.dosing?.route || 'Varies'}` : undefined
+  });
+
+  const articleSchema = buildMedicalWebPageSchema({
     name: `${peptide.name}: Evidence-Based Research Profile`,
     description: `Comprehensive research profile for ${peptide.name} covering mechanism of action, published studies, safety data, and clinical context.`,
     url: `https://peptidex.app/peptides/${slug}`,
-    image: 'https://peptidex.app/og-image.png',
-    author: {
-      '@type': 'Organization',
-      name: 'PeptideX Editorial Team',
-      url: 'https://peptidex.app/about',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'PeptideX',
-      logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' },
-    },
-    datePublished: DATE_PUB,
-    dateModified: DATE_MOD,
-    about: { '@type': 'MedicalEntity', name: peptide.name },
-    keywords: `${peptide.name}, ${peptide.aliases?.join(', ') || ''}, ${peptide.category}, peptide research`,
-  };
+    lastReviewed: DATE_MOD,
+    reviewedBy: { name: 'PeptiDex Medical Reviewer' },
+    about: drugSchema
+  });
 
   // Build dynamic FAQ entries
   const faqItems = [
@@ -152,20 +154,13 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
     },
   ];
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: { '@type': 'Answer', text: faq.a },
-    })),
-  };
+  const faqSchema = buildFAQPageSchema(faqItems);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
       {/* ═══════ BREADCRUMBS ═══════ */}
       <Breadcrumbs items={[
