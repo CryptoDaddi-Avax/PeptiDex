@@ -8,3 +8,4 @@ export * from './faq';
 export * from './how-to';
 export * from './software-application';
 export * from './drug';
+export * from './library';

@@ -62,9 +62,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
     { name: stack.stack_name, url: `https://peptidex.app/stacks/${slug}` }
   ]);
 
-  const articleSchema = buildArticleSchema({
-    headline: `Best Peptide Stack for ${goalName}, Research-Backed Protocols`,
-    description: `Explore the optimal peptide combinations for ${goalName.toLowerCase()}, with synergy rationale and preclinical study data.`,
+  const articleSchema = {
     ...buildArticleSchema({
       headline: `Best Peptide Stack for ${goalName}, Research-Backed Protocols`,
       description: `Explore the optimal peptide combinations for ${goalName.toLowerCase()}, with synergy rationale and preclinical study data.`,
@@ -87,11 +85,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
       name: 'PeptiDex',
       logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' },
     },
-    datePublished: '2026-03-31',
-    dateModified: DATE_MOD,
-    author: { name: 'PeptiDex Educational Team', url: 'https://peptidex.app' },
-    url: `https://peptidex.app/stacks/${slug}`
-  });
+  };
 
   const faqSchema = buildFAQPageSchema([
     {

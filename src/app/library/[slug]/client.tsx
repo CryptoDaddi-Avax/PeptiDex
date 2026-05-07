@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import type { Peptide, Stack, EvidenceLevel } from '@/data/types';
+import type { PeptideVendorPricing } from '@/data/vendor-pricing';
+import type { Vendor } from '@/data/vendors';
 import { useSavedStacks } from '@/hooks/useSavedStacks';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
@@ -15,7 +17,10 @@ import {
 import { HalfLifeChart } from '@/components/half-life-chart';
 import { LeadMagnetInline } from '@/components/lead-magnet-inline';
 import { CiteThisPage } from '@/components/cite-page';
-import { PeptideFAQ } from '@/components/peptide-faq';
+import { PeptideFAQExpanded } from '@/components/library/PeptideFAQExpanded';
+import { QuickAnswerBlock } from '@/components/library/QuickAnswerBlock';
+import { WhereToBuySection } from '@/components/library/WhereToBuySection';
+import { TrustBlock } from '@/components/library/TrustBlock';
 import { RelatedArticles } from '@/components/related-articles';
 import { AffiliateSource } from '@/components/affiliate-source';
 import { StickyQuickCompare } from '@/components/sticky-quick-compare';
@@ -48,9 +53,13 @@ function formatHalfLife(hours: number | undefined): string | null {
 export function PeptideDetailRedesign({
   peptide,
   relatedStacks,
+  pricingEntry,
+  allVendors,
 }: {
   peptide: Peptide;
   relatedStacks: Stack[];
+  pricingEntry: PeptideVendorPricing | undefined;
+  allVendors: Vendor[];
 }) {
   const { saveStack, removeStack, isStackSaved } = useSavedStacks();
   const benefits = peptide.primary_benefits.split(',').map((b) => b.trim());
@@ -104,12 +113,8 @@ export function PeptideDetailRedesign({
             <p className="pd-aliases">Also known as: {peptide.aliases.join(', ')}</p>
           )}
 
-          {/* ─── LAYPERSON SUMMARY CALLOUT ─── */}
-          {peptide.laypersonSummary && (
-            <div className="pd-layperson-callout">
-              <p className="pd-layperson-text">{peptide.laypersonSummary}</p>
-            </div>
-          )}
+          {/* ─── QUICK ANSWER BLOCK (above fold, GEO-optimized) ─── */}
+          <QuickAnswerBlock peptide={peptide} />
 
           <p className="pd-subtitle">{peptide.mechanism.slice(0, 200)}</p>
 
@@ -142,6 +147,14 @@ export function PeptideDetailRedesign({
               <ShieldAlert />
               <p>{SHORT_DISCLAIMER}</p>
             </div>
+
+            {/* WHERE TO BUY — commercial intent, first section */}
+            <WhereToBuySection
+              peptideName={peptide.name}
+              peptideSlug={peptide.slug}
+              pricingEntry={pricingEntry}
+              allVendors={allVendors}
+            />
 
             {/* AI Citability */}
             <AICitabilityBlock peptide={peptide} />
@@ -366,8 +379,8 @@ export function PeptideDetailRedesign({
               </Link>
             </div>
 
-            {/* FAQ */}
-            <PeptideFAQ peptide={peptide} />
+            {/* FAQ — expanded 8+ Qs; JSON-LD injected server-side in page.tsx */}
+            <PeptideFAQExpanded peptide={peptide} injectJsonLd={false} />
 
             {/* Related Articles */}
             <RelatedArticles peptideName={peptide.name} aliases={peptide.aliases} />
@@ -419,6 +432,9 @@ export function PeptideDetailRedesign({
               title={peptide.name}
               url={`https://peptidex.app/library/${peptide.slug}`}
             />
+
+            {/* Trust + Affiliate Disclosure Block */}
+            <TrustBlock />
 
             {/* Lead Magnet */}
             <div style={{ marginTop: 24 }}>

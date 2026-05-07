@@ -119,15 +119,14 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
     clinicalPharmacology: peptide.half_life_hours ? `Half-life: ${peptide.half_life_hours} hours. Route: ${peptide.dosing?.route || 'Varies'}` : undefined
   });
 
-  const articleSchema = buildMedicalWebPageSchema({
-    name: `${peptide.name}: Evidence-Based Research Profile`,
-    description: `Comprehensive research profile for ${peptide.name} covering mechanism of action, published studies, safety data, and clinical context.`,
-    url: `https://peptidex.app/peptides/${slug}`,
+  const articleSchema = {
     ...buildMedicalWebPageSchema({
       name: `${peptide.name}: Evidence-Based Research Profile`,
       description: `Comprehensive research profile for ${peptide.name} covering mechanism of action, published studies, safety data, and clinical context.`,
       url: `https://peptidex.app/peptides/${slug}`,
-      about: drugSchema
+      about: drugSchema,
+      lastReviewed: peptide.reviewedDate ?? DATE_MOD,
+      reviewedBy: reviewerRecord ? getPersonSchema(reviewerRecord) as { name: string; url?: string } : { name: 'PeptiDex Editorial Team' },
     }),
     image: 'https://peptidex.app/og-image.png',
     author: authorRecord
@@ -148,6 +147,7 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
     dateModified: DATE_MOD,
     keywords: `${peptide.name}, ${peptide.aliases?.join(', ') || ''}, ${peptide.category}, peptide research`,
   };
+
 
   // Build dynamic FAQ entries
   const faqItems = [
