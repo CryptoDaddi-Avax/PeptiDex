@@ -6087,6 +6087,44 @@ export const peptides: Peptide[] = [
       },
     ],
   }),
+  p({
+    name: "Argireline",
+    aliases: ["Acetyl Hexapeptide-3", "Acetyl Hexapeptide-8", "AH-3"],
+    category: "Cosmetic Peptide",
+    category_icon: "✨",
+    primary_benefits: "Topical wrinkle reduction, SNAP-25 inhibition, muscle relaxation (neurocosmetic)",
+    mechanism:
+      "Competes with SNAP-25 (synaptosomal-associated protein 25) for binding at the SNARE complex, partially inhibiting acetylcholine release at the neuromuscular junction, reducing repeated facial muscle contractions that cause dynamic wrinkles. Applied topically, it does not cross to the dermis at meaningful concentrations.",
+    laypersonSummary:
+      "Argireline is a synthetic hexapeptide used in cosmetic skincare that works like a topical Botox by temporarily relaxing facial muscles to reduce wrinkle depth, without needles.",
+    key_studies: [
+      {
+        title: "Evaluation of the efficacy and tolerance of a cosmetic formulation with Argireline",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/11697020/",
+        summary:
+          "Blanes-Mira et al.: A 10% Argireline solution applied twice daily for 30 days reduced wrinkle depth by up to 30% in the periorbital region in a controlled study.",
+        evidence_level: "moderate",
+      },
+    ],
+    safety_notes:
+      "Considered very safe for topical use. No systemic absorption. Not approved for injection. Not an FDA-classified drug — classified as a cosmetic ingredient.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "Topical",
+      typical_dose_mcg: [0, 0],
+      frequency: "2x daily (morning + evening)",
+      notes: "Applied as 5-10% concentration in serum/cream. For research use only.",
+    },
+    interactions: {
+      synergies: ["GHK-Cu", "Matrixyl", "Leuphasyl"],
+      cautions: [],
+      contraindicated: [],
+    },
+    side_effects: [
+      { name: "Mild skin irritation", incidence: "Rare (<2%)", severity: "mild" },
+    ],
+  }),
 ];
 
 export function getPeptideBySlug(slug: string): Peptide | undefined {
