@@ -1,50 +1,8 @@
-/**
- * Vendors Page — JSON-LD Schema Generators
- * ==========================================
- * Pure functions (no React, no browser deps) that build the three schema.org
- * blocks injected server-side in app/vendors/page.tsx.
- *
- * Schemas produced:
- *   1. ItemList  — 6 ranked vendors for Google rich results
- *   2. FAQPage   — 8 Q&As targeting high-intent purchase queries
- *   3. BreadcrumbList — Home → Vendors
- *
- * Created: 2026-05-06 — SEO rebuild targeting "best place to buy peptides 2026"
- */
-
-import type { Vendor } from "@/data/vendors";
-
-// ── Types ─────────────────────────────────────────────────────────────────────
-
 export interface FaqItem {
   q: string;
   a: string;
 }
 
-// ── 1. ItemList schema for the 6 ranked vendors ───────────────────────────────
-
-export function buildVendorsItemListSchema(vendors: Vendor[]) {
-  const sorted = [...vendors].sort((a, b) => a.sortOrder - b.sortOrder);
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Best Places to Buy Peptides Online (2026)",
-    description:
-      "Independent ranking of COA-verified research peptide vendors, evaluated on purity testing, COA transparency, shipping, and value.",
-    numberOfItems: sorted.length,
-    itemListElement: sorted.map((v, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: v.name,
-      description: v.tagline,
-      url: `https://peptidex.app/vendors#${v.slug}`,
-    })),
-  };
-}
-
-// ── 2. FAQPage schema — 8 required questions ──────────────────────────────────
-
-/** The canonical 8-question FAQ set for the /vendors page. */
 export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   {
     q: "Where is the best place to buy peptides online?",
@@ -79,41 +37,3 @@ export const VENDORS_FAQ_ITEMS: FaqItem[] = [
     a: "Most US-based vendors ship within 1–2 business days of order confirmation. Domestic US delivery typically arrives in 2–5 business days depending on the vendor: Amino Club (2–4 days), Bio Longevity Labs (2–5 days), Limitless Life, Ascension Peptides, and Pantheon Peptides (3–5 days each). LVLUP Health ships in 3–5 days. International shipping, available from Amino Club and Bio Longevity Labs, adds 7–21 days depending on the destination. Peptides should ship refrigerated or with cold packs for temperature-sensitive compounds. → Check live shipping details at peptidex.app/vendors",
   },
 ];
-
-export function buildVendorsFAQSchema(faqs: FaqItem[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.a,
-      },
-    })),
-  };
-}
-
-// ── 3. BreadcrumbList schema ──────────────────────────────────────────────────
-
-export function buildVendorsBreadcrumbSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "PeptiDex",
-        item: "https://peptidex.app",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Best Peptide Vendors 2026",
-        item: "https://peptidex.app/vendors",
-      },
-    ],
-  };
-}

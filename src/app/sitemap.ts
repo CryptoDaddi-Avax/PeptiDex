@@ -1,14 +1,20 @@
 import { MetadataRoute } from 'next';
-import { peptides } from '@/data/peptides';
-import { stacks } from '@/data/stacks';
+import { peptides, LAST_UPDATED as PEPTIDES_LAST_UPDATED } from '@/data/peptides';
+import { stacks, LAST_UPDATED as STACKS_LAST_UPDATED } from '@/data/stacks';
 import { blogPosts } from '@/data/blog';
-import { comparisons } from '@/data/comparisons';
+import { comparisons, LAST_UPDATED as COMPARISONS_LAST_UPDATED } from '@/data/comparisons';
+import { LAST_REVIEWED as VENDORS_LAST_REVIEWED } from '@/app/vendors/page';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://peptidex.app';
   const currentDate = new Date();
+  
+  const peptidesDate = new Date(PEPTIDES_LAST_UPDATED);
+  const stacksDate = new Date(STACKS_LAST_UPDATED);
+  const comparisonsDate = new Date(COMPARISONS_LAST_UPDATED || currentDate);
+  const vendorsDate = new Date(VENDORS_LAST_REVIEWED);
 
   // Core Static Pages
   const staticPages = [
@@ -20,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/vendors`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -32,13 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/library`,
-      lastModified: currentDate,
+      lastModified: peptidesDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/stacks`,
-      lastModified: currentDate,
+      lastModified: stacksDate,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
@@ -98,7 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/peptides`,
-      lastModified: currentDate,
+      lastModified: peptidesDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -110,55 +116,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/compare`,
-      lastModified: currentDate,
+      lastModified: comparisonsDate,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/learn`,
-      lastModified: currentDate,
+      lastModified: peptidesDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/vendors/amino-club-review`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'weekly' as const,
       priority: 0.85,
     },
     {
       url: `${baseUrl}/vendors/is-amino-club-legit`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
       url: `${baseUrl}/vendors/amino-club-discount-code`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
       url: `${baseUrl}/vendors/amino-club-vs-limitless-life`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
       url: `${baseUrl}/vendors/amino-club-vs-ascension`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
       url: `${baseUrl}/vendors/amino-club-coa-verification`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
       url: `${baseUrl}/vendors/amino-club-faq`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
@@ -176,7 +182,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const peptideUrls = peptides
     .map((peptide) => ({
       url: `${baseUrl}/library/${peptide.slug}`,
-      lastModified: currentDate,
+      lastModified: peptidesDate,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     }));
@@ -185,7 +191,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const stackUrls = stacks.map((stack) => {
     return {
       url: `${baseUrl}/stacks/${stack.slug}`,
-      lastModified: currentDate,
+      lastModified: stacksDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     };
@@ -194,7 +200,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic Learn (Educational Hub) Pages
   const learnUrls = peptides.map((peptide) => ({
     url: `${baseUrl}/learn/${peptide.slug}`,
-    lastModified: currentDate,
+    lastModified: peptidesDate,
     changeFrequency: 'monthly' as const,
     priority: 0.85,
   }));
@@ -202,7 +208,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic Compare Pages
   const compareUrls = comparisons.map((comp) => ({
     url: `${baseUrl}/compare/${comp.slug}`,
-    lastModified: currentDate,
+    lastModified: comparisonsDate,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
@@ -211,7 +217,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const aminoClubProducts = ['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'];
   const aminoClubUrls = aminoClubProducts.map((slug) => ({
     url: `${baseUrl}/vendors/amino-club/${slug}`,
-    lastModified: currentDate,
+    lastModified: vendorsDate,
     changeFrequency: 'monthly' as const,
     priority: 0.75,
   }));
@@ -223,7 +229,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const whereToBuyUrls = whereToBuySlugs.map((slug) => ({
     url: `${baseUrl}/where-to-buy/${slug}`,
-    lastModified: currentDate,
+    lastModified: vendorsDate,
     changeFrequency: 'weekly' as const,
     priority: 0.9,
   }));
@@ -238,7 +244,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...aminoClubUrls,
     {
       url: `${baseUrl}/where-to-buy`,
-      lastModified: currentDate,
+      lastModified: vendorsDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },

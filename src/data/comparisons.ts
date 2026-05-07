@@ -1,3 +1,5 @@
+export const LAST_UPDATED = '2026-05-06';
+
 export interface Comparison {
   slug: string;
   peptideA: string;

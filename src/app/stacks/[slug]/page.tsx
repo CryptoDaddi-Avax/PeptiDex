@@ -6,7 +6,7 @@ import { getPeptideByName } from '@/data/peptides';
 import { ShieldAlert, BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { AuthorBio } from '@/components/author-bio';
-import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema } from '@/lib/schema';
+import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema } from '@/lib/seo/schema';
 import './stack-detail-redesign.css';
 
 export function generateStaticParams() {

@@ -6,6 +6,7 @@ import { vendorsSorted } from '@/data/vendors';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
 import { PriceComparisonTable } from '@/components/wheretobuy/PriceComparisonTable';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
+import { buildBreadcrumbSchema, buildItemListSchema, buildFAQPageSchema } from '@/lib/seo/schema';
 import '@/app/vendors/vendors-redesign.css';
 
 const TARGET_SLUGS = [
@@ -97,58 +98,23 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
   const faqs = generatePeptideFAQ(peptide.name, slug);
 
   // JSON-LD Schemas
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "PeptiDex",
-        "item": "https://peptidex.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Where to Buy Peptides",
-        "item": "https://peptidex.app/where-to-buy"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": `Where to Buy ${peptide.name}`,
-        "item": `https://peptidex.app/where-to-buy/${slug}`
-      }
-    ]
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "PeptiDex", url: "https://peptidex.app" },
+    { name: "Where to Buy Peptides", url: "https://peptidex.app/where-to-buy" },
+    { name: `Where to Buy ${peptide.name}`, url: `https://peptidex.app/where-to-buy/${slug}` }
+  ]);
 
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": `Best Places to Buy ${peptide.name} Online`,
-    "description": `Ranking of COA-verified research peptide vendors that carry ${peptide.name}.`,
-    "numberOfItems": carryingVendors.length,
-    "itemListElement": carryingVendors.map((v, i) => ({
-      "@type": "ListItem",
-      "position": i + 1,
-      "name": v.name,
-      "description": v.tagline,
-      "url": `https://peptidex.app/where-to-buy/${slug}#${v.slug}`
+  const itemListSchema = buildItemListSchema({
+    name: `Best Places to Buy ${peptide.name} Online`,
+    description: `Ranking of COA-verified research peptide vendors that carry ${peptide.name}.`,
+    items: carryingVendors.map((v) => ({
+      name: v.name,
+      description: v.tagline,
+      url: `https://peptidex.app/where-to-buy/${slug}#${v.slug}`
     }))
-  };
+  });
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.a
-      }
-    }))
-  };
+  const faqSchema = buildFAQPageSchema(faqs);
 
   return (
     <>

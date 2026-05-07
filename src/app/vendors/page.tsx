@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import { vendorsSorted } from '@/data/vendors';
-import {
-  buildVendorsItemListSchema,
-  buildVendorsFAQSchema,
-  buildVendorsBreadcrumbSchema,
-  VENDORS_FAQ_ITEMS,
-} from '@/lib/seo/vendorsJsonLd';
+import { buildItemListSchema, buildFAQPageSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
+import { VENDORS_FAQ_ITEMS } from './faqData';
 import VendorsClient from './VendorsClient';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -55,10 +51,23 @@ export const metadata: Metadata = {
 
 export default function VendorsPage() {
   /* ── JSON-LD Schemas (server-rendered for zero-JS SEO) ── */
+  const sortedVendors = [...vendorsSorted].sort((a, b) => a.sortOrder - b.sortOrder);
 
-  const itemListSchema = buildVendorsItemListSchema(vendorsSorted);
-  const faqSchema = buildVendorsFAQSchema(VENDORS_FAQ_ITEMS);
-  const breadcrumbSchema = buildVendorsBreadcrumbSchema();
+  const itemListSchema = buildItemListSchema({
+    name: "Best Places to Buy Peptides Online (2026)",
+    description: "Independent ranking of COA-verified research peptide vendors, evaluated on purity testing, COA transparency, shipping, and value.",
+    items: sortedVendors.map(v => ({
+      name: v.name,
+      description: v.tagline,
+      url: `https://peptidex.app/vendors#${v.slug}`
+    }))
+  });
+  
+  const faqSchema = buildFAQPageSchema(VENDORS_FAQ_ITEMS);
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "PeptiDex", url: "https://peptidex.app" },
+    { name: "Best Peptide Vendors 2026", url: "https://peptidex.app/vendors" }
+  ]);
 
   return (
     <>

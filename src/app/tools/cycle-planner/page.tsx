@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import CyclePlannerClient from "./CyclePlannerClient";
-import { buildSoftwareApplicationSchema } from "@/lib/schema";
+import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
     title: "Peptide Cycle Planner & Cost Estimator",

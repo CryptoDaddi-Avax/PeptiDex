@@ -7,12 +7,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: ['/', '/tools/'],
         disallow: ['/admin', '/saved', '/api/'],
       },
       {
         userAgent: ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-Web', 'Google-Extended', 'PerplexityBot', 'OAI-SearchBot'],
-        allow: '/',
+        allow: ['/', '/tools/'],
       }
     ],
     sitemap: 'https://peptidex.app/sitemap.xml',

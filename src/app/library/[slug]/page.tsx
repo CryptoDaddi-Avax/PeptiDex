@@ -4,6 +4,7 @@ import { stacks } from "@/data/stacks";
 import { vendorPricing } from "@/data/vendor-pricing";
 import type { EvidenceLevel } from "@/data/types";
 import { PeptideDetailRedesign } from "./client";
+import { buildDrugSchema, buildHowToSchema, buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 
 export function generateStaticParams() {
     return peptides.map((p) => ({ slug: p.slug }));
@@ -92,6 +93,13 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         s.peptides.some((sp) => sp.name.toLowerCase().includes(peptide.name.toLowerCase()))
     );
 
+    // ─── JSON-LD: Breadcrumb Schema ─────────────────────────────────
+    const breadcrumbSchema = buildBreadcrumbSchema([
+        { name: "PeptiDex", url: "https://peptidex.app" },
+        { name: "Library", url: "https://peptidex.app/library" },
+        { name: peptide.name, url: `https://peptidex.app/library/${slug}` }
+    ]);
+
     // ─── JSON-LD: Drug / PrescriptionDrug Schema ────────────────────
     const isFDA = FDA_APPROVED_SLUGS.has(slug);
 
@@ -133,15 +141,17 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         })),
     } : null;
 
-    const drugSchema: Record<string, unknown> = {
-        "@context": "https://schema.org",
-        "@type": "Drug",
+    const drugSchemaObj = buildDrugSchema({
         name: peptide.name,
         alternateName: peptide.aliases,
         description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
-        drugClass: peptide.category,
         mechanismOfAction: peptide.mechanism,
         clinicalPharmacology: `${peptide.mechanism} Primary benefits include ${peptide.primary_benefits.toLowerCase()}.${peptide.half_life_hours ? ` Biological half-life: approximately ${peptide.half_life_hours} hours.` : ""}`,
+    });
+    
+    const drugSchema: Record<string, unknown> = {
+        ...drugSchemaObj,
+        drugClass: peptide.category,
         warning: peptide.safety_notes,
         url: `https://peptidex.app/library/${slug}`,
         aggregateRating,
@@ -162,74 +172,59 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     // ─── JSON-LD: HowTo Schema (dosing protocol) ───────────────────
     let howToSchema: Record<string, unknown> | null = null;
     if (peptide.dosing) {
-        const steps: { "@type": string; name: string; text: string; position: number }[] = [];
-        let pos = 1;
+        const steps: { name: string; text: string; }[] = [];
 
         if (peptide.dosing.reconstitution_ml && peptide.dosing.typical_vial_mg) {
             steps.push({
-                "@type": "HowToStep",
                 name: "Reconstitution",
                 text: `Reconstitute the ${peptide.dosing.typical_vial_mg}mg vial with ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water (BAC water). Swirl gently — do not shake.`,
-                position: pos++,
             });
         }
 
         steps.push({
-            "@type": "HowToStep",
             name: "Dose selection",
             text: `Typical research dose range is ${peptide.dosing.typical_dose_mcg[0]}–${peptide.dosing.typical_dose_mcg[1]} mcg, administered via ${peptide.dosing.route}.`,
-            position: pos++,
         });
 
         steps.push({
-            "@type": "HowToStep",
             name: "Frequency",
             text: `Administer ${peptide.dosing.frequency.toLowerCase()}.`,
-            position: pos++,
         });
 
         if (peptide.dosing.timing) {
             steps.push({
-                "@type": "HowToStep",
                 name: "Timing",
                 text: `Optimal administration timing: ${peptide.dosing.timing.toLowerCase()}.`,
-                position: pos++,
             });
         }
 
         if (peptide.dosing.cycle_weeks) {
             steps.push({
-                "@type": "HowToStep",
                 name: "Cycle length",
                 text: `Typical research cycle: ${peptide.dosing.cycle_weeks[0]}–${peptide.dosing.cycle_weeks[1]} weeks. Allow adequate off-cycle recovery.`,
-                position: pos++,
             });
         }
 
-        howToSchema = {
-            "@context": "https://schema.org",
-            "@type": "HowTo",
+        howToSchema = buildHowToSchema({
             name: `Research dosing protocol for ${peptide.name}`,
             description: `Standard research dosing reference for ${peptide.name} based on published literature. For educational and research purposes only — not medical advice. Consult a healthcare professional before using any peptide.`,
-            step: steps,
-        };
+            steps: steps,
+        });
     }
 
     // ─── JSON-LD: Article Schema ────────────────────────────────────
-    const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "Article",
+    const articleSchema = buildArticleSchema({
         headline: `${peptide.name} — Research Guide, Dosage & Studies`,
+        description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
         datePublished: "2026-01-15",
         dateModified: "2026-04-29",
-        author: { "@type": "Person", name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
-        publisher: { "@type": "Organization", name: "PeptiDex", url: "https://peptidex.app", logo: { "@type": "ImageObject", url: "https://peptidex.app/icon-512.png" } },
-        mainEntityOfPage: `https://peptidex.app/library/${slug}`,
-        description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
-    };
+        author: { name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
+        url: `https://peptidex.app/library/${slug}`,
+    });
 
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(drugSchema) }} />
             {howToSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />

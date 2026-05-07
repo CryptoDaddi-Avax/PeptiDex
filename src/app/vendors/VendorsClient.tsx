@@ -31,7 +31,7 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT } from '@/data/vendors';
-import { VENDORS_FAQ_ITEMS } from '@/lib/seo/vendorsJsonLd';
+import { VENDORS_FAQ_ITEMS } from './faqData';
 import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTable';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
@@ -157,6 +157,32 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
           </div>
         </section>
       )}
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          3.5 POPULAR PEPTIDES QUICK LINKS
+          ═══════════════════════════════════════════════════════════════════ */}
+      <section className="vn-extra-section" id="popular-peptides" aria-labelledby="popular-peptides-heading">
+        <div className="vn-container">
+          <div className="vn-section-label">§ Specific Compounds</div>
+          <h2 className="vn-extra-title" id="popular-peptides-heading">
+            Where to Buy <em>Specific Peptides</em>
+          </h2>
+          <p className="vmeth-intro">
+            Looking for a specific compound? Check out our dedicated sourcing guides comparing vendor pricing and availability for the most popular research peptides:
+          </p>
+          <div className="flex flex-wrap gap-3 mt-6">
+            {['bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide'].map((slug) => (
+              <Link
+                key={slug}
+                href={`/where-to-buy/${slug}`}
+                className="px-5 py-3 rounded-xl border border-zinc-700 bg-zinc-900/50 hover:border-violet-500/50 hover:bg-violet-500/10 text-zinc-300 hover:text-white transition-all font-semibold uppercase tracking-wider text-sm flex items-center gap-2"
+              >
+                {slug.toUpperCase()} <ArrowRight className="w-4 h-4 text-violet-400" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
           4. METHODOLOGY — "How We Rank Vendors" (E-E-A-T signal)

@@ -3,7 +3,7 @@ import { goalPages, getGoalPage } from "@/data/goal-pages";
 import { getPeptideBySlug } from "@/data/peptides";
 import { Metadata } from "next";
 import BestGoalClient from "./BestGoalClient";
-import { buildFAQPageSchema, buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
+import { buildFAQPageSchema, buildBreadcrumbSchema, buildArticleSchema } from "@/lib/seo/schema";
 
 export function generateStaticParams() {
     return goalPages.map((g) => ({ slug: g.slug }));

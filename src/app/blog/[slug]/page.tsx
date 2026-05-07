@@ -13,7 +13,7 @@ import { getAuthorSlug } from '@/data/authors';
 import { getPostBySlug, getAllSlugs } from '@/lib/markdown';
 import ReactMarkdown from 'react-markdown';
 import { AffiliateLink } from '@/components/affiliate-link';
-import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema';
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();

@@ -91,7 +91,7 @@ export default function VendorSection() {
       </div>
       <div className="vendors-cta-row">
         <Link href="/vendors" className="btn-primary">
-          <span>View all {VENDOR_COUNT} vendors</span>
+          <span>Compare all {VENDOR_COUNT} places to buy peptides</span>
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
           </svg>

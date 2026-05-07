@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
 import { ShieldCheck, ShieldAlert, AlertTriangle, ChevronDown, Search, Info } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
-import { buildSoftwareApplicationSchema } from "@/lib/schema";
+import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 
 // Molecular weights and expected mass spec data for all 33 peptides
 // All MW in g/mol (Daltons)

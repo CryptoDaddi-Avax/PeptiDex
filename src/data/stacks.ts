@@ -1,5 +1,7 @@
 import { Stack } from "./types";
 
+export const LAST_UPDATED = '2026-05-06';
+
 function slugify(name: string) {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }

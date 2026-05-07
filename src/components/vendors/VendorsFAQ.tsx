@@ -6,6 +6,7 @@
  * Client component — uses local state for accordion expand/collapse.
  * Data is passed in as props so JSON-LD can be generated server-side
  * from the same source (VENDORS_FAQ_ITEMS from vendorsJsonLd.ts).
+ * from the same source (VENDORS_FAQ_ITEMS from faqData.ts).
  *
  * Design: vfaq-* CSS namespace.
  */
@@ -13,7 +14,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, HelpCircle } from "lucide-react";
-import type { FaqItem } from "@/lib/seo/vendorsJsonLd";
+import type { FaqItem } from "@/app/vendors/faqData";
 
 interface VendorsFAQProps {
   faqs: FaqItem[];

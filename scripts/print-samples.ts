@@ -1,4 +1,4 @@
-import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBreadcrumbSchema, buildArticleSchema, buildSoftwareApplicationSchema } from '../src/lib/schema';
+import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBreadcrumbSchema, buildArticleSchema, buildSoftwareApplicationSchema } from '../src/lib/seo/schema';
 import { peptides } from '../src/data/peptides';
 import { peptideBlends } from '../src/data/blends';
 

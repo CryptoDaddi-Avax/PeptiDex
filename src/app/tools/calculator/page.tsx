@@ -12,7 +12,7 @@ import { ShareModal } from "@/components/share-card/share-modal";
 import type { CalculatorCardData } from "@/components/share-card/card-templates";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { trackOutboundClick } from "@/lib/ga4-events";
-import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/schema";
+import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 import {
     SYRINGE_PROFILES,
     getSyringeProfile,
@@ -201,7 +201,7 @@ export default function CalculatorPage() {
                         </div>
                     </div>
                     <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 680, lineHeight: 1.6 }}>
-                        Calculate solution concentrations and volumetric measurements for peptide reconstitution.
+                        Calculate solution concentrations and volumetric measurements for peptide reconstitution. Need a trusted source for your research? Compare <Link href="/where-to-buy" style={{ color: 'var(--gold)', textDecoration: 'underline', textUnderlineOffset: 2 }}>where to buy peptides online</Link> from our verified vendors.
                     </p>
                     
                     <div className="sm:hidden mt-6">

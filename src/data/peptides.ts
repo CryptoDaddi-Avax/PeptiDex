@@ -1,6 +1,6 @@
 import { Peptide } from "./types";
 
-function slug(name: string) {
+export const LAST_UPDATED = '2026-05-06';function slug(name: string) {
   return name
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")

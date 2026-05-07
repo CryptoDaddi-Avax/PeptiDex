@@ -16,7 +16,7 @@ import { AutoLink } from '@/components/auto-link';
 import { RelatedPeptides } from '@/components/related-peptides';
 import { ShareBar } from '@/components/share-bar';
 import { COABadge } from '@/components/coa-badge-modal';
-import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBreadcrumbSchema } from '@/lib/schema';
+import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
