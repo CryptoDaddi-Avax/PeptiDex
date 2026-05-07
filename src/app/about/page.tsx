@@ -31,7 +31,7 @@ export default function AboutPage() {
     alternateName: ['PeptiDex Research Index', 'peptidex.app'],
     url: 'https://peptidex.app',
     logo: 'https://peptidex.app/logo.png',
-    description: 'PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.',
+    description: 'PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.',
     publishingPrinciples: 'https://peptidex.app/about/editorial-policy',
   };
 

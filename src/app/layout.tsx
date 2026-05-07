@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "PeptiDex – Peptide Research Index",
     template: "PeptiDex – Peptide Research Index | %s",
   },
-  description: "PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
+  description: "PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
   keywords: [
     "peptide research", "BPC-157", "TB-500", "Semaglutide", "CJC-1295", "Ipamorelin",
     "peptide reconstitution calculator", "peptide half-life", "research peptides", "peptide COA",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "PeptideX",
     title: "PeptiDex Research-Grade Peptide Reference & Tools",
-    description: "The most comprehensive peptide research platform. Explore 33 peptides with clinical studies, reconstitution tools, PK plasma graphs, COA verification, and AI recommendations.",
+    description: "The most comprehensive peptide research platform. Explore 51 peptides with clinical studies, reconstitution tools, PK plasma graphs, COA verification, and AI recommendations.",
     url: "https://peptidex.app",
     images: [{ url: "https://peptidex.app/api/og?type=default", width: 1200, height: 630, alt: "PeptideX: Evidence-Based Peptide Science" }],
   },
@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "name": "PeptiDex",
               "alternateName": ["PeptiDex Research Index", "peptidex.app"],
               "url": "https://peptidex.app",
-              "description": "PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
+              "description": "PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
               "logo": "https://peptidex.app/logo.png",
               "sameAs": [
                  "https://twitter.com/peptidex",

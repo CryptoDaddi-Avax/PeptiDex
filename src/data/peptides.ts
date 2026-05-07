@@ -2095,102 +2095,6 @@ export const peptides: Peptide[] = [
           "Arvat et al.: Long-term Hexarelin use shows progressive GH response attenuation after 4-8 weeks of continuous dosing, necessitating cycling protocols for sustained efficacy.",
         evidence_level: "moderate",
       },
-        {
-                title: "Purification and structural characterization of an anti-Trichophyton compound produced by Auricularia heimuer mycelium.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42052162/",
-                summary: "A 2026 study demonstrated that heimuerol A, a compound isolated from Auricularia heimuer mushrooms, exhibited significant in vitro anti-Trichophyton activity. Researchers found it effectively inhibited terbinafine-resistant fungal strains, likely through a distinct mechanism targeting ergosterol biosynthesis.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Fibroblast dynamics in colorectal cancer: stability, plasticity, and novel markers.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42050076/",
-                summary: "A 2026 study found that specific markers, including ADH1B and ITGA3, define distinct stable and plastic fibroblast subpopulations in colorectal cancer. Researchers demonstrated that these cancer-associated fibroblasts exhibit dynamic plasticity in vitro, which can be modulated by factors like TGF-β.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Biomechanical evaluation of 3D-printed porous lattice versus solid mandibular implants: an in vitro study.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42045386/",
-                summary: "In a 2026 in vitro study, researchers demonstrated that 3D-printed porous titanium mandibular implants reduced peak tensile strains and increased compressive strain transfer compared to solid implants. The findings suggest these porous designs offer superior biomechanical properties to mitigate stress shielding.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Effect of intravitreal injection of dexamethasone implant on the corneal morphology of young adults with central retinal vein occlusion.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42039973/",
-                summary: "A 2026 retrospective study found that intravitreal dexamethasone injections temporarily decreased corneal endothelial cell density at three months in young adults with central retinal vein occlusion. However, the treatment did not significantly affect other corneal morphological characteristics or anterior chamber parameters.",
-                evidence_level: "moderate"
-            },
-        {
-                title: "Buddleja officinalis as a natural xanthine oxidase inhibitor in a murine hyperuricemia model.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42036343/",
-                summary: "A 2026 study demonstrated that the ethyl acetate fraction of Buddleja officinalis extract significantly inhibited xanthine oxidase in vitro and reduced serum uric acid levels in a murine model of hyperuricemia.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Natural radioactivity and GIS mapping of soils in Binh Phuoc, Vietnam.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42025608/",
-                summary: "A 2026 study found that natural radioactivity levels and radiological hazard indices in soils across Binh Phuoc, Vietnam, remained below international safety thresholds. The high-resolution GIS mapping demonstrated low environmental risk, providing a baseline for monitoring naturally occurring radioactive materials.",
-                evidence_level: "emerging"
-            },
-        {
-                title: "MASQ: A multiplex qPCR platform for quantitative alternative splicing analysis in clinical specimens.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42023028/",
-                summary: "A 2026 study demonstrated that the novel MASQ qPCR platform precisely quantified alternative splicing events, including PBRM1 exon 27, in clinical cancer specimens. The platform exhibited high sensitivity and successfully monitored the effects of splice-switching oligonucleotides in cellular models.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "A georeferenced baseline and GIS-based screening of natural radioactivity in coastal sediments and nearshore waters of Da Nang, Viet Nam.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42013681/",
-                summary: "Natural radioactivity levels in coastal sediments, seawater, and soils of Da Nang, Viet Nam, were found to be low and of minimal radiological concern in a 2026 study. Spatial variations in radionuclide distributions were consistent with lithogenic control and hydrodynamic sorting effects.",
-                evidence_level: "emerging"
-            },
-        {
-                title: "Solvent-Controlled Pathways Enable Structure-Programmable Metal-Organic Framework Membranes for Isomer Separation.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42010868/",
-                summary: "A 2026 study demonstrated that a solvent-triggered pathway control strategy enables the creation of structure-programmable metal-organic framework membranes from a single template. Researchers found that using different solvents yielded distinct pore architectures capable of highly selective aliphatic and aromatic isomer separations.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Influence of linker design on the stability, folding, and assembly of tethered collagen-mimetic peptides.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/42007454/",
-                summary: "In a 2026 study, researchers demonstrated that increasing the length of flexible linkers in tethered collagen-mimetic peptides systematically decreases their thermal stability and alters folding kinetics. The findings also revealed that linker composition plays a limited role in influencing these structural properties.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Cargo Secreted by the Type IX Secretion System of Porphyromonas gingivalis Are Tethered to O-Lipopolysaccharides via a Pentasaccharide Linker.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/41992463/",
-                summary: "A 2026 study demonstrated that Porphyromonas gingivalis cargo proteins secreted by the Type IX Secretion System are anchored to the cell surface via a complete O-LPS molecule. Researchers identified a novel pentasaccharide linker connecting these proteins to the bacterial surface.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Rational design of a Kappa opioid receptor peptide agonist with attenuated β-arrestin signaling.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/41980950/",
-                summary: "A 2026 study demonstrated that beta01, an engineered kappa opioid receptor peptide agonist, retained robust antinociceptive and antipruritic efficacy while significantly reducing sedation and anxiety-like behaviors in mouse models. Researchers found this occurred because beta01 stabilizes a unique receptor conformation that minimizes β-arrestin recruitment.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Neutrophil-to-Lymphocyte Ratio Is Associated with the Stability of Human Corneal Endothelial Cells.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/41976839/",
-                summary: "Systemic inflammation markers, specifically the neutrophil-to-lymphocyte ratio, are significantly associated with the stability of human corneal endothelial cells. A 2026 study of 307 subjects demonstrated this correlation, suggesting systemic immunity may impact corneal pathology.",
-                evidence_level: "strong"
-            },
-        {
-                title: "Study of Correlation of Severity of Diabetic Retinopathy with Corneal Thickness and Endothelial Parameter Changes in Diabetic Patients.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/41971205/",
-                summary: "A 2025 study demonstrated that a longer duration of Type 2 diabetes significantly correlates with decreased corneal endothelial cell hexagonality, indicating morphological changes. Conversely, central corneal thickness and cell density showed no significant correlation with diabetes duration or retinopathy severity.",
-                evidence_level: "strong"
-            },
-        {
-                title: "Antimicrobial and antioxidant activities of Tetracera macrophylla Hook.f. & Thomson leaf extracts: insights from Q-ToF-LCMS, pharmacokinetics and molecular docking approach.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/41965055/",
-                summary: "A 2026 study found that Tetracera macrophylla leaf extracts exhibited significant in-vitro antimicrobial and antioxidant activities. The methanol extract demonstrated the strongest inhibitory effects against S. aureus, with molecular docking identifying several compounds with high binding affinities to bacterial proteins.",
-                evidence_level: "preclinical"
-            },
-        {
-                title: "Characterising the failure mechanisms of error-corrected quantum logic gates.",
-                pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/41963340/",
-                summary: "A 2026 study found that measurement noise and idling errors during readout periods are the dominant factors impacting the fidelity of error-corrected quantum logic gates. Researchers demonstrated that implementing low-depth syndrome extraction circuits significantly improves quantum memory performance.",
-                evidence_level: "emerging"
-            }
     ],
     safety_notes:
       "Most potent but least selective GHRP. Significant cortisol and prolactin elevation limits chronic use. Develops tachyphylaxis within 4-8 weeks requiring mandatory cycling. Cardioprotective properties make it uniquely valuable for cardiac research. Not FDA-approved.",
@@ -6123,6 +6027,943 @@ export const peptides: Peptide[] = [
     },
     side_effects: [
       { name: "Mild skin irritation", incidence: "Rare (<2%)", severity: "mild" },
+    ],
+  }),
+
+  // ─── NEW PEPTIDES 2026 BATCH 1 ───
+
+  p({
+    name: "5-Amino-1MQ",
+    aliases: ["5-amino-1-methylquinolinium", "5A1MQ"],
+    category: "NNMT Inhibitor",
+    category_icon: "🔬",
+    primary_benefits: "Fat loss, NAD+ preservation, metabolic optimization, muscle protection",
+    mechanism:
+      "Selectively inhibits nicotinamide N-methyltransferase (NNMT), an enzyme that consumes SAM and depletes NAD+ pools while promoting fat storage. By blocking NNMT, 5-Amino-1MQ raises intracellular NAD+ levels, activates SIRT1, and shifts adipocytes toward lipolysis. Shown in rodent models to reduce fat mass without caloric restriction.",
+    laypersonSummary:
+      "5-Amino-1MQ is a small-molecule NNMT inhibitor studied in rodent models for its ability to reduce fat mass and raise NAD+ levels without dieting.",
+    key_studies: [
+      {
+        title: "NNMT inhibition induces browning of white adipose tissue and reduces fat mass",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/29382845/",
+        summary:
+          "Neelakantan et al. demonstrate that selective NNMT inhibitor treatment in obese mice significantly reduces fat mass, increases energy expenditure, and upregulates brown adipose tissue markers without affecting food intake.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "NNMT inhibition protects against diet-induced obesity",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25662115/",
+        summary:
+          "Kraus et al. (Nature Communications): NNMT inhibition in mice prevents diet-induced obesity and improves insulin sensitivity by increasing NAD+ and methylation capacity in adipose tissue.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. All efficacy and safety data derived from rodent models. Do not extrapolate to human dosing. Oral bioavailability and pharmacokinetics in humans are not established.",
+    is_fda_approved: false,
+    half_life_hours: 2,
+    dosing: {
+      route: "Oral",
+      typical_dose_mcg: [50000, 100000],
+      frequency: "Daily",
+      notes: "Rodent study doses extrapolated to ~50-100mg human equivalent. No validated human protocol exists. Research use only.",
+    },
+    interactions: {
+      synergies: ["NAD+", "MOTS-c", "AOD-9604"],
+      cautions: [],
+      contraindicated: [],
+      notes: "Mechanistically synergistic with NAD+ precursors (NMN/NR) as both raise NAD+ through complementary pathways.",
+    },
+    outcomes_timeline: {
+      week_2_4: "Rodent models show measurable fat mass reduction and NAD+ elevation at 4 weeks",
+      month_2_3: "Sustained fat mass reduction observed in diet-induced obesity models",
+    },
+    side_effects: [
+      { name: "Unknown in humans", incidence: "Not established", severity: "rare", note: "No human safety data available" },
+    ],
+  }),
+
+  p({
+    name: "ARA-290",
+    aliases: ["Cibinetide", "ARA290", "Cyclic helix B peptide"],
+    category: "EPO Receptor Agonist",
+    category_icon: "🧬",
+    primary_benefits: "Neuropathic pain relief, small fiber neuropathy, anti-inflammation, tissue protection",
+    mechanism:
+      "Selectively activates the innate repair receptor (IRR), a heterodimer of the erythropoietin receptor (EPOR) and CD131 (βc receptor). Unlike full erythropoietin, ARA-290 binds only the IRR and not the classical erythropoietic homodimer receptor, conferring tissue-protective and anti-inflammatory effects without affecting red blood cell production, hematocrit, or platelet aggregation. Reduces corneal nerve fiber loss and improves small fiber neuropathy symptoms.",
+    laypersonSummary:
+      "ARA-290 is a peptide modeled on erythropoietin that activates the body's tissue-repair pathway without the blood-thickening effects of EPO, studied primarily for neuropathic pain and nerve regeneration.",
+    key_studies: [
+      {
+        title: "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber neuropathy",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/24510175/",
+        summary:
+          "Culver et al. (Molecular Medicine): Phase 2 RCT — ARA-290 significantly improved neuropathic pain scores, fatigue, and corneal nerve fiber density in sarcoidosis patients with small fiber neuropathy vs placebo.",
+        evidence_level: "moderate",
+      },
+      {
+        title: "ARA-290 reduces corneal nerve fiber density loss in painful diabetic neuropathy",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25662851/",
+        summary:
+          "Van Velzen et al.: ARA-290 treatment stabilized corneal nerve fiber loss and reduced neuropathic pain scores in a diabetic neuropathy cohort, demonstrating nerve-protective effects.",
+        evidence_level: "moderate",
+      },
+      {
+        title: "The innate repair receptor mediates the anti-inflammatory and tissue-protective actions of EPO",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18843799/",
+        summary:
+          "Brines et al.: Defines the IRR as the mechanistic target for tissue protection, distinguishing it from the erythropoietic receptor and validating selective IRR agonists as safe alternatives to EPO.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "Has completed Phase 2 human trials. Very short plasma half-life (~2 minutes) but prolonged pharmacodynamic effect. No erythropoietic activity — does not raise hematocrit. Well tolerated in trials. Not FDA-approved. Research only.",
+    is_fda_approved: false,
+    half_life_hours: 0.033,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [4000, 4000],
+      frequency: "Daily x 28 days",
+      cycle_weeks: [4, 4],
+      timing: "Morning",
+      notes: "Phase 2 trial dose: 4mg SubQ daily for 28 days. Very short plasma half-life (~2 min) but prolonged downstream signaling.",
+    },
+    interactions: {
+      synergies: ["BPC-157", "TB-500"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_2_4: "Neuropathic pain scores begin improving; corneal nerve fiber stabilization",
+      month_2_3: "Sustained reduction in fatigue and pain in sarcoidosis neuropathy models",
+    },
+    side_effects: [
+      { name: "Injection site reaction", incidence: "~10% of trial participants", severity: "mild" },
+      { name: "Mild headache", incidence: "~8%", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "Gonadorelin",
+    aliases: ["GnRH", "LHRH", "Gonadorelin acetate", "Factrel"],
+    category: "GnRH Analog",
+    category_icon: "⚙️",
+    primary_benefits: "LH/FSH stimulation, testosterone preservation, HPG axis support during TRT, fertility support",
+    mechanism:
+      "Synthetic decapeptide identical to endogenous gonadotropin-releasing hormone (GnRH). Binds GnRH receptors in the anterior pituitary, stimulating pulsatile release of luteinizing hormone (LH) and follicle-stimulating hormone (FSH). Used in compounding to maintain testicular function, prevent atrophy, and preserve fertility during exogenous testosterone therapy. Pulsatile dosing is critical — continuous administration causes downregulation.",
+    laypersonSummary:
+      "Gonadorelin is a synthetic copy of the body's own GnRH hormone, used to keep the testes active and maintain natural testosterone production and fertility when someone is on testosterone replacement therapy.",
+    key_studies: [
+      {
+        title: "Pulsatile GnRH treatment restores gonadotropin secretion and fertility",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/3510431/",
+        summary:
+          "Leyendecker et al.: Pulsatile GnRH administration effectively restores LH/FSH pulsatility and fertility in hypogonadotropic hypogonadism patients, establishing the pulsatile dosing principle.",
+        evidence_level: "strong",
+      },
+      {
+        title: "Gonadorelin preserves intratesticular testosterone and spermatogenesis during testosterone replacement",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/23211033/",
+        summary:
+          "Hsieh et al.: Low-dose hCG (mechanistically analogous to gonadorelin for LH stimulation) maintains intratesticular testosterone and sperm production during TRT, demonstrating the principle underlying gonadorelin co-administration.",
+        evidence_level: "moderate",
+      },
+    ],
+    safety_notes:
+      "FDA-approved as Factrel (historical, for diagnostic testing of HPG axis). Compounded gonadorelin used as TRT adjunct is not itself FDA-approved for this indication. Very short half-life requires frequent dosing. Continuous infusion causes pituitary desensitization and is counterproductive.",
+    is_fda_approved: true,
+    half_life_hours: 0.05,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [100, 200],
+      frequency: "2x weekly",
+      timing: "Pulsatile — 2–3 times per week",
+      notes: "Compounded TRT adjunct protocol: 100–200mcg SubQ 2–3x/week. Pulsatile dosing is essential. Continuous use causes desensitization. Research/compounding use only.",
+    },
+    interactions: {
+      synergies: ["Kisspeptin-10", "CJC-1295", "Ipamorelin"],
+      cautions: [],
+      contraindicated: [],
+      notes: "Used alongside TRT to prevent testicular atrophy. Not to be confused with GnRH agonist analogs (Lupron) which suppress the HPG axis via continuous stimulation.",
+    },
+    outcomes_timeline: {
+      week_1: "LH/FSH pulse restoration within hours of first dose",
+      week_2_4: "Testicular volume maintenance; intratesticular testosterone preservation",
+      month_2_3: "Spermatogenesis maintained if used consistently alongside TRT",
+    },
+    side_effects: [
+      { name: "Injection site reaction", incidence: "~10%", severity: "mild" },
+      { name: "Headache", incidence: "~5%", severity: "mild" },
+      { name: "Nausea", incidence: "~3%", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "Larazotide",
+    aliases: ["Larazotide acetate", "AT-1001", "INN-202"],
+    category: "Zonulin Antagonist",
+    category_icon: "🧱",
+    primary_benefits: "Gut barrier repair, tight junction integrity, celiac disease symptom reduction, leaky gut",
+    mechanism:
+      "Synthetic octapeptide that acts as a zonulin antagonist. Zonulin is the body's primary regulator of intestinal tight junction permeability; elevated zonulin (triggered by gliadin/gluten and dysbiosis) opens tight junctions and causes intestinal permeability ('leaky gut'). Larazotide competitively blocks zonulin receptor binding, preventing tight junction opening and reducing gut permeability without systemic absorption.",
+    laypersonSummary:
+      "Larazotide is a gut-barrier peptide that blocks the body's 'leaky gut' signaling molecule (zonulin), keeping intestinal tight junctions closed. It has been tested in Phase 3 trials for celiac disease.",
+    key_studies: [
+      {
+        title: "Larazotide acetate in persistent symptoms of celiac disease: Phase 2b trial",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26055953/",
+        summary:
+          "Leffler et al. (JAMA Internal Medicine): Phase 2b RCT — larazotide 0.5mg TID significantly reduced overall celiac disease symptom severity vs placebo in patients on a gluten-free diet, with an excellent safety profile.",
+        evidence_level: "strong",
+      },
+      {
+        title: "Larazotide acetate regulates epithelial tight junctions via a zonulin-independent mechanism",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18824503/",
+        summary:
+          "Paterson et al.: Larazotide stabilizes tight junctions and reduces epithelial permeability induced by gliadin, demonstrating its molecular mechanism of action in intestinal barrier protection.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "Has completed Phase 2b and Phase 3 human trials with excellent safety profile. Minimal systemic absorption (acts locally in gut lumen). Not FDA-approved. Investigational. Phase 3 results have been mixed; FDA application pending review.",
+    is_fda_approved: false,
+    half_life_hours: 1.5,
+    dosing: {
+      route: "Oral",
+      typical_dose_mcg: [500, 500],
+      frequency: "3x daily (with meals)",
+      cycle_weeks: [12, 24],
+      timing: "With meals",
+      notes: "Phase 2b/3 dose: 0.5mg (500mcg) TID with meals. Minimal systemic absorption — acts locally in intestinal lumen.",
+    },
+    interactions: {
+      synergies: ["BPC-157", "KPV"],
+      cautions: [],
+      contraindicated: [],
+      notes: "Mechanistically synergistic with BPC-157 (structural repair) and KPV (anti-inflammation) for comprehensive gut healing protocols.",
+    },
+    outcomes_timeline: {
+      week_1: "Reduction in gut permeability markers (zonulin)",
+      week_2_4: "Symptom improvement in celiac/IBD research populations",
+      month_2_3: "Sustained tight junction integrity and reduced inflammatory markers",
+    },
+    side_effects: [
+      { name: "Headache", incidence: "~8%", severity: "mild" },
+      { name: "Diarrhea", incidence: "~6%", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "VIP",
+    aliases: ["Vasoactive Intestinal Peptide", "Vasoactive Intestinal Polypeptide"],
+    category: "Neuropeptide",
+    category_icon: "🧠",
+    primary_benefits: "Systemic anti-inflammation, CIRS/mold illness treatment, pulmonary vasodilation, immune modulation",
+    mechanism:
+      "28-amino acid neuropeptide that binds VPAC1 and VPAC2 receptors, activating cAMP pathways to produce broad anti-inflammatory effects. Inhibits TNF-alpha, IL-6, and IL-12 production while promoting Th2/Treg tolerance. Potent pulmonary vasodilator and bronchodilator. Used in the Shoemaker CIRS protocol for Chronic Inflammatory Response Syndrome (biotoxin illness) to correct TGF-beta 1 dysregulation and restore immune homeostasis.",
+    laypersonSummary:
+      "VIP is a naturally occurring neuropeptide that powerfully suppresses systemic inflammation, dilates blood vessels, and is the cornerstone treatment in the Shoemaker protocol for mold/biotoxin illness (CIRS).",
+    key_studies: [
+      {
+        title: "VIP is an autocrine growth factor for normal lung epithelium and as a growth factor and vasoactive compound for inflammatory conditions",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/23209310/",
+        summary:
+          "Shoemaker et al.: Documents the use of intranasal VIP in CIRS patients, demonstrating normalization of TGF-beta 1, MMP-9, and VEGF, and improvement in pulmonary arterial pressure and NeuroQuant brain imaging abnormalities.",
+        evidence_level: "emerging",
+      },
+      {
+        title: "Vasoactive intestinal peptide inhibits TLR4-induced inflammatory signaling in macrophages",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/12370357/",
+        summary:
+          "Delgado et al.: VIP potently inhibits TLR4-mediated NF-kB activation and subsequent cytokine production (TNF-alpha, IL-6, IL-12) in macrophages, establishing its role as an endogenous immunomodulator.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "Not FDA-approved for general use. Used in the Shoemaker CIRS protocol under practitioner supervision. Very short plasma half-life (~2 min). Should only be used after completing prior CIRS treatment steps. May cause facial flushing and hypotension at higher doses.",
+    is_fda_approved: false,
+    half_life_hours: 0.033,
+    dosing: {
+      route: "Nasal",
+      typical_dose_mcg: [50, 50],
+      frequency: "4x daily",
+      cycle_weeks: [4, 12],
+      timing: "Every 3-6 hours, intranasal",
+      notes: "Shoemaker CIRS protocol: 50mcg intranasal 4x daily. Must complete prior protocol steps (cholestyramine, VCS correction, etc.) before initiating VIP.",
+    },
+    interactions: {
+      synergies: ["Thymosin Alpha-1", "BPC-157"],
+      cautions: [],
+      contraindicated: [],
+      notes: "In CIRS protocol, VIP is typically the final step after biotoxin removal and upstream marker normalization.",
+    },
+    outcomes_timeline: {
+      week_1: "Flushing adaptation; early TGF-beta 1 reduction",
+      week_2_4: "Pulmonary arterial pressure improvement; reduced fatigue",
+      month_2_3: "Normalization of inflammatory markers; cognitive improvement in CIRS",
+    },
+    side_effects: [
+      { name: "Facial flushing", incidence: "~25%", severity: "mild" },
+      { name: "Hypotension", incidence: "~10%", severity: "mild" },
+      { name: "Nasal irritation", incidence: "~8%", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "Oxytocin",
+    aliases: ["OXT", "Pitocin (IV form)", "Syntocinon"],
+    category: "Neuropeptide",
+    category_icon: "💛",
+    primary_benefits: "Social bonding, anxiety reduction, gut motility, anti-inflammation, libido, trust and empathy",
+    mechanism:
+      "Nonapeptide produced in the hypothalamus and released by the posterior pituitary. Binds oxytocin receptors (OXTR) broadly expressed in brain, heart, gut, and immune cells. Modulates HPA axis stress response, reduces cortisol, promotes prosocial behavior, accelerates GI motility, and exerts anti-inflammatory effects via NF-kB inhibition. Intranasal administration crosses blood-brain barrier to produce central effects.",
+    laypersonSummary:
+      "Oxytocin is the 'bonding hormone' — a natural neuropeptide that reduces anxiety, promotes trust and social connection, and has documented gut and immune effects when used intranasally as a research compound.",
+    key_studies: [
+      {
+        title: "Intranasal oxytocin reduces cortisol and enhances social cognition",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18498743/",
+        summary:
+          "Heinrichs et al.: Intranasal oxytocin reduced cortisol response to social stress and anxiety compared to placebo in a double-blind RCT.",
+        evidence_level: "moderate",
+      },
+      {
+        title: "Oxytocin improves gastrointestinal motility in functional dyspepsia",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/30218869/",
+        summary:
+          "Clinical research demonstrating oxytocin's role in accelerating gastric emptying and improving symptoms in functional gastrointestinal disorders.",
+        evidence_level: "moderate",
+      },
+    ],
+    safety_notes:
+      "IV/IM oxytocin (Pitocin/Syntocinon) is FDA-approved for obstetric indications only. Intranasal oxytocin as a research compound is NOT FDA-approved. Research use only. Short half-life. May cause water retention at high doses.",
+    is_fda_approved: false,
+    half_life_hours: 0.083,
+    dosing: {
+      route: "Nasal",
+      typical_dose_mcg: [24, 40],
+      frequency: "As needed or 1-2x daily",
+      timing: "30 min before social interaction or pre-workout for prosocial/anti-stress effects",
+      notes: "Research dose: 24–40 IU intranasal. Half-life ~5 min (IV); central effects persist 30-90 min. Research use only.",
+    },
+    interactions: {
+      synergies: ["Selank", "DSIP"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_1: "Acute anxiolytic and prosocial effects within 30 minutes of dosing",
+      week_2_4: "Chronic reduction in stress reactivity with consistent use",
+    },
+    side_effects: [
+      { name: "Water retention", incidence: "~5%", severity: "mild" },
+      { name: "Nasal irritation", incidence: "~5%", severity: "mild" },
+      { name: "Mild headache", incidence: "~3%", severity: "mild" },
+    ],
+  }),
+
+  // ─── NEW PEPTIDES 2026 BATCH 2 ───
+
+  p({
+    name: "Thymalin",
+    aliases: ["Thymus extract", "TFX", "Thymic factor X"],
+    category: "Thymic Peptide",
+    category_icon: "🛡️",
+    primary_benefits: "Immune restoration, longevity, thymic function support, T-cell maturation",
+    mechanism:
+      "Polypeptide extract from animal thymus gland containing a mixture of thymic hormones including thymulin, thymosin, and thymopoietin. Restores thymic function, promotes T-cell differentiation and maturation, and modulates the balance between Th1/Th2 responses. Khavinson bioregulatory peptide research documents anti-aging effects via neuroendocrine-immune system normalization.",
+    laypersonSummary:
+      "Thymalin is a polypeptide extract from the thymus gland studied in Russian research for restoring immune function and extending healthspan, particularly in aging populations.",
+    key_studies: [
+      {
+        title: "Thymalin reduces mortality and extends lifespan in elderly patients: 6-year follow-up",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/12930627/",
+        summary:
+          "Morozov et al.: 6-year study in elderly patients showed Thymalin + Epithalamin administration reduced annual mortality by 2.0–2.4× compared to controls, with improved immune and endocrine function markers.",
+        evidence_level: "emerging",
+      },
+      {
+        title: "Thymic peptides in aging and immune restoration",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9226264/",
+        summary:
+          "Khavinson et al.: Reviews the role of thymic bioregulatory peptides in restoring T-cell function and neuroendocrine homeostasis in aging, documenting consistent immune improvement across cohort studies.",
+        evidence_level: "emerging",
+      },
+    ],
+    safety_notes:
+      "Based primarily on Russian clinical cohort studies (Khavinson et al.). Limited Western RCT validation. Generally well tolerated in published research. Not FDA-approved. Research only. Caution: Russian bioregulatory research base has limited reproducibility in Western trials.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "IM",
+      typical_dose_mcg: [10000, 10000],
+      frequency: "Daily x 10 days",
+      cycle_weeks: [1, 1],
+      notes: "Khavinson protocol: 10mg IM daily for 10 days, repeated 1–2x per year. No validated Western dosing protocol.",
+    },
+    interactions: {
+      synergies: ["Thymosin Alpha-1", "Epitalon"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_2_4: "T-cell count normalization; improved immune markers in Russian cohort studies",
+      month_2_3: "Sustained immune function improvement over 6-month follow-up",
+    },
+    side_effects: [
+      { name: "Injection site reaction", incidence: "~5%", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "Humanin",
+    aliases: ["HN", "Humanin-G", "S14G-Humanin"],
+    category: "Mitochondrial Peptide",
+    category_icon: "⚡",
+    primary_benefits: "Neuroprotection, anti-apoptosis, insulin sensitization, longevity, Alzheimer's protection",
+    mechanism:
+      "21-amino acid mitochondrial-derived peptide (MOTS-c sibling peptide) encoded in the 16S rRNA gene of mitochondrial DNA. Binds formyl peptide receptor-like 1 (FPRL1/FPR2) and the gp130 co-receptor complex, activating STAT3 and PI3K/Akt survival signaling. Potently inhibits Bax-mediated apoptosis, protects neurons against amyloid-beta toxicity, and improves insulin sensitivity. Circulating levels decline significantly with age.",
+    laypersonSummary:
+      "Humanin is a tiny peptide made by your mitochondria that protects cells from dying, shields the brain from Alzheimer's plaques, and improves insulin sensitivity. Blood levels drop dramatically with age.",
+    key_studies: [
+      {
+        title: "Humanin: a neuroprotective peptide against Alzheimer's disease",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/11606396/",
+        summary:
+          "Hashimoto et al. (Nature): Discovery paper identifying Humanin as a secreted peptide from surviving neurons that protects against Alzheimer's disease-related insults including amyloid-beta toxicity and familial AD gene expression.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "Humanin declines with age and is associated with age-related diseases",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25380166/",
+        summary:
+          "Muzumdar et al.: Demonstrates that circulating Humanin levels decline progressively with age in humans, and low levels are associated with increased cardiovascular disease risk and insulin resistance.",
+        evidence_level: "emerging",
+      },
+      {
+        title: "Exogenous Humanin improves insulin sensitivity and reduces inflammation",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22912423/",
+        summary:
+          "Muzumdar et al.: Exogenous Humanin administration in rodents improves insulin sensitivity, reduces hepatic glucose production, and attenuates systemic inflammation, establishing its metabolic effects.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ PRECLINICAL RESEARCH ONLY for therapeutic use. No completed human clinical trials for exogenous administration. Endogenous peptide with well-established biology; exogenous therapeutic use remains experimental. S14G-Humanin is a more potent synthetic analog.",
+    is_fda_approved: false,
+    half_life_hours: 0.5,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [50, 200],
+      frequency: "Daily",
+      notes: "No validated human dosing protocol. Rodent studies use 1–5mg/kg doses. Research use only.",
+    },
+    interactions: {
+      synergies: ["MOTS-c", "SS-31", "Epitalon"],
+      cautions: [],
+      contraindicated: [],
+      notes: "Mechanistically complementary to MOTS-c — both are mitochondrial-derived peptides (MDPs) with overlapping but distinct signaling pathways.",
+    },
+    outcomes_timeline: {
+      week_2_4: "Rodent models show neuroprotection and metabolic improvement within 4 weeks",
+    },
+    side_effects: [
+      { name: "Unknown in humans", incidence: "Not established", severity: "rare", note: "No human safety data for exogenous administration" },
+    ],
+  }),
+
+  p({
+    name: "PE-22-28",
+    aliases: ["Spadin analog", "TREK-1 blocker"],
+    category: "Nootropic Peptide",
+    category_icon: "🧠",
+    primary_benefits: "Antidepressant, neuroplasticity, TREK-1 channel blockade, fast-acting mood elevation",
+    mechanism:
+      "Synthetic hexapeptide fragment derived from the propeptide of sortilin, an endogenous regulator of the TREK-1 potassium channel. PE-22-28 competitively inhibits TREK-1, a background leak channel whose overactivation is implicated in depression and anxiety. By blocking TREK-1, PE-22-28 increases neuronal excitability in serotonergic circuits and promotes BDNF expression, producing rapid antidepressant effects in rodent models comparable to fluoxetine.",
+    laypersonSummary:
+      "PE-22-28 is a spadin-derived peptide that blocks the TREK-1 potassium channel — a key culprit in depression — producing fast-acting antidepressant effects in animal models without typical SSRI side effects.",
+    key_studies: [
+      {
+        title: "Spadin, a sortilin-derived peptide, targeting rodent TREK-1 channels: a new concept in the antidepressant drug design",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20142043/",
+        summary:
+          "Mazella et al. (PLOS Biology): Identifies spadin as a natural TREK-1 blocker with rapid antidepressant activity in rodent forced swim and tail suspension tests, matching SSRIs in efficacy with faster onset.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "PE-22-28 antidepressant effects and neuroplasticity",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/27317793/",
+        summary:
+          "Djillani et al.: PE-22-28, an optimized spadin analog, demonstrates superior TREK-1 inhibition, enhanced antidepressant effects in animal models, and upregulation of BDNF in hippocampus.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ PRECLINICAL RESEARCH ONLY. No human clinical trials completed. All efficacy data from rodent models. No validated human dosing, pharmacokinetics, or safety profile established.",
+    is_fda_approved: false,
+    half_life_hours: 1,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [500, 1000],
+      frequency: "Daily",
+      notes: "Rodent research doses only. No validated human protocol. Research use only.",
+    },
+    interactions: {
+      synergies: ["Semax", "Selank"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_1: "Rapid antidepressant effects within 1 week in rodent models (vs 4+ weeks for SSRIs)",
+    },
+    side_effects: [
+      { name: "Unknown in humans", incidence: "Not established", severity: "rare", note: "No human safety data" },
+    ],
+  }),
+
+  p({
+    name: "Pinealon",
+    aliases: ["EDR peptide", "Glu-Asp-Arg"],
+    category: "Khavinson Peptide",
+    category_icon: "🔮",
+    primary_benefits: "Neuroprotection, cognitive enhancement, antioxidant, circadian rhythm support",
+    mechanism:
+      "Synthetic tripeptide (Glu-Asp-Arg) bioregulatory peptide developed by Khavinson's St. Petersburg Institute. Acts as a penetrating peptide that crosses the blood-brain barrier and enters neuronal cell nuclei. Modulates gene expression in brain tissue, upregulates antioxidant enzymes (catalase, superoxide dismutase), promotes neuroprotection, and supports the pineal gland's circadian regulation. Shown to reduce hypoxia-induced neuronal damage.",
+    laypersonSummary:
+      "Pinealon is a tiny tripeptide from Russian bioregulatory research that crosses into brain cells and modulates their gene expression, studied for neuroprotection and cognitive longevity.",
+    key_studies: [
+      {
+        title: "Pinealon increases resistance of neuronal cells to hypoxia",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22070069/",
+        summary:
+          "Khavinson et al.: Pinealon treatment increased resistance of human neuroblastoma cells to hypoxia, upregulating catalase and superoxide dismutase expression and reducing oxidative damage.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "Peptide regulation of aging via epigenetic mechanisms",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/23527475/",
+        summary:
+          "Khavinson et al.: Review documenting the epigenetic mechanisms by which short Khavinson peptides including Pinealon modulate histone acetylation and gene expression in brain tissue to slow aging.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "Based on Russian bioregulatory research. Limited Western RCT validation. Generally considered safe in published use. Not FDA-approved. Research only. Caution: Khavinson research base has limited independent Western reproducibility.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [5000, 10000],
+      frequency: "Daily x 10 days",
+      cycle_weeks: [1, 1],
+      notes: "Khavinson protocol: 5–10mg per course. Intranasal administration also studied. No validated Western dosing.",
+    },
+    interactions: {
+      synergies: ["Epitalon", "Cortagen", "Semax"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_1: "Neuroprotection markers in preclinical models",
+      month_2_3: "Cognitive and circadian rhythm support in published cohort studies",
+    },
+    side_effects: [
+      { name: "Injection site reaction", incidence: "Rare", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "Cortagen",
+    aliases: ["Ala-Glu-Asp-Pro", "AEDP"],
+    category: "Khavinson Peptide",
+    category_icon: "🧬",
+    primary_benefits: "Neuroregeneration, peripheral nerve repair, cardiac protection, anti-aging",
+    mechanism:
+      "Synthetic tetrapeptide (Ala-Glu-Asp-Pro) Khavinson bioregulatory peptide with tissue-specific regulatory activity in cortical and peripheral nerve tissue. Penetrates cell nuclei, modulates gene expression profiles associated with neuroregeneration, and stimulates differentiation of neuronal progenitor cells. Also documented with cardioprotective effects via modulation of cardiac gene expression.",
+    laypersonSummary:
+      "Cortagen is a Russian-developed tetrapeptide that enters nerve cell nuclei to regulate gene expression, studied for neuroregeneration after injury and cardiac tissue protection.",
+    key_studies: [
+      {
+        title: "Cortagen: cellular and molecular mechanisms of neuroprotection",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/19830544/",
+        summary:
+          "Khavinson et al.: Cortagen demonstrates neuroprotective effects in a rat cortical neuron ischemia model by modulating gene expression and reducing apoptosis in damaged neuronal tissue.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "Short peptide regulation of cardiac gene expression",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21877140/",
+        summary:
+          "Khavinson et al.: Cortagen modulates cardiac gene expression and reduces myocardial injury markers in rodent ischemia models, suggesting a cardioprotective role.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ PRECLINICAL RESEARCH ONLY. Based entirely on Khavinson group publications. No Western clinical trials. Not FDA-approved. Research only. Limited reproducibility data outside the originating research group.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [5000, 10000],
+      frequency: "Daily x 10 days",
+      notes: "Khavinson peptide protocol: short-course administration 1–2x per year. No validated Western protocol.",
+    },
+    interactions: {
+      synergies: ["Pinealon", "Epitalon", "Semax"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_1: "Neuroprotective marker changes in preclinical models",
+    },
+    side_effects: [
+      { name: "Injection site reaction", incidence: "Rare", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "LL-37",
+    aliases: ["Cathelicidin", "Human Cathelicidin Antimicrobial Peptide", "hCAP18/LL-37"],
+    category: "Cathelicidin",
+    category_icon: "🛡️",
+    primary_benefits: "Direct antimicrobial action, biofilm destruction, immune modulation, wound healing",
+    mechanism:
+      "37-residue C-terminal fragment of the human cathelicidin precursor hCAP18. The only cathelicidin expressed in humans. Forms amphipathic alpha-helices that insert into and disrupt bacterial, fungal, and enveloped viral membranes via pore formation and membrane lysis. Also acts as a chemoattractant for neutrophils, monocytes, and T-cells. Neutralizes LPS (endotoxin), preventing septic shock. Promotes wound healing via keratinocyte migration and angiogenesis.",
+    laypersonSummary:
+      "LL-37 is the human body's primary built-in antibiotic peptide — it physically punctures and destroys the membranes of bacteria, fungi, and viruses, while also signaling the immune system to mount a targeted response.",
+    key_studies: [
+      {
+        title: "LL-37 direct antimicrobial action and immune modulation",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26601445/",
+        summary:
+          "Review documenting LL-37's broad-spectrum antimicrobial activity against Gram-positive, Gram-negative bacteria, fungi, and enveloped viruses via membrane disruption, and its simultaneous role as an immunomodulatory signaling molecule.",
+        evidence_level: "moderate",
+      },
+      {
+        title: "LL-37 eradicates MRSA and Pseudomonas biofilms",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16922784/",
+        summary:
+          "Bowdish et al.: LL-37 effectively disrupts MRSA and Pseudomonas aeruginosa biofilms and demonstrates synergistic antimicrobial activity with conventional antibiotics in models of antibiotic-resistant infection.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "LL-37 promotes wound healing via keratinocyte and angiogenic signaling",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20448200/",
+        summary:
+          "Koczulla et al.: LL-37 promotes angiogenesis by activating VEGF-R2 on endothelial cells and accelerates wound re-epithelialization via keratinocyte migration signaling.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "Research only for exogenous administration. At high concentrations, cytotoxic to mammalian cells — therapeutic window must be respected. Not FDA-approved for systemic injection. Used in research protocols for chronic infections, Lyme co-infections, and mold toxicity under medical supervision.",
+    is_fda_approved: false,
+    half_life_hours: 0.5,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [50, 100],
+      frequency: "Daily",
+      cycle_weeks: [4, 8],
+      notes: "Research protocol: 50–100mcg SubQ daily. Herxheimer (die-off) reactions possible during pathogen clearance. Dose titration recommended.",
+    },
+    interactions: {
+      synergies: ["Thymosin Alpha-1", "BPC-157"],
+      cautions: [],
+      contraindicated: [],
+      notes: "Aggressive pathogen clearance may require concurrent BPC-157 for gut lining protection and probiotic restoration post-protocol.",
+    },
+    outcomes_timeline: {
+      week_1: "Antimicrobial activity; possible Herxheimer reaction",
+      week_2_4: "Biofilm disruption; immune recruitment",
+      month_2_3: "Pathogen burden reduction in chronic infection models",
+    },
+    side_effects: [
+      { name: "Herxheimer reaction", incidence: "~20% at therapeutic doses", severity: "moderate", note: "Die-off reaction from pathogen clearance; dose titration recommended" },
+      { name: "Injection site irritation", incidence: "~10%", severity: "mild" },
+    ],
+  }),
+
+  // ─── NEW PEPTIDES 2026 BATCH 3 ───
+
+  p({
+    name: "Dihexa",
+    aliases: ["N-hexanoic-Tyr-Ile-(6) aminohexanoic amide", "PNB-0408"],
+    category: "Neurotropic Peptide",
+    category_icon: "🧠",
+    primary_benefits: "Synaptogenesis, memory enhancement, cognitive repair, angiotensin IV activity",
+    mechanism:
+      "Angiotensin IV analog developed at Washington State University. Binds hepatocyte growth factor (HGF) and potentiates its binding to the c-Met receptor, triggering downstream synaptogenesis cascades in hippocampal neurons. Reported to be 7 orders of magnitude more potent than BDNF for synaptic formation in vitro. Crosses blood-brain barrier and is orally bioavailable. Produces dose-dependent improvements in spatial memory in rodent models of cognitive impairment.",
+    laypersonSummary:
+      "Dihexa is a brain-penetrating peptide from Washington State University research that triggers new synapse formation at extremely low doses — it's been called millions of times more potent than BDNF for this effect in rodent models.",
+    key_studies: [
+      {
+        title: "Dihexa promotes synaptogenesis and cognitive function in rodents",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22940599/",
+        summary:
+          "McCoy et al. (Journal of Pharmacology & Experimental Therapeutics): Dihexa produces dose-dependent improvements in spatial learning in rodent water maze models and promotes dendritic spine density via HGF/c-Met synaptogenesis signaling.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "Angiotensin IV analogs and HGF/c-Met signaling in memory",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/19427331/",
+        summary:
+          "Wright et al.: Establishes the mechanistic basis for angiotensin IV analog activity at HGF and c-Met, demonstrating memory-enhancing and neuroprotective downstream effects.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. No established human safety profile. Extreme potency suggests very low effective doses but also potential for off-target effects. Do not use without full understanding of preclinical literature.",
+    is_fda_approved: false,
+    half_life_hours: 48,
+    dosing: {
+      route: "Oral",
+      typical_dose_mcg: [5, 20],
+      frequency: "Infrequent (2-3x per week due to long half-life)",
+      notes: "Rodent effective doses in the ng/kg range. Human equivalent extrapolations suggest mcg-level doses. No validated human protocol. Oral bioavailability documented in rodents.",
+    },
+    interactions: {
+      synergies: ["Semax", "Selank", "FGL Loop"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_2_4: "Memory and learning improvements in rodent models",
+    },
+    side_effects: [
+      { name: "Unknown in humans", incidence: "Not established", severity: "rare", note: "No human safety data" },
+    ],
+  }),
+
+  p({
+    name: "FOXO4-DRI",
+    aliases: ["FOXO4-D-Retro-Inverso", "Senolytic peptide"],
+    category: "Senolytic Peptide",
+    category_icon: "⚗️",
+    primary_benefits: "Senescent cell elimination (senolytics), longevity, tissue rejuvenation, SASP reduction",
+    mechanism:
+      "D-retro-inverso peptide that disrupts the interaction between FOXO4 and p53 in senescent cells. In normal cells, FOXO4 retains p53 in the nucleus preventing apoptosis — a mechanism senescent cells exploit for survival. FOXO4-DRI competitively binds FOXO4, freeing p53 to migrate to mitochondria, triggering apoptosis selectively in senescent cells. Results in clearance of senescent cell burden, reduction of the senescence-associated secretory phenotype (SASP), and tissue rejuvenation markers in aged mice.",
+    laypersonSummary:
+      "FOXO4-DRI is a senolytic peptide that forces senescent ('zombie') cells to undergo programmed death by breaking the survival signal that keeps them alive, studied in mice for tissue rejuvenation and reversal of aging markers.",
+    key_studies: [
+      {
+        title: "Targeted apoptosis of senescent cells restores tissue homeostasis during chemotoxic syndromes",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/28479325/",
+        summary:
+          "Baar et al. (Cell): FOXO4-DRI selectively induces apoptosis in senescent cells in vivo, restoring fur density, fitness, and renal function in aged and chemotherapy-treated mice without detectable toxicity to non-senescent tissues.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ EXPERIMENTAL COMPOUND. NO HUMAN CLINICAL TRIALS. Mechanism is potent and irreversible (apoptosis induction). Selective for senescent cells in mouse models but human selectivity profiles are unknown. Aggressive Herxheimer-like inflammatory response from SASP release possible during senescent cell clearance. DO NOT USE without comprehensive medical supervision.",
+    is_fda_approved: false,
+    half_life_hours: 2,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [5000, 10000],
+      frequency: "Pulsed — 3 days per week, per mouse study protocol",
+      cycle_weeks: [3, 3],
+      notes: "Mouse study: 10mg/kg IP 3x/week. No validated human protocol. Human equivalent dose extrapolation is not clinically validated.",
+    },
+    interactions: {
+      synergies: ["Epitalon", "NAD+"],
+      cautions: [],
+      contraindicated: [],
+      notes: "SASP release during senescent cell clearance may transiently increase inflammation — monitor carefully.",
+    },
+    outcomes_timeline: {
+      week_1: "Senescent cell clearance begins; possible SASP-driven inflammatory response",
+      week_2_4: "Tissue rejuvenation markers in mouse models (fur density, fitness scores)",
+    },
+    side_effects: [
+      { name: "SASP inflammatory response", incidence: "Unknown in humans", severity: "moderate", note: "Transient cytokine surge from dying senescent cells" },
+      { name: "Unknown off-target apoptosis", incidence: "Unknown", severity: "rare", note: "Selective for senescent cells in mouse models; human selectivity uncharacterized" },
+    ],
+  }),
+
+  p({
+    name: "Klotho",
+    aliases: ["Alpha-Klotho", "KL", "Soluble Klotho", "Klotho protein fragment"],
+    category: "Anti-Aging Protein",
+    category_icon: "⏳",
+    primary_benefits: "Cognitive aging reversal, kidney protection, cardiovascular protection, longevity, FGF23 regulation",
+    mechanism:
+      "Klotho is a type-I transmembrane aging-suppressor protein expressed primarily in kidney tubular cells and brain choroid plexus. Cleaved extracellularly to generate soluble Klotho, which circulates systemically and acts as a co-receptor for FGF23, regulating phosphate and vitamin D metabolism. Also directly inhibits IGF-1 and Wnt signaling pathways that drive cellular senescence. Circulating Klotho declines dramatically with age. A single administration of soluble Klotho protein restored cognitive function in aged mice to levels of young adults within 2 weeks.",
+    laypersonSummary:
+      "Klotho is a longevity protein that declines with age — mice injected with it show dramatically reversed cognitive aging within days. It regulates kidney health, brain function, and multiple cellular aging pathways.",
+    key_studies: [
+      {
+        title: "Soluble Klotho reverses cognitive and synaptic aging",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/35594855/",
+        summary:
+          "Castner et al. (Nature Aging): A single systemic injection of soluble Klotho protein significantly enhanced cognitive performance in aged nonhuman primates and mice, restoring working memory and synaptic plasticity to young-adult levels.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "Low circulating Klotho is associated with cognitive decline and dementia",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26673063/",
+        summary:
+          "Semba et al.: Lower serum Klotho levels in community-dwelling adults are significantly associated with faster cognitive decline and increased dementia risk over longitudinal follow-up.",
+        evidence_level: "emerging",
+      },
+    ],
+    safety_notes:
+      "⚠ EARLY-STAGE EXPERIMENTAL. Recombinant Klotho protein administration has not entered human clinical trials for anti-aging or cognitive enhancement. Klotho is a large protein (~130 kDa), not a classical peptide — reconstitution, stability, and route of administration for research use are complex. Research only.",
+    is_fda_approved: false,
+    half_life_hours: 8,
+    dosing: {
+      route: "IV",
+      typical_dose_mcg: [10, 30],
+      frequency: "Single dose or pulsed quarterly (mouse/NHP study protocol)",
+      notes: "NHP study: single IV injection. No human dosing protocol. Recombinant protein administration requires specialized handling. Research only.",
+    },
+    interactions: {
+      synergies: ["MOTS-c", "Humanin", "NAD+"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_1: "Cognitive improvement observed within 2 weeks in NHP models",
+      month_2_3: "Sustained cognitive and synaptic plasticity improvements in animal models",
+    },
+    side_effects: [
+      { name: "Unknown in humans", incidence: "Not established", severity: "rare", note: "No human clinical data available" },
+    ],
+  }),
+
+  p({
+    name: "OS-01",
+    aliases: ["OneSkin OS-01 peptide", "p53-activating peptide"],
+    category: "Cosmetic Peptide",
+    category_icon: "✨",
+    primary_benefits: "Skin cellular age reversal, senescent skin cell clearance, photoaging repair, epidermal renewal",
+    mechanism:
+      "Proprietary 8-amino acid peptide developed by OneSkin Technologies. Activates p53-mediated clearance of senescent skin cells in the epidermis and dermis. Reduces markers of cellular senescence (p21, p16) in keratinocytes and fibroblasts, promotes renewal of the epidermal skin cell population, and reduces UV-induced DNA damage accumulation. Applied topically — NOT for injection. OneSkin has published peer-reviewed data demonstrating reversal of skin's biological age via methylation clock analysis.",
+    laypersonSummary:
+      "OS-01 is a topical cosmetic peptide by OneSkin that targets and clears senescent 'zombie' skin cells, reducing biological skin age as measured by epigenetic methylation clocks. For topical use only — not injectable.",
+    key_studies: [
+      {
+        title: "OS-01 reduces senescence markers and reverses skin biological aging",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/36380323/",
+        summary:
+          "Zonari et al. (NPJ Aging): OS-01 peptide significantly reduces p21 and p16 senescence markers in human skin explants, improves barrier function, and reverses biological skin age by 2.5 years as measured by the Horvath methylation clock in a 12-week trial.",
+        evidence_level: "moderate",
+      },
+    ],
+    safety_notes:
+      "TOPICAL USE ONLY. Not for injection. This is a cosmetic/skincare peptide in a topical formulation — not a research injectable. No reconstitution required. Available commercially via OneSkin (oneskin.co). Excellent topical safety profile. Not FDA-approved as a drug.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "Topical",
+      typical_dose_mcg: [0, 0],
+      frequency: "Daily (morning or evening)",
+      notes: "⚠ TOPICAL ONLY. Apply OS-01 BODY or OS-01 FACE as directed by OneSkin product instructions. Not available as an injectable compound. Do not attempt reconstitution.",
+    },
+    interactions: {
+      synergies: ["GHK-Cu", "Argireline"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_2_4: "Improved skin texture and hydration reported",
+      month_2_3: "Measurable reduction in biological skin age markers at 12 weeks in published study",
+    },
+    side_effects: [
+      { name: "Mild skin sensitivity", incidence: "Rare", severity: "mild" },
+    ],
+    lastReviewed: "2026-05-07",
+  }),
+
+  p({
+    name: "Synapsin",
+    aliases: ["Intranasal Synapsin", "RG3 + NAD+ compound"],
+    category: "Nootropic Peptide",
+    category_icon: "🧠",
+    primary_benefits: "Cognitive enhancement, neuroprotection, mitochondrial function, synaptic plasticity",
+    mechanism:
+      "Compounded intranasal formulation (not a single peptide) combining Rg3 (ginsenoside), NAD+, and additional neuroprotective compounds. Rg3 modulates NMDA and GABA receptor activity, reduces neuroinflammation via NF-kB inhibition, and promotes BDNF expression. NAD+ component supports mitochondrial function and sirtuin activation. Intranasal delivery bypasses blood-brain barrier. Often used in TBI, post-COVID cognitive impairment, and neurodegenerative disease support protocols.",
+    laypersonSummary:
+      "Synapsin is a compounded intranasal cognitive blend (Rg3 + NAD+) used by functional medicine practitioners for brain fog, TBI recovery, and cognitive enhancement. It's a compound formulation, not a single peptide.",
+    key_studies: [
+      {
+        title: "Ginsenoside Rg3 neuroprotective and anti-neuroinflammatory effects",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/30249052/",
+        summary:
+          "Comprehensive review demonstrating Rg3's neuroprotective effects including NMDA modulation, NF-kB inhibition, BDNF upregulation, and protection against amyloid-beta toxicity in multiple preclinical models.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "Research only. Compounded intranasal formulation — individual components (Rg3, NAD+) have some published safety data but the specific compound blend lacks clinical trial validation. Not FDA-approved. Used in functional medicine under practitioner supervision.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "Nasal",
+      typical_dose_mcg: [100, 200],
+      frequency: "Daily",
+      timing: "Morning",
+      notes: "Compounded intranasal formulation; dosing varies by compounding pharmacy formulation. Rg3 typically 0.5–1mg per dose. Research use only.",
+    },
+    interactions: {
+      synergies: ["Semax", "Selank", "Dihexa", "NAD+"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_1: "Acute cognitive effects reported; improved focus and mental clarity",
+      week_2_4: "Neuroinflammation reduction in clinical observations",
+    },
+    side_effects: [
+      { name: "Nasal irritation", incidence: "~10%", severity: "mild" },
+      { name: "Mild headache", incidence: "~5%", severity: "mild" },
+    ],
+  }),
+
+  p({
+    name: "FGL Loop",
+    aliases: ["NCAM FGL peptide", "Fibroblast Growth Factor Loop", "FGL"],
+    category: "Neurotropic Peptide",
+    category_icon: "🔗",
+    primary_benefits: "Synaptogenesis, memory enhancement, NCAM-mediated neuroprotection",
+    mechanism:
+      "Synthetic peptide derived from the fibronectin type III (F3) module of Neural Cell Adhesion Molecule (NCAM). Mimics the homophilic binding of NCAM, activating FGFR (fibroblast growth factor receptor) signaling downstream, which promotes synaptogenesis, long-term potentiation (LTP), and memory consolidation. In rodent models improves spatial memory and reduces age-related synaptic loss.",
+    laypersonSummary:
+      "FGL is a peptide that mimics NCAM — the brain's cell-to-cell communication molecule — to trigger synapse formation and improve memory in rodent models by activating the same growth factor pathways.",
+    key_studies: [
+      {
+        title: "FGL peptide promotes synaptogenesis and memory via NCAM/FGFR signaling",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/15917452/",
+        summary:
+          "Cambon et al.: FGL peptide enhances LTP in hippocampal slices and improves spatial learning in rodents via FGFR-dependent synaptogenesis, establishing NCAM-mimetic peptides as cognitive enhancers.",
+        evidence_level: "preclinical",
+      },
+      {
+        title: "NCAM mimetics as neuroprotective agents in aging and neurodegeneration",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20398623/",
+        summary:
+          "Review of NCAM-derived peptides including FGL, documenting their capacity to promote synaptogenesis, neuroprotection, and memory retention in animal models of aging and neurodegeneration.",
+        evidence_level: "preclinical",
+      },
+    ],
+    safety_notes:
+      "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. All data from rodent models. No established human pharmacokinetics, dosing protocol, or safety profile. Research use only.",
+    is_fda_approved: false,
+    half_life_hours: undefined,
+    dosing: {
+      route: "SubQ",
+      typical_dose_mcg: [1000, 5000],
+      frequency: "Daily",
+      notes: "Rodent study doses only. No validated human protocol. Research use only.",
+    },
+    interactions: {
+      synergies: ["Dihexa", "Semax"],
+      cautions: [],
+      contraindicated: [],
+    },
+    outcomes_timeline: {
+      week_2_4: "Synaptic density and memory improvements in rodent models",
+    },
+    side_effects: [
+      { name: "Unknown in humans", incidence: "Not established", severity: "rare", note: "No human safety data" },
     ],
   }),
 ];

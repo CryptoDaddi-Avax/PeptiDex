@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Peptide Evidence Map: 33 Compounds by Evidence Level [2026]",
         description:
-            "Interactive visualization of 33 peptides ranked by FDA approval, clinical trials, and preclinical data. The definitive research reference.",
+            "Interactive visualization of 51 peptides ranked by FDA approval, clinical trials, and preclinical data. The definitive research reference.",
     },
 };
 

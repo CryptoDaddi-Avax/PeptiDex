@@ -40,7 +40,7 @@ export default function ToolsPage() {
             },
             ...[
                 { name: "Cycle Planner", url: "https://peptidex.app/tools/cycle-planner", desc: "Plan your full peptide cycle with exact vial counts, dosing schedules, and vendor sourcing." },
-                { name: "Evidence Dashboard", url: "https://peptidex.app/tools/evidence", desc: "33 peptides ranked by strength of clinical evidence with study counts." },
+                { name: "Evidence Dashboard", url: "https://peptidex.app/tools/evidence", desc: "51 peptides ranked by strength of clinical evidence with study counts." },
                 { name: "Peptide Comparison", url: "https://peptidex.app/tools/compare", desc: "Compare 2-3 peptides side-by-side across mechanisms, dosing, and safety." },
                 { name: "Price Comparison", url: "https://peptidex.app/tools/pricing", desc: "Cross-vendor pricing: cost per vial, per dose, and exclusive PEPTIDEX discounts." },
                 { name: "Reconstitution Calculator", url: "https://peptidex.app/tools/calculator", desc: "BAC water volumes, concentration math, and syringe-unit conversions." },

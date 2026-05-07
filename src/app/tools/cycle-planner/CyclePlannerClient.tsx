@@ -59,6 +59,22 @@ const PEPTIDES_DB: Record<string, { dose: string; freq: string; route: string; e
   'Kisspeptin-10': { dose: '50-100 mcg', freq: 'Daily', route: 'SC', evidence: 'moderate' },
   'Tesofensine': { dose: '0.25-0.5 mg', freq: 'Daily (oral)', route: 'PO', evidence: 'strong' },
   'Cagrilintide': { dose: '1.2-4.5 mg', freq: 'Weekly', route: 'SC', evidence: 'strong' },
+  // New 2026 peptides
+  '5-Amino-1MQ': { dose: '50-100 mg', freq: 'Daily (oral)', route: 'PO', evidence: 'preclinical' },
+  'ARA-290': { dose: '4 mg', freq: 'Daily x28d', route: 'SC', evidence: 'moderate' },
+  'Gonadorelin': { dose: '100-200 mcg', freq: '2-3x weekly', route: 'SC', evidence: 'strong' },
+  'Larazotide': { dose: '500 mcg', freq: '3x daily', route: 'PO', evidence: 'strong' },
+  'VIP': { dose: '50 mcg', freq: '4x daily', route: 'IN', evidence: 'emerging' },
+  'Oxytocin': { dose: '24-40 IU', freq: '1-2x daily', route: 'IN', evidence: 'moderate' },
+  'Thymalin': { dose: '10 mg', freq: 'Daily x10d', route: 'IM', evidence: 'emerging' },
+  'Humanin': { dose: '50-200 mcg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
+  'PE-22-28': { dose: '500-1000 mcg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
+  'Pinealon': { dose: '5-10 mg', freq: 'Daily x10d', route: 'SC', evidence: 'preclinical' },
+  'Cortagen': { dose: '5-10 mg', freq: 'Daily x10d', route: 'SC', evidence: 'preclinical' },
+  'Dihexa': { dose: '5-20 mcg', freq: '2-3x weekly', route: 'PO', evidence: 'preclinical' },
+  'FOXO4-DRI': { dose: '5-10 mg', freq: '3x weekly', route: 'SC', evidence: 'preclinical' },
+  'Synapsin': { dose: '100-200 mcg', freq: 'Daily', route: 'IN', evidence: 'preclinical' },
+  'FGL Loop': { dose: '1-5 mg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
 };
 
 /* ── Goal → peptide map for the planner sidebar ── */

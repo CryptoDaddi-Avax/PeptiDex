@@ -19,7 +19,7 @@ const featuredTools = [
     href: '/tools/evidence',
     icon: BarChart3,
     title: 'Evidence Dashboard',
-    description: '33 peptides ranked by strength of clinical evidence with study counts.',
+    description: '51 peptides ranked by strength of clinical evidence with study counts.',
   },
   {
     href: '/tools/compare',

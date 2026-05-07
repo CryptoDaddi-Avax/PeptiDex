@@ -7,7 +7,7 @@ import { ShieldCheck, ShieldAlert, AlertTriangle, ChevronDown, Search, Info } fr
 import { getCategoryIcon } from "@/data/category-icons";
 import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 
-// Molecular weights and expected mass spec data for all 33 peptides
+// Molecular weights and expected mass spec data for All 51 peptides
 // All MW in g/mol (Daltons)
 const peptideMolecularData: Record<string, {
     mw_mono: number;       // Monoisotopic molecular weight

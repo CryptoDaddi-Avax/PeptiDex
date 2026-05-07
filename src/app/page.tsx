@@ -3,7 +3,7 @@ import NewHomeClient from './new-home-client';
 
 export const metadata: Metadata = {
   title: 'PeptiDex – Peptide Research Index, Stacks & Vendor Data Hub',
-  description: 'PeptiDex (peptidex.app) is the independent peptide research index — 33 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.',
+  description: 'PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.',
   alternates: {
     canonical: 'https://peptidex.app',
   },
