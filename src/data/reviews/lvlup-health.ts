@@ -44,11 +44,11 @@ export const lvlupHealthReview: VendorReviewData = {
   ],
   coaDescription: 'Per their website, LVLUP Health provides COAs using HPLC purity testing and Mass Spectrometry for molecular identity. As an oral formulation specialist, testing methodology must account for excipients and carrier compounds in capsule/spray formulations. Researchers should request lot-specific COAs for all ordered compounds.',
   pricing: [
-    { peptide: 'BPC-157 (Oral)', slug: 'bpc-157', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Capsules', note: 'TODO: Oral formulation pricing not in PeptiDex database — check lvluphealth.com' },
-    { peptide: 'Ipamorelin (Oral)', slug: 'ipamorelin', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Capsules', note: 'TODO: Oral formulation pricing not in PeptiDex database' },
-    { peptide: 'GHK-Cu (Nasal)', slug: 'ghk-cu', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Nasal spray', note: 'TODO: Oral formulation pricing not in PeptiDex database' },
-    { peptide: 'Semax (Nasal)', slug: 'semax', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Nasal spray', note: 'TODO: Oral formulation pricing not in PeptiDex database' },
-    { peptide: 'Selank (Nasal)', slug: 'selank', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Nasal spray', note: 'TODO: Oral formulation pricing not in PeptiDex database' },
+    { peptide: 'BPC-ARG (oral BPC-157)', slug: 'bpc-157', listPrice: '$169.99', withCode: '~$144.49', vial: 'Oral capsules', note: 'Per lvluphealth.com — proprietary oral BPC-157 arginate formulation' },
+    { peptide: 'KPV (oral)', slug: 'kpv', listPrice: '$109.99', withCode: '~$93.49', vial: 'Oral capsules', note: 'Per lvluphealth.com' },
+    { peptide: 'GHK-Cu (oral)', slug: 'ghk-cu', listPrice: '$139.99', withCode: '~$118.99', vial: 'Oral capsules', note: 'Per lvluphealth.com' },
+    { peptide: 'AC Fragments / TB4-Frag (oral)', slug: 'tb-500', listPrice: '$129.99', withCode: '~$110.49', vial: 'Oral capsules', note: 'Per lvluphealth.com — oral thymosin beta-4 fragment formulation' },
+    { peptide: 'Wolverine Stack (oral)', slug: 'bpc-157', listPrice: '$219.99', withCode: '~$186.99', vial: 'Multi-compound', note: 'Per lvluphealth.com — bundled oral recovery stack' },
   ],
   sentiment: [
     {

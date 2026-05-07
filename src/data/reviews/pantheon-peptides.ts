@@ -44,11 +44,11 @@ export const pantheonPeptidesReview: VendorReviewData = {
   ],
   coaDescription: 'Per their website, Pantheon Peptides provides COAs using HPLC purity testing and Mass Spectrometry for molecular identity confirmation. As a Bronze-tier vendor in PeptiDex\'s verification system, researchers are encouraged to request lot-specific COA documentation at time of purchase and verify the issuing laboratory independently.',
   pricing: [
-    { peptide: 'BPC-157', slug: 'bpc-157', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Varies', note: 'TODO: Pricing not yet in PeptiDex database — check pantheonpeptides.com directly' },
-    { peptide: 'TB-500', slug: 'tb-500', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Varies', note: 'TODO: Pricing not yet in PeptiDex database' },
-    { peptide: 'Ipamorelin', slug: 'ipamorelin', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Varies', note: 'TODO: Pricing not yet in PeptiDex database' },
-    { peptide: 'GHK-Cu', slug: 'ghk-cu', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Varies', note: 'TODO: Pricing not yet in PeptiDex database' },
-    { peptide: 'CJC-1295', slug: 'cjc-1295', listPrice: 'See vendor site', withCode: 'Apply PEPTIDEX for 15% off', vial: 'Varies', note: 'TODO: Pricing not yet in PeptiDex database' },
+    { peptide: 'BPC-157', slug: 'bpc-157', listPrice: '$40.00', withCode: '~$34.00', vial: '2mg', note: 'Per pantheonpeptides.com — 5mg vial $70.00 (~$59.50 with code)' },
+    { peptide: 'TB-500', slug: 'tb-500', listPrice: '$40.00', withCode: '~$34.00', vial: '2mg', note: 'Per pantheonpeptides.com — 5mg vial $70.00 (~$59.50 with code)' },
+    { peptide: 'Ipamorelin', slug: 'ipamorelin', listPrice: '$40.00', withCode: '~$34.00', vial: '2mg', note: 'Per pantheonpeptides.com — 5mg vial $70.00 (~$59.50 with code)' },
+    { peptide: 'Tesamorelin', slug: 'tesamorelin', listPrice: '$70.00', withCode: '~$59.50', vial: '2mg', note: 'Per pantheonpeptides.com — 5mg vial $110.00 (~$93.50 with code)' },
+    { peptide: 'CJC-1295 (DAC)', slug: 'cjc-1295', listPrice: '$60.00', withCode: '~$51.00', vial: '2mg', note: 'Per pantheonpeptides.com — single size available' },
   ],
   sentiment: [
     {

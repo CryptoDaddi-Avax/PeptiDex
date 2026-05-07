@@ -170,10 +170,20 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
               <ExternalLink className="w-4 h-4" /> View sample COA PDF →
             </a>
           )}
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4 text-sm text-zinc-400">
-            {/* TODO: Add COA screenshot image here — upload a screenshot of a real batch COA for this vendor and replace this block */}
-            <p className="font-mono text-xs text-zinc-600 mb-2">§ TODO: COA Screenshot</p>
-            <p>Upload a screenshot of a real batch COA from {review.name} and embed it here to strengthen YMYL trust signals. Use <code className="text-violet-400">{'<Image>'}</code> from next/image.</p>
+          {/* COA Screenshot — replace src with a real screenshot from this vendor's COA page */}
+          <div className="relative rounded-xl overflow-hidden border border-zinc-800 mb-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/coa-sample-placeholder.png"
+              alt={`${review.name} Certificate of Analysis sample — replace with real COA screenshot`}
+              className="w-full max-h-64 object-cover object-top opacity-70"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-zinc-950/90 via-transparent">
+              <p className="text-xs font-mono text-amber-400">
+                ⚠ TODO: Replace with a real COA screenshot from {review.name}. Upload to <code>/public/images/{review.slug}-coa.png</code> and update the <code>src</code> above.
+              </p>
+            </div>
           </div>
           <div className="mt-6 flex flex-wrap gap-2">
             {review.testingMethods.map(m => (
