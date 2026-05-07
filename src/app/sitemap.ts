@@ -4,6 +4,7 @@ import { stacks, LAST_UPDATED as STACKS_LAST_UPDATED } from '@/data/stacks';
 import { blogPosts } from '@/data/blog';
 import { comparisons, LAST_UPDATED as COMPARISONS_LAST_UPDATED } from '@/data/comparisons';
 import { LAST_REVIEWED as VENDORS_LAST_REVIEWED } from '@/app/vendors/page';
+import { getAllAuthorSlugs } from '@/lib/authors';
 
 export const dynamic = 'force-static';
 
@@ -234,6 +235,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  // Author / Team Pages
+  const authorSlugs = getAllAuthorSlugs();
+  const teamUrls = authorSlugs.map((slug) => ({
+    url: `${baseUrl}/team/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
   return [
     ...staticPages, 
     ...blogUrls, 
@@ -248,6 +258,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
-    ...whereToBuyUrls
+    ...whereToBuyUrls,
+    ...teamUrls
   ];
 }

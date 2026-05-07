@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
-import { AuthorBio } from '@/components/author-bio';
+import { AuthorByline } from '@/components/shared/AuthorByline';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { getAuthorSlug } from '@/data/authors';
@@ -105,12 +105,7 @@ export default function AminoClubReview() {
           <p className="page-subtitle">
             An independent, evidence-based analysis of COA verification, HPLC methodology, shipping, and pricing.
           </p>
-          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-amber-400" />
-              <Link href={`/about/${getAuthorSlug(AUTHOR)}`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">{AUTHOR}</Link>
-            </div>
-            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+          <div className="flex flex-wrap items-center gap-4 mt-4 mb-6 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-zinc-500" />
               <span>April 30, 2026</span>
@@ -121,6 +116,9 @@ export default function AminoClubReview() {
               <span className="text-amber-300 font-medium">Independent Analysis</span>
             </div>
           </div>
+          
+          <AuthorByline name={AUTHOR} variant="full" className="mb-6" />
+          
           <div className="mt-4"><ShareBar title={POST_TITLE} url={CANONICAL} /></div>
         </div>
       </header>
@@ -314,7 +312,7 @@ export default function AminoClubReview() {
           <CiteThisPage title={POST_TITLE} url={CANONICAL} />
         </div>
         <ShareBar title={POST_TITLE} url={CANONICAL} />
-        <AuthorBio name={AUTHOR} />
+
 
         <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
           <span>Last fact-checked: <time dateTime={DATE_MOD}>{DATE_MOD}</time></span>

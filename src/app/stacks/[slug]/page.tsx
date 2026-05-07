@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 import { stacks, getStackBySlug } from '@/data/stacks';
 import { getPeptideByName } from '@/data/peptides';
 import { BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
-import { AuthorBio } from '@/components/author-bio';
-import { Byline } from '@/components/byline';
+import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
 import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema } from '@/lib/seo/schema';
@@ -127,12 +126,11 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
           Best Peptide Stack for {goalName}, Research-Backed Protocols
         </h1>
         <p className="stack-detail-date">Last Updated: April 2026</p>
-        <Byline
-          author={authorSlug}
-          medicallyReviewedBy={stack.medicallyReviewedBy}
-          factCheckedBy={stack.factCheckedBy}
-          reviewedDate={stack.reviewedDate}
-          publishedDate="2026-03-31"
+        <AuthorByline 
+          name={authorRecord?.name ?? 'PeptiDex Editorial'} 
+          date={DATE_MOD}
+          variant="compact" 
+          className="mt-4 mb-8"
         />
 
         {/* ═══ SECTION 1: COMPONENTS ═══ */}
@@ -290,8 +288,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
           </div>
         </section>
 
-        {/* Author Bio */}
-        <AuthorBio name={authorRecord?.name ?? 'PeptiDex Editorial'} />
+
 
         {/* Bottom Disclaimer */}
         <div className="stack-bottom-disclaimer">

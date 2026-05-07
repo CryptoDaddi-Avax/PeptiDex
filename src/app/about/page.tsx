@@ -126,6 +126,27 @@ export default function AboutPage() {
           conduct safe, effective, and reproducible studies.
         </p>
 
+        <h2>Our Editorial Team</h2>
+        <p>
+          PeptiDex is maintained by an independent group of researchers, data analysts, and writers dedicated to 
+          curating evidence-based peptide science. We do not have a medical board or clinical staff on payroll, 
+          which allows us to remain entirely free from pharmaceutical or vendor influence.
+        </p>
+        <p>
+          Meet the team behind the research:
+        </p>
+        <ul>
+          <li>
+            <Link href="/team/peptidex-research" className="text-emerald-400 font-bold hover:underline">PeptiDex Research Team</Link> — Our core editorial staff responsible for vendor verification, data aggregation, and library curation.
+          </li>
+          <li>
+            <Link href="/team/dr-e-vance" className="text-emerald-400 font-bold hover:underline">Dr. E. Vance, PhD</Link> — Independent contributor and principal author of our educational library.
+          </li>
+          <li>
+            <Link href="/team/legal-dept" className="text-emerald-400 font-bold hover:underline">Legal & Compliance</Link> — Manages our regulatory tracking and terms of service.
+          </li>
+        </ul>
+
         <h2>Who We Are / Who We&apos;re Not</h2>
         
         <p>

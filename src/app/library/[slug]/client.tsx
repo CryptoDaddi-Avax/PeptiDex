@@ -27,7 +27,7 @@ import { StickyQuickCompare } from '@/components/sticky-quick-compare';
 import { StackCard } from '@/components/stack-card';
 import { SaveButton } from '@/components/save-button';
 import { FeedbackModal } from '@/components/feedback-modal';
-import { AuthorBio } from '@/components/author-bio';
+import { AuthorByline } from '@/components/shared/AuthorByline';
 import './detail-redesign.css';
 
 /* ── Evidence helpers ── */
@@ -97,17 +97,7 @@ export function PeptideDetailRedesign({
             <SaveButton type="peptide" slug={peptide.slug} title={peptide.name} />
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 mt-6 mb-2">
-            <div className="flex items-center gap-2">
-              <UserIcon className="w-4 h-4 text-violet-400" />
-              <Link href="/about/dr-e-vance" className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">By Dr. E. Vance, PhD</Link>
-            </div>
-            <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-            <div className="flex items-center gap-2">
-              <CalendarIcon className="w-4 h-4 text-zinc-500" />
-              <span>Last reviewed <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time></span>
-            </div>
-          </div>
+          <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="compact" className="mt-6 mb-2" />
 
           {peptide.aliases.length > 0 && (
             <p className="pd-aliases">Also known as: {peptide.aliases.join(', ')}</p>
@@ -503,7 +493,7 @@ export function PeptideDetailRedesign({
 
       {/* ═══ AUTHOR BIO ═══ */}
       <div className="pd-container mb-12">
-        <AuthorBio name="Dr. E. Vance" />
+        <AuthorByline name="Dr. E. Vance" variant="full" />
       </div>
 
       {/* Last Reviewed */}

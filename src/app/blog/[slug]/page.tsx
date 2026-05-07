@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Calendar, User, BookOpen } from 'lucide-react';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
-import { AuthorBio } from '@/components/author-bio';
+import { AuthorByline } from '@/components/shared/AuthorByline';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { getAuthorSlug, getAuthorBySlug, getPersonSchema } from '@/lib/authors';
 import { getPostBySlug, getAllSlugs } from '@/lib/markdown';
@@ -105,22 +105,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           reviewedDate={reviewedDate}
           publishedDate={publishDate}
         />
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-violet-400" />
-            <Link href={`/about/${getAuthorSlug(author || 'PeptiDex Editorial')}`} className="font-semibold text-zinc-200 hover:text-violet-400 transition-colors">{author || 'PeptiDex Editorial'}</Link>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-emerald-500" />
-            <span className="text-emerald-400 font-medium">{readingTime || '12 Min Read'}</span>
-          </div>
-          <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-zinc-500" />
-            <span>{publishDate}</span>
-          </div>
-        </div>
+        <AuthorByline name={author || 'PeptiDex Editorial'} variant="full" className="mt-6 mb-8" />
         <ShareBar title={title} url={canonical} />
       </header>
 
@@ -154,7 +139,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <CiteThisPage title={title} url={canonical} />
       </div>
 
-      <AuthorBio name={author || 'PeptiDex Editorial'} />
+
 
       <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
         <span>Last fact-checked: <time dateTime={lastReviewed}>{lastReviewed}</time></span>
