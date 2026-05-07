@@ -67,6 +67,23 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                 </div>
             </header>
 
+            {/* ── GLP-1 Alternatives Callout (Fat Loss Only) ── */}
+            {slug === 'fat-loss' && (
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-8 -mt-4 relative z-20">
+                    <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-amber-400 mb-2">Looking for Semaglutide or Tirzepatide?</h3>
+                            <p className="text-zinc-300 text-sm m-0">
+                                This page focuses on synergistic peptide stacks. If you are researching standalone GLP-1 agonists and their non-incretin alternatives (like Tesofensine or AOD-9604), view our dedicated GLP-1 guide.
+                            </p>
+                        </div>
+                        <Link href="/guides/glp1-alternatives" className="whitespace-nowrap px-6 py-3 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold rounded-lg transition-colors">
+                            View GLP-1 Guide
+                        </Link>
+                    </div>
+                </div>
+            )}
+
             {/* ═══ PROTOCOL SECTION ═══ */}
             <section className="goal-protocol-section reveal">
                 <div className="goal-container">

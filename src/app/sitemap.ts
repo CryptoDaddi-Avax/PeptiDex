@@ -274,6 +274,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // Dynamic Buy Pages
+  const TARGET_SLUGS = [
+    'bpc-157', 'tb-500', 'ghk-cu', 'semaglutide', 'tirzepatide', 
+    'retatrutide', 'cjc-1295', 'ipamorelin', 'mk-677', 'sermorelin', 
+    'tesamorelin', 'mots-c'
+  ];
+  const buyUrls = TARGET_SLUGS.map((slug) => ({
+    url: `${baseUrl}/buy/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...staticPages, 
     ...blogUrls, 
@@ -289,6 +302,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...whereToBuyUrls,
+    ...buyUrls,
+    {
+      url: `${baseUrl}/buy`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/guides/glp1-alternatives`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
     ...teamUrls
   ];
 }

@@ -3,6 +3,7 @@
 import { ExternalLink, Tag, ShieldCheck, ArrowRight } from 'lucide-react';
 import type { PeptideVendorPricing } from '@/data/vendor-pricing';
 import type { Vendor } from '@/data/vendors';
+import Link from 'next/link';
 
 interface WhereToBuySectionProps {
   peptideName: string;
@@ -52,6 +53,18 @@ export function WhereToBuySection({
             <strong className="pd-wtb-code">PEPTIDEX</strong> for up to 20% off
           </p>
         </div>
+        <div className="ml-auto">
+          <Link href={`/buy/${peptideSlug}`} className="hidden sm:flex items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 px-4 py-2 rounded-lg border border-amber-500/20 transition-colors">
+            View full buying guide <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+      
+      {/* Mobile buy guide link */}
+      <div className="sm:hidden mb-6">
+        <Link href={`/buy/${peptideSlug}`} className="flex justify-center items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 px-4 py-3 rounded-lg border border-amber-500/20 w-full text-center">
+          View full buying guide <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
 
       {hasPricing ? (
