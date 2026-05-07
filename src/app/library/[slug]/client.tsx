@@ -341,6 +341,15 @@ export function PeptideDetailRedesign({
 
             {/* ─── Contextual Tool Callouts ─── */}
             <div className="pd-tool-callouts">
+              {['bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'].includes(peptide.slug) && (
+                <Link href={`/where-to-buy/${peptide.slug}`} className="pd-tool-cta" style={{ background: 'var(--bg-card)', borderColor: 'var(--gold)' }}>
+                  <div className="pd-tool-cta-icon" style={{ color: 'var(--gold)' }}><BadgeCheck /></div>
+                  <div className="pd-tool-cta-text">
+                    <span className="pd-tool-cta-label" style={{ color: 'var(--gold)' }}>Where to Buy {peptide.name}</span>
+                    <span className="pd-tool-cta-desc">Compare top verified vendors & pricing →</span>
+                  </div>
+                </Link>
+              )}
               <Link href={`/tools/calculator`} className="pd-tool-cta">
                 <div className="pd-tool-cta-icon"><Calculator /></div>
                 <div className="pd-tool-cta-text">
