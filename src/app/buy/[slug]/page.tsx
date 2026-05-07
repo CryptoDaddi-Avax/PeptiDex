@@ -93,7 +93,7 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
   };
 
   return (
-    <main className="min-h-screen bg-zinc-950 pb-20">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {inStockVendors.length > 0 && (
@@ -105,7 +105,7 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
         subhead={`Compare verified vendors, pricing, and active discount codes for ${peptide.name} research.`} 
       />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 relative z-20">
+      <div className="about-content reveal space-y-16">
         <WhereToBuySection 
           peptideName={peptide.name} 
           peptideSlug={peptide.slug} 

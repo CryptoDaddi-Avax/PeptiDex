@@ -95,26 +95,37 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
     .slice(0, 3);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-10">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <Breadcrumbs items={[
-        { name: 'Home', url: 'https://peptidex.app/' },
-        { name: 'Compare', url: 'https://peptidex.app/compare' },
-        { name: `${nameA} vs ${nameB}` }
-      ]} />
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/compare">Compare</Link>
+            <span className="sep">/</span>
+            <span className="current">{nameA} vs {nameB}</span>
+          </nav>
 
-      <header className="space-y-4">
-        <div className="flex items-center gap-2 mb-2">
-          <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-${comp.color}-500/15 text-${comp.color}-300 border border-${comp.color}-500/30 rounded`}>
-            {comp.tags[0]}
-          </span>
+          <div className="section-label">§ Head-to-Head Comparison</div>
+          <h1 className="page-title">
+            {nameA} vs {nameB}.
+          </h1>
+          <p className="page-subtitle">{comp.seoDescription}</p>
+          
+          <div className="flex items-center gap-2 mt-6">
+            <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-${comp.color}-500/15 text-${comp.color}-300 border border-${comp.color}-500/30 rounded`}>
+              {comp.tags[0]}
+            </span>
+          </div>
         </div>
-        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100 leading-[1.1]">{TITLE}</h1>
-        <p className="text-[16px] text-zinc-400 leading-relaxed max-w-2xl">{comp.seoDescription}</p>
       </header>
+
+      <div className="about-content reveal space-y-16">
 
       {/* ── EDITOR NOTE (thin data warning) ── */}
       {comp.editorNote && (
@@ -271,33 +282,25 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         </section>
       )}
 
-      {/* ── LIBRARY LINKS ── */}
-      <section className="rounded-xl bg-zinc-900/30 border border-zinc-800 p-5">
-        <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-4">Deep Research Profiles</h3>
-        <div className="flex flex-wrap gap-3">
-          <Link href={`/library/${comp.peptideA}`} className="px-4 py-2 rounded-lg border border-zinc-700 text-zinc-300 hover:border-violet-500/40 hover:text-violet-400 text-sm font-medium transition-colors">
-            {nameA} Full Profile →
+      {/* ── Internal Links ── */}
+      <div className="pt-8 border-t border-zinc-800/50">
+        <h3 className="text-lg font-bold text-zinc-100 mb-4">Deep Dive Profiles</h3>
+        <div className="flex flex-wrap gap-4">
+          <Link href={`/library/${comp.peptideA}`} className="text-violet-400 hover:text-violet-300 font-semibold flex items-center gap-1">
+            {nameA} Research Profile <ArrowRight className="w-4 h-4" />
           </Link>
           {!isSamePeptide && (
-            <Link href={`/library/${comp.peptideB}`} className="px-4 py-2 rounded-lg border border-zinc-700 text-zinc-300 hover:border-violet-500/40 hover:text-violet-400 text-sm font-medium transition-colors">
-              {nameB} Full Profile →
+            <Link href={`/library/${comp.peptideB}`} className="text-violet-400 hover:text-violet-300 font-semibold flex items-center gap-1">
+              {nameB} Research Profile <ArrowRight className="w-4 h-4" />
             </Link>
           )}
-          <Link href="/tools/compare" className="px-4 py-2 rounded-lg border border-zinc-700 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-400 text-sm font-medium transition-colors">
-            Interactive Comparison Tool →
-          </Link>
-        </div>
-      </section>
-
-      <div className="rounded-xl bg-amber-950/20 border border-amber-500/20 p-5">
-        <div className="flex items-start gap-3">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <p className="text-xs text-amber-200/70 leading-relaxed">
-            This comparison is for educational and research purposes only. Many peptides are not FDA-approved for human therapeutic use. All dosing information is for reference only — for research use only. Consult a licensed healthcare provider before using any peptide.{' '}
-            <Link href="/disclaimer" className="underline hover:text-amber-200 transition-colors">Read full disclaimer.</Link>
-          </p>
         </div>
       </div>
-    </div>
+
+      <div className="disclaimer-strip">
+        ⚠ Educational only · Not medical advice · Research compounds not approved by FDA for human consumption
+      </div>
+      </div>
+    </main>
   );
 }

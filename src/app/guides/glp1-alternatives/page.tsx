@@ -48,24 +48,35 @@ export default function GlpAlternativesPage() {
   });
 
   return (
-    <main className="min-h-screen bg-zinc-950 pb-20">
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageSchema) }} />
 
-      <header className="pt-24 pb-12 bg-zinc-900 border-b border-zinc-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-            GLP-1 Alternatives: <span className="text-violet-400">10 Peptides for Weight Loss</span> (2026)
+      <header className="page-header">
+        <div className="page-header-grid" />
+        <div className="page-header-wrap">
+          <nav className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/guides">Guides</Link>
+            <span className="sep">/</span>
+            <span className="current">GLP-1 Alternatives</span>
+          </nav>
+          
+          <div className="section-label">§ Clinical Guide</div>
+          <h1 className="page-title">
+            GLP-1 Alternatives: <br /><em>10 Peptides for Weight Loss</em>.
           </h1>
-          <p className="text-xl text-zinc-400 mb-8">
-            Beyond Semaglutide: A comprehensive guide to next-generation incretins, fat-targeting fragments, and metabolic regulators.
-          </p>
-          <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="full" />
+          <p className="page-subtitle">Beyond Semaglutide: A comprehensive guide to next-generation incretins, fat-targeting fragments, and metabolic regulators.</p>
+          
+          <div className="mt-6">
+            <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="compact" />
+          </div>
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 mt-12">
+      <div className="about-content reveal space-y-16">
         <div className="bg-zinc-900 border-l-4 border-violet-500 p-6 rounded-r-xl mb-12">
           <h2 className="text-lg font-bold text-white mb-2">Quick Answer</h2>
           <p className="text-zinc-300">
