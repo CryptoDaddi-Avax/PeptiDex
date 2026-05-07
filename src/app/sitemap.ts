@@ -169,6 +169,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
+    {
+      url: `${baseUrl}/vendors/bio-longevity-labs-review`,
+      lastModified: vendorsDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/vendors/limitless-life-review`,
+      lastModified: vendorsDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/vendors/ascension-peptides-review`,
+      lastModified: vendorsDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/vendors/pantheon-peptides-review`,
+      lastModified: vendorsDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/vendors/lvlup-health-review`,
+      lastModified: vendorsDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
   ];
 
   // Standard Blog Post Pages

@@ -9,3 +9,4 @@ export * from './how-to';
 export * from './software-application';
 export * from './drug';
 export * from './library';
+export * from './vendor';

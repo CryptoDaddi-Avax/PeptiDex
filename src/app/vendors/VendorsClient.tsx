@@ -185,6 +185,47 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
+          3.6 IN-DEPTH VENDOR REVIEWS
+          ═══════════════════════════════════════════════════════════════════ */}
+      <section className="vn-extra-section" id="vendor-reviews" aria-labelledby="vendor-reviews-heading">
+        <div className="vn-container">
+          <div className="vn-section-label">§ In-Depth Reviews</div>
+          <h2 className="vn-extra-title" id="vendor-reviews-heading">
+            Full Vendor <em>Review Pages</em>
+          </h2>
+          <p className="vmeth-intro">
+            Each vendor has a dedicated long-form review with COA analysis, pricing breakdown, community sentiment, and FAQ — written to YMYL editorial standards.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            {[
+              { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club-review', badge: "Editor's Choice", note: '20% code · Gold COA tier' },
+              { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs-review', badge: 'Triple-Tested', note: '15% stackable · 80+ compounds' },
+              { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life-review', badge: 'USA Made', note: '15% code · 90+ compounds · ⚠ Mixed reviews' },
+              { name: 'Ascension Peptides', rating: 4.7, href: '/vendors/ascension-peptides-review', badge: 'COA Verified', note: '15% code · Specialty catalog' },
+              { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides-review', badge: 'Emerging', note: '15% code · Competitive pricing' },
+              { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health-review', badge: 'Oral Specialist', note: '15% code · Needle-free formulations' },
+            ].map(v => (
+              <Link
+                key={v.href}
+                href={v.href}
+                className="block rounded-xl border border-zinc-800 bg-zinc-900/30 hover:border-violet-500/40 hover:bg-violet-500/5 p-5 transition-all group"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono text-violet-400 uppercase tracking-wider">{v.badge}</span>
+                  <span className="text-sm font-bold text-amber-400">{v.rating}/5</span>
+                </div>
+                <h3 className="font-bold text-zinc-100 group-hover:text-white mb-1">{v.name}</h3>
+                <p className="text-xs text-zinc-500 mb-3">{v.note}</p>
+                <span className="text-xs font-semibold text-violet-400 flex items-center gap-1">
+                  Read full review <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
           4. METHODOLOGY — "How We Rank Vendors" (E-E-A-T signal)
           ═══════════════════════════════════════════════════════════════════ */}
       <section className="vn-extra-section" id="how-we-rank" aria-labelledby="methodology-heading">
