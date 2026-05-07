@@ -216,5 +216,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticPages, ...blogUrls, ...peptideUrls, ...stackUrls, ...learnUrls, ...compareUrls, ...aminoClubUrls];
+  // Where to Buy Pages
+  const whereToBuySlugs = [
+    'bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 
+    'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'
+  ];
+  const whereToBuyUrls = whereToBuySlugs.map((slug) => ({
+    url: `${baseUrl}/where-to-buy/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }));
+
+  return [
+    ...staticPages, 
+    ...blogUrls, 
+    ...peptideUrls, 
+    ...stackUrls, 
+    ...learnUrls, 
+    ...compareUrls, 
+    ...aminoClubUrls,
+    {
+      url: `${baseUrl}/where-to-buy`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    ...whereToBuyUrls
+  ];
 }

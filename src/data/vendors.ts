@@ -93,6 +93,11 @@ export interface Vendor {
   finnrickSlug?: string;
   /** Verification tier computed from verification-data.ts */
   verificationTier?: "gold" | "silver" | "bronze" | "unverified";
+  /** 
+   * TODO: Populate this array with the slugs of all compounds this vendor carries.
+   * If undefined, the system falls back to assuming the vendor carries the compound.
+   */
+  compounds?: string[];
 }
 
 // ── Vendor Data ──────────────────────────────────────────────────────────────
