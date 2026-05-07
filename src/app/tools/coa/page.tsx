@@ -6,15 +6,16 @@ import { peptides } from "@/data/peptides";
 import { ShieldCheck, ShieldAlert, AlertTriangle, ChevronDown, Search, Info } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
+import { ToolPageConversionBlock } from "@/components/promos/ToolPageConversionBlock";
 
-// Molecular weights and expected mass spec data for All 51 peptides
+// Molecular weights and expected mass spec data for all 51 peptides
 // All MW in g/mol (Daltons)
 const peptideMolecularData: Record<string, {
-    mw_mono: number;       // Monoisotopic molecular weight
-    mw_avg: number;        // Average molecular weight
-    formula: string;       // Molecular formula
-    sequence?: string;     // Amino acid sequence
-    acceptable_purity: number;  // Minimum acceptable purity %
+    mw_mono: number;
+    mw_avg: number;
+    formula: string;
+    sequence?: string;
+    acceptable_purity: number;
     coa_red_flags: string[];
 }> = {
     "bpc-157": { mw_mono: 1419.53, mw_avg: 1419.56, formula: "C62H98N16O22", sequence: "GEPPPGKPADDAGLV", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "MW deviation > 0.5 Da", "Endotoxin > 1 EU/mg"] },
@@ -60,7 +61,7 @@ export default function CoacAnalyzerPage() {
         const mw = parseFloat(reportedMW);
         const purity = parseFloat(reportedPurity);
         const mwDeviation = Math.abs(mw - molData.mw_avg) / molData.mw_avg * 100;
-        const isMWAcceptable = mwDeviation <= 1.0; // 1% tolerance
+        const isMWAcceptable = mwDeviation <= 1.0;
         const isPurityAcceptable = purity >= molData.acceptable_purity;
 
         if (isMWAcceptable && isPurityAcceptable) setResult("pass");
@@ -73,28 +74,36 @@ export default function CoacAnalyzerPage() {
         ? Math.abs(parseFloat(reportedMW) - molData.mw_avg)
         : null;
 
+    // Build schema (unused in render but kept for parity)
+    const _schema = buildSoftwareApplicationSchema({
+        name: "PeptiDex COA Analyzer",
+        description: "Verify peptide Certificate of Analysis against expected molecular weight and purity values.",
+        url: "https://peptidex.app/tools/coa",
+        applicationCategory: "UtilityApplication",
+    });
+
     return (
         <div className="max-w-3xl mx-auto px-4 py-4 md:py-6">
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
-        <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
-        <span className="text-zinc-700 text-xs">/</span>
-        <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
-        <span className="text-zinc-700 text-xs">/</span>
-        <span className="text-zinc-200 font-medium text-xs">COA Verification</span>
-      </nav>
-      
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-4 pt-2">
+                <Link href="/" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Home</Link>
+                <span className="text-zinc-700 text-xs">/</span>
+                <Link href="/tools" className="text-zinc-500 hover:text-amber-400 transition-colors text-xs">Tools</Link>
+                <span className="text-zinc-700 text-xs">/</span>
+                <span className="text-zinc-200 font-medium text-xs">COA Verification</span>
+            </nav>
+
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
                 <div className="flex items-center gap-2 mb-1">
                     <ShieldCheck className="w-5 h-5 text-emerald-400" />
                     <h1 className="text-xl md:text-2xl font-bold text-zinc-100">COA Analyzer</h1>
                 </div>
-                <p className="text-xs md:text-sm text-zinc-400">Verify your supplier's Certificate of Analysis against expected values</p>
+                <p className="text-xs md:text-sm text-zinc-400">Verify your supplier&apos;s Certificate of Analysis against expected values</p>
             </motion.div>
 
             <div className="rounded-xl bg-blue-950/20 border border-blue-500/15 p-3 mb-5">
                 <p className="text-[11px] text-blue-400/80">
                     <Info className="w-3 h-3 inline mr-1 relative -top-px" />
-                    Enter the molecular weight and purity % from your supplier's COA (Certificate of Analysis) to verify authenticity.
+                    Enter the molecular weight and purity % from your supplier&apos;s COA (Certificate of Analysis) to verify authenticity.
                 </p>
             </div>
 
@@ -127,7 +136,7 @@ export default function CoacAnalyzerPage() {
                     <div className="grid grid-cols-2 gap-3 text-xs">
                         <div><span className="text-zinc-500">Avg. MW:</span> <span className="text-zinc-200 font-semibold ml-1">{molData.mw_avg.toLocaleString()} Da</span></div>
                         <div><span className="text-zinc-500">Formula:</span> <span className="text-zinc-200 font-mono ml-1 text-[10px]">{molData.formula}</span></div>
-                        <div><span className="text-zinc-500">Min. Purity:</span> <span className="text-emerald-400 font-semibold ml-1">Ã¢â°Â¥{molData.acceptable_purity}%</span></div>
+                        <div><span className="text-zinc-500">Min. Purity:</span> <span className="text-emerald-400 font-semibold ml-1">≥{molData.acceptable_purity}%</span></div>
                         {molData.sequence && <div><span className="text-zinc-500">Sequence:</span> <span className="text-zinc-400 font-mono ml-1 text-[10px]">{molData.sequence}</span></div>}
                     </div>
                 </motion.div>
@@ -169,9 +178,9 @@ export default function CoacAnalyzerPage() {
                                 {result === "fail" && <ShieldAlert className="w-7 h-7 text-red-400" />}
                                 <div>
                                     <p className={`font-bold text-base ${result === "pass" ? "text-emerald-300" : result === "warning" ? "text-amber-300" : "text-red-300"}`}>
-                                        {result === "pass" ? "Ã¢Åâ¦ COA Passes Verification" :
-                                            result === "warning" ? "Ã¢Å¡Â Ã¯Â¸Â Minor Deviation Detected" :
-                                                "🚫 COA Fails Verification   Do Not Use"}
+                                        {result === "pass" ? "✅ COA Passes Verification" :
+                                            result === "warning" ? "⚠️ Minor Deviation Detected" :
+                                                "🚫 COA Fails Verification — Do Not Use"}
                                     </p>
                                     <p className="text-xs text-zinc-400 mt-0.5">
                                         {result === "pass" ? "Values are within acceptable ranges for premium-grade peptides." :
@@ -181,7 +190,6 @@ export default function CoacAnalyzerPage() {
                                 </div>
                             </div>
 
-                            {/* Breakdown */}
                             <div className="space-y-2.5 text-xs">
                                 <div className={`flex justify-between items-center p-2.5 rounded-lg ${Math.abs(parseFloat(reportedMW) - molData.mw_avg) / molData.mw_avg * 100 <= 1 ? "bg-emerald-900/30" : "bg-red-900/30"}`}>
                                     <span className="text-zinc-300">Molecular Weight</span>
@@ -189,25 +197,24 @@ export default function CoacAnalyzerPage() {
                                         <span className={`font-bold ${Math.abs(parseFloat(reportedMW) - molData.mw_avg) / molData.mw_avg * 100 <= 1 ? "text-emerald-400" : "text-red-400"}`}>
                                             {parseFloat(reportedMW).toFixed(2)} Da
                                         </span>
-                                        {mwDeviation !== null && <span className="text-zinc-500 ml-2">(Ãâ {mwDeviation.toFixed(2)} Da)</span>}
+                                        {mwDeviation !== null && <span className="text-zinc-500 ml-2">(Δ {mwDeviation.toFixed(2)} Da)</span>}
                                     </div>
                                 </div>
                                 <div className={`flex justify-between items-center p-2.5 rounded-lg ${parseFloat(reportedPurity) >= molData.acceptable_purity ? "bg-emerald-900/30" : "bg-red-900/30"}`}>
                                     <span className="text-zinc-300">Purity</span>
                                     <span className={`font-bold ${parseFloat(reportedPurity) >= molData.acceptable_purity ? "text-emerald-400" : "text-red-400"}`}>
-                                        {parseFloat(reportedPurity).toFixed(1)}% {parseFloat(reportedPurity) >= molData.acceptable_purity ? "Ã¢Åâ" : `(min ${molData.acceptable_purity}%)`}
+                                        {parseFloat(reportedPurity).toFixed(1)}% {parseFloat(reportedPurity) >= molData.acceptable_purity ? "✅" : `(min ${molData.acceptable_purity}%)`}
                                     </span>
                                 </div>
                             </div>
 
-                            {/* Red Flags */}
                             {result !== "pass" && (
                                 <div className="mt-4 pt-4 border-t border-zinc-800/50">
                                     <p className="text-xs font-semibold text-zinc-400 mb-2">Common red flags for {peptide?.name}:</p>
                                     <ul className="space-y-1">
                                         {molData.coa_red_flags.map(flag => (
                                             <li key={flag} className="text-[11px] text-red-400/80 flex items-center gap-1.5">
-                                                <span className="text-red-500">Ã¢â¬Â¢</span> {flag}
+                                                <span className="text-red-500">•</span> {flag}
                                             </li>
                                         ))}
                                     </ul>
@@ -217,6 +224,14 @@ export default function CoacAnalyzerPage() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Conversion block — shown after analysis is run */}
+            {analyzed && (
+                <ToolPageConversionBlock
+                    surface="tool_coa"
+                    className="mt-4"
+                />
+            )}
         </div>
     );
 }

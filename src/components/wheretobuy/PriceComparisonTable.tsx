@@ -1,6 +1,8 @@
 import { getVendorPricing } from "@/data/vendor-pricing";
 import { VendorOutboundLink } from "@/app/vendors/vendor-outbound-link";
 import { ArrowRight, AlertTriangle } from "lucide-react";
+import { PromoCodeDisplay } from "@/components/promos/PromoCodeDisplay";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 interface PriceComparisonTableProps {
   peptideSlug: string;
@@ -34,6 +36,16 @@ export function PriceComparisonTable({ peptideSlug, peptideName }: PriceComparis
 
   return (
     <div className="vct-wrapper">
+      {/* Featured promo code — above the table on all viewports */}
+      {PRIMARY_PROMO.isActive && (
+        <PromoCodeDisplay
+          promo={PRIMARY_PROMO}
+          surface="library_buy_block"
+          variant="full"
+          className="mb-5"
+        />
+      )}
+
       <div className="vct-label">§ Price Comparison ({peptideName})</div>
       <div className="vct-scroll-hint" aria-hidden="true">← Scroll to compare →</div>
 

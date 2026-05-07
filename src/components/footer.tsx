@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { ShieldAlert, BookOpen, Beaker, HelpCircle, ArrowRight, GraduationCap, Store, FlaskConical } from 'lucide-react';
+import { ShieldAlert, BookOpen, Beaker, HelpCircle, ArrowRight, GraduationCap, Store, FlaskConical, Tag } from 'lucide-react';
 import { getAllPosts } from '@/data/blog';
+import { PromoCodeDisplay } from '@/components/promos/PromoCodeDisplay';
+import { PRIMARY_PROMO } from '@/lib/promos/config';
 
 export function Footer() {
   const recentPosts = getAllPosts().slice(0, 3);
@@ -18,9 +20,29 @@ export function Footer() {
               <p className="text-xs text-amber-400/70 leading-relaxed">
                 All information on PeptiDex is for educational and research purposes only. None of the compounds discussed are FDA-approved for human consumption unless explicitly noted (e.g., Semaglutide under prescription). Always consult a qualified medical professional before considering any peptide protocol. The vendors listed operate as raw chemical and laboratory supply companies. Their products are intended solely for authorized laboratory, educational, and research purposes. PeptiDex does not sell, distribute, or endorse any compound for human or animal use.
               </p>
+              {/* Affiliate disclosure — immediately below research disclaimer */}
+              <p className="text-[10px] text-amber-400/40 leading-relaxed mt-2 border-t border-amber-500/10 pt-2">
+                PeptiDex participates in affiliate programs. We may earn a commission on verified vendor purchases at no extra cost to you.{" "}
+                <Link href="/about/methodology" className="underline hover:text-amber-400/70">See our methodology.</Link>
+              </p>
             </div>
           </div>
         </div>
+
+        {/* Reader Discount — persistent promo reminder */}
+        {PRIMARY_PROMO.isActive && (
+          <div className="mb-8 flex items-center gap-3 px-4 py-3 rounded-xl border border-amber-500/15 bg-amber-950/10">
+            <Tag className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" aria-hidden="true" />
+            <span className="text-xs text-zinc-400">
+              Reader discount:{" "}
+              <PromoCodeDisplay
+                promo={PRIMARY_PROMO}
+                surface="footer_reminder"
+                variant="inline"
+              />
+            </span>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           

@@ -13,6 +13,7 @@ import type { CalculatorCardData } from "@/components/share-card/card-templates"
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { trackOutboundClick } from "@/lib/ga4-events";
 import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/seo/schema";
+import { ToolPageConversionBlock } from "@/components/promos/ToolPageConversionBlock";
 import {
     SYRINGE_PROFILES,
     getSyringeProfile,
@@ -543,6 +544,15 @@ export default function CalculatorPage() {
                     )}
 
                 </motion.div>
+            )}
+
+            {/* Conversion block — appears after result is computed */}
+            {concentration !== null && dispenseMl !== null && (
+              <ToolPageConversionBlock
+                surface="tool_calculator"
+                peptide={peptide?.slug}
+                className="mb-6"
+              />
             )}
 
             {/* Share My Results */}
