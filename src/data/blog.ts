@@ -15,6 +15,9 @@ export interface BlogPost {
   image: string | null;    // path to featured image or null
   imageAlt?: string;       // Descriptive alt text with primary keyword
   tags: string[];          // lowercase keyword tags
+  medicallyReviewedBy?: string;  // reviewer slug from src/content/authors/
+  factCheckedBy?: string;        // fact-checker slug
+  reviewedDate?: string;         // ISO date when last clinically reviewed
 }
 
 export type BlogCategory =

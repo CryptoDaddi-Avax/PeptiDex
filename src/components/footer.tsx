@@ -78,12 +78,14 @@ export function Footer() {
 
         </div>
 
-        <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-zinc-600">
+        <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-[11px] text-zinc-600">
           <p>&copy; {new Date().getFullYear()} PeptiDex. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <Link href="/about" className="hover:text-zinc-400 transition-colors">About Us</Link>
+            <Link href="/team" className="hover:text-zinc-400 transition-colors">Team &amp; Reviewers</Link>
+            <Link href="/editorial-process" className="hover:text-zinc-400 transition-colors">Editorial Process</Link>
+            <Link href="/corrections" className="hover:text-zinc-400 transition-colors">Corrections</Link>
             <Link href="/about/methodology" className="hover:text-zinc-400 transition-colors">Methodology</Link>
-            <Link href="/about/editorial-policy" className="hover:text-zinc-400 transition-colors">Editorial Policy</Link>
             <Link href="/disclaimer" className="hover:text-zinc-400 transition-colors">Medical Disclaimer</Link>
             <Link href="/legal" className="hover:text-zinc-400 transition-colors">Privacy &amp; Terms</Link>
           </div>

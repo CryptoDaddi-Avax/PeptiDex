@@ -1,0 +1,14 @@
+{
+  "$schema": "Append entries chronologically. The page sorts newest first.",
+  "entries": [
+    {
+      "id": "2026-05-04-launch",
+      "date": "2026-05-04",
+      "page": "/editorial-process",
+      "pageTitle": "Editorial Process",
+      "type": "log-opened",
+      "summary": "Public corrections log opened. Future corrections, retractions, and disclosure updates will be recorded here.",
+      "loggedBy": "peptidex-research"
+    }
+  ]
+}

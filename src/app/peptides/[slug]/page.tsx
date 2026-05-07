@@ -10,13 +10,15 @@ import {
   DollarSign, Activity, FlaskConical, Syringe, AlertTriangle, ArrowRight,
   Calendar, GitCompare, HelpCircle, ExternalLink, Clock, FileText, CheckCircle2
 } from 'lucide-react';
-import { SHORT_DISCLAIMER } from '@/data/constants';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import { RelatedPeptides } from '@/components/related-peptides';
 import { ShareBar } from '@/components/share-bar';
 import { COABadge } from '@/components/coa-badge-modal';
 import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
+import { Byline } from '@/components/byline';
+import { MedicalDisclaimer } from '@/components/medical-disclaimer';
+import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -89,8 +91,16 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
     s.peptides.some((sp) => sp.name.toLowerCase().includes(peptide.name.toLowerCase()))
   );
 
-  const DATE_MOD = '2026-04-03';
+  const DATE_MOD = peptide.lastReviewed ?? '2026-04-03';
   const DATE_PUB = '2026-03-31';
+
+  // ─── E-E-A-T: AUTHOR & REVIEWER RESOLUTION ──────────────────
+  const authorSlug = peptide.author ?? getAuthorSlug('PeptiDex Editorial');
+  const reviewerSlug = peptide.medicallyReviewedBy;
+  const factCheckerSlug = peptide.factCheckedBy;
+  const authorRecord = getAuthorBySlug(authorSlug);
+  const reviewerRecord = reviewerSlug ? getAuthorBySlug(reviewerSlug) : undefined;
+  const factCheckerRecord = factCheckerSlug ? getAuthorBySlug(factCheckerSlug) : undefined;
 
   // ─── JSON-LD SCHEMAS ────────────────────────────────────────
 
@@ -113,10 +123,31 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
     name: `${peptide.name}: Evidence-Based Research Profile`,
     description: `Comprehensive research profile for ${peptide.name} covering mechanism of action, published studies, safety data, and clinical context.`,
     url: `https://peptidex.app/peptides/${slug}`,
-    lastReviewed: DATE_MOD,
-    reviewedBy: { name: 'PeptiDex Medical Reviewer' },
-    about: drugSchema
-  });
+    ...buildMedicalWebPageSchema({
+      name: `${peptide.name}: Evidence-Based Research Profile`,
+      description: `Comprehensive research profile for ${peptide.name} covering mechanism of action, published studies, safety data, and clinical context.`,
+      url: `https://peptidex.app/peptides/${slug}`,
+      about: drugSchema
+    }),
+    image: 'https://peptidex.app/og-image.png',
+    author: authorRecord
+      ? getPersonSchema(authorRecord)
+      : {
+          '@type': 'Organization',
+          name: 'PeptiDex Editorial Team',
+          url: 'https://peptidex.app/team',
+        },
+    ...(reviewerRecord ? { reviewedBy: getPersonSchema(reviewerRecord) } : {}),
+    ...(peptide.reviewedDate ? { lastReviewed: peptide.reviewedDate } : {}),
+    publisher: {
+      '@type': 'Organization',
+      name: 'PeptiDex',
+      logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' },
+    },
+    datePublished: DATE_PUB,
+    dateModified: DATE_MOD,
+    keywords: `${peptide.name}, ${peptide.aliases?.join(', ') || ''}, ${peptide.category}, peptide research`,
+  };
 
   // Build dynamic FAQ entries
   const faqItems = [
@@ -173,16 +204,7 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
       <AutoLink>
       {/* ═══════ SECTION 1: HERO / HEADER ═══════ */}
       <header className="space-y-6">
-        {/* Disclaimer Banner */}
-        <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-3">
-          <div className="flex items-start gap-2">
-            <ShieldAlert className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-amber-400/80 leading-relaxed font-medium">
-              <strong>EDUCATIONAL USE ONLY:</strong> {SHORT_DISCLAIMER}
-              {' '}<Link href="/disclaimer" className="underline hover:text-amber-300 transition-colors">Read full disclaimer.</Link>
-            </p>
-          </div>
-        </div>
+        <MedicalDisclaimer variant="callout" className="my-0" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Title & Summary */}
@@ -209,6 +231,14 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
                 <span>{peptide.key_studies?.length || 0} cited studies</span>
               </div>
             </div>
+
+            <Byline
+              author={authorRecord?.slug}
+              medicallyReviewedBy={reviewerRecord?.slug}
+              factCheckedBy={factCheckerRecord?.slug}
+              reviewedDate={peptide.reviewedDate}
+              publishedDate={DATE_PUB}
+            />
           </div>
 
           {/* Quick Facts Card */}
