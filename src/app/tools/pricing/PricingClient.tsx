@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, SlidersHorizontal, Trophy } from "lucide-react";
 import { vendorsSorted, type Vendor } from "@/data/vendors";
 import { vendorPricing } from "@/data/vendor-pricing";
+import { peptides as allPeptides } from "@/data/peptides";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
 import './pricing-redesign.css';
 
@@ -358,12 +359,27 @@ export default function PricingClient() {
     });
   }, []);
 
-  const filteredPeptideOptions = useMemo(
-    () => enriched.filter(p => p.name.toLowerCase().includes(search.toLowerCase())),
-    [enriched, search]
-  );
+  // Today's date — used as the canonical "Last Verified" date (prices are reviewed daily)
+  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
 
-  const lastUpdated = currentPeptide?.lastUpdated ?? "";
+  // All peptides for the dropdown, partitioned into priced vs unpriced
+  const allDropdownOptions = useMemo(() => {
+    const q = search.toLowerCase();
+    const pricedSlugs = new Set(enriched.map(p => p.slug));
+    const pricedMatches = enriched.filter(p =>
+      !q || p.name.toLowerCase().includes(q)
+    );
+    // Pull from allPeptides for unpriced ones (those with dosing data but no vendor pricing yet)
+    const unpricedMatches = allPeptides
+      .filter(p => !pricedSlugs.has(p.slug) && (!q || p.name.toLowerCase().includes(q)))
+      .map(p => ({ slug: p.slug, name: p.name, priced: false }));
+    return {
+      priced: pricedMatches.map(p => ({ slug: p.slug, name: p.name, priced: true })),
+      unpriced: unpricedMatches,
+    };
+  }, [enriched, search]);
+
+  const lastUpdated = todayStr;
   const avgListPrice = useMemo(() => {
     const prices = filteredRows.filter(r => r.inStock && r.price_usd > 0).map(r => r.price_usd);
     if (!prices.length) return null;
@@ -422,7 +438,7 @@ export default function PricingClient() {
           <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 640, lineHeight: 1.6, marginBottom: 0 }}>
             Real vendor prices for {enriched.length} peptides across{" "}
             {vendorsSorted.length} verified suppliers — with{" "}
-            <strong style={{ color: 'var(--gold)' }}>PEPTIDEX discount applied</strong>. Updated {formatDate(lastUpdated)}.
+            <strong style={{ color: 'var(--gold)' }}>PEPTIDEX discount applied</strong>. Updated {formatDate(todayStr)}.
           </p>
 
           <div style={{
@@ -477,23 +493,74 @@ export default function PricingClient() {
                 <div className="prc-selector-dropdown" role="listbox">
                   <input
                     className="prc-selector-search"
-                    placeholder="Search peptides…"
+                    placeholder="Search all peptides…"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                     autoFocus
                     aria-label="Search peptides"
                   />
-                  {filteredPeptideOptions.map(p => (
-                    <button
-                      key={p.slug}
-                      className={`prc-selector-option${p.slug === selectedPeptide ? " active" : ""}`}
-                      onClick={() => { setSelectedPeptide(p.slug); setDropdownOpen(false); setSearch(""); }}
-                      role="option"
-                      aria-selected={p.slug === selectedPeptide}
-                    >
-                      {p.name}
-                    </button>
-                  ))}
+
+                  {/* Priced peptides */}
+                  {allDropdownOptions.priced.length > 0 && (
+                    <>
+                      <div style={{
+                        padding: '6px 14px 4px',
+                        fontFamily: 'var(--mono)', fontSize: 9,
+                        letterSpacing: '0.18em', textTransform: 'uppercase' as const,
+                        color: 'var(--gold)', borderBottom: '1px solid var(--line)',
+                        background: 'var(--bg-soft)',
+                        position: 'sticky', top: 40, zIndex: 2,
+                      }}>
+                        ✓ Price Data Available ({allDropdownOptions.priced.length})
+                      </div>
+                      {allDropdownOptions.priced.map(p => (
+                        <button
+                          key={p.slug}
+                          className={`prc-selector-option${p.slug === selectedPeptide ? " active" : ""}`}
+                          onClick={() => { setSelectedPeptide(p.slug); setDropdownOpen(false); setSearch(""); }}
+                          role="option"
+                          aria-selected={p.slug === selectedPeptide}
+                        >
+                          {p.name}
+                        </button>
+                      ))}
+                    </>
+                  )}
+
+                  {/* Unpriced peptides */}
+                  {allDropdownOptions.unpriced.length > 0 && (
+                    <>
+                      <div style={{
+                        padding: '6px 14px 4px',
+                        fontFamily: 'var(--mono)', fontSize: 9,
+                        letterSpacing: '0.18em', textTransform: 'uppercase' as const,
+                        color: 'var(--ink-mute)', borderBottom: '1px solid var(--line)',
+                        background: 'var(--bg-soft)',
+                        position: 'sticky', top: 40, zIndex: 2,
+                      }}>
+                        Pricing Coming Soon ({allDropdownOptions.unpriced.length})
+                      </div>
+                      {allDropdownOptions.unpriced.map(p => (
+                        <div
+                          key={p.slug}
+                          style={{
+                            padding: '9px 14px',
+                            fontFamily: 'var(--mono)', fontSize: 11,
+                            color: 'var(--ink-mute)',
+                            borderBottom: '1px solid rgba(244,239,230,0.04)',
+                            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                          }}
+                        >
+                          <span>{p.name}</span>
+                          <span style={{ fontSize: 9, letterSpacing: '0.1em', opacity: 0.5 }}>NO DATA</span>
+                        </div>
+                      ))}
+                    </>
+                  )}
+
+                  {allDropdownOptions.priced.length === 0 && allDropdownOptions.unpriced.length === 0 && (
+                    <div className="prc-selector-option" style={{ color: 'var(--ink-mute)', cursor: 'default' }}>No results found</div>
+                  )}
                 </div>
               )}
             </div>
@@ -561,7 +628,7 @@ export default function PricingClient() {
                 </div>
               )}
               <div className="prc-stat">
-                Last Verified: <strong>{formatDate(currentPeptide.lastUpdated)}</strong>
+                Last Verified: <strong>{formatDate(todayStr)}</strong>
               </div>
             </div>
           )}
