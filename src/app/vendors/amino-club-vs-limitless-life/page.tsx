@@ -11,6 +11,11 @@ import { AutoLink } from '@/components/auto-link';
 import {
   Calendar, User, ArrowRight, Check, BarChart3, Trophy
 } from 'lucide-react';
+import { vendors } from '@/data/vendors';
+
+// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+const _aminoClub  = vendors.find((v) => v.slug === 'amino-club')!;
+const _limitless  = vendors.find((v) => v.slug === 'limitless-life')!;
 
 const POST_TITLE = 'Amino Club vs Limitless Life Nootropics: 2026 Vendor Comparison';
 const POST_DESC = 'An independent side-by-side comparison of Amino Club and Limitless Life Nootropics. We compare their third-party testing, product catalogs, pricing, and shipping reliability.';
@@ -200,7 +205,7 @@ export default function AminoClubVsLimitlessLife() {
           <div className="section-label">§ 2026 Pricing Data</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Pricing comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Both vendors offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 20% off, Limitless Life: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 15% off). The following comparison reflects standard pricing <em>before</em> the discount is applied.
+            Both vendors offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for {_aminoClub.discountPercent}% off, Limitless Life: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for {_limitless.discountPercent}% off). The following comparison reflects standard pricing <em>before</em> the discount is applied.
           </p>
           <div className="overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/50">
             <table className="w-full text-sm">
@@ -264,7 +269,7 @@ export default function AminoClubVsLimitlessLife() {
             <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-6 text-center flex flex-col items-center">
               <div className="text-xs font-bold text-emerald-400 font-mono mb-3">§ Best For Core Peptides & Value</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Amino Club</h3>
-              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX (15% Off)</span>
+              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX ({_aminoClub.discountPercent}% Off)</span>
               <AffiliateLink
                 href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
                 vendor="amino_club"
@@ -278,7 +283,7 @@ export default function AminoClubVsLimitlessLife() {
             <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-6 text-center flex flex-col items-center">
               <div className="text-xs font-bold text-amber-400 font-mono mb-3">§ Best For Niche Nootropics & Variety</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Limitless Life</h3>
-              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX (15% Off)</span>
+              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX ({_limitless.discountPercent}% Off)</span>
               <AffiliateLink
                 href="https://limitlesslifenootropics.com/PEPTIDEX/"
                 vendor="limitless_life"

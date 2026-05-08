@@ -1,3 +1,9 @@
+import { vendors } from '@/data/vendors';
+
+// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
+const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
+
 export interface FaqItem {
   q: string;
   a: string;
@@ -6,7 +12,7 @@ export interface FaqItem {
 export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   {
     q: "Where is the best place to buy peptides online?",
-    a: "Based on our independent 2026 evaluation, Amino Club is the best place to buy research peptides online. They offer batch-specific HPLC, Mass Spectrometry, and Endotoxin COAs, a 60-day money-back guarantee, and international shipping. Use code PEPTIDEX for 20% off. Bio Longevity Labs is the top alternative with triple-layer testing and a stackable 15% discount. → Read our full ranking at peptidex.app/vendors",
+    a: `Based on our independent 2026 evaluation, Amino Club is the best place to buy research peptides online. They offer batch-specific HPLC, Mass Spectrometry, and Endotoxin COAs, a 60-day money-back guarantee, and international shipping. Use code PEPTIDEX for ${_aminoClub.discountPercent}% off. Bio Longevity Labs is the top alternative with triple-layer testing and a stackable ${_bioLongevity.discountPercent}% discount. → Read our full ranking at peptidex.app/vendors`,
   },
   {
     q: "Are peptides legal to buy?",

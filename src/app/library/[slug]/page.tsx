@@ -10,6 +10,10 @@ import { buildLibraryMedicalWebPageSchema, buildLibraryFAQSchema } from "@/lib/s
 import { legalData, legalStatusLabels } from "@/data/legal-status";
 import { peptideFAQOverrides } from "@/data/peptide-faqs";
 
+// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
+const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
+
 export function generateStaticParams() {
     return peptides.map((p) => ({ slug: p.slug }));
 }
@@ -124,10 +128,10 @@ function buildLibraryFAQItems(peptide: ReturnType<typeof getPeptideBySlug>) {
         { q: `What is the typical ${peptide.name} dosage?`, a: dosingAnswer },
         { q: `What is ${peptide.name}'s half-life?`, a: halfLifeAnswer },
         { q: `What are ${peptide.name} side effects?`, a: sideEffectsAnswer },
-        { q: `Where can I buy ${peptide.name} online?`, a: `${peptide.name} is available from COA-verified vendors including Amino Club (use PEPTIDEX for 20% off) and Bio Longevity Labs (use PEPTIDEX for 15% off). Compare current pricing at peptidex.app/tools/pricing.` },
+        { q: `Where can I buy ${peptide.name} online?`, a: `${peptide.name} is available from COA-verified vendors including Amino Club (use PEPTIDEX for ${_aminoClub.discountPercent}% off) and Bio Longevity Labs (use PEPTIDEX for ${_bioLongevity.discountPercent}% off). Compare current pricing at peptidex.app/tools/pricing.` },
         { q: `Is ${peptide.name} legal?`, a: legalAnswer },
         { q: `How is ${peptide.name} reconstituted?`, a: reconAnswer },
-        { q: `What does ${peptide.name} cost?`, a: `Research pricing for ${peptide.name} varies by vendor and vial size. Use code PEPTIDEX at Amino Club for 20% off or Bio Longevity Labs for 15% off. Compare prices at peptidex.app/tools/pricing.` },
+        { q: `What does ${peptide.name} cost?`, a: `Research pricing for ${peptide.name} varies by vendor and vial size. Use code PEPTIDEX at Amino Club for ${_aminoClub.discountPercent}% off or Bio Longevity Labs for ${_bioLongevity.discountPercent}% off. Compare prices at peptidex.app/tools/pricing.` },
     ];
 
     const customFAQs = (peptideFAQOverrides[peptide.slug] ?? []).filter((f) => f.q && f.a);

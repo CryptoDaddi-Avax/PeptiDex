@@ -11,6 +11,11 @@ import { AffiliateLink } from '@/components/affiliate-link';
 import { AutoLink } from '@/components/auto-link';
 import { peptides } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
+import { vendors } from '@/data/vendors';
+
+// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+const _aminoClub = vendors.find((v) => v.slug === 'amino-club')!;
+const AC_PCT = _aminoClub.discountPercent ?? 20; // fallback for static string contexts
 import {
   Calendar, User, ArrowRight, ArrowLeft,
   FlaskConical, CheckCircle2, Shield, FileText, ArrowUpRight, ShieldAlert
@@ -35,27 +40,27 @@ export function generateMetadata({ params }: { params: { peptide: string } }): M
   switch (slug) {
     case 'bpc-157':
       title = 'Buy BPC-157 Online: Amino Club Pricing & COA Verification (2026)';
-      description = "Looking to buy BPC-157? We verified Amino Club's 10mg vials for >99% purity via independent HPLC testing. Use code PEPTIDEX to save 15% on your order.";
+      description = `Looking to buy BPC-157? We verified Amino Club's 10mg vials for >99% purity via independent HPLC testing. Use code PEPTIDEX to save ${AC_PCT}% on your order.`;
       break;
     case 'tirzepatide':
       title = 'Buy Tirzepatide Online: Amino Club Pricing & COA Verification (2026)';
-      description = "Where to buy Tirzepatide online: Amino Club provides batch-specific mass spectrometry testing for their Tirzepatide vials. Save 15% with discount code PEPTIDEX.";
+      description = `Where to buy Tirzepatide online: Amino Club provides batch-specific mass spectrometry testing for their Tirzepatide vials. Save ${AC_PCT}% with discount code PEPTIDEX.`;
       break;
     case 'retatrutide':
       title = 'Buy Retatrutide: Amino Club Pricing & Independent Testing (2026)';
-      description = "Sourcing Retatrutide for research? Amino Club offers verifiable 99%+ pure Retatrutide shipped from the US. Apply promo code PEPTIDEX at checkout for 20% off.";
+      description = `Sourcing Retatrutide for research? Amino Club offers verifiable 99%+ pure Retatrutide shipped from the US. Apply promo code PEPTIDEX at checkout for ${AC_PCT}% off.`;
       break;
     case 'tesamorelin':
       title = 'Buy Tesamorelin: Amino Club Pricing & COA Verification (2026)';
-      description = "Buy highly purified Tesamorelin online. We audit Amino Club's third-party HPLC testing standards for this GHRH analog. Use code PEPTIDEX to save 15%.";
+      description = `Buy highly purified Tesamorelin online. We audit Amino Club's third-party HPLC testing standards for this GHRH analog. Use code PEPTIDEX to save ${AC_PCT}%.`;
       break;
     case 'semaglutide':
       title = 'Buy Semaglutide Online: Amino Club Pricing & COA Verification (2026)';
-      description = "Looking for research-grade Semaglutide? Amino Club provides batch-tested vials with US-based shipping. Get 20% off your entire order with code PEPTIDEX.";
+      description = `Looking for research-grade Semaglutide? Amino Club provides batch-tested vials with US-based shipping. Get ${AC_PCT}% off your entire order with code PEPTIDEX.`;
       break;
     default:
       title = `Buy ${name}: Amino Club Pricing & COA Verification`;
-      description = `Independent verification of Amino Club's ${name}. We review their third-party testing and pricing. Use code PEPTIDEX to save 15%.`;
+      description = `Independent verification of Amino Club's ${name}. We review their third-party testing and pricing. Use code PEPTIDEX to save ${AC_PCT}%.`;
   }
 
   return {
@@ -222,7 +227,7 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
                 Buy {name} <ArrowRight className="w-5 h-5" />
               </AffiliateLink>
               <p className="mt-3 text-sm text-zinc-300 font-medium bg-zinc-950 border border-zinc-800 px-4 py-1.5 rounded-lg w-full md:w-auto text-center">
-                Use code <strong className="text-amber-400 font-mono tracking-wider ml-1">PEPTIDEX</strong> for 15% off
+                Use code <strong className="text-amber-400 font-mono tracking-wider ml-1">PEPTIDEX</strong> for {AC_PCT}% off
               </p>
             </div>
           </div>
@@ -334,7 +339,7 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
           <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-8 text-center">
             <div className="text-xs font-bold text-amber-400 font-mono mb-4">§ Exclusive Code</div>
             <h3 className="text-2xl font-bold text-zinc-100 mb-4">Support Your Research</h3>
-            <p className="text-zinc-300 mb-6">Purchase verified {name} and use our exclusive discount code to save 15% on your entire Amino Club order.</p>
+            <p className="text-zinc-300 mb-6">Purchase verified {name} and use our exclusive discount code to save {AC_PCT}% on your entire Amino Club order.</p>
             <div className="inline-block bg-zinc-950 border border-zinc-800 rounded-lg px-6 py-3 mb-6">
               <span className="text-sm text-zinc-400 uppercase tracking-widest font-semibold mr-3">Code:</span>
               <span className="text-xl font-mono font-bold text-amber-400">PEPTIDEX</span>

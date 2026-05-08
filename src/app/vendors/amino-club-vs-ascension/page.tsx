@@ -11,6 +11,11 @@ import { AutoLink } from '@/components/auto-link';
 import {
   Calendar, User, ArrowRight, Check, BarChart3, Trophy
 } from 'lucide-react';
+import { vendors } from '@/data/vendors';
+
+// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+const _aminoClub = vendors.find((v) => v.slug === 'amino-club')!;
+const _ascension = vendors.find((v) => v.slug === 'ascension-peptides')!;
 
 const POST_TITLE = 'Amino Club vs Ascension Peptides: 2026 Vendor Comparison';
 const POST_DESC = 'An independent side-by-side comparison of Amino Club and Ascension Peptides. We analyze testing transparency, pricing, catalog options, and shipping speeds.';
@@ -199,7 +204,7 @@ export default function AminoClubVsAscension() {
           <div className="section-label">§ 2026 Pricing Data</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Pricing comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Pricing between these two vendors is highly competitive. Both offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for 20% off, Ascension: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-indigo-300">PeptiDex</code> for 15% off).
+            Pricing between these two vendors is highly competitive. Both offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for {_aminoClub.discountPercent}% off, Ascension: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-indigo-300">PeptiDex</code> for {_ascension.discountPercent}% off).
           </p>
           <div className="overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/50">
             <table className="w-full text-sm">
@@ -263,7 +268,7 @@ export default function AminoClubVsAscension() {
             <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-6 text-center flex flex-col items-center">
               <div className="text-xs font-bold text-emerald-400 font-mono mb-3">§ Best For Transparency & Pricing</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Amino Club</h3>
-              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX (15% Off)</span>
+              <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX ({_aminoClub.discountPercent}% Off)</span>
               <AffiliateLink
                 href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
                 vendor="amino_club"
@@ -277,7 +282,7 @@ export default function AminoClubVsAscension() {
             <div className="rounded-xl border border-indigo-500/20 bg-indigo-950/15 p-6 text-center flex flex-col items-center">
               <div className="text-xs font-bold text-indigo-400 font-mono mb-3">§ Best For Pre-Mixed Blends</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Ascension</h3>
-              <span className="text-xs font-mono font-bold text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded mb-4">Code: PeptiDex (15% Off)</span>
+              <span className="text-xs font-mono font-bold text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded mb-4">Code: PeptiDex ({_ascension.discountPercent}% Off)</span>
               <AffiliateLink
                 href="https://ascensionpeptides.com/ref/PeptiDex/"
                 vendor="ascension"

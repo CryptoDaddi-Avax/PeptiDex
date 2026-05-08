@@ -6,7 +6,17 @@
  *
  * Keyed by Vendor.slug (string).
  * Created: 2026-05-06 — SEO listicle rebuild for "best place to buy peptides 2026"
+ *
+ * DISCOUNT PERCENTAGES: All percentage values are derived from `vendors.ts`
+ * (the single source of truth) via the `getDiscountPct` helper below.
+ * Do NOT hardcode percentages in this file.
  */
+import { vendors } from './vendors';
+
+/** Returns the discountPercent for a given vendor slug, e.g. 20 or 15. */
+function getDiscountPct(slug: string): number {
+  return vendors.find((v) => v.slug === slug)?.discountPercent ?? 0;
+}
 
 export interface VendorEditorial {
   /** 1-sentence differentiator used in H2 subtitle and comparison table */
@@ -31,14 +41,14 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Batch-specific HPLC + Mass Spec + Endotoxin COA on every order",
       "Industry-leading 60-day money-back guarantee",
       "Ships internationally (rare among research peptide vendors)",
-      "20% discount with code PEPTIDEX",
+      `${getDiscountPct('amino-club')}% discount with code PEPTIDEX`,
       "Accepts Zelle in addition to crypto and credit card",
     ],
     cons: [
       "Catalog of 40+ compounds is smaller than some competitors",
       "Free shipping threshold ($100) requires a minimum order",
     ],
-    blurb: `Amino Club has held the top spot on PeptiDex's independent ranking since Q1 2026 — and it has earned it. Where most vendors stop at HPLC purity testing, Amino Club layers in Mass Spectrometry for molecular identity verification and Endotoxin screening for biological safety. Every batch gets its own dedicated Certificate of Analysis, not a generic batch-range document, so you can trace the exact lot you receive back to the raw test data.\n\nThe 60-day money-back guarantee is the longest in the industry and speaks to the company's confidence in its product quality. Most research peptide vendors cap returns at 30 days or offer none at all. That extra buffer matters when you're planning a multi-week protocol.\n\nFor researchers outside the United States, Amino Club is one of only two vendors in this index that ships internationally. Domestic orders typically arrive in 2–4 business days. Payment options are broader than most competitors: major credit cards, crypto, and Zelle are all accepted — no surprises at checkout.\n\nUse code PEPTIDEX for 20% off your first and every subsequent order. The discount does not stack with sitewide sales, but at 20% it rarely needs to.`,
+    blurb: `Amino Club has held the top spot on PeptiDex's independent ranking since Q1 2026 — and it has earned it. Where most vendors stop at HPLC purity testing, Amino Club layers in Mass Spectrometry for molecular identity verification and Endotoxin screening for biological safety. Every batch gets its own dedicated Certificate of Analysis, not a generic batch-range document, so you can trace the exact lot you receive back to the raw test data.\n\nThe 60-day money-back guarantee is the longest in the industry and speaks to the company's confidence in its product quality. Most research peptide vendors cap returns at 30 days or offer none at all. That extra buffer matters when you're planning a multi-week protocol.\n\nFor researchers outside the United States, Amino Club is one of only two vendors in this index that ships internationally. Domestic orders typically arrive in 2–4 business days. Payment options are broader than most competitors: major credit cards, crypto, and Zelle are all accepted — no surprises at checkout.\n\nUse code PEPTIDEX for ${getDiscountPct('amino-club')}% off your first and every subsequent order. The discount does not stack with sitewide sales, but at ${getDiscountPct('amino-club')}% it rarely needs to.`,
   },
 
   // ── #2 Bio Longevity Labs ───────────────────────────────────────────────────
@@ -46,7 +56,7 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
     shortPitch: "Triple-tested with HPLC, LC-MS, and Endotoxin screening — and the PEPTIDEX code stacks with active sales for up to 40% savings.",
     pros: [
       "Three-layer testing: HPLC + LC-MS molecular ID + Endotoxin screening",
-      "PEPTIDEX discount (15%) stacks with sitewide sales — up to 40%+ combined",
+      `PEPTIDEX discount (${getDiscountPct('bio-longevity-labs')}%) stacks with sitewide sales — up to 40%+ combined`,
       "Ships internationally",
       "Widest catalog in the injectable segment: 80+ compounds",
       "Batch-specific COA on every product",
@@ -55,7 +65,7 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Free shipping threshold ($150) is higher than most competitors",
       "30-day return window is good but shorter than Amino Club's 60-day MBG",
     ],
-    blurb: `Bio Longevity Labs earns its "Triple-Tested" badge through a rigorous three-stage analytical protocol that goes well beyond the industry standard. HPLC confirms purity percentage (≥99% on all products we've reviewed). LC-MS — Liquid Chromatography Mass Spectrometry — provides independent molecular identity confirmation, verifying that what's in the vial is chemically identical to the labeled peptide sequence. Endotoxin screening, the third layer, screens for bacterial lipopolysaccharides that can contaminate improperly synthesized batches.\n\nThe stackable discount structure is genuinely unusual. Most affiliate codes are either-or with sitewide promotions. Bio Longevity Labs explicitly allows both to run simultaneously, which means during a 25% sitewide sale plus the 15% PEPTIDEX code, the effective discount approaches 40% off. For researchers buying bulk, this compounds meaningfully.\n\nThe catalog of 80+ compounds is the largest injectable offering in this index. Whether you're researching obscure GH secretagogues or established peptides like BPC-157, TB-500, and Ipamorelin, the inventory is consistently deep. Shipping hits 2–5 business days domestically with international delivery available — a meaningful differentiator in the research peptide market.\n\nThe only meaningful trade-off is the $150 free-shipping threshold, which pushes you toward a larger initial order. That said, with the stackable discount, the per-unit value calculation often makes the minimum worthwhile.`,
+    blurb: `Bio Longevity Labs earns its "Triple-Tested" badge through a rigorous three-stage analytical protocol that goes well beyond the industry standard. HPLC confirms purity percentage (≥99% on all products we've reviewed). LC-MS — Liquid Chromatography Mass Spectrometry — provides independent molecular identity confirmation, verifying that what's in the vial is chemically identical to the labeled peptide sequence. Endotoxin screening, the third layer, screens for bacterial lipopolysaccharides that can contaminate improperly synthesized batches.\n\nThe stackable discount structure is genuinely unusual. Most affiliate codes are either-or with sitewide promotions. Bio Longevity Labs explicitly allows both to run simultaneously, which means during a 25% sitewide sale plus the ${getDiscountPct('bio-longevity-labs')}% PEPTIDEX code, the effective discount approaches 40% off. For researchers buying bulk, this compounds meaningfully.\n\nThe catalog of 80+ compounds is the largest injectable offering in this index. Whether you're researching obscure GH secretagogues or established peptides like BPC-157, TB-500, and Ipamorelin, the inventory is consistently deep. Shipping hits 2–5 business days domestically with international delivery available — a meaningful differentiator in the research peptide market.\n\nThe only meaningful trade-off is the $150 free-shipping threshold, which pushes you toward a larger initial order. That said, with the stackable discount, the per-unit value calculation often makes the minimum worthwhile.`,
   },
 
   // ── #3 Limitless Life ──────────────────────────────────────────────────────
@@ -65,22 +75,22 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Largest catalog in this index: 90+ compounds",
       "USA-manufactured — domestic synthesis, shorter supply chain",
       "HPLC + LC-MS + Endotoxin testing",
-      "15% discount with code PEPTIDEX",
+      `${getDiscountPct('limitless-life')}% discount with code PEPTIDEX`,
       "Free shipping on orders over $100",
     ],
     cons: [
       "Ships to USA only — no international delivery",
       "Silver verification tier (vs. gold for top two vendors)",
     ],
-    blurb: `Limitless Life Nootropics is a USA-based manufacturer — meaning synthesis, quality control, and fulfillment all happen domestically. For researchers prioritizing supply chain transparency and shorter cold-chain transit times, this is a meaningful structural advantage over vendors that import bulk peptides for repackaging.\n\nThe 90+ compound catalog is the broadest in this index. Peptides that routinely go out-of-stock elsewhere tend to stay available at Limitless Life. Testing follows a robust three-method protocol: HPLC purity analysis, LC-MS molecular identity verification, and Endotoxin screening — each order ships with a batch-specific COA.\n\nCode PEPTIDEX takes 15% off your order. With free shipping on orders above $100, you can reach effective total savings in the 15–20% range without much planning. Domestic delivery runs 3–5 business days, which is standard for US-only vendors.\n\nThe primary limitation is geography: Limitless Life ships exclusively within the United States. International researchers will need to look at Amino Club or Bio Longevity Labs. Additionally, the vendor carries a Silver verification tier on PeptiDex's independent dashboard — COA documentation is solid but does not yet include the full third-party audit trail that earns a Gold designation.`,
+    blurb: `Limitless Life Nootropics is a USA-based manufacturer — meaning synthesis, quality control, and fulfillment all happen domestically. For researchers prioritizing supply chain transparency and shorter cold-chain transit times, this is a meaningful structural advantage over vendors that import bulk peptides for repackaging.\n\nThe 90+ compound catalog is the broadest in this index. Peptides that routinely go out-of-stock elsewhere tend to stay available at Limitless Life. Testing follows a robust three-method protocol: HPLC purity analysis, LC-MS molecular identity verification, and Endotoxin screening — each order ships with a batch-specific COA.\n\nCode PEPTIDEX takes ${getDiscountPct('limitless-life')}% off your order. With free shipping on orders above $100, you can reach effective total savings in the 15–20% range without much planning. Domestic delivery runs 3–5 business days, which is standard for US-only vendors.\n\nThe primary limitation is geography: Limitless Life ships exclusively within the United States. International researchers will need to look at Amino Club or Bio Longevity Labs. Additionally, the vendor carries a Silver verification tier on PeptiDex's independent dashboard — COA documentation is solid but does not yet include the full third-party audit trail that earns a Gold designation.`,
   },
 
   // ── #4 Ascension Peptides ─────────────────────────────────────────────────
   "ascension-peptides": {
-    shortPitch: "Reliable COA-verified source with 60+ compounds and a straightforward 15% PEPTIDEX discount.",
+    shortPitch: `Reliable COA-verified source with 60+ compounds and a straightforward ${getDiscountPct('ascension-peptides')}% PEPTIDEX discount.`,
     pros: [
       "COA available for all products (HPLC + Mass Spec)",
-      "15% discount with code PEPTIDEX",
+      `${getDiscountPct('ascension-peptides')}% discount with code PEPTIDEX`,
       "Consistent inventory across 60+ compounds",
       "Sample COA publicly viewable before purchase",
       "30-day return policy",
@@ -90,7 +100,7 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Purity floor is 98%+ vs. 99%+ for top-ranked vendors",
       "Free shipping threshold ($150) is among the higher minimums",
     ],
-    blurb: `Ascension Peptides occupies a reliable middle-tier position in the research peptide market. HPLC and Mass Spectrometry documentation is provided for all products, and crucially, sample COAs are publicly accessible on their website before you commit to a purchase — a transparency practice that not all vendors follow.\n\nThe 60+ compound catalog covers the most-researched peptides including BPC-157, TB-500, CJC-1295 without DAC, Ipamorelin, GHK-Cu, and Semaglutide variants. Inventory depth is generally consistent, and order fulfillment for US customers runs 3–5 business days.\n\nUse code PEPTIDEX for 15% off your order. Free shipping kicks in at $150, which is on the higher end among the vendors in this index — factor that into your ordering math. The 30-day return policy is standard for the category.\n\nThe purity specification is 98%+ rather than the 99%+ standard achieved by the top three vendors. In practice, individual batch COAs often show higher values, but the contractual specification matters for reproducible research conditions. Silver verification tier on the PeptiDex dashboard reflects solid but not top-tier documentation depth.`,
+    blurb: `Ascension Peptides occupies a reliable middle-tier position in the research peptide market. HPLC and Mass Spectrometry documentation is provided for all products, and crucially, sample COAs are publicly accessible on their website before you commit to a purchase — a transparency practice that not all vendors follow.\n\nThe 60+ compound catalog covers the most-researched peptides including BPC-157, TB-500, CJC-1295 without DAC, Ipamorelin, GHK-Cu, and Semaglutide variants. Inventory depth is generally consistent, and order fulfillment for US customers runs 3–5 business days.\n\nUse code PEPTIDEX for ${getDiscountPct('ascension-peptides')}% off your order. Free shipping kicks in at $150, which is on the higher end among the vendors in this index — factor that into your ordering math. The 30-day return policy is standard for the category.\n\nThe purity specification is 98%+ rather than the 99%+ standard achieved by the top three vendors. In practice, individual batch COAs often show higher values, but the contractual specification matters for reproducible research conditions. Silver verification tier on the PeptiDex dashboard reflects solid but not top-tier documentation depth.`,
   },
 
   // ── #5 Pantheon Peptides ──────────────────────────────────────────────────

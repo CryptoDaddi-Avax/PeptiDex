@@ -327,7 +327,7 @@ export function PeptideDetailRedesign({
                   </div>
                   <h3 className="text-xl font-bold text-zinc-100 mb-2">Sourcing {peptide.name} from Amino Club</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed max-w-lg">
-                    We've independently verified Amino Club's third-party testing standards and pricing for {peptide.name}. Read our full analysis and get 20% off your order.
+                  We've independently verified Amino Club's third-party testing standards and pricing for {peptide.name}. Read our full analysis and get {allVendors.find((v) => v.slug === 'amino-club')?.discountPercent ?? 20}% off your order.
                   </p>
                 </div>
                 <Link

@@ -30,7 +30,15 @@ import {
   ArrowRight,
   AlertTriangle,
 } from 'lucide-react';
-import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT } from '@/data/vendors';
+import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT, vendors } from '@/data/vendors';
+
+// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
+const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
+const _limitless    = vendors.find((v) => v.slug === 'limitless-life')!;
+const _ascension    = vendors.find((v) => v.slug === 'ascension-peptides')!;
+const _pantheon     = vendors.find((v) => v.slug === 'pantheon-peptides')!;
+const _lvlup        = vendors.find((v) => v.slug === 'lvlup-health')!;
 import { VENDORS_FAQ_ITEMS } from './faqData';
 import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTable';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
@@ -198,12 +206,12 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
             {[
-              { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club-review', badge: "Editor's Choice", note: '20% code · Gold COA tier' },
-              { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs-review', badge: 'Triple-Tested', note: '15% stackable · 80+ compounds' },
-              { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life-review', badge: 'USA Made', note: '15% code · 90+ compounds · ⚠ Mixed reviews' },
-              { name: 'Ascension Peptides', rating: 4.7, href: '/vendors/ascension-peptides-review', badge: 'COA Verified', note: '15% code · Specialty catalog' },
-              { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides-review', badge: 'Emerging', note: '15% code · Competitive pricing' },
-              { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health-review', badge: 'Oral Specialist', note: '15% code · Needle-free formulations' },
+              { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club-review', badge: "Editor's Choice", note: `${_aminoClub.discountPercent}% code · Gold COA tier` },
+              { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs-review', badge: 'Triple-Tested', note: `${_bioLongevity.discountPercent}% stackable · 80+ compounds` },
+              { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life-review', badge: 'USA Made', note: `${_limitless.discountPercent}% code · 90+ compounds · ⚠ Mixed reviews` },
+              { name: 'Ascension Peptides', rating: 4.7, href: '/vendors/ascension-peptides-review', badge: 'COA Verified', note: `${_ascension.discountPercent}% code · Specialty catalog` },
+              { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides-review', badge: 'Emerging', note: `${_pantheon?.discountPercent ? `${_pantheon.discountPercent}% code` : 'No code'} · Competitive pricing` },
+              { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health-review', badge: 'Oral Specialist', note: `${_lvlup?.discountPercent ? `${_lvlup.discountPercent}% code` : 'No code'} · Needle-free formulations` },
             ].map(v => (
               <Link
                 key={v.href}
