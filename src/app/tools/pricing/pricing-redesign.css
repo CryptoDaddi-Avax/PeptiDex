@@ -37,8 +37,8 @@
 
 /* Table */
 .prc-table{border:1px solid var(--line);background:var(--bg-card);overflow:hidden}
-.prc-table-header{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1fr 1fr 1.1fr;padding:12px 20px;background:var(--bg-soft);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
-.prc-table-row{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1fr 1fr 1.1fr;padding:0;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
+.prc-table-header{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1fr .9fr 1fr 1.1fr;padding:12px 20px;background:var(--bg-soft);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.prc-table-row{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1fr .9fr 1fr 1.1fr;padding:0;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
 .prc-table-row:last-child{border-bottom:none}
 .prc-table-row:hover{background:var(--bg-elevated)}
 .prc-table-cell{padding:14px 20px;border-right:1px solid rgba(244,239,230,.06)}

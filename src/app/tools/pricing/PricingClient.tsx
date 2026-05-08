@@ -2,11 +2,13 @@
 
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, SlidersHorizontal } from "lucide-react";
+import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, SlidersHorizontal, Trophy } from "lucide-react";
 import { vendorsSorted, type Vendor } from "@/data/vendors";
-import { vendorPricing, type PeptideVendorPricing } from "@/data/vendor-pricing";
+import { vendorPricing } from "@/data/vendor-pricing";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
 import './pricing-redesign.css';
+
+type SortMode = "price" | "vendor" | "cpd";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -19,6 +21,8 @@ interface EnrichedVendorRow {
   lastTestedDate?: string;
   discount: DiscountResult;
   dotClass: string;
+  costPerDose: number; // price_usd / vial_mg, 0 if unknown
+  isBestPrice?: boolean;
 }
 
 interface EnrichedPeptide {
@@ -45,14 +49,13 @@ function buildEnrichedData(): EnrichedPeptide[] {
   const vendorMap = Object.fromEntries(vendorsSorted.map(v => [v.name, v]));
 
   return vendorPricing
-    .filter(p => p.vendors.length > 0 || true)            // include all peptides
     .map(p => {
       const rows: EnrichedVendorRow[] = [];
 
-      // Rows from vendor-pricing.ts (has real prices)
       for (const vp of p.vendors) {
         const vendor = vendorMap[vp.vendor];
-        if (!vendor || !vp.inStock || vp.price_usd === 0) continue;
+        // Skip: unknown vendor, out of stock, or missing/zero price
+        if (!vendor || !vp.inStock || !vp.price_usd || vp.price_usd <= 0) continue;
 
         const discountDescriptor = buildVendorDiscount(
           vendor.discountCode,
@@ -60,46 +63,36 @@ function buildEnrichedData(): EnrichedPeptide[] {
           vendor.discountStackable
         );
         const discount = applyDiscount(vp.price_usd, discountDescriptor, p.slug);
+        const costPerDose = vp.vial_mg > 0 ? vp.price_usd / vp.vial_mg : 0;
 
         rows.push({
           vendor,
           price_usd: vp.price_usd,
           vial_mg: vp.vial_mg,
-          inStock: vp.inStock,
+          inStock: true,
           affiliateUrl: vp.affiliateUrl,
           lastTestedDate: vp.lastTestedDate,
           discount,
           dotClass: VENDOR_DOT[vendor.slug] ?? "amino",
+          costPerDose,
         });
       }
 
-      // Add stub rows for vendors that carry everything but have no pricing entry
-      // (Pantheon and LVLUP) — shown as "Pricing unavailable"
-      const representedVendors = new Set(rows.map(r => r.vendor.slug));
-      for (const vendor of vendorsSorted) {
-        if (representedVendors.has(vendor.slug)) continue;
-        // Only add stub if this peptide isn't one the vendor explicitly doesn't carry
-        rows.push({
-          vendor,
-          price_usd: 0,
-          vial_mg: 0,
-          inStock: false,
-          affiliateUrl: vendor.affiliateUrl,
-          lastTestedDate: undefined,
-          discount: { finalPrice: 0, savings: 0, discountApplied: false, code: null },
-          dotClass: VENDOR_DOT[vendor.slug] ?? "amino",
-        });
+      // Mark the cheapest (by discounted final price) row as Best Price
+      if (rows.length > 0) {
+        const minFinal = Math.min(...rows.map(r => r.discount.finalPrice));
+        for (const r of rows) {
+          r.isBestPrice = r.discount.finalPrice === minFinal;
+        }
       }
 
-      const dates = rows
-        .map(r => r.lastTestedDate)
-        .filter(Boolean) as string[];
+      const dates = rows.map(r => r.lastTestedDate).filter(Boolean) as string[];
       const lastUpdated = dates.sort().at(-1) ?? "2026-04-01";
 
       return { slug: p.slug, name: p.name, rows, lastUpdated };
     })
-    // Only show peptides that have at least one in-stock vendor
-    .filter(p => p.rows.some(r => r.inStock));
+    // Only show peptides that have at least one priced row
+    .filter(p => p.rows.length > 0);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -135,17 +128,20 @@ function CodeBadge({ code }: { code: string }) {
   );
 }
 
-function DesktopRow({ row, showPriceColumn }: { row: EnrichedVendorRow; showPriceColumn: boolean }) {
-  const hasPrice = row.inStock && row.price_usd > 0;
-
+function DesktopRow({ row }: { row: EnrichedVendorRow }) {
   return (
-    <div className={`prc-table-row${!hasPrice ? " unavailable" : ""}`}>
+    <div className="prc-table-row">
       {/* Vendor */}
       <div className="prc-table-cell">
         <div className="prc-vendor-name">
           <span className={`prc-vendor-dot ${row.dotClass}`} />
           {row.vendor.name}
-          {row.vendor.badge === "Editor's Choice" && (
+          {row.isBestPrice && (
+            <span className="prc-vendor-badge" style={{ background: 'rgba(74,222,128,0.15)', color: '#4ade80', borderColor: 'rgba(74,222,128,0.3)' }}>
+              <Trophy size={9} style={{ display: 'inline', marginRight: 3 }} />Best Price
+            </span>
+          )}
+          {row.vendor.badge === "Editor's Choice" && !row.isBestPrice && (
             <span className="prc-vendor-badge">{row.vendor.badge}</span>
           )}
         </div>
@@ -154,42 +150,37 @@ function DesktopRow({ row, showPriceColumn }: { row: EnrichedVendorRow; showPric
 
       {/* List Price */}
       <div className="prc-table-cell">
-        {hasPrice ? (
-          <>
-            <span className={`prc-list-price${row.discount.discountApplied ? " strikethrough" : ""}`}>
-              ${row.price_usd.toFixed(2)}
-            </span>
-            {row.vial_mg > 0 && <span className="prc-vial">{row.vial_mg}mg vial</span>}
-          </>
-        ) : (
-          <span className="prc-unavailable">Unavailable</span>
-        )}
+        <span className={`prc-list-price${row.discount.discountApplied ? " strikethrough" : ""}`}>
+          ${row.price_usd.toFixed(2)}
+        </span>
+        {row.vial_mg > 0 && <span className="prc-vial">{row.vial_mg}mg vial</span>}
       </div>
 
       {/* PEPTIDEX Price */}
       <div className="prc-table-cell">
-        {hasPrice && row.discount.discountApplied ? (
+        {row.discount.discountApplied ? (
           <>
             <div className="prc-discounted-price">${row.discount.finalPrice.toFixed(2)}</div>
-            <div className="prc-savings-badge">
-              -{row.vendor.discountPercent}% · Save ${row.discount.savings.toFixed(2)}
-            </div>
+            <div className="prc-savings-badge">-{row.vendor.discountPercent}% · Save ${row.discount.savings.toFixed(2)}</div>
           </>
-        ) : hasPrice ? (
-          <span className="prc-discounted-price" style={{ color: 'var(--ink-dim)' }}>
-            ${row.price_usd.toFixed(2)}
-          </span>
         ) : (
-          <span className="prc-unavailable">—</span>
+          <span className="prc-discounted-price" style={{ color: 'var(--ink-dim)' }}>${row.price_usd.toFixed(2)}</span>
         )}
       </div>
 
       {/* You Save */}
       <div className="prc-table-cell">
-        {hasPrice && row.discount.discountApplied ? (
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: '#4ade80' }}>
-            ${row.discount.savings.toFixed(2)}
-          </span>
+        {row.discount.discountApplied ? (
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: '#4ade80' }}>${row.discount.savings.toFixed(2)}</span>
+        ) : (
+          <span className="prc-no-code">—</span>
+        )}
+      </div>
+
+      {/* Cost/mg */}
+      <div className="prc-table-cell">
+        {row.costPerDose > 0 ? (
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-dim)' }}>${row.costPerDose.toFixed(2)}/mg</span>
         ) : (
           <span className="prc-no-code">—</span>
         )}
@@ -197,36 +188,14 @@ function DesktopRow({ row, showPriceColumn }: { row: EnrichedVendorRow; showPric
 
       {/* Code */}
       <div className="prc-table-cell">
-        {row.vendor.discountCode ? (
-          <CodeBadge code={row.vendor.discountCode} />
-        ) : (
-          <span className="prc-no-code">—</span>
-        )}
+        {row.vendor.discountCode ? <CodeBadge code={row.vendor.discountCode} /> : <span className="prc-no-code">—</span>}
       </div>
 
       {/* Shop */}
       <div className="prc-table-cell">
-        {hasPrice ? (
-          <a
-            href={row.affiliateUrl}
-            target="_blank"
-            rel="sponsored nofollow noopener"
-            className="prc-shop-btn"
-            id={`shop-${row.vendor.slug}`}
-          >
-            Shop <ExternalLink size={11} />
-          </a>
-        ) : (
-          <a
-            href={row.vendor.affiliateUrl}
-            target="_blank"
-            rel="sponsored nofollow noopener"
-            className="prc-shop-btn"
-            style={{ opacity: 0.5 }}
-          >
-            Visit <ExternalLink size={11} />
-          </a>
-        )}
+        <a href={row.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" className="prc-shop-btn" id={`shop-${row.vendor.slug}`}>
+          Shop <ExternalLink size={11} />
+        </a>
       </div>
     </div>
   );
@@ -305,6 +274,11 @@ function MobileCard({ row }: { row: EnrichedVendorRow }) {
 
 // ── Main Component ────────────────────────────────────────────────────────────
 
+// All unique vendor names that appear in pricing data
+const ALL_PRICING_VENDORS = Array.from(
+  new Set(vendorPricing.flatMap(p => p.vendors.map(v => v.vendor)))
+).sort();
+
 export default function PricingClient() {
   const enriched = useMemo(() => buildEnrichedData(), []);
 
@@ -312,11 +286,12 @@ export default function PricingClient() {
   const [codeOnly, setCodeOnly] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [sortMode, setSortMode] = useState<SortMode>("price");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+  const [vendorFilter, setVendorFilter] = useState<Set<string>>(new Set()); // empty = all
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -327,7 +302,6 @@ export default function PricingClient() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Scroll reveal
   useEffect(() => {
     if (!containerRef.current) return;
     const io = new IntersectionObserver(
@@ -353,15 +327,36 @@ export default function PricingClient() {
   const filteredRows = useMemo(() => {
     if (!currentPeptide) return [];
     let rows = [...currentPeptide.rows];
+    // Vendor checkbox filter
+    if (vendorFilter.size > 0) rows = rows.filter(r => vendorFilter.has(r.vendor.name));
+    // Code-only filter
     if (codeOnly) rows = rows.filter(r => r.vendor.discountCode);
-    // Sort by discounted price ascending (unavailable rows go to end)
+    // Sort
     rows.sort((a, b) => {
-      const aPrice = a.inStock && a.price_usd > 0 ? a.discount.finalPrice : Infinity;
-      const bPrice = b.inStock && b.price_usd > 0 ? b.discount.finalPrice : Infinity;
-      return sortDir === "asc" ? aPrice - bPrice : bPrice - aPrice;
+      let av: number, bv: number;
+      if (sortMode === "vendor") {
+        return sortDir === "asc"
+          ? a.vendor.name.localeCompare(b.vendor.name)
+          : b.vendor.name.localeCompare(a.vendor.name);
+      } else if (sortMode === "cpd") {
+        av = a.costPerDose > 0 ? a.costPerDose : Infinity;
+        bv = b.costPerDose > 0 ? b.costPerDose : Infinity;
+      } else {
+        av = a.discount.finalPrice;
+        bv = b.discount.finalPrice;
+      }
+      return sortDir === "asc" ? av - bv : bv - av;
     });
     return rows;
-  }, [currentPeptide, codeOnly, sortDir]);
+  }, [currentPeptide, codeOnly, sortMode, sortDir, vendorFilter]);
+
+  const toggleVendor = useCallback((name: string) => {
+    setVendorFilter(prev => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name); else next.add(name);
+      return next;
+    });
+  }, []);
 
   const filteredPeptideOptions = useMemo(
     () => enriched.filter(p => p.name.toLowerCase().includes(search.toLowerCase())),
@@ -503,16 +498,20 @@ export default function PricingClient() {
               )}
             </div>
 
-            {/* Sort direction toggle */}
-            <button
-              className="prc-toggle"
-              onClick={() => setSortDir(d => d === "asc" ? "desc" : "asc")}
-              title="Toggle sort direction"
-              aria-label={`Sort by price ${sortDir === "asc" ? "descending" : "ascending"}`}
-            >
-              <SlidersHorizontal size={13} />
-              {sortDir === "asc" ? "Price: Low to High" : "Price: High to Low"}
-            </button>
+            {/* Sort mode */}
+            <div style={{ display: 'flex', gap: 4 }}>
+              {(["price", "vendor", "cpd"] as SortMode[]).map(mode => (
+                <button
+                  key={mode}
+                  className={`prc-toggle${sortMode === mode ? " active" : ""}`}
+                  onClick={() => { if (sortMode === mode) setSortDir(d => d === "asc" ? "desc" : "asc"); else { setSortMode(mode); setSortDir("asc"); } }}
+                  aria-pressed={sortMode === mode}
+                >
+                  {mode === "price" ? "Price" : mode === "vendor" ? "Vendor" : "Cost/mg"}
+                  {sortMode === mode && <span style={{ marginLeft: 4 }}>{sortDir === "asc" ? "↑" : "↓"}</span>}
+                </button>
+              ))}
+            </div>
 
             {/* Code-only toggle */}
             <button
@@ -525,6 +524,24 @@ export default function PricingClient() {
               <span className="prc-toggle-dot" />
               PEPTIDEX Code Only
             </button>
+
+            {/* Vendor checkboxes */}
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', marginLeft: 8 }}>
+              {ALL_PRICING_VENDORS.map(vname => (
+                <label key={vname} style={{ display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 11, color: vendorFilter.has(vname) ? 'var(--gold)' : 'var(--ink-dim)', userSelect: 'none' }}>
+                  <input
+                    type="checkbox"
+                    checked={vendorFilter.has(vname)}
+                    onChange={() => toggleVendor(vname)}
+                    style={{ accentColor: 'var(--gold)', width: 12, height: 12 }}
+                  />
+                  {vname}
+                </label>
+              ))}
+              {vendorFilter.size > 0 && (
+                <button onClick={() => setVendorFilter(new Set())} style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-mute)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Clear</button>
+              )}
+            </div>
           </div>
 
           {/* Stats strip */}
@@ -556,15 +573,16 @@ export default function PricingClient() {
               <div>List Price</div>
               <div>PEPTIDEX Price</div>
               <div>You Save</div>
+              <div>Cost/mg</div>
               <div>Code</div>
               <div>Shop</div>
             </div>
-            {filteredRows.map(row => (
-              <DesktopRow
-                key={row.vendor.slug}
-                row={row}
-                showPriceColumn={true}
-              />
+            {filteredRows.length === 0 ? (
+              <div style={{ padding: '32px', textAlign: 'center', color: 'var(--ink-mute)', fontFamily: 'var(--mono)', fontSize: 13 }}>
+                No vendors match the current filters.
+              </div>
+            ) : filteredRows.map(row => (
+              <DesktopRow key={row.vendor.slug} row={row} />
             ))}
           </div>
 
