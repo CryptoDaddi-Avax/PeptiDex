@@ -507,8 +507,8 @@ export default function PricingClient() {
                         padding: '6px 14px 4px',
                         fontFamily: 'var(--mono)', fontSize: 9,
                         letterSpacing: '0.18em', textTransform: 'uppercase' as const,
-                        color: 'var(--gold)', borderBottom: '1px solid var(--line)',
-                        background: 'var(--bg-soft)',
+                        color: 'var(--gold)', borderBottom: '1px solid rgba(201,169,97,0.2)',
+                        background: '#181818',
                         position: 'sticky', top: 40, zIndex: 2,
                       }}>
                         ✓ Price Data Available ({allDropdownOptions.priced.length})
@@ -534,8 +534,8 @@ export default function PricingClient() {
                         padding: '6px 14px 4px',
                         fontFamily: 'var(--mono)', fontSize: 9,
                         letterSpacing: '0.18em', textTransform: 'uppercase' as const,
-                        color: 'var(--ink-mute)', borderBottom: '1px solid var(--line)',
-                        background: 'var(--bg-soft)',
+                        color: 'var(--ink-mute)', borderBottom: '1px solid rgba(255,255,255,0.08)',
+                        background: '#181818',
                         position: 'sticky', top: 40, zIndex: 2,
                       }}>
                         Pricing Coming Soon ({allDropdownOptions.unpriced.length})
