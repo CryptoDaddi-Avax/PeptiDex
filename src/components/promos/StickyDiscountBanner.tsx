@@ -80,13 +80,12 @@ export function StickyDiscountBanner() {
     });
   }
 
-  // Reserve height server-side to prevent CLS — content is hidden until mounted
+  // Reserve height server-side to prevent CLS — shows on ALL viewports
   if (!mounted) {
     return (
       <div
         aria-hidden="true"
         style={{ height: "44px", minHeight: "44px" }}
-        className="hidden md:block"
       />
     );
   }
@@ -99,7 +98,7 @@ export function StickyDiscountBanner() {
     <div
       role="region"
       aria-label="Site-wide promotion"
-      className="sticky top-0 z-50 w-full bg-zinc-900/95 backdrop-blur-md border-b border-amber-500/20 px-4 py-2.5 md:py-2"
+      className="relative z-50 w-full bg-zinc-900/95 backdrop-blur-md border-b border-amber-500/20 px-4 py-2.5 md:py-2"
       style={{ minHeight: "44px" }}
     >
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
