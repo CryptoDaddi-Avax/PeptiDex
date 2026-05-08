@@ -10,7 +10,7 @@
 .prc-disclaimer p{font-family:var(--sans);font-size:12px;color:var(--ink-dim);line-height:1.6;margin:0}
 
 /* Controls row */
-.prc-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.prc-controls{position:relative;z-index:50;display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:28px}
 
 /* Peptide Selector */
 .prc-selector{position:relative;flex:1;min-width:200px}
