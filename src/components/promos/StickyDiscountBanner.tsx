@@ -63,6 +63,8 @@ export function StickyDiscountBanner() {
     if (isDismissed()) return;
 
     setVisible(true);
+    // Tell nav + hero about the banner height via CSS var
+    document.documentElement.style.setProperty('--banner-h', '44px');
     trackBannerShown({
       vendor: PRIMARY_PROMO.gaKey,
       code: PRIMARY_PROMO.code,
@@ -72,6 +74,7 @@ export function StickyDiscountBanner() {
 
   function handleDismiss() {
     setVisible(false);
+    document.documentElement.style.setProperty('--banner-h', '0px');
     setDismissed();
     trackBannerDismissed({
       vendor: PRIMARY_PROMO.gaKey,
@@ -80,17 +83,8 @@ export function StickyDiscountBanner() {
     });
   }
 
-  // Reserve height server-side to prevent CLS — shows on ALL viewports
-  if (!mounted) {
-    return (
-      <div
-        aria-hidden="true"
-        style={{ height: "44px", minHeight: "44px" }}
-      />
-    );
-  }
-
-  if (!visible) return null;
+  // No SSR placeholder needed — banner is fixed so it doesn't affect document flow
+  if (!mounted || !visible) return null;
 
   const shopUrl = buildAffiliateUrl(PRIMARY_PROMO, "sticky_banner");
 
@@ -98,7 +92,7 @@ export function StickyDiscountBanner() {
     <div
       role="region"
       aria-label="Site-wide promotion"
-      className="relative z-50 w-full bg-zinc-900/95 backdrop-blur-md border-b border-amber-500/20 px-4 py-2.5 md:py-2"
+      className="fixed top-0 left-0 right-0 z-[101] w-full bg-zinc-900/95 backdrop-blur-md border-b border-amber-500/20 px-4 py-2.5 md:py-2"
       style={{ minHeight: "44px" }}
     >
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
