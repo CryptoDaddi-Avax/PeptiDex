@@ -5,13 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
 import { peptideBlends, PeptideBlend } from "@/data/blends";
 import { SHORT_DISCLAIMER } from "@/data/constants";
-import { Calculator, ShieldAlert, ChevronDown, Droplets, FlaskConical, ShoppingBag, ShieldCheck, ArrowRight, ExternalLink, Info, Beaker, GraduationCap, TestTubeDiagonal, AlertTriangle } from "lucide-react";
+import { Calculator, ShieldAlert, ChevronDown, Droplets, FlaskConical, ShoppingBag, ShieldCheck, ArrowRight, ExternalLink, Info, Beaker, GraduationCap, TestTubeDiagonal, AlertTriangle, Copy, Check } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { EmbedModal } from "@/components/embed-modal";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { CalculatorCardData } from "@/components/share-card/card-templates";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { trackOutboundClick } from "@/lib/ga4-events";
+import { vendorPricing } from "@/data/vendor-pricing";
 import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 import { ToolPageConversionBlock } from "@/components/promos/ToolPageConversionBlock";
 import {
@@ -66,15 +67,14 @@ export default function CalculatorPage() {
         return v;
     }
 
-    // Bug 1+2+3 fix: single calculation block using pure function
     const calcResult = useMemo(() => {
         const v = safePositive(vialMg);
         const w = safePositive(bacWaterMl);
         const d = parseFloat(targetConcentrationMcg);
         const syringe = getSyringeProfile(syringeProfileId);
 
-        if (!v || !w) return null;
-        // Input validation (Bug 5)
+        // FIX: use explicit null-check, not falsy (0 is a valid parsed value that should reach validation)
+        if (v === null || w === null) return null;
         const validationError = validateReconstitutionInputs(v, w, isNaN(d) ? 0 : d);
         if (validationError) return { error: RECONSTITUTION_ERROR_MESSAGES[validationError] };
 
@@ -94,6 +94,27 @@ export default function CalculatorPage() {
     const exceedsCapacity = calcFull?.exceedsCapacity ?? false;
     const calcError       = calcResult && 'error' in calcResult ? calcResult.error : null;
     const activeSyringe   = getSyringeProfile(syringeProfileId);
+
+    // Copy result to clipboard
+    const [copied, setCopied] = useState(false);
+    const handleCopy = useCallback(() => {
+        if (!concentration) return;
+        const pepName = peptide?.name || blend?.name || 'Peptide';
+        const lines = [
+            `PeptiDex Reconstitution Result — ${pepName}`,
+            `Vial: ${vialMg} mg  |  BAC Water: ${bacWaterMl} mL`,
+            `Concentration: ${formatConcentration(concentration)} mcg/mL`,
+        ];
+        if (dispenseMl !== null) {
+            lines.push(`Target Dose: ${targetConcentrationMcg} mcg`);
+            lines.push(`Dispense: ${dispenseMl.toFixed(3)} mL  =  ${syringeUnits} units (${activeSyringe.label})`);
+        }
+        lines.push('Calculated at https://peptidex.app/tools/calculator');
+        navigator.clipboard.writeText(lines.join('\n')).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    }, [concentration, dispenseMl, syringeUnits, activeSyringe, vialMg, bacWaterMl, targetConcentrationMcg, peptide, blend]);
 
     const selectPeptide = (slug: string) => {
         setSelection({ type: "peptide", slug });
@@ -543,10 +564,71 @@ export default function CalculatorPage() {
                         </div>
                     )}
 
+                    {/* ── U-100 Syringe Conversion Table ── */}
+                    {dispenseMl !== null && syringeUnits !== null && (
+                        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-700 p-5 mt-3">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Calculator className="w-4 h-4 text-amber-400" />
+                                <span className="text-sm font-semibold text-zinc-200">U-100 Insulin Syringe Quick Reference</span>
+                                <span className="ml-auto text-[10px] text-zinc-500 font-mono">100 units = 1 mL</span>
+                            </div>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-xs font-mono">
+                                    <thead>
+                                        <tr className="border-b border-zinc-800">
+                                            <th className="text-left py-1.5 pr-4 text-zinc-500 font-semibold uppercase tracking-wider text-[10px]">Dose (mcg)</th>
+                                            <th className="text-right py-1.5 pr-4 text-zinc-500 font-semibold uppercase tracking-wider text-[10px]">Volume (mL)</th>
+                                            <th className="text-right py-1.5 text-zinc-500 font-semibold uppercase tracking-wider text-[10px]">Units (U-100)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {(() => {
+                                            const conc = concentration!;
+                                            const doses = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2].map(mult => {
+                                                const d = Math.round(parseFloat(targetConcentrationMcg) * mult);
+                                                return d;
+                                            }).filter((d, i, arr) => d > 0 && arr.indexOf(d) === i).slice(0, 6);
+                                            const targetDose = parseFloat(targetConcentrationMcg);
+                                            return doses.map(dose => {
+                                                const vol = dose / conc;
+                                                const units = vol * 100;
+                                                const isTarget = Math.abs(dose - targetDose) < 0.5;
+                                                return (
+                                                    <tr key={dose} className={`border-b border-zinc-800/50 last:border-0 ${isTarget ? 'bg-amber-500/8' : ''}`}>
+                                                        <td className={`py-1.5 pr-4 ${isTarget ? 'text-amber-300 font-bold' : 'text-zinc-400'}`}>{dose} mcg{isTarget ? ' ◀ target' : ''}</td>
+                                                        <td className={`text-right pr-4 ${isTarget ? 'text-amber-300 font-bold' : 'text-zinc-400'}`}>{vol.toFixed(3)}</td>
+                                                        <td className={`text-right ${isTarget ? 'text-amber-300 font-bold' : 'text-zinc-400'}`}>{units.toFixed(1)}</td>
+                                                    </tr>
+                                                );
+                                            });
+                                        })()}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* ── Copy Result Button ── */}
+                    {concentration !== null && (
+                        <div className="flex justify-end mt-3">
+                            <button
+                                onClick={handleCopy}
+                                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-semibold transition-all ${
+                                    copied
+                                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+                                        : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200'
+                                }`}
+                                id="copy-result-btn"
+                            >
+                                {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                                {copied ? 'Copied!' : 'Copy Result'}
+                            </button>
+                        </div>
+                    )}
                 </motion.div>
             )}
 
-            {/* Conversion block — appears after result is computed */}
+            {/* Conversion block */}
             {concentration !== null && dispenseMl !== null && (
               <ToolPageConversionBlock
                 surface="tool_calculator"
@@ -584,105 +666,95 @@ export default function CalculatorPage() {
                 );
             })()}
 
-            {/* Source These Compounds — Affiliate Block */}
+            {/* ── Where to Buy — multi-vendor CTA ── */}
             {concentration && dispenseMl !== null && (() => {
-                const pepName = peptide?.name || blend?.name || "Peptide";
-                const slug = peptide?.slug || blend?.slug || "";
+                const pepName = peptide?.name || blend?.name || 'Peptide';
+                const pepSlug = peptide?.slug || blend?.slug || '';
                 const vMg = parseFloat(vialMg) || 0;
                 const dMcg = parseFloat(targetConcentrationMcg) || 0;
                 const dispensesPerVial = dMcg > 0 ? Math.floor((vMg * 1000) / dMcg) : 0;
-                
-                let supplyEstimate = "";
 
+                // Top-3 vendors for this peptide from the pricing data layer
+                const pricingEntry = vendorPricing.find(p => p.slug === pepSlug || p.name === pepName);
+                const topVendors = (pricingEntry?.vendors ?? [])
+                    .filter(v => v.inStock && v.price_usd > 0)
+                    .sort((a, b) => a.price_usd - b.price_usd)
+                    .slice(0, 3);
+
+                // Fallback: Amino Club generic link if no pricing data
+                const fallbackUrl = (() => {
+                    const base = aminoClubProductMapping[pepSlug] || 'https://aminoclub.com';
+                    return base + (base.includes('?') ? '&' : '?') + 'utm_source=affiliate_marketing&code=PEPTIDEX';
+                })();
+
+                let supplyEstimate = '';
                 if (peptide?.dosing && dispensesPerVial > 0) {
                     const cycleLength = peptide.dosing.cycle_weeks?.[0] || 8;
-                    const freq = (peptide.dosing.frequency || "daily").toLowerCase();
-                    const perWeek = freq.includes('daily') ? 7 : freq.includes('2x/week') ? 2 : freq.includes('5 on') ? 5 : 7;
-                    const totalNeeded = perWeek * cycleLength;
-                    const neededVials = Math.ceil(totalNeeded / dispensesPerVial);
-                    
-                    supplyEstimate = `${dispensesPerVial} measurements per vial. For a ${cycleLength}-week research protocol, approximately ${neededVials} vial${neededVials !== 1 ? 's' : ''} required.`;
+                    const freq = (peptide.dosing.frequency || 'daily').toLowerCase();
+                    const perWeek = freq.includes('daily') ? 7 : freq.includes('2x') ? 2 : freq.includes('5 on') ? 5 : 7;
+                    const neededVials = Math.ceil((perWeek * cycleLength) / dispensesPerVial);
+                    supplyEstimate = `${dispensesPerVial} doses/vial · ~${neededVials} vial${neededVials !== 1 ? 's' : ''} for a ${cycleLength}-week protocol`;
                 }
 
-                const baseSlug = aminoClubProductMapping[slug] || "https://aminoclub.com";
-                const ctaParams = baseSlug.includes("?") 
-                    ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
-                    : "?utm_source=affiliate_marketing&code=PEPTIDEX";
-                const affiliateUrl = `${baseSlug}${ctaParams}`;
-
                 return (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="mb-8 p-6 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/20 relative overflow-hidden"
+                        className="mb-8 rounded-2xl bg-zinc-950 border border-zinc-800 overflow-hidden"
                     >
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
-                        
-                        <div className="flex items-center gap-2 mb-4 relative z-10">
-                            <ShoppingBag className="w-5 h-5 text-emerald-400" />
-                            <h2 className="text-lg font-bold text-zinc-100">
-                                Source {pepName} for Research
-                            </h2>
+                        <div className="flex items-center gap-2 px-5 py-4 border-b border-zinc-800">
+                            <ShoppingBag className="w-4 h-4 text-emerald-400" />
+                            <h2 className="text-sm font-bold text-zinc-100">Where to Buy {pepName}</h2>
+                            {supplyEstimate && <span className="ml-auto text-[10px] text-emerald-400 font-mono">{supplyEstimate}</span>}
                         </div>
-                        
-                        <div className="relative z-10 grid gap-4 p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-emerald-500/20 transition-colors">
-                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+
+                        {topVendors.length > 0 ? (
+                            <div className="divide-y divide-zinc-800/60">
+                                {topVendors.map((v, i) => (
+                                    <div key={v.vendor} className="flex items-center justify-between gap-4 px-5 py-3">
+                                        <div>
+                                            <span className="text-sm font-semibold text-zinc-200">{v.vendor}</span>
+                                            {i === 0 && <span className="ml-2 text-[9px] font-bold text-emerald-400 border border-emerald-500/30 rounded px-1.5 py-0.5 uppercase tracking-wider">Best Price</span>}
+                                            <div className="text-[10px] text-zinc-500 mt-0.5">{v.vial_mg}mg vial</div>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <span className="font-mono text-base font-bold text-zinc-100">${v.price_usd.toFixed(2)}</span>
+                                            <a
+                                                href={v.affiliateUrl}
+                                                target="_blank"
+                                                rel="sponsored nofollow noopener"
+                                                onClick={() => trackOutboundClick(v.vendor, v.affiliateUrl, 'calculator_where_to_buy')}
+                                                className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
+                                            >
+                                                Shop <ExternalLink className="w-3 h-3" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="flex items-center justify-between gap-4 px-5 py-4">
                                 <div>
-                                    <h4 className="font-bold text-zinc-100 text-[15px]">COA-verified {pepName}</h4>
-                                    {supplyEstimate && (
-                                        <p className="text-xs font-semibold text-emerald-400 mt-1">
-                                            {supplyEstimate}
-                                        </p>
-                                    )}
+                                    <span className="text-sm font-semibold text-zinc-200">Amino Club</span>
+                                    <span className="ml-2 text-[9px] font-bold text-amber-400 border border-amber-500/30 rounded px-1.5 py-0.5 uppercase tracking-wider">Editor&apos;s Pick</span>
+                                    <div className="text-[10px] text-zinc-500 mt-0.5">COA-verified · Use code PEPTIDEX for 20% off</div>
                                 </div>
-                                <a 
-                                    href={affiliateUrl}
+                                <a
+                                    href={fallbackUrl}
                                     target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => trackOutboundClick("Amino Club", affiliateUrl, "calculator_source_cta")}
-                                    className="inline-flex items-center justify-center shrink-0 w-full md:w-auto gap-2 px-5 py-2.5 min-h-[44px] rounded-xl font-bold transition-all text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-500/10"
+                                    rel="sponsored nofollow noopener"
+                                    onClick={() => trackOutboundClick('Amino Club', fallbackUrl, 'calculator_where_to_buy_fallback')}
+                                    className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
                                 >
-                                    Source from Amino Club <ArrowRight className="w-4 h-4" />
+                                    Shop <ExternalLink className="w-3 h-3" />
                                 </a>
                             </div>
-                            
-                            <div className="pt-4 mt-2 border-t border-zinc-800 flex items-center flex-wrap gap-2 text-xs font-semibold">
-                                <span className="text-zinc-500">Lab supplies:</span>
-                                <a 
-                                    href="https://aminoclub.com/us/products/bacteriostatic-water?utm_source=affiliate_marketing&code=PEPTIDEX"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com/us/products/bacteriostatic-water", "calculator_bac_water")}
-                                    className="px-3 py-1.5 min-h-[44px] flex items-center rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
-                                >
-                                    Bacteriostatic Water <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
-                                </a>
-                                <a 
-                                    href="https://aminoclub.com/us/products/graduated-pipettes?utm_source=affiliate_marketing&code=PEPTIDEX"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => trackOutboundClick("Amino Club", "https://aminoclub.com/us/products/graduated-pipettes", "calculator_pipettes")}
-                                    className="px-3 py-1.5 min-h-[44px] flex items-center rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors"
-                                >
-                                    Graduated Pipettes <ExternalLink className="w-3 h-3 inline ml-1 align-text-bottom" />
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div className="mt-5 relative z-10">
-                            <div className="flex items-center gap-1.5 text-xs text-zinc-200 font-semibold mb-1">
-                                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                                Amino Club — PeptiDex Editor&apos;s Choice 2026
-                            </div>
-                            <p className="text-[10px] font-medium text-emerald-400/80 mb-2 flex items-center gap-2">
-                                <span>&#x2713; COA verified</span>
-                                <span>&middot;</span>
-                                <span>&#x2713; 99%+ purity</span>
-                            </p>
-                            <p className="text-[10px] text-zinc-600 italic">
-                                <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases made through affiliate links.
-                            </p>
+                        )}
+
+                        <div className="px-5 py-3 border-t border-zinc-800 flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-zinc-600">
+                            <span>⚠ Affiliate disclosure: PeptiDex earns a commission on qualifying purchases.</span>
+                            <span>Prices verified from vendor sites — confirm at checkout.</span>
                         </div>
                     </motion.div>
                 );
