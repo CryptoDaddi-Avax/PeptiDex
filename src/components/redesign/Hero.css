@@ -287,8 +287,16 @@
 
   .hero h1 {
     font-size: clamp(32px, 8vw, 48px);
-    margin-bottom: 0;
+    margin-bottom: 8px;
     max-width: 100%;
+  }
+
+  /* Remove desktop negative pull — kicker must sit BELOW the headline on mobile */
+  .hero-kicker {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: clamp(11px, 3vw, 14px);
+    line-height: 1.4;
   }
 
   .hero-sub {
@@ -335,6 +343,7 @@
   }
 
   .hero h1 { font-size: clamp(30px, 9vw, 42px); max-width: 100%; }
+  .hero-kicker { font-size: clamp(10px, 2.5vw, 13px); }
   .hero-sub { font-size: 13px; line-height: 1.5; }
   .hero-eyebrow { font-size: 8px; padding: 5px 10px; margin-bottom: 12px; }
 }
