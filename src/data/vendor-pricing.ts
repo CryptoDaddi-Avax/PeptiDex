@@ -1179,3 +1179,10 @@ export const vendorPricing: PeptideVendorPricing[] =
         ]
     }
 ];
+
+export function getVendorPricing(slugOrName: string): PeptideVendorPricing | undefined {
+    const normalized = slugOrName.toLowerCase();
+    return vendorPricing.find(
+        v => v.slug === normalized || v.name.toLowerCase() === normalized
+    );
+}
