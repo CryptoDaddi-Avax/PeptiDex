@@ -215,13 +215,13 @@
 
 /* ═══════════════════════════════════════════════════════
    MOBILE — ≤ 768px
-   hero-top becomes a 2-column grid (text left | helix right).
-   hero-bottom (paragraph + CTAs) sits BELOW at full width.
+   Full-width stacked layout. Molecule hidden on mobile to
+   prevent the 2-col grid from cramping the headline.
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 100px 20px 0;
+    padding: 48px 20px 0;
     align-items: flex-start;
     justify-content: flex-start;
     overflow: visible;
@@ -232,51 +232,28 @@
     width: 100%;
   }
 
-  /* hero-top: 2-column grid — text left (55%), helix right (45%) */
+  /* hero-top: single column, full width — NO molecule grid */
   .hero-top {
-    display: grid;
-    grid-template-columns: 55fr 45fr;
-    align-items: center;
-    gap: 0 12px;
+    display: block;
     padding-top: 0;
-    /* On mobile, hero-top IS the positioning context for the grid */
     position: relative;
   }
 
+  /* Text column fills full width */
   .hero-text-col {
     max-width: none;
+    width: 100%;
   }
 
-  /* CRITICAL: Override ALL desktop absolute positioning.
-     On mobile the molecule is a grid cell — NOT an absolute overlay.
-     align-self: stretch makes it match the grid row height (driven by headline).
-     overflow: hidden clips the canvas so the helix never bleeds into hero-bottom. */
+  /* Hide the molecule canvas entirely on mobile — prevents layout conflict */
   .hero-molecule {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-    transform: none;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-    align-self: stretch;
-    justify-self: stretch;
-  }
-  #molecule-canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
+    display: none;
   }
 
-  /* hero-bottom: paragraph + CTAs — full width below the grid */
+  /* hero-bottom: paragraph + CTAs — full width below */
   .hero-bottom {
     max-width: none;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   .hero-eyebrow {
@@ -286,17 +263,18 @@
   }
 
   .hero h1 {
-    font-size: clamp(32px, 8vw, 48px);
-    margin-bottom: 8px;
+    font-size: clamp(36px, 9.5vw, 56px);
+    line-height: 0.95;
+    margin-bottom: 12px;
     max-width: 100%;
   }
 
-  /* Remove desktop negative pull — kicker must sit BELOW the headline on mobile */
+  /* Kicker sits cleanly below h1 — no negative margin */
   .hero-kicker {
     margin-top: 0;
-    margin-bottom: 12px;
-    font-size: clamp(11px, 3vw, 14px);
-    line-height: 1.4;
+    margin-bottom: 16px;
+    font-size: clamp(13px, 3.5vw, 16px);
+    line-height: 1.5;
   }
 
   .hero-sub {
@@ -334,16 +312,11 @@
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   .hero {
-    padding: 80px 16px 0;
+    padding: 36px 16px 0;
   }
 
-  .hero-top {
-    grid-template-columns: 55fr 45fr;
-    gap: 0 8px;
-  }
-
-  .hero h1 { font-size: clamp(30px, 9vw, 42px); max-width: 100%; }
-  .hero-kicker { font-size: clamp(10px, 2.5vw, 13px); }
+  .hero h1 { font-size: clamp(34px, 9vw, 48px); }
+  .hero-kicker { font-size: clamp(12px, 3vw, 14px); }
   .hero-sub { font-size: 13px; line-height: 1.5; }
   .hero-eyebrow { font-size: 8px; padding: 5px 10px; margin-bottom: 12px; }
 }
