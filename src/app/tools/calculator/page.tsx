@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
 import { peptideBlends, PeptideBlend } from "@/data/blends";
