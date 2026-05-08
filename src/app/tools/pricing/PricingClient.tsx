@@ -546,13 +546,14 @@ export default function PricingClient() {
                           style={{
                             padding: '9px 14px',
                             fontFamily: 'var(--mono)', fontSize: 11,
-                            color: 'var(--ink-mute)',
-                            borderBottom: '1px solid rgba(244,239,230,0.04)',
+                            color: '#555',
+                            background: '#0d0d0d',
+                            borderBottom: '1px solid rgba(255,255,255,0.04)',
                             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                           }}
                         >
                           <span>{p.name}</span>
-                          <span style={{ fontSize: 9, letterSpacing: '0.1em', opacity: 0.5 }}>NO DATA</span>
+                          <span style={{ fontSize: 9, letterSpacing: '0.1em', color: '#444' }}>NO DATA</span>
                         </div>
                       ))}
                     </>
