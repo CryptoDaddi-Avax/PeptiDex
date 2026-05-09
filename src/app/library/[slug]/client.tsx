@@ -28,6 +28,7 @@ import { StackCard } from '@/components/stack-card';
 import { SaveButton } from '@/components/save-button';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { AuthorByline } from '@/components/shared/AuthorByline';
+import { BuyBox } from '@/components/affiliate/BuyBox';
 import './detail-redesign.css';
 
 /* ── Evidence helpers ── */
@@ -105,6 +106,13 @@ export function PeptideDetailRedesign({
 
           {/* ─── QUICK ANSWER BLOCK (above fold, GEO-optimized) ─── */}
           <QuickAnswerBlock peptide={peptide} />
+
+          {/* ─── BUY BOX (mobile inline — desktop version is in sidebar) ─── */}
+          <BuyBox
+            peptideSlug={peptide.slug}
+            peptideName={peptide.name}
+            surface="buy_box"
+          />
 
           <p className="pd-subtitle">{peptide.mechanism.slice(0, 200)}</p>
 
@@ -435,8 +443,15 @@ export function PeptideDetailRedesign({
           {/* ── Sidebar ── */}
           <aside className="pd-sidebar">
             <div className="pd-sidebar-sticky">
+              {/* ─── BUY BOX (desktop sticky rail) ─── */}
+              <BuyBox
+                peptideSlug={peptide.slug}
+                peptideName={peptide.name}
+                surface="buy_box"
+              />
+
               {/* Quick Reference */}
-              <div className="pd-quick-ref">
+              <div className="pd-quick-ref mt-4">
                 <h3 className="pd-quick-ref-title">§ Quick Reference</h3>
                 <div className="pd-quick-ref-row">
                   <span className="pd-qr-label">Category</span>

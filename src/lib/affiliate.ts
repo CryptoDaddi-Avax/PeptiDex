@@ -48,6 +48,10 @@ export interface EnrichedVendorOffer {
   inStock: boolean;
   isCheapest: boolean;
   promo: PromoCode | undefined;
+  /** COA PDF URL from VendorPrice row (may also fall back to Vendor.coaUrl) */
+  coaUrl: string | undefined;
+  /** Last test date string from VendorPrice row */
+  lastTestedDate: string | undefined;
 }
 
 export interface PeptideVendorBundle {
@@ -119,6 +123,9 @@ function enrichRow(
     inStock: vp.inStock,
     isCheapest: false, // set after sorting
     promo,
+    // Prefer per-peptide COA URL from vendor-pricing row; fall back to vendor-level coaUrl
+    coaUrl: vp.coaUrl ?? vendor.coaUrl,
+    lastTestedDate: vp.lastTestedDate ?? vendor.lastTestedDate,
   };
 }
 
