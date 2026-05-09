@@ -3,10 +3,13 @@ import Link from 'next/link';
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
-import { ShieldCheck, ShieldAlert, AlertTriangle, ChevronDown, Search, Info } from "lucide-react";
+import { vendorPricing } from "@/data/vendor-pricing";
+import { ShieldCheck, ShieldAlert, AlertTriangle, ChevronDown, Search, Info, FlaskConical, ExternalLink } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 import { ToolPageConversionBlock } from "@/components/promos/ToolPageConversionBlock";
+import { lookupLab, TIER_STYLES, type LabTier } from "@/data/coa-labs";
+import { trackOutboundClick } from "@/lib/ga4-events";
 
 // Molecular weights and expected mass spec data for all 51 peptides
 // All MW in g/mol (Daltons)
@@ -45,34 +48,61 @@ const peptideMolecularData: Record<string, {
 
 type Result = "pass" | "warning" | "fail" | null;
 
+interface CheckResult { pass: boolean; warning: boolean; label: string; detail: string; }
+
 export default function CoacAnalyzerPage() {
     const [selectedSlug, setSelectedSlug] = useState("");
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [reportedMW, setReportedMW] = useState("");
     const [reportedPurity, setReportedPurity] = useState("");
+    const [labName, setLabName] = useState("");
+    const [batchId, setBatchId] = useState("");
     const [result, setResult] = useState<Result>(null);
     const [analyzed, setAnalyzed] = useState(false);
 
     const peptide = useMemo(() => peptides.find(p => p.slug === selectedSlug), [selectedSlug]);
     const molData = selectedSlug ? peptideMolecularData[selectedSlug] : null;
 
-    const analyze = () => {
-        if (!molData || !reportedMW || !reportedPurity) return;
-        const mw = parseFloat(reportedMW);
-        const purity = parseFloat(reportedPurity);
-        const mwDeviation = Math.abs(mw - molData.mw_avg) / molData.mw_avg * 100;
-        const isMWAcceptable = mwDeviation <= 1.0;
-        const isPurityAcceptable = purity >= molData.acceptable_purity;
+    // Absolute Da deviation checks (not % — spec: ±0.5 PASS, ±2 WARNING, else FAIL)
+    const mwDeviationDa = molData && reportedMW ? Math.abs(parseFloat(reportedMW) - molData.mw_avg) : null;
 
-        if (isMWAcceptable && isPurityAcceptable) setResult("pass");
-        else if (!isMWAcceptable || purity < molData.acceptable_purity - 3) setResult("fail");
-        else setResult("warning");
+    const mwCheck = useMemo((): CheckResult | null => {
+        if (!molData || !reportedMW) return null;
+        const dev = Math.abs(parseFloat(reportedMW) - molData.mw_avg);
+        if (dev <= 0.5) return { pass: true,  warning: false, label: "Molecular Weight", detail: `Δ ${dev.toFixed(3)} Da — within ±0.5 Da tolerance` };
+        if (dev <= 2.0) return { pass: false, warning: true,  label: "Molecular Weight", detail: `Δ ${dev.toFixed(3)} Da — outside ±0.5 Da ideal, within ±2 Da caution range` };
+        return           { pass: false, warning: false, label: "Molecular Weight", detail: `Δ ${dev.toFixed(3)} Da — exceeds ±2 Da. Possible wrong compound or degradation.` };
+    }, [reportedMW, molData]);
+
+    const purityCheck = useMemo((): CheckResult | null => {
+        if (!molData || !reportedPurity) return null;
+        const p = parseFloat(reportedPurity);
+        const min = molData.acceptable_purity;
+        if (p >= 98)      return { pass: true,  warning: false, label: "Purity", detail: `${p.toFixed(1)}% — meets ≥98% threshold` };
+        if (p >= 95)      return { pass: false, warning: true,  label: "Purity", detail: `${p.toFixed(1)}% — below 98% ideal, above 95% caution floor` };
+        if (p >= min)     return { pass: false, warning: true,  label: "Purity", detail: `${p.toFixed(1)}% — meets compound minimum (${min}%) but below 98%` };
+        return              { pass: false, warning: false, label: "Purity", detail: `${p.toFixed(1)}% — below minimum acceptable purity of ${min}%` };
+    }, [reportedPurity, molData]);
+
+    const labProfile = useMemo(() => labName.trim().length > 1 ? lookupLab(labName) : null, [labName]);
+
+    const analyze = () => {
+        if (!molData || !mwCheck || !purityCheck) return;
+        const allPass = mwCheck.pass && purityCheck.pass;
+        const anyFail = !mwCheck.pass && !mwCheck.warning || !purityCheck.pass && !purityCheck.warning;
+        setResult(allPass ? "pass" : anyFail ? "fail" : "warning");
         setAnalyzed(true);
     };
 
-    const mwDeviation = molData && reportedMW
-        ? Math.abs(parseFloat(reportedMW) - molData.mw_avg)
-        : null;
+    // Top-3 vendors for this peptide, sorted by cost-per-mg
+    const topVendors = useMemo(() => {
+        if (!selectedSlug) return [];
+        const entry = vendorPricing.find(p => p.slug === selectedSlug);
+        return (entry?.vendors ?? [])
+            .filter(v => v.inStock && v.price_usd > 0 && v.vial_mg > 0)
+            .sort((a, b) => (a.price_usd / a.vial_mg) - (b.price_usd / b.vial_mg))
+            .slice(0, 3);
+    }, [selectedSlug]);
 
     // Build schema (unused in render but kept for parity)
     const _schema = buildSoftwareApplicationSchema({
@@ -145,20 +175,52 @@ export default function CoacAnalyzerPage() {
             {/* COA Inputs */}
             {selectedSlug && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 mb-5">
-                    <div>
-                        <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5 block">Reported Molecular Weight (Da)</label>
-                        <input type="number" step="0.01" value={reportedMW} onChange={e => { setReportedMW(e.target.value); setAnalyzed(false); }}
-                            placeholder={`Expected: ${molData?.mw_avg.toFixed(2)} Da`}
-                            className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5 block">Reported MW (Da)</label>
+                            <input type="number" step="0.01" value={reportedMW} onChange={e => { setReportedMW(e.target.value); setAnalyzed(false); }}
+                                placeholder={`Expected ~${molData?.mw_avg.toFixed(2)}`}
+                                className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                            {mwDeviationDa !== null && reportedMW && (
+                                <p className={`text-[10px] mt-1 ${mwDeviationDa <= 0.5 ? 'text-emerald-400' : mwDeviationDa <= 2 ? 'text-amber-400' : 'text-red-400'}`}>
+                                    Δ {mwDeviationDa.toFixed(3)} Da from reference
+                                </p>
+                            )}
+                        </div>
+                        <div>
+                            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5 block">Reported Purity (%)</label>
+                            <input type="number" step="0.1" min="0" max="100" value={reportedPurity} onChange={e => { setReportedPurity(e.target.value); setAnalyzed(false); }}
+                                placeholder={`Min: ${molData?.acceptable_purity}%`}
+                                className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                        </div>
                     </div>
-                    <div>
-                        <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5 block">Reported Purity (%)</label>
-                        <input type="number" step="0.1" min="0" max="100" value={reportedPurity} onChange={e => { setReportedPurity(e.target.value); setAnalyzed(false); }}
-                            placeholder={`Minimum required: ${molData?.acceptable_purity}%`}
-                            className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5 block">Testing Lab <span className="text-zinc-600 normal-case font-normal">(optional)</span></label>
+                            <input type="text" value={labName} onChange={e => setLabName(e.target.value)}
+                                placeholder="e.g. Janoshik, MZ Biolabs"
+                                className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-blue-500/50 transition-colors" />
+                            {labName.trim().length > 1 && (() => {
+                                const tier: LabTier = labProfile?.tier ?? 'unverified';
+                                const s = TIER_STYLES[tier];
+                                return (
+                                    <div className={`mt-1.5 px-2.5 py-1.5 rounded-lg border text-[10px] ${s.border} ${s.bg}`}>
+                                        <span className={`font-semibold ${s.color}`}>{s.label}</span>
+                                        {labProfile && <span className="text-zinc-400 ml-1.5">{labProfile.note}</span>}
+                                        {!labProfile && <span className="text-zinc-500 ml-1.5">Not in verified lab registry. Treat results with caution.</span>}
+                                    </div>
+                                );
+                            })()}
+                        </div>
+                        <div>
+                            <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5 block">Batch ID <span className="text-zinc-600 normal-case font-normal">(optional)</span></label>
+                            <input type="text" value={batchId} onChange={e => setBatchId(e.target.value)}
+                                placeholder="e.g. BPC-2024-0412"
+                                className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-blue-500/50 transition-colors" />
+                        </div>
                     </div>
                     <button onClick={analyze} disabled={!reportedMW || !reportedPurity}
-                        className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-white font-bold text-sm transition-colors">
+                        className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white font-bold text-sm transition-colors">
                         Analyze COA
                     </button>
                 </motion.div>
@@ -166,51 +228,49 @@ export default function CoacAnalyzerPage() {
 
             {/* Result */}
             <AnimatePresence>
-                {analyzed && result && molData && (
-                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                        <div className={`rounded-2xl border p-5 mb-4 ${result === "pass" ? "border-emerald-500/30 bg-emerald-950/25" :
-                                result === "warning" ? "border-amber-500/30 bg-amber-950/25" :
-                                    "border-red-500/30 bg-red-950/25"
-                            }`}>
+                {analyzed && result && molData && mwCheck && purityCheck && (
+                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="space-y-4">
+                        {/* Verdict header */}
+                        <div className={`rounded-2xl border p-5 ${
+                            result === 'pass' ? 'border-emerald-500/30 bg-emerald-950/25' :
+                            result === 'warning' ? 'border-amber-500/30 bg-amber-950/25' :
+                            'border-red-500/30 bg-red-950/25'
+                        }`}>
                             <div className="flex items-center gap-3 mb-4">
-                                {result === "pass" && <ShieldCheck className="w-7 h-7 text-emerald-400" />}
-                                {result === "warning" && <AlertTriangle className="w-7 h-7 text-amber-400" />}
-                                {result === "fail" && <ShieldAlert className="w-7 h-7 text-red-400" />}
+                                {result === 'pass'    && <ShieldCheck  className="w-7 h-7 text-emerald-400" />}
+                                {result === 'warning' && <AlertTriangle className="w-7 h-7 text-amber-400" />}
+                                {result === 'fail'    && <ShieldAlert   className="w-7 h-7 text-red-400" />}
                                 <div>
-                                    <p className={`font-bold text-base ${result === "pass" ? "text-emerald-300" : result === "warning" ? "text-amber-300" : "text-red-300"}`}>
-                                        {result === "pass" ? "✅ COA Passes Verification" :
-                                            result === "warning" ? "⚠️ Minor Deviation Detected" :
-                                                "🚫 COA Fails Verification — Do Not Use"}
+                                    <p className={`font-bold text-base ${
+                                        result === 'pass' ? 'text-emerald-300' :
+                                        result === 'warning' ? 'text-amber-300' : 'text-red-300'
+                                    }`}>
+                                        {result === 'pass'    ? '✅ COA Passes Verification' :
+                                         result === 'warning' ? '⚠️ Minor Deviation Detected' :
+                                                               '🚫 COA Fails Verification'}
                                     </p>
-                                    <p className="text-xs text-zinc-400 mt-0.5">
-                                        {result === "pass" ? "Values are within acceptable ranges for premium-grade peptides." :
-                                            result === "warning" ? "Values are slightly outside optimal range. Proceed with caution." :
-                                                "Critical discrepancy detected. This may indicate a fake, degraded, or mislabeled product."}
-                                    </p>
+                                    {batchId && <p className="text-[10px] text-zinc-500 mt-0.5 font-mono">Batch: {batchId}</p>}
                                 </div>
                             </div>
 
-                            <div className="space-y-2.5 text-xs">
-                                <div className={`flex justify-between items-center p-2.5 rounded-lg ${Math.abs(parseFloat(reportedMW) - molData.mw_avg) / molData.mw_avg * 100 <= 1 ? "bg-emerald-900/30" : "bg-red-900/30"}`}>
-                                    <span className="text-zinc-300">Molecular Weight</span>
-                                    <div className="text-right">
-                                        <span className={`font-bold ${Math.abs(parseFloat(reportedMW) - molData.mw_avg) / molData.mw_avg * 100 <= 1 ? "text-emerald-400" : "text-red-400"}`}>
-                                            {parseFloat(reportedMW).toFixed(2)} Da
-                                        </span>
-                                        {mwDeviation !== null && <span className="text-zinc-500 ml-2">(Δ {mwDeviation.toFixed(2)} Da)</span>}
+                            {/* Per-check breakdown */}
+                            <div className="space-y-2 text-xs">
+                                {[mwCheck, purityCheck].map(chk => (
+                                    <div key={chk.label} className={`flex items-start justify-between gap-3 p-2.5 rounded-lg ${
+                                        chk.pass ? 'bg-emerald-900/30' : chk.warning ? 'bg-amber-900/30' : 'bg-red-900/30'
+                                    }`}>
+                                        <span className="text-zinc-300 font-semibold shrink-0">{chk.label}</span>
+                                        <span className={`text-right ${
+                                            chk.pass ? 'text-emerald-400' : chk.warning ? 'text-amber-400' : 'text-red-400'
+                                        }`}>{chk.detail}</span>
                                     </div>
-                                </div>
-                                <div className={`flex justify-between items-center p-2.5 rounded-lg ${parseFloat(reportedPurity) >= molData.acceptable_purity ? "bg-emerald-900/30" : "bg-red-900/30"}`}>
-                                    <span className="text-zinc-300">Purity</span>
-                                    <span className={`font-bold ${parseFloat(reportedPurity) >= molData.acceptable_purity ? "text-emerald-400" : "text-red-400"}`}>
-                                        {parseFloat(reportedPurity).toFixed(1)}% {parseFloat(reportedPurity) >= molData.acceptable_purity ? "✅" : `(min ${molData.acceptable_purity}%)`}
-                                    </span>
-                                </div>
+                                ))}
                             </div>
 
-                            {result !== "pass" && (
+                            {/* Red flags on non-pass */}
+                            {result !== 'pass' && (
                                 <div className="mt-4 pt-4 border-t border-zinc-800/50">
-                                    <p className="text-xs font-semibold text-zinc-400 mb-2">Common red flags for {peptide?.name}:</p>
+                                    <p className="text-xs font-semibold text-zinc-400 mb-2">Known red flags for {peptide?.name}:</p>
                                     <ul className="space-y-1">
                                         {molData.coa_red_flags.map(flag => (
                                             <li key={flag} className="text-[11px] text-red-400/80 flex items-center gap-1.5">
@@ -221,17 +281,45 @@ export default function CoacAnalyzerPage() {
                                 </div>
                             )}
                         </div>
+
+                        {/* Verified vendor CTA */}
+                        {topVendors.length > 0 && (
+                            <div className="rounded-2xl bg-zinc-950 border border-zinc-800 overflow-hidden">
+                                <div className="flex items-center gap-2 px-5 py-3 border-b border-zinc-800">
+                                    <FlaskConical className="w-4 h-4 text-emerald-400" />
+                                    <h2 className="text-sm font-bold text-zinc-100">Vendors verified for {peptide?.name}</h2>
+                                    <span className="ml-auto text-[10px] text-zinc-500">Sorted by $/mg</span>
+                                </div>
+                                <div className="divide-y divide-zinc-800/60">
+                                    {topVendors.map((v, i) => (
+                                        <div key={v.vendor} className="flex items-center justify-between gap-4 px-5 py-3">
+                                            <div>
+                                                <span className="text-sm font-semibold text-zinc-200">{v.vendor}</span>
+                                                {i === 0 && <span className="ml-2 text-[9px] font-bold text-emerald-400 border border-emerald-500/30 rounded px-1.5 py-0.5 uppercase">Best $/mg</span>}
+                                                <div className="text-[10px] text-zinc-500 mt-0.5">{v.vial_mg}mg · ${(v.price_usd / v.vial_mg).toFixed(2)}/mg</div>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <span className="font-mono text-sm font-bold text-zinc-100">${v.price_usd.toFixed(2)}</span>
+                                                <a href={v.affiliateUrl} target="_blank" rel="sponsored nofollow noopener"
+                                                    onClick={() => trackOutboundClick(v.vendor, v.affiliateUrl, 'coa_vendor_cta')}
+                                                    className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors">
+                                                    Shop <ExternalLink className="w-3 h-3" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="px-5 py-2 border-t border-zinc-800 text-[10px] text-zinc-600">
+                                    ⚠ Affiliate disclosure. Prices verified from vendor sites — confirm at checkout.
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Conversion block */}
+                        <ToolPageConversionBlock surface="tool_coa" className="mt-2" />
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            {/* Conversion block — shown after analysis is run */}
-            {analyzed && (
-                <ToolPageConversionBlock
-                    surface="tool_coa"
-                    className="mt-4"
-                />
-            )}
         </div>
     );
 }

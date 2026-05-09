@@ -55,11 +55,11 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 69.98,
+                "price_usd": 99.97,
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -92,11 +92,11 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 115.48,
+                "price_usd": 164.97,
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -111,14 +111,6 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "inStock": true,
                 "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
-            },
-            {
-                "vendor": "Bio Longevity Labs",
-                "price_usd": 69.98,
-                "vial_mg": 10,
-                "inStock": true,
-                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
             }
         ]
     },
@@ -151,11 +143,11 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 55.98,
+                "price_usd": 79.97,
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -191,8 +183,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 64.97,
                 "vial_mg": 20,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/n-acetyl-semax-amidate-20mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -228,8 +221,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 134.97,
                 "vial_mg": 20,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/n-acetyl-selank-amidate-20mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -265,8 +259,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 84.97,
                 "vial_mg": 50,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/ghk-cu-50mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -291,11 +286,11 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 104.98,
+                "price_usd": 89.98,
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -349,11 +344,12 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 179.99,
-                "vial_mg": 5,
+                "price_usd": 65.98,
+                "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/nad-mots-c-5-amino-1mq-blend-120mg-100mg-10mg-10mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -370,11 +366,11 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 66.48,
+                "price_usd": 56.98,
                 "vial_mg": 20,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -391,11 +387,11 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 90.98,
+                "price_usd": 129.97,
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-                "lastTestedDate": "2026-04-20"
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -753,18 +749,13 @@ export const vendorPricing: PeptideVendorPricing[] =
         "name": "Kisspeptin-10",
         "vendors": [
             {
-                "vendor": "Amino Club",
-                "price_usd": 63.99,
-                "vial_mg": 5,
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 64.97,
+                "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 74,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -777,8 +768,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 94.97,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/ll-37-5mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -786,80 +778,22 @@ export const vendorPricing: PeptideVendorPricing[] =
         "slug": "mk-677",
         "name": "MK-677",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 46.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 57,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
-    {
-        "slug": "nad",
-        "name": "NAD+",
-        "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 84.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 95,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
-        ]
-    },
+    // NAD+ (slug "nad") is a duplicate — see "nad-" entry above for the real pricing
     {
         "slug": "tesofensine",
         "name": "Tesofensine",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 40.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 51,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification — do not display until confirmed
         ]
     },
     {
         "slug": "argireline",
         "name": "Argireline",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 43.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 54,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
@@ -867,18 +801,13 @@ export const vendorPricing: PeptideVendorPricing[] =
         "name": "5-Amino-1MQ",
         "vendors": [
             {
-                "vendor": "Amino Club",
-                "price_usd": 71.99,
-                "vial_mg": 5,
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 74.97,
+                "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 82,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -888,11 +817,12 @@ export const vendorPricing: PeptideVendorPricing[] =
         "vendors": [
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 95,
+                "price_usd": 95.00,
                 "vial_mg": 15,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/ara-290-15mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -900,40 +830,14 @@ export const vendorPricing: PeptideVendorPricing[] =
         "slug": "gonadorelin",
         "name": "Gonadorelin",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 51.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 62,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
         "slug": "larazotide",
         "name": "Larazotide",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 79.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 90,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
@@ -945,8 +849,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 74.97,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/vip-5mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -959,8 +864,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 64.97,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/oxytocin-10mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -968,60 +874,21 @@ export const vendorPricing: PeptideVendorPricing[] =
         "slug": "thymalin",
         "name": "Thymalin",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 70.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 81,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
         "slug": "humanin",
         "name": "Humanin",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 46.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 57,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
         "slug": "pe-22-28",
         "name": "PE-22-28",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 45.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 56,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
@@ -1029,18 +896,13 @@ export const vendorPricing: PeptideVendorPricing[] =
         "name": "Pinealon",
         "vendors": [
             {
-                "vendor": "Amino Club",
-                "price_usd": 51.99,
-                "vial_mg": 5,
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 69.97,
+                "vial_mg": 20,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 62,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -1049,18 +911,13 @@ export const vendorPricing: PeptideVendorPricing[] =
         "name": "Cortagen",
         "vendors": [
             {
-                "vendor": "Amino Club",
-                "price_usd": 59.99,
-                "vial_mg": 5,
+                "vendor": "Bio Longevity Labs",
+                "price_usd": 69.97,
+                "vial_mg": 20,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 70,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -1068,20 +925,7 @@ export const vendorPricing: PeptideVendorPricing[] =
         "slug": "dihexa",
         "name": "Dihexa",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 55.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 66,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
@@ -1093,8 +937,9 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 274.97,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/foxo4-dri-10-mg/",
-                "badge": "Triple-Tested"
+                "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+                "badge": "Triple-Tested",
+                "lastTestedDate": "2026-05-08"
             }
         ]
     },
@@ -1102,80 +947,28 @@ export const vendorPricing: PeptideVendorPricing[] =
         "slug": "klotho",
         "name": "Klotho",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 39.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 50,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
         "slug": "os-01",
         "name": "OS-01",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 74.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 85,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
         "slug": "synapsin",
         "name": "Synapsin",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 74.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 85,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     },
     {
         "slug": "fgl-loop",
         "name": "FGL Loop",
         "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 67.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 78,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
+            // Prices pending verification
         ]
     }
 ];

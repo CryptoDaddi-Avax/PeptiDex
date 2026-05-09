@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { BarChart3, ShieldCheck, TrendingDown, ShoppingCart } from "lucide-react";
 import { vendorPricing } from "@/data/vendor-pricing";
+import { vendors } from "@/data/vendors";
 import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
 
 interface StickyQuickCompareProps {
@@ -12,11 +13,12 @@ interface StickyQuickCompareProps {
     peptideName: string;
 }
 
-// ── Discount registry: source of truth is /data/vendors.ts discountPercent ──
-const VENDOR_DISCOUNTS: Record<string, { code: string; pct: number }> = {
-    "Amino Club":        { code: "PEPTIDEX", pct: 15 },
-    "Bio Longevity Labs": { code: "PEPTIDEX", pct: 15 },
-};
+// ── Discount registry: derived from vendors.ts — no hardcoded values ──────────
+const VENDOR_DISCOUNTS: Record<string, { code: string; pct: number }> = Object.fromEntries(
+    vendors
+        .filter(v => v.discountCode && v.discountPercent)
+        .map(v => [v.name, { code: v.discountCode!, pct: v.discountPercent! }])
+);
 
 /** Post-discount price for a given sticker price + vendor name */
 function discountedPrice(vendor: string, price: number): number {

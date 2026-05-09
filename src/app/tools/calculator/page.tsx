@@ -419,39 +419,54 @@ export default function CalculatorPage() {
                             <Droplets className="w-5 h-5 text-emerald-400" />
                             <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">Reconstitution Results</h3>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                             <div>
-                                <p className="text-xs text-zinc-500 mb-1">Solution Concentration</p>
-                                {/* Bug 3 fix: formatConcentration preserves meaningful decimals */}
-                                <p className="text-xl font-bold text-emerald-400">{formatConcentration(concentration)} mcg/mL</p>
+                                <p className="text-xs text-zinc-500 mb-1">Concentration</p>
+                                <p className="text-xl font-bold text-emerald-400">{formatConcentration(concentration)}</p>
+                                <p className="text-[10px] text-zinc-600">mcg/mL</p>
                             </div>
                             {dispenseMl !== null ? (
                                 <div>
-                                    <p className="text-xs text-zinc-500 mb-1">Volume to Dispense</p>
-                                    <p className="text-xl font-bold text-emerald-400">{dispenseMl.toFixed(3)} mL</p>
-                                    {syringeUnits !== null && (
-                                        <p className="text-[10px] text-zinc-500 mt-0.5">
-                                            = {syringeUnits % 1 === 0 ? syringeUnits.toFixed(0) : syringeUnits.toFixed(1)} units ({activeSyringe.label})
-                                        </p>
-                                    )}
+                                    <p className="text-xs text-zinc-500 mb-1">Dispense Volume</p>
+                                    <p className="text-xl font-bold text-emerald-400">{dispenseMl.toFixed(3)}</p>
+                                    <p className="text-[10px] text-zinc-600">mL = {syringeUnits !== null ? (syringeUnits % 1 === 0 ? syringeUnits.toFixed(0) : syringeUnits.toFixed(1)) : '—'} U-100 units</p>
                                 </div>
                             ) : (
-                                // Bug 4 fix: explicit prompt when dose not yet entered
                                 <div>
-                                    <p className="text-xs text-zinc-500 mb-1">Volume to Dispense</p>
-                                    <p className="text-sm text-zinc-600 italic">Enter target dose above</p>
+                                    <p className="text-xs text-zinc-500 mb-1">Dispense Volume</p>
+                                    <p className="text-sm text-zinc-600 italic">Enter target dose</p>
                                 </div>
                             )}
+                            {dispenseMl !== null && parseFloat(vialMg) > 0 && parseFloat(targetConcentrationMcg) > 0 && (() => {
+                                const totalMcg = parseFloat(vialMg) * 1000;
+                                const doseMcg = parseFloat(targetConcentrationMcg);
+                                const dosesPerVial = doseMcg > 0 ? Math.floor(totalMcg / doseMcg) : 0;
+                                const freq = peptide?.dosing?.frequency?.toLowerCase() ?? '';
+                                const perWeek = freq.includes('daily') || freq.includes('every day') ? 7 : freq.includes('2x') || freq.includes('twice') ? 14 : freq.includes('3x') ? 21 : freq.includes('eod') || freq.includes('every other') ? 3.5 : 7;
+                                const daysSupply = perWeek > 0 ? Math.floor((dosesPerVial / perWeek) * 7) : dosesPerVial;
+                                return (<>
+                                    <div>
+                                        <p className="text-xs text-zinc-500 mb-1">Doses / Vial</p>
+                                        <p className="text-xl font-bold text-amber-400">{dosesPerVial}</p>
+                                        <p className="text-[10px] text-zinc-600">at {doseMcg} mcg each</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-zinc-500 mb-1">Days Supply</p>
+                                        <p className="text-xl font-bold text-amber-400">{daysSupply}</p>
+                                        <p className="text-[10px] text-zinc-600">{peptide?.dosing?.frequency ?? 'per protocol'}</p>
+                                    </div>
+                                </>);
+                            })()}
                         </div>
                     </div>
 
-                    {/* Bug 6 fix: pipette with fallback when volume exceeds capacity */}
+                    {/* U-100 Insulin Syringe Visual */}
                     {graduatedUnits !== null && (
                         <div className="rounded-2xl bg-zinc-900/60 border border-emerald-500/20 p-5">
                             <div className="flex items-center gap-2 mb-4">
                                 <TestTubeDiagonal className="w-4 h-4 text-emerald-400" />
-                                <span className="text-sm font-semibold text-emerald-300">Visual Pipette Guide</span>
-                                <span className="ml-auto text-xs text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded-full">{activeSyringe.label} Syringe</span>
+                                <span className="text-sm font-semibold text-emerald-300">U-100 Insulin Syringe</span>
+                                <span className="ml-auto text-xs text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded-full">{activeSyringe.label}</span>
                             </div>
                             {exceedsCapacity ? (
                                 <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-amber-500/30 bg-amber-500/10 text-sm text-amber-300">
@@ -459,108 +474,115 @@ export default function CalculatorPage() {
                                     <div>
                                         <p className="font-semibold">Volume exceeds syringe capacity</p>
                                         <p className="text-xs text-amber-400/80 mt-1">
-                                            {dispenseMl!.toFixed(3)} mL exceeds the {activeSyringe.maxMl} mL capacity of a {activeSyringe.label} syringe.
-                                            Switch to a larger syringe above, or reduce your target dose.
+                                            {dispenseMl!.toFixed(3)} mL exceeds the {activeSyringe.maxMl} mL of a {activeSyringe.label} syringe. Switch syringe size above.
                                         </p>
                                     </div>
                                 </div>
-                            ) : (
-                                <>
-                                {/* SVG Graduated Pipette */}
-                                <div className="relative w-full overflow-x-auto">
-                                    <svg viewBox="0 0 480 110" className="w-full max-w-lg mx-auto" preserveAspectRatio="xMidYMid meet">
-                                        {/* Pipette tip */}
-                                        <rect x="14" y="47" width="26" height="16" rx="2" fill="#a1a1aa" />
-                                        <polygon points="14,51 14,59 4,55" fill="#a1a1aa" />
+                            ) : (() => {
+                                const fillPct = Math.min(Math.max((graduatedUnits ?? 0) / activeSyringe.maxUnits, 0), 1);
+                                // barrel: x=60..390 (330px wide), y=38..78 (40px tall)
+                                const barrelX = 60; const barrelW = 330; const barrelY = 38; const barrelH = 40;
+                                const fillW = fillPct * barrelW;
+                                const markX = barrelX + fillW;
+                                // Tick mark positions: every 10 units
+                                const ticks = Array.from({ length: activeSyringe.maxUnits / 10 + 1 }, (_, i) => i * 10);
+                                return (
+                                    <>
+                                    <div className="relative w-full overflow-x-auto">
+                                        <svg viewBox="0 0 480 120" className="w-full max-w-xl mx-auto" preserveAspectRatio="xMidYMid meet">
+                                            <defs>
+                                                <linearGradient id="syringeFluid" x1="0" y1="0" x2="1" y2="0">
+                                                    <stop offset="0%" stopColor="#059669" stopOpacity="0.95" />
+                                                    <stop offset="100%" stopColor="#34d399" stopOpacity="0.95" />
+                                                </linearGradient>
+                                                <linearGradient id="barrelGrad" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="0%" stopColor="#27272a" />
+                                                    <stop offset="100%" stopColor="#18181b" />
+                                                </linearGradient>
+                                                <clipPath id="fluidClip">
+                                                    <rect x={barrelX + 1} y={barrelY + 1} width={barrelW - 2} height={barrelH - 2} rx="3" />
+                                                </clipPath>
+                                            </defs>
 
-                                        {/* Barrel outline */}
-                                        <rect x="40" y="35" width="360" height="40" rx="6" fill="#18181b" stroke="#3f3f46" strokeWidth="1.5" />
+                                            {/* Needle hub */}
+                                            <rect x="20" y="50" width="18" height="16" rx="2" fill="#52525b" />
+                                            {/* Needle */}
+                                            <line x1="38" y1="58" x2="60" y2="58" stroke="#a1a1aa" strokeWidth="2" />
 
-                                        {/* Liquid fill */}
-                                        <clipPath id="pipetteClip">
-                                            <rect x="41" y="36" width="358" height="38" rx="5" />
-                                        </clipPath>
-                                        <motion.rect
-                                            x="41" y="36" height="38" rx="5"
-                                            fill="url(#liquidGrad)"
-                                            clipPath="url(#pipetteClip)"
-                                            initial={{ width: 0 }}
-                                            animate={{ width: (Math.min(Math.max(graduatedUnits ?? 0, 0), activeSyringe.maxUnits) / activeSyringe.maxUnits) * 358 }}
-                                            transition={{ duration: 0.8, ease: "easeOut" }}
-                                        />
-                                        <defs>
-                                            <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0%" stopColor="#34d399" stopOpacity="0.9" />
-                                                <stop offset="100%" stopColor="#059669" stopOpacity="0.9" />
-                                            </linearGradient>
-                                        </defs>
+                                            {/* Barrel body */}
+                                            <rect x={barrelX} y={barrelY} width={barrelW} height={barrelH} rx="5" fill="url(#barrelGrad)" stroke="#3f3f46" strokeWidth="1.5" />
 
-                                        {/* Tick marks every 10 units */}
-                                        {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map(unit => {
-                                            const x = 41 + (unit / 100) * 358;
-                                            const isMajor = unit % 20 === 0;
-                                            return (
-                                                <g key={unit}>
-                                                    <line
-                                                        x1={x} y1={isMajor ? 30 : 33}
-                                                        x2={x} y2={isMajor ? 75 : 72}
-                                                        stroke={isMajor ? "#a1a1aa" : "#52525b"}
-                                                        strokeWidth={isMajor ? 1.5 : 1}
-                                                    />
-                                                    {isMajor && (
-                                                        <text x={x} y={86} textAnchor="middle" fontSize="8" fill="#71717a">{unit}</text>
-                                                    )}
-                                                </g>
-                                            );
-                                        })}
-
-                                        {/* Plunger */}
-                                        <motion.g
-                                            initial={{ x: 0 }}
-                                            animate={{ x: (Math.min(Math.max(graduatedUnits ?? 0, 0), activeSyringe.maxUnits) / activeSyringe.maxUnits) * 358 }}
-                                            transition={{ duration: 0.8, ease: "easeOut" }}
-                                        >
-                                            <rect x="399" y="30" width="8" height="50" rx="2" fill="#52525b" />
-                                            <rect x="407" y="40" width="32" height="30" rx="3" fill="#3f3f46" />
-                                            <rect x="439" y="36" width="8" height="38" rx="2" fill="#27272a" />
-                                        </motion.g>
-
-                                        {/* Measurement callout */}
-                                        <rect x="150" y="13" width="180" height="22" rx="6" fill="#065f46" fillOpacity="0.8" />
-                                        <text x="240" y="28" textAnchor="middle" fontSize="11" fill="#34d399" fontWeight="bold">
-                                            {`Measure to ${syringeUnits ?? 0} units (${dispenseMl!.toFixed(2)} mL)`}
-                                        </text>
-
-                                        {/* Arrow pointing to the level */}
-                                        <motion.g
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            transition={{ delay: 0.9 }}
-                                        >
-                                            <motion.line
-                                                x1={41 + (Math.min(Math.max(graduatedUnits ?? 0, 0), activeSyringe.maxUnits) / activeSyringe.maxUnits) * 358}
-                                                y1={23}
-                                                x2={41 + (Math.min(Math.max(graduatedUnits ?? 0, 0), activeSyringe.maxUnits) / activeSyringe.maxUnits) * 358}
-                                                y2={35}
-                                                stroke="#34d399"
-                                                strokeWidth="1.5"
-                                                strokeDasharray="3 2"
+                                            {/* Fluid fill */}
+                                            <motion.rect
+                                                x={barrelX + 1} y={barrelY + 1} height={barrelH - 2} rx="3"
+                                                fill="url(#syringeFluid)"
+                                                clipPath="url(#fluidClip)"
+                                                initial={{ width: 0 }}
+                                                animate={{ width: Math.max(fillW - 2, 0) }}
+                                                transition={{ duration: 0.9, ease: 'easeOut' }}
                                             />
-                                        </motion.g>
-                                    </svg>
-                                </div>
 
-                                <div className="mt-4 flex items-center justify-between text-xs text-zinc-400">
-                                    <span>0.00 mL</span>
-                                    <div className="text-center">
-                                        <span className="text-2xl font-black text-emerald-400">{dispenseMl!.toFixed(3)}</span>
-                                        <span className="text-zinc-400 ml-1">mL</span>
-                                        <p className="text-[10px] text-zinc-500 mt-0.5">= {syringeUnits} units ({activeSyringe.label})</p>
+                                            {/* Tick marks (from right = 0, left = max, fill left→right for fluid) */}
+                                            {ticks.map(unit => {
+                                                const x = barrelX + (unit / activeSyringe.maxUnits) * barrelW;
+                                                const isMajor = unit % 20 === 0;
+                                                const isTarget = Math.abs(unit - (graduatedUnits ?? 0)) < 5 && unit > 0;
+                                                return (
+                                                    <g key={unit}>
+                                                        <line x1={x} y1={isMajor ? barrelY - 7 : barrelY - 4}
+                                                              x2={x} y2={isMajor ? barrelY + barrelH + 7 : barrelY + barrelH + 4}
+                                                              stroke={isTarget ? '#fbbf24' : isMajor ? '#71717a' : '#3f3f46'}
+                                                              strokeWidth={isTarget ? 2 : isMajor ? 1.5 : 1} />
+                                                        {isMajor && (
+                                                            <text x={x} y={barrelY + barrelH + 18} textAnchor="middle" fontSize="8" fill="#71717a">{unit}</text>
+                                                        )}
+                                                    </g>
+                                                );
+                                            })}
+
+                                            {/* Dose mark line */}
+                                            <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>
+                                                <motion.line
+                                                    x1={markX} y1={barrelY - 12} x2={markX} y2={barrelY + barrelH + 12}
+                                                    stroke="#fbbf24" strokeWidth="2" strokeDasharray="4 3"
+                                                    initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
+                                                    transition={{ duration: 0.4, delay: 0.85 }}
+                                                />
+                                                {/* Callout bubble */}
+                                                <rect x={Math.min(markX - 44, 380)} y={barrelY - 30} width={88} height={18} rx="5" fill="#92400e" fillOpacity="0.9" />
+                                                <text x={Math.min(markX, 424)} y={barrelY - 17} textAnchor="middle" fontSize="9" fill="#fcd34d" fontWeight="bold">
+                                                    {`${syringeUnits ?? 0} units · ${dispenseMl!.toFixed(3)} mL`}
+                                                </text>
+                                            </motion.g>
+
+                                            {/* Plunger rod */}
+                                            <motion.g
+                                                initial={{ x: -barrelW }}
+                                                animate={{ x: -(barrelW - fillW) }}
+                                                transition={{ duration: 0.9, ease: 'easeOut' }}
+                                            >
+                                                <rect x={barrelX + barrelW - 6} y={barrelY + 2} width="6" height={barrelH - 4} rx="1" fill="#3f3f46" />
+                                                <rect x={barrelX + barrelW + 6} y={barrelY - 4} width="44" height={barrelH + 8} rx="3" fill="#27272a" stroke="#52525b" strokeWidth="1" />
+                                                <rect x={barrelX + barrelW + 50} y={barrelY + 8} width="8" height={barrelH - 16} rx="2" fill="#3f3f46" />
+                                            </motion.g>
+
+                                            {/* Scale labels */}
+                                            <text x={barrelX} y={barrelY + barrelH + 28} textAnchor="middle" fontSize="7" fill="#52525b">0</text>
+                                            <text x={barrelX + barrelW} y={barrelY + barrelH + 28} textAnchor="middle" fontSize="7" fill="#52525b">{activeSyringe.maxUnits}u</text>
+                                        </svg>
                                     </div>
-                                    <span>{activeSyringe.maxMl.toFixed(2)} mL</span>
-                                </div>
-                                </>
-                            )}
+                                    <div className="mt-3 flex items-center justify-between text-xs text-zinc-400">
+                                        <span className="text-zinc-600">0u (empty)</span>
+                                        <div className="text-center">
+                                            <span className="text-2xl font-black text-amber-400">{syringeUnits}</span>
+                                            <span className="text-zinc-400 ml-1 text-sm">units</span>
+                                            <p className="text-[10px] text-zinc-500 mt-0.5">= {dispenseMl!.toFixed(3)} mL on a U-100 syringe</p>
+                                        </div>
+                                        <span className="text-zinc-600">{activeSyringe.maxUnits}u (full)</span>
+                                    </div>
+                                    </>
+                                );
+                            })()}
                         </div>
                     )}
 
@@ -677,8 +699,8 @@ export default function CalculatorPage() {
                 // Top-3 vendors for this peptide from the pricing data layer
                 const pricingEntry = vendorPricing.find(p => p.slug === pepSlug || p.name === pepName);
                 const topVendors = (pricingEntry?.vendors ?? [])
-                    .filter(v => v.inStock && v.price_usd > 0)
-                    .sort((a, b) => a.price_usd - b.price_usd)
+                    .filter(v => v.inStock && v.price_usd > 0 && v.vial_mg > 0)
+                    .sort((a, b) => (a.price_usd / a.vial_mg) - (b.price_usd / b.vial_mg))
                     .slice(0, 3);
 
                 // Fallback: Amino Club generic link if no pricing data
@@ -756,6 +778,22 @@ export default function CalculatorPage() {
                             <span>⚠ Affiliate disclosure: PeptiDex earns a commission on qualifying purchases.</span>
                             <span>Prices verified from vendor sites — confirm at checkout.</span>
                         </div>
+
+                        {/* Cycle Planner CTA */}
+                        {pepSlug && (
+                            <div className="px-5 py-4 border-t border-zinc-800 flex items-center justify-between gap-4">
+                                <div>
+                                    <p className="text-xs font-semibold text-zinc-300">Ready to plan a full protocol?</p>
+                                    <p className="text-[10px] text-zinc-500 mt-0.5">Cycle timing, off-weeks, and stack optimization — built around this compound.</p>
+                                </div>
+                                <Link
+                                    href={`/tools/cycle-planner?peptide=${pepSlug}`}
+                                    className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 text-xs font-bold hover:bg-emerald-500/20 transition-colors whitespace-nowrap"
+                                >
+                                    Plan a Cycle <ArrowRight className="w-3.5 h-3.5" />
+                                </Link>
+                            </div>
+                        )}
                     </motion.div>
                 );
             })()}

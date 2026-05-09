@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, SlidersHorizontal, Trophy } from "lucide-react";
+import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, SlidersHorizontal, Trophy, Download } from "lucide-react";
 import { vendorsSorted, type Vendor } from "@/data/vendors";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { peptides as allPeptides } from "@/data/peptides";
@@ -104,6 +104,31 @@ function formatDate(iso: string) {
   } catch {
     return iso;
   }
+}
+
+function exportCSV(peptideName: string, rows: EnrichedVendorRow[]) {
+  const header = ["Vendor", "List Price (USD)", "PEPTIDEX Price (USD)", "You Save (USD)", "Vial Size (mg)", "Cost/mg (USD)", "Discount Code", "In Stock", "Shop URL"];
+  const csvRows = rows.map(r => [
+    r.vendor.name,
+    r.price_usd.toFixed(2),
+    r.discount.finalPrice.toFixed(2),
+    r.discount.discountApplied ? r.discount.savings.toFixed(2) : "0.00",
+    r.vial_mg,
+    r.costPerDose > 0 ? r.costPerDose.toFixed(4) : "",
+    r.vendor.discountCode ?? "",
+    r.inStock ? "Yes" : "No",
+    r.affiliateUrl,
+  ]);
+  const csv = [header, ...csvRows].map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `peptidex-pricing-${peptideName.toLowerCase().replace(/\s+/g, "-")}-${new Date().toISOString().split("T")[0]}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -610,6 +635,25 @@ export default function PricingClient() {
                 <button onClick={() => setVendorFilter(new Set())} style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-mute)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Clear</button>
               )}
             </div>
+
+            {/* CSV Export */}
+            {filteredRows.length > 0 && (
+              <button
+                onClick={() => exportCSV(currentPeptide?.name ?? "peptide", filteredRows)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '6px 14px', borderRadius: 6,
+                  border: '1px solid rgba(201,169,97,0.3)',
+                  background: 'rgba(201,169,97,0.06)',
+                  color: 'var(--gold)', fontFamily: 'var(--mono)', fontSize: 11,
+                  cursor: 'pointer', letterSpacing: '0.06em', whiteSpace: 'nowrap',
+                }}
+                title="Download visible rows as CSV"
+                aria-label="Download pricing data as CSV"
+              >
+                <Download size={12} /> Download CSV
+              </button>
+            )}
           </div>
 
           {/* Stats strip */}

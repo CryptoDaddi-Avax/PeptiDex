@@ -28,7 +28,15 @@ export type PromoSurface =
   | "stack_page"
   | "best_page"
   | "buy_page"
-  | "where_to_buy";
+  | "where_to_buy"
+  | "buy_box"
+  | "stack_card"
+  | "stack_cart_builder"
+  | "vendor_comparison_row"
+  | "smart_vendor_picker"
+  | "price_drop_alert"
+  | "peptide_x_vendor_page"
+  | "coa_vendor_cta";
 
 // ── URL Builder ───────────────────────────────────────────────────────────────
 

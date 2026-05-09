@@ -30,7 +30,15 @@ export type AffiliateSource =
   | "stack_price"      // stack price aggregator (inline on stack pages)
   | "calculator"       // dosage calculator sourcing CTA
   | "sticky_bar"       // sticky quick-compare bar on detail pages
-  | "coa_modal";       // COA badge modal external link
+  | "coa_modal"        // COA badge modal external link
+  | "buy_box"          // <BuyBox /> on library pages
+  | "stack_card"       // <PeptideStackCard /> on /best/ and /stacks/
+  | "stack_cart"       // <StackCartBuilder /> cart CTAs
+  | "vendor_row"       // <VendorComparisonRow /> reusable row
+  | "smart_picker"     // <SmartVendorPicker /> quiz result
+  | "price_alert"      // <PriceDropAlertCapture /> context CTA
+  | "pxv_page"         // programmatic peptide×vendor pages
+  | "coa_vendor_cta";  // COA analyzer vendor CTA
 
 // ─── Derive vendor key from URL ───────────────────────────────────────────────
 export function vendorKeyFromUrl(url: string): AffiliateVendor | "unknown" {
