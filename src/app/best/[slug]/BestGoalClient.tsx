@@ -6,21 +6,41 @@ import { getGoalPage } from "@/data/goal-pages";
 import { getCategoryIcon } from "@/data/category-icons";
 import { SaveButton } from "@/components/save-button";
 import { NewsletterSignup } from "@/components/newsletter-signup";
-import { User as UserIcon, Calendar as CalendarIcon } from 'lucide-react';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
+import { PeptideStackCard } from '@/components/affiliate/PeptideStackCard';
+import { StackCartBuilder } from '@/components/affiliate/StackCartBuilder';
 import './best-goal-redesign.css';
 
 interface BestGoalClientProps {
     slug: string;
 }
 
-/* Dosing role text helper */
-function getPepRole(pep: { category?: string; primary_benefits?: string }, index: number): string {
-    const roles = ['Anchor', 'Support', 'Pulse', 'Modulator', 'Optimizer', 'Auxiliary'];
-    const label = roles[index] || `Compound ${index + 1}`;
-    const desc = pep.primary_benefits || pep.category || '';
-    return `§ ${label} — ${desc}`;
+/* ── Stack card helpers ──────────────────────────────────────────────────── */
+
+const ROLE_SEQUENCE = ['primary', 'synergist', 'support', 'support', 'support', 'support'] as const;
+type PepRole = typeof ROLE_SEQUENCE[number];
+
+function getPepCardRole(index: number): PepRole {
+    return ROLE_SEQUENCE[index] ?? 'support';
+}
+
+function getPepDosingSummary(pep: { dosing?: { typical_dose_mcg?: [number, number]; frequency?: string } | null; category?: string }): string {
+    if (pep.dosing) {
+        const dose = pep.dosing.typical_dose_mcg;
+        const freq = pep.dosing.frequency ?? '';
+        if (dose) {
+            const doseStr = dose[0] === dose[1] ? `${dose[0]}mcg` : `${dose[0]}-${dose[1]}mcg`;
+            return freq ? `${doseStr} ${freq}`.slice(0, 28) : doseStr.slice(0, 28);
+        }
+        return freq.slice(0, 28) || 'Dosing varies';
+    }
+    return pep.category === 'injectable' ? 'Dosing varies' : 'See library';
+}
+
+function getPepRationale(pep: { primary_benefits?: string; mechanism?: string | null }): string {
+    const src = pep.primary_benefits || pep.mechanism || '';
+    return src.slice(0, 120);
 }
 
 export default function BestGoalClient({ slug }: BestGoalClientProps) {
@@ -104,13 +124,18 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                             Each peptide plays a specific role. Removing any one breaks the synergy.
                         </p>
 
+                        {/* ── PeptideStackCard grid ── */}
                         <div className="goal-protocol-grid">
                             {peptides.map((pep, i) => (
-                                <Link key={pep.slug} href={`/library/${pep.slug}`} className="goal-protocol-pep">
-                                    <div className="goal-pep-role">{getPepRole(pep, i)}</div>
-                                    <h4>{pep.name}</h4>
-                                    <p>{pep.mechanism?.slice(0, 180) || pep.primary_benefits}</p>
-                                </Link>
+                                <PeptideStackCard
+                                    key={pep.slug}
+                                    peptideSlug={pep.slug}
+                                    peptideName={pep.name}
+                                    role={getPepCardRole(i)}
+                                    dosingSummary={getPepDosingSummary(pep)}
+                                    rationale={getPepRationale(pep)}
+                                    surface="goal_page"
+                                />
                             ))}
                             <Link href={`/tools/cycle-planner?goal=${slug}`} className="goal-protocol-pep cta-card">
                                 <div className="goal-pep-role">§ Build your version</div>
@@ -181,6 +206,20 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                             </li>
                         ))}
                     </ol>
+                </section>
+            )}
+
+            {/* ═══ STACK CART BUILDER ═══ */}
+            {peptides.length > 0 && (
+                <section style={{ maxWidth: 900, margin: '0 auto', padding: '0 32px 48px' }}>
+                    <div className="goal-section-label mb-4" style={{ color: '#c9a961', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                        § Source This Stack
+                    </div>
+                    <StackCartBuilder
+                        peptideSlugs={goal.peptideSlugs}
+                        stackName={goal.h1.replace(/^Best Peptides for\s*/i, '')}
+                        surface="stack_builder"
+                    />
                 </section>
             )}
 

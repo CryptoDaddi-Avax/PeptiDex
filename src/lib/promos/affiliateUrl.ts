@@ -36,7 +36,9 @@ export type PromoSurface =
   | "smart_vendor_picker"
   | "price_drop_alert"
   | "peptide_x_vendor_page"
-  | "coa_vendor_cta";
+  | "coa_vendor_cta"
+  | "goal_page"
+  | "stack_builder";
 
 // ── URL Builder ───────────────────────────────────────────────────────────────
 
