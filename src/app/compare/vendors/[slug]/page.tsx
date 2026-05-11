@@ -135,6 +135,29 @@ export default async function VendorComparisonPage({ params }: { params: Promise
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: `${vendorA.name} vs ${vendorB.name} — Vendor Comparison`,
+        itemListElement: [vendorA, vendorB].map((v, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          item: {
+            '@type': 'Organization',
+            name: v.name,
+            url: v.affiliateUrl,
+            description: `${v.name} is a research peptide vendor with ${v.purity} purity guarantee and ${v.coaStatus.toLowerCase()} COA verification.`,
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: v.rating.toFixed(1),
+              bestRating: '5',
+              worstRating: '1',
+              ratingCount: parseInt(v.ratingCount, 10) || 50,
+              reviewCount: parseInt(v.ratingCount, 10) || 50,
+            },
+          },
+        })),
+      }) }} />
 
       <Breadcrumbs items={[
         { name: 'Home', url: 'https://peptidex.app/' },

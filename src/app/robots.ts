@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: ['/', '/tools/'],
-        disallow: ['/admin', '/saved', '/api/'],
+        disallow: ['/admin', '/saved', '/api/', '/profile', '/auth', '/log-protocol'],
       },
       {
         userAgent: ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-Web', 'Google-Extended', 'PerplexityBot', 'OAI-SearchBot'],
