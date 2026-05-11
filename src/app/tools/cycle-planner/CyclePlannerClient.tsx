@@ -22,7 +22,9 @@ import {
 import { Goal, Stack } from "@/data/types";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { CycleCardData } from "@/components/share-card/card-templates";
+import { ShoppingList } from "@/components/shopping-list";
 import './cycle-planner-redesign.css';
+import { SmartVendorPicker } from '@/components/tools/SmartVendorPicker';
 
 /* ── Peptides DB for timeline/dosing reference display ── */
 const PEPTIDES_DB: Record<string, { dose: string; freq: string; route: string; evidence: string }> = {
@@ -471,10 +473,48 @@ export default function CyclePlannerClient() {
                             <button className="btn-ghost" onClick={handleDownloadIcs}>
                                 <Calendar style={{ width: 14, height: 14 }} /> Add to Calendar
                             </button>
-                            <Link href="/vendors" className="btn-ghost">
-                                Find vendors →
-                            </Link>
+                            <button className="btn-ghost" onClick={() => {
+                                document.getElementById('shopping-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }}>
+                                <DollarSign style={{ width: 14, height: 14 }} /> Procurement bridge ↓
+                            </button>
                         </div>
+
+                        {/* Inline Vendor Picker — appears after action row */}
+                        {selectedPeptides.length > 0 && (
+                            <div style={{ marginTop: 32 }}>
+                                <div className="section-label" style={{
+                                    fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
+                                    textTransform: 'uppercase' as const, color: 'var(--gold)',
+                                    marginBottom: 20, display: 'flex', alignItems: 'center', gap: 12
+                                }}>
+                                    <span style={{ width: 32, height: 1, background: 'var(--gold)', display: 'inline-block' }} />
+                                    § Find Your Vendor
+                                </div>
+                                <SmartVendorPicker
+                                    mode="inline"
+                                    initialPeptideSlug={selectedPeptides[0] ? peptides.find(p => p.name === selectedPeptides[0])?.slug : undefined}
+                                />
+                            </div>
+                        )}
+
+                        {/* ── Procurement Bridge — ShoppingList ── */}
+                        {selectedPeptides.length > 0 && results.length > 0 && (
+                            <div style={{ marginTop: 40 }}>
+                                <div className="section-label reveal" style={{
+                                    fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
+                                    textTransform: 'uppercase' as const, color: 'var(--gold)',
+                                    marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12
+                                }}>
+                                    <span style={{ width: 32, height: 1, background: 'var(--gold)', display: 'inline-block' }} />
+                                    § Procurement Bridge
+                                </div>
+                                <ShoppingList
+                                    cycleResults={results}
+                                    maxVendors={5}
+                                />
+                            </div>
+                        )}
 
                         {/* Warning */}
                         <div className="tool-warning reveal">

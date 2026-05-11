@@ -7,6 +7,7 @@ import { AutoLinkProvider } from "@/components/auto-link";
 import { GlobalEmbedHandler } from "@/components/global-embed-handler";
 import { StickyDiscountBanner } from "@/components/promos/StickyDiscountBanner";
 import { ExitIntentModal } from "@/components/promos/ExitIntentModal";
+import { AuthProvider } from "@/components/auth/AuthProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -163,11 +164,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Promo surfaces — banner renders above header, modal is global */}
         <StickyDiscountBanner />
         <ExitIntentModal />
+        <AuthProvider>
         <AutoLinkProvider>
           <main id="main-content" role="main">
             {children}
           </main>
         </AutoLinkProvider>
+        </AuthProvider>
 
         <Suspense fallback={null}>
           <GlobalEmbedHandler />

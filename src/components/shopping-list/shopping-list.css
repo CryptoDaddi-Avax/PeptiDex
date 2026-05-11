@@ -1,0 +1,517 @@
+/* ═══════════════════════════════════════════════════════
+   ShoppingList — Vendor Comparison & Cart Builder
+   Sort: discounted cost ASC → shipping speed → tier
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Container ── */
+.shopping-list {
+  margin-top: 40px;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+.shopping-list-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.shopping-list-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.shopping-list-title em { font-style: italic; color: var(--gold); }
+
+.shopping-list-subtitle {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ── Vendor Cards Grid ── */
+.vendor-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vendor-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 24px 28px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.vendor-card:hover {
+  border-color: var(--line-strong);
+}
+
+/* Best deal highlight — first card in list (cheapest) */
+.vendor-card.best-deal {
+  border-color: rgba(201, 169, 97, 0.35);
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.06), rgba(201, 169, 97, 0.02));
+}
+.vendor-card.best-deal::before {
+  content: 'BEST DEAL';
+  position: absolute;
+  top: -1px;
+  left: 28px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 3px 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Deferred vendor (Phase 1B) */
+.vendor-card.deferred {
+  opacity: 0.55;
+}
+
+/* ── Card Content ── */
+.vendor-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vendor-card-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vendor-tier-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.vendor-tier-badge.tier-1 {
+  background: rgba(127, 183, 126, 0.15);
+  color: var(--green);
+  border: 1px solid rgba(127, 183, 126, 0.25);
+}
+.vendor-tier-badge.tier-2 {
+  background: rgba(74, 158, 255, 0.1);
+  color: var(--plasma);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+}
+
+.vendor-card-meta {
+  display: flex;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.05em;
+}
+
+.vendor-card-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vendor-card-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-dim);
+}
+.vendor-card-pricing .vial-count {
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}
+
+/* ── Pricing & Discount ── */
+.vendor-card-cost {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.vendor-cost-total {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.vendor-card.best-deal .vendor-cost-total {
+  color: var(--gold);
+}
+
+.vendor-cost-original {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-mute);
+  text-decoration: line-through;
+}
+
+.vendor-discount-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  background: rgba(127, 183, 126, 0.1);
+  color: var(--green);
+  border: 1px solid rgba(127, 183, 126, 0.2);
+}
+
+/* ── CTA Buttons ── */
+.vendor-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  margin-top: 8px;
+}
+
+/* Tier 1: Primary CTA (cart pre-fill) */
+.vendor-cta.cta-cart {
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 600;
+}
+.vendor-cta.cta-cart:hover {
+  background: var(--gold-bright);
+  box-shadow: 0 4px 16px rgba(201, 169, 97, 0.3);
+}
+
+/* Tier 2: Secondary CTA (deep link) */
+.vendor-cta.cta-deeplink {
+  background: transparent;
+  color: var(--plasma);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+}
+.vendor-cta.cta-deeplink:hover {
+  background: rgba(74, 158, 255, 0.08);
+  border-color: var(--plasma);
+}
+
+/* Phase 1B: Deferred CTA */
+.vendor-cta.cta-deferred {
+  background: transparent;
+  color: var(--ink-mute);
+  border: 1px solid var(--line);
+  cursor: default;
+}
+
+/* ── Peptide Breakdown (expandable) ── */
+.peptide-breakdown {
+  margin-top: 24px;
+  border: 1px solid var(--line);
+}
+
+.peptide-breakdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+.peptide-breakdown-header:hover {
+  background: var(--bg-card);
+}
+
+.peptide-breakdown-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.peptide-breakdown-toggle {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  transition: transform 0.3s;
+}
+.peptide-breakdown-toggle.open {
+  transform: rotate(180deg);
+}
+
+.peptide-breakdown-rows {
+  display: none;
+}
+.peptide-breakdown-rows.open {
+  display: block;
+}
+
+.peptide-breakdown-row {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.peptide-breakdown-row:last-child { border-bottom: none; }
+.peptide-breakdown-row .pep-name {
+  font-family: var(--serif);
+  color: var(--ink);
+  font-weight: 400;
+}
+.peptide-breakdown-row .pep-detail {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-dim);
+}
+
+/* ── Copy Overlay (Tier 2 vendors) ── */
+.copy-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 11, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.copy-overlay-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.copy-overlay-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.copy-overlay-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.copy-overlay-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.copy-overlay-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+.copy-overlay-item .item-name { color: var(--ink); }
+.copy-overlay-item .item-qty {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.copy-overlay-code {
+  padding: 12px 16px;
+  background: rgba(201, 169, 97, 0.06);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.copy-overlay-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.copy-overlay-close {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.copy-overlay-close:hover {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+/* ── Email CTA ── */
+.email-capture {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.email-capture-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.email-capture-input:focus {
+  border-color: var(--gold);
+}
+.email-capture-input::placeholder {
+  color: var(--ink-mute);
+}
+
+.email-capture-btn {
+  padding: 10px 20px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.email-capture-btn:hover:not(:disabled) {
+  background: var(--gold-bright);
+}
+.email-capture-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.email-capture-btn .spin {
+  animation: spin 1s linear infinite;
+}
+
+.email-error {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #ef4444;
+  padding: 8px 24px;
+  letter-spacing: 0.05em;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Safety Buffer Callout ── */
+.safety-buffer-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(212, 131, 42, 0.04);
+  border-left: 3px solid var(--amber);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+.safety-buffer-note strong {
+  color: var(--amber);
+  font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .vendor-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+  .vendor-card-cost {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 12px;
+  }
+  .vendor-card-meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .email-capture {
+    flex-direction: column;
+  }
+  .peptide-breakdown-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .shopping-list-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .copy-overlay-card {
+    padding: 24px;
+  }
+}
+
+@media print {
+  .vendor-cta, .email-capture, .copy-overlay { display: none !important; }
+  .vendor-card { border: 1px solid #ccc; background: white !important; }
+  .vendor-card.best-deal::before { background: #333; color: white; }
+}

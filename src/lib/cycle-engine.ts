@@ -187,16 +187,26 @@ export function generateShoppingList(results: CyclePeptideResult[], includeSuppl
         });
     });
 
+    // Verified vendor discount rates (source: vendor-cart-config.ts)
+    const VENDOR_DISCOUNTS: Record<string, { percent: number; code: string }> = {
+        "Amino Club":          { percent: 20, code: "PEPTIDEX" },
+        "Ascension Peptides":  { percent: 15, code: "PEPTIDEX" },
+        "Bio Longevity Labs":  { percent: 15, code: "PEPTIDEX" },
+        "Limitless Life":      { percent: 15, code: "PEPTIDEX" },
+        "Pantheon Peptides":   { percent: 10, code: "peptidex10" },
+    };
+
     const vendorTotals = Array.from(vendorMap.entries())
         .map(([vendor, data]) => {
             let total = parseFloat(data.total.toFixed(2));
             let originalTotal = undefined;
             let discountCode = undefined;
 
-            if (vendor === "Amino Club") {
+            const discount = VENDOR_DISCOUNTS[vendor];
+            if (discount) {
                 originalTotal = total;
-                total = parseFloat((total * 0.8).toFixed(2));
-                discountCode = "PEPTIDEX";
+                total = parseFloat((total * (1 - discount.percent / 100)).toFixed(2));
+                discountCode = discount.code;
             }
 
             return {

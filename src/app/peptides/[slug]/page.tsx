@@ -19,6 +19,9 @@ import { buildMedicalWebPageSchema, buildDrugSchema, buildFAQPageSchema, buildBr
 import { Byline } from '@/components/byline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
+import { ProtocolLogSummary } from '@/components/logs/ProtocolLogSummary';
+import { SmartVendorPicker } from '@/components/tools/SmartVendorPicker';
+import { PeptidePurityChart } from '@/components/lab-data/PeptidePurityChart';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -646,6 +649,28 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
           </div>
         </section>
 
+        {/* ═══════ SECTION: COMMUNITY PROTOCOL DATA ═══════ */}
+        <section>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+              <span className="text-lg">🧪</span>
+            </div>
+            <h2 className="text-2xl font-bold text-zinc-100">Community Protocol Logs</h2>
+          </div>
+          <ProtocolLogSummary peptideSlug={slug} peptideName={peptide.name} />
+        </section>
+
+        {/* ═══════ SECTION 7b: LAB PURITY DATA ═══════ */}
+        <section>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+              <span className="text-lg">🔬</span>
+            </div>
+            <h2 className="text-2xl font-bold text-zinc-100">Verified Lab Purity Data</h2>
+          </div>
+          <PeptidePurityChart peptideSlug={slug} peptideName={peptide.name} />
+        </section>
+
         {/* ═══════ SECTION 8: FAQ ═══════ */}
         <section>
           <div className="flex items-center gap-3 mb-5">
@@ -728,6 +753,9 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
           Last updated: {DATE_MOD} · <Link href="/about" className="text-zinc-500 hover:text-zinc-400 transition-colors">About PeptideX</Link> · <Link href="/about/editorial-policy" className="text-zinc-500 hover:text-zinc-400 transition-colors">Editorial Standards</Link>
         </p>
       </div>
+
+      {/* Smart Vendor Picker — floating bottom-right */}
+      <SmartVendorPicker mode="float" initialPeptideSlug={slug} />
     </div>
   );
 }

@@ -69,9 +69,48 @@ Required variables on the VPS:
 | Variable | Purpose |
 |----------|---------|
 | `GOOGLE_GENERATIVE_AI_API_KEY` | PeptiDex AI Advisor (Gemini) |
+| `CRON_SECRET` | Shared secret for all `/api/cron/*` endpoints |
+| `RESEND_API_KEY` | Email notifications via Resend |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (bypasses RLS) |
 
 To update env vars on the VPS, SSH in manually and edit `/var/www/peptidex/.env.local`,
-then run `pm2 restart peptidex --update-env`.
+then run `pm2 restart peptidex --update-env` AND `pm2 restart peptidex-cron --update-env`.
+
+## Cron process (PM2)
+
+The cron scheduler runs as a **separate PM2 process** (`peptidex-cron`) alongside the app.
+It uses `node-cron` to call internal API endpoints weekly.
+
+### First-time cron setup on VPS
+
+```bash
+ssh root@peptidex.app
+cd /var/www/peptidex
+pm2 start scripts/coa-cron.js --name "peptidex-cron"
+pm2 save
+```
+
+### Cron schedule
+
+| Job | Schedule | Endpoint |
+|-----|----------|----------|
+| COA Crawl | Mon 06:00 UTC | `/api/cron/coa-crawl` |
+| Refresh MV | Mon 07:00 UTC | `/api/cron/refresh-views` |
+| Log Reminders | Tue 09:00 UTC | `/api/cron/reminders` |
+
+### Check cron status
+
+```bash
+pm2 logs peptidex-cron --lines 50
+pm2 status peptidex-cron
+```
+
+### Trigger a crawl manually
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" http://localhost:3000/api/cron/coa-crawl
+```
 
 ## Checking production status
 

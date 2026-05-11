@@ -8,6 +8,7 @@ import { SHORT_DISCLAIMER } from '@/data/constants';
 import { getAuthorSlug } from '@/data/authors';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { AutoLink } from '@/components/auto-link';
+import { PurityHistory } from '@/components/lab-data/PurityHistory';
 import {
   Calendar, User, ShieldAlert, ArrowRight,
   FlaskConical, CheckCircle2, Shield, Star
@@ -225,6 +226,9 @@ export default function AminoClubReview() {
             </p>
           </div>
         </section>
+
+        {/* ── LIVE PURITY HISTORY ── */}
+        <PurityHistory vendorSlug="amino-club" vendorName="Amino Club" />
 
         {/* ── PRODUCT RANGE ── */}
         <section id="catalog">
