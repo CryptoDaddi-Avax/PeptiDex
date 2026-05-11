@@ -4,6 +4,7 @@ import { stacks, LAST_UPDATED as STACKS_LAST_UPDATED } from '@/data/stacks';
 import { blogPosts } from '@/data/blog';
 import { comparisons, LAST_UPDATED as COMPARISONS_LAST_UPDATED } from '@/data/comparisons';
 import { LAST_REVIEWED as VENDORS_LAST_REVIEWED } from '@/app/vendors/page';
+import { vendorDeals } from '@/data/coupon-deals';
 import { getAllAuthorSlugs } from '@/lib/authors';
 
 export const dynamic = 'force-static';
@@ -28,6 +29,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${baseUrl}/vendors`,
       lastModified: vendorsDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/coupon-codes`,
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -373,5 +380,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...teamUrls,
     ...pseoUrls,
+    ...vendorDeals.map((d) => ({
+      url: `${baseUrl}/coupon-codes/${d.vendorSlug}`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
   ];
 }

@@ -1,0 +1,327 @@
+/**
+ * Coupon & Deal Data Layer
+ * ========================
+ * Single source of truth for /coupon-codes hub and [vendor-slug] sub-pages.
+ * Update weekly: change dealOfTheWeek slug + refresh expiresLabel.
+ */
+
+// ── Types ─────────────────────────────────────────────────────────────────────
+
+export interface VendorDeal {
+  vendorSlug: string;           // matches vendors.ts slug
+  vendorName: string;
+  code: string;
+  discountPercent: number;
+  discountType: "percent" | "flat";
+  headline: string;             // short CTA line
+  /** What the code does NOT apply to */
+  exclusions?: string[];
+  /** Can be combined with active site sales? */
+  stackable: boolean;
+  stackNote?: string;           // e.g. "Stacks with 25% Summer Sale → 40%+ total"
+  /** ISO date or human label */
+  expiresLabel: string;         // "No expiry", "May 31 2026", etc.
+  /** Affiliate link with code pre-applied */
+  affiliateUrl: string;
+  /** Editorial tip shown in expanded section */
+  proTip?: string;
+  /** min order for free shipping */
+  freeShippingThreshold?: number;
+  /** Star rating */
+  rating: number;
+}
+
+export interface PeptideBestDeal {
+  peptideSlug: string;
+  peptideName: string;
+  vendorName: string;
+  vendorSlug: string;
+  price: number;
+  vialMg: number;
+  /** Price per mg */
+  perMg: number;
+  code: string;
+  /** Price after code applied */
+  discountedPrice: number;
+  affiliateUrl: string;
+}
+
+// ── Deal of the Week ──────────────────────────────────────────────────────────
+// Change `dealOfTheWeekSlug` each Monday to rotate the highlighted vendor.
+
+export const dealOfTheWeekSlug = "ascension-peptides";
+export const dealOfTheWeekRefreshedDate = "2026-05-11";
+
+// ── Vendor Deals ─────────────────────────────────────────────────────────────
+
+export const vendorDeals: VendorDeal[] = [
+  {
+    vendorSlug: "ascension-peptides",
+    vendorName: "Ascension Peptides",
+    code: "PEPTIDEX",
+    discountPercent: 50,
+    discountType: "percent",
+    headline: "50% off entire order — biggest discount in the space",
+    exclusions: [],
+    stackable: false,
+    expiresLabel: "No expiry — verified May 2026",
+    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
+    proTip: "Ascension's 50% code is the highest verified discount on any US peptide vendor. Works on first and repeat orders. No minimum order required.",
+    freeShippingThreshold: 150,
+    rating: 4.7,
+  },
+  {
+    vendorSlug: "amino-club",
+    vendorName: "Amino Club",
+    code: "PEPTIDEX",
+    discountPercent: 20,
+    discountType: "percent",
+    headline: "20% off — Editor's Choice with 60-day guarantee",
+    exclusions: [],
+    stackable: false,
+    expiresLabel: "No expiry — verified May 2026",
+    affiliateUrl: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+    proTip: "Amino Club is our #1 pick for quality/price balance. PEPTIDEX gives 20% off all orders. Backed by a 60-day money-back guarantee — the longest in the industry.",
+    freeShippingThreshold: 100,
+    rating: 4.9,
+  },
+  {
+    vendorSlug: "bio-longevity-labs",
+    vendorName: "Bio Longevity Labs",
+    code: "PEPTIDEX",
+    discountPercent: 15,
+    discountType: "percent",
+    headline: "15% off — stacks with active sales for 40%+ total",
+    exclusions: [],
+    stackable: true,
+    stackNote: "Stacks with their frequent 25–30% sitewide sales → up to 40–45% combined",
+    expiresLabel: "No expiry — verified May 2026",
+    affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+    proTip: "Bio Longevity Labs regularly runs 25–30% sitewide sales. Because PEPTIDEX stacks on top, you can hit 40%+ total savings during a sale — check their homepage before ordering.",
+    freeShippingThreshold: 150,
+    rating: 4.8,
+  },
+  {
+    vendorSlug: "limitless-life",
+    vendorName: "Limitless Life",
+    code: "PEPTIDEX",
+    discountPercent: 15,
+    discountType: "percent",
+    headline: "15% off — largest catalog (90+ compounds), USA made",
+    exclusions: [],
+    stackable: false,
+    expiresLabel: "No expiry — verified May 2026",
+    affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
+    proTip: "Limitless Life has the widest catalog of any vendor we list (90+ compounds). Best choice when you need harder-to-find peptides.",
+    freeShippingThreshold: 100,
+    rating: 4.8,
+  },
+  {
+    vendorSlug: "pantheon-peptides",
+    vendorName: "Pantheon Peptides",
+    code: "PEPTIDEX",
+    discountPercent: 15,
+    discountType: "percent",
+    headline: "15% off — competitive pricing, COA verified",
+    exclusions: [],
+    stackable: false,
+    expiresLabel: "No expiry — verified May 2026",
+    affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
+    proTip: "Pantheon Peptides offers competitive per-mg pricing, especially on GH peptides. Good alternative when Amino Club and Ascension are out of stock on specific compounds.",
+    freeShippingThreshold: 100,
+    rating: 4.6,
+  },
+  {
+    vendorSlug: "lvlup-health",
+    vendorName: "LVLUP Health",
+    code: "PEPTIDEX",
+    discountPercent: 15,
+    discountType: "percent",
+    headline: "15% off oral peptides — no injection required",
+    exclusions: ["Injectable formulations"],
+    stackable: false,
+    expiresLabel: "No expiry — verified May 2026",
+    affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
+    proTip: "LVLUP is the only oral peptide specialist on our list. If you want BPC-157, Semax, or Selank without needles, this is the vendor. Code applies to all oral capsule products.",
+    freeShippingThreshold: 75,
+    rating: 4.5,
+  },
+];
+
+// ── Per-peptide best deals ────────────────────────────────────────────────────
+// Manually curated — update when vendor pricing changes.
+// discountedPrice = price * (1 - discountPercent/100)
+
+export const peptideBestDeals: PeptideBestDeal[] = [
+  {
+    peptideSlug: "bpc-157",
+    peptideName: "BPC-157",
+    vendorName: "Ascension Peptides",
+    vendorSlug: "ascension-peptides",
+    price: 70,
+    vialMg: 10,
+    perMg: 3.5,
+    code: "PEPTIDEX",
+    discountedPrice: 35,
+    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
+  },
+  {
+    peptideSlug: "tb-500",
+    peptideName: "TB-500",
+    vendorName: "Ascension Peptides",
+    vendorSlug: "ascension-peptides",
+    price: 65,
+    vialMg: 10,
+    perMg: 3.25,
+    code: "PEPTIDEX",
+    discountedPrice: 32.5,
+    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
+  },
+  {
+    peptideSlug: "semaglutide",
+    peptideName: "Semaglutide",
+    vendorName: "Amino Club",
+    vendorSlug: "amino-club",
+    price: 149.99,
+    vialMg: 5,
+    perMg: 30,
+    code: "PEPTIDEX",
+    discountedPrice: 119.99,
+    affiliateUrl: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+  },
+  {
+    peptideSlug: "tirzepatide",
+    peptideName: "Tirzepatide",
+    vendorName: "Amino Club",
+    vendorSlug: "amino-club",
+    price: 179.99,
+    vialMg: 10,
+    perMg: 18,
+    code: "PEPTIDEX",
+    discountedPrice: 143.99,
+    affiliateUrl: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+  },
+  {
+    peptideSlug: "ipamorelin",
+    peptideName: "Ipamorelin",
+    vendorName: "Ascension Peptides",
+    vendorSlug: "ascension-peptides",
+    price: 55,
+    vialMg: 10,
+    perMg: 2.75,
+    code: "PEPTIDEX",
+    discountedPrice: 27.5,
+    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
+  },
+  {
+    peptideSlug: "cjc-1295",
+    peptideName: "CJC-1295",
+    vendorName: "Ascension Peptides",
+    vendorSlug: "ascension-peptides",
+    price: 55,
+    vialMg: 5,
+    perMg: 5.5,
+    code: "PEPTIDEX",
+    discountedPrice: 27.5,
+    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
+  },
+  {
+    peptideSlug: "ghk-cu",
+    peptideName: "GHK-Cu",
+    vendorName: "Limitless Life",
+    vendorSlug: "limitless-life",
+    price: 29.99,
+    vialMg: 50,
+    perMg: 0.6,
+    code: "PEPTIDEX",
+    discountedPrice: 25.49,
+    affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
+  },
+  {
+    peptideSlug: "epithalon",
+    peptideName: "Epithalon",
+    vendorName: "Limitless Life",
+    vendorSlug: "limitless-life",
+    price: 39.99,
+    vialMg: 10,
+    perMg: 4,
+    code: "PEPTIDEX",
+    discountedPrice: 33.99,
+    affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
+  },
+  {
+    peptideSlug: "retatrutide",
+    peptideName: "Retatrutide",
+    vendorName: "Bio Longevity Labs",
+    vendorSlug: "bio-longevity-labs",
+    price: 249.99,
+    vialMg: 10,
+    perMg: 25,
+    code: "PEPTIDEX",
+    discountedPrice: 212.49,
+    affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
+  },
+  {
+    peptideSlug: "pt-141",
+    peptideName: "PT-141",
+    vendorName: "Ascension Peptides",
+    vendorSlug: "ascension-peptides",
+    price: 60,
+    vialMg: 10,
+    perMg: 3,
+    code: "PEPTIDEX",
+    discountedPrice: 30,
+    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
+  },
+];
+
+// ── Schema.org helpers ────────────────────────────────────────────────────────
+
+export function buildCouponSchema(deal: VendorDeal) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Offer",
+    "name": `${deal.vendorName} Discount Code — ${deal.discountPercent}% Off`,
+    "description": deal.headline,
+    "url": deal.affiliateUrl,
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "priceType": "https://schema.org/SalePrice",
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": deal.vendorName,
+    },
+    "discount": deal.discountPercent,
+    "discountCode": deal.code,
+    "eligibleQuantity": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+    },
+  };
+}
+
+export function buildFaqSchema(deals: VendorDeal[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the best peptide vendor discount code right now?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `The biggest discount is PEPTIDEX at Ascension Peptides (50% off). For Editor's Choice quality, use PEPTIDEX at Amino Club for 20% off. All codes are verified as of May 2026.`,
+        },
+      },
+      ...deals.map((d) => ({
+        "@type": "Question",
+        "name": `Does ${d.vendorName} have a discount code?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes — use code ${d.code} at ${d.vendorName} for ${d.discountPercent}% off. ${d.stackNote ?? ""} ${d.expiresLabel}.`,
+        },
+      })),
+    ],
+  };
+}
