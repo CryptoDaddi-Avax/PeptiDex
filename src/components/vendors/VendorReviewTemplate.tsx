@@ -3,6 +3,7 @@ import { Star, ShieldCheck, ExternalLink, AlertTriangle, CheckCircle2, XCircle, 
 import type { VendorReviewData } from '@/data/vendor-review-types';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
+import { AffiliateLink } from '@/components/affiliate-link';
 
 function Stars({ rating, max = 5 }: { rating: number; max?: number }) {
   return (
@@ -59,14 +60,15 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
 
           <AuthorByline name="PeptiDex Editorial" date={LAST_REVIEWED_DATE} variant="compact" className="mt-4" />
           <div className="mt-4 mb-2">
-            <a
+          <AffiliateLink
               href={review.affiliateUrl}
-              target="_blank"
-              rel="sponsored nofollow noreferrer"
+              vendor={undefined}
+              peptide="all"
+              source="vendor_review"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg hover:shadow-emerald-500/25"
             >
               Visit {review.name} <ArrowRight className="w-4 h-4" />
-            </a>
+            </AffiliateLink>
             {review.discountCode && (
               <p className="mt-2 text-xs text-zinc-400">
                 Use code{' '}
@@ -239,7 +241,7 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
             </table>
           </div>
           <p className="mt-4 text-xs text-zinc-500">
-            Prices are per vendor website as of {review.dateModified}. Verify current pricing at <a href={review.affiliateUrl} target="_blank" rel="sponsored nofollow noreferrer" className="text-violet-400 hover:underline">{review.websiteDisplay}</a> before purchasing.
+            Prices are per vendor website as of {review.dateModified}. Verify current pricing at <AffiliateLink href={review.affiliateUrl} peptide="all" source="vendor_review_pricing" className="text-violet-400 hover:underline">{review.websiteDisplay}</AffiliateLink> before purchasing.
             Compare cross-vendor pricing at our <Link href="/tools/pricing" className="text-violet-400 hover:underline">pricing tool</Link>.
           </p>
         </section>
@@ -410,14 +412,14 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 mb-8">
             <p className="text-zinc-300 leading-relaxed">{review.finalVerdictBody}</p>
           </div>
-          <a
+          <AffiliateLink
             href={review.affiliateUrl}
-            target="_blank"
-            rel="sponsored nofollow noreferrer"
+            peptide="all"
+            source="vendor_review_footer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg hover:shadow-emerald-500/25"
           >
             Visit {review.name} — Use code {review.discountCode} <ArrowRight className="w-5 h-5" />
-          </a>
+          </AffiliateLink>
         </section>
 
         {/* ── Author ── */}

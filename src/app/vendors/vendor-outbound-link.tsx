@@ -2,6 +2,7 @@
 
 import { type ReactNode } from "react";
 import { trackAffiliateClick, vendorKeyFromUrl } from "@/lib/ga4-events";
+import { trackClick } from "@/lib/tracking/click";
 
 interface VendorOutboundLinkProps {
   href: string;
@@ -14,8 +15,7 @@ interface VendorOutboundLinkProps {
 
 /**
  * Vendor outbound link for /vendors page cards.
- * Fires both `affiliate_click` (rich segmentation) for revenue attribution.
- * source_component is always "vendor_card" for /vendors page links.
+ * Dual-writes: GA4 affiliate_click + /api/track server log.
  */
 export function VendorOutboundLink({
   href,
@@ -25,13 +25,28 @@ export function VendorOutboundLink({
   children,
 }: VendorOutboundLinkProps) {
   const vendor = vendorKeyFromUrl(href);
+  const vendorSlug = vendor !== "unknown" ? vendor.replace(/_/g, "-") : vendorName.toLowerCase().replace(/\s+/g, "-");
+
+  // Infer surface from location string
+  const surface = location.startsWith("comparison_table") ? "pricing_table"
+    : location.startsWith("rank_card") ? "vendor_card"
+    : location.startsWith("w2b_pricing") ? "pricing_table"
+    : "vendor_card";
 
   const handleClick = () => {
+    // 1. GA4
     trackAffiliateClick({
       vendor,
       peptide: "general",
-      source_component: "vendor_card",
+      source_component: surface,
       url: href,
+    });
+    // 2. Server-side
+    trackClick({
+      peptide_slug: "general",
+      vendor_slug: vendorSlug,
+      page_path: window.location.pathname,
+      surface,
     });
   };
 

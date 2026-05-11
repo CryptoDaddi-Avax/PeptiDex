@@ -19,19 +19,18 @@ export function LeadMagnetInline({ source = "inline" }: Props) {
         setStatus("loading");
 
         try {
-            const formData = new FormData();
-            formData.append("email", email);
-            formData.append("publication_id", BEEHIIV_PUBLICATION_ID);
-            formData.append("utm_source", source);
-            formData.append("utm_medium", "inline_card");
-            formData.append("utm_campaign", "cheat_sheet_lead_magnet");
-            formData.append("reactivate_existing", "true");
-
-            await fetch("https://embeds.beehiiv.com/subscribe", {
+            const res = await fetch("/api/subscribe", {
                 method: "POST",
-                body: formData,
-                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email,
+                    source,
+                    utmSource: source,
+                    utmMedium: "inline_card",
+                    utmCampaign: "cheat_sheet_lead_magnet",
+                }),
             });
+            if (!res.ok) throw new Error("subscribe failed");
 
             setStatus("success");
             setTimeout(() => {

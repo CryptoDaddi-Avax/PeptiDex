@@ -87,10 +87,10 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
 
   // ── #4 Ascension Peptides ─────────────────────────────────────────────────
   "ascension-peptides": {
-    shortPitch: `Reliable COA-verified source with 60+ compounds and a straightforward ${getDiscountPct('ascension-peptides')}% PEPTIDEX discount.`,
+    shortPitch: `The best value deal in this index: ${getDiscountPct('ascension-peptides')}% off with code PEPTIDEX across 60+ COA-verified compounds.`,
     pros: [
+      `Largest discount in this index: ${getDiscountPct('ascension-peptides')}% off with code PEPTIDEX`,
       "COA available for all products (HPLC + Mass Spec)",
-      `${getDiscountPct('ascension-peptides')}% discount with code PEPTIDEX`,
       "Consistent inventory across 60+ compounds",
       "Sample COA publicly viewable before purchase",
       "30-day return policy",
@@ -100,7 +100,7 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Purity floor is 98%+ vs. 99%+ for top-ranked vendors",
       "Free shipping threshold ($150) is among the higher minimums",
     ],
-    blurb: `Ascension Peptides occupies a reliable middle-tier position in the research peptide market. HPLC and Mass Spectrometry documentation is provided for all products, and crucially, sample COAs are publicly accessible on their website before you commit to a purchase — a transparency practice that not all vendors follow.\n\nThe 60+ compound catalog covers the most-researched peptides including BPC-157, TB-500, CJC-1295 without DAC, Ipamorelin, GHK-Cu, and Semaglutide variants. Inventory depth is generally consistent, and order fulfillment for US customers runs 3–5 business days.\n\nUse code PEPTIDEX for ${getDiscountPct('ascension-peptides')}% off your order. Free shipping kicks in at $150, which is on the higher end among the vendors in this index — factor that into your ordering math. The 30-day return policy is standard for the category.\n\nThe purity specification is 98%+ rather than the 99%+ standard achieved by the top three vendors. In practice, individual batch COAs often show higher values, but the contractual specification matters for reproducible research conditions. Silver verification tier on the PeptiDex dashboard reflects solid but not top-tier documentation depth.`,
+    blurb: `Ascension Peptides carries the most aggressive exclusive discount in this entire index: code PEPTIDEX takes ${getDiscountPct('ascension-peptides')}% off your order, no minimum required. For researchers running multi-compound protocols or buying in bulk, that discount alone can translate to dozens of dollars saved per order — easily making Ascension the best value pick when price-per-mg is the deciding factor.\n\nThe 60+ compound catalog covers the core research peptides: BPC-157, TB-500, CJC-1295 without DAC, Ipamorelin, GHK-Cu, and Semaglutide variants. HPLC and Mass Spectrometry documentation is provided for all products, and sample COAs are publicly viewable on the website before purchase — a transparency practice that not all vendors follow.\n\nInventory depth is generally consistent for US customers, with fulfillment running 3–5 business days. The 30-day return policy is standard for the category.\n\nA few trade-offs to be aware of: the purity specification is 98%+ rather than the 99%+ standard achieved by the top two vendors (individual batch COAs often read higher, but the contractual spec matters for reproducible research). Free shipping kicks in at $150, which is on the higher end — factor that into your order math. Silver verification tier on the PeptiDex dashboard reflects solid documentation depth, just short of the full third-party audit trail that earns a Gold designation. For most research applications, though, the ${getDiscountPct('ascension-peptides')}% discount makes Ascension the first vendor to check.`,
   },
 
   // ── #5 Pantheon Peptides ──────────────────────────────────────────────────

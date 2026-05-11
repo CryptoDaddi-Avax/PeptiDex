@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ShoppingCart, ExternalLink, Tag, CheckCircle, ArrowRight } from 'lucide-react';
 import { vendorPricing, VendorPrice } from '@/data/vendor-pricing';
+import { AffiliateLink } from '@/components/affiliate-link';
 
 interface PricingCardProps {
   name: string;
@@ -68,14 +69,14 @@ function PricingCard({ name, slug, vendors }: PricingCardProps) {
                 </div>
                 <div className="flex items-center gap-3 flex-shrink-0">
                   <span className="text-base font-bold text-zinc-100">${v.price_usd.toFixed(2)}</span>
-                  <a
+                  <AffiliateLink
                     href={v.affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
+                    peptide={slug}
+                    source="compare_page"
                     className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs transition-colors whitespace-nowrap"
                   >
                     Buy <ExternalLink className="w-3 h-3" />
-                  </a>
+                  </AffiliateLink>
                 </div>
               </div>
             );

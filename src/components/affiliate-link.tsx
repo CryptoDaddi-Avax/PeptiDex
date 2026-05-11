@@ -7,15 +7,18 @@ import {
   type AffiliateVendor,
   type AffiliateSource,
 } from "@/lib/ga4-events";
+import { trackClick, type TrackSurface } from "@/lib/tracking/click";
 
 interface AffiliateLinkProps {
   href: string;
   /** Human-readable vendor key. If omitted, inferred from the URL. */
   vendor?: AffiliateVendor | "unknown";
+  /** Vendor slug for server-side tracking (e.g. "amino-club"). Inferred if omitted. */
+  vendorSlug?: string;
   /** Peptide slug this click is associated with, or "general". */
   peptide?: string;
-  /** Which UI surface the link lives in — used to segment GA4 reports. */
-  source: AffiliateSource | string;
+  /** Which UI surface the link lives in — used to segment reports. */
+  source: AffiliateSource | TrackSurface | string;
   className?: string;
   children: ReactNode;
   /** Override rel attribute (defaults to "nofollow noopener sponsored") */
@@ -29,20 +32,19 @@ interface AffiliateLinkProps {
 }
 
 /**
- * Universal affiliate link component.
+ * Universal affiliate link component — dual-write tracking.
  *
- * Fires a GA4 `affiliate_click` event with:
- *   - vendor  (amino_club | limitless_life | ascension | unknown)
- *   - peptide (slug or "general")
- *   - source_component (vendor_card | pricing_table | detail_sourcing | blog_cta | blog_inline | ...)
- *   - source_page (window.location.pathname — auto-captured)
- *   - outbound_url (the full affiliate URL)
+ * 1. Fires GA4 `affiliate_click` event (existing pipeline).
+ * 2. Posts to /api/track for server-side conversion analytics.
+ *    - peptide_slug, vendor_slug, page_path, surface, session_id (rotating hash)
+ *    - NO IP, NO user-agent, NO PII logged.
  *
- * All affiliate links on the site should use this component.
+ * All affiliate links on the site must use this component.
  */
 export function AffiliateLink({
   href,
   vendor,
+  vendorSlug,
   peptide = "general",
   source,
   className,
@@ -55,12 +57,28 @@ export function AffiliateLink({
   const resolvedVendor: AffiliateVendor | "unknown" =
     vendor ?? vendorKeyFromUrl(href);
 
+  // Derive vendorSlug from vendorKey if not explicitly provided
+  const resolvedVendorSlug =
+    vendorSlug ??
+    (resolvedVendor !== "unknown"
+      ? resolvedVendor.replace(/_/g, "-")
+      : "unknown");
+
   const handleClick = () => {
+    // 1. GA4 — existing pipeline (no change)
     trackAffiliateClick({
       vendor: resolvedVendor,
       peptide,
       source_component: source,
       url: href,
+    });
+
+    // 2. Server-side tracking — fire-and-forget
+    trackClick({
+      peptide_slug: peptide,
+      vendor_slug: resolvedVendorSlug,
+      page_path: window.location.pathname,
+      surface: source,
     });
   };
 

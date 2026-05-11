@@ -4,6 +4,7 @@ import { ExternalLink, Tag, ShieldCheck, ArrowRight } from 'lucide-react';
 import type { PeptideVendorPricing } from '@/data/vendor-pricing';
 import type { Vendor } from '@/data/vendors';
 import Link from 'next/link';
+import { AffiliateLink } from '@/components/affiliate-link';
 
 interface WhereToBuySectionProps {
   peptideName: string;
@@ -129,15 +130,15 @@ export function WhereToBuySection({
                         )}
                       </td>
                       <td>
-                        <a
+                        <AffiliateLink
                           href={v.affiliateUrl}
-                          target="_blank"
-                          rel="sponsored nofollow noopener"
+                          peptide={peptideSlug}
+                          source="pricing_table"
                           className="pd-wtb-shop-btn"
                           aria-label={`Buy ${peptideName} from ${v.vendor}`}
                         >
                           Shop <ExternalLink className="w-3 h-3" />
-                        </a>
+                        </AffiliateLink>
                       </td>
                     </tr>
                   );
@@ -179,15 +180,15 @@ export function WhereToBuySection({
                       Use code <strong>{code}</strong> for {discount}% off at {v.vendor}.
                     </p>
                   )}
-                  <a
+                  <AffiliateLink
                     href={v.affiliateUrl}
-                    target="_blank"
-                    rel="sponsored nofollow noopener"
+                    peptide={peptideSlug}
+                    source="where_to_buy"
                     className="pd-wtb-shop-btn-full"
                     aria-label={`Buy ${peptideName} from ${v.vendor}`}
                   >
                     Shop at {v.vendor} <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                  </AffiliateLink>
                 </div>
               );
             })}

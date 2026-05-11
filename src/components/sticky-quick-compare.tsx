@@ -6,7 +6,8 @@ import Link from "next/link";
 import { BarChart3, ShieldCheck, TrendingDown, ShoppingCart } from "lucide-react";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { vendors } from "@/data/vendors";
-import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
+import { trackCTAClick, trackOutboundClick } from "@/lib/ga4-events";
+import { AffiliateLink } from "@/components/affiliate-link";
 
 interface StickyQuickCompareProps {
     peptideSlug: string;
@@ -77,13 +78,7 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
         ? (finalPrice / bestVendor.vial_mg).toFixed(2)
         : null;
 
-    const handleBuyNow = () => {
-        trackOutboundClick(
-            bestVendor.vendor,
-            bestVendor.affiliateUrl,
-            `detail_sticky_bar_buy_now`
-        );
-    };
+    // AffiliateLink handles both GA4 + server tracking for affiliate links
 
     // Use createPortal to escape any parent transform/filter stacking context
     const bar = (
@@ -189,17 +184,16 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
                             {/* Row 3: CTA Buttons */}
                             <div className="flex items-center gap-2">
                                 {/* PRIMARY: Buy Now */}
-                                <a
+                                <AffiliateLink
                                     href={bestVendor.affiliateUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={handleBuyNow}
+                                    peptide={peptideSlug}
+                                    source="sticky_bar"
                                     className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 min-h-[44px] rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 text-[11px] font-black transition-all shadow-lg shadow-amber-500/25 whitespace-nowrap"
                                     aria-label={`Buy ${peptideName} at ${bestVendor.vendor}`}
                                 >
                                     <ShoppingCart className="w-3.5 h-3.5" />
                                     Buy at {bestVendor.vendor} →
-                                </a>
+                                </AffiliateLink>
 
                                 {/* SECONDARY: Compare All Vendors */}
                                 <Link

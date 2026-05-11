@@ -64,19 +64,20 @@ export function LeadMagnetPopup({ source = "welcome_popup" }: Props) {
         setStatus("loading");
 
         try {
-            const formData = new FormData();
-            formData.append("email", email);
-            formData.append("publication_id", BEEHIIV_PUBLICATION_ID);
-            formData.append("utm_source", source);
-            formData.append("utm_medium", "popup");
-            formData.append("utm_campaign", "welcome_discount_popup");
-            formData.append("reactivate_existing", "true");
-
-            await fetch("https://embeds.beehiiv.com/subscribe", {
+            // POST to our API — this queues the welcome sequence AND syncs to Beehiiv
+            const res = await fetch("/api/subscribe", {
                 method: "POST",
-                body: formData,
-                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email,
+                    source,
+                    utmSource: source,
+                    utmMedium: "popup",
+                    utmCampaign: "welcome_discount_popup",
+                }),
             });
+
+            if (!res.ok) throw new Error("subscribe failed");
 
             setStatus("success");
             localStorage.setItem(STORAGE_KEY, "subscribed");

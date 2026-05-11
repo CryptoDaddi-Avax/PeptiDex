@@ -2,15 +2,18 @@ import { ExternalLink, Tag, ShieldCheck, ArrowRight } from 'lucide-react';
 import type { PeptideVendorPricing } from '@/data/vendor-pricing';
 import type { Vendor } from '@/data/vendors';
 import Link from 'next/link';
+import { AffiliateLink } from '@/components/affiliate-link';
 
 export function VendorMiniCards({
   pricingEntry,
   allVendors,
   peptideName,
+  peptideSlug = 'general',
 }: {
   pricingEntry: PeptideVendorPricing | undefined;
   allVendors: Vendor[];
   peptideName: string;
+  peptideSlug?: string;
 }) {
   const hasPricing = pricingEntry && pricingEntry.vendors.length > 0;
   if (!hasPricing) {
@@ -77,10 +80,10 @@ export function VendorMiniCards({
               </div>
             )}
 
-            <a
+            <AffiliateLink
               href={v.affiliateUrl}
-              target="_blank"
-              rel="sponsored nofollow noopener"
+              peptide={peptideSlug}
+              source="buy_box"
               className={`w-full py-2.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-colors ${
                 v.badge === "Editor's Pick" 
                   ? 'bg-amber-500 text-zinc-950 hover:bg-amber-400' 
@@ -88,7 +91,7 @@ export function VendorMiniCards({
               }`}
             >
               Shop Now <ExternalLink className="w-4 h-4" />
-            </a>
+            </AffiliateLink>
           </div>
         );
       })}
