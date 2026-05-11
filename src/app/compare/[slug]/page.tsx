@@ -1,16 +1,14 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ShieldAlert, GitCompare, ArrowRight, Zap, AlertTriangle } from 'lucide-react';
+import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign } from 'lucide-react';
 import { comparisons } from '@/data/comparisons';
 import { getPeptideBySlug } from '@/data/peptides';
-import { Breadcrumbs } from '@/components/breadcrumbs';
-import { ShareBar } from '@/components/share-bar';
-import { AffiliateSource } from '@/components/affiliate-source';
+import { vendorPricing } from '@/data/vendor-pricing';
 import { ComparisonFAQ } from '@/components/compare/ComparisonFAQ';
 import { PersonaBlock } from '@/components/compare/PersonaBlock';
 import { StackCompatibility } from '@/components/compare/StackCompatibility';
-import { ComparisonVendorBlock } from '@/components/compare/ComparisonVendorBlock';
+import { ComparisonPricingBox } from '@/components/compare/ComparisonPricingBox';
 
 export function generateStaticParams() {
   return comparisons.map((comp) => ({ slug: comp.slug }));
@@ -93,6 +91,12 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   const relatedComparisons = comparisons
     .filter((c) => c.slug !== slug && (c.peptideA === comp.peptideA || c.peptideB === comp.peptideA || c.peptideA === comp.peptideB || c.peptideB === comp.peptideB))
     .slice(0, 3);
+
+  // Lowest vendor price for each peptide
+  const priceDataA = vendorPricing.find(p => p.slug === comp.peptideA);
+  const priceDataB = vendorPricing.find(p => p.slug === comp.peptideB);
+  const cheapestA = priceDataA?.vendors.filter(v => v.inStock).sort((a, b) => a.price_usd - b.price_usd)[0];
+  const cheapestB = priceDataB?.vendors.filter(v => v.inStock).sort((a, b) => a.price_usd - b.price_usd)[0];
 
   return (
     <main id="main-content">
@@ -201,9 +205,35 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
                 <td className="px-4 py-4">{peptideB.safety_notes.includes('FDA-approved') || peptideB.is_fda_approved ? <span className="text-emerald-400 font-semibold">Approved</span> : <span className="text-amber-400">Research Only</span>}</td>
               </tr>
               <tr>
+                <td className="px-4 py-4 text-zinc-400 font-medium">Evidence Grade</td>
+                <td className="px-4 py-4">
+                  <span className="text-xs font-bold px-2 py-1 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
+                    {peptideA.key_studies[0]?.evidence_level ?? 'Preclinical'}
+                  </span>
+                </td>
+                <td className="px-4 py-4">
+                  <span className="text-xs font-bold px-2 py-1 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
+                    {peptideB.key_studies[0]?.evidence_level ?? 'Preclinical'}
+                  </span>
+                </td>
+              </tr>
+              <tr>
                 <td className="px-4 py-4 text-zinc-400 font-medium">Key Studies</td>
                 <td className="px-4 py-4 text-zinc-300">{peptideA.key_studies.length}+ indexed</td>
                 <td className="px-4 py-4 text-zinc-300">{peptideB.key_studies.length}+ indexed</td>
+              </tr>
+              <tr className="bg-emerald-500/5">
+                <td className="px-4 py-4 text-zinc-400 font-medium flex items-center gap-1.5"><DollarSign className="w-3.5 h-3.5 text-emerald-400" />Lowest Price</td>
+                <td className="px-4 py-4">
+                  {cheapestA
+                    ? <span className="text-emerald-300 font-bold">${cheapestA.price_usd.toFixed(2)}<span className="text-xs text-zinc-500 font-normal"> / {cheapestA.vial_mg}mg via {cheapestA.vendor}</span></span>
+                    : <span className="text-zinc-500">—</span>}
+                </td>
+                <td className="px-4 py-4">
+                  {cheapestB
+                    ? <span className="text-emerald-300 font-bold">${cheapestB.price_usd.toFixed(2)}<span className="text-xs text-zinc-500 font-normal"> / {cheapestB.vial_mg}mg via {cheapestB.vendor}</span></span>
+                    : <span className="text-zinc-500">—</span>}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -236,21 +266,14 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         />
       )}
 
-      {/* ── VENDOR / WHERE TO BUY ── */}
-      <ComparisonVendorBlock
+      {/* ── VENDOR PRICING + BUYBOX ── */}
+      <ComparisonPricingBox
         nameA={nameA}
         slugA={comp.peptideA}
-        nameB={isSamePeptide ? `${nameB} (With DAC)` : nameB}
+        nameB={isSamePeptide ? `${nameA} (With DAC)` : nameB}
         slugB={comp.peptideB}
+        isSamePeptide={isSamePeptide}
       />
-
-      {/* ── SOURCING BLOCKS ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <AffiliateSource peptideName={nameA} slug={peptideA.slug} />
-        {!isSamePeptide && <AffiliateSource peptideName={nameB} slug={peptideB.slug} />}
-      </section>
-
-      <ShareBar title={TITLE} url={`https://peptidex.app/compare/${slug}`} />
 
       {/* ── FAQ ── */}
       {comp.faqs && comp.faqs.length > 0 && (

@@ -34,7 +34,18 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of BPC-157 and TB-500: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `BPC-157 is better for localized, acute injuries like tendon tears or gut issues, while TB-500 is preferred for widespread muscle recovery and systemic inflammation. BPC-157 works primarily by upregulating growth factors (like VEGF) to build new blood vessels and collagen at the injury site. TB-500 works by regulating actin, allowing repair cells to migrate more easily through the body to damaged tissue. Choose BPC-157 if you have a specific joint, tendon, or ligament injury, or gastrointestinal distress. Choose TB-500 if you have general muscle damage, whole-body inflammation, or need to improve endurance and flexibility. For most researchers dealing with a specific injury, BPC-157 is the more targeted, evidence-backed default.`,
     tags: ['Healing', 'Research'],
-    color: 'amber'
+    color: 'amber',
+    quickVerdict: 'BPC-157 for targeted, localized repair (tendons, gut, ligaments). TB-500 for systemic recovery and whole-body inflammation. The gold-standard stack combines both — most serious researchers use them together.',
+    personaA: 'Choose BPC-157 if you:\n• Have a specific joint, tendon, or ligament injury\n• Are dealing with gut issues (leaky gut, ulcers, IBS)\n• Need localized, fast-acting tissue repair\n• Want the most evidence-dense healing peptide (35+ preclinical studies)',
+    personaB: 'Choose TB-500 if you:\n• Have general muscle damage or whole-body inflammation\n• Need improved flexibility and range of motion\n• Are recovering from multiple simultaneous injuries\n• Want a longer-acting peptide with less frequent dosing (2-3x/week)',
+    stackNote: 'Highly synergistic — the most popular healing stack in peptide research. BPC-157 handles local tissue reconstruction while TB-500 provides systemic anti-inflammatory support and promotes cellular migration to the injury site. Run together at standard doses for maximum effect.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Can I take BPC-157 and TB-500 together?', a: 'Yes — this is the most recommended healing stack. They operate via completely different mechanisms and are synergistic. BPC-157 handles local vascular and structural repair; TB-500 reduces systemic inflammation and improves mobility.' },
+      { q: 'Which is better for tendon injuries?', a: 'BPC-157 has stronger direct evidence for tendon and ligament repair specifically (upregulates tendon fibroblasts and VEGF). TB-500 complements by reducing inflammation and improving overall tissue repair speed.' },
+      { q: 'How long should I run BPC-157 vs TB-500?', a: 'Typical BPC-157 cycles run 4–12 weeks at 250–500mcg/day. TB-500 is commonly run with a loading phase of 2–4mg 2x/week for 4–6 weeks, then 2mg monthly for maintenance.' },
+      { q: 'Which heals gut issues better?', a: 'BPC-157 overwhelmingly. It was originally derived from a gastric protein and has the most extensive preclinical evidence for healing gastric ulcers, leaky gut, and IBD. TB-500 has minimal gut-specific evidence.' },
+    ],
   },
   {
     slug: 'semaglutide-vs-tirzepatide',
@@ -45,7 +56,18 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Semaglutide and Tirzepatide: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Tirzepatide is better for maximizing total weight loss, while Semaglutide is a proven, often more affordable starting point for metabolic research. Semaglutide is a single-agonist that mimics only the GLP-1 hormone to reduce appetite and lower blood sugar. Tirzepatide is a dual-agonist that mimics both GLP-1 and GIP, creating a synergistic effect that typically results in greater fat loss and better tolerability. Choose Semaglutide if you are new to metabolic research and want the most established safety profile with solid results. Choose Tirzepatide if you want maximum efficacy, need to break through a plateau, or struggle with the gastrointestinal side effects of GLP-1 alone. For advanced weight loss research, Tirzepatide is the superior, more modern default.`,
     tags: ['Weight Loss', 'Research'],
-    color: 'emerald'
+    color: 'emerald',
+    quickVerdict: 'Tirzepatide wins on efficacy (~21% vs ~15% weight loss) due to dual GLP-1/GIP mechanism. Semaglutide wins on track record — 6+ years of real-world safety data and more established cardiovascular evidence (SELECT trial).',
+    personaA: 'Choose Semaglutide if you:\n• Are new to GLP-1 agonists and want the most proven starting point\n• Have cardiovascular disease concerns (SELECT trial: 20% CV event reduction)\n• Want a more affordable research option with longer safety data\n• Are researching T2DM or pre-diabetic metabolic states',
+    personaB: 'Choose Tirzepatide if you:\n• Want maximum weight loss efficacy in a single agent\n• Have experienced intolerable nausea on Semaglutide (Tirzepatide is often better tolerated)\n• Have plateaued on a GLP-1 and need a mechanistic upgrade\n• Are researching insulin resistance alongside obesity',
+    stackNote: 'Do NOT stack Semaglutide and Tirzepatide — they share the GLP-1 receptor. Additive GLP-1 stimulation creates severe nausea, hypoglycemia risk, and potential cardiovascular complications. They are competing agents, not complements.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Which causes more weight loss — Semaglutide or Tirzepatide?', a: 'Tirzepatide consistently produces greater weight loss (~21% body weight at maximum dose) vs Semaglutide (~15%) in clinical trials. The SURMOUNT vs STEP trial data confirms this difference.' },
+      { q: 'Can I switch from Semaglutide to Tirzepatide?', a: 'Yes. A washout period is not required. Most protocols transition directly. Start Tirzepatide at 2.5mg weekly and titrate up. Monitor for additive GI effects during the transition week.' },
+      { q: 'Is Semaglutide or Tirzepatide safer for the heart?', a: 'Semaglutide has the stronger cardiovascular safety data — the SELECT trial showed a 20% reduction in major cardiac events in non-diabetic obese patients. Tirzepatide\'s SURPASS-CVOT data is emerging but not yet as complete.' },
+      { q: 'Which has fewer side effects?', a: 'Tirzepatide tends to have slightly lower nausea rates than Semaglutide in head-to-head data, attributed to the GIP component partially buffering GLP-1 GI effects. Both cause nausea, constipation, and injection site reactions.' },
+    ],
   },
   {
     slug: 'tirzepatide-vs-retatrutide',
@@ -56,7 +78,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Tirzepatide and Retatrutide: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Retatrutide is better for extreme weight loss and lipid metabolism, while Tirzepatide remains the gold standard for balanced, well-tolerated metabolic research. Tirzepatide activates two receptors (GLP-1 and GIP) to reduce appetite and improve insulin sensitivity. Retatrutide activates three receptors (GLP-1, GIP, and Glucagon), adding a direct thermogenic effect that increases basal metabolic rate and burns stored fat. Choose Tirzepatide for a highly predictable, effective intervention with a strong safety profile. Choose Retatrutide if you are researching severe obesity, stubborn liver fat, or need to exceed the 20% weight loss threshold seen with dual-agonists. Tirzepatide remains the safer, more established default for general metabolic use.`,
     tags: ['Advanced', 'Research'],
-    color: 'emerald'
+    color: 'emerald',
+    quickVerdict: 'Tirzepatide is the FDA-approved gold standard (dual GLP-1/GIP). Retatrutide adds glucagon agonism for thermogenesis — Phase 2 shows ~24% weight loss but Phase 3 data is pending. Choose Tirzepatide for proven safety; choose Retatrutide for cutting-edge maximum-efficacy research.',
+    personaA: 'Choose Tirzepatide if you:\n• Want a fully FDA-approved, well-characterized agent\n• Need comorbid T2DM glycemic control alongside weight loss\n• Prefer extensive Phase 3 and real-world safety data\n• Are a first-time GLP-1 researcher needing a reliable benchmark',
+    personaB: 'Choose Retatrutide if you:\n• Are researching extreme obesity (BMI >40) where dual agonism has plateaued\n• Want to study glucagon receptor-mediated thermogenesis and lipolysis\n• Are comfortable with Phase 2 data and research-phase compounds\n• Need to target MASLD (metabolic-associated steatotic liver disease)',
+    stackNote: 'Do NOT stack Tirzepatide and Retatrutide — both share GLP-1 and GIP receptors. Concurrent use creates additive receptor saturation risk with compounded nausea and hypoglycemia. Use only one GLP-1-class agent at a time.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is Retatrutide better than Tirzepatide?', a: 'Phase 2 data shows Retatrutide achieving ~24% weight loss vs Tirzepatide\'s ~21% (Phase 3). But Tirzepatide is FDA-approved with extensive safety data. Retatrutide is still in Phase 3 trials with no approval timeline confirmed.' },
+      { q: 'What is the glucagon component of Retatrutide?', a: 'Retatrutide\'s glucagon receptor agonism directly increases basal metabolic rate and promotes fat oxidation in the liver, independently of appetite suppression. This is the key mechanistic differentiator from dual GLP-1/GIP agents.' },
+      { q: 'When will Retatrutide be available?', a: 'Eli Lilly\'s Phase 3 trials for Retatrutide are ongoing. Earliest projected FDA submission is 2026–2027. Research-grade Retatrutide is available from compounders for in-vitro and preclinical use.' },
+    ],
   },
   {
     slug: 'cjc-1295-vs-sermorelin',
@@ -67,7 +99,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of CJC-1295 and Sermorelin: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `CJC-1295 is better for sustained, steady growth hormone release, while Sermorelin is preferred for brief, highly natural pulses. Both are Growth Hormone Releasing Hormone (GHRH) analogs that signal the pituitary gland to produce more endogenous GH. However, Sermorelin has a very short half-life (minutes), creating a rapid spike and drop. CJC-1295 (especially with DAC) extends this half-life dramatically, elevating basal GH levels for days. Choose Sermorelin if your primary goal is improving sleep architecture with minimal disruption to natural hormone rhythms. Choose CJC-1295 if you want continuous 24/7 elevation of IGF-1 for maximum recovery and anti-aging benefits. For most researchers wanting noticeable body composition changes, CJC-1295 without DAC is the preferred middle-ground default.`,
     tags: ['Growth', 'Research'],
-    color: 'violet'
+    color: 'violet',
+    quickVerdict: 'CJC-1295 for body composition and sustained IGF-1 elevation. Sermorelin for the most physiological, sleep-quality-focused GH restoration. Both can be stacked with a GHRP like Ipamorelin for synergistic output.',
+    personaA: 'Choose CJC-1295 if you:\n• Want sustained 24/7 IGF-1 elevation for recovery and body composition\n• Are comfortable with injectable peptides and want noticeable results faster\n• Plan to stack with Ipamorelin (CJC without DAC is the gold-standard pairing)\n• Are researching anti-aging, fat loss, or lean mass preservation simultaneously',
+    personaB: 'Choose Sermorelin if you:\n• Prioritize sleep quality and natural hormone rhythm preservation\n• Want an FDA-history peptide with a long clinical track record\n• Are newer to GH peptides and want a gentler, more affordable entry point\n• Are sensitive to side effects like water retention or insulin resistance',
+    stackNote: 'Both can be stacked with a GHRP (Ipamorelin is ideal). Do NOT stack CJC-1295 + Sermorelin together — they share the GHRH receptor and the combination provides no additive benefit while increasing cost and injection burden.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'What is the difference between CJC-1295 and Sermorelin?', a: 'Both are GHRH analogs, but CJC-1295 has 4 amino acid substitutions that extend its half-life to 30 min (without DAC) or 6-8 days (with DAC). Sermorelin mirrors the natural 29-amino acid sequence with a half-life of only 10-20 minutes, producing a more pulsatile, physiological GH pattern.' },
+      { q: 'Which is better for anti-aging?', a: 'CJC-1295 produces greater overall IGF-1 elevation, which is correlated with lean mass, bone density, and skin quality improvements. Sermorelin\'s stronger melatonin/sleep synergy makes it preferred for circadian anti-aging protocols.' },
+      { q: 'Is Sermorelin safer than CJC-1295?', a: 'Both have excellent safety profiles. Sermorelin\'s shorter half-life means side effects (water retention, tingling) are short-lived. CJC-1295 with DAC carries a risk of persistent GH bleed side effects due to sustained IGF-1 elevation.' },
+    ],
   },
   {
     slug: 'cjc-1295-vs-ipamorelin',
@@ -78,7 +120,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of CJC-1295 and Ipamorelin: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `These peptides are better used together than compared, but Ipamorelin is safer for mitigating side effects, while CJC-1295 provides a stronger basal GH elevation. They operate on completely different pathways: CJC-1295 is a GHRH analog that increases the amplitude of GH pulses, whereas Ipamorelin is a GHRP that mimics ghrelin to initiate the pulse itself. Choose Ipamorelin if you want a mild, safe GH boost without raising cortisol or prolactin. Choose CJC-1295 if you need a longer-acting signal. Because they are synergistic, the undisputed recommendation is to stack them (often sold as a blend) to maximize the pituitary's GH output safely.`,
     tags: ['Growth', 'Research'],
-    color: 'violet'
+    color: 'violet',
+    quickVerdict: 'CJC-1295 + Ipamorelin is the gold-standard GH peptide stack — they act on different receptors (GHRH vs GHSR) for synergistic 2-3x greater GH output than either alone. Comparing them solo misses the point: use both together.',
+    personaA: 'Choose CJC-1295 solo if you:\n• Want sustained basal GH elevation without a GHRP\n• Are sensitive to the appetite-stimulating effects of GHRPs\n• Are using the DAC variant and want weekly dosing convenience\n• Are stacking with a different GHRP (e.g., GHRP-2 for more potency)',
+    personaB: 'Choose Ipamorelin solo if you:\n• Want the safest possible GH stimulation with zero cortisol/prolactin elevation\n• Are new to GH peptides and want a clean, well-tolerated starting point\n• Cannot or prefer not to use a GHRH analog at this time\n• Are researching GH pulsatility without sustained IGF-1 elevation',
+    stackNote: 'The CJC-1295 (without DAC) + Ipamorelin stack is the most prescribed peptide combination in anti-aging and sports recovery research. CJC-1295 amplifies the GH pulse amplitude; Ipamorelin triggers the pulse via the GHSR-1a receptor. Together, they mimic and amplify the natural pituitary GH release mechanism. Inject simultaneously before bed.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Should I take CJC-1295 and Ipamorelin together?', a: 'Yes — this is the most universally recommended GH peptide stack. They act on completely separate receptor systems (GHRH vs GHSR) producing a synergistic 2-3x amplification of GH output vs either peptide alone. Most vendors sell a premixed blend.' },
+      { q: 'When should I inject CJC-1295 + Ipamorelin?', a: 'Inject 30–60 minutes before bed on an empty stomach (3+ hours post-meal) to amplify the natural nocturnal GH surge. Some researchers add a morning fasted dose for a second daily pulse.' },
+      { q: 'Can I use Ipamorelin without CJC-1295?', a: 'Yes. Ipamorelin alone provides clean, mild GH pulses with an excellent safety profile. Results are noticeably weaker than the combination, but it is a valid standalone protocol, particularly for beginners.' },
+    ],
   },
   {
     slug: 'ipamorelin-vs-ghrp-2',
@@ -89,7 +141,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Ipamorelin and GHRP-2: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Ipamorelin is better for clean, side-effect-free anti-aging, while GHRP-2 is better for maximum GH release when hunger stimulation is acceptable. Both are Growth Hormone Releasing Peptides that mimic ghrelin. GHRP-2 is significantly more potent at stimulating GH but also causes a moderate increase in cortisol, prolactin, and appetite. Ipamorelin is unique among GHRPs because it does not increase cortisol or prolactin at any dose. Choose Ipamorelin for long-term use, sleep improvement, and gentle anti-aging. Choose GHRP-2 if you need aggressive recovery, appetite stimulation for bulking, or a stronger IGF-1 response. For the average researcher, Ipamorelin is the highly recommended default due to its pristine safety profile.`,
     tags: ['GHRP', 'Research'],
-    color: 'violet'
+    color: 'violet',
+    quickVerdict: 'Ipamorelin is the safest GHRP with zero cortisol/prolactin elevation — ideal for long-term use. GHRP-2 is ~30% more potent for GH output but raises cortisol and prolactin. Choose Ipamorelin for clean protocols; GHRP-2 for aggressive bulking or recovery.',
+    personaA: 'Choose Ipamorelin if you:\n• Want long-term, sustainable GH stimulation without stress hormone elevation\n• Are prioritizing sleep quality, anti-aging, or fat loss\n• Are sensitive to cortisol or prolactin-related side effects\n• Plan to run a GH peptide protocol longer than 12 weeks',
+    personaB: 'Choose GHRP-2 if you:\n• Want maximum GH output and can tolerate moderate hunger/cortisol\n• Are in a bulking phase and hunger stimulation is an asset\n• Need aggressive post-surgery or injury recovery\n• Are running a short, intensive protocol where potency outweighs side effects',
+    stackNote: 'Can be stacked with CJC-1295 (GHRH) for synergistic GH amplification. Ipamorelin + CJC-1295 is the preferred stack. GHRP-2 + CJC-1295 also works but adds cortisol elevation. Do not combine Ipamorelin and GHRP-2 together — they act on the same GHSR receptor with diminishing returns.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is Ipamorelin or GHRP-2 better for fat loss?', a: 'Ipamorelin is better for fat loss because it raises GH without raising cortisol. Elevated cortisol counteracts lipolysis. GHRP-2\'s cortisol elevation can partially blunt fat loss benefits despite higher GH output.' },
+      { q: 'Does GHRP-2 cause water retention?', a: 'GHRP-2 can cause mild water retention via IGF-1 elevation, similar to Ipamorelin. However, GHRP-2\'s cortisol stimulation can independently cause some fluid retention. Ipamorelin is generally associated with less bloating.' },
+      { q: 'Can I switch from GHRP-2 to Ipamorelin?', a: 'Yes, freely. There is no washout required. Ipamorelin can be substituted 1:1 in most protocols. You will lose some peak GH potency but gain a cleaner side effect profile immediately.' },
+    ],
   },
   {
     slug: 'ipamorelin-vs-ghrp-6',
@@ -100,7 +162,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Ipamorelin and GHRP-6: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Ipamorelin is better for fat loss and clean GH elevation, while GHRP-6 is specifically preferred for stimulating extreme appetite. GHRP-6 is notorious for causing intense gastric motility and hunger within 20 minutes of administration, alongside moderate increases in cortisol and prolactin. Ipamorelin delivers a slower, smoother GH pulse without the intense hunger or stress hormone elevation. Choose Ipamorelin for body recomposition, anti-aging, and sleep. Choose GHRP-6 almost exclusively if you are researching cachexia (muscle wasting) or need massive appetite stimulation to gain weight. Ipamorelin is the overwhelmingly superior default for general research.`,
     tags: ['GHRP', 'Research'],
-    color: 'violet'
+    color: 'violet',
+    quickVerdict: 'Ipamorelin for clean, appetite-neutral GH elevation — the default for fat loss and anti-aging. GHRP-6 triggers intense hunger and is used almost exclusively for cachexia research or extreme bulking. For general use, Ipamorelin wins decisively.',
+    personaA: 'Choose Ipamorelin if you:\n• Want GH elevation without appetite stimulation (ideal for cutting)\n• Are sensitive to stomach cramping or hunger side effects\n• Are running a long-term anti-aging or sleep optimization protocol\n• Cannot manage intense post-injection hunger in your daily routine',
+    personaB: 'Choose GHRP-6 if you:\n• Are specifically researching cachexia, anorexia, or extreme muscle wasting\n• Need massive appetite stimulation for a hard-gaining bulking protocol\n• Are willing to manage significant hunger for the benefit of higher GH\n• Are running a short, aggressive mass-building research cycle',
+    stackNote: 'Ipamorelin + CJC-1295 is the recommended stack. GHRP-6 + CJC-1295 also pairs well but adds cortisol/prolactin elevation. Do not combine Ipamorelin + GHRP-6 together — both target the same GHSR receptor with overlapping and wasteful mechanisms.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Why does GHRP-6 cause so much hunger?', a: 'GHRP-6 is extremely potent at the gastric ghrelin receptor in the stomach, not just the pituitary GHSR. This strong peripheral ghrelin activation causes intense hunger signals within 15-30 minutes of injection. Ipamorelin has much weaker peripheral ghrelin activity.' },
+      { q: 'Is GHRP-6 good for bodybuilding?', a: 'For bulking phases where massive caloric intake is needed, yes. GHRP-6\'s hunger stimulation combined with its GH output can be advantageous. For cutting or recomposition, Ipamorelin is dramatically superior.' },
+      { q: 'What are the side effects of GHRP-6?', a: 'Intense hunger (within 20 min), gastric distress, cortisol elevation (~30% above baseline), prolactin elevation, water retention, and in chronic use, potential receptor desensitization. Ipamorelin causes none of these.' },
+    ],
   },
   {
     slug: 'ghrp-2-vs-ghrp-6',
@@ -111,18 +183,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of GHRP-2 and GHRP-6: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `GHRP-2 is better for maximizing growth hormone output, while GHRP-6 is better for maximizing appetite. Both are first-generation GHRPs that elevate cortisol and prolactin alongside GH. However, GHRP-2 is roughly 30% more potent at stimulating the pituitary to release GH. Conversely, GHRP-6 acts much more strongly on the ghrelin receptors in the stomach, causing extreme hunger. Choose GHRP-2 if you want strong GH elevation and can tolerate mild hunger. Choose GHRP-6 only if your primary goal is appetite stimulation. For strictly GH-related research, GHRP-2 is the much more effective default of the two.`,
     tags: ['First-Gen', 'Research'],
-    color: 'violet'
-  },
-  {
-    slug: 'bpc-157-vs-ghk-cu',
-    peptideA: 'bpc-157',
-    peptideB: 'ghk-cu',
-    title: 'BPC-157 vs GHK-Cu',
-    subtitle: 'Tissue Repair & Anti-Aging',
-    seoDescription: 'Side-by-side research comparison of BPC-157 and GHK-Cu: dosing, half-life, side effects, and mechanism of action.',
-    recommendation: `BPC-157 is better for deep structural injuries (tendons, gut), while GHK-Cu is better for superficial tissue repair, skin health, and systemic anti-aging. BPC-157 drives angiogenesis to bring blood flow to avascular tissues like ligaments. GHK-Cu is a copper-binding peptide that acts systemically to reset gene expression, upregulate collagen and elastin production, and reduce oxidative stress. Choose BPC-157 to rapidly heal a torn muscle or leaking gut. Choose GHK-Cu to improve skin elasticity, heal superficial wounds, grow hair, or reduce whole-body inflammation. For acute injuries, BPC-157 is the default; for longevity and aesthetics, GHK-Cu wins.`,
-    tags: ['Repair', 'Research'],
-    color: 'blue'
+    color: 'violet',
+    quickVerdict: 'GHRP-2 for maximum GH potency (~30% stronger at the pituitary). GHRP-6 for maximum appetite stimulation via strong gastric ghrelin activation. For GH-focused research, GHRP-2 wins. Modern researchers typically prefer Ipamorelin over both for its cleaner profile.',
+    personaA: 'Choose GHRP-2 if you:\n• Want the strongest GH stimulation from a first-gen GHRP\n• Are aggressive bulking and can manage moderate hunger/cortisol\n• Are researching maximum IGF-1 elevation for anabolic signaling\n• Are using it short-term in a high-potency recovery protocol',
+    personaB: 'Choose GHRP-6 if you:\n• Are specifically researching cachexia, extreme muscle wasting, or anorexia\n• Need powerful appetite stimulation as a primary therapeutic goal\n• Are hard-gaining and struggling to eat enough calories\n• Are willing to manage extreme hunger as an acceptable trade-off',
+    stackNote: 'Both pair with CJC-1295 for synergistic GH elevation. Do NOT combine GHRP-2 and GHRP-6 together — they share the same GHSR receptor with overlapping and wasteful mechanisms. Either choose one, or upgrade to Ipamorelin for a cleaner profile with less side-effect burden.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is GHRP-2 or GHRP-6 stronger?', a: 'GHRP-2 is approximately 30% more potent at stimulating pituitary GH release in head-to-head preclinical comparisons. GHRP-6 is stronger specifically at peripheral ghrelin receptors in the stomach, which drives its intense hunger effect.' },
+      { q: 'Which first-gen GHRP is better for bodybuilding?', a: 'GHRP-2 for GH and IGF-1-driven anabolism; GHRP-6 for appetite and caloric intake. For most bodybuilding goals, Ipamorelin + CJC-1295 is the modern upgrade that provides similar GH output with a far cleaner side effect profile.' },
+      { q: 'Do GHRP-2 and GHRP-6 cause gynecomastia?', a: 'Both elevate prolactin modestly, which theoretically increases gynecomastia risk in sensitive individuals. The elevation is generally mild and transient. Ipamorelin does not elevate prolactin and is the safer option if this is a concern.' },
+    ],
   },
   {
     slug: 'tesamorelin-vs-cjc-1295',
@@ -133,7 +204,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Tesamorelin and CJC-1295: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Tesamorelin is better for targeted visceral fat loss, while CJC-1295 is better for general anti-aging and recovery. Both are GHRH analogs. Tesamorelin is an FDA-approved formulation specifically designed to reduce visceral adipose tissue (hard belly fat) by creating massive, sharp spikes in GH that strongly trigger lipolysis. CJC-1295 provides a more moderate, sustained elevation of GH suitable for long-term use. Choose Tesamorelin if your primary goal is aggressive fat loss or reversing metabolic syndrome. Choose CJC-1295 if you want a cost-effective, long-term protocol for sleep, skin, and mild body recomposition. For pure fat loss, Tesamorelin is the premium default.`,
     tags: ['Fat', 'Research'],
-    color: 'violet'
+    color: 'violet',
+    quickVerdict: 'Tesamorelin for aggressive visceral fat loss (FDA-approved, ~18% VAT reduction at 26 weeks). CJC-1295 for sustainable long-term GH optimization covering anti-aging, sleep, and body recomposition. Tesamorelin is stronger; CJC-1295 is more versatile and affordable.',
+    personaA: 'Choose Tesamorelin if you:\n• Have significant visceral (abdominal) fat accumulation to target\n• Are researching metabolic syndrome or lipodystrophy specifically\n• Want the largest acute GH spike for maximum lipolysis\n• Are comfortable with a more potent, higher-cost GHRH analog',
+    personaB: 'Choose CJC-1295 if you:\n• Want a versatile, affordable long-term GH optimization protocol\n• Are prioritizing anti-aging, sleep, and lean mass alongside fat loss\n• Plan to stack with Ipamorelin for synergistic GH output\n• Are newer to GHRH analogs and want a more manageable starting point',
+    stackNote: 'Both pair with Ipamorelin (GHRP) for synergistic GH amplification. Do NOT combine Tesamorelin + CJC-1295 together — they target the same GHRH receptor redundantly. Choose one GHRH analog and pair it with Ipamorelin.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Is Tesamorelin better than CJC-1295 for belly fat?', a: 'Yes, decisively. Tesamorelin\'s FDA-approval was specifically for visceral adipose tissue reduction. The LIPO-010 clinical trial showed ~18% VAT reduction after 26 weeks at 2mg/day. CJC-1295 can reduce fat via GH-driven lipolysis but lacks this targeted visceral fat clinical evidence.' },
+      { q: 'How much does Tesamorelin cost vs CJC-1295?', a: 'Tesamorelin is significantly more expensive as a research chemical (~$70-90/vial) vs CJC-1295 (~$42-60/vial). The FDA-approved branded Egrifta is prescription-only and far more expensive.' },
+      { q: 'Can I stack Tesamorelin with Ipamorelin?', a: 'Yes — Tesamorelin (GHRH) + Ipamorelin (GHRP) is a valid and powerful stack, producing synergistic GH amplification via different receptor pathways. This is analogous to the classic CJC-1295 + Ipamorelin stack.' },
+    ],
   },
   {
     slug: 'semaglutide-vs-retatrutide',
@@ -144,7 +225,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Semaglutide and Retatrutide: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Retatrutide is better for maximizing total weight loss and resolving fatty liver, while Semaglutide is a proven, gentler starting point. Semaglutide is a single-agonist (GLP-1) that works primarily by delaying gastric emptying and signaling fullness to the brain. Retatrutide is a triple-agonist (GLP-1, GIP, Glucagon) that adds direct fat-burning via increased energy expenditure (thermogenesis). Choose Semaglutide if you are new to GLP-1s and want the most established safety profile. Choose Retatrutide if you have severe obesity, need to lose >20% of body weight, or want to avoid the extreme fatigue sometimes associated with Semaglutide. Tirzepatide is often the best middle ground between the two.`,
     tags: ['Progression', 'Research'],
-    color: 'emerald'
+    color: 'emerald',
+    quickVerdict: 'Retatrutide for maximum weight loss in advanced obesity (≥24% body weight in Phase 2). Semaglutide for a proven, globally available, cardiovascular-safe starting point. Tirzepatide sits between them as the current FDA-approved sweet spot.',
+    personaA: 'Choose Semaglutide if you:\n• Are starting a GLP-1 protocol for the first time and want maximum safety data\n• Have established cardiovascular disease (SELECT trial evidence)\n• Cost or insurance coverage is a limiting factor\n• Need a globally available, prescription-accessible option',
+    personaB: 'Choose Retatrutide if you:\n• Have severe obesity (BMI >40) that has not responded to dual agonists\n• Want to study glucagon-driven thermogenesis in combination with GLP-1/GIP\n• Are comfortable with Phase 2 research-stage compounds without Phase 3 approval\n• Are targeting MASLD (metabolic liver disease) alongside weight loss',
+    stackNote: 'Do NOT stack Semaglutide and Retatrutide — they share the GLP-1 receptor. Concurrent use creates dangerous additive stimulation with compounded GI toxicity and hypoglycemia risk. Use one GLP-1-class agent at a time.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'How does Retatrutide compare to Semaglutide for weight loss?', a: 'Phase 2 Retatrutide data shows ~24% body weight loss at 24 weeks vs Semaglutide\'s ~15% at max dose (STEP 1, 68 weeks). Retatrutide is not yet Phase 3 approved; Semaglutide is FDA-approved and widely available.' },
+      { q: 'What is the glucagon mechanism in Retatrutide?', a: 'Retatrutide\'s glucagon receptor agonism increases hepatic glucose output and thermogenesis, directly burning fat stores independently of appetite suppression. This third mechanism is the key advantage over semaglutide\'s single-agonist approach.' },
+      { q: 'Is Tirzepatide better than both Semaglutide and Retatrutide?', a: 'Tirzepatide outperforms Semaglutide in efficacy (~21% vs ~15% weight loss) and is FDA-approved. Retatrutide may surpass Tirzepatide in extreme cases, but lacks Phase 3 data. Tirzepatide is the current best-validated sweet spot.' },
+    ],
   },
   {
     slug: 'tirzepatide-vs-semaglutide',
@@ -155,7 +246,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Tirzepatide and Semaglutide: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Tirzepatide is generally superior for both total weight loss and tolerability, while Semaglutide is often more accessible and highly proven. Tirzepatide’s addition of GIP receptor agonism acts synergistically with GLP-1, buffering the nausea often caused by GLP-1 alone while enhancing insulin sensitivity. Semaglutide relies solely on the GLP-1 pathway. Choose Semaglutide for a cost-effective, highly studied intervention for moderate weight loss. Choose Tirzepatide for superior fat loss, better energy levels, and fewer GI side effects. In modern research protocols, Tirzepatide is increasingly considered the preferred default over Semaglutide.`,
     tags: ['GLP-1', 'Research'],
-    color: 'emerald'
+    color: 'emerald',
+    quickVerdict: 'Tirzepatide is the mechanistically superior agent (~21% vs ~15% weight loss) due to dual GLP-1/GIP agonism. Semaglutide offers longer real-world safety data and stronger cardiovascular evidence. In clinical practice, Tirzepatide is rapidly becoming the preferred first-line choice.',
+    personaA: 'Choose Tirzepatide if you:\n• Want maximum weight loss efficacy from a single, FDA-approved agent\n• Have experienced nausea or intolerable GI effects on Semaglutide\n• Have comorbid T2DM requiring concurrent glycemic control\n• Are comfortable with a newer agent that has strong Phase 3 data',
+    personaB: 'Choose Semaglutide if you:\n• Want the agent with the longest real-world safety track record (6+ years)\n• Have established cardiovascular disease (SELECT trial: 20% MACE reduction)\n• Cost, insurance coverage, or geographic availability is a priority\n• Are starting a GLP-1 protocol for the first time and want the most proven agent',
+    stackNote: 'Do NOT combine Tirzepatide and Semaglutide — they share the GLP-1 receptor. Concurrent use creates severe additive GLP-1 stimulation risk: pronounced nausea, vomiting, hypoglycemia, and cardiovascular burden. Choose one or the other.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is Tirzepatide replacing Semaglutide?', a: 'In many clinical practices, yes — Tirzepatide\'s superior efficacy (~21% vs ~15% weight loss) and often better GI tolerability are causing clinicians to prefer it as a first-line option. Semaglutide retains its position for cardiovascular disease patients (SELECT trial data).' },
+      { q: 'What is the key difference between Tirzepatide and Semaglutide?', a: 'Semaglutide targets only the GLP-1 receptor. Tirzepatide targets both GLP-1 and GIP receptors simultaneously. The addition of GIP agonism provides synergistic appetite suppression, enhanced insulin sensitivity, and partially buffers GLP-1\'s nausea effects.' },
+      { q: 'Which is cheaper: Tirzepatide or Semaglutide?', a: 'Branded Wegovy (Semaglutide) lists at ~$1,350/month; branded Zepbound (Tirzepatide) at ~$1,060/month. Compounded research versions of both are available at a fraction of the cost depending on current FDA shortage designation.' },
+    ],
   },
   {
     slug: 'selank-vs-semax',
@@ -166,7 +267,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Selank and Semax: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Selank is better for anxiety relief and focus under stress, while Semax is better for pure cognitive stimulation and energy. Both are Russian-developed neuropeptides administered via nasal spray. Selank modulates the expression of BDNF and balances enkephalin degradation, producing a calm, clear-headed focus without sedation. Semax strongly stimulates the central nervous system and increases dopamine and serotonin, acting more like a clean stimulant. Choose Selank if you suffer from generalized anxiety, ADHD, or stress-induced brain fog. Choose Semax if you need intense focus for studying, combating sleep deprivation, or stroke recovery. Selank is the safer default for daily use.`,
     tags: ['Nootropics', 'Research'],
-    color: 'teal'
+    color: 'teal',
+    quickVerdict: 'Selank for anxiolytic calm focus (anxiety, ADHD, stress). Semax for stimulant-like cognitive enhancement (energy, focus, neuroprotection after stroke). They work on opposite ends of the arousal spectrum and can complement each other in rotation.',
+    personaA: 'Choose Selank if you:\n• Have generalized anxiety, panic, or stress-induced cognitive impairment\n• Want calm, focused productivity without stimulation or crash\n• Are researching GABA/enkephalin modulation or BDNF upregulation\n• Need a daily-use nootropic with a mild, sustainable profile',
+    personaB: 'Choose Semax if you:\n• Need intense, stimulant-like focus for demanding cognitive tasks\n• Are combating fatigue, sleep deprivation, or recovery from neurological events\n• Are researching BDNF, dopamine, or serotonin as neuroprotective mechanisms\n• Want a cognitive enhancer with strong Eastern European clinical data',
+    stackNote: 'Can be used in rotation (not simultaneously). Selank in the morning for calm productive focus; Semax in the morning when high stimulation is needed. Taking them at the same time may create contradictory CNS effects (anxiolytic vs stimulant). Researchers typically cycle them by goal.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is Selank or Semax better for ADHD?', a: 'Selank is more commonly researched for ADHD-like attention issues because it modulates GABA and enkephalin pathways that relate to stress-induced inattention. Semax is used more for general cognitive enhancement and energy, though it also shows attention benefits via BDNF.' },
+      { q: 'Do Selank and Semax need to be refrigerated?', a: 'Yes. Both are nasal spray peptides that require refrigeration (2-8°C). Exposure to heat or sunlight can degrade the active peptide. Most vendors ship with ice packs.' },
+      { q: 'Are Selank and Semax legal?', a: 'Both are legal as research chemicals in the United States. They are prescription drugs in Russia where they were developed. Neither is FDA-approved in the US. Legal status varies by country.' },
+    ],
   },
   {
     slug: 'bpc-157-vs-kpv',
@@ -177,7 +288,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of BPC-157 and KPV: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `BPC-157 is better for physically repairing damaged tissue, while KPV is better for halting acute autoimmune and allergic inflammation. BPC-157 rebuilds the gut lining by promoting angiogenesis and cellular migration. KPV (a tripeptide fragment of alpha-MSH) is a potent anti-inflammatory that works inside the cell to downregulate NF-kB, the master switch for inflammation, and also possesses antimicrobial properties. Choose BPC-157 to heal a leaky gut, ulcer, or structural injury. Choose KPV to calm an active autoimmune flare-up, mast cell activation, or severe skin inflammation. They are highly synergistic when stacked for severe GI issues.`,
     tags: ['Gut', 'Research'],
-    color: 'amber'
+    color: 'amber',
+    quickVerdict: 'BPC-157 for structural gut repair (angiogenesis, tissue rebuilding). KPV for halting acute inflammation and autoimmune cascades (NF-kB inhibition). They are highly synergistic and the most-recommended gut healing combination in research communities.',
+    personaA: 'Choose BPC-157 if you:\n• Have structural gut damage (leaky gut, ulcers, Crohn\'s disease)\n• Need to rebuild the gut lining and restore its vascular supply\n• Also have a co-occurring musculoskeletal injury to treat\n• Want the peptide with the most extensive preclinical gut research evidence',
+    personaB: 'Choose KPV if you:\n• Have active autoimmune gut inflammation (IBD, Crohn\'s, ulcerative colitis)\n• Are dealing with mast cell activation or severe allergic inflammation\n• Want an anti-inflammatory that also has antimicrobial properties\n• Need to quickly reduce the inflammatory signaling (NF-kB) driving a flare',
+    stackNote: 'Highly synergistic — one of the most recommended combination protocols for severe GI inflammation. KPV halts the NF-kB inflammatory cascade while BPC-157 rebuilds the damaged tissue. Can be combined in the same oral capsule or taken separately.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Can BPC-157 and KPV be taken together?', a: 'Yes — this is one of the most popular combination protocols for gut health. BPC-157 rebuilds damaged tissue via angiogenesis; KPV halts the underlying inflammation. They can be combined in oral capsule form or taken separately. No adverse interactions are documented.' },
+      { q: 'Is KPV oral or injectable?', a: 'KPV is effective both orally and subcutaneously. Oral KPV is commonly used for gut health because the peptide survives digestion and delivers anti-inflammatory effects directly to the GI tract. BPC-157 is similarly effective orally for gut-specific use.' },
+      { q: 'What is KPV made from?', a: 'KPV is a tripeptide fragment (Lys-Pro-Val) derived from the C-terminus of alpha-melanocyte-stimulating hormone (α-MSH). It retains alpha-MSH\'s potent anti-inflammatory properties without the melanocortin side effects (tanning, libido).' },
+    ],
   },
   {
     slug: 'ghk-cu-vs-bpc-157',
@@ -188,7 +309,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of GHK-Cu and BPC-157: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `GHK-Cu is the superior choice for cosmetic anti-aging and systemic longevity, whereas BPC-157 is the undisputed king of acute injury recovery. GHK-Cu operates at the epigenetic level, resetting thousands of genes to a younger state to improve skin, hair, and oxidative resilience. BPC-157 operates at the physiological level, driving blood vessel formation to rapidly heal torn connective tissue and gut lesions. Choose GHK-Cu for a long-term longevity protocol, wound healing, or skin tightening. Choose BPC-157 to recover from a sports injury or surgery. BPC-157 is the default for athletes, while GHK-Cu is the default for biohackers.`,
     tags: ['Anti-Aging', 'Research'],
-    color: 'blue'
+    color: 'blue',
+    quickVerdict: 'GHK-Cu for systemic longevity, skin rejuvenation, and epigenetic anti-aging. BPC-157 for acute injury recovery — tendons, ligaments, gut. Athletes default to BPC-157; biohackers default to GHK-Cu. Used together, they cover both structural repair and systemic aging.',
+    personaA: 'Choose GHK-Cu if you:\n• Are focused on long-term anti-aging, skin quality, and longevity\n• Want to improve hair density, collagen, and oxidative resilience\n• Prefer topical or subcutaneous peptide application\n• Are building a comprehensive biohacking longevity stack',
+    personaB: 'Choose BPC-157 if you:\n• Have an active injury (tendon, ligament, muscle tear, gut lesion)\n• Need rapid, targeted tissue repair with strong preclinical evidence\n• Are an athlete or recovering from surgery\n• Want measurable healing results within 4–8 weeks',
+    stackNote: 'Complementary. GHK-Cu addresses epigenetic aging and surface repair; BPC-157 addresses acute structural damage and blood supply. The combination is particularly effective post-surgery: BPC-157 accelerates healing while GHK-Cu reduces scarring and improves skin/tissue quality.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Is BPC-157 or GHK-Cu better for scars?', a: 'GHK-Cu is superior for scar reduction. It upregulates collagen remodeling enzymes (MMPs) that break down disorganized scar tissue and replace it with structured collagen. BPC-157 accelerates initial wound closure but has less evidence for mature scar remodeling.' },
+      { q: 'Can GHK-Cu be injected?', a: 'Yes. Subcutaneous GHK-Cu (2-4mg, 3x weekly) is used in research protocols for systemic anti-aging effects. The majority of consumer evidence is topical. Both routes have research support.' },
+      { q: 'Which has more clinical trials?', a: 'BPC-157 has extensive preclinical animal study data (35+ studies) but limited human trials. GHK-Cu has a large body of in-vitro and some clinical research on skin and wound healing applications (Pickart et al.). Neither has completed large-scale human RCTs.' },
+    ],
   },
   {
     slug: 'mots-c-vs-aod-9604',
@@ -199,7 +330,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of MOTS-c and AOD-9604: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `MOTS-c is better for improving metabolic function and exercise capacity, while AOD-9604 is specifically targeted at direct fat mobilization. MOTS-c is a mitochondrial-derived peptide that activates AMPK (the body's energy sensor), mimicking the effects of intense exercise to improve insulin sensitivity and energy production. AOD-9604 is a GH fragment that directly stimulates lipolysis in fat cells without affecting blood sugar. Choose MOTS-c if you want to improve endurance, reverse insulin resistance, and gain "exercise in a bottle" benefits. Choose AOD-9604 if your sole goal is lipolysis, particularly of stubborn visceral fat. MOTS-c offers broader, more profound metabolic health benefits.`,
     tags: ['Mitochondrial', 'Research'],
-    color: 'teal'
+    color: 'teal',
+    quickVerdict: 'MOTS-c for broad metabolic health: insulin sensitivity, AMPK activation, and exercise mimicry. AOD-9604 for targeted, isolated lipolysis without any GH-axis impact. MOTS-c is the more profound metabolic intervention; AOD-9604 is the simpler fat-burning tool.',
+    personaA: 'Choose MOTS-c if you:\n• Want to reverse insulin resistance and improve mitochondrial function\n• Are researching the metabolic effects of exercise without exercising\n• Need comprehensive metabolic health improvement beyond pure fat loss\n• Are interested in longevity and mitochondrial anti-aging research',
+    personaB: 'Choose AOD-9604 if you:\n• Have a primary goal of reducing stubborn fat deposits specifically\n• Need to avoid GH-axis stimulation (cancer concerns, blood sugar sensitivity)\n• Are layering a fat-loss peptide onto an existing GH or metabolic protocol\n• Want a targeted lipolytic agent with an excellent safety profile and FDA history',
+    stackNote: 'Can be stacked carefully. MOTS-c acts via AMPK pathway centrally; AOD-9604 acts peripherally on beta-3 adrenergic receptors in fat cells. Different mechanisms with potentially additive fat loss and metabolic benefits. Monitor blood glucose if combining.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Does MOTS-c cause fat loss?', a: 'Yes, indirectly. MOTS-c activates AMPK and improves insulin sensitivity, which promotes fat oxidation over storage. It does not directly stimulate lipolysis the way AOD-9604 does, but its metabolic effects result in reduced fat accumulation over time.' },
+      { q: 'Is AOD-9604 safe?', a: 'AOD-9604 has an excellent safety profile. It was granted FDA Orphan Drug status and completed Phase 2/3 trials as an anti-obesity agent. It does not affect GH receptor or IGF-1, making it uniquely safe among GH-derived peptides.' },
+      { q: 'What is MOTS-c?', a: 'MOTS-c (Mitochondrial Open Reading Frame of the 12S rRNA Type-c) is a peptide encoded in the mitochondrial genome. It was discovered in 2015. It functions like a systemic hormone, traveling to the nucleus and activating AMPK-dependent metabolic pathways throughout the body.' },
+    ],
   },
   {
     slug: 'hexarelin-vs-ipamorelin',
@@ -210,7 +351,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Hexarelin and Ipamorelin: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Hexarelin is the most potent GHRP for massive growth hormone spikes, but Ipamorelin is the safest and most sustainable for long-term use. Hexarelin induces a massive surge of GH but rapidly desensitizes receptors (limiting use to a few weeks) and significantly raises cortisol and prolactin. Ipamorelin provides a mild, clean GH pulse with zero desensitization and zero elevation of stress hormones. Choose Hexarelin only for very short, intensive recovery protocols or cardiac repair research. Choose Ipamorelin for a sustainable, side-effect-free anti-aging protocol. Ipamorelin is the highly recommended default for 99% of researchers.`,
     tags: ['Strong', 'Research'],
-    color: 'violet'
+    color: 'violet',
+    quickVerdict: 'Hexarelin for maximum GH burst in short cycles (cardiac repair research, aggressive recovery). Ipamorelin for sustainable, long-term GH optimization without side effects. For 99% of protocols, Ipamorelin is the clear default.',
+    personaA: 'Choose Hexarelin if you:\n• Need the absolute maximum acute GH spike (strongest available GHRP)\n• Are researching cardiac repair (hexarelin has unique GH-independent cardioprotective receptors)\n• Are running a very short (2–4 week) intensive recovery protocol\n• Accept receptor desensitization and cortisol/prolactin elevation as trade-offs',
+    personaB: 'Choose Ipamorelin if you:\n• Want a clean, long-term GH peptide with zero cortisol or prolactin elevation\n• Are running a protocol longer than 4–6 weeks\n• Prioritize sleep quality, anti-aging, and fat loss over raw GH potency\n• Want to minimize the risk of receptor desensitization',
+    stackNote: 'Do NOT combine Hexarelin + Ipamorelin — they target the same GHSR receptor with diminishing returns. For maximum GH output, stack either with CJC-1295 (GHRH) which uses a different, synergistic receptor pathway.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is Hexarelin stronger than Ipamorelin?', a: 'Yes, significantly. Hexarelin produces the largest acute GH spike of any peptide GHRP. However, it also causes rapid receptor desensitization (limiting cycles to 4–6 weeks) and elevates cortisol and prolactin. Ipamorelin\'s GH output is milder but indefinitely sustainable.' },
+      { q: 'What is unique about Hexarelin for cardiac research?', a: 'Hexarelin binds to cardiac-specific GHS-R1b receptors and CD36 scavenger receptors independently of GH secretion. These unique binding sites mediate direct cardioprotective effects including reduced cardiomyocyte apoptosis, making it the only GHRP with established direct cardiac research applications.' },
+      { q: 'How long can you use Hexarelin?', a: 'Most research protocols limit Hexarelin to 2–6 weeks before receptor desensitization significantly blunts GH output. A break of equal length is then required before restarting. Ipamorelin shows no such desensitization in long-term protocols.' },
+    ],
   },
   {
     slug: 'll-37-vs-thymosin-alpha-1',
@@ -221,7 +372,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of LL-37 and Thymosin Alpha-1: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `LL-37 is a direct antimicrobial agent that attacks pathogens, while Thymosin Alpha-1 (TA1) is an immune modulator that trains your body to fight infections itself. LL-37 binds to and breaks down the membranes of bacteria, viruses, and biofilms, making it highly effective against active, stubborn infections (like Lyme or SIBO). TA1 enhances the function of T-cells and dendritic cells, balancing an underactive or overactive immune system. Choose LL-37 as a targeted "smart bomb" for a specific chronic infection. Choose TA1 for long-term immune support, viral clearance, or autoimmune modulation. TA1 is the safer, more fundamental default.`,
     tags: ['Immune', 'Research'],
-    color: 'blue'
+    color: 'blue',
+    quickVerdict: 'LL-37 for direct antimicrobial action — destroys biofilms and pathogens on contact. Thymosin Alpha-1 for immune system calibration — trains T-cells to mount better responses. Use LL-37 to kill the infection; use TA1 to strengthen your immune system against future threats.',
+    personaA: 'Choose LL-37 if you:\n• Have an active chronic infection (Lyme, SIBO, biofilm-forming bacteria)\n• Need direct antimicrobial and antiviral action at the infection site\n• Are researching wound infections or antimicrobial-resistant bacteria\n• Want a peptide that also modulates LPS-induced inflammation',
+    personaB: 'Choose Thymosin Alpha-1 if you:\n• Have an underactive or dysregulated immune system\n• Are recovering from chemotherapy or immunosuppression\n• Want to improve vaccine efficacy or T-cell function\n• Are researching autoimmune modulation or viral clearance (Hepatitis B/C, COVID)',
+    stackNote: 'Synergistic combination. LL-37 directly targets and destroys the pathogen; Thymosin Alpha-1 enhances the adaptive immune response to finish the job and prevent recurrence. This combination is used in integrative medicine for stubborn chronic infections.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'Does LL-37 kill good bacteria?', a: 'LL-37 has broad-spectrum antimicrobial activity and can disrupt beneficial bacteria if overused or misapplied. For systemic subcutaneous use at research doses, disruption of the gut microbiome is minimal as it does not reach the gut lumen at therapeutic concentrations.' },
+      { q: 'Is Thymosin Alpha-1 FDA approved?', a: 'Thymosin Alpha-1 (Zadaxin) is approved in 35+ countries for viral hepatitis and immune reconstitution, but is not FDA-approved in the United States. It is used off-label and available as a research chemical domestically.' },
+      { q: 'What dose of LL-37 is used in research?', a: 'Research protocols typically use 25–50mg/week subcutaneously for systemic antimicrobial and immunomodulatory effects. Topical use for wound infections uses lower concentrations in peptide-formulated dressings. For research use only.' },
+    ],
   },
   {
     slug: 'epitalon-vs-mots-c',
@@ -232,7 +393,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of Epitalon and MOTS-c: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `Epitalon is better for deep cellular aging (telomeres and sleep), while MOTS-c is better for metabolic aging (energy and insulin). Epitalon works in the pineal gland to dramatically upregulate melatonin production and has been shown to lengthen telomeres, fundamentally extending cellular lifespan. MOTS-c works in the mitochondria to activate AMPK, restoring youthful energy metabolism and exercise capacity. Choose Epitalon (typically run twice a year) to improve circadian rhythms and target genetic aging. Choose MOTS-c to improve daily energy, insulin sensitivity, and athletic performance. They target completely different pillars of longevity.`,
     tags: ['Anti-Aging', 'Research'],
-    color: 'blue'
+    color: 'blue',
+    quickVerdict: 'Epitalon for telomere extension and pineal/melatonin restoration (run in 2x/year cycles). MOTS-c for daily metabolic anti-aging via AMPK and mitochondrial function. They target completely different hallmarks of aging and are highly complementary.',
+    personaA: 'Choose Epitalon if you:\n• Are specifically targeting telomere length as a longevity biomarker\n• Have disrupted circadian rhythms or age-related melatonin decline\n• Want a pulsed longevity intervention (10–20 day cycles, 1–2x/year)\n• Are interested in Eastern European longevity research with clinical follow-up data',
+    personaB: 'Choose MOTS-c if you:\n• Want daily improvements in energy, insulin sensitivity, and mitochondrial function\n• Are researching the metabolic aging hallmark specifically\n• Need an AMPK activator that mimics the benefits of consistent exercise\n• Want a peptide that works acutely every time it is administered (no cycling required)',
+    stackNote: 'Highly complementary longevity stack. Epitalon targets chromosomal aging (telomeres, circadian) while MOTS-c targets energetic aging (mitochondria, metabolism). These are two of the recognized hallmarks of aging — combining them in a comprehensive longevity protocol is mechanistically rational.',
+    stackCompatible: true,
+    faqs: [
+      { q: 'How often do you run Epitalon?', a: 'Most research protocols use Epitalon in cycles of 5–10mg/day for 10–20 days, run 1–2 times per year. Some protocols use every-other-day dosing year-round at lower doses. For research use only.' },
+      { q: 'What is the half-life of MOTS-c?', a: 'MOTS-c has a short half-life of approximately 30–60 minutes after subcutaneous injection, necessitating regular dosing. Research protocols typically use 5–10mg 2–3x weekly.' },
+      { q: 'Does Epitalon lengthen telomeres in humans?', a: 'Russian human studies (Khavinson et al.) showed Epitalon measurably increased telomere length and reduced the incidence of age-related diseases in elderly subjects over 12-year follow-up. These are observational studies; blinded RCT data is limited.' },
+    ],
   },
   {
     slug: 'pt-141-vs-melanotan-ii',
@@ -243,7 +414,17 @@ export const comparisons: Comparison[] = [
     seoDescription: 'Side-by-side research comparison of PT-141 and Melanotan II: dosing, half-life, side effects, and mechanism of action.',
     recommendation: `PT-141 is strictly for enhancing libido and sexual function, while Melanotan II (MT2) is primarily for skin tanning with libido enhancement as a side effect. PT-141 is actually a synthetic derivative of MT2 that was isolated specifically for its strong aphrodisiac effects via the melanocortin receptors in the brain, without causing significant skin pigmentation. MT2 strongly stimulates melanin production while also providing some arousal effects. Choose PT-141 (an FDA-approved formulation) if your sole goal is treating sexual dysfunction in men or women. Choose MT2 if your primary goal is tanning. PT-141 is the much safer default for sexual health.`,
     tags: ['Libido', 'Research'],
-    color: 'amber'
+    color: 'amber',
+    quickVerdict: 'PT-141 (Bremelanotide) for sexual dysfunction — FDA-approved for female HSDD with strong libido enhancement evidence. Melanotan II for tanning with libido as a secondary effect. PT-141 is the significantly safer and more targeted choice for sexual health research.',
+    personaA: 'Choose PT-141 if you:\n• Are specifically researching sexual dysfunction in men or women\n• Want the FDA-approved melanocortin agonist with the cleanest libido profile\n• Need enhanced sexual desire without significant skin pigmentation\n• Are researching female hypoactive sexual desire disorder (HSDD)',
+    personaB: 'Choose Melanotan II if you:\n• Are specifically researching skin tanning and melanin stimulation\n• Want concurrent tanning and libido enhancement effects\n• Are studying broader melanocortin receptor pharmacology (MC1R-MC5R)\n• Accept higher side effect risk (nausea, spontaneous erections, mole darkening) as part of the research context',
+    stackNote: 'Do NOT combine PT-141 and Melanotan II. Both act on the same melanocortin receptors (MC3R, MC4R). Combining them creates additive receptor saturation with compounded side effects: severe nausea, prolonged erections, and cardiovascular stress. Use one at a time.',
+    stackCompatible: false,
+    faqs: [
+      { q: 'Is PT-141 the same as Melanotan II?', a: 'PT-141 (Bremelanotide) is a direct derivative of Melanotan II with one key modification: a hydroxyl group replacing the amino terminus. This change dramatically reduces melanin stimulation while preserving the MC4R-mediated libido effects. PT-141 is selective for sexual function; MT2 is broader.' },
+      { q: 'Does PT-141 cause tanning?', a: 'Minimal. PT-141 does not significantly activate MC1R (the primary tanning receptor) at standard doses (1.75mg). Melanotan II strongly activates MC1R at equivalent doses, producing dose-dependent skin darkening.' },
+      { q: 'Is PT-141 FDA approved?', a: 'Yes. Bremelanotide (Vyleesi) was FDA-approved in June 2019 for hypoactive sexual desire disorder (HSDD) in premenopausal women. It is the first and only FDA-approved on-demand treatment for female sexual dysfunction.' },
+    ],
   },
   {
     slug: 'sermorelin-vs-tesamorelin',
