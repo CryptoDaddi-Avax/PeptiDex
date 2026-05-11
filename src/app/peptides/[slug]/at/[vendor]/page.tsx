@@ -3,31 +3,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { peptides, getPeptideBySlug } from "@/data/peptides";
 import { vendors } from "@/data/vendors";
-import { vendorPricing } from "@/data/vendor-pricing";
+import { getPseoPair, getPseoStaticParams, hasPricingData } from "@/lib/pseo-pairs";
+import { generatePseoSchema } from "@/lib/pseo-schema";
+import { PeptideVendorContent } from "./PeptideVendorContent";
 import { PeptideVendorLogsClient } from "./PeptideVendorLogsClient";
 
-// ── Vendor name → slug mapping (matches vial-optimizer.ts) ──────────────────
-const VENDOR_NAME_TO_SLUG: Record<string, string> = {
-    "Amino Club": "amino-club",
-    "Bio Longevity Labs": "bio-longevity-labs",
-    "Limitless Life": "limitless-life",
-    "Ascension Peptides": "ascension-peptides",
-    "Pantheon Peptides": "pantheon-peptides",
-    "LVLUP Health": "lvlup-health",
-};
-
-/**
- * Returns true if vendor-pricing.ts has at least one pricing row
- * for this (peptideSlug, vendorSlug) pair.
- */
-function hasPricingData(peptideSlug: string, vendorSlug: string): boolean {
-    const entry = vendorPricing.find(p => p.slug === peptideSlug);
-    if (!entry) return false;
-    return entry.vendors.some(v => {
-        const resolvedSlug = VENDOR_NAME_TO_SLUG[v.vendor] ?? v.vendor.toLowerCase().replace(/\s+/g, "-");
-        return resolvedSlug === vendorSlug;
-    });
-}
+// ── Static Params ────────────────────────────────────────────────────────────
+// Decision 1: Dynamic. Pages exist only if vendor-pricing.ts has a real row.
+// BUT: we still generate params for ALL combinations so that non-priced pages
+// can render a noindex + fallback instead of 404 (preserves any existing links).
 
 export function generateStaticParams() {
     const params: { slug: string; vendor: string }[] = [];
@@ -39,6 +23,8 @@ export function generateStaticParams() {
     return params;
 }
 
+// ── Metadata ─────────────────────────────────────────────────────────────────
+
 export async function generateMetadata({
     params,
 }: {
@@ -49,28 +35,30 @@ export async function generateMetadata({
     const vendorObj = vendors.find(v => v.slug === vendor);
     if (!peptide || !vendorObj) return { title: "Not Found" };
 
-    const hasPricing = hasPricingData(slug, vendor);
+    const pair = getPseoPair(slug, vendor);
 
-    const title = `${peptide.name} from ${vendorObj.name} — Community Protocol Data | PeptiDex`;
-    const description = `Community-verified efficacy, side effects, and outcome reports for ${peptide.name} purchased from ${vendorObj.name}. Weighted by verification level.`;
+    if (!pair) {
+        // No pricing data — noindex this page
+        return {
+            title: `${peptide.name} from ${vendorObj.name} | PeptiDex`,
+            robots: { index: false, follow: false },
+        };
+    }
+
+    // Pricing-verified pair — full SEO metadata
+    const discountedPrice = pair.pricing.price_usd * (1 - (pair.vendor.discountPercent ?? 0) / 100);
+    const title = `Buy ${peptide.name} from ${vendorObj.name} — $${discountedPrice.toFixed(2)}/vial | PeptiDex`;
+    const description = `${vendorObj.name} sells ${peptide.name} (${pair.pricing.vial_mg}mg vials) for $${pair.pricing.price_usd.toFixed(2)} before discount. ${vendorObj.purity} purity, ${vendorObj.coaStatus}. Compare with verified vendors.`;
 
     return {
         title,
         description,
         alternates: { canonical: `https://peptidex.app/peptides/${slug}/at/${vendor}` },
         openGraph: { title, description, url: `https://peptidex.app/peptides/${slug}/at/${vendor}` },
-        // ── SEO TRIAGE: noindex pages without pricing data ──────────────
-        // These ~232 pages have no vendor pricing and are near-empty.
-        // noindex prevents Google from treating them as doorway pages.
-        // Remove this guard once the pSEO content template populates them.
-        ...(hasPricing ? {} : {
-            robots: {
-                index: false,
-                follow: false,
-            },
-        }),
     };
 }
+
+// ── Page Component ───────────────────────────────────────────────────────────
 
 export default async function PeptideAtVendorPage({
     params,
@@ -82,8 +70,33 @@ export default async function PeptideAtVendorPage({
     const vendorObj = vendors.find(v => v.slug === vendor);
     if (!peptide || !vendorObj) notFound();
 
+    const pair = getPseoPair(slug, vendor);
+    const hasPricing = pair !== null;
+
+    // ── Schema.org JSON-LD (only for pricing-verified pages) ────────────
+    let schemaJsonLd: Record<string, unknown> | null = null;
+    if (pair) {
+        const discountedPrice = pair.pricing.price_usd * (1 - (pair.vendor.discountPercent ?? 0) / 100);
+        schemaJsonLd = generatePseoSchema({
+            pair,
+            discountedPrice,
+            // logCount and avgEfficacy will be populated when Supabase
+            // build-time queries are available. For now, uses vendor-level
+            // rating (per Decision 2: deterministic switch at logCount >= 5).
+        });
+    }
+
     return (
         <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
+            {/* ── Schema.org JSON-LD ── */}
+            {schemaJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+                />
+            )}
+
+            {/* ── Page Header ── */}
             <div className="page-header">
                 <div className="page-header-grid" />
                 <div className="page-header-wrap">
@@ -97,22 +110,68 @@ export default async function PeptideAtVendorPage({
                         <span className="current">{vendorObj.name}</span>
                     </nav>
                     <h1 className="page-title">
-                        <em>{peptide.name}</em> × {vendorObj.name}
+                        {hasPricing ? (
+                            <>Buying <em>{peptide.name}</em> from {vendorObj.name}</>
+                        ) : (
+                            <><em>{peptide.name}</em> × {vendorObj.name}</>
+                        )}
                     </h1>
                     <p className="page-subtitle">
-                        Community-verified protocol data for {peptide.name} purchased from {vendorObj.name}.
-                        Weighted by verification level (lab-confirmed 3×, verified buyer 2×, self-reported 1×).
+                        {hasPricing ? (
+                            <>
+                                ${pair!.pricing.price_usd.toFixed(2)}/{pair!.pricing.vial_mg}mg vial
+                                {(vendorObj.discountPercent ?? 0) > 0 && (
+                                    <> · {vendorObj.discountPercent}% off with code {vendorObj.discountCode}</>
+                                )}
+                                {" "}· {vendorObj.purity} purity · {vendorObj.coaStatus}
+                            </>
+                        ) : (
+                            <>Community-verified protocol data for {peptide.name} purchased from {vendorObj.name}.</>
+                        )}
                     </p>
                 </div>
             </div>
 
-            <PeptideVendorLogsClient
-                peptideSlug={slug}
-                peptideName={peptide.name}
-                vendorSlug={vendor}
-                vendorName={vendorObj.name}
-                affiliateUrl={vendorObj.affiliateUrl}
-            />
+            {/* ── Content Body ── */}
+            {pair ? (
+                <>
+                    <PeptideVendorContent pair={pair} />
+                    <div className="about-content" style={{ maxWidth: 900 }}>
+                        <div style={{
+                            marginBottom: 32,
+                            padding: "24px 28px",
+                            background: "var(--bg-card)",
+                            border: "1px solid var(--line)",
+                            borderRadius: 16,
+                        }}>
+                            <h2 style={{
+                                fontFamily: "var(--serif)",
+                                fontSize: 20,
+                                fontWeight: 600,
+                                color: "var(--ink)",
+                                marginBottom: 16,
+                            }}>
+                                Community Protocol Data
+                            </h2>
+                            <PeptideVendorLogsClient
+                                peptideSlug={slug}
+                                peptideName={peptide.name}
+                                vendorSlug={vendor}
+                                vendorName={vendorObj.name}
+                                affiliateUrl={vendorObj.affiliateUrl}
+                            />
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <PeptideVendorLogsClient
+                    peptideSlug={slug}
+                    peptideName={peptide.name}
+                    vendorSlug={vendor}
+                    vendorName={vendorObj.name}
+                    affiliateUrl={vendorObj.affiliateUrl}
+                />
+            )}
         </div>
     );
 }

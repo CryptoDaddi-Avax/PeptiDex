@@ -8,7 +8,7 @@ import { getAllAuthorSlugs } from '@/lib/authors';
 
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://peptidex.app';
   const currentDate = new Date();
   
@@ -287,6 +287,62 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  // ── pSEO Drip-Feed: /peptides/[slug]/at/[vendor] ──────────────────────────
+  // Decision 3: 6 weeks, 4 waves, 13-14 pages each.
+  // Decision 5: HOLD — all launch dates are in the future.
+  // Pages appear in sitemap only after their wave launch date.
+  //
+  // To activate Wave 1: change PSEO_WAVE_1_DATE to today's date and rebuild.
+  // Monitor GSC between waves. If >50% "Discovered — not indexed", pause.
+  
+  const PSEO_WAVE_1_DATE = '2099-01-01'; // HELD — set to real date when ready
+  const PSEO_WAVE_2_DATE = '2099-01-01';
+  const PSEO_WAVE_3_DATE = '2099-01-01';
+  const PSEO_WAVE_4_DATE = '2099-01-01';
+
+  // Wave 1: Highest-search-volume peptides × all vendors
+  const WAVE_1_PEPTIDES = ['bpc-157', 'tirzepatide', 'semaglutide'];
+  // Wave 2: Second-tier high-volume
+  const WAVE_2_PEPTIDES = ['tb-500', 'ipamorelin', 'cjc-1295', 'retatrutide'];
+  // Wave 3: Mid-tier compounds
+  const WAVE_3_PEPTIDES = ['ghk-cu', 'mk-677', 'sermorelin', 'tesamorelin', 'mots-c'];
+  // Wave 4: Everything else (derived dynamically)
+
+  function getPseoWaveDate(peptideSlug: string): string {
+    if (WAVE_1_PEPTIDES.includes(peptideSlug)) return PSEO_WAVE_1_DATE;
+    if (WAVE_2_PEPTIDES.includes(peptideSlug)) return PSEO_WAVE_2_DATE;
+    if (WAVE_3_PEPTIDES.includes(peptideSlug)) return PSEO_WAVE_3_DATE;
+    return PSEO_WAVE_4_DATE;
+  }
+
+  // Import pair data inline to avoid circular deps
+  const { vendorPricing } = await import('@/data/vendor-pricing');
+  const VENDOR_NAME_TO_SLUG: Record<string, string> = {
+    "Amino Club": "amino-club",
+    "Bio Longevity Labs": "bio-longevity-labs",
+    "Limitless Life": "limitless-life",
+    "Ascension Peptides": "ascension-peptides",
+    "Pantheon Peptides": "pantheon-peptides",
+    "LVLUP Health": "lvlup-health",
+  };
+
+  const pseoUrls = vendorPricing.flatMap(entry =>
+    entry.vendors
+      .map(vp => {
+        const vendorSlug = VENDOR_NAME_TO_SLUG[vp.vendor] ?? vp.vendor.toLowerCase().replace(/\s+/g, '-');
+        const waveDate = getPseoWaveDate(entry.slug);
+        // Only include if wave date has passed
+        if (new Date(waveDate) > currentDate) return null;
+        return {
+          url: `${baseUrl}/peptides/${entry.slug}/at/${vendorSlug}`,
+          lastModified: new Date(waveDate),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8,
+        };
+      })
+      .filter(Boolean)
+  ) as MetadataRoute.Sitemap;
+
   return [
     ...staticPages, 
     ...blogUrls, 
@@ -316,11 +372,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...teamUrls,
-    {
-      url: `${baseUrl}/guides/glp1-alternatives`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
+    ...pseoUrls,
   ];
 }
