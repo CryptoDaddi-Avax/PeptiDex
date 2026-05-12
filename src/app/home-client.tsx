@@ -19,20 +19,18 @@ import { trackAffiliateClick, trackOutboundClick, trackCTAClick } from "@/lib/ga
 export default function HomePage() {
   const router = useRouter();
 
-  // Get first mapped stack slug
   function getGoalStackRoute(goal: typeof goals[0]) {
     const mainStack = goals.find(g => g.id === goal.id)?.stackNames[0] || '';
     const slug = mainStack.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     return `/stacks/${slug}`;
   }
 
-  // Collect all unique studies
   const totalStudies = peptides.reduce((acc, p) => acc + p.key_studies.length, 0);
 
   return (
     <div className="max-w-2xl mx-auto px-3 py-4 md:px-4 md:py-8 relative overflow-hidden">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+      {/* Gradient Background — pure CSS, zero JS layout impact */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-violet-600/15 blur-[100px] animate-[float_8s_ease-in-out_infinite]" />
         <div className="absolute top-[10%] right-[-15%] w-[40%] h-[40%] rounded-full bg-purple-500/10 blur-[80px] animate-[float_12s_ease-in-out_infinite_reverse]" />
         <div className="absolute bottom-[20%] left-[20%] w-[35%] h-[35%] rounded-full bg-indigo-500/10 blur-[90px] animate-[float_10s_ease-in-out_2s_infinite]" />
@@ -48,32 +46,50 @@ export default function HomePage() {
           0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); }
           50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); }
         }
+        @keyframes fadein {
+          from { opacity: 0; transform: translateY(8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .fi1 { animation: fadein 0.35s ease both 0s; }
+        .fi2 { animation: fadein 0.35s ease both 0.06s; }
+        .fi3 { animation: fadein 0.35s ease both 0.12s; }
+        .fi4 { animation: fadein 0.35s ease both 0.18s; }
+        .fi5 { animation: fadein 0.35s ease both 0.24s; }
+        .fi6 { animation: fadein 0.35s ease both 0.30s; }
       `}</style>
 
       {/* Disclaimer */}
-      <div className="rounded-xl md:rounded-2xl bg-amber-950/25 border border-amber-500/20 p-2.5 md:p-3 mb-4 md:mb-6">
+      <div className="rounded-xl md:rounded-2xl bg-amber-950/25 border border-amber-500/20 p-2.5 md:p-3 mb-4 md:mb-6 fi1">
         <div className="flex items-start gap-2">
           <ShieldAlert className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-500 flex-shrink-0 mt-0.5" />
           <p className="text-[10px] md:text-[11px] text-amber-400/80 leading-relaxed">{SHORT_DISCLAIMER}</p>
         </div>
       </div>
 
-      {/* Hero */}
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-6 md:mb-10">
+      {/* Hero — min-height reserved to prevent desktop CLS */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="text-center mb-6 md:mb-10"
+        style={{ minHeight: "200px" }}
+      >
         <div className="inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 md:py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-3 md:mb-5">
           <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-violet-400" />
           <span className="text-[11px] md:text-xs font-medium text-violet-300">Research-backed peptide education</span>
         </div>
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-100 mb-4 leading-tight max-w-3xl mx-auto">
-          Research-Grade Peptide Education, Stacks & Trusted Vendor Sourcing
+          Research-Grade Peptide Education, Stacks &amp; Trusted Vendor Sourcing
         </h1>
         <p className="text-[13px] md:text-[15px] text-zinc-400 max-w-2xl mx-auto leading-relaxed px-2 md:px-0">
-          PeptiDex is your independent research hub for peptide education. Explore 33 <strong className="text-zinc-300 font-medium">research peptides</strong>, 12 expert-curated <strong className="text-zinc-300 font-medium">peptide stacks</strong>, and 140+ peer-reviewed studies.
+          PeptiDex is your independent research hub for peptide education. Explore 33{" "}
+          <strong className="text-zinc-300 font-medium">research peptides</strong>, 12 expert-curated{" "}
+          <strong className="text-zinc-300 font-medium">peptide stacks</strong>, and 140+ peer-reviewed studies.
         </p>
       </motion.div>
 
       {/* ═══════ QUICK ACTION BAR ═══════ */}
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="flex flex-wrap gap-2 justify-center mb-8">
+      <div className="flex flex-wrap gap-2 justify-center mb-8 fi2">
         <Link
           href="/vendors"
           onClick={() => trackCTAClick("Compare Prices", "/vendors")}
@@ -95,11 +111,10 @@ export default function HomePage() {
         >
           <Zap className="w-4 h-4" /> Find Your Stack
         </Link>
-      </motion.div>
+      </div>
 
       {/* ═══════ TWO PATHS SECTION ═══════ */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
-        {/* Path 1: Learn */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10 fi3">
         <Link href="/intro" className="group block p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-blue-900/5 hover:border-blue-500/40 transition-all">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
@@ -117,7 +132,6 @@ export default function HomePage() {
           </ul>
         </Link>
 
-        {/* Path 2: Source */}
         <Link href="/vendors" className="group block p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-600/10 to-emerald-900/5 hover:border-emerald-500/40 transition-all">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
@@ -134,10 +148,10 @@ export default function HomePage() {
             <li className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Lab Purity Reports</li>
           </ul>
         </Link>
-      </motion.div>
+      </div>
 
       {/* Beginners Guide CTA */}
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="mb-10 max-w-xl mx-auto px-2">
+      <div className="mb-10 max-w-xl mx-auto px-2 fi3">
         <Link href="/beginners-guide" className="block relative group overflow-hidden rounded-2xl p-[1px]">
           <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-orange-500 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative flex flex-col md:flex-row items-center gap-4 bg-zinc-950/90 backdrop-blur-xl rounded-[15px] p-5 border border-white/5 group-hover:bg-zinc-900/90 transition-colors">
@@ -146,25 +160,25 @@ export default function HomePage() {
             </div>
             <div className="text-center md:text-left flex-1">
               <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-1">New to Peptides?</h3>
-              <p className="text-sm text-zinc-400">Read our Complete Beginner's Guide on reconstitution, pinning, and supplies.</p>
+              <p className="text-sm text-zinc-400">Read our Complete Beginner&apos;s Guide on reconstitution, pinning, and supplies.</p>
             </div>
             <div className="flex items-center justify-center w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-white/5 group-hover:bg-violet-500/20 text-zinc-400 group-hover:text-violet-300 transition-colors mt-2 md:mt-0">
               <ArrowRight className="w-5 h-5" />
             </div>
           </div>
         </Link>
-      </motion.div>
+      </div>
 
       {/* Goal Selector Header */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="text-center mb-5">
+      <div className="text-center mb-5 fi4">
         <h2 className="text-xl md:text-2xl font-bold text-zinc-100">What are your health goals?</h2>
-      </motion.div>
+      </div>
 
-      {/* Goal Chips — min 44px height */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-wrap gap-2 md:gap-2.5 justify-center mb-6 md:mb-10 px-1 md:px-0">
+      {/* Goal Chips */}
+      <div className="flex flex-wrap gap-2 md:gap-2.5 justify-center mb-6 md:mb-10 px-1 md:px-0 fi4">
         {goals.map((goal) => (
           <Link
-            key={goal.id} 
+            key={goal.id}
             href={getGoalStackRoute(goal)}
             className="flex items-center gap-2 px-3 py-2.5 md:px-4 md:py-2.5 min-h-[44px] rounded-xl border transition-all text-sm md:text-base border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-violet-300"
           >
@@ -172,15 +186,15 @@ export default function HomePage() {
             <span className="font-semibold">{goal.label}</span>
           </Link>
         ))}
-      </motion.div>
+      </div>
 
       {/* Stats Header */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-center mt-12 mb-4">
+      <div className="text-center mt-12 mb-4 fi5">
         <h2 className="text-xl md:text-2xl font-bold text-zinc-100">What the Research Says</h2>
-      </motion.div>
+      </div>
 
       {/* Stats */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="grid grid-cols-3 gap-2.5 md:gap-4 pb-4 md:pb-0">
+      <div className="grid grid-cols-3 gap-2.5 md:gap-4 pb-4 md:pb-0 fi5">
         {[
           { value: "33", label: "Peptides" },
           { value: "12", label: "Stacks" },
@@ -191,17 +205,16 @@ export default function HomePage() {
             <p className="text-[10px] md:text-xs text-zinc-500 mt-0.5">{stat.label}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
 
-      {/* ═══════ VENDORS TEASER — Action-Oriented ═══════ */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mt-10 md:mt-12">
+      {/* ═══════ VENDORS TEASER ═══════ */}
+      <div className="mt-10 md:mt-12 fi5">
         <div className="p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-center mb-4">
           <h2 className="text-xl md:text-2xl font-bold text-zinc-100 mb-3">Trusted Peptide Vendors</h2>
           <p className="text-sm md:text-[15px] text-zinc-400 leading-relaxed max-w-lg mx-auto mb-6">
             Finding a reliable source for your laboratory is critical. We independently review and recommend the best peptide vendors who provide transparent, third-party Certificate of Analysis (COA) testing.
           </p>
 
-          {/* Editor's Choice Card */}
           <div className="max-w-md mx-auto mb-6 p-[1px] rounded-2xl bg-gradient-to-b from-emerald-500/30 to-zinc-800" style={{ animation: 'pulse-glow 3s ease-in-out infinite' }}>
             <div className="bg-zinc-950 rounded-[15px] p-6 border border-emerald-500/10 shadow-xl shadow-emerald-500/5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-[10px] font-bold text-white uppercase tracking-wider mb-4 shadow-md">
@@ -209,7 +222,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-2xl font-extrabold text-white mb-1">Amino Club</h3>
               <p className="text-xs text-emerald-400 font-semibold mb-4">4.9/5 — PeptiDex Rating</p>
-              
+
               <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-[11px] text-zinc-300 font-medium mb-6">
                 <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> COA-verified</span>
                 <span className="hidden sm:inline text-zinc-700 font-black">&middot;</span>
@@ -218,8 +231,7 @@ export default function HomePage() {
                 <span className="flex items-center gap-1"><ArrowRight className="w-3.5 h-3.5 text-emerald-500" /> Fast US shipping</span>
               </div>
 
-              {/* Two action buttons instead of one */}
-              <a 
+              <a
                 href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
                 target="_blank"
                 rel="nofollow noopener sponsored"
@@ -242,9 +254,9 @@ export default function HomePage() {
               <p className="text-[9px] text-zinc-500 italic mt-3">Disclosure: PeptiDex may earn a commission from purchases made through this link.</p>
             </div>
           </div>
-          
+
           <div className="pt-4 border-t border-zinc-800/50">
-            <Link 
+            <Link
               href="/vendors"
               onClick={() => trackCTAClick("Compare All Vendor Reviews", "/vendors")}
               className="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
@@ -253,26 +265,28 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* SEO Educational Block */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mt-16 mb-8 max-w-3xl mx-auto px-4 md:px-6 py-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50">
+      <div className="mt-16 mb-8 max-w-3xl mx-auto px-4 md:px-6 py-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 fi6">
         <h2 className="text-xl md:text-2xl font-bold text-zinc-100 mb-4">Advancing the Science of Peptide Research</h2>
         <div className="space-y-4 text-sm md:text-[15px] text-zinc-400 leading-relaxed">
           <p>
             The field of peptide research has expanded significantly over the past decade. Synthetic peptides are short chains of amino acids that serve as foundational tools for understanding cellular processes, molecular signaling, and systemic biological responses in laboratory environments. These compounds mimic naturally occurring proteins to probe complex metabolic pathways without the systemic interference often found in larger biologic macromolecules.
           </p>
           <p>
-            At PeptiDex, our platform aggregates the latest peer-reviewed studies directly from authoritative scientific databases such as <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:text-violet-300 underline underline-offset-2">PubMed</a> and independent clinical trials. By synthesizing complex pharmacokinetic data, we provide researchers with an accessible, robust framework for evaluating experimental protocols. Whether investigating the tissue-healing properties of Angiogenesis regulators like BPC-157 or exploring the metabolic insulin-modulating mechanisms of advanced GLP-1 agonists.
+            At PeptiDex, our platform aggregates the latest peer-reviewed studies directly from authoritative scientific databases such as{" "}
+            <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:text-violet-300 underline underline-offset-2">PubMed</a>{" "}
+            and independent clinical trials. By synthesizing complex pharmacokinetic data, we provide researchers with an accessible, robust framework for evaluating experimental protocols.
           </p>
           <p>
-            Quality control remains the most critical variable in any experimental setup. Analyzing the purity of chemical compounds requires stringent High-Performance Liquid Chromatography (HPLC) and Mass Spectrometry (MS). Our vendor sourcing database strictly catalogs suppliers who provide transparent, third-party Certificates of Analysis (COAs), ensuring researchers have access to compounds exceeding 99% purity thresholds.
+            Quality control remains the most critical variable in any experimental setup. Our vendor sourcing database strictly catalogs suppliers who provide transparent, third-party Certificates of Analysis (COAs), ensuring researchers have access to compounds exceeding 99% purity thresholds.
           </p>
           <p className="text-xs text-zinc-500 italic mt-4 pt-4 border-t border-zinc-800/50">
             Please note: The information indexed on PeptiDex is strictly for educational and referencing purposes. Peptides listed are strictly research chemicals and are not approved by the FDA for human consumption, diagnostic, or therapeutic use.
           </p>
         </div>
-      </motion.div>
+      </div>
 
       {/* Newsletter */}
       <NewsletterSignup source="home_page" />
