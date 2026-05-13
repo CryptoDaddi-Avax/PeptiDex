@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             `${matchup.peptideB} comparison`,
             "peptide comparison",
         ],
+        alternates: { canonical: `https://peptidex.app/vs/${slug}` },
         openGraph: {
             type: "article",
             title: matchup.title,

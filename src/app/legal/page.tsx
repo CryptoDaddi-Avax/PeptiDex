@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
     title: "Privacy Policy & Terms of Use",
     description: "PeptiDex privacy policy and terms of use. Learn how we handle your data and the terms governing use of our educational peptide research platform.",
+    alternates: { canonical: "https://peptidex.app/legal" },
 };
 
 export default function LegalPage() {

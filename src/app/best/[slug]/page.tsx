@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: goal.title,
         description: goal.metaDescription,
         keywords: goal.keywords,
+        alternates: { canonical: `https://peptidex.app/best/${slug}` },
         openGraph: { type: "article", title: goal.h1, description: goal.metaDescription, siteName: "PeptiDex" },
     };
 }
