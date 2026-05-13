@@ -60,13 +60,13 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
                 title,
                 description,
                 siteName: "PeptiDex",
-                images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${peptide.name} — PeptiDex Research Guide` }],
+                images: [{ url: "https://peptidex.app/og-image.png", width: 1200, height: 630, alt: `${peptide.name} — PeptiDex Research Guide` }],
             },
             twitter: {
                 card: "summary_large_image",
                 title,
                 description,
-                images: ["/og-image.png"],
+                images: ["https://peptidex.app/og-image.png"],
             },
         };
     });

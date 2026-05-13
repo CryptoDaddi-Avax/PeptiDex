@@ -15,7 +15,7 @@ export const metadata: Metadata = {
             "Free reconstitution calculator for any research peptide. Get exact concentrations, syringe units, and doses-per-vial.",
         url: "https://peptidex.app/tools/calculator",
         type: "website",
-        images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+        images: [{ url: "https://peptidex.app/og-image.png", width: 1200, height: 630 }],
     },
     twitter: {
         card: "summary_large_image",

@@ -30,9 +30,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description,
       url: `https://peptidex.app/compare/vendors/${slug}`,
       type: 'article',
-      images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+      images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
     },
-    twitter: { card: 'summary_large_image', title, description, images: ['/og-image.png'] },
+    twitter: { card: 'summary_large_image', title, description, images: ['https://peptidex.app/og-image.png'] },
   };
 }
 

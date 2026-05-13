@@ -14,13 +14,13 @@ export const metadata: Metadata = {
         description: "Learn how to properly reconstitute, store, and safely research peptides. Comprehensive guide to BAC water, syringes, and SubQ injection.",
         url: 'https://peptidex.app/beginners-guide',
         type: 'article',
-        images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+        images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
     },
     twitter: {
         card: 'summary_large_image',
         title: "Beginner's Guide to Peptides | PeptiDex",
         description: "Everything you need to know about reconstitution, syringes, and subcutaneous injection for peptide research.",
-        images: ['/og-image.png'],
+        images: ['https://peptidex.app/og-image.png'],
     },
 };
 

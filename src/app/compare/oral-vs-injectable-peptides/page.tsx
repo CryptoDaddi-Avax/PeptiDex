@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   title: `${TITLE} | PeptiDex`,
   description: DESC,
   alternates: { canonical: `https://peptidex.app/compare/${SLUG}` },
-  openGraph: { title: TITLE, description: DESC, url: `https://peptidex.app/compare/${SLUG}`, type: 'article', images: [{ url: '/og-image.png', width: 1200, height: 630 }] },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESC, images: ['/og-image.png'] },
+  openGraph: { title: TITLE, description: DESC, url: `https://peptidex.app/compare/${SLUG}`, type: 'article', images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESC, images: ['https://peptidex.app/og-image.png'] },
 };
 
 const FAQS = [

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description: 'Honest answers about research peptides, vendor verification, COAs, FDA approval status, and how PeptiDex operates as an independent research index.',
     url: 'https://peptidex.app/faq',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Peptide FAQ — Frequently Asked Questions Answered',
     description: 'Honest answers about research peptides, vendor verification, COAs, FDA approval status, and how PeptiDex operates as an independent research index.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/og-image.png'],
   },
 };
 

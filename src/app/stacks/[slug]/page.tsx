@@ -36,7 +36,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
         description,
         url: `https://peptidex.app/stacks/${slug}`,
         type: 'article',
-        images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+        images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
       },
     };
   });

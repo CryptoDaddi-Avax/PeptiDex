@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             type: "article",
             siteName: "PeptiDex",
-            images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${blend.name} Peptide Blend` }],
+            images: [{ url: "https://peptidex.app/og-image.png", width: 1200, height: 630, alt: `${blend.name} Peptide Blend` }],
         },
         twitter: {
             card: "summary_large_image",
             title,
             description,
-            images: ["/og-image.png"],
+            images: ["https://peptidex.app/og-image.png"],
         },
     };
 }

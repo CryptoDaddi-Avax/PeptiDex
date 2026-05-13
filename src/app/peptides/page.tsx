@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     description: 'Detailed, research-backed profiles of 33+ peptide compounds organized by therapeutic category. Mechanism of action, clinical data, safety profiles, and cited sources.',
     url: 'https://peptidex.app/peptides',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PeptiDex Peptide Library',
     description: '33+ research-backed peptide compound profiles organized by therapeutic category.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/og-image.png'],
   },
 };
 

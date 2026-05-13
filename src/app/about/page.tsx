@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     description: 'Why we built the independent, evidence-based peptide research index. Editorial principles, vendor verification, and how to get in touch.',
     url: 'https://peptidex.app/about',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About PeptiDex — Independent Peptide Research Index',
     description: 'Why we built the independent, evidence-based peptide research index.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/og-image.png'],
   },
 };
 

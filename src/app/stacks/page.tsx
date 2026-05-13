@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    images: [{ url: "/og-image.png" }],
+    images: [{ url: "https://peptidex.app/og-image.png" }],
   },
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         description: `${glossary.length}+ peptide science terms explained in plain English. Filter by category, search by keyword.`,
         url: "https://peptidex.app/glossary",
         type: "website",
-        images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+        images: [{ url: "https://peptidex.app/og-image.png", width: 1200, height: 630 }],
     },
     twitter: {
         card: "summary_large_image",

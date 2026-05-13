@@ -14,14 +14,14 @@ export const metadata: Metadata = {
       'Evidence-graded peptide profiles with clinical studies, dosing, half-life data, and interaction maps. The most comprehensive peptide research index.',
     url: 'https://peptidex.app/library',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Peptide Library — 33+ Research Compounds | PeptiDex',
     description:
       'Evidence-graded peptide profiles with clinical studies, dosing, and pharmacokinetic data.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/og-image.png'],
   },
 };
 

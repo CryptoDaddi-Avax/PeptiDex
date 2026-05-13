@@ -36,14 +36,14 @@ export const metadata: Metadata = {
       'Independent ranking of the 6 best research peptide vendors in 2026 — evaluated on HPLC/MS purity COAs, shipping speed, discount codes, and return policy.',
     url: 'https://peptidex.app/vendors',
     type: 'article',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Best Place to Buy Peptides Online (2026) — 6 COA-Verified Vendors Ranked',
     description:
       'Independent 2026 review: Amino Club, Bio Longevity Labs, Limitless Life, and 3 more ranked on purity, shipping, and value.',
-    images: ['/og-image.png'],
+    images: ['https://peptidex.app/og-image.png'],
   },
 };
 

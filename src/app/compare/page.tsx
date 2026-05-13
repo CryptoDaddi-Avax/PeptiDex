@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: 'Side-by-side research comparisons of popular peptide compounds with data tables, cited sources, and expert analysis.',
     url: 'https://peptidex.app/compare',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
   },
 };
 
