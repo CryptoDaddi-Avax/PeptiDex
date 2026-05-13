@@ -4,12 +4,12 @@ export function buildWebSiteSchema() {
     "@type": "WebSite",
     "name": "PeptiDex",
     "url": "https://peptidex.app/",
-    "description": "Research-Grade Peptide Reference, Stacks & Trusted Vendor Sourcing",
+    "description": "Independent peptide research index — profiles, evidence-based stacks, reconstitution tools, and COA-verified vendor sourcing.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://peptidex.app/research?q={search_term_string}"
+        "urlTemplate": "https://peptidex.app/library?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }

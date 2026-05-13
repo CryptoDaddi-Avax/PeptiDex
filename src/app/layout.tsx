@@ -8,6 +8,8 @@ import { GlobalEmbedHandler } from "@/components/global-embed-handler";
 import { StickyDiscountBanner } from "@/components/promos/StickyDiscountBanner";
 import { ExitIntentModal } from "@/components/promos/ExitIntentModal";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import { JsonLd } from "@/components/json-ld";
+import { buildWebSiteSchema, buildOrganizationSchema } from "@/lib/seo/schema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -118,42 +120,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c9a961" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#0a0a0b" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "PeptiDex",
-              "alternateName": ["PeptiDex Research Index", "peptidex.app"],
-              "url": "https://peptidex.app",
-              "description": "PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
-              "logo": "https://peptidex.app/logo.png",
-              "sameAs": [
-                 "https://twitter.com/peptidex",
-                 "https://facebook.com/peptidex",
-                 "https://github.com/peptidex",
-                 "https://www.crunchbase.com/organization/peptidex"
-              ]
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "PeptiDex",
-              "url": "https://peptidex.app/",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://peptidex.app/library?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
-          }}
-        />
+        {/* Site-wide JSON-LD: Organization + WebSite on every page */}
+        <JsonLd schema={buildOrganizationSchema()} />
+        <JsonLd schema={buildWebSiteSchema()} />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-zinc-950 text-zinc-100 min-h-screen`}>
         <GoogleAnalytics gaId="G-FBJ7CJVJK9" />

@@ -5,13 +5,14 @@ export function buildOrganizationSchema() {
     "name": "PeptiDex",
     "alternateName": ["PeptiDex Research Index", "peptidex.app"],
     "url": "https://peptidex.app",
-    "description": "PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
-    "logo": "https://peptidex.app/logo.png",
-    "sameAs": [
-      "https://twitter.com/peptidex",
-      "https://facebook.com/peptidex",
-      "https://github.com/peptidex",
-      "https://www.crunchbase.com/organization/peptidex"
-    ]
+    "description": "PeptiDex is the independent peptide research index — peptide profiles, evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://peptidex.app/logo.png",
+      "width": 512,
+      "height": 512
+    },
+    // TODO: Populate with real social profiles before launch
+    "sameAs": []
   };
 }
