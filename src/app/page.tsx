@@ -28,7 +28,27 @@ export const metadata: Metadata = {
 
 import { buildWebSiteSchema, buildOrganizationSchema, buildFAQPageSchema } from '@/lib/seo/schema';
 
-export default function Page() {
+// P2 FIX: Page receives searchParams from Next.js App Router at request time.
+// Parsing here (server component) means the resolved values are embedded in
+// the initial HTML — server and client render the SAME step on first paint.
+function resolveDeepLink(searchParams: Record<string, string | string[] | undefined>): {
+  guideOpen: boolean;
+  initialStep: number;
+} {
+  const guide = searchParams['guide'];
+  if (guide !== '1') return { guideOpen: false, initialStep: 0 };
+  const raw = parseInt(String(searchParams['step'] ?? '1'), 10);
+  const step = isNaN(raw) ? 0 : Math.max(0, Math.min(4, raw - 1));
+  return { guideOpen: true, initialStep: step };
+}
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const resolvedParams = await searchParams;
+  const deepLink = resolveDeepLink(resolvedParams);
   const websiteSchema = buildWebSiteSchema();
   const orgSchema = buildOrganizationSchema();
   const faqSchema = buildFAQPageSchema([
@@ -65,7 +85,10 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <NewHomeClient />
+      <NewHomeClient
+        initialGuideOpen={deepLink.guideOpen}
+        initialStep={deepLink.initialStep}
+      />
     </>
   );
 }

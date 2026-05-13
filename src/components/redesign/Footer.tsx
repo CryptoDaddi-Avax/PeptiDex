@@ -1,9 +1,15 @@
 'use client';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
+import { resetOnboarding } from '@/lib/storage/onboarding';
 import './Footer.css';
 
 export default function Footer() {
+  const handleResetOnboarding = () => {
+    resetOnboarding();
+    window.location.reload();
+  };
+
   return (
     <footer>
       <div className="footer-wrap">
@@ -61,7 +67,25 @@ export default function Footer() {
           Last reviewed: <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time> · PeptiDex Editorial Team
         </div>
         <div className="footer-bottom">
-          <div>© 2026 PeptiDex. All rights reserved.</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            © 2026 PeptiDex. All rights reserved.
+            {process.env.NODE_ENV === 'development' && (
+              <button
+                onClick={handleResetOnboarding}
+                style={{
+                  background: 'none',
+                  border: '1px solid var(--line)',
+                  color: 'var(--ink-mute)',
+                  fontSize: '11px',
+                  padding: '2px 8px',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}
+              >
+                Reset onboarding
+              </button>
+            )}
+          </div>
           <div className="footer-bottom-links">
             <a href="/legal">Privacy</a>
             <a href="/legal">Terms</a>

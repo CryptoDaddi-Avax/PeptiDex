@@ -50,6 +50,20 @@ function badgeClass(style: Vendor["badgeStyle"]): string {
 
 // ── COA Badge ─────────────────────────────────────────────────────────────────
 
+/**
+ * Converts an ISO date string ("2026-04-10") to a locale-invariant label
+ * like "Apr 2026". Using toLocaleDateString() here causes a hydration
+ * mismatch because Node.js and the browser can produce different strings
+ * depending on their respective ICU locale data builds.
+ */
+function formatVerifiedDate(iso: string): string {
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun",
+                  "Jul","Aug","Sep","Oct","Nov","Dec"];
+  const [year, month] = iso.split("-");
+  const monthIndex = parseInt(month, 10) - 1;
+  return `${MONTHS[monthIndex] ?? month} ${year}`;
+}
+
 function CoaBadge({ vendor }: { vendor: Vendor }) {
   const inner = (
     <span className="vrk-coa-badge">
@@ -57,7 +71,7 @@ function CoaBadge({ vendor }: { vendor: Vendor }) {
       {vendor.coaStatus} — {vendor.testingMethods.join(", ")}
       {vendor.lastTestedDate && (
         <span className="vrk-coa-date">
-          &nbsp;· Verified {new Date(vendor.lastTestedDate).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+          &nbsp;· Verified {formatVerifiedDate(vendor.lastTestedDate)}
         </span>
       )}
     </span>

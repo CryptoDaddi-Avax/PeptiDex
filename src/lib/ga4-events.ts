@@ -38,7 +38,8 @@ export type AffiliateSource =
   | "smart_picker"     // <SmartVendorPicker /> quiz result
   | "price_alert"      // <PriceDropAlertCapture /> context CTA
   | "pxv_page"         // programmatic peptide×vendor pages
-  | "coa_vendor_cta";  // COA analyzer vendor CTA
+  | "coa_vendor_cta"  // COA analyzer vendor CTA
+  | "onboarding_supplies"; // Onboarding guide supply cards
 
 // ─── Derive vendor key from URL ───────────────────────────────────────────────
 export function vendorKeyFromUrl(url: string): AffiliateVendor | "unknown" {
