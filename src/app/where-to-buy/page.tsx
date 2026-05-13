@@ -14,7 +14,20 @@ export const metadata: Metadata = {
   description: 'Find the best, COA-verified vendors for specific peptides. Compare prices and check purity standards for top research compounds in 2026.',
   alternates: {
     canonical: 'https://peptidex.app/where-to-buy'
-  }
+  },
+  openGraph: {
+    title: 'Where to Buy Peptides Online — Sourcing Guides 2026',
+    description: 'Independent COA-verified vendor guides for BPC-157, TB-500, Retatrutide & more. Compare prices and purity standards.',
+    url: 'https://peptidex.app/where-to-buy',
+    type: 'website',
+    images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630, alt: 'PeptiDex Peptide Sourcing Guides' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Where to Buy Peptides Online 2026',
+    description: 'COA-verified vendor sourcing guides for the top research peptides.',
+    images: ['https://peptidex.app/og-image.png'],
+  },
 };
 
 export default function WhereToBuyIndexPage() {
