@@ -26,7 +26,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!post) return {};
 
   return {
-    title: `${post.frontmatter.title} | PeptiDex Research Blog`,
+    title: `${post.frontmatter.title}`,
     description: post.frontmatter.description,
     alternates: { canonical: `https://peptidex.app/blog/${params.slug}` },
     openGraph: {

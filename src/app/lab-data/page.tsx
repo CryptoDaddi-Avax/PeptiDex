@@ -9,7 +9,7 @@ import { FlaskConical, ExternalLink, Info } from "lucide-react";
 export const revalidate = 3600; // ISR: re-fetch from DB every hour
 
 export const metadata: Metadata = {
-    title: "Lab Data Dashboard — Vendor Purity Leaderboard | PeptiDex",
+    title: "Lab Data Dashboard — Vendor Purity Leaderboard",
     description: "Live vendor trust scores computed from aggregated Certificates of Analysis. Ranked by purity consistency, COA recency, lab credibility, and catalog coverage. Full methodology disclosed.",
     alternates: { canonical: "https://peptidex.app/lab-data" },
     openGraph: {

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const pep = peptides.find(p => p.slug === slug);
     if (!pep) return { title: "Not Found | PeptiDex" };
     return {
-        title: `${pep.name} Protocol Logs | Community Data | PeptiDex`,
+        title: `${pep.name} Protocol Logs | Community Data`,
         description: `Browse real-world ${pep.name} protocol outcomes from verified researchers. Dose, efficacy, side effects, and vendor comparisons.`,
     };
 }

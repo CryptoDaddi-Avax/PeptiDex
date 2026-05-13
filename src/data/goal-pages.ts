@@ -26,7 +26,7 @@ export interface GoalPage {
 export const goalPages: GoalPage[] = [
     {
         slug: "fat-loss",
-        title: "Best Peptides for Fat Loss (2026) — Research Guide | PeptiDex",
+        title: "Best Peptides for Fat Loss (2026) — Research Guide",
         h1: "Best Peptides for Fat Loss",
         emoji: "🔥",
         metaDescription: "Research-backed guide to the best peptides for fat loss in 2026. Compare Semaglutide, Tirzepatide, Retatrutide, AOD-9604, and more with evidence, dosing, and stacks.",
@@ -45,7 +45,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "muscle-growth",
-        title: "Best Peptides for Muscle Growth (2026) — Research Guide | PeptiDex",
+        title: "Best Peptides for Muscle Growth (2026) — Research Guide",
         h1: "Best Peptides for Muscle Growth",
         emoji: "💪",
         metaDescription: "Research-backed guide to the best peptides for muscle growth. CJC-1295, Ipamorelin, IGF-1 LR3, Follistatin — evidence, dosing, and optimal stacks.",
@@ -64,7 +64,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "healing",
-        title: "Best Peptides for Injury Recovery & Healing (2026) | PeptiDex",
+        title: "Best Peptides for Injury Recovery & Healing (2026)",
         h1: "Best Peptides for Injury Recovery",
         emoji: "🩹",
         metaDescription: "Research guide to healing peptides: BPC-157, TB-500, KPV, and more. Evidence for tendon, ligament, muscle, and post-surgical recovery.",
@@ -139,7 +139,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "anti-aging",
-        title: "Best Peptides for Anti-Aging & Longevity (2026) | PeptiDex",
+        title: "Best Peptides for Anti-Aging & Longevity (2026)",
         h1: "Best Peptides for Anti-Aging",
         emoji: "⏳",
         metaDescription: "Research-backed anti-aging peptides: Epitalon, GHK-Cu, SS-31, MOTS-c. Target telomeres, mitochondria, and gene expression for longevity.",
@@ -212,7 +212,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "sleep-recovery",
-        title: "Best Peptides for Sleep & Recovery (2026) | PeptiDex",
+        title: "Best Peptides for Sleep & Recovery (2026)",
         h1: "Best Peptides for Sleep & Recovery",
         emoji: "🌙",
         metaDescription: "Research-backed peptides for deep sleep and overnight recovery. DSIP, Ipamorelin, Epitalon, Selank — improve sleep quality and nighttime healing.",
@@ -287,7 +287,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "brain-focus",
-        title: "Best Nootropic Peptides for Focus & Brain (2026) | PeptiDex",
+        title: "Best Nootropic Peptides for Focus & Brain (2026)",
         h1: "Best Peptides for Focus & Brain Function",
         emoji: "🧠",
         metaDescription: "Research guide to nootropic peptides: Semax, Selank, Dihexa. Enhance focus, memory, neuroplasticity, and cognitive performance.",
@@ -353,7 +353,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "skin-aesthetics",
-        title: "Best Peptides for Skin & Hair (2026) | PeptiDex",
+        title: "Best Peptides for Skin & Hair (2026)",
         h1: "Best Peptides for Skin Rejuvenation",
         emoji: "✨",
         metaDescription: "Research guide to skin peptides: GHK-Cu, BPC-157, Epitalon. Collagen production, wrinkle reduction, hair growth, and skin healing.",
@@ -423,7 +423,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "gut-health",
-        title: "Best Peptides for Gut Health (2026) | PeptiDex",
+        title: "Best Peptides for Gut Health (2026)",
         h1: "Best Peptides for Gut Health",
         emoji: "🫁",
         metaDescription: "Research guide to gut healing peptides: BPC-157, KPV, Thymosin Alpha-1. Heal gut lining, reduce inflammation, and support digestive health.",
@@ -493,7 +493,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "body-recomposition",
-        title: "Body Recomposition Peptide Protocol (2026) | PeptiDex",
+        title: "Body Recomposition Peptide Protocol (2026)",
         h1: "Best Peptides for Body Recomposition",
         emoji: "🏋️",
         metaDescription: "A 12-week peptide protocol engineered for simultaneous fat loss and lean muscle retention. Tesamorelin + BPC-157 + Ipamorelin stack with published dosing.",
@@ -510,7 +510,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "injury-recovery",
-        title: "Best Peptides for Injury Recovery (2026) | PeptiDex",
+        title: "Best Peptides for Injury Recovery (2026)",
         h1: "Best Peptides for Injury Recovery",
         emoji: "🩹",
         metaDescription: "Research guide to healing peptides: BPC-157, TB-500, KPV. Evidence for tendon, ligament, muscle, and post-surgical recovery protocols.",
@@ -526,7 +526,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "mental-clarity",
-        title: "Best Nootropic Peptides for Mental Clarity (2026) | PeptiDex",
+        title: "Best Nootropic Peptides for Mental Clarity (2026)",
         h1: "Best Peptides for Mental Clarity",
         emoji: "🧠",
         metaDescription: "Research guide to nootropic peptides: Semax, Selank. Enhance focus, memory, neuroplasticity, and cognitive performance without crash or dependency.",
@@ -592,7 +592,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "immune-support",
-        title: "Best Peptides for Immune Support (2026) | PeptiDex",
+        title: "Best Peptides for Immune Support (2026)",
         h1: "Best Peptides for Immune Support",
         emoji: "🛡️",
         metaDescription: "Research guide to immune-boosting peptides: Thymosin Alpha-1, LL-37, and Glutathione. Strengthen innate and adaptive immunity with evidence-backed protocols.",
@@ -662,7 +662,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "longevity",
-        title: "Best Peptides for Longevity & Anti-Aging (2026) | PeptiDex",
+        title: "Best Peptides for Longevity & Anti-Aging (2026)",
         h1: "Best Peptides for Longevity",
         emoji: "⏳",
         metaDescription: "Research-backed longevity peptides: Epitalon, GHK-Cu, SS-31, MOTS-c. Target telomeres, mitochondria, and gene expression for healthspan extension.",
@@ -735,7 +735,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "skin-aesthetic",
-        title: "Best Peptides for Skin & Aesthetics (2026) | PeptiDex",
+        title: "Best Peptides for Skin & Aesthetics (2026)",
         h1: "Best Peptides for Skin & Aesthetics",
         emoji: "✨",
         metaDescription: "Research guide to skin peptides: GHK-Cu, BPC-157, Epitalon. Collagen production, wrinkle reduction, hair growth, and skin healing protocols.",
@@ -805,7 +805,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "hormonal-optimization",
-        title: "Best Peptides for Hormonal Optimization (2026) | PeptiDex",
+        title: "Best Peptides for Hormonal Optimization (2026)",
         h1: "Best Peptides for Hormonal Optimization",
         emoji: "⚡",
         metaDescription: "Research guide to hormonal peptides: CJC-1295, Ipamorelin, Kisspeptin-10. Optimize GH, testosterone, and metabolic hormones naturally.",
@@ -871,7 +871,7 @@ export const goalPages: GoalPage[] = [
     },
     {
         slug: "metabolic-health",
-        title: "Best Peptides for Metabolic Health (2026) | PeptiDex",
+        title: "Best Peptides for Metabolic Health (2026)",
         h1: "Best Peptides for Metabolic Health",
         emoji: "🔬",
         metaDescription: "Research guide to metabolic peptides: MOTS-c, Semaglutide, Tesamorelin. Improve insulin sensitivity, metabolic rate, and cellular energy production.",

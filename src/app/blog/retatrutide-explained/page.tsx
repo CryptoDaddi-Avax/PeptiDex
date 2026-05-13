@@ -19,7 +19,7 @@ const DATE_PUB = '2026-04-12';
 const DATE_MOD = '2026-04-12';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: 'retatrutide, triple agonist peptide, GLP-1 GIP glucagon, retatrutide Phase 3, retatrutide weight loss, LY3437943, triple incretin agonist',
   alternates: { canonical: 'https://peptidex.app/blog/retatrutide-explained' },

@@ -10,7 +10,7 @@ import { ArrowRight, Info, ShieldAlert } from 'lucide-react';
 const CANONICAL = 'https://peptidex.app/guides/glp1-alternatives';
 
 export const metadata: Metadata = {
-  title: 'GLP-1 Alternatives: 10 Peptides for Weight Loss in 2026 | PeptiDex',
+  title: 'GLP-1 Alternatives: 10 Peptides for Weight Loss in 2026',
   description: 'Looking for Semaglutide or Tirzepatide alternatives? Compare 10 peptides for weight loss including Retatrutide, Tesofensine, AOD-9604, and MOTS-c.',
   alternates: { canonical: CANONICAL },
   openGraph: {

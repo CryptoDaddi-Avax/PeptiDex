@@ -19,7 +19,7 @@ const DATE_PUB = '2026-04-12';
 const DATE_MOD = '2026-04-12';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: 'oral peptides vs injectable, oral peptide bioavailability, oral semaglutide, SNAC technology, peptide delivery methods, orforglipron, injectable vs oral GLP-1, peptide absorption',
   alternates: { canonical: 'https://peptidex.app/blog/oral-vs-injectable-peptides' },

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SmartVendorPicker } from "@/components/tools/SmartVendorPicker";
 
 export const metadata: Metadata = {
-    title: "Vendor Picker — Find the Best Peptide Vendor for Your Needs | PeptiDex",
+    title: "Vendor Picker — Find the Best Peptide Vendor for Your Needs",
     description: "Answer 4 questions — peptide, region, payment preference, and priority — and get one recommended vendor with reasoning. No ads, no sponsored rankings.",
     alternates: { canonical: "https://peptidex.app/tools/vendor-picker" },
     openGraph: {

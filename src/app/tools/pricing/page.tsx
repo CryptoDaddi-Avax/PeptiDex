@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import PricingClient from "./PricingClient";
 
 export const metadata: Metadata = {
-    title: "Peptide Price Comparison (2026): Live Vendor Prices + PEPTIDEX Discount | PeptiDex",
+    title: "Peptide Price Comparison (2026): Live Vendor Prices + PEPTIDEX Discount",
     description: "Compare peptide prices across 6 COA-verified vendors. Use code PEPTIDEX for 15–20% off at checkout. Updated May 2026.",
     alternates: {
         canonical: "https://peptidex.app/tools/pricing",

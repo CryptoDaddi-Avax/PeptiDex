@@ -22,7 +22,7 @@ const SLUG = 'fda-peptide-reclassification-2026';
 const CANONICAL = `https://peptidex.app/blog/${SLUG}`;
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: ['FDA peptide reclassification 2026', 'peptides legal 2026', 'BPC-157 legal', 'Category 1 peptides', 'RFK peptides', 'peptide therapy 2026', 'GHK-Cu', 'compounding pharmacy peptides'],
   alternates: {

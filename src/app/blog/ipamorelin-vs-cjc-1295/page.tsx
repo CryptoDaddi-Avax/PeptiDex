@@ -20,7 +20,7 @@ const DATE_PUB = '2026-03-10';
 const DATE_MOD = '2026-04-01';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: "ipamorelin vs CJC-1295, ipamorelin CJC-1295 stack, GHRH peptide research, growth hormone peptide stack, best peptide stack for muscle growth",
   alternates: {

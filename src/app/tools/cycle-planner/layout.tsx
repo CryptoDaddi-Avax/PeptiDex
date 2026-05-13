@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Peptide Cycle Planner & Reconstitution Calculator | PeptiDex",
+    title: "Peptide Cycle Planner & Reconstitution Calculator",
     description: "Calculate peptide reconstitution concentrations, determine diluent volumes for target concentrations, track total vial requirements, and compare prices across verified research vendors.",
 };
 

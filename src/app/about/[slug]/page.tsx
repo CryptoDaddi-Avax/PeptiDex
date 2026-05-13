@@ -22,7 +22,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const canonicalSlug = getCanonicalSlug(slug);
 
   return {
-    title: `${author.name} — ${author.title} | PeptiDex`,
+    title: `${author.name} — ${author.title}`,
     description: author.bio.slice(0, 160),
     alternates: {
       canonical: `https://peptidex.app/team/${canonicalSlug}`,

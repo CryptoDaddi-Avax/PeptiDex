@@ -32,7 +32,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const canonicalSlug = getCanonicalSlug(slug);
 
   return {
-    title: `${author.name} — ${author.title} | PeptiDex`,
+    title: `${author.name} — ${author.title}`,
     description,
     alternates: { canonical: `https://peptidex.app/team/${canonicalSlug}` },
     openGraph: {

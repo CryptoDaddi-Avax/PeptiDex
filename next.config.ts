@@ -30,7 +30,6 @@ const nextConfig: NextConfig = {
     return [
       { source: '/peptides', destination: '/library', permanent: true },
       { source: '/peptides/:slug', destination: '/library/:slug', permanent: true },
-      { source: '/learn', destination: '/intro', permanent: true },
       { source: '/goals/:slug', destination: '/best/:slug', permanent: true },
       // Legacy route clean-up (added May 2026)
       { source: '/suppliers', destination: '/vendors', permanent: true },

@@ -12,7 +12,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 import { FeedbackModal } from '@/components/feedback-modal';
 
 export const metadata: Metadata = {
-  title: 'The Oral Peptide Revolution Has Arrived | PeptiDex Blog',
+  title: 'The Oral Peptide Revolution Has Arrived',
   description: 'An independent analysis of the recent FDA approvals for oral GLP-1 and small-molecule peptide therapeutics, and what they mean for the future of longevity and weight loss.',
   alternates: {
     canonical: 'https://peptidex.app/blog/oral-peptide-revolution',

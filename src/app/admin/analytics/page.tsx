@@ -10,7 +10,7 @@ import { AnalyticsDashboard } from "./AnalyticsDashboard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Affiliate Analytics — PeptiDex Admin",
+  title: "Affiliate Analytics — Admin",
   robots: { index: false, follow: false },
 };
 

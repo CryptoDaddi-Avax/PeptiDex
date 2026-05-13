@@ -18,7 +18,7 @@ const CANONICAL = `https://peptidex.app/vendors/${SLUG}`;
 const AFFILIATE_URL = 'https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex`,
+  title: POST_TITLE,
   description: POST_DESC,
   alternates: { canonical: CANONICAL },
   openGraph: { title: POST_TITLE, description: POST_DESC, url: CANONICAL, type: 'article' },

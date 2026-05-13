@@ -18,7 +18,7 @@ const CANONICAL = `https://peptidex.app/vendors/${SLUG}`;
 const AFFILIATE_URL = 'https://www.kb6dp3dq.com/PEPTIDEX/';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex`,
+  title: POST_TITLE,
   description: POST_DESC,
   alternates: { canonical: CANONICAL },
   openGraph: { title: POST_TITLE, description: POST_DESC, url: CANONICAL, type: 'article' },

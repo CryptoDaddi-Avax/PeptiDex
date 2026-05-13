@@ -7,7 +7,7 @@ import { getAuthorBySlug } from '@/lib/authors';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 
 export const metadata: Metadata = {
-  title: 'Corrections Log | PeptiDex',
+  title: 'Corrections Log',
   description:
     'Public log of corrections, retractions, and disclosure updates for PeptiDex peptide research content. Maintained as part of our editorial process.',
   alternates: { canonical: 'https://peptidex.app/corrections' },

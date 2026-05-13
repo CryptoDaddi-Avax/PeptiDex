@@ -12,7 +12,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 import { FeedbackModal } from '@/components/feedback-modal';
 
 export const metadata: Metadata = {
-  title: 'GHK-Cu: The Breakout Peptide of 2026 | PeptiDex Blog',
+  title: 'GHK-Cu: The Breakout Peptide of 2026',
   description: 'An independent analysis of GHK-Cu, the copper tripeptide seeing a 1,000% surge in anti-aging, longevity, and skin regeneration research in 2026.',
   alternates: {
     canonical: 'https://peptidex.app/blog/ghk-cu-breakout-peptide-2026',

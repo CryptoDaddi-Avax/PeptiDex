@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import InteractionsClient from "./InteractionsClient";
 
 export const metadata: Metadata = {
-  title: "Peptide Stack Conflict Checker — Interaction Analyzer | PeptiDex",
+  title: "Peptide Stack Conflict Checker — Interaction Analyzer",
   description:
     "Check interactions between up to 6 peptides at once. Severity-graded warnings (SAFE → DO NOT STACK), PubMed citations, and alternative recommendations. Free research tool.",
   alternates: { canonical: "https://peptidex.app/tools/interactions" },

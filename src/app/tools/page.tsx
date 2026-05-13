@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ToolsClient from "./ToolsClient";
 
 export const metadata: Metadata = {
-    title: "Free Peptide Research Tools — Cycle Planner, Comparison, Pricing | PeptiDex",
+    title: "Free Peptide Research Tools — Cycle Planner, Comparison, Pricing",
     description: "10 free interactive peptide research tools: Cycle Planner, Evidence Dashboard, Peptide Comparison, Price Comparison, Reconstitution Calculator, COA Analyzer, PK Plasma Curves, and more.",
     keywords: [
         "peptide research tools",

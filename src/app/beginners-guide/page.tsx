@@ -4,7 +4,7 @@ import { ShieldAlert, Droplet, ThermometerSnowflake, Syringe, Info, AlertTriangl
 import { SHORT_DISCLAIMER } from "@/data/constants";
 
 export const metadata: Metadata = {
-    title: "Beginner's Guide to Peptides: Dosage, Syringes, & Reconstitution | PeptiDex",
+    title: "Beginner's Guide to Peptides: Dosage, Syringes, & Reconstitution",
     description: "Learn how to properly reconstitute, store, and safely research peptides. A comprehensive guide to BAC water, insulin syringes (U-100), and subcutaneous administration.",
     alternates: {
         canonical: 'https://peptidex.app/beginners-guide',

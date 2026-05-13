@@ -18,7 +18,7 @@ export async function generateMetadata({
   const deal = vendorDeals.find((d) => d.vendorSlug === slug);
   if (!deal) return {};
   return {
-    title: `${deal.vendorName} Coupon Code 2026 — ${deal.discountPercent}% Off with PEPTIDEX | PeptiDex`,
+    title: `${deal.vendorName} Coupon Code 2026 — ${deal.discountPercent}% Off with PEPTIDEX`,
     description: `Verified ${deal.vendorName} discount code: use PEPTIDEX at checkout for ${deal.discountPercent}% off all orders. ${deal.stackNote ?? ""} No expiry — verified May 2026.`,
     openGraph: {
       title: `${deal.vendorName} Coupon Code — ${deal.discountPercent}% Off`,

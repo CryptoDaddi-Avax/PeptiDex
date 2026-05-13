@@ -22,7 +22,7 @@ const SLUG = 'fda-peptide-reclassification-patients-providers';
 const CANONICAL = `https://peptidex.app/blog/${SLUG}`;
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: [
     'peptide therapy 2026', 'FDA peptide reclassification', 'BPC-157 legal status',

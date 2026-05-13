@@ -10,7 +10,7 @@ const TARGET_SLUGS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Where to Buy Peptides Online | Sourcing Guides | PeptiDex',
+  title: 'Where to Buy Peptides Online | Sourcing Guides',
   description: 'Find the best, COA-verified vendors for specific peptides. Compare prices and check purity standards for top research compounds in 2026.',
   alternates: {
     canonical: 'https://peptidex.app/where-to-buy'

@@ -40,7 +40,7 @@ export async function generateMetadata({
     if (!pair) {
         // No pricing data — noindex this page
         return {
-            title: `${peptide.name} from ${vendorObj.name} | PeptiDex`,
+            title: `${peptide.name} from ${vendorObj.name}`,
             robots: { index: false, follow: false },
         };
     }

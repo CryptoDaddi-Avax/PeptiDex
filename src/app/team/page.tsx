@@ -6,7 +6,7 @@ import { getAllAuthors } from '@/lib/authors';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 
 export const metadata: Metadata = {
-  title: 'About the Researcher | PeptiDex',
+  title: 'About the Researcher',
   description:
     'PeptiDex is an independent, one-person research project — not a clinical service, not a medical authority, and not staffed by physicians. Here is who runs it and how.',
   alternates: { canonical: 'https://peptidex.app/team' },

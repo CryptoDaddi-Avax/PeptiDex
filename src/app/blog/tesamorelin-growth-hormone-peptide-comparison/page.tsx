@@ -25,7 +25,7 @@ const SLUG = 'tesamorelin-growth-hormone-peptide-comparison';
 const CANONICAL = `https://peptidex.app/blog/${SLUG}`;
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: [
     'Tesamorelin peptide', 'Tesamorelin vs Sermorelin', 'Tesamorelin vs CJC-1295',

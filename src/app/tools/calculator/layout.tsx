@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Peptide Reconstitution & Concentration Calculator | PeptiDex",
+    title: "Peptide Reconstitution & Concentration Calculator",
     description: "Calculate peptide reconstitution concentrations for laboratory research. Input lyophilized peptide mass, diluent volume, and target concentration to determine precise volumetric measurements. Supports common research-grade reconstitution protocols.",
     keywords: ["peptide reconstitution calculator", "concentration calculator", "peptide dilution tool", "bacteriostatic water volume", "mcg per mL calculator", "laboratory peptide calculator"],
     openGraph: {

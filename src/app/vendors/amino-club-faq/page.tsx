@@ -20,7 +20,7 @@ const SLUG = 'amino-club-faq';
 const CANONICAL = `https://peptidex.app/vendors/${SLUG}`;
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex`,
+  title: POST_TITLE,
   description: POST_DESC,
   alternates: { canonical: CANONICAL },
   openGraph: { title: POST_TITLE, description: POST_DESC, url: CANONICAL, type: 'article' },

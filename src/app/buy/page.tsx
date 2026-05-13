@@ -12,7 +12,7 @@ const limitlessLife = vendors.find((v) => v.slug === 'limitless-life')!;
 const ascension     = vendors.find((v) => v.slug === 'ascension-peptides')!;
 
 export const metadata: Metadata = {
-  title: 'Where to Buy Peptides Online (2026): COA-Verified Vendors | PeptiDex',
+  title: 'Where to Buy Peptides Online (2026): COA-Verified Vendors',
   description: 'Find verified research peptide vendors. Compare pricing, purity, and shipping for BPC-157, TB-500, GLP-1s, and more. Exclusive PEPTIDEX discount codes.',
   alternates: { canonical: 'https://peptidex.app/buy' },
 };

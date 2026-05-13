@@ -5,7 +5,7 @@ import { vendorVerifications, getGlobalStats, getTierColor, getTierLabel } from 
 import CoaClientPage from './coa-client';
 
 export const metadata: Metadata = {
-  title: 'Verification Dashboard — Independent Peptide Quality Data | PeptiDex',
+  title: 'Verification Dashboard — Independent Peptide Quality Data',
   description:
     'PeptiDex Verification Dashboard: vendor COAs, community-submitted testing, and independent lab results aggregated across all reviewed peptide vendors. Cross-referenced against published literature.',
   alternates: { canonical: 'https://peptidex.app/coa' },

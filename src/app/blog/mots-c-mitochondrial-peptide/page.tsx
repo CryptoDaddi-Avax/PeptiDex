@@ -19,7 +19,7 @@ const DATE_PUB = '2026-04-12';
 const DATE_MOD = '2026-04-12';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: 'MOTS-c peptide, mitochondrial peptide, MOTS-c exercise mimetic, AMPK activation, MOTS-c metabolism, MOTS-c longevity, mitochondria-derived peptide',
   alternates: { canonical: 'https://peptidex.app/blog/mots-c-mitochondrial-peptide' },

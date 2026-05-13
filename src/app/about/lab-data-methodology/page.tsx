@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Lab Data Methodology — How We Score Vendor Trust | PeptiDex",
+    title: "Lab Data Methodology — How We Score Vendor Trust",
     description: "Full disclosure of PeptiDex's vendor trust scoring methodology. Four components: purity consistency, COA recency, lab credibility, and catalog coverage. Every formula published.",
     alternates: { canonical: "https://peptidex.app/about/lab-data-methodology" },
 };

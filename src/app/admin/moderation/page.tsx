@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ModerationClient from "./ModerationClient";
 
 export const metadata: Metadata = {
-    title: "Moderation Queue | PeptiDex Admin",
+    title: "Moderation Queue | Admin",
     robots: { index: false, follow: false },
 };
 

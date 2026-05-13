@@ -19,7 +19,7 @@ const DATE_PUB = '2026-04-12';
 const DATE_MOD = '2026-04-12';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: 'MK-677 vs ipamorelin, ibutamoren vs ipamorelin, best GH secretagogue, MK-677 results, ipamorelin side effects, oral vs injectable peptide, growth hormone peptide comparison',
   alternates: { canonical: 'https://peptidex.app/blog/mk-677-vs-ipamorelin' },

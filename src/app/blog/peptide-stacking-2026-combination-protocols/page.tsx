@@ -22,7 +22,7 @@ const SLUG = 'peptide-stacking-2026-combination-protocols';
 const CANONICAL = `https://peptidex.app/blog/${SLUG}`;
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: [
     'peptide stacking', 'BPC-157 TB-500 stack', 'CJC-1295 Ipamorelin combination',

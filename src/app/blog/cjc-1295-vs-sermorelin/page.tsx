@@ -19,7 +19,7 @@ const DATE_PUB = '2026-04-12';
 const DATE_MOD = '2026-04-12';
 
 export const metadata: Metadata = {
-  title: `${POST_TITLE} | PeptiDex Research Blog`,
+  title: `${POST_TITLE}`,
   description: POST_DESC,
   keywords: 'CJC-1295 vs sermorelin, GHRH analog comparison, CJC-1295 DAC, sermorelin dosing, growth hormone releasing hormone, GH optimization peptides',
   alternates: { canonical: 'https://peptidex.app/blog/cjc-1295-vs-sermorelin' },

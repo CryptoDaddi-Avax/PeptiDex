@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { CheckCircle, Download, ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Your Cheat Sheet is Ready | PeptiDex',
+    title: 'Your Cheat Sheet is Ready',
     description: 'Download your 2026 Peptide Stack Cheat Sheet — 12 research-backed stacks with exact dosages and timing.',
     robots: { index: false, follow: false },
 };

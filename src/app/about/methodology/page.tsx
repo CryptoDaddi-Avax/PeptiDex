@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ShieldCheck, FlaskConical, BookOpen, GitMerge, DollarSign, CheckSquare, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Editorial Methodology — How PeptiDex Evaluates Peptides & Vendors | PeptiDex',
+  title: 'Editorial Methodology — How PeptiDex Evaluates Peptides & Vendors',
   description: 'A full explanation of how PeptiDex grades peptide evidence, verifies vendors, conducts editorial review, and discloses affiliate relationships.',
   alternates: { canonical: 'https://peptidex.app/about/methodology' },
   openGraph: {

@@ -6,7 +6,7 @@ import { ArrowRight, Download, CheckCircle2, ExternalLink, ShieldCheck } from 'l
 import { PrintButton } from '@/components/print-button';
 
 export const metadata: Metadata = {
-    title: '2026 Peptide Stack Cheat Sheet | PeptiDex',
+    title: '2026 Peptide Stack Cheat Sheet',
     description: '12 research-backed peptide stacks with exact dosages, cycle lengths, and timing — organized by goal. Your free printable reference guide.',
     alternates: { canonical: 'https://peptidex.app/lead/cheat-sheet' },
 };
