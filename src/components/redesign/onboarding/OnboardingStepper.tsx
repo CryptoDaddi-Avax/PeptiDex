@@ -15,6 +15,9 @@ import DosingStep from './steps/DosingStep';
 import ToolkitStep from './steps/ToolkitStep';
 import './Onboarding.css';
 
+const FOCUSABLE_SELECTORS =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabIndex]:not([tabIndex="-1"])';
+
 const STEP_COMPONENTS = [SuppliesStep, VendorsStep, ReconstitutionStep, DosingStep, ToolkitStep];
 
 interface OnboardingStepperProps {
@@ -28,11 +31,11 @@ export default function OnboardingStepper({ isOpen, initialStep = 0, onClose, on
   const [activeStep, setActiveStep] = useState(initialStep);
   const [direction, setDirection] = useState<'forward' | 'back'>('forward');
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
-  // BUG 2: no contentHeight state needed — CSS handles open/closed via class
   const stepperRef = useRef<HTMLDivElement>(null);
   const startTimeRef = useRef(Date.now());
   const stepStartRef = useRef(Date.now());
   const [stepKey, setStepKey] = useState(0); // force re-render for animation
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   // BUG 2 FIX: ResizeObserver height measurement removed.
   // Open/closed state is now controlled purely by the CSS class
@@ -68,14 +71,51 @@ export default function OnboardingStepper({ isOpen, initialStep = 0, onClose, on
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialStep]);
 
-  // Scroll into view when opened
+  // Scroll into view and manage focus trap when opened
   useEffect(() => {
     if (isOpen && stepperRef.current) {
+      previousFocusRef.current = document.activeElement as HTMLElement;
       setTimeout(() => {
         stepperRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Shift focus to the stepper so screen readers start reading its content
+        stepperRef.current?.focus();
       }, 100);
+    } else if (!isOpen && previousFocusRef.current) {
+      previousFocusRef.current.focus();
     }
   }, [isOpen]);
+
+  // Focus trap
+  useEffect(() => {
+    if (!isOpen || !stepperRef.current) return;
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !stepperRef.current) return;
+
+      const focusableElements = Array.from(
+        stepperRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS)
+      );
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement || document.activeElement === stepperRef.current) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleTab);
+    return () => window.removeEventListener('keydown', handleTab);
+  }, [isOpen, activeStep, stepKey]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -154,8 +194,10 @@ export default function OnboardingStepper({ isOpen, initialStep = 0, onClose, on
       role="region"
       aria-label="Getting started with peptides"
       aria-hidden={!isOpen}
+      aria-expanded={isOpen}
+      tabIndex={-1}
       className={`onboarding-stepper${isOpen ? ' onboarding-stepper--open' : ''}`}
-      // BUG 2 FIX: no inline maxHeight — CSS class handles open/close
+      style={{ outline: 'none' }}
     >
       <div className="onboarding-stepper__wrap">
         {/* Header */}
@@ -186,6 +228,13 @@ export default function OnboardingStepper({ isOpen, initialStep = 0, onClose, on
                     className={`onboarding-progress__item${isActive ? ' onboarding-progress__item--active' : ''}${isCompleted ? ' onboarding-progress__item--completed' : ''}`}
                     aria-current={isActive ? 'step' : undefined}
                     onClick={() => goToStep(i)}
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        goToStep(i);
+                      }
+                    }}
                   >
                     <div className="onboarding-progress__dot">
                       {isCompleted ? '✓' : step.number}
