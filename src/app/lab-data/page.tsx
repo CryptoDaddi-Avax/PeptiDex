@@ -53,12 +53,12 @@ function vendorDisplayName(slug: string): string {
 
 function vendorReviewHref(slug: string): string {
     const map: Record<string, string> = {
-        "amino-club": "/vendors/amino-club-review",
-        "ascension-peptides": "/vendors/ascension-peptides-review",
-        "bio-longevity-labs": "/vendors/bio-longevity-labs-review",
-        "limitless-life": "/vendors/limitless-life-review",
-        "pantheon-peptides": "/vendors/pantheon-peptides-review",
-        "lvlup-health": "/vendors/lvlup-health-review",
+        "amino-club": "/vendors/amino-club",
+        "ascension-peptides": "/vendors/ascension-peptides",
+        "bio-longevity-labs": "/vendors/bio-longevity-labs",
+        "limitless-life": "/vendors/limitless-life",
+        "pantheon-peptides": "/vendors/pantheon-peptides",
+        "lvlup-health": "/vendors/lvlup-health",
     };
     return map[slug] ?? "/vendors";
 }

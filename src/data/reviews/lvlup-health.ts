@@ -73,9 +73,9 @@ export const lvlupHealthReview: VendorReviewData = {
   shippingDetail: 'Per vendor disclosure, LVLUP Health ships within the United States with an estimated 3–5 business day window. The $75 free shipping threshold is the lowest in this index, making it particularly accessible for smaller orders. Based on customer reviews, shipping reliability is generally rated positively.\n\nLVLUP does not ship internationally. The 30-day return policy applies to all orders.',
   bestFor: ['Researchers requiring needle-free oral or nasal delivery protocols', 'Researchers studying nasal peptides (Semax, Selank) in their native delivery format', 'Researchers who cannot or choose not to use injectable administration'],
   alternatives: [
-    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best injectable option with 20% code', href: '/vendors/amino-club-review' },
-    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Broader injectable catalog including Semax/Selank', href: '/vendors/ascension-peptides-review' },
-    { name: 'Pantheon Peptides', slug: 'pantheon-peptides', rating: 4.6, bestFor: 'Competitive injectable pricing', href: '/vendors/pantheon-peptides-review' },
+    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best injectable option with 20% code', href: '/vendors/amino-club' },
+    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Broader injectable catalog including Semax/Selank', href: '/vendors/ascension-peptides' },
+    { name: 'Pantheon Peptides', slug: 'pantheon-peptides', rating: 4.6, bestFor: 'Competitive injectable pricing', href: '/vendors/pantheon-peptides' },
   ],
   faqs: [
     { q: 'Is LVLUP Health legit?', a: 'Yes. LVLUP Health is a legitimate US-based specialist in oral and nasal peptide formulations. They provide COA-verified compounds with 100+ Trustpilot reviews averaging 4.5/5. They occupy a unique niche as the only oral-specialist vendor in the PeptiDex index. All compounds are for research use only.' },

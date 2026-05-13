@@ -206,12 +206,12 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
             {[
-              { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club-review', badge: "Editor's Choice", note: `${_aminoClub.discountPercent}% code · Gold COA tier` },
-              { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs-review', badge: 'Triple-Tested', note: `${_bioLongevity.discountPercent}% stackable · 80+ compounds` },
-              { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life-review', badge: 'USA Made', note: `${_limitless.discountPercent}% code · 90+ compounds · ⚠ Mixed reviews` },
-              { name: 'Ascension Peptides', rating: 4.7, href: '/vendors/ascension-peptides-review', badge: 'COA Verified', note: `${_ascension.discountPercent}% code · Specialty catalog` },
-              { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides-review', badge: 'Emerging', note: `${_pantheon?.discountPercent ? `${_pantheon.discountPercent}% code` : 'No code'} · Competitive pricing` },
-              { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health-review', badge: 'Oral Specialist', note: `${_lvlup?.discountPercent ? `${_lvlup.discountPercent}% code` : 'No code'} · Needle-free formulations` },
+              { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club', badge: "Editor's Choice", note: `${_aminoClub.discountPercent}% code · Gold COA tier` },
+              { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs', badge: 'Triple-Tested', note: `${_bioLongevity.discountPercent}% stackable · 80+ compounds` },
+              { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life', badge: 'USA Made', note: `${_limitless.discountPercent}% code · 90+ compounds · ⚠ Mixed reviews` },
+              { name: 'Ascension Peptides', rating: 4.7, href: '/vendors/ascension-peptides', badge: 'COA Verified', note: `${_ascension.discountPercent}% code · Specialty catalog` },
+              { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides', badge: 'Emerging', note: `${_pantheon?.discountPercent ? `${_pantheon.discountPercent}% code` : 'No code'} · Competitive pricing` },
+              { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health', badge: 'Oral Specialist', note: `${_lvlup?.discountPercent ? `${_lvlup.discountPercent}% code` : 'No code'} · Needle-free formulations` },
             ].map(v => (
               <Link
                 key={v.href}

@@ -5,6 +5,7 @@ export interface ProCon { point: string; detail?: string; }
 export interface SentimentSource { platform: string; rating: string; count: string; summary: string; positives: string[]; negatives: string[]; url: string; }
 export interface Alternative { name: string; slug: string; rating: number; bestFor: string; href: string; }
 export interface ScoreBreakdown { category: string; score: string; note: string; }
+export interface SubPage { type: 'faq' | 'discount' | 'legitimacy' | 'alternatives'; slug: string; label: string; }
 
 export interface VendorReviewData {
   // Identity
@@ -65,4 +66,7 @@ export interface VendorReviewData {
 
   // Internal links
   libraryLinks: { name: string; slug: string }[];
+
+  // Sub-page cluster (FAQ, discount, legitimacy, alternatives)
+  subPages?: SubPage[];
 }

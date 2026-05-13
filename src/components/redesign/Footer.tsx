@@ -48,7 +48,7 @@ export default function Footer() {
             <h4>§ Source</h4>
             <ul>
               <li><a href="/vendors">Vendor Reviews</a></li>
-              <li><a href="/vendors/amino-club-review">Amino Club Review</a></li>
+              <li><a href="/vendors/amino-club">Amino Club Review</a></li>
               <li><a href="/coa">COA Library</a></li>
               <li><a href="/stacks">Peptide Stacks</a></li>
             </ul>

@@ -58,9 +58,9 @@ export const bioLongevityLabsReview: VendorReviewData = {
   shippingDetail: 'Per vendor disclosure, Bio Longevity Labs ships from US-based domestic stock with an estimated 2–5 business day window. Based on customer reviews, most domestic orders arrive within 3–4 business days. International shipping is available to select countries, though transit times and import requirements vary by destination — researchers should verify their country\'s import regulations before ordering.\n\nCustomer service is generally cited as responsive in public reviews. The 30-day money-back guarantee provides a meaningful dispute resolution pathway, though the specific terms and conditions should be reviewed on their website prior to purchase.',
   bestFor: ['Researchers requiring triple-method COA documentation', 'International researchers (outside USA)', 'Buyers running large orders who benefit from stackable discounts', 'Researchers sourcing harder-to-find compounds (Thymosin Alpha-1, Epitalon)'],
   alternatives: [
-    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best overall value + 20% code', href: '/vendors/amino-club-review' },
-    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Widest compound catalog', href: '/vendors/ascension-peptides-review' },
-    { name: 'Limitless Life', slug: 'limitless-life', rating: 4.8, bestFor: 'USA-manufactured, 90+ compounds', href: '/vendors/limitless-life-review' },
+    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best overall value + 20% code', href: '/vendors/amino-club' },
+    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Widest compound catalog', href: '/vendors/ascension-peptides' },
+    { name: 'Limitless Life', slug: 'limitless-life', rating: 4.8, bestFor: 'USA-manufactured, 90+ compounds', href: '/vendors/limitless-life' },
   ],
   faqs: [
     { q: 'Is Bio Longevity Labs legit?', a: 'Yes. Bio Longevity Labs is a US-based research peptide supplier that provides batch-specific COAs verified by HPLC, LC-MS, and Endotoxin/LAL testing (per vendor disclosure). They have 350+ reviews on Trustpilot averaging 4.8/5. All compounds are sold for research use only.' },

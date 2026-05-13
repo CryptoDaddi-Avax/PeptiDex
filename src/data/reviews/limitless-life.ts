@@ -82,9 +82,9 @@ export const limitlessLifeReview: VendorReviewData = {
   shippingDetail: 'Per vendor disclosure, Limitless Life ships domestically within the USA only with an estimated 3–5 business day window. Based on customer reviews, shipping experiences vary — the majority of Trustpilot reviewers report on-time delivery, while a subset of Sitejabber reviewers cite delays. Researchers outside the USA cannot order from this vendor.\n\nThe "satisfaction guarantee" return policy language is notably less specific than competitors\' defined 30- or 60-day windows. Before purchasing, PeptiDex recommends confirming the exact return terms directly with their customer service team, particularly for larger orders.',
   bestFor: ['US-based researchers needing niche compounds not available elsewhere', 'Researchers prioritizing USA-manufactured sourcing', 'Budget-conscious buyers on common peptides like GHK-Cu and Semax'],
   alternatives: [
-    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best overall — cleaner review profile', href: '/vendors/amino-club-review' },
-    { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.8, bestFor: 'Triple-tested COAs, international shipping', href: '/vendors/bio-longevity-labs-review' },
-    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Broad catalog, consistent reviews', href: '/vendors/ascension-peptides-review' },
+    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best overall — cleaner review profile', href: '/vendors/amino-club' },
+    { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.8, bestFor: 'Triple-tested COAs, international shipping', href: '/vendors/bio-longevity-labs' },
+    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Broad catalog, consistent reviews', href: '/vendors/ascension-peptides' },
   ],
   faqs: [
     { q: 'Is Limitless Life legit?', a: 'Limitless Life is a legitimate US-based research peptide vendor with batch-specific COAs. However, their review profile is polarized — Trustpilot averages 4.5+ while Sitejabber shows 2.7, and BBB complaints have been filed regarding shipping and service. Researchers should review this data and consider alternatives if consistent service is a priority.' },

@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
       { source: '/research', destination: '/library', permanent: true },
       { source: '/research/bpc-157', destination: '/library/bpc-157', permanent: true },
       { source: '/research/tb-500', destination: '/library/tb-500', permanent: true },
+      // Vendor review page consolidation — old static pages → dynamic template
+      { source: '/vendors/amino-club-review', destination: '/vendors/amino-club', permanent: true },
+      { source: '/vendors/bio-longevity-labs-review', destination: '/vendors/bio-longevity-labs', permanent: true },
+      { source: '/vendors/ascension-peptides-review', destination: '/vendors/ascension-peptides', permanent: true },
+      { source: '/vendors/limitless-life-review', destination: '/vendors/limitless-life', permanent: true },
+      { source: '/vendors/pantheon-peptides-review', destination: '/vendors/pantheon-peptides', permanent: true },
+      { source: '/vendors/lvlup-health-review', destination: '/vendors/lvlup-health', permanent: true },
     ];
   },
 

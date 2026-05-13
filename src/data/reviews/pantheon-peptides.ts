@@ -73,9 +73,9 @@ export const pantheonPeptidesReview: VendorReviewData = {
   shippingDetail: 'Per vendor disclosure, Pantheon Peptides ships within the United States with an estimated 3–5 business day window. Based on the available customer reviews (150+), shipping is generally cited positively. The 30-day return policy provides a defined resolution pathway.\n\nAs an emerging vendor, PeptiDex recommends researchers consider starting with a smaller test order to evaluate service quality before committing to larger purchases.',
   bestFor: ['Budget-conscious US researchers sourcing common compounds', 'Researchers comfortable with emerging vendors and conducting own COA verification', 'Researchers looking to diversify across multiple verified suppliers'],
   alternatives: [
-    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Most reviews + 20% code + gold-tier COA', href: '/vendors/amino-club-review' },
-    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'More reviews, broader specialty catalog', href: '/vendors/ascension-peptides-review' },
-    { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.8, bestFor: 'Triple-tested COAs, established track record', href: '/vendors/bio-longevity-labs-review' },
+    { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Most reviews + 20% code + gold-tier COA', href: '/vendors/amino-club' },
+    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'More reviews, broader specialty catalog', href: '/vendors/ascension-peptides' },
+    { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.8, bestFor: 'Triple-tested COAs, established track record', href: '/vendors/bio-longevity-labs' },
   ],
   faqs: [
     { q: 'Is Pantheon Peptides legit?', a: 'Pantheon Peptides appears to be a legitimate US-based emerging research peptide vendor with COA-verified compounds and 150+ Trustpilot reviews. As an emerging vendor, less community data is available than for established competitors. Researchers should request lot-specific COAs and consider a smaller initial order. All compounds are for research use only.' },
