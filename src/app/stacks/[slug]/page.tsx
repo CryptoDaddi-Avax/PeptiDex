@@ -7,7 +7,7 @@ import { BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote 
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
-import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema } from '@/lib/seo/schema';
+import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema, buildItemListSchema } from '@/lib/seo/schema';
 import './stack-detail-redesign.css';
 
 export function generateStaticParams() {
@@ -101,10 +101,22 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
     }
   ]);
 
+  // ItemList: enumerate each peptide in the stack with position + link
+  const itemListSchema = buildItemListSchema({
+    name: `${stack.stack_name} — Peptide Components`,
+    description: `Research peptides included in the ${stack.stack_name} as studied for ${goalName.toLowerCase()}.`,
+    items: stack.peptides.map((p) => ({
+      name: p.name,
+      description: p.role_in_stack,
+      url: `https://peptidex.app/library/${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    })),
+  });
+
   return (
     <div className="stack-detail-wrap">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
         {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
         {/* ═══ BREADCRUMBS ═══ */}

@@ -27,6 +27,8 @@ export const metadata: Metadata = {
 };
 
 import { buildWebSiteSchema, buildOrganizationSchema, buildFAQPageSchema } from '@/lib/seo/schema';
+import { peptides } from '@/data/peptides';
+import { stacks } from '@/data/stacks';
 
 // P2 FIX: Page receives searchParams from Next.js App Router at request time.
 // Parsing here (server component) means the resolved values are embedded in
@@ -74,9 +76,28 @@ export default async function Page({
     }
   ]);
 
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "PeptiDex Peptide Library",
+    "description": `Browse ${peptides.length} research peptide profiles — dosage guides, half-life data, study summaries, and COA-verified vendor sourcing.`,
+    "url": "https://peptidex.app/library",
+    "hasPart": peptides.map((p) => ({
+      "@type": "WebPage",
+      "name": `${p.name} Research Profile`,
+      "url": `https://peptidex.app/library/${p.slug}`,
+      "description": p.laypersonSummary?.slice(0, 150) ?? p.mechanism.slice(0, 150),
+    })),
+    "about": {
+      "@type": "Thing",
+      "name": "Research Peptides",
+      "description": `${peptides.length} research peptides and ${stacks.length} evidence-based stacks indexed for educational reference.`,
+    },
+  };
+
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@graph': [websiteSchema, orgSchema, faqSchema]
+    '@graph': [websiteSchema, orgSchema, collectionPageSchema, faqSchema]
   };
 
   return (
