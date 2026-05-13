@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import { peptides } from '@/data/peptides';
 import LibraryClient from './LibraryClient';
 
+const count = peptides.length;
+
 export const metadata: Metadata = {
-  title: 'Peptide Library — 33+ Research Compounds Indexed',
+  title: `Peptide Library — ${count} Research Compounds Indexed`,
   description:
-    'Explore 33+ research peptides with evidence-graded profiles, pharmacokinetic data, dosing protocols, and peer-cited clinical studies. BPC-157, Semaglutide, CJC-1295, and more.',
+    `Explore ${count} research peptides with evidence-graded profiles, pharmacokinetic data, dosing protocols, and peer-cited clinical studies. BPC-157, Semaglutide, CJC-1295, and more.`,
   alternates: {
     canonical: 'https://peptidex.app/library',
   },
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Peptide Library — 33+ Research Compounds | PeptiDex',
+    title: `Peptide Library — ${count} Research Compounds`,
     description:
       'Evidence-graded peptide profiles with clinical studies, dosing, and pharmacokinetic data.',
     images: ['https://peptidex.app/og-image.png'],
