@@ -8,6 +8,7 @@ import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
 import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema, buildItemListSchema } from '@/lib/seo/schema';
+import { AutoLink, AutoLinkProvider } from '@/components/auto-link';
 import './stack-detail-redesign.css';
 
 export function generateStaticParams() {
@@ -113,6 +114,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
   });
 
   return (
+    <AutoLinkProvider>
     <div className="stack-detail-wrap">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
@@ -151,10 +153,12 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
             <Layers />
             <h2 className="stack-section-heading">What Peptides Are Used in {goalName} Research?</h2>
           </div>
+          <AutoLink>
           <p className="stack-section-desc">
             {stack.goal} To achieve these targeted research outcomes, this specific combination
             relies on the synergistic interactions of the following compounds:
           </p>
+          </AutoLink>
           <ul className="stack-pep-list">
             {stack.peptides.map((p) => {
               const pepSlug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -180,7 +184,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
             <h2 className="stack-section-heading">How This Stack Is Used in Research</h2>
           </div>
           <div className="stack-synergy-box">
-            <p>{stack.synergy_rationale}</p>
+            <AutoLink><p>{stack.synergy_rationale}</p></AutoLink>
           </div>
         </section>
 
@@ -315,5 +319,6 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
         </div>
 
       </div>
+    </AutoLinkProvider>
   );
 }

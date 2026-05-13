@@ -666,3 +666,82 @@
   .vr-final-cta { padding: 24px; }
   .vr-testing-grid { grid-template-columns: 1fr; }
 }
+
+/* ══════════ VENDOR COMPARE BLOCK ══════════ */
+.vr-compare-section {
+  padding: 24px 0;
+}
+.vr-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.vr-compare-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--line, #27272a);
+  background: var(--bg-card, #18181b);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
+}
+.vr-compare-card:hover {
+  border-color: var(--gold, #c9a961);
+  background: rgba(201, 169, 97, 0.04);
+  transform: translateY(-2px);
+}
+.vr-compare-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.vr-compare-name {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink, #f4efe6);
+}
+.vr-compare-rating {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 16px;
+  color: var(--gold, #c9a961);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.vr-compare-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-mute, #a1a1aa);
+}
+.vr-compare-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--line-strong, #3f3f46);
+  flex-shrink: 0;
+}
+.vr-compare-cta {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a961);
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+.vr-compare-card:hover .vr-compare-cta { color: var(--gold-bright, #e0c278); }
+
+@media (max-width: 768px) {
+  .vr-compare-grid { grid-template-columns: 1fr; }
+}
+

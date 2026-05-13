@@ -6621,68 +6621,8 @@ export const peptides: Peptide[] = [
     ],
   }),
 
-  p({
-    name: "LL-37",
-    aliases: ["Cathelicidin", "Human Cathelicidin Antimicrobial Peptide", "hCAP18/LL-37"],
-    category: "Cathelicidin",
-    category_icon: "🛡️",
-    primary_benefits: "Direct antimicrobial action, biofilm destruction, immune modulation, wound healing",
-    mechanism:
-      "37-residue C-terminal fragment of the human cathelicidin precursor hCAP18. The only cathelicidin expressed in humans. Forms amphipathic alpha-helices that insert into and disrupt bacterial, fungal, and enveloped viral membranes via pore formation and membrane lysis. Also acts as a chemoattractant for neutrophils, monocytes, and T-cells. Neutralizes LPS (endotoxin), preventing septic shock. Promotes wound healing via keratinocyte migration and angiogenesis.",
-    laypersonSummary:
-      "LL-37 is the human body's primary built-in antibiotic peptide — it physically punctures and destroys the membranes of bacteria, fungi, and viruses, while also signaling the immune system to mount a targeted response.",
-    key_studies: [
-      {
-        title: "LL-37 direct antimicrobial action and immune modulation",
-        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26601445/",
-        summary:
-          "Review documenting LL-37's broad-spectrum antimicrobial activity against Gram-positive, Gram-negative bacteria, fungi, and enveloped viruses via membrane disruption, and its simultaneous role as an immunomodulatory signaling molecule.",
-        evidence_level: "moderate",
-      },
-      {
-        title: "LL-37 eradicates MRSA and Pseudomonas biofilms",
-        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16922784/",
-        summary:
-          "Bowdish et al.: LL-37 effectively disrupts MRSA and Pseudomonas aeruginosa biofilms and demonstrates synergistic antimicrobial activity with conventional antibiotics in models of antibiotic-resistant infection.",
-        evidence_level: "preclinical",
-      },
-      {
-        title: "LL-37 promotes wound healing via keratinocyte and angiogenic signaling",
-        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20448200/",
-        summary:
-          "Koczulla et al.: LL-37 promotes angiogenesis by activating VEGF-R2 on endothelial cells and accelerates wound re-epithelialization via keratinocyte migration signaling.",
-        evidence_level: "preclinical",
-      },
-    ],
-    safety_notes:
-      "Research only for exogenous administration. At high concentrations, cytotoxic to mammalian cells — therapeutic window must be respected. Not FDA-approved for systemic injection. Used in research protocols for chronic infections, Lyme co-infections, and mold toxicity under medical supervision.",
-    is_fda_approved: false,
-    half_life_hours: 0.5,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [50, 100],
-      frequency: "Daily",
-      cycle_weeks: [4, 8],
-      notes: "Research protocol: 50–100mcg SubQ daily. Herxheimer (die-off) reactions possible during pathogen clearance. Dose titration recommended.",
-    },
-    interactions: {
-      synergies: ["Thymosin Alpha-1", "BPC-157"],
-      cautions: [],
-      contraindicated: [],
-      notes: "Aggressive pathogen clearance may require concurrent BPC-157 for gut lining protection and probiotic restoration post-protocol.",
-    },
-    outcomes_timeline: {
-      week_1: "Antimicrobial activity; possible Herxheimer reaction",
-      week_2_4: "Biofilm disruption; immune recruitment",
-      month_2_3: "Pathogen burden reduction in chronic infection models",
-    },
-    side_effects: [
-      { name: "Herxheimer reaction", incidence: "~20% at therapeutic doses", severity: "moderate", note: "Die-off reaction from pathogen clearance; dose titration recommended" },
-      { name: "Injection site irritation", incidence: "~10%", severity: "mild" },
-    ],
-  }),
-
   // ─── NEW PEPTIDES 2026 BATCH 3 ───
+
 
   p({
     name: "Dihexa",

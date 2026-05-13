@@ -12,6 +12,7 @@ import { PurityHistory } from '@/components/lab-data/PurityHistory';
 import { allVendorReviews } from '@/data/reviews';
 import { vendorBySlug } from '@/data/vendors';
 import { verificationBySlug, getTierLabel } from '@/data/verification-data';
+import { VendorCompare } from '@/components/vendors/VendorCompare';
 import {
   Star, CheckCircle2, XCircle, Shield, FlaskConical,
   ArrowRight, Calendar, DollarSign, Truck, HelpCircle,
@@ -509,6 +510,9 @@ export default async function VendorReviewPage({ params }: Props) {
             ))}
           </div>
         </section>
+
+        {/* ══════════ 9b. COMPARE TO OTHER VENDORS ══════════ */}
+        <VendorCompare currentSlug={slug} />
 
         {/* ══════════ 10. FINAL VERDICT + CTA ══════════ */}
         <section id="final-verdict">

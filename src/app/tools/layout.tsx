@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RedesignLayout from '@/components/redesign/RedesignLayout';
+import { ToolsBreadcrumbs } from '@/components/tools/ToolsBreadcrumbs';
 
 export const metadata: Metadata = {
     title: "Peptide Research Tools — Reconstitution Calculator, COA Analyzer, PK Graphs & More",
@@ -13,5 +14,11 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsGroupLayout({ children }: { children: React.ReactNode }) {
-    return <RedesignLayout>{children}</RedesignLayout>;
+    return (
+        <RedesignLayout>
+            <ToolsBreadcrumbs />
+            {children}
+        </RedesignLayout>
+    );
 }
+
