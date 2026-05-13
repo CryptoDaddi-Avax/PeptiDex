@@ -46,11 +46,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "PeptideX",
+    siteName: "PeptiDex",
     title: "PeptiDex Research-Grade Peptide Reference & Tools",
     description: "The most comprehensive peptide research platform. Explore 51 peptides with clinical studies, reconstitution tools, PK plasma graphs, COA verification, and AI recommendations.",
     url: "https://peptidex.app",
-    images: [{ url: "https://peptidex.app/api/og?type=default", width: 1200, height: 630, alt: "PeptideX: Evidence-Based Peptide Science" }],
+    images: [{ url: "https://peptidex.app/api/og?type=default", width: 1200, height: 630, alt: "PeptiDex: Evidence-Based Peptide Science" }],
   },
   twitter: {
     card: "summary_large_image",
