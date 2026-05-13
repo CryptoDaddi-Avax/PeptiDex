@@ -1,3 +1,4 @@
+// TODO: Remove — superseded by /library/[slug] (301 redirect in next.config.ts handles SEO continuity)
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';

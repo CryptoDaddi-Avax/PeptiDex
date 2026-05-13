@@ -18,6 +18,14 @@ export const metadata: Metadata = {
     title: "Peptide Coupon Codes 2026 — Every Active Discount Code",
     description: "Use code PEPTIDEX for exclusive discounts at all 6 verified peptide vendors. Updated weekly.",
     url: "https://peptidex.app/coupon-codes",
+    type: "website",
+    images: [{ url: "https://peptidex.app/og-image.png", width: 1200, height: 630, alt: "PeptiDex Peptide Coupon Codes" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Peptide Coupon Codes 2026 — All Active Discounts",
+    description: "Use code PEPTIDEX for exclusive discounts at all 6 verified peptide vendors. Updated weekly.",
+    images: ["https://peptidex.app/og-image.png"],
   },
   alternates: { canonical: "https://peptidex.app/coupon-codes" },
 };
