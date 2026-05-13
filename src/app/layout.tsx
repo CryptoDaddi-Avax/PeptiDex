@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: "PeptiDex – Peptide Research Index",
-    template: "PeptiDex – Peptide Research Index | %s",
+    default: "PeptiDex — Peptide Research Index, Stacks & Reconstitution Tools",
+    template: "%s | PeptiDex",
   },
   description: "PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.",
   keywords: [
