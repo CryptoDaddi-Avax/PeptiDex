@@ -16,7 +16,7 @@ import {
 
 const POST_TITLE = 'Amino Club Review (2026): An Independent Evidence-Based Analysis';
 const POST_DESC = 'An independent, evidence-based review of Amino Club. We analyze their third-party COA verification, HPLC/Mass Spec methodology, shipping reliability, and pricing vs top competitors.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-30';
 const DATE_MOD = '2026-04-30';
 const SLUG = 'amino-club-review';
@@ -39,10 +39,10 @@ const articleSchema = {
   '@type': 'Article',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
   publisher: {
     '@type': 'Organization',
-    name: 'PeptideX',
+    name: 'PeptiDex',
     logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' },
   },
   datePublished: `${DATE_PUB}T12:00:00Z`,
@@ -55,7 +55,7 @@ const reviewSchema = {
   '@type': 'Review',
   itemReviewed: { '@type': 'Organization', name: 'Amino Club', url: 'https://aminoclub.com' },
   reviewRating: { '@type': 'Rating', ratingValue: '4.8', bestRating: '5' },
-  author: { '@type': 'Organization', name: 'PeptideX Editorial' },
+  author: { '@type': 'Organization', name: 'PeptiDex Editorial' },
 };
 
 const breadcrumbSchema = {

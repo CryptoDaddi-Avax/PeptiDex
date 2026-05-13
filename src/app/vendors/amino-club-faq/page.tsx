@@ -13,7 +13,7 @@ import {
 
 const POST_TITLE = 'Amino Club FAQ: Shipping, COAs, and Discount Codes';
 const POST_DESC = 'Comprehensive FAQ for Amino Club. Find answers regarding shipping times, payment methods, third-party testing, and how to use our exclusive discount code.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-30';
 const DATE_MOD = '2026-04-30';
 const SLUG = 'amino-club-faq';
@@ -54,8 +54,8 @@ const articleSchema = {
   '@type': 'Article',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
-  publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
+  publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
   datePublished: `${DATE_PUB}T12:00:00Z`,
   dateModified: `${DATE_MOD}T12:00:00Z`,
   mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },

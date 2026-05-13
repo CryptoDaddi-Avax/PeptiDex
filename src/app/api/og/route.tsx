@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     const title = searchParams.get('title');
     const type = searchParams.get('type') || 'article'; // 'default' or 'article'
 
-    // PeptideX Brand Accent Colors
+    // PeptiDex Brand Accent Colors
     const VIOLET = '#8b5cf6';
     const EMERALD = '#34d399';
 
@@ -67,7 +67,7 @@ export async function GET(request: Request) {
               
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <h1 style={{ fontSize: '84px', fontWeight: 800, color: '#f4f4f5', margin: 0, lineHeight: 1 }}>
-                  PeptideX
+                  PeptiDex
                 </h1>
                 <p style={{ fontSize: '32px', color: '#a1a1aa', margin: 0, marginTop: '8px', fontWeight: 600, letterSpacing: '0.05em' }}>
                   Evidence-Based Peptide Science
@@ -123,7 +123,7 @@ export async function GET(request: Request) {
               </svg>
             </div>
             <span style={{ fontSize: '32px', fontWeight: 800, color: '#f4f4f5' }}>
-              PeptideX
+              PeptiDex
             </span>
           </div>
 

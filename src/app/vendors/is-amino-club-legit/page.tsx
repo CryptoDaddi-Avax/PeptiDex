@@ -15,7 +15,7 @@ import {
 
 const POST_TITLE = 'Is Amino Club Legit? A 2026 Vendor Verification Report';
 const POST_DESC = 'Yes, Amino Club is a legitimate research peptide vendor. We break down the proof: third-party COAs, Trustpilot reviews, secure payments, and verified US operations.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-30';
 const DATE_MOD = '2026-04-30';
 const SLUG = 'is-amino-club-legit';
@@ -33,8 +33,8 @@ const articleSchema = {
   '@type': 'Article',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
-  publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
+  publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
   datePublished: `${DATE_PUB}T12:00:00Z`,
   dateModified: `${DATE_MOD}T12:00:00Z`,
   mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },

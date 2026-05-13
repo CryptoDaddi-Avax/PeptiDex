@@ -39,12 +39,12 @@ const blogSchema = {
   description: 'An independent analysis of GHK-Cu, the copper tripeptide seeing a 1,000% surge in anti-aging, longevity, and skin regeneration research in 2026.',
   author: {
     '@type': 'Organization',
-    name: 'PeptideX Research',
+    name: 'PeptiDex Research',
     url: 'https://peptidex.app',
   },
   publisher: {
     '@type': 'Organization',
-    name: 'PeptideX',
+    name: 'PeptiDex',
     logo: {
       '@type': 'ImageObject',
       url: 'https://peptidex.app/favicon.ico',

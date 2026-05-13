@@ -14,7 +14,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Retatrutide: The Triple-Agonist Peptide Explained';
 const POST_DESC = 'A comprehensive research guide to retatrutide — the first GLP-1/GIP/glucagon triple receptor agonist, its Phase 3 trial status, mechanism of action, dosing protocols, and what it means for the future of metabolic medicine.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-12';
 const DATE_MOD = '2026-04-12';
 
@@ -89,7 +89,7 @@ export default function RetatrutideExplainedPage() {
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4 text-amber-400" />
-              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptiDex Editorial</Link>
             </div>
             <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
             <div className="flex items-center gap-2">

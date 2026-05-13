@@ -126,7 +126,7 @@ export function getAuthorsByRole(role: AuthorRole): Author[] {
 const BYLINE_TO_SLUG: Record<string, string> = {
   'PeptiDex Research': 'peptidex-research',
   'PeptiDex Editorial': 'peptidex-research',
-  'PeptideX Editorial': 'peptidex-research',
+  'PeptiDex Editorial': 'peptidex-research',
   'Editorial Team': 'peptidex-research',
   'Dr. E. Vance': 'peptidex-research',
   'Legal Dept': 'peptidex-research',

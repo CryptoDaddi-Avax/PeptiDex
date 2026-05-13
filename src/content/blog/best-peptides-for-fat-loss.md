@@ -3,7 +3,7 @@ title: "Best Peptides for Fat Loss in 2026: A Research Review"
 description: "Comparing GLP-1 agonists, AOD-9604, Tesamorelin, and MOTS-c across clinical trials to determine the most effective peptide pathways for lipid oxidation."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "PeptideX Editorial"
+author: "PeptiDex Editorial"
 readingTime: "18 Min Read"
 faqSchema: |
   {

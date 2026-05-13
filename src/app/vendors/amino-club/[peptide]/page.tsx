@@ -86,7 +86,7 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
   const CANONICAL = `https://peptidex.app/vendors/amino-club/${slug}`;
   const DATE_PUB = '2026-04-30';
   const DATE_MOD = '2026-04-30';
-  const AUTHOR = 'PeptideX Editorial';
+  const AUTHOR = 'PeptiDex Editorial';
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -117,8 +117,8 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: `Sourcing ${name} from Amino Club`,
-    author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
-    publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
+    author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
+    publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
     datePublished: `${DATE_PUB}T12:00:00Z`,
     dateModified: `${DATE_MOD}T12:00:00Z`,
     mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },

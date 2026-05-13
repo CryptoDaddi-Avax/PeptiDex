@@ -15,7 +15,7 @@ import {
 
 const POST_TITLE = 'Amino Club COA Verification: How We Audit Their Testing';
 const POST_DESC = "An in-depth guide on how to read Amino Club's Certificates of Analysis (COAs). We explain HPLC purity vs Mass Spec identity and why batch-specific testing matters.";
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-30';
 const DATE_MOD = '2026-04-30';
 const SLUG = 'amino-club-coa-verification';
@@ -33,8 +33,8 @@ const articleSchema = {
   '@type': 'Article',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
-  publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
+  publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
   datePublished: `${DATE_PUB}T12:00:00Z`,
   dateModified: `${DATE_MOD}T12:00:00Z`,
   mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },

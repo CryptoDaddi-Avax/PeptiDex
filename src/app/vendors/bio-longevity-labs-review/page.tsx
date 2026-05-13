@@ -10,7 +10,7 @@ import { Calendar, ArrowRight, FlaskConical, CheckCircle2, Shield, Star } from '
 
 const POST_TITLE = 'Bio Longevity Labs Review (2026): An Independent Evidence-Based Analysis';
 const POST_DESC = 'An independent, evidence-based review of Bio Longevity Labs. We analyze their triple-tested COA verification, stackable PEPTIDEX discount, 80+ compound catalog, and pricing vs top competitors.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-05-09';
 const DATE_MOD = '2026-05-09';
 const SLUG = 'bio-longevity-labs-review';
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: POST_TITLE, description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
-  publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
+  publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
   datePublished: `${DATE_PUB}T12:00:00Z`, dateModified: `${DATE_MOD}T12:00:00Z`,
   mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },
 };
@@ -36,7 +36,7 @@ const reviewSchema = {
   '@context': 'https://schema.org', '@type': 'Review',
   itemReviewed: { '@type': 'Organization', name: 'Bio Longevity Labs', url: 'https://biolongevitylabs.com' },
   reviewRating: { '@type': 'Rating', ratingValue: '4.8', bestRating: '5' },
-  author: { '@type': 'Organization', name: 'PeptideX Editorial' },
+  author: { '@type': 'Organization', name: 'PeptiDex Editorial' },
 };
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',

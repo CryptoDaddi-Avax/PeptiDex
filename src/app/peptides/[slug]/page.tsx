@@ -34,7 +34,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
     const peptide = getPeptideBySlug(slug);
     if (!peptide) return { title: 'Not Found' };
 
-    const title = `${peptide.name}: Research Profile, Mechanism & Safety | PeptideX`;
+    const title = `${peptide.name}: Research Profile, Mechanism & Safety | PeptiDex`;
     const description = `Evidence-based ${peptide.name} profile: mechanism of action, published research, safety data, and clinical context. ${peptide.primary_benefits}. Cited peer-reviewed sources.`.substring(0, 160);
 
     return {
@@ -50,7 +50,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${peptide.name} — Research Profile | PeptideX`,
+        title: `${peptide.name} — Research Profile | PeptiDex`,
         description,
         images: [`https://peptidex.app/api/og?title=${encodeURIComponent(peptide.name)}&type=profile`],
       },
@@ -750,7 +750,7 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
       {/* Last Updated */}
       <div className="text-center">
         <p className="text-xs text-zinc-600">
-          Last updated: {DATE_MOD} · <Link href="/about" className="text-zinc-500 hover:text-zinc-400 transition-colors">About PeptideX</Link> · <Link href="/about/editorial-policy" className="text-zinc-500 hover:text-zinc-400 transition-colors">Editorial Standards</Link>
+          Last updated: {DATE_MOD} · <Link href="/about" className="text-zinc-500 hover:text-zinc-400 transition-colors">About PeptiDex</Link> · <Link href="/about/editorial-policy" className="text-zinc-500 hover:text-zinc-400 transition-colors">Editorial Standards</Link>
         </p>
       </div>
 

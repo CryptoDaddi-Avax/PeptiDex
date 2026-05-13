@@ -4,11 +4,11 @@ import { ChevronRight, GitCompare, ArrowRight, Store } from 'lucide-react';
 import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 
 export const metadata: Metadata = {
-  title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptideX',
+  title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptiDex',
   description: 'Evidence-based peptide comparisons: GHK-Cu vs BPC-157, semaglutide vs tirzepatide, oral vs injectable peptides, and more. Side-by-side research analysis with cited sources.',
   alternates: { canonical: 'https://peptidex.app/compare' },
   openGraph: {
-    title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptideX',
+    title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptiDex',
     description: 'Side-by-side research comparisons of popular peptide compounds with data tables, cited sources, and expert analysis.',
     url: 'https://peptidex.app/compare',
     type: 'website',
@@ -147,7 +147,7 @@ export default function CompareIndexPage() {
       <section className="rounded-2xl bg-zinc-900/30 border border-zinc-800/50 p-6 space-y-3">
         <h2 className="text-lg font-bold text-zinc-100">About Our Comparisons</h2>
         <p className="text-sm text-zinc-400 leading-relaxed">
-          Every comparison on PeptideX is sourced from peer-reviewed research, registered clinical trials, and published pharmacological data. We present objective analysis — not rankings or endorsements. All compounds discussed are for educational reference only.
+          Every comparison on PeptiDex is sourced from peer-reviewed research, registered clinical trials, and published pharmacological data. We present objective analysis — not rankings or endorsements. All compounds discussed are for educational reference only.
         </p>
         <p className="text-xs text-zinc-500 italic">
           <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>

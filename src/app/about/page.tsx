@@ -158,7 +158,7 @@ export default function AboutPage() {
         <ul>
           <li><strong>Not the iOS Tracker App:</strong> We are not affiliated with the "PEPTIDEX: Peptide Tracker" application available on the Apple App Store, nor its associated website (peptidex.site) developed by Maximilian Karmann. PeptiDex (peptidex.app) does not currently operate a mobile app.</li>
           <li><strong>Not a Vendor:</strong> We are not affiliated with the peptide vendor operating at peptidex.org. We do not synthesize, manufacture, sell, or distribute peptides. We are purely an educational and verification platform.</li>
-          <li><strong>Not a Skincare Brand:</strong> We have no connection to "PeptideX Essence," the skincare product sold by jessicawellness.com or similar cosmetic brands using the name.</li>
+          <li><strong>Not a Skincare Brand:</strong> We have no connection to "PeptiDex Essence," the skincare product sold by jessicawellness.com or similar cosmetic brands using the name.</li>
         </ul>
         
         <p>

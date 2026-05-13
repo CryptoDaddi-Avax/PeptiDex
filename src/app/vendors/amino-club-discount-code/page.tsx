@@ -15,7 +15,7 @@ import {
 const DISCOUNT_PERCENT = '15%';
 const POST_TITLE = `Amino Club Discount Code: PEPTIDEX (Saves ${DISCOUNT_PERCENT} in 2026)`;
 const POST_DESC = `Use our verified Amino Club discount code PEPTIDEX at checkout to save ${DISCOUNT_PERCENT} on your entire order. Learn how to apply the promo code to BPC-157, Tirzepatide, and more.`;
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-30';
 const DATE_MOD = '2026-04-30';
 const SLUG = 'amino-club-discount-code';
@@ -33,8 +33,8 @@ const articleSchema = {
   '@type': 'Article',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
-  publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
+  publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' } },
   datePublished: `${DATE_PUB}T12:00:00Z`,
   dateModified: `${DATE_MOD}T12:00:00Z`,
   mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },

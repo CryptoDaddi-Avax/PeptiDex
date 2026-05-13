@@ -3,7 +3,7 @@ title: "Peptide Cycle Length: A Complete Research Guide for 2026"
 description: "A comprehensive scientific guide to peptide cycle lengths. We explain receptor downregulation, angiogenic risks, and how to safely cycle BPC-157, TB-500, and secretagogues."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "PeptideX Editorial"
+author: "PeptiDex Editorial"
 readingTime: "16 Min Read"
 faqSchema: |
   {

@@ -139,8 +139,8 @@ export default function BlogClient() {
                 {/* SEO Block */}
                 <div className="blog-seo">
                     <h2>About This Blog</h2>
-                    <p>The PeptideX Blog is a peer-cited educational resource covering the most important developments in peptide science. Our editorial team reviews published research from PubMed-indexed journals, FDA regulatory filings, and registered clinical trials to deliver accurate, accessible analysis. We do not accept paid placements or sponsored content. All claims are supported by cited sources.</p>
-                    <p>All content is for educational purposes only. PeptideX does not sell peptides or make therapeutic claims.</p>
+                    <p>The PeptiDex Blog is a peer-cited educational resource covering the most important developments in peptide science. Our editorial team reviews published research from PubMed-indexed journals, FDA regulatory filings, and registered clinical trials to deliver accurate, accessible analysis. We do not accept paid placements or sponsored content. All claims are supported by cited sources.</p>
+                    <p>All content is for educational purposes only. PeptiDex does not sell peptides or make therapeutic claims.</p>
                 </div>
             </div>
         </>

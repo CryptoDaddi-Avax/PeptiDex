@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { ChevronRight, Beaker, ArrowRight, Flame, Heart, Sparkles, Dna, Syringe, Brain, ShieldCheck, Microscope } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Peptide Library — Evidence-Based Compound Profiles | PeptideX',
-  description: 'Browse the PeptideX peptide library: detailed, research-backed profiles of 33+ peptide compounds organized by therapeutic category. Includes mechanism of action, clinical data, safety profiles, and cited sources.',
+  title: 'Peptide Library — Evidence-Based Compound Profiles | PeptiDex',
+  description: 'Browse the PeptiDex peptide library: detailed, research-backed profiles of 33+ peptide compounds organized by therapeutic category. Includes mechanism of action, clinical data, safety profiles, and cited sources.',
   alternates: {
     canonical: 'https://peptidex.app/peptides',
   },
   openGraph: {
-    title: 'The PeptideX Peptide Library — Evidence-Based Compound Profiles',
+    title: 'The PeptiDex Peptide Library — Evidence-Based Compound Profiles',
     description: 'Detailed, research-backed profiles of 33+ peptide compounds organized by therapeutic category. Mechanism of action, clinical data, safety profiles, and cited sources.',
     url: 'https://peptidex.app/peptides',
     type: 'website',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PeptideX Peptide Library',
+    title: 'PeptiDex Peptide Library',
     description: '33+ research-backed peptide compound profiles organized by therapeutic category.',
     images: ['/og-image.png'],
   },
@@ -199,12 +199,12 @@ export default function PeptideLibraryPage() {
   const collectionPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'The PeptideX Peptide Library',
+    name: 'The PeptiDex Peptide Library',
     description: 'Evidence-based compound profiles of 33+ peptide compounds organized by therapeutic category.',
     url: 'https://peptidex.app/peptides',
     publisher: {
       '@type': 'Organization',
-      name: 'PeptideX',
+      name: 'PeptiDex',
       url: 'https://peptidex.app',
     },
   };
@@ -232,7 +232,7 @@ export default function PeptideLibraryPage() {
           </div>
           <div>
             <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-zinc-100 leading-tight">
-              The PeptideX Peptide Library
+              The PeptiDex Peptide Library
             </h1>
             <p className="text-sm text-violet-400 font-medium mt-1">Evidence-Based Compound Profiles</p>
           </div>
@@ -257,13 +257,13 @@ export default function PeptideLibraryPage() {
         {/* Intro */}
         <div className="space-y-4">
           <p className="text-[15px] text-zinc-300 leading-relaxed">
-            The PeptideX Peptide Library provides detailed, research-backed profiles of peptide compounds across major therapeutic categories. Each profile includes a comprehensive breakdown of mechanism of action, published research findings from PubMed-indexed studies and registered clinical trials, documented safety information and side effect data, dosing protocols as reported in the literature, and fully cited primary sources.
+            The PeptiDex Peptide Library provides detailed, research-backed profiles of peptide compounds across major therapeutic categories. Each profile includes a comprehensive breakdown of mechanism of action, published research findings from PubMed-indexed studies and registered clinical trials, documented safety information and side effect data, dosing protocols as reported in the literature, and fully cited primary sources.
           </p>
           <p className="text-[15px] text-zinc-300 leading-relaxed">
             This library is designed as a reference resource for researchers, students, healthcare professionals, and anyone seeking reliable, evidence-based peptide information — organized for rapid lookup and cross-referencing. Whether you are investigating a specific compound for a literature review, comparing mechanisms across peptide classes, or simply trying to understand what the published data actually says, our profiles provide structured, transparent analysis in one centralized hub.
           </p>
           <p className="text-sm text-zinc-500 leading-relaxed italic">
-            All information is presented for educational purposes only. PeptideX does not sell peptides, prescribe treatments, or make therapeutic claims. Consult a qualified healthcare provider before starting any peptide therapy.
+            All information is presented for educational purposes only. PeptiDex does not sell peptides, prescribe treatments, or make therapeutic claims. Consult a qualified healthcare provider before starting any peptide therapy.
           </p>
         </div>
       </header>
@@ -373,7 +373,7 @@ export default function PeptideLibraryPage() {
       {/* Disclaimer */}
       <div className="pt-8 border-t border-zinc-800">
         <p className="text-xs text-zinc-500 leading-relaxed text-center">
-          All peptide information is presented for educational and research purposes only. PeptideX does not sell peptides. Consult a qualified healthcare provider before starting any therapy. <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
+          All peptide information is presented for educational and research purposes only. PeptiDex does not sell peptides. Consult a qualified healthcare provider before starting any therapy. <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
         </p>
       </div>
     </div>

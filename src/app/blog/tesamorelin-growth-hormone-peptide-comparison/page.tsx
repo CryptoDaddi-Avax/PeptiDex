@@ -18,7 +18,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 const POST_TITLE = 'Tesamorelin: What Sets It Apart from Every Other Growth Hormone Peptide';
 const POST_DESC =
   'A deep-dive comparison of Tesamorelin vs Sermorelin, CJC-1295, Ipamorelin, and MK-677. Covers mechanism, visceral fat specificity, clinical evidence, and who Tesamorelin is actually best suited for.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-13';
 const DATE_MOD = '2026-04-13';
 const SLUG = 'tesamorelin-growth-hormone-peptide-comparison';
@@ -56,10 +56,10 @@ const blogSchema = {
   '@type': 'BlogPosting',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
   publisher: {
     '@type': 'Organization',
-    name: 'PeptideX',
+    name: 'PeptiDex',
     logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' },
   },
   image: 'https://peptidex.app/images/blog/tesamorelin_growth_hormone_comparison.png',
@@ -186,7 +186,7 @@ export default function TesamorelinArticle() {
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4 text-amber-400" />
-              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptiDex Editorial</Link>
             </div>
             <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
             <div className="flex items-center gap-2">

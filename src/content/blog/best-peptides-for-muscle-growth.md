@@ -3,7 +3,7 @@ title: "Best Peptides for Muscle Growth: Research-Backed Guide for 2026"
 description: "A research-backed comparison of the best peptides for muscle growth, including CJC-1295, Ipamorelin, MK-677, and IGF-1 LR3, based on clinical mechanism and safety."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "PeptideX Editorial"
+author: "PeptiDex Editorial"
 readingTime: "17 Min Read"
 faqSchema: |
   {

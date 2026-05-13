@@ -15,7 +15,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Peptide Stacking in 2026: Why Combination Protocols Are Redefining Results';
 const POST_DESC = 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and how to combine compounds effectively.';
-const AUTHOR = 'PeptideX Editorial';
+const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-13';
 const DATE_MOD = '2026-04-13';
 const SLUG = 'peptide-stacking-2026-combination-protocols';
@@ -52,10 +52,10 @@ const blogSchema = {
   '@type': 'BlogPosting',
   headline: POST_TITLE,
   description: POST_DESC,
-  author: { '@type': 'Organization', name: 'PeptideX Research', url: 'https://peptidex.app' },
+  author: { '@type': 'Organization', name: 'PeptiDex Research', url: 'https://peptidex.app' },
   publisher: {
     '@type': 'Organization',
-    name: 'PeptideX',
+    name: 'PeptiDex',
     logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' },
   },
   image: 'https://peptidex.app/images/blog/peptide_stacking_2026_protocols.png',
@@ -183,7 +183,7 @@ export default function PeptideStackingArticle() {
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4 text-amber-400" />
-              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptideX Editorial</Link>
+              <Link href={`/about/peptidex-editorial`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">PeptiDex Editorial</Link>
             </div>
             <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
             <div className="flex items-center gap-2">

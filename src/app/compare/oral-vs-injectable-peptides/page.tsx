@@ -12,7 +12,7 @@ const DATE_PUB = '2026-04-03';
 const DATE_MOD = '2026-04-03';
 
 export const metadata: Metadata = {
-  title: `${TITLE} | PeptideX`,
+  title: `${TITLE} | PeptiDex`,
   description: DESC,
   alternates: { canonical: `https://peptidex.app/compare/${SLUG}` },
   openGraph: { title: TITLE, description: DESC, url: `https://peptidex.app/compare/${SLUG}`, type: 'article', images: [{ url: '/og-image.png', width: 1200, height: 630 }] },
@@ -38,8 +38,8 @@ export default function OralVsInjectablePage() {
   const articleSchema = {
     '@context': 'https://schema.org', '@type': 'Article', headline: TITLE, description: DESC,
     image: 'https://peptidex.app/og-image.png',
-    author: { '@type': 'Organization', name: 'PeptideX Editorial Team', url: 'https://peptidex.app/about' },
-    publisher: { '@type': 'Organization', name: 'PeptideX', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' } },
+    author: { '@type': 'Organization', name: 'PeptiDex Editorial Team', url: 'https://peptidex.app/about' },
+    publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' } },
     datePublished: DATE_PUB, dateModified: DATE_MOD,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://peptidex.app/compare/${SLUG}` },
   };

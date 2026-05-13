@@ -39,12 +39,12 @@ const blogSchema = {
   description: 'An independent analysis of the recent FDA approvals for oral GLP-1 and small-molecule peptide therapeutics, and what they mean for the future of longevity and weight loss.',
   author: {
     '@type': 'Organization',
-    name: 'PeptideX Research',
+    name: 'PeptiDex Research',
     url: 'https://peptidex.app',
   },
   publisher: {
     '@type': 'Organization',
-    name: 'PeptideX',
+    name: 'PeptiDex',
     logo: {
       '@type': 'ImageObject',
       url: 'https://peptidex.app/favicon.ico',
