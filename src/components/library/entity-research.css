@@ -1,0 +1,187 @@
+/* ── EntityCard ─────────────────────────────────────────────────────────────── */
+/* Compact data block above H1. Matches peptidex.app tactical HUD aesthetic.  */
+/* Monospace values, dense layout, muted labels, accent on BEST PRICE row.    */
+
+.ec-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  backdrop-filter: blur(8px);
+  max-width: 480px;
+}
+
+.ec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  gap: 16px;
+}
+
+.ec-row:last-child {
+  border-bottom: none;
+}
+
+.ec-label {
+  color: rgba(255, 255, 255, 0.58);
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ec-value {
+  color: rgba(255, 255, 255, 0.88);
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace;
+  font-size: 12px;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* Accent row — primary (BEST PRICE) */
+.ec-row-accent {
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  padding: 5px 0;
+  margin: 2px 0;
+}
+
+.ec-row-accent .ec-value {
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.ec-row-accent .ec-label {
+  color: rgba(167, 139, 250, 0.7);
+}
+
+/* Accent row — secondary (LAST VERIFIED: freshness signal) */
+.ec-row-secondary {
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.ec-row-secondary .ec-value {
+  color: rgba(167, 139, 250, 0.85);
+}
+
+.ec-row-secondary .ec-label {
+  color: rgba(167, 139, 250, 0.55);
+}
+
+/* ── Mobile: stack labels above values ─────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .ec-card {
+    max-width: 100%;
+    padding: 10px 12px;
+  }
+
+  .ec-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 4px 0;
+  }
+
+  .ec-value {
+    text-align: left;
+    font-size: 13px;
+  }
+}
+
+
+/* ── ResearchNotesBlock ────────────────────────────────────────────────────── */
+
+.rn-block {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 24px;
+  margin: 32px 0;
+  position: relative;
+}
+
+.rn-block::before {
+  content: 'RESEARCH NOTES';
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background: #0a0a0a;
+  padding: 0 8px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+.rn-block p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.rn-block p:last-of-type {
+  margin-bottom: 0;
+}
+
+.rn-disclosure {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 20px;
+  padding-top: 14px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  font-style: italic;
+}
+
+.rn-disclosure a {
+  color: #a78bfa;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rn-timestamp {
+  margin-top: 12px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+}
+
+.rn-coa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 4px;
+  background: rgba(167, 139, 250, 0.06);
+  color: #a78bfa;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.rn-coa-link:hover {
+  border-color: rgba(167, 139, 250, 0.5);
+  background: rgba(167, 139, 250, 0.12);
+}
+
+@media (max-width: 480px) {
+  .rn-block {
+    padding: 18px 14px;
+    margin: 24px 0;
+  }
+
+  .rn-block p {
+    font-size: 13px;
+  }
+}

@@ -15,6 +15,7 @@ import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import ReactMarkdown from 'react-markdown';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
+import { SchemaInjector } from '@/components/schema-injector';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -78,13 +79,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   const parsedFaqSchema = typeof faqSchema === 'string' ? JSON.parse(faqSchema) : faqSchema;
 
+  const allSchemas: Record<string, unknown>[] = [articleSchema, breadcrumbSchema];
+  if (parsedFaqSchema) allSchemas.push(parsedFaqSchema);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative space-y-12">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      {parsedFaqSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(parsedFaqSchema) }} />
-      )}
+      <SchemaInjector schema={allSchemas} />
 
       <Breadcrumbs items={[
         { name: 'Home', url: 'https://peptidex.app/' },

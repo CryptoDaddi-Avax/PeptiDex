@@ -7,7 +7,7 @@ import { AuthorByline } from '@/components/shared/AuthorByline';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { AffiliateLink } from '@/components/affiliate-link';
 import type { AffiliateVendor } from '@/lib/ga4-events';
-import { JsonLd } from '@/components/json-ld';
+import { SchemaInjector } from '@/components/schema-injector';
 import { PurityHistory } from '@/components/lab-data/PurityHistory';
 import { allVendorReviews } from '@/data/reviews';
 import { vendorBySlug } from '@/data/vendors';
@@ -147,17 +147,15 @@ export default async function VendorReviewPage({ params }: Props) {
     ],
   };
 
+  const allSchemas = [reviewSchema, productSchema, faqSchema, breadcrumbSchema];
+
   const tier = vendor?.verificationTier || 'unverified';
   const tierLabel = getTierLabel(tier);
 
   return (
     <main id="main-content">
       {/* JSON-LD */}
-      <JsonLd schema={reviewSchema} />
-      <JsonLd schema={productSchema} />
-      <JsonLd schema={faqSchema} />
-      <JsonLd schema={breadcrumbSchema} />
-
+      <SchemaInjector schema={allSchemas} />
       {/* ══════════ HEADER ══════════ */}
       <header className="page-header">
         <div className="page-header-grid" />

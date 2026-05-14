@@ -5,6 +5,7 @@ import { AuthorByline } from '@/components/shared/AuthorByline';
 import { TrustBlock } from '@/components/library/TrustBlock';
 import { buildBreadcrumbSchema, buildFAQPageSchema, buildLibraryMedicalWebPageSchema } from '@/lib/seo/schema';
 import { LAST_REVIEWED_DATE } from '@/data/constants';
+import { SchemaInjector } from '@/components/schema-injector';
 import { ArrowRight, Info, ShieldAlert } from 'lucide-react';
 
 const CANONICAL = 'https://peptidex.app/guides/glp1-alternatives';
@@ -47,11 +48,12 @@ export default function GlpAlternativesPage() {
     keywords: ['GLP-1 alternatives', 'weight loss peptides', 'semaglutide alternative', 'tirzepatide alternative', 'retatrutide']
   });
 
+  const allSchemas: Record<string, unknown>[] = [breadcrumbSchema, medicalWebPageSchema];
+  if (faqSchema) allSchemas.push(faqSchema);
+
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageSchema) }} />
+      <SchemaInjector schema={allSchemas} />
 
       <header className="page-header">
         <div className="page-header-grid" />

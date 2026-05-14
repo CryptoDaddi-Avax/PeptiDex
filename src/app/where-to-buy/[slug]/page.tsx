@@ -6,7 +6,10 @@ import { vendorsSorted } from '@/data/vendors';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
 import { PriceComparisonTable } from '@/components/wheretobuy/PriceComparisonTable';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
-import { buildBreadcrumbSchema, buildItemListSchema, buildFAQPageSchema } from '@/lib/seo/schema';
+import { buildBreadcrumbSchema, buildFAQPageSchema } from '@/lib/seo/schema';
+import { buildProductSchema } from '@/lib/seo/schema/product';
+import { SchemaInjector } from '@/components/schema-injector';
+import { vendorPricing } from '@/data/vendor-pricing';
 import '@/app/vendors/vendors-redesign.css';
 
 const TARGET_SLUGS = [
@@ -104,23 +107,44 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
     { name: `Where to Buy ${peptide.name}`, url: `https://peptidex.app/where-to-buy/${slug}` }
   ]);
 
-  const itemListSchema = buildItemListSchema({
-    name: `Best Places to Buy ${peptide.name} Online`,
-    description: `Ranking of COA-verified research peptide vendors that carry ${peptide.name}.`,
-    items: carryingVendors.map((v) => ({
-      name: v.name,
-      description: v.tagline,
-      url: `https://peptidex.app/where-to-buy/${slug}#${v.slug}`
-    }))
+  const faqSchema = buildFAQPageSchema(faqs);
+
+  const pricingEntry = vendorPricing.find((p) => p.slug === slug);
+  const inStockVendors = pricingEntry?.vendors.filter(v => v.inStock) ?? [];
+  const productOffers = inStockVendors.map(v => {
+    const vendorData = vendorsSorted.find(vd => vd.name === v.vendor);
+    return {
+        vendor: v.vendor,
+        vendorUrl: vendorData ? `https://${vendorData.domainMatch}` : "https://peptidex.app/vendors",
+        affiliateUrl: v.affiliateUrl,
+        price_usd: v.price_usd,
+        vial_mg: v.vial_mg,
+        inStock: v.inStock,
+        hasCoupon: !!vendorData?.discountCode,
+        couponCode: vendorData?.discountCode,
+        discountPct: vendorData?.discountPercent,
+    };
   });
 
-  const faqSchema = buildFAQPageSchema(faqs);
+  const productSchema = buildProductSchema({
+    id: `https://peptidex.app/where-to-buy/${slug}#product`,
+    name: peptide.name,
+    description: `Ranking of COA-verified research peptide vendors that carry ${peptide.name}.`,
+    offers: productOffers,
+    dateModified: new Date().toISOString().split('T')[0],
+  });
+
+  const allSchemas: Record<string, unknown>[] = [breadcrumbSchema];
+  if (faqSchema) {
+      allSchemas.push(faqSchema);
+  }
+  if (productOffers.length > 0) {
+    allSchemas.push(productSchema);
+  }
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaInjector schema={allSchemas} />
 
       <header className="vn-page-header">
         <div className="vn-header-grid" aria-hidden="true" />

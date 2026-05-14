@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, GraduationCap } from "lucide-react";
 import { learningModules } from "@/data/learning-modules";
+import { SchemaInjector } from "@/components/schema-injector";
 import LearnClient from "./LearnClient";
 
 export const metadata: Metadata = {
@@ -62,14 +63,7 @@ const breadcrumbSchema = {
 export default function LearnPage() {
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-            />
+            <SchemaInjector schema={[courseSchema, breadcrumbSchema]} />
 
             {/* ── Server-rendered above-the-fold content ── */}
             <div className="max-w-2xl mx-auto px-3 pt-6 md:px-4 md:pt-8">

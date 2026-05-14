@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from "next";
 import BlogClient from "./BlogClient";
+import { SchemaInjector } from "@/components/schema-injector";
 
 export const metadata: Metadata = {
     title: 'PeptiDex Blog — Peptide Science, Research News & Analysis',
@@ -25,5 +26,20 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage() {
-    return <BlogClient />;
+    const schemaArray = [
+        {
+            "@type": "CollectionPage",
+            name: "PeptiDex Blog — Evidence-Based Peptide Research",
+            url: "https://peptidex.app/blog",
+            description: "Expert analysis of clinical studies, emerging compound trends, regulatory updates, and the science behind peptide therapies.",
+            isPartOf: { "@type": "WebSite", url: "https://peptidex.app" }
+        }
+    ];
+
+    return (
+        <>
+            <SchemaInjector schema={schemaArray} />
+            <BlogClient />
+        </>
+    );
 }

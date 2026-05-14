@@ -5,7 +5,7 @@ import type { Matchup } from "@/data/matchups";
 import type { Peptide } from "@/data/types";
 import {
     Trophy, ArrowRight, HelpCircle, ChevronDown,
-    Scale, CheckCircle2, AlertCircle, Minus
+    Scale, CheckCircle2, AlertCircle, Minus, User as UserIcon
 } from "lucide-react";
 import { useState } from "react";
 
@@ -54,6 +54,18 @@ export default function VsPageClient({
             </div>
 
             {/* Comparison Table */}
+            {matchup.dosingSourceType && (
+                <div className={`mb-4 px-4 py-2 rounded-lg text-xs font-medium inline-flex items-center gap-2 border ${
+                    matchup.dosingSourceType === "human_clinical_trial" ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" :
+                    matchup.dosingSourceType === "animal_extrapolation" ? "bg-amber-500/10 border-amber-500/20 text-amber-400" :
+                    "bg-zinc-800 border-zinc-700 text-zinc-400"
+                }`}>
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    {matchup.dosingSourceType === "human_clinical_trial" ? "Dosing metrics derived from published human clinical trials." :
+                     matchup.dosingSourceType === "animal_extrapolation" ? "Dosing metrics are research protocols derived from animal dose-extrapolation." :
+                     "Dosing metrics derived from community vendor protocols."}
+                </div>
+            )}
             <div className="rounded-2xl border border-zinc-800 overflow-hidden mb-6">
                 <div className="grid grid-cols-[1fr,1fr,1fr] bg-zinc-900/80 px-3 py-2 border-b border-zinc-800">
                     <span className="text-[10px] font-semibold text-zinc-500 uppercase">Category</span>
@@ -72,6 +84,25 @@ export default function VsPageClient({
                     </div>
                 ))}
             </div>
+
+            {/* Deep Dive Content (Programmatic SEO) */}
+            {matchup.deepDiveHtml && (
+                <div className="prose prose-invert max-w-none text-zinc-300 text-sm mb-8 leading-relaxed pb-6 border-b border-zinc-800">
+                    <div dangerouslySetInnerHTML={{ __html: matchup.deepDiveHtml }} />
+                </div>
+            )}
+
+            {/* E-E-A-T Note */}
+            {matchup.eeatNote && (
+                <div className="mb-8 p-5 rounded-2xl bg-zinc-900 border border-gold/30">
+                    <h3 className="text-sm font-bold text-gold mb-2 flex items-center gap-2">
+                        <UserIcon className="w-4 h-4" /> Protocol Notes (N=1)
+                    </h3>
+                    <p className="text-sm text-zinc-300 leading-relaxed italic">
+                        &quot;{matchup.eeatNote}&quot;
+                    </p>
+                </div>
+            )}
 
             {/* FAQs (with Schema) */}
             <div className="mb-6">

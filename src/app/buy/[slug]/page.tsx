@@ -8,6 +8,8 @@ import { VendorMiniCards } from '@/components/buy/VendorMiniCards';
 import { QuickReference } from '@/components/buy/QuickReference';
 import { TrustBlock } from '@/components/library/TrustBlock';
 import { buildBreadcrumbSchema, buildFAQPageSchema } from '@/lib/seo/schema';
+import { buildProductSchema } from '@/lib/seo/schema/product';
+import { SchemaInjector } from '@/components/schema-injector';
 import { ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -76,35 +78,42 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
     { q: `Can I buy ${peptide.name} with a credit card?`, a: `Yes, select verified vendors on our list offer traditional credit card processing for ${peptide.name} purchases.` }
   ]);
 
-  // Generate ItemList schema for vendors
+  // Generate Product schema with Offers
   const inStockVendors = pricingEntry?.vendors.filter(v => v.inStock) ?? [];
-  const itemListSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    itemListElement: inStockVendors.map((v, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'Product',
-        name: `${peptide.name} from ${v.vendor}`,
-        offers: {
-          '@type': 'Offer',
-          price: v.price_usd.toFixed(2),
-          priceCurrency: 'USD',
-          url: v.affiliateUrl,
-          seller: { '@type': 'Organization', name: v.vendor }
-        }
-      }
-    }))
-  };
+  const productOffers = inStockVendors.map(v => {
+    const vendorData = vendors.find(vd => vd.name === v.vendor);
+    return {
+        vendor: v.vendor,
+        vendorUrl: vendorData ? `https://${vendorData.domainMatch}` : "https://peptidex.app/vendors",
+        affiliateUrl: v.affiliateUrl,
+        price_usd: v.price_usd,
+        vial_mg: v.vial_mg,
+        inStock: v.inStock,
+        hasCoupon: !!vendorData?.discountCode,
+        couponCode: vendorData?.discountCode,
+        discountPct: vendorData?.discountPercent,
+    };
+  });
+
+  const productSchema = buildProductSchema({
+    id: `https://peptidex.app/buy/${slug}#product`,
+    name: peptide.name,
+    description: `Where to buy ${peptide.name}. Compare verified vendors, pricing, and active discount codes.`,
+    offers: productOffers,
+    dateModified: new Date().toISOString().split('T')[0],
+  });
+
+  const allSchemas: Record<string, unknown>[] = [breadcrumbSchema];
+  if (faqSchema) {
+      allSchemas.push(faqSchema);
+  }
+  if (productOffers.length > 0) {
+    allSchemas.push(productSchema);
+  }
 
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      {inStockVendors.length > 0 && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
-      )}
+      <SchemaInjector schema={allSchemas} />
 
       <BuyPageHero 
         peptideName={peptide.name} 

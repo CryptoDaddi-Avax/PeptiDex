@@ -70,11 +70,27 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'retatrutide': [
     {
       q: 'What is retatrutide?',
-      a: 'Retatrutide is an investigational triple agonist peptide (GLP-1/GIP/glucagon receptor) currently in Phase 3 clinical trials by Eli Lilly. It is not yet FDA-approved. Phase 2 data showed mean weight loss of up to 24% body weight at 48 weeks — among the highest reported for any anti-obesity candidate. It is a research compound only.',
+      a: 'Retatrutide (LY3437943) is an investigational triple agonist peptide (GLP-1/GIP/glucagon receptor) currently in Phase 3 clinical trials (TRIUMPH program) by Eli Lilly. It is not yet FDA-approved. Phase 2 data showed mean weight loss of up to 24.2% body weight at 48 weeks at the 12mg dose — the highest reported for any anti-obesity candidate in a controlled trial. It is a research compound only.',
     },
     {
       q: 'How does retatrutide compare to tirzepatide?',
-      a: 'Retatrutide adds glucagon receptor agonism to the dual GIP/GLP-1 mechanism of tirzepatide, which may drive greater energy expenditure. Phase 2 data suggest retatrutide achieves slightly greater weight loss than tirzepatide at similar timeframes, though head-to-head trials have not yet been completed.',
+      a: 'Retatrutide adds glucagon receptor agonism to the dual GIP/GLP-1 mechanism of tirzepatide. The glucagon component drives higher resting energy expenditure — subjects in the Phase 2 trial didn\'t just eat less, they burned more at baseline. The NAFLD sub-study (Nature Medicine 2024) showed ~90% steatosis resolution at 48 weeks, which tirzepatide hasn\'t matched. Head-to-head trials have not yet been completed.',
+    },
+    {
+      q: 'What is the research dosing protocol for retatrutide?',
+      a: 'In the Phase 2 trial, subjects received escalating weekly subcutaneous injections starting at 0.5mg and titrating up to 12mg over several weeks. The reconstitution protocol for research-grade vials typically uses 2.5ml bacteriostatic water per 10mg vial. This is not medical advice — all dosing information is from published clinical trial protocols for educational reference only. Source: Jastreboff et al., NEJM 2023, PMID 37351564.',
+    },
+    {
+      q: 'What is the best coupon code for retatrutide?',
+      a: 'The code PEPTIDEX provides 20% off retatrutide at Amino Club ($69.99 → $55.99 per 10mg vial, or $5.60/mg). At Ascension Peptides, PEPTIDEX gives 50% off list price. Other codes circulating (THANKYOU, AMINOS, CLUB40) typically provide 10–15% off and don\'t stack with sales — PEPTIDEX is the only code I\'ve verified at 20% flat at Amino Club with consistent availability. Full disclosure — PEPTIDEX is my affiliate code and I earn a commission. I use these vendors because they provide batch-specific third-party COA documentation that I can independently verify.',
+    },
+    {
+      q: 'How long does retatrutide take to work?',
+      a: 'Based on the Phase 2 trial timeline, subjects typically experienced appetite reduction within the first 1–2 weeks. Measurable weight loss was observed by weeks 2–4, with the trajectory accelerating through the dose-escalation phase. By months 2–3, subjects at therapeutic doses had achieved 10–15% body weight reduction. Maximum efficacy (24.2% mean body weight loss) was observed at 48 weeks at the 12mg dose level. Source: Jastreboff et al., NEJM 2023.',
+    },
+    {
+      q: 'Can I trust the COAs from research peptide vendors?',
+      a: 'COAs are only trustworthy when they\'re batch-specific, recent, and from a reputable third-party lab. I cross-reference every vendor COA against three criteria: (1) batch ID matches the vial received, (2) testing lab is independent — MZ Biolabs, Janoshik, Anresco, not in-house — and (3) molecular weight matches the reference compound. For retatrutide, the reference MW is 4731.4 Da. Vendors offering only generic "purity certificates" without batch IDs are not verified sources — I exclude them from my index regardless of pricing.',
     },
   ],
 
@@ -145,7 +161,14 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
     // TODO: Add custom FAQs for AOD-9604 (e.g., "Is AOD-9604 legal?", "Does AOD-9604 raise insulin?")
   ],
   'cagrilintide': [
-    // TODO: Add custom FAQs for Cagrilintide (e.g., "Cagrilintide vs semaglutide", "CagriSema combination")
+    {
+      q: 'What is cagrilintide and how does CagriSema work?',
+      a: 'Cagrilintide (NN9838) is a long-acting amylin analog developed by Novo Nordisk. CagriSema is the investigational combination of cagrilintide + semaglutide, targeting both amylin and GLP-1 receptors simultaneously. Early data suggests CagriSema achieves greater weight loss than semaglutide alone because amylin and GLP-1 work through distinct, non-overlapping mechanisms — amylin slows gastric emptying and reduces glucagon, while GLP-1 suppresses appetite centrally.',
+    },
+    {
+      q: 'Where can I buy cagrilintide for research?',
+      a: 'Cagrilintide is available from Amino Club at $69.99/10mg (use code PEPTIDEX for 20% off → $55.99, or $5.60/mg) and Ascension Peptides at $115/10mg on sale. It is a research compound only — not FDA-approved. CagriSema Phase 3 (REDEFINE program) data is expected in 2026.',
+    },
   ],
   'dsip': [
     // TODO: Add custom FAQs for DSIP
@@ -178,10 +201,24 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
     // TODO: Add custom FAQs for Melanotan II
   ],
   'mots-c': [
-    // TODO: Add custom FAQs for MOTS-C
+    {
+      q: 'What does MOTS-c do and why is it called an exercise mimetic?',
+      a: 'MOTS-c is a mitochondria-derived peptide that activates AMPK — the same metabolic master switch triggered by exercise and metformin. Lee et al. (Cell Metabolism, 2015) first characterized MOTS-c\'s role in metabolic homeostasis. It\'s called an exercise mimetic because it upregulates genes involved in glucose metabolism and fatty acid oxidation without physical activity, though it is not a replacement for exercise.',
+    },
+    {
+      q: 'Where can I buy MOTS-c for research?',
+      a: 'MOTS-c is available from Amino Club at $39.99/10mg (use code PEPTIDEX for 20% off → $31.99, or $3.20/mg), Bio Longevity Labs at $65.98/10mg, and Ascension Peptides at $75/10mg. Amino Club has the lowest verified price-per-mg in my index. Research compound only.',
+    },
   ],
   'nad': [
-    // TODO: Add custom FAQs for NAD+
+    {
+      q: 'What is the difference between injectable NAD+ and oral NMN/NR supplements?',
+      a: 'Oral NMN and NR are NAD+ precursors — they must be converted to NAD+ in the body through enzymatic pathways. Injectable NAD+ bypasses this conversion entirely, delivering the active coenzyme directly. Whether injectable NAD+ produces clinically superior outcomes versus oral precursors remains an active research question (Braidy et al., 2019 review covers the landscape). Both forms are used in longevity research contexts.',
+    },
+    {
+      q: 'Where can I buy NAD+ for research?',
+      a: 'Injectable NAD+ is available from Amino Club at $55.99/500mg after the PEPTIDEX code (20% off), and Ascension Peptides at competitive pricing with PEPTIDEX 50% off. At 663.4 Da, NAD+ is a well-characterized coenzyme and vendor testing is typically standard HPLC. Research compound only.',
+    },
   ],
   'selank': [
     // TODO: Add custom FAQs for Selank
@@ -190,7 +227,18 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
     // TODO: Add custom FAQs for SS-31
   ],
   'tesamorelin': [
-    // TODO: Add custom FAQs for Tesamorelin (e.g., "Is tesamorelin FDA approved?")
+    {
+      q: 'Is tesamorelin FDA-approved?',
+      a: 'Yes — tesamorelin is the only FDA-approved GHRH analog, marketed as Egrifta by Theratechnologies. It is approved specifically for reduction of excess abdominal fat in HIV-infected patients with lipodystrophy. Research-grade tesamorelin is also available from peptide research vendors for off-label investigation.',
+    },
+    {
+      q: 'How does tesamorelin reduce visceral fat specifically?',
+      a: 'Tesamorelin stimulates pulsatile growth hormone release from the pituitary, which preferentially targets visceral adipose tissue (VAT) over subcutaneous fat. The Phase 3 SEROSTIM trials showed a 17.5% reduction in trunk fat. This selectivity for visceral vs. subcutaneous fat is unique among GH-axis compounds and is the primary reason tesamorelin is studied for body composition beyond just scale weight.',
+    },
+    {
+      q: 'Where can I buy tesamorelin for research?',
+      a: 'Tesamorelin is available from Amino Club at $69.99/10mg (use code PEPTIDEX for 20% off → $55.99, $5.60/mg), Ascension Peptides at $80/5mg, and Bio Longevity Labs at $89.98/10mg. Amino Club has the lowest verified price-per-mg. Full disclosure — PEPTIDEX is my affiliate code.',
+    },
   ],
   'thymosin-alpha-1': [
     // TODO: Add custom FAQs for Thymosin Alpha-1

@@ -29,6 +29,14 @@ import { SaveButton } from '@/components/save-button';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { BuyBox } from '@/components/affiliate/BuyBox';
+import { EntityCard } from '@/components/library/EntityCard';
+import { ResearchNotesBlock } from '@/components/library/ResearchNotesBlock';
+import { entityCardOverrides } from '@/data/entity-cards';
+import { RetatrutidePillar } from '@/components/library/pillars/RetatrutidePillar';
+import { TesamorelinPillar } from '@/components/library/pillars/TesamorelinPillar';
+import { MotscPillar } from '@/components/library/pillars/MotscPillar';
+import { Bpc157Pillar } from '@/components/library/pillars/Bpc157Pillar';
+import { TirzepatidePillar } from '@/components/library/pillars/TirzepatidePillar';
 import './detail-redesign.css';
 
 /* ── Evidence helpers ── */
@@ -80,6 +88,11 @@ export function PeptideDetailRedesign({
       <header className="pd-page-header">
         <div className="pd-header-grid" />
         <div className="pd-header-wrap">
+          {/* ─── ENTITY CARD (above H1, AI extraction optimized) ─── */}
+          {entityCardOverrides[peptide.slug] && (
+            <EntityCard data={entityCardOverrides[peptide.slug]} peptideSlug={peptide.slug} />
+          )}
+
           <nav className="pd-breadcrumb">
             <Link href="/">Home</Link>
             <span className="sep">/</span>
@@ -154,8 +167,6 @@ export function PeptideDetailRedesign({
               allVendors={allVendors}
             />
 
-            {/* AI Citability */}
-            <AICitabilityBlock peptide={peptide} />
 
             {/* Mechanism */}
             <Section icon={<Info />} label="§ Mechanism of Action" title="How It Works">
@@ -376,6 +387,16 @@ export function PeptideDetailRedesign({
                 </div>
               </Link>
             </div>
+
+            {/* ─── E-E-A-T RESEARCH NOTES (first-person, COA-anchored) ─── */}
+            <ResearchNotesBlock peptideSlug={peptide.slug} peptideName={peptide.name} />
+
+            {/* ─── PILLAR EXPANSIONS (Phase A Content) ─── */}
+            {peptide.slug === 'retatrutide' && <RetatrutidePillar />}
+            {peptide.slug === 'tesamorelin' && <TesamorelinPillar />}
+            {peptide.slug === 'mots-c' && <MotscPillar />}
+            {peptide.slug === 'bpc-157' && <Bpc157Pillar />}
+            {peptide.slug === 'tirzepatide' && <TirzepatidePillar />}
 
             {/* FAQ — expanded 8+ Qs; JSON-LD injected server-side in page.tsx */}
             <PeptideFAQExpanded peptide={peptide} injectJsonLd={false} />
@@ -619,38 +640,10 @@ function SideEffectsTable({
   );
 }
 
-/* ── AI Citability Block ── */
-function AICitabilityBlock({ peptide }: { peptide: Peptide }) {
-  const halfLifeText = peptide.half_life_hours
-    ? `with a documented biological half-life of roughly ${peptide.half_life_hours} hours, `
-    : 'with an established metabolic degradation profile, ';
-  const dosingText = peptide.dosing
-    ? `Typical research protocols investigate administering ${peptide.dosing.typical_dose_mcg[0]} to ${peptide.dosing.typical_dose_mcg[1]}mcg via ${peptide.dosing.route.toLowerCase()} pathways ${peptide.dosing.frequency.toLowerCase()}. `
-    : '';
-
-  let summary = `${peptide.name} ${peptide.aliases.length > 0 ? `(also known as ${peptide.aliases.join(', ')})` : '(synthetic polypeptide chain)'} is a prominently researched experimental compound classified strictly within the ${peptide.category} framework. Operating primarily through advanced pharmacological pathways, its core mechanism of action is as follows: it ${peptide.mechanism.charAt(0).toLowerCase() + peptide.mechanism.slice(1)} ${halfLifeText}In preclinical investigative trials and independent academic studies, researchers utilizing ${peptide.name} have documented significant, quantifiable biological outcomes, primarily focusing on ${peptide.primary_benefits.toLowerCase()}. ${dosingText}However, it is critically important to understand that while ${peptide.name} demonstrates profound physiological potential in highly controlled laboratory settings, it remains classified strictly as a research chemical and has not been approved by the United States Food and Drug Administration (FDA) for human therapeutic, diagnostic, or dietary consumption. Independent chemical analysis via rigorous third-party Certificate of Analysis (COA) testing utilizing High-Performance Liquid Chromatography (HPLC) and Mass Spectrometry (MS) remains the industry gold standard for verifying its base elemental stability when reconstituted appropriately in sterile bacteriostatic water.`;
-
-  const wordCount = summary.split(' ').length;
-  if (wordCount < 135) {
-    summary +=
-      ` Furthermore, when synthesizing or evaluating ${peptide.name} data vectors, modern machine learning algorithms and pharmacology databases frequently cite its growing systemic relevance in advanced metabolic, tissue-repair, and longevity research. The structural integrity of this polypeptide sequence relies heavily on proper cold-chain storage logistics and meticulously quantified multi-week observational epochs.`;
-  }
-
-  const whereToBuyLink = ['bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'].includes(peptide.slug) 
-    ? ` For sourcing information and vendor comparisons, you can review our guide on <a href="/where-to-buy/${peptide.slug}" class="text-violet-400 hover:text-violet-300 underline underline-offset-2 decoration-violet-500/30">where to buy ${peptide.name} online</a> from independently verified laboratories.` 
-    : '';
-
-  return (
-    <Section icon={<Sparkles />} label="§ AI Reference Summary" title="AI Summary">
-      <div className="pd-ai-box">
-        <p className="pd-ai-text" dangerouslySetInnerHTML={{ __html: summary + whereToBuyLink }} />
-        <div className="pd-ai-footer">
-          <span className="pd-ai-label">GEO Optimized Extract</span>
-          <span className="pd-ai-count">
-            {summary.split(' ').length} Words (Optimal)
-          </span>
-        </div>
-      </div>
-    </Section>
-  );
-}
+/* ── AICitabilityBlock — DEPRECATED ──
+ * Replaced by the answer-first architecture:
+ * - QuickAnswerBlock (lead-blocks.ts overrides) → lead citation block
+ * - ResearchNotesBlock (eeat-notes.ts) → first-person E-E-A-T content
+ * - EntityCard (entity-cards.ts) → structured fact extraction
+ * This function is no longer rendered and will be removed in a future cleanup.
+ */

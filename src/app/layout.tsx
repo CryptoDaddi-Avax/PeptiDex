@@ -8,7 +8,7 @@ import { GlobalEmbedHandler } from "@/components/global-embed-handler";
 import { StickyDiscountBanner } from "@/components/promos/StickyDiscountBanner";
 import { ExitIntentModal } from "@/components/promos/ExitIntentModal";
 import { AuthProvider } from "@/components/auth/AuthProvider";
-import { JsonLd } from "@/components/json-ld";
+import { SchemaInjector } from "@/components/schema-injector";
 import { buildWebSiteSchema, buildOrganizationSchema } from "@/lib/seo/schema";
 
 const inter = Inter({
@@ -121,8 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#0a0a0b" />
         {/* Site-wide JSON-LD: Organization + WebSite on every page */}
-        <JsonLd schema={buildOrganizationSchema()} />
-        <JsonLd schema={buildWebSiteSchema()} />
+        <SchemaInjector schema={[buildOrganizationSchema(), buildWebSiteSchema()]} />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-zinc-950 text-zinc-100 min-h-screen`}>
         <GoogleAnalytics gaId="G-FBJ7CJVJK9" />

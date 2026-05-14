@@ -10,6 +10,7 @@ import {
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
+import { SchemaInjector } from '@/components/schema-injector';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -86,8 +87,7 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-12">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <SchemaInjector schema={[articleSchema, breadcrumbSchema]} />
 
       {/* ═══════ BREADCRUMBS ═══════ */}
       <Breadcrumbs items={[

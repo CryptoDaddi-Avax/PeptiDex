@@ -2,7 +2,7 @@ export function buildWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "PeptiDex",
+    "name": "PEPTIDEX",
     "url": "https://peptidex.app/",
     "description": "Independent peptide research index — profiles, evidence-based stacks, reconstitution tools, and COA-verified vendor sourcing.",
     "potentialAction": {

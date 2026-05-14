@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/seo/schema";
+import { SchemaInjector } from "@/components/schema-injector";
 import { EmbedModal } from "@/components/embed-modal";
 import CalculatorClient from "./CalculatorClient";
 
@@ -72,18 +73,7 @@ export default function CalculatorPage() {
     return (
         <>
             {/* ── Server-rendered JSON-LD ── */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-            />
+            <SchemaInjector schema={[softwareSchema, howToSchema, breadcrumbSchema]} />
 
             {/* ── Server-rendered editorial header ── */}
             <header

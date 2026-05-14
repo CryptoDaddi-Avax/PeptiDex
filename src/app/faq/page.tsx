@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import FaqRedesignClient from './FaqRedesignClient';
+import { SchemaInjector } from '@/components/schema-injector';
 
 export const metadata: Metadata = {
   title: 'Peptide FAQ — Frequently Asked Questions Answered',
@@ -53,7 +54,7 @@ export default function FaqPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaInjector schema={[faqSchema]} />
       <FaqRedesignClient />
     </>
   );

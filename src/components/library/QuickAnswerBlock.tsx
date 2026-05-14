@@ -1,10 +1,11 @@
 /**
  * QuickAnswerBlock — 40-60 word structured prose block for LLM/GEO extraction.
  * Wraps in <p class="quick-answer"> for schema targeting.
- * Uses only real peptide data — no fabrication.
+ * Uses lead-block overrides for the top 15 pages; falls back to auto-generated.
  */
 
 import type { Peptide } from '@/data/types';
+import { leadBlockOverrides } from '@/data/lead-blocks';
 
 function formatHalfLife(hours: number | undefined): string {
   if (!hours) return 'not established';
@@ -23,12 +24,24 @@ function formatDose(peptide: Peptide): string {
 }
 
 export function QuickAnswerBlock({ peptide }: { peptide: Peptide }) {
+  // Check for hand-tuned lead block override first
+  const override = leadBlockOverrides[peptide.slug];
+
+  if (override) {
+    return (
+      <div className="pd-quick-answer-wrap">
+        <span className="pd-quick-answer-label">Quick Answer</span>
+        <p className="quick-answer pd-quick-answer-text">{override.text}</p>
+      </div>
+    );
+  }
+
+  // Fallback: auto-generated for non-priority peptides
   const halfLife = formatHalfLife(peptide.half_life_hours);
   const dose = formatDose(peptide);
   const fdaStatus = peptide.is_fda_approved
     ? 'FDA-approved'
     : 'research compound (not FDA-approved for human use)';
-  // Pull first 1-2 benefits max for brevity
   const primaryBenefit = peptide.primary_benefits.split(',')[0].trim().toLowerCase();
 
   const summary =

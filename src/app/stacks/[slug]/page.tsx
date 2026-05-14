@@ -8,6 +8,7 @@ import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
 import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
 import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema, buildItemListSchema } from '@/lib/seo/schema';
+import { SchemaInjector } from '@/components/schema-injector';
 import { AutoLink, AutoLinkProvider } from '@/components/auto-link';
 import './stack-detail-redesign.css';
 
@@ -113,13 +114,13 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
     })),
   });
 
+  const allSchemas: Record<string, unknown>[] = [breadcrumbSchema, articleSchema, itemListSchema];
+  if (faqSchema) allSchemas.push(faqSchema);
+
   return (
     <AutoLinkProvider>
     <div className="stack-detail-wrap">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
-        {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+        <SchemaInjector schema={allSchemas} />
 
         {/* ═══ BREADCRUMBS ═══ */}
         <nav aria-label="Breadcrumb" className="stack-breadcrumbs">

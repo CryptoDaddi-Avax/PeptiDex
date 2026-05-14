@@ -7,8 +7,12 @@ import type { EvidenceLevel } from "@/data/types";
 import { PeptideDetailRedesign } from "./client";
 import { buildDrugSchema, buildHowToSchema, buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 import { buildLibraryMedicalWebPageSchema, buildLibraryFAQSchema } from "@/lib/seo/schema/library";
+import { buildProductSchema } from "@/lib/seo/schema/product";
+import { SchemaInjector } from "@/components/schema-injector";
 import { legalData, legalStatusLabels } from "@/data/legal-status";
 import { peptideFAQOverrides } from "@/data/peptide-faqs";
+import { entityCardOverrides } from "@/data/entity-cards";
+import { buildEntityCardSchema } from "@/components/library/EntityCard";
 
 // ── Discount lookups (single source of truth: vendors.ts) ─────────────────
 const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
@@ -287,14 +291,59 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     const faqItems = buildLibraryFAQItems(peptide);
     const faqSchema = buildLibraryFAQSchema(faqItems);
 
+    // ─── JSON-LD: Product + Offer ──────────────────────────────────────────
+    const productOffers = inStockVendors.map(v => {
+        const vendorData = vendors.find(vd => vd.name === v.vendor);
+        return {
+            vendor: v.vendor,
+            vendorUrl: vendorData ? `https://${vendorData.domainMatch}` : "https://peptidex.app/vendors",
+            affiliateUrl: v.affiliateUrl,
+            price_usd: v.price_usd,
+            vial_mg: v.vial_mg,
+            inStock: v.inStock,
+            hasCoupon: !!vendorData?.discountCode,
+            couponCode: vendorData?.discountCode,
+            discountPct: vendorData?.discountPercent,
+        };
+    });
+
+    const productSchema = buildProductSchema({
+        id: `https://peptidex.app/library/${slug}#product`,
+        name: peptide.name,
+        description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
+        brand: "PEPTIDEX Reviewed",
+        offers: productOffers,
+        dateModified,
+        aggregateRating: topEvidenceLevel ? {
+            ratingValue: ratingValue.toFixed(1),
+            ratingCount: ratingCount
+        } : undefined
+    });
+
+    // ─── Assemble All Schemas ──────────────────────────────────────────────
+    // Link Product to Drug via isRelatedTo
+    (productSchema as any).isRelatedTo = { "@id": `https://peptidex.app/library/${slug}#drug` };
+    drugSchema["@id"] = `https://peptidex.app/library/${slug}#drug`;
+
+    const allSchemas: Record<string, unknown>[] = [
+        breadcrumbSchema,
+        drugSchema,
+        productSchema,
+        medicalWebPageSchema,
+        articleSchema,
+    ];
+    if (howToSchema) allSchemas.push(howToSchema);
+    if (faqSchema) allSchemas.push(faqSchema);
+
+    // ─── JSON-LD: DefinedTerm (entity card for AI extraction) ──────────────
+    const entityCardData = entityCardOverrides[slug];
+    if (entityCardData) {
+        allSchemas.push(buildEntityCardSchema(entityCardData, slug));
+    }
+
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(drugSchema) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageSchema) }} />
-            {howToSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />}
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-            {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+            <SchemaInjector schema={allSchemas} />
             <PeptideDetailRedesign
                 peptide={peptide}
                 relatedStacks={relatedStacks}
