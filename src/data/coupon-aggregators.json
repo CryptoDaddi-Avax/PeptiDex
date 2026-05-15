@@ -1,0 +1,47 @@
+[
+  {
+    "name": "WorthEPenny",
+    "domain": "worthepenny.com",
+    "submissionType": "open_submission",
+    "categoryPolicy": "allows_research_peptides",
+    "requiresDisclosure": true,
+    "notes": "Lenient submission policy. Typically allows health and supplement codes without issue.",
+    "robotsAccessible": false
+  },
+  {
+    "name": "SimplyCodes",
+    "domain": "simplycodes.com",
+    "submissionType": "open_submission",
+    "categoryPolicy": "ambiguous_supplements",
+    "requiresDisclosure": true,
+    "notes": "Relies on community/AI checkout verification. Supplements are allowed, but research peptides may trigger manual review.",
+    "robotsAccessible": true
+  },
+  {
+    "name": "Knoji",
+    "domain": "knoji.com",
+    "submissionType": "open_submission",
+    "categoryPolicy": "ambiguous_supplements",
+    "requiresDisclosure": true,
+    "notes": "Shares network infrastructure with SimplyCodes. Similar borderline policy on research chems.",
+    "robotsAccessible": true
+  },
+  {
+    "name": "Wethrift",
+    "domain": "wethrift.com",
+    "submissionType": "open_submission",
+    "categoryPolicy": "allows_research_peptides",
+    "requiresDisclosure": false,
+    "notes": "Very lenient automated approval system. Many existing peptide vendors are successfully listed here.",
+    "robotsAccessible": true
+  },
+  {
+    "name": "HotDeals",
+    "domain": "hotdeals.com",
+    "submissionType": "open_submission",
+    "categoryPolicy": "ambiguous_supplements",
+    "requiresDisclosure": true,
+    "notes": "Standard open submission. Supplements generally clear, but research labeling is a gray area.",
+    "robotsAccessible": false
+  }
+]
