@@ -169,9 +169,7 @@ export default function CoaPage() {
 
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Verification data is aggregated from multiple sources with full attribution · PeptiDex displays all data unfiltered
-      </div>
+      
     </main>
   );
 }

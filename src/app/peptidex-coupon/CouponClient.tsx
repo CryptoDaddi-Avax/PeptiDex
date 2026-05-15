@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { couponVendorTable, howToSteps, couponFAQs } from '@/data/coupon-page-config';
 import { vendorPricing } from '@/data/vendor-pricing';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import './coupon-page.css';
 
 // ── Copy-to-clipboard helper ──────────────────────────────────────────────
@@ -82,6 +83,8 @@ export default function CouponPageClient() {
             <span className="sep">/</span>
             <span className="current">PEPTIDEX Coupon Code</span>
           </nav>
+          
+          <DisclaimerCard variant="vendor" className="mb-8" />
 
           <h1 className="coupon-h1">
             <span className="coupon-code-badge">PEPTIDEX</span>
@@ -138,6 +141,7 @@ export default function CouponPageClient() {
           <p className="coupon-section-sub">
             All discounts verified via test checkout. Updated weekly.
           </p>
+          <InlineDisclaimer type="pricing" className="mb-4" />
 
           <div className="vendor-table-wrap">
             <table className="vendor-table" id="vendor-discount-table">
@@ -235,6 +239,7 @@ export default function CouponPageClient() {
 
           {selectedPeptideData && selectedPeptideData.vendors.length > 0 ? (
             <div className="calc-results">
+              <InlineDisclaimer type="pricing" className="mb-4" />
               <div className="calc-table-wrap">
                 <table className="calc-table" id="savings-table">
                   <thead>
@@ -410,19 +415,7 @@ export default function CouponPageClient() {
         </div>
       </section>
 
-      {/* ══════════════ SECTION 6: AFFILIATE DISCLOSURE ══════════════ */}
-      <section className="coupon-disclosure" id="affiliate-disclosure">
-        <div className="coupon-section-inner">
-          <h3 className="disclosure-title">Affiliate Disclosure (FTC Compliant)</h3>
-          <p className="disclosure-text">
-            PEPTIDEX is an affiliate coupon code. I (The Crypto Daddi, operator of PeptiDex) earn a commission
-            on purchases made using code PEPTIDEX or through the affiliate links on this page. The discount
-            you receive is real and identical regardless of whether you use my link or enter the code directly
-            at checkout. This page contains no medical advice — all products referenced are for research use only.
-            Individual vendor return policies apply. Last verified: May 2026.
-          </p>
-        </div>
-      </section>
+      {/* SECTION 6: AFFILIATE DISCLOSURE (Removed, replaced by DisclaimerCard at top) */}
 
       {/* ══════════════ STICKY FOOTER CTA ══════════════ */}
       <div className={`sticky-footer ${stickyVisible ? 'sticky-visible' : ''}`} id="sticky-footer">

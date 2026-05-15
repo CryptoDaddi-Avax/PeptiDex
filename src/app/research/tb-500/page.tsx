@@ -4,6 +4,7 @@ import {
     Dna, Settings, ShieldAlert, Activity,
     ArrowRight, Microscope, Info, GitMerge, FileText, Table as TableIcon, AlertTriangle
 } from "lucide-react";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 export const metadata: Metadata = {
     title: "TB-500: Research Overview, Benefits & Stack Guide",
@@ -25,6 +26,7 @@ export default function TB500ReferencePage() {
                 <p className="text-lg text-zinc-400 leading-relaxed max-w-2xl">
                     Comprehensive scientific insights into TB-500 (Thymosin Beta-4), exploring its systemic action, experimental applications, and common research stacks.
                 </p>
+                <DisclaimerCard variant="educational" className="mt-6" />
             </header>
 
             <article className="space-y-12">

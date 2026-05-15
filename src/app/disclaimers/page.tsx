@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Medical Disclaimer — PeptiDex Research Index',
   description: 'Important medical disclaimer. PeptiDex is for educational research purposes only. Not medical advice. Most peptides discussed are research-only / not FDA-approved.',
   alternates: {
-    canonical: 'https://peptidex.app/disclaimer',
+    canonical: 'https://peptidex.app/disclaimers',
   },
   robots: {
     index: true,
@@ -20,16 +20,16 @@ export default function DisclaimerPage() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptidex.app/' },
-      { '@type': 'ListItem', position: 2, name: 'Disclaimer', item: 'https://peptidex.app/disclaimer' },
+      { '@type': 'ListItem', position: 2, name: 'Disclaimers', item: 'https://peptidex.app/disclaimers' },
     ],
   };
 
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Medical Disclaimer — PeptiDex Research Index',
-    description: 'Important medical disclaimer. PeptiDex is for educational research purposes only. Not medical advice.',
-    url: 'https://peptidex.app/disclaimer',
+    name: 'Medical & Legal Disclaimers — PeptiDex Research Index',
+    description: 'Important medical and legal disclaimers. PeptiDex is for educational research purposes only. Not medical advice.',
+    url: 'https://peptidex.app/disclaimers',
     isPartOf: { '@type': 'WebSite', name: 'PeptiDex', url: 'https://peptidex.app' },
     inLanguage: 'en-US',
   };
@@ -48,7 +48,7 @@ export default function DisclaimerPage() {
             <span className="current">Medical Disclaimer</span>
           </div>
           <div className="section-label">§ Important Notice</div>
-          <h1 className="page-title">Medical <em>disclaimer</em>.</h1>
+          <h1 className="page-title">Full <em>disclaimers</em>.</h1>
           <p className="page-subtitle">
             Read this in full before using any information presented on PeptiDex.
           </p>
@@ -115,15 +115,30 @@ export default function DisclaimerPage() {
           full responsibility for your own decisions and any consequences thereof.
         </p>
 
+        <h2>Limitation of <em>liability</em>.</h2>
+        <p>
+          In no event shall PeptiDex, its owners, operators, or contributors be liable for any direct, indirect,
+          incidental, special, or consequential damages arising out of or in any way connected with the use of this
+          website or the information contained herein.
+        </p>
+
+        <h2>Educational <em>mission</em>.</h2>
+        <p>
+          PeptiDex operates as an independent research index and educational platform. Our content team aggregates peer-reviewed studies, vendor data, and protocol information from published sources. Our editorial methodology prioritizes empirical verification, batch-specific COA cross-referencing, and primary-literature citation. We are not affiliated with any pharmaceutical manufacturer, government regulatory body, or medical institution.
+        </p>
+
+        <h2>Data accuracy & <em>updates</em>.</h2>
+        <p>
+          PeptiDex strives to keep all vendor pricing, coupon codes, and research data current through regular verification cycles. Pricing data is independently re-verified at minimum every 14 days. Peptide research summaries are reviewed against new published literature at minimum every 45 days. Despite these efforts, information may become outdated between verification cycles. Users should always confirm current pricing, availability, and regulatory status directly with vendors before making purchase decisions.
+        </p>
+
         <p className="last-updated">
-          Last updated: April 2026. PeptiDex reserves the right to modify this disclaimer at any time.
+          Last updated: April 2026. PeptiDex reserves the right to modify these disclaimers at any time.
           Continued use of the site constitutes acceptance of the current version.
         </p>
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      
     </main>
   );
 }

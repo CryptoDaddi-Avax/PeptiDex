@@ -8,6 +8,7 @@ import { SHORT_DISCLAIMER } from '@/data/constants';
 import { getAuthorSlug } from '@/data/authors';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { AutoLink } from '@/components/auto-link';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import {
   Calendar, User, ArrowRight, Check, BarChart3, Trophy
 } from 'lucide-react';
@@ -101,6 +102,9 @@ export default function AminoClubVsLimitlessLife() {
             </div>
           </div>
           <div className="mt-4"><ShareBar title={POST_TITLE} url={CANONICAL} /></div>
+        </div>
+        <div className="mt-8">
+          <DisclaimerCard variant="vendor" />
         </div>
       </header>
 
@@ -309,9 +313,7 @@ export default function AminoClubVsLimitlessLife() {
         </div>
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      <InlineDisclaimer type="affiliate" className="mb-12" />
     </main>
   );
 }

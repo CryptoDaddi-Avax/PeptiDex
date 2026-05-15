@@ -20,6 +20,9 @@ export function buildMedicalWebPageSchema({
     "description": description,
     "url": url,
     "lastReviewed": lastReviewed,
+    "isAccessibleForFree": "True",
+    "educationalUse": "assignment",
+    "educationalLevel": "expert",
     "reviewedBy": {
       "@type": "Person",
       "name": reviewedBy.name,

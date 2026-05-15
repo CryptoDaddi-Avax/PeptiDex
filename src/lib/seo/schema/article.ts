@@ -22,6 +22,9 @@ export function buildArticleSchema({
     "description": description,
     "datePublished": datePublished,
     "dateModified": dateModified,
+    "isAccessibleForFree": "True",
+    "educationalUse": "assignment",
+    "educationalLevel": "expert",
     "author": {
       "@type": "Person",
       "name": author.name,

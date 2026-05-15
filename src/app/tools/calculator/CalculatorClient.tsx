@@ -13,6 +13,7 @@ import type { CalculatorCardData } from "@/components/share-card/card-templates"
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { trackOutboundClick } from "@/lib/ga4-events";
 import { vendorPricing } from "@/data/vendor-pricing";
+import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
 
 import { ToolPageConversionBlock } from "@/components/promos/ToolPageConversionBlock";
 import {
@@ -160,19 +161,8 @@ export default function CalculatorClient() {
         <>
 
             <div className="max-w-3xl mx-auto px-4 py-8 md:py-12 relative z-10">
-                {/* Research-Only Disclaimer */}
-                <div style={{ display: 'flex', gap: 12, padding: 16, background: 'rgba(212, 131, 42, 0.05)', border: '1px solid rgba(212, 131, 42, 0.2)', borderRadius: 12, marginBottom: 24 }}>
-                    <ShieldAlert style={{ width: 16, height: 16, color: 'var(--amber)', flexShrink: 0, marginTop: 2 }} />
-                    <p style={{ fontSize: 13, color: 'var(--amber)', margin: 0, lineHeight: 1.5 }}>{SHORT_DISCLAIMER}</p>
-                </div>
-
-                {/* Lab Context Banner */}
-                <div style={{ display: 'flex', gap: 12, padding: 16, background: 'rgba(56, 189, 248, 0.05)', border: '1px solid rgba(56, 189, 248, 0.2)', borderRadius: 12, marginBottom: 32 }}>
-                    <Beaker style={{ width: 16, height: 16, color: '#38bdf8', flexShrink: 0, marginTop: 2 }} />
-                    <p style={{ fontSize: 13, color: '#bae6fd', margin: 0, lineHeight: 1.5 }}>
-                        <strong style={{ color: '#38bdf8' }}>Laboratory Use Only.</strong> This tool calculates reconstitution concentrations for research-grade lyophilized peptides. All values are intended for in-vitro and authorized laboratory applications only. Not for human or animal use.
-                    </p>
-                </div>
+                {/* Tool Disclaimer */}
+                <DisclaimerCard variant="tool" className="mb-6" />
 
             {/* ═══════ DILUTION MATH TOOLTIP ═══════ */}
             <div className="mb-6">
@@ -646,9 +636,11 @@ export default function CalculatorClient() {
                 }
 
                 return (
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
+                    <div className="mb-8">
+                        <InlineDisclaimer type="affiliate" className="mb-2" />
+                        <motion.div
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
                         className="mb-8 rounded-2xl bg-zinc-950 border border-zinc-800 overflow-hidden"
                     >
@@ -722,6 +714,7 @@ export default function CalculatorClient() {
                             </div>
                         )}
                     </motion.div>
+                    </div>
                 );
             })()}
 

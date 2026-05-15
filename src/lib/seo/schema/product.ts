@@ -90,6 +90,7 @@ export function buildProductSchema({
     "@type": "Product",
     "@id": id,
     "name": name,
+    "alternativeHeadline": "Research Chemicals - Not for Human Use",
     "description": description,
   };
 

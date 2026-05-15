@@ -5,6 +5,7 @@ import type { PeptideVendorPricing } from '@/data/vendor-pricing';
 import type { Vendor } from '@/data/vendors';
 import Link from 'next/link';
 import { AffiliateLink } from '@/components/affiliate-link';
+import { InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 
 interface WhereToBuySectionProps {
   peptideName: string;
@@ -70,6 +71,7 @@ export function WhereToBuySection({
 
       {hasPricing ? (
         <>
+          <InlineDisclaimer type="pricing" className="mb-4" />
           {/* Desktop table */}
           <div className="pd-wtb-table-wrap">
             <table className="pd-wtb-table">
@@ -94,7 +96,13 @@ export function WhereToBuySection({
                     <tr key={v.vendor} className={v.badge === "Editor's Pick" ? 'pd-wtb-row-featured' : ''}>
                       <td>
                         <div className="pd-wtb-vendor-cell">
-                          <span className="pd-wtb-vendor-name">{v.vendor}</span>
+                          {v.vendorRecord?.slug ? (
+                            <Link href={`/coupon-codes/${v.vendorRecord.slug}`} className="pd-wtb-vendor-name hover:text-emerald-400 transition-colors" title={`${v.vendor} coupon and review`}>
+                              {v.vendor}
+                            </Link>
+                          ) : (
+                            <span className="pd-wtb-vendor-name">{v.vendor}</span>
+                          )}
                           {v.badge && (
                             <span className="pd-wtb-badge">{v.badge}</span>
                           )}
@@ -130,6 +138,7 @@ export function WhereToBuySection({
                         )}
                       </td>
                       <td>
+                        <InlineDisclaimer type="affiliate" className="!mt-0 !mb-1 text-[9px]" />
                         <AffiliateLink
                           href={v.affiliateUrl}
                           peptide={peptideSlug}
@@ -160,7 +169,13 @@ export function WhereToBuySection({
                   className={`pd-wtb-card ${v.badge === "Editor's Pick" ? 'pd-wtb-card-featured' : ''}`}
                 >
                   <div className="pd-wtb-card-top">
-                    <span className="pd-wtb-vendor-name">{v.vendor}</span>
+                    {v.vendorRecord?.slug ? (
+                      <Link href={`/coupon-codes/${v.vendorRecord.slug}`} className="pd-wtb-vendor-name hover:text-emerald-400 transition-colors" title={`${v.vendor} coupon and review`}>
+                        {v.vendor}
+                      </Link>
+                    ) : (
+                      <span className="pd-wtb-vendor-name">{v.vendor}</span>
+                    )}
                     {v.badge && <span className="pd-wtb-badge">{v.badge}</span>}
                   </div>
                   <div className="pd-wtb-card-prices">
@@ -180,6 +195,7 @@ export function WhereToBuySection({
                       Use code <strong>{code}</strong> for {discount}% off at {v.vendor}.
                     </p>
                   )}
+                  <InlineDisclaimer type="affiliate" className="!mb-1 mt-2 text-[9px]" />
                   <AffiliateLink
                     href={v.affiliateUrl}
                     peptide={peptideSlug}
@@ -194,13 +210,7 @@ export function WhereToBuySection({
             })}
           </div>
 
-          {/* Disclosure */}
-          <p className="pd-wtb-disclosure">
-            <strong>Affiliate disclosure:</strong> PeptiDex may earn commissions from purchases
-            made through vendor links. This does not affect our editorial ranking.{' '}
-            <a href="/about/methodology" className="pd-wtb-disclosure-link">See our methodology</a>.
-            Prices shown are list prices at time of last update — verify on vendor site.
-          </p>
+          {/* Disclosure removed (replaced by DisclaimerCard) */}
         </>
       ) : (
         /* Fallback for peptides without pricing data */

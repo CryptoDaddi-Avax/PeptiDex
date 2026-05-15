@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, Activity, ShieldCheck, FileSearch, Mail, ExternalLink, FlaskConical, Microscope } from "lucide-react";
 import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
+import { InlineDisclaimer } from "@/components/ui/DisclaimerCard";
 
 interface COAModalProps {
     vendorName: string;
@@ -121,6 +122,7 @@ export function COABadge({
                                 {hasCoa ? (
                                     /* ═══ COA AVAILABLE ═══ */
                                     <div className="p-5 space-y-5">
+                                        <InlineDisclaimer type="coa" className="!mb-0" />
                                         {/* Verification Summary */}
                                         <div className="rounded-xl bg-emerald-950/30 border border-emerald-500/20 p-4">
                                             <div className="flex items-center gap-2 mb-3">

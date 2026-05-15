@@ -301,9 +301,7 @@ export default function RetatrutideExplainedPage() {
 
       
           </div>
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      
     </main>
   );
 }

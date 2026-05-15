@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { learningModules, LearningModule } from "@/data/learning-modules";
 import { BookOpen, Clock, CheckCircle, ChevronRight, ChevronLeft, Award, RotateCcw } from "lucide-react";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 const PROGRESS_KEY = "PeptiDex-learn-progress";
 
@@ -73,6 +74,8 @@ export default function LearnClient() {
                     </div>
                     <p className="text-xs md:text-sm text-zinc-400">5 modules · {learningModules.reduce((a, m) => a + m.estimatedMinutes, 0)} min total · {completedCount}/{learningModules.length} completed</p>
                 </motion.div>
+
+                <DisclaimerCard variant="educational" className="mb-6" />
 
                 {/* Progress Bar */}
                 <div className="mb-6">

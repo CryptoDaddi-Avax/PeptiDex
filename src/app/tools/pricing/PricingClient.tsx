@@ -7,6 +7,7 @@ import { vendorsSorted, type Vendor } from "@/data/vendors";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { peptides as allPeptides } from "@/data/peptides";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
+import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
 import './pricing-redesign.css';
 
 type SortMode = "price" | "vendor" | "cpd";
@@ -500,6 +501,8 @@ export default function PricingClient() {
             </p>
           </div>
 
+          <DisclaimerCard variant="tool" className="mb-8" />
+
           {/* Controls */}
           <div className="prc-controls reveal">
             {/* Peptide Selector */}
@@ -727,21 +730,7 @@ export default function PricingClient() {
           </div>
         </section>
 
-        {/* Bottom disclaimer strip */}
-        <div style={{
-          background: 'rgba(212,131,42,0.04)',
-          borderTop: '1px solid rgba(212,131,42,0.2)',
-          borderBottom: '1px solid rgba(212,131,42,0.2)',
-          padding: '16px 0',
-          textAlign: 'center' as const,
-          fontFamily: 'var(--mono)',
-          fontSize: 11,
-          letterSpacing: '0.1em',
-          color: 'var(--amber)',
-        }}>
-          ⚠ Affiliate disclosure: PeptiDex may earn a commission when you purchase through links on this page.
-          Rankings are independent. Research use only.
-        </div>
+        <InlineDisclaimer type="pricing" className="mb-12" />
       </div>
     </>
   );

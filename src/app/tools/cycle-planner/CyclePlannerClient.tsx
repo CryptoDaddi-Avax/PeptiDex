@@ -5,6 +5,7 @@ import Link from "next/link";
 import { goals } from "@/data/goals";
 import { stacks } from "@/data/stacks";
 import { peptides } from "@/data/peptides";
+import { Peptide } from "@/data/types";
 import { SHORT_DISCLAIMER } from "@/data/constants";
 import {
     getDefaultConfig,
@@ -17,7 +18,7 @@ import {
 import { generateCycleIcs } from "@/lib/ics-generator";
 import {
     ShieldAlert, ChevronRight, ArrowRight, Calendar,
-    ExternalLink, DollarSign,
+    ExternalLink, DollarSign, Search,
 } from "lucide-react";
 import { Goal, Stack } from "@/data/types";
 import { ShareModal } from "@/components/share-card/share-modal";
@@ -26,58 +27,20 @@ import { ShoppingList } from "@/components/shopping-list";
 import './cycle-planner-redesign.css';
 import { SmartVendorPicker } from '@/components/tools/SmartVendorPicker';
 
-/* ── Peptides DB for timeline/dosing reference display ── */
-const PEPTIDES_DB: Record<string, { dose: string; freq: string; route: string; evidence: string }> = {
-  'BPC-157': { dose: '250 mcg', freq: '2x daily', route: 'SC', evidence: 'preclinical' },
-  'TB-500': { dose: '2 mg', freq: '2x weekly', route: 'SC/IM', evidence: 'preclinical' },
-  'CJC-1295': { dose: '100 mcg', freq: 'Daily', route: 'SC', evidence: 'moderate' },
-  'Ipamorelin': { dose: '200 mcg', freq: '2-3x daily', route: 'SC', evidence: 'moderate' },
-  'Tesamorelin': { dose: '1 mg', freq: 'Daily', route: 'SC', evidence: 'very-strong' },
-  'Semaglutide': { dose: '0.25-2.4 mg', freq: 'Weekly', route: 'SC', evidence: 'very-strong' },
-  'Tirzepatide': { dose: '2.5-15 mg', freq: 'Weekly', route: 'SC', evidence: 'very-strong' },
-  'Retatrutide': { dose: '1-12 mg', freq: 'Weekly', route: 'SC', evidence: 'strong' },
-  'GHK-Cu': { dose: '1-2 mg', freq: 'Daily', route: 'SC/Topical', evidence: 'moderate' },
-  'Epitalon': { dose: '5-10 mg', freq: 'Daily x 10-20 days', route: 'SC', evidence: 'preclinical' },
-  'Selank': { dose: '250-500 mcg', freq: 'Daily', route: 'IN/SC', evidence: 'moderate' },
-  'Semax': { dose: '300-600 mcg', freq: 'Daily', route: 'IN', evidence: 'moderate' },
-  'DSIP': { dose: '100-500 mcg', freq: 'Pre-bed', route: 'SC', evidence: 'moderate' },
-  'MOTS-c': { dose: '5-10 mg', freq: '2-3x weekly', route: 'SC', evidence: 'emerging' },
-  'IGF-1 LR3': { dose: '20-50 mcg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
-  'NAD+': { dose: '100-300 mg', freq: 'Daily', route: 'SC/IV', evidence: 'strong' },
-  'Thymosin Alpha-1': { dose: '1.6 mg', freq: '2x weekly', route: 'SC', evidence: 'strong' },
-  'Hexarelin': { dose: '200 mcg', freq: '2x daily', route: 'SC', evidence: 'moderate' },
-  'Sermorelin': { dose: '200-400 mcg', freq: 'Daily', route: 'SC', evidence: 'strong' },
-  'MK-677': { dose: '15-25 mg', freq: 'Daily (oral)', route: 'PO', evidence: 'moderate' },
-  'PT-141': { dose: '1.75-2 mg', freq: 'As needed', route: 'SC', evidence: 'very-strong' },
-  'Glutathione': { dose: '200-600 mg', freq: 'Daily', route: 'SC/IV', evidence: 'strong' },
-  'LL-37': { dose: '50-100 mcg', freq: 'Daily', route: 'SC', evidence: 'moderate' },
-  'KPV': { dose: '200-500 mcg', freq: 'Daily', route: 'SC/Oral', evidence: 'preclinical' },
-  'Follistatin-344': { dose: '100-300 mcg', freq: 'Daily x 10 days', route: 'SC', evidence: 'preclinical' },
-  'Melanotan II': { dose: '250-500 mcg', freq: 'Daily loading', route: 'SC', evidence: 'moderate' },
-  'AOD-9604': { dose: '300 mcg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
-  'GHRP-2': { dose: '100-300 mcg', freq: '2-3x daily', route: 'SC', evidence: 'moderate' },
-  'GHRP-6': { dose: '100-300 mcg', freq: '2-3x daily', route: 'SC', evidence: 'moderate' },
-  'SS-31': { dose: '5-20 mg', freq: 'Daily', route: 'SC', evidence: 'moderate' },
-  'Kisspeptin-10': { dose: '50-100 mcg', freq: 'Daily', route: 'SC', evidence: 'moderate' },
-  'Tesofensine': { dose: '0.25-0.5 mg', freq: 'Daily (oral)', route: 'PO', evidence: 'strong' },
-  'Cagrilintide': { dose: '1.2-4.5 mg', freq: 'Weekly', route: 'SC', evidence: 'strong' },
-  // New 2026 peptides
-  '5-Amino-1MQ': { dose: '50-100 mg', freq: 'Daily (oral)', route: 'PO', evidence: 'preclinical' },
-  'ARA-290': { dose: '4 mg', freq: 'Daily x28d', route: 'SC', evidence: 'moderate' },
-  'Gonadorelin': { dose: '100-200 mcg', freq: '2-3x weekly', route: 'SC', evidence: 'strong' },
-  'Larazotide': { dose: '500 mcg', freq: '3x daily', route: 'PO', evidence: 'strong' },
-  'VIP': { dose: '50 mcg', freq: '4x daily', route: 'IN', evidence: 'emerging' },
-  'Oxytocin': { dose: '24-40 IU', freq: '1-2x daily', route: 'IN', evidence: 'moderate' },
-  'Thymalin': { dose: '10 mg', freq: 'Daily x10d', route: 'IM', evidence: 'emerging' },
-  'Humanin': { dose: '50-200 mcg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
-  'PE-22-28': { dose: '500-1000 mcg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
-  'Pinealon': { dose: '5-10 mg', freq: 'Daily x10d', route: 'SC', evidence: 'preclinical' },
-  'Cortagen': { dose: '5-10 mg', freq: 'Daily x10d', route: 'SC', evidence: 'preclinical' },
-  'Dihexa': { dose: '5-20 mcg', freq: '2-3x weekly', route: 'PO', evidence: 'preclinical' },
-  'FOXO4-DRI': { dose: '5-10 mg', freq: '3x weekly', route: 'SC', evidence: 'preclinical' },
-  'Synapsin': { dose: '100-200 mcg', freq: 'Daily', route: 'IN', evidence: 'preclinical' },
-  'FGL Loop': { dose: '1-5 mg', freq: 'Daily', route: 'SC', evidence: 'preclinical' },
-};
+/* ── Helpers: derive display fields from canonical peptides.ts ── */
+const EV_RANK: Record<string, number> = { 'very-strong': 5, 'strong': 4, 'moderate-strong': 3.5, 'moderate': 3, 'emerging': 2, 'preclinical': 1, 'anecdotal': 0 };
+function topEvidence(p: Peptide): string {
+  if (!p.key_studies?.length) return 'preclinical';
+  let best = 'preclinical', bestR = 0;
+  for (const s of p.key_studies) { const r = EV_RANK[s.evidence_level] ?? 0; if (r > bestR) { bestR = r; best = s.evidence_level; } }
+  return best;
+}
+function fmtDose(d: Peptide['dosing']): string {
+  if (!d?.typical_dose_mcg) return '—';
+  const [lo, hi] = d.typical_dose_mcg;
+  const f = (v: number) => v >= 1000 ? `${+(v/1000).toFixed(1)} mg` : `${v} mcg`;
+  return lo === hi ? f(lo) : `${f(lo)}–${f(hi)}`;
+}
 
 /* ── Goal → peptide map for the planner sidebar ── */
 const GOAL_PROTOCOLS: Record<string, { name: string; peptides: string[]; duration: number }> = {
@@ -106,6 +69,27 @@ export default function CyclePlannerClient() {
     const [configs, setConfigs] = useState<Map<string, CyclePeptideConfig>>(new Map());
     const [includeSupplies, setIncludeSupplies] = useState(true);
 
+    /* ── Combobox state ── */
+    const [searchQuery, setSearchQuery] = useState('');
+    const [comboboxOpen, setComboboxOpen] = useState(false);
+    const [highlightedIdx, setHighlightedIdx] = useState(0);
+    const comboboxRef = useRef<HTMLDivElement>(null);
+    const searchInputRef = useRef<HTMLInputElement>(null);
+    const searchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    /* ── Canonical peptide lookup ── */
+    const peptideMap = useMemo(() => new Map(peptides.map(p => [p.name, p])), []);
+
+    const filteredPeptides = useMemo(() => {
+        if (!searchQuery.trim()) return peptides;
+        const q = searchQuery.toLowerCase();
+        return peptides.filter(p =>
+            p.name.toLowerCase().includes(q) ||
+            p.aliases?.some(a => a.toLowerCase().includes(q)) ||
+            p.category.toLowerCase().includes(q)
+        );
+    }, [searchQuery]);
+
     /* ── Reveal observer ── */
     const containerRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -122,6 +106,15 @@ export default function CyclePlannerClient() {
         return () => io.disconnect();
     }, [selectedPeptides]);
 
+    /* ── Close combobox on outside click ── */
+    useEffect(() => {
+        const handler = (e: MouseEvent) => {
+            if (comboboxRef.current && !comboboxRef.current.contains(e.target as Node)) setComboboxOpen(false);
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, []);
+
     /* ── Goal select handler ── */
     const handleGoalSelect = useCallback((goalKey: string) => {
         setSelectedGoal(goalKey);
@@ -129,7 +122,6 @@ export default function CyclePlannerClient() {
         if (protocol) {
             setSelectedPeptides([...protocol.peptides]);
             setDuration(protocol.duration);
-            // Sync with engine
             const names = new Set(protocol.peptides);
             setEnabledPeptides(names);
             const newConfigs = new Map<string, CyclePeptideConfig>();
@@ -137,6 +129,9 @@ export default function CyclePlannerClient() {
                 newConfigs.set(name, { ...getDefaultConfig(name), cycleWeeks: protocol.duration });
             });
             setConfigs(newConfigs);
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'cycle_planner_peptide_added_via_quickstack', { stack_name: protocol.name, peptides: protocol.peptides.join(',') });
+            }
         }
     }, []);
 
@@ -163,6 +158,33 @@ export default function CyclePlannerClient() {
             });
         }
     }, [duration]);
+
+    /* ── Add from dropdown ── */
+    const addFromDropdown = useCallback((name: string) => {
+        if (selectedPeptides.includes(name)) return;
+        togglePeptide(name, true);
+        setSearchQuery(''); setComboboxOpen(false); setHighlightedIdx(0);
+        const p = peptideMap.get(name);
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'cycle_planner_peptide_added_via_dropdown', { peptide_slug: p?.slug ?? name, has_dosing: !!p?.dosing });
+        }
+    }, [selectedPeptides, togglePeptide, peptideMap]);
+
+    const handleComboboxKey = useCallback((e: React.KeyboardEvent) => {
+        const max = filteredPeptides.length;
+        if (e.key === 'ArrowDown') { e.preventDefault(); setHighlightedIdx(i => (i + 1) % max); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); setHighlightedIdx(i => (i - 1 + max) % max); }
+        else if (e.key === 'Enter' && max > 0) { e.preventDefault(); addFromDropdown(filteredPeptides[highlightedIdx].name); }
+        else if (e.key === 'Escape') { setComboboxOpen(false); }
+    }, [filteredPeptides, highlightedIdx, addFromDropdown]);
+
+    const fireSearchAnalytics = useCallback((q: string) => {
+        if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+        searchTimerRef.current = setTimeout(() => {
+            if (q.length >= 2 && typeof window !== 'undefined' && (window as any).gtag)
+                (window as any).gtag('event', 'cycle_planner_peptide_searched', { search_query: q });
+        }, 500);
+    }, []);
 
     /* ── Engine results for shopping list ── */
     const results: CyclePeptideResult[] = useMemo(() => {
@@ -191,8 +213,7 @@ export default function CyclePlannerClient() {
         URL.revokeObjectURL(url);
     }, [results]);
 
-    /* ── All peptide names (for the checkbox list) ── */
-    const allPeptideNames = useMemo(() => Object.keys(PEPTIDES_DB), []);
+    /* ── (allPeptideNames retired — combobox uses filteredPeptides from canonical peptides.ts) ── */
 
     /* ── Find matching goal from data/goals for engine ── */
     const matchedGoal = useMemo(() => goals.find(g => g.id === selectedGoal || g.label.toLowerCase().includes(GOAL_PROTOCOLS[selectedGoal]?.name.toLowerCase() || '')), [selectedGoal]);
@@ -253,18 +274,12 @@ export default function CyclePlannerClient() {
                 <div className="planner-app">
                     {/* SIDEBAR CONTROLS */}
                     <aside className="planner-controls">
-                        {/* Goal */}
+                        {/* Quick Add Stacks */}
                         <div className="control-group">
-                            <div className="control-label">Goal</div>
+                            <div className="control-label">Quick Add Stacks</div>
                             <div className="goal-pills">
                                 {Object.entries(GOAL_PROTOCOLS).map(([key, proto]) => (
-                                    <button
-                                        key={key}
-                                        className={`goal-pill ${selectedGoal === key ? 'active' : ''}`}
-                                        onClick={() => handleGoalSelect(key)}
-                                    >
-                                        {proto.name}
-                                    </button>
+                                    <button key={key} className={`goal-pill ${selectedGoal === key ? 'active' : ''}`} onClick={() => handleGoalSelect(key)}>{proto.name}</button>
                                 ))}
                             </div>
                         </div>
@@ -273,24 +288,11 @@ export default function CyclePlannerClient() {
                         <div className="control-group">
                             <div className="control-label">Duration</div>
                             <div className="duration-slider">
-                                <input
-                                    type="range"
-                                    min={2}
-                                    max={16}
-                                    value={duration}
-                                    onChange={e => {
-                                        const val = parseInt(e.target.value);
-                                        setDuration(val);
-                                        // Sync engine configs
-                                        setConfigs(prev => {
-                                            const next = new Map(prev);
-                                            for (const [name, config] of next.entries()) {
-                                                next.set(name, { ...config, cycleWeeks: val });
-                                            }
-                                            return next;
-                                        });
-                                    }}
-                                />
+                                <input type="range" min={2} max={16} value={duration} onChange={e => {
+                                    const val = parseInt(e.target.value);
+                                    setDuration(val);
+                                    setConfigs(prev => { const next = new Map(prev); for (const [n, c] of next.entries()) next.set(n, { ...c, cycleWeeks: val }); return next; });
+                                }} />
                                 <div className="duration-value">{duration} weeks</div>
                             </div>
                         </div>
@@ -300,43 +302,71 @@ export default function CyclePlannerClient() {
                             <div className="control-label">Experience</div>
                             <div className="experience-tabs">
                                 {EXPERIENCE_LEVELS.map(level => (
-                                    <button
-                                        key={level}
-                                        className={`exp-tab ${experience === level ? 'active' : ''}`}
-                                        onClick={() => setExperience(level)}
-                                    >
-                                        {level}
-                                    </button>
+                                    <button key={level} className={`exp-tab ${experience === level ? 'active' : ''}`} onClick={() => setExperience(level)}>{level}</button>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Selected Peptides */}
+                        <div className="custom-divider"><span>or build custom</span></div>
+
+                        {/* Searchable Peptide Dropdown */}
                         <div className="control-group">
-                            <div className="control-label">Selected Peptides</div>
-                            <div className="peptide-checks">
-                                {allPeptideNames.map(name => {
-                                    const isChecked = selectedPeptides.includes(name);
-                                    const info = PEPTIDES_DB[name];
-                                    return (
-                                        <label
-                                            key={name}
-                                            className={`pep-check ${isChecked ? 'checked' : ''}`}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                className="pep-check-input"
-                                                checked={isChecked}
-                                                onChange={e => togglePeptide(name, e.target.checked)}
-                                            />
-                                            <span className="pep-check-label">{name}</span>
-                                            {info?.route && (
-                                                <span className="pep-check-route">{info.route}</span>
-                                            )}
-                                        </label>
-                                    );
-                                })}
+                            <div className="control-label">Add Peptide</div>
+                            <div className="peptide-combobox" ref={comboboxRef}>
+                                <div className="combobox-input-wrap">
+                                    <Search style={{ width: 14, height: 14, color: 'var(--ink-mute)', position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
+                                    <input ref={searchInputRef} type="text" className="combobox-input" placeholder="Search peptides (name, alias, category)..."
+                                        value={searchQuery}
+                                        onChange={e => { setSearchQuery(e.target.value); setHighlightedIdx(0); if (!comboboxOpen) setComboboxOpen(true); fireSearchAnalytics(e.target.value); }}
+                                        onFocus={() => { setComboboxOpen(true); if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'cycle_planner_dropdown_opened'); }}
+                                        onKeyDown={handleComboboxKey}
+                                    />
+                                </div>
+                                {comboboxOpen && (
+                                    <div className="combobox-dropdown">
+                                        {filteredPeptides.length === 0 ? (
+                                            <div className="combobox-empty">No peptides match — try a different term</div>
+                                        ) : filteredPeptides.slice(0, 10).map((p, i) => {
+                                            const inCycle = selectedPeptides.includes(p.name);
+                                            return (
+                                                <button key={p.slug} className={`combobox-option ${i === highlightedIdx ? 'highlighted' : ''} ${inCycle ? 'disabled' : ''}`}
+                                                    onClick={() => !inCycle && addFromDropdown(p.name)} onMouseEnter={() => setHighlightedIdx(i)}>
+                                                    <div className="combobox-option-main">
+                                                        <span className="combobox-name">{p.name}</span>
+                                                        {p.aliases?.[0] && <span className="combobox-alias">{p.aliases[0]}</span>}
+                                                    </div>
+                                                    <div className="combobox-option-meta">
+                                                        <span className="combobox-category-badge">{p.category}</span>
+                                                        {inCycle && <span className="combobox-in-cycle">✓ in cycle</span>}
+                                                    </div>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                )}
                             </div>
+                        </div>
+
+                        {/* Selected Peptides — Tag Chips */}
+                        <div className="control-group">
+                            <div className="control-label">In Cycle ({selectedPeptides.length})</div>
+                            {selectedPeptides.length === 0 ? (
+                                <div style={{ color: 'var(--ink-mute)', fontSize: 13, fontStyle: 'italic' }}>Select a stack or search to add peptides</div>
+                            ) : (
+                                <div className="selected-tags">
+                                    {selectedPeptides.map(name => {
+                                        const pep = peptideMap.get(name);
+                                        return (
+                                            <div className="selected-tag" key={name}>
+                                                <span>{name}</span>
+                                                {pep?.dosing?.route && <span className="pep-check-route">{pep.dosing.route}</span>}
+                                                {!pep?.dosing && <span style={{ fontSize: 9, color: 'var(--amber)' }}>⚠</span>}
+                                                <button onClick={() => togglePeptide(name, false)} title="Remove from cycle">×</button>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
                         </div>
                     </aside>
 
@@ -390,12 +420,12 @@ export default function CyclePlannerClient() {
 
                                 {/* Peptide Rows */}
                                 {selectedPeptides.map(name => {
-                                    const info = PEPTIDES_DB[name];
+                                    const pep = peptideMap.get(name);
                                     return (
                                         <div className="timeline-row" key={name}>
                                             <div className="timeline-pep">
                                                 {name}
-                                                <small>{info?.freq || ''}</small>
+                                                <small>{pep?.dosing?.frequency || ''}</small>
                                             </div>
                                             <div className="timeline-bars" style={{ gridTemplateColumns: `repeat(${duration}, 1fr)` }}>
                                                 {Array.from({ length: duration }, (_, w) => {
@@ -405,6 +435,9 @@ export default function CyclePlannerClient() {
                                                     return <div className={cls} key={w} title={`Week ${w + 1}`} />;
                                                 })}
                                             </div>
+                                            {!pep?.dosing && (
+                                                <div className="dosing-pending">Dosing data pending in peptide index — research-only placeholders shown. <a href={`/library/${pep?.slug}`}>View research notes →</a></div>
+                                            )}
                                         </div>
                                     );
                                 })}
@@ -440,19 +473,17 @@ export default function CyclePlannerClient() {
                                     <div>Evidence</div>
                                 </div>
                                 {selectedPeptides.map(name => {
-                                    const info = PEPTIDES_DB[name] || {};
-                                    const evLabel = (info.evidence || '').replace('-', ' ');
+                                    const pep = peptideMap.get(name);
+                                    const ev = pep ? topEvidence(pep) : 'preclinical';
+                                    const evLabel = ev.replace(/-/g, ' ');
                                     return (
                                         <div className="dt-row" key={name}>
                                             <div className="pep-cell">{name}</div>
-                                            <div className="num-cell" data-label="Dose">{info.dose || '—'}</div>
-                                            <div className="num-cell" data-label="Freq">{info.freq || '—'}</div>
-                                            <div className="num-cell" data-label="Route">{info.route || '—'}</div>
+                                            <div className="num-cell" data-label="Dose">{fmtDose(pep?.dosing)}</div>
+                                            <div className="num-cell" data-label="Freq">{pep?.dosing?.frequency || '—'}</div>
+                                            <div className="num-cell" data-label="Route">{pep?.dosing?.route || '—'}</div>
                                             <div className="num-cell" data-label="Evidence">
-                                                <span
-                                                    className={`evidence-badge ${info.evidence || ''}`}
-                                                    style={{ fontSize: 9, padding: '3px 8px' }}
-                                                >
+                                                <span className={`evidence-badge ${ev}`} style={{ fontSize: 9, padding: '3px 8px' }}>
                                                     {evLabel}
                                                 </span>
                                             </div>

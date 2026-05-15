@@ -8,6 +8,7 @@ import { FeedbackModal } from '@/components/feedback-modal';
 import { AffiliateLink } from '@/components/affiliate-link';
 import type { AffiliateVendor } from '@/lib/ga4-events';
 import { SchemaInjector } from '@/components/schema-injector';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import { PurityHistory } from '@/components/lab-data/PurityHistory';
 import { allVendorReviews } from '@/data/reviews';
 import { vendorBySlug } from '@/data/vendors';
@@ -186,6 +187,9 @@ export default async function VendorReviewPage({ params }: Props) {
           </div>
           <AuthorByline name="PeptiDex Editorial" variant="full" className="mb-6" />
           <div className="mt-4"><ShareBar title={review.titleTag} url={canonical} /></div>
+        </div>
+        <div className="mt-8">
+          <DisclaimerCard variant="vendor" />
         </div>
       </header>
 
@@ -554,9 +558,7 @@ export default async function VendorReviewPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      <InlineDisclaimer type="affiliate" className="mb-12" />
     </main>
   );
 }

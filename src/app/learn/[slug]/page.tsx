@@ -11,6 +11,7 @@ import { SHORT_DISCLAIMER } from '@/data/constants';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { AutoLink } from '@/components/auto-link';
 import { SchemaInjector } from '@/components/schema-injector';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 
 // ─── STATIC GENERATION ──────────────────────────────────────────
 
@@ -119,15 +120,7 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
           <span className="text-zinc-500">{peptide.category}</span>
         </div>
 
-        {/* Disclaimer */}
-        <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-3">
-          <div className="flex items-start gap-2">
-            <ShieldAlert className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-amber-400/80 leading-relaxed font-medium">
-              <strong>EDUCATIONAL USE ONLY:</strong> {SHORT_DISCLAIMER}
-            </p>
-          </div>
-        </div>
+        <DisclaimerCard variant="educational" className="mt-6" />
       </header>
 
       <article className="space-y-14">
@@ -315,9 +308,7 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
                   Compare Vendors Side by Side <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
-              <p className="text-[10px] text-zinc-600 leading-relaxed">
-                <strong>Disclosure:</strong> PeptiDex may earn a commission from affiliate links. This does not affect our recommendations.
-              </p>
+              <InlineDisclaimer type="affiliate" className="mt-2" />
             </div>
           </div>
         </section>
@@ -362,20 +353,6 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
           </div>
         </section>
       )}
-
-      {/* Disclaimer */}
-      <div className="rounded-xl bg-amber-950/20 border border-amber-500/20 p-5">
-        <div className="flex items-start gap-3">
-          <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="text-sm text-amber-200/90 font-semibold mb-1">Educational Content Disclaimer</p>
-            <p className="text-xs text-amber-200/70 leading-relaxed">
-              This guide is provided for educational and research purposes only. Nothing on this page should be interpreted as medical advice. Always consult a licensed healthcare professional.{' '}
-              <Link href="/disclaimer" className="underline hover:text-amber-200 transition-colors">Read our full disclaimer.</Link>
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div className="text-center">
         <p className="text-xs text-zinc-600">

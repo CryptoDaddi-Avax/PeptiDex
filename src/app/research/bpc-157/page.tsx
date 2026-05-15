@@ -4,6 +4,7 @@ import {
     Microscope, Dna, Activity, Settings, GitMerge, 
     ShieldAlert, FileText, ArrowRight, AlertTriangle 
 } from "lucide-react";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 export const metadata: Metadata = {
     title: "BPC-157: Research Overview, Benefits & Stack Guide",
@@ -25,6 +26,7 @@ export default function BPC157ReferencePage() {
                 <p className="text-lg text-zinc-400 leading-relaxed max-w-2xl">
                     A comprehensive look at BPC-157, a gastric-derived pentadecapeptide central to modern preclinical research in localized tissue repair and GI healing.
                 </p>
+                <DisclaimerCard variant="educational" className="mt-6" />
             </header>
 
             <article className="space-y-12">

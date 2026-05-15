@@ -320,9 +320,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         </div>
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Research compounds not approved by FDA for human consumption
-      </div>
+      
       </div>
     </main>
   );

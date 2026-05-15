@@ -195,9 +195,7 @@ export default function OralVsInjectablePage() {
         <Link href="/blog/oral-peptide-revolution" className="text-violet-400 hover:text-violet-300 transition-colors">Read: The Oral Peptide Revolution →</Link>
       </div>
       </div>
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      
     </main>
   );
 }

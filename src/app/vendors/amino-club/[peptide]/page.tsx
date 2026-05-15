@@ -9,6 +9,7 @@ import { SHORT_DISCLAIMER } from '@/data/constants';
 import { getAuthorSlug } from '@/data/authors';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { AutoLink } from '@/components/auto-link';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import { peptides } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
 import { vendors } from '@/data/vendors';
@@ -175,6 +176,9 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
               View full {name} Profile <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
+        </div>
+        <div className="mt-8">
+          <DisclaimerCard variant="vendor" />
         </div>
       </header>
 
@@ -370,9 +374,7 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
         </div>
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · {name} sold strictly for in-vitro laboratory research · Not for human consumption
-      </div>
+      <InlineDisclaimer type="affiliate" className="mb-12" />
     </main>
   );
 }

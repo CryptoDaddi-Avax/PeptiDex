@@ -15,6 +15,7 @@ export function buildDrugSchema({
     "@context": "https://schema.org",
     "@type": "Drug",
     "name": name,
+    "alternativeHeadline": "Research Chemicals - Not for Human Use",
     "alternateName": alternateName,
     "description": description,
     "mechanismOfAction": mechanismOfAction,

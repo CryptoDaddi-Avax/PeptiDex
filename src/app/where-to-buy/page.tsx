@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Beaker } from 'lucide-react';
 import { getPeptideBySlug } from '@/data/peptides';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import '@/app/vendors/vendors-redesign.css';
 
 const TARGET_SLUGS = [
@@ -55,6 +56,10 @@ export default function WhereToBuyIndexPage() {
         </div>
       </header>
 
+      <div className="vn-container" style={{ marginTop: '2rem' }}>
+        <DisclaimerCard variant="vendor" />
+      </div>
+
       <div className="vn-container" style={{ marginBottom: '80px', marginTop: '40px' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {peptides.map((peptide) => (
@@ -84,6 +89,10 @@ export default function WhereToBuyIndexPage() {
             </Link>
           ))}
         </div>
+      </div>
+
+      <div className="vn-container" style={{ marginBottom: '4rem' }}>
+        <InlineDisclaimer type="affiliate" />
       </div>
     </>
   );

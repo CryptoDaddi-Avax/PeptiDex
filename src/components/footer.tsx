@@ -75,6 +75,7 @@ export function Footer() {
             </h3>
             <ul className="space-y-3 text-sm text-zinc-400">
               <li><Link href="/vendors" className="hover:text-emerald-400 transition-colors">Vendor Reviews</Link></li>
+              <li><Link href="/coupon-codes" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><Tag className="w-3.5 h-3.5"/> Coupons &amp; Deals</Link></li>
               <li><Link href="/tools/pricing" className="hover:text-emerald-400 transition-colors">Price Comparison</Link></li>
               <li><Link href="/tools/compare" className="hover:text-emerald-400 transition-colors">Compare Tool</Link></li>
               <li><Link href="/tools/cycle-planner" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><FlaskConical className="w-3.5 h-3.5"/> Cycle Planner</Link></li>

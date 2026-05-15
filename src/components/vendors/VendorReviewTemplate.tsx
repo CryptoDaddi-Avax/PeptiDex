@@ -4,6 +4,7 @@ import type { VendorReviewData } from '@/data/vendor-review-types';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
 import { AffiliateLink } from '@/components/affiliate-link';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 
 function Stars({ rating, max = 5 }: { rating: number; max?: number }) {
   return (
@@ -42,11 +43,8 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
             <span className="current">{review.name} Review</span>
           </nav>
 
-          {/* Affiliate disclosure — above fold */}
-          <div className="rounded-lg border border-amber-500/20 bg-amber-950/10 px-4 py-2 mt-4 mb-4 text-xs text-zinc-400 flex items-center gap-2">
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-            <span><strong className="text-amber-400">Affiliate disclosure:</strong> PeptiDex may earn a commission when you purchase through links on this page. Rankings are not influenced by commercial relationships. <Link href="/disclaimer" className="text-amber-400 hover:underline">Full disclaimer →</Link></span>
-          </div>
+          {/* Vendor Disclaimer */}
+          <DisclaimerCard variant="vendor" />
 
           <div className="section-label">§ Vendor Review</div>
           <h1 className="page-title">{review.name}<br /><em>2026 review</em>.</h1>
@@ -172,6 +170,8 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
               <ExternalLink className="w-4 h-4" /> View sample COA PDF →
             </a>
           )}
+          
+          <InlineDisclaimer type="coa" className="mb-2" />
           {/* COA Screenshot — replace src with a real screenshot from this vendor's COA page */}
           <div className="relative rounded-xl overflow-hidden border border-zinc-800 mb-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -428,10 +428,6 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
         <div className="flex items-center justify-between pt-6 border-t border-zinc-800/50 text-xs text-zinc-600">
           <span>Last reviewed: <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_DATE}</time></span>
         </div>
-      </div>
-
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Research compounds not approved by FDA for human consumption
       </div>
     </main>
   );

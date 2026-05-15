@@ -23,6 +23,7 @@ import { WhereToBuySection } from '@/components/library/WhereToBuySection';
 import { TrustBlock } from '@/components/library/TrustBlock';
 import { RelatedArticles } from '@/components/related-articles';
 import { AffiliateSource } from '@/components/affiliate-source';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import { StickyQuickCompare } from '@/components/sticky-quick-compare';
 import { StackCard } from '@/components/stack-card';
 import { SaveButton } from '@/components/save-button';
@@ -88,6 +89,7 @@ export function PeptideDetailRedesign({
       <header className="pd-page-header">
         <div className="pd-header-grid" />
         <div className="pd-header-wrap">
+          <DisclaimerCard variant="peptide" peptideName={peptide.name} className="mt-0 mb-6" />
           {/* ─── ENTITY CARD (above H1, AI extraction optimized) ─── */}
           {entityCardOverrides[peptide.slug] && (
             <EntityCard data={entityCardOverrides[peptide.slug]} peptideSlug={peptide.slug} />
@@ -153,11 +155,7 @@ export function PeptideDetailRedesign({
         <div className="pd-layout">
           {/* ── Main Column ── */}
           <div className="pd-main">
-            {/* Disclaimer */}
-            <div className="pd-disclaimer">
-              <ShieldAlert />
-              <p>{SHORT_DISCLAIMER}</p>
-            </div>
+            {/* Disclaimer removed (replaced by DisclaimerCard at top) */}
 
             {/* WHERE TO BUY — commercial intent, first section */}
             <WhereToBuySection
@@ -232,12 +230,7 @@ export function PeptideDetailRedesign({
             {/* Dosing Protocol */}
             {peptide.dosing && (
               <Section icon={<Syringe />} label="§ Dosing Protocol" title="Dosing">
-                <div className="pd-dosing-warn">
-                  <p>
-                    ⚠️ For educational purposes only. Not medical advice. Consult a
-                    healthcare professional before using any peptide.
-                  </p>
-                </div>
+                <InlineDisclaimer type="dosing" />
                 <div className="pd-dosing-grid">
                   <div className="pd-dosing-cell">
                     <span className="pd-dosing-label">Route</span>
@@ -363,6 +356,13 @@ export function PeptideDetailRedesign({
 
             {/* ─── Contextual Tool Callouts ─── */}
             <div className="pd-tool-callouts">
+              <Link href="/peptidex-coupon" className="pd-tool-cta" style={{ background: 'var(--bg-card)', borderColor: 'var(--emerald)' }}>
+                <div className="pd-tool-cta-icon" style={{ color: 'var(--emerald)' }}><BadgeCheck /></div>
+                <div className="pd-tool-cta-text">
+                  <span className="pd-tool-cta-label" style={{ color: 'var(--emerald)' }}>PEPTIDEX coupon for {peptide.name}</span>
+                  <span className="pd-tool-cta-desc">Save 20% on {peptide.name} at Amino Club & verified vendors →</span>
+                </div>
+              </Link>
               {['bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'].includes(peptide.slug) && (
                 <Link href={`/where-to-buy/${peptide.slug}`} className="pd-tool-cta" style={{ background: 'var(--bg-card)', borderColor: 'var(--gold)' }}>
                   <div className="pd-tool-cta-icon" style={{ color: 'var(--gold)' }}><BadgeCheck /></div>
@@ -538,10 +538,7 @@ export function PeptideDetailRedesign({
         <FeedbackModal pageUrl={`https://peptidex.app/library/${peptide.slug}`} />
       </div>
 
-      {/* Disclaimer Strip */}
-      <div className="pd-disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      {/* Disclaimer Strip removed (redundant) */}
       </>
   );
 }

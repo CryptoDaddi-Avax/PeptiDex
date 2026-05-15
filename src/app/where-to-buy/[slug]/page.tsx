@@ -9,6 +9,7 @@ import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
 import { buildBreadcrumbSchema, buildFAQPageSchema } from '@/lib/seo/schema';
 import { buildProductSchema } from '@/lib/seo/schema/product';
 import { SchemaInjector } from '@/components/schema-injector';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import { vendorPricing } from '@/data/vendor-pricing';
 import '@/app/vendors/vendors-redesign.css';
 
@@ -169,6 +170,10 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
         </div>
       </header>
 
+      <div className="vn-container" style={{ marginTop: '2rem' }}>
+        <DisclaimerCard variant="vendor" />
+      </div>
+
       <div className="vn-container">
         <PriceComparisonTable peptideSlug={slug} peptideName={peptide.name} />
       </div>
@@ -214,23 +219,8 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
         <VendorsFAQ faqs={faqs} />
       </div>
 
-      <div className="vn-container">
-        <div className="vn-page-footer-note">
-          <p>
-            <strong>Research Use Only.</strong> {peptide.name} and all other peptides listed on PeptiDex are
-            sold by third-party vendors for laboratory and scientific research purposes
-            only. They are not intended for human consumption, therapeutic use, or
-            veterinary application.{' '}
-            <Link href="/disclaimer" style={{ color: 'var(--gold)' }}>
-              Read full disclaimer →
-            </Link>
-          </p>
-          <p>
-            <strong>Affiliate Disclosure.</strong> Some links on this page are affiliate
-            links marked with <code>rel="sponsored nofollow"</code>. PeptiDex may
-            earn a commission at no cost to you.
-          </p>
-        </div>
+      <div className="vn-container" style={{ marginBottom: '4rem' }}>
+        <InlineDisclaimer type="affiliate" />
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import { FeedbackModal } from '@/components/feedback-modal';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { getAuthorSlug } from '@/data/authors';
 import { AffiliateLink } from '@/components/affiliate-link';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import {
   Calendar, User, ArrowRight, HelpCircle
 } from 'lucide-react';
@@ -118,6 +119,9 @@ export default function AminoClubFAQ() {
           </div>
           <div className="mt-4"><ShareBar title={POST_TITLE} url={CANONICAL} /></div>
         </div>
+        <div className="mt-8">
+          <DisclaimerCard variant="vendor" />
+        </div>
       </header>
 
       <div className="about-content reveal space-y-16">
@@ -177,9 +181,7 @@ export default function AminoClubFAQ() {
         </div>
       </div>
 
-      <div className="disclaimer-strip">
-        ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
-      </div>
+      <InlineDisclaimer type="affiliate" className="mb-12" />
     </main>
   );
 }

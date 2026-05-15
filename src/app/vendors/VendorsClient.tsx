@@ -43,6 +43,7 @@ import { VENDORS_FAQ_ITEMS } from './faqData';
 import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTable';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
+import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import './vendors-redesign.css';
 
 // ── Props ─────────────────────────────────────────────────────────────────────
@@ -118,6 +119,10 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
           </div>
         </div>
       </header>
+
+      <div className="vn-container" style={{ marginTop: '2rem' }}>
+        <DisclaimerCard variant="vendor" />
+      </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
           2. QUICK COMPARISON TABLE
@@ -446,25 +451,8 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
       {/* ═══════════════════════════════════════════════════════════════════
           FOOTER DISCLAIMER
           ═══════════════════════════════════════════════════════════════════ */}
-      <div className="vn-container">
-        <div className="vn-page-footer-note">
-          <p>
-            <strong>Research Use Only.</strong> All peptides listed on PeptiDex are
-            sold by third-party vendors for laboratory and scientific research purposes
-            only. They are not intended for human consumption, therapeutic use, or
-            veterinary application. PeptiDex does not sell peptides and is not
-            responsible for the actions of any vendor.{' '}
-            <Link href="/disclaimer" style={{ color: 'var(--gold)' }}>
-              Read full disclaimer →
-            </Link>
-          </p>
-          <p>
-            <strong>Affiliate Disclosure.</strong> Some links on this page are affiliate
-            links marked with <code>rel="sponsored nofollow"</code>. PeptiDex may
-            earn a commission at no cost to you. Rankings are not influenced by
-            commercial relationships.
-          </p>
-        </div>
+      <div className="vn-container" style={{ marginBottom: '4rem' }}>
+        <InlineDisclaimer type="affiliate" />
       </div>
 
     </>

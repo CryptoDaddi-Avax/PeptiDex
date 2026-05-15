@@ -53,6 +53,7 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
           <li><a href="/stacks">Stacks</a></li>
           <li><a href="/tools">Tools</a></li>
           <li><a href="/vendors">Vendors</a></li>
+          <li><a href="/coupon-codes">Coupons</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/about/methodology">About</a></li>
         </ul>
@@ -103,6 +104,7 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
             { label: 'Stacks', href: '/stacks' },
             { label: 'Tools', href: '/tools' },
             { label: 'Vendors', href: '/vendors' },
+            { label: 'Coupons', href: '/coupon-codes' },
             { label: 'Blog', href: '/blog' },
             { label: 'About', href: '/about/methodology' },
           ].map(({ label, href }, i) => (
