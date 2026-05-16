@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './about-redesign.css';
+import { SITE_STATS } from '@/data/site-stats';
 
 export const metadata: Metadata = {
   title: 'About PeptiDex — Independent Peptide Research Index',
@@ -31,7 +32,7 @@ export default function AboutPage() {
     alternateName: ['PeptiDex Research Index', 'peptidex.app'],
     url: 'https://peptidex.app',
     logo: 'https://peptidex.app/logo.png',
-    description: 'PeptiDex (peptidex.app) is the independent peptide research index — 51 peptide profiles, 12 evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.',
+    description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.`,
     publishingPrinciples: 'https://peptidex.app/about/editorial-policy',
   };
 

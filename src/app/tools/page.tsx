@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import ToolsClient from "./ToolsClient";
 import { SchemaInjector } from "@/components/schema-injector";
+import { SITE_STATS } from "@/data/site-stats";
 
 export const metadata: Metadata = {
     title: "Free Peptide Research Tools — Cycle Planner, Comparison, Pricing",
-    description: "10 free interactive peptide research tools: Cycle Planner, Evidence Dashboard, Peptide Comparison, Price Comparison, Reconstitution Calculator, COA Analyzer, PK Plasma Curves, and more.",
+    description: `${SITE_STATS.tools.count} free interactive peptide research tools: Cycle Planner, Evidence Dashboard, Peptide Comparison, Price Comparison, Reconstitution Calculator, COA Analyzer, PK Plasma Curves, and more.`,
     keywords: [
         "peptide research tools",
         "peptide reconstitution calculator",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: "Free Peptide Research Tools — Cycle Planner, Comparison, Pricing | PeptiDex",
-        description: "10 free interactive peptide research tools for dosing, comparison, pricing, and pharmacokinetics.",
+        description: `${SITE_STATS.tools.count} free interactive peptide research tools for dosing, comparison, pricing, and pharmacokinetics.`,
         url: "https://peptidex.app/tools",
         type: "website",
     },
@@ -34,12 +35,12 @@ export default function ToolsPage() {
             "@type": "CollectionPage",
             name: "Free Peptide Research Tools",
             url: "https://peptidex.app/tools",
-            description: "10 free interactive peptide research tools for dosing, comparison, pricing, and pharmacokinetics.",
+            description: `${SITE_STATS.tools.count} free interactive peptide research tools for dosing, comparison, pricing, and pharmacokinetics.`,
             isPartOf: { "@type": "WebSite", url: "https://peptidex.app" },
         },
         ...[
             { name: "Cycle Planner", url: "https://peptidex.app/tools/cycle-planner", desc: "Plan your full peptide cycle with exact vial counts, dosing schedules, and vendor sourcing." },
-            { name: "Evidence Dashboard", url: "https://peptidex.app/tools/evidence", desc: "51 peptides ranked by strength of clinical evidence with study counts." },
+            { name: "Evidence Dashboard", url: "https://peptidex.app/tools/evidence", desc: `${SITE_STATS.peptides.count} peptides ranked by strength of clinical evidence with study counts.` },
             { name: "Peptide Comparison", url: "https://peptidex.app/tools/compare", desc: "Compare 2-3 peptides side-by-side across mechanisms, dosing, and safety." },
             { name: "Price Comparison", url: "https://peptidex.app/tools/pricing", desc: "Cross-vendor pricing: cost per vial, per dose, and exclusive PEPTIDEX discounts." },
             { name: "Reconstitution Calculator", url: "https://peptidex.app/tools/calculator", desc: "BAC water volumes, concentration math, and syringe-unit conversions." },

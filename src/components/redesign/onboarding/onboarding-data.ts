@@ -7,6 +7,8 @@
 
 
 
+import { SITE_STATS } from '@/data/site-stats';
+
 // ── Supply Products ───────────────────────────────────────────────────────────
 export interface SupplyProduct {
   id: string;
@@ -112,7 +114,7 @@ export const TOOLKIT_ITEMS = [
   { href: '/tools/calculator', title: 'Reconstitution Calculator', desc: 'Calculate BAC water volumes, solution concentrations, and exact syringe-unit draw marks — from vial to needle in one step.', badge: 'ESSENTIAL' },
   { href: '/tools/cycle-planner', title: 'Cycle Planner', desc: 'Map your full research protocol end-to-end — vial counts, dosing schedules, total cost, and vendor sourcing on a single timeline.', badge: 'POPULAR' },
   { href: '/tools/interactions', title: 'Interaction Checker', desc: 'Cross-reference any peptide stack against known synergies, cautions, and contraindications before you combine compounds.' },
-  { href: '/tools/evidence', title: 'Evidence Dashboard', desc: 'Browse 51 peptides ranked by published clinical evidence — filterable by research goal, trial phase, and mechanism of action.' },
+  { href: '/tools/evidence', title: 'Evidence Dashboard', desc: `Browse ${SITE_STATS.peptides.count} peptides ranked by published clinical evidence — filterable by research goal, trial phase, and mechanism of action.` },
   { href: '/tools/coa', title: 'COA Analyzer', desc: "Upload or paste any vendor's Certificate of Analysis and get an instant purity and molecular weight verification against reference data." },
-  { href: '/tools/pricing', title: 'Price Comparison', desc: 'Compare pricing across all six verified vendors — with automatic discount codes, cost-per-dose math, and bulk savings calculations.' },
+  { href: '/tools/pricing', title: 'Price Comparison', desc: `Compare pricing across all ${SITE_STATS.vendors.count} verified vendors — with automatic discount codes, cost-per-dose math, and bulk savings calculations.` },
 ];

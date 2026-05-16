@@ -1,0 +1,24 @@
+{
+  "files": [
+    "src/content/blog/**",
+    "src/app/blog/**",
+    "src/app/guides/**",
+    "src/app/lead/**",
+    "src/data/vendor-pricing.ts",
+    "src/data/verified-pmids.ts",
+    "src/data/blog.ts"
+  ],
+  "patterns": [
+    "\\bPMID\\s*\\d+",
+    "\\$\\d+\\.?\\d*",
+    "\\d+mg|\\d+mcg|\\d+ng",
+    "\\b2[-–]?3\\s+peptides?\\b",
+    "\\b8\\s+peptides?\\b",
+    "\\b6\\s+peptides?\\b",
+    "\\b82\\s+peptide\\s+research\\s+terms\\b",
+    "\\bACTH4-10\\s+peptide\\b",
+    "\\bLL-37\\s+peptide\\b",
+    "\\b#?1\\s+Peptide\\b",
+    "\\b157\\s+Peptide\\b"
+  ]
+}

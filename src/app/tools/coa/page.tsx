@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 import CoaClient from "./CoaClient";
+import { SITE_STATS } from "@/data/site-stats";
 
 export const metadata: Metadata = {
     title: "COA Analyzer — Verify Peptide Certificates of Analysis",
     description:
-        "Free COA verification tool: check molecular weight and purity against reference values for 22 peptides. Detects red flags instantly.",
+        `Free COA verification tool: check molecular weight and purity against reference values for ${SITE_STATS.peptides.count} peptides. Detects red flags instantly.`,
     alternates: { canonical: "https://peptidex.app/tools/coa" },
     openGraph: {
         title: "COA Analyzer — Peptide Certificate Verification | PeptiDex",

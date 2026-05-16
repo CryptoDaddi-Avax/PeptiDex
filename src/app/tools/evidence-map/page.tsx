@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
 import { peptides } from "@/data/peptides";
+import { SITE_STATS } from "@/data/site-stats";
 import { EvidenceMapClient } from "./client";
 import { Beaker, Calendar } from "lucide-react";
 import { EmbedModal } from "@/components/embed-modal";
 
 export const metadata: Metadata = {
-    title: "Peptide Evidence Map: 33 Compounds Ranked by Scientific Evidence [2026]",
+    title: `Peptide Evidence Map: ${SITE_STATS.peptides.count} Research Peptides Ranked by Scientific Evidence [2026]`,
     description:
-        "Interactive visualization of 33 research peptides ranked by scientific evidence — from FDA-approved compounds to emerging research. Filter by goal, compare evidence tiers, and explore clinical trial data. Updated April 2026.",
+        `Interactive visualization of ${SITE_STATS.peptides.count} research peptides ranked by scientific evidence — from FDA-approved compounds to emerging research. Filter by goal, compare evidence tiers, and explore clinical trial data. Updated April 2026.`,
     keywords: [
         "peptide research evidence",
         "which peptides have clinical trials",
@@ -20,9 +21,9 @@ export const metadata: Metadata = {
     ],
     alternates: { canonical: "https://peptidex.app/tools/evidence-map" },
     openGraph: {
-        title: "Peptide Evidence Map: 33 Compounds Ranked by Scientific Evidence [2026]",
+        title: `Peptide Evidence Map: ${SITE_STATS.peptides.count} Research Peptides Ranked by Scientific Evidence [2026]`,
         description:
-            "The most comprehensive visual overview of peptide research evidence. 33 compounds mapped across 4 evidence tiers — from FDA-approved to emerging research. Filter by goal, explore clinical data.",
+            `The most comprehensive visual overview of peptide research evidence. ${SITE_STATS.peptides.count} research peptides mapped across 4 evidence tiers — from FDA-approved to emerging research. Filter by goal, explore clinical data.`,
         url: "https://peptidex.app/tools/evidence-map",
         type: "website",
         images: [
@@ -30,15 +31,15 @@ export const metadata: Metadata = {
                 url: "https://peptidex.app/api/og?type=evidence-map",
                 width: 1200,
                 height: 630,
-                alt: "Peptide Evidence Map — 33 compounds ranked by scientific evidence",
+                alt: `Peptide Evidence Map — ${SITE_STATS.peptides.count} research peptides ranked by scientific evidence`,
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Peptide Evidence Map: 33 Compounds by Evidence Level [2026]",
+        title: `Peptide Evidence Map: ${SITE_STATS.peptides.count} Research Peptides by Evidence Level [2026]`,
         description:
-            "Interactive visualization of 51 peptides ranked by FDA approval, clinical trials, and preclinical data. The definitive research reference.",
+            `Interactive visualization of ${SITE_STATS.peptides.count} peptides ranked by FDA approval, clinical trials, and preclinical data. The definitive research reference.`,
     },
 };
 

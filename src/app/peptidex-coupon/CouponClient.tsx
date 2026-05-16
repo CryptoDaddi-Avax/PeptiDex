@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { couponVendorTable, howToSteps, couponFAQs } from '@/data/coupon-page-config';
 import { vendorPricing } from '@/data/vendor-pricing';
+import { SITE_STATS } from '@/data/site-stats';
 import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import './coupon-page.css';
 
@@ -94,7 +95,7 @@ export default function CouponPageClient() {
           </h1>
 
           <p className="coupon-lead">
-            <strong>PEPTIDEX</strong> is the only coupon code I've verified across 6 research peptide vendors —{' '}
+            <strong>PEPTIDEX</strong> is the only coupon code I've verified across {SITE_STATS.vendors.count} research peptide vendors —{' '}
             <strong>20% off Amino Club</strong>, <strong>50% off Ascension Peptides</strong>, and{' '}
             <strong>15% off Bio Longevity Labs, Limitless Life, Pantheon, & LVLUP Health</strong>.
             No expiration. Verified {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.
@@ -393,7 +394,7 @@ export default function CouponPageClient() {
                 date: 'May 7, 2026',
               },
               {
-                text: '"Monthly price check done. PEPTIDEX still live at all 6 vendors. Bio Longevity Labs stacking with their 25% sale = 36% total. Best deal window I\'ve tracked."',
+                text: `"Monthly price check done. PEPTIDEX still live at all ${SITE_STATS.vendors.count} vendors. Bio Longevity Labs stacking with their 25% sale = 36% total. Best deal window I've tracked."`,
                 handle: '@TheCryptoDaddi',
                 date: 'May 12, 2026',
               },
@@ -423,7 +424,7 @@ export default function CouponPageClient() {
           <div className="sticky-left">
             <span className="sticky-label">Your code:</span>
             <code className="sticky-code">PEPTIDEX</code>
-            <span className="sticky-savings">20–50% off at 6 vendors</span>
+            <span className="sticky-savings">20–50% off at {SITE_STATS.vendors.count} vendors</span>
           </div>
           <button
             className="sticky-copy-btn"

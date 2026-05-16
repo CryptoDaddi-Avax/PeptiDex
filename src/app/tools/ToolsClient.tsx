@@ -1,5 +1,7 @@
 'use client';
 
+import { SITE_STATS } from "@/data/site-stats";
+
 import Link from "next/link";
 import { 
   GitCompare, Calculator, ShieldAlert, ArrowRight, GraduationCap, 
@@ -39,7 +41,7 @@ const tools = [
         href: "/tools/evidence",
         icon: BarChart3,
         title: "Evidence Dashboard",
-        description: "All 51 peptides ranked by strength of clinical evidence with study counts.",
+        description: `All ${SITE_STATS.peptides.count} peptides ranked by strength of clinical evidence with study counts.`,
     },
     {
         href: "/tools/pricing",

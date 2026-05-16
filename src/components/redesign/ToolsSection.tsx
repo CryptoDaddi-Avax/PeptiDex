@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { SITE_STATS } from '@/data/site-stats';
 import {
   ShoppingCart, GitCompare, Calculator, ShieldCheck,
   BarChart3, DollarSign, Activity, TrendingDown,
@@ -19,7 +20,7 @@ const featuredTools = [
     href: '/tools/evidence',
     icon: BarChart3,
     title: 'Evidence Dashboard',
-    description: '51 peptides ranked by strength of clinical evidence with study counts.',
+    description: `${SITE_STATS.peptides.count} peptides ranked by strength of clinical evidence with study counts.`,
   },
   {
     href: '/tools/compare',

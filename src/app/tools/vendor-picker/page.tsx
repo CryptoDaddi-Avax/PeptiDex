@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SmartVendorPicker } from "@/components/tools/SmartVendorPicker";
+import { SITE_STATS } from "@/data/site-stats";
 
 export const metadata: Metadata = {
     title: "Vendor Picker — Find the Best Peptide Vendor for Your Needs",
@@ -62,7 +63,7 @@ export default function VendorPickerPage() {
                     </h2>
                     <div className="space-y-3">
                         {[
-                            { n: "1", label: "Pick your peptide", desc: "Search across all 52 peptides in our catalog." },
+                            { n: "1", label: "Pick your peptide", desc: `Search across all ${SITE_STATS.peptides.count} peptides in our catalog.` },
                             { n: "2", label: "Set your region", desc: "US-only or international — filters out vendors that can't ship to you." },
                             { n: "3", label: "Choose payment method", desc: "Credit card, crypto, or either — eliminates incompatible vendors." },
                             { n: "4", label: "Pick your priority", desc: "Cheapest price, fastest shipping, highest purity, or best COA documentation." },

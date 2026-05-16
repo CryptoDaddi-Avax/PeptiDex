@@ -205,6 +205,135 @@ for (const fileDef of FILES_TO_CHECK) {
   }
 }
 
+// ----- Numeric Claims AST Lint -----
+function checkNumericClaims() {
+  console.log('\\nAnalyzing AST for hardcoded numeric claims...');
+  const whitelistPath = path.resolve(process.cwd(), 'scripts/seo-lint-whitelist.json');
+  let whitelistPatterns = [];
+  let whitelistFiles = [];
+  if (fs.existsSync(whitelistPath)) {
+    const whitelist = JSON.parse(fs.readFileSync(whitelistPath, 'utf8'));
+    whitelistPatterns = whitelist.patterns.map(p => new RegExp(p, 'i'));
+    whitelistFiles = whitelist.files;
+  }
+
+  function isPathWhitelisted(filePath) {
+    if (filePath.includes('__tests__') || filePath.includes('.test.')) return true;
+    for (const glob of whitelistFiles) {
+      const cleanGlob = glob.replace('**', '');
+      if (filePath.replace(/\\/g, '/').includes(cleanGlob)) return true;
+    }
+    return false;
+  }
+
+  const targetPatterns = [
+    /\b\d+\s+peptides?\b/i,
+    /\b\d+\s+compounds?\b/i,
+    /\b\d+\s+stacks?\b/i,
+    /\b\d+\s+vendors?\b/i,
+    /\b\d+\s+tools?\b/i,
+    /\b\d+\s+studies\b/i,
+    /\b99(?:\.\d+)?(?:\+)?%\b/i,
+    /\b\d+%\+/i
+  ];
+
+  const sourceFiles = project.getSourceFiles('src/**/*.{ts,tsx}');
+  console.log(`Checking ${sourceFiles.length} files for numeric claims...`);
+  
+  for (const sourceFile of sourceFiles) {
+    const filePath = sourceFile.getFilePath();
+    if (isPathWhitelisted(filePath)) continue;
+
+    sourceFile.forEachDescendant(node => {
+      // @ts-ignore - SyntaxKind not fully exported for some reason? we use literal strings or imports
+      if (node.getKindName() !== 'StringLiteral' &&
+          node.getKindName() !== 'NoSubstitutionTemplateLiteral' &&
+          node.getKindName() !== 'JsxText') {
+        return;
+      }
+
+      const text = node.getText().replace(/^["'`]/, '').replace(/["'`]$/, '').trim();
+      if (!text) return;
+
+      let matchedPattern = null;
+      for (const pat of targetPatterns) {
+        if (pat.test(text)) {
+          matchedPattern = pat;
+          break;
+        }
+      }
+      if (!matchedPattern) return;
+
+      for (const wPat of whitelistPatterns) {
+        if (wPat.test(text)) return;
+      }
+
+      let isCandidate = false;
+      let contextName = '';
+
+      const parent = node.getParent();
+      if (parent) {
+        if (parent.getKindName() === 'PropertyAssignment') {
+          // @ts-ignore
+          const propName = parent.getName();
+          if (/^(title|description|desc|label|keywords|alt|content|text)$/.test(propName)) {
+            isCandidate = true;
+            contextName = `Property: ${propName}`;
+          }
+        } else if (parent.getKindName() === 'JsxAttribute') {
+          if (typeof parent.getName === 'function') {
+            const attrName = parent.getName();
+            if (/^(title|description|desc|label|alt|content|text)$/.test(attrName)) {
+              isCandidate = true;
+              contextName = `JSX Attribute: ${attrName}`;
+            }
+          }
+        } else if (node.getKindName() === 'JsxText') {
+          const jsxElement = parent.getParent();
+          if (jsxElement && (jsxElement.getKindName() === 'JsxElement' || jsxElement.getKindName() === 'JsxSelfClosingElement')) {
+            // @ts-ignore
+            const tagName = jsxElement.getKindName() === 'JsxElement' ? jsxElement.getOpeningElement().getTagNameNode().getText() : jsxElement.getTagNameNode().getText();
+            
+            if (/^h[1-6]$/i.test(tagName)) {
+               isCandidate = true;
+               contextName = `Heading: ${tagName}`;
+            } else if (/^(title|meta)$/i.test(tagName)) {
+               isCandidate = true;
+               contextName = `Meta Tag: ${tagName}`;
+            } else {
+               let ancestor = jsxElement;
+               let depth = 0;
+               while (ancestor && depth < 10) {
+                  if (ancestor.getKindName() === 'JsxElement' || ancestor.getKindName() === 'JsxSelfClosingElement') {
+                     // @ts-ignore
+                     const elemName = ancestor.getKindName() === 'JsxElement' ? ancestor.getOpeningElement().getTagNameNode().getText() : ancestor.getTagNameNode().getText();
+                     if (/footer/i.test(elemName) || /hero/i.test(elemName)) {
+                        isCandidate = true;
+                        contextName = `Component: ${elemName}`;
+                        break;
+                     }
+                  }
+                  if (isCandidate) break;
+                  ancestor = ancestor.getParent();
+                  depth++;
+               }
+            }
+          }
+        }
+      }
+
+      if (isCandidate) {
+        console.error(`❌ Numeric Claim Violation in ${filePath.replace(process.cwd().replace(/\\/g, '/'), '')}:${node.getStartLineNumber()}`);
+        console.error(`   Context: ${contextName}`);
+        console.error(`   Text: "${text}"`);
+        hasErrors = true;
+      }
+    });
+  }
+}
+
+checkNumericClaims();
+
 if (hasErrors) {
   console.error('\n🚨 SEO Lint Failed. Fix errors before building.');
   process.exit(1);
