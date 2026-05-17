@@ -126,5 +126,13 @@ export const verifiedPmids: Record<string, { authors: string; title: string; jou
         year: 1999,
         verified_date: "2026-05-14",
         verified_by: "Antigravity/Operator"
+    },
+    "25358450": {
+        authors: "González-Sales M, Hoeben E, Woo S, et al.",
+        title: "Population pharmacokinetic analysis of tesamorelin in HIV-infected patients and healthy subjects",
+        journal: "J Clin Pharmacol",
+        year: 2015,
+        verified_date: "2026-05-17",
+        verified_by: "Antigravity/Operator"
     }
 };

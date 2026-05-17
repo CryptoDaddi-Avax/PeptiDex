@@ -5,6 +5,7 @@ import Navigation from '@/components/redesign/Navigation';
 import StatsStrip from '@/components/redesign/StatsStrip';
 import CommandPalette from '@/components/redesign/CommandPalette';
 import QuizPromoCard from '@/components/redesign/QuizPromoCard';
+import AdvisorPreviewBlock from '@/components/redesign/AdvisorPreviewBlock';
 import GoalsGrid from '@/components/redesign/GoalsGrid';
 import ToolsSection from '@/components/redesign/ToolsSection';
 import VendorSection from '@/components/redesign/VendorSection';
@@ -167,6 +168,7 @@ export default function NewHomeClient({
       />
       <StatsStrip />
       <QuizPromoCard />
+      <AdvisorPreviewBlock />
       <GoalsGrid />
       <ToolsSection />
       <VendorSection />
