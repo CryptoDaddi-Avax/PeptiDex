@@ -37,12 +37,14 @@ import { stacks } from '@/data/stacks';
 function resolveDeepLink(searchParams: Record<string, string | string[] | undefined>): {
   guideOpen: boolean;
   initialStep: number;
+  skipHero: boolean;
 } {
   const guide = searchParams['guide'];
-  if (guide !== '1') return { guideOpen: false, initialStep: 0 };
+  const skipHero = searchParams['noHero'] === '1';
+  if (guide !== '1') return { guideOpen: false, initialStep: 0, skipHero };
   const raw = parseInt(String(searchParams['step'] ?? '1'), 10);
   const step = isNaN(raw) ? 0 : Math.max(0, Math.min(4, raw - 1));
-  return { guideOpen: true, initialStep: step };
+  return { guideOpen: true, initialStep: step, skipHero };
 }
 
 export default async function Page({
@@ -110,6 +112,7 @@ export default async function Page({
       <NewHomeClient
         initialGuideOpen={deepLink.guideOpen}
         initialStep={deepLink.initialStep}
+        skipHero={deepLink.skipHero}
       />
     </>
   );

@@ -56,9 +56,11 @@ function readOnboardingState() {
 export default function NewHomeClient({
   initialGuideOpen = false,
   initialStep = 0,
+  skipHero = false,
 }: {
   initialGuideOpen?: boolean;
   initialStep?: number;
+  skipHero?: boolean;
 }) {
   const [paletteOpen, setPaletteOpen] = useState(false);
   // P2 FIX: Props are resolved server-side in page.tsx, so server and client
@@ -152,7 +154,7 @@ export default function NewHomeClient({
     <>
       <Navigation onSearchOpen={() => setPaletteOpen(true)} />
       <CommandPalette isOpen={paletteOpen} onClose={() => setPaletteOpen(false)} />
-      <Hero onSearchOpen={() => setPaletteOpen(true)} />
+      {!skipHero && <Hero onSearchOpen={() => setPaletteOpen(true)} />}
       {/* BUG 1 FIX: Trigger lives OUTSIDE <Hero> to avoid overflow:hidden clipping.
           It is conditionally rendered by showTrigger state, same as before. */}
       {showTrigger && !guideOpen && (
