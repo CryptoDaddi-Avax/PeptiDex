@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Navigation from '@/components/redesign/Navigation';
 import StatsStrip from '@/components/redesign/StatsStrip';
 import CommandPalette from '@/components/redesign/CommandPalette';
+import QuizPromoCard from '@/components/redesign/QuizPromoCard';
 import GoalsGrid from '@/components/redesign/GoalsGrid';
 import ToolsSection from '@/components/redesign/ToolsSection';
 import VendorSection from '@/components/redesign/VendorSection';
@@ -165,6 +166,7 @@ export default function NewHomeClient({
         onComplete={handleGuideComplete}
       />
       <StatsStrip />
+      <QuizPromoCard />
       <GoalsGrid />
       <ToolsSection />
       <VendorSection />
