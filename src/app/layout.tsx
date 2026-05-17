@@ -12,6 +12,7 @@ import { SchemaInjector } from "@/components/schema-injector";
 import { buildWebSiteSchema, buildOrganizationSchema } from "@/lib/seo/schema";
 import { GlobalDisclaimerBanner } from "@/components/ui/GlobalDisclaimerBanner";
 import { SITE_STATS } from "@/data/site-stats";
+import { NewsletterGlobalProvider } from "@/components/newsletter/NewsletterGlobalProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -132,9 +133,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <GlobalDisclaimerBanner />
-        {/* Promo surfaces — banner renders above header, modal is global */}
+        {/* Promo surfaces — discount banner (top) and exit intent (vendor) */}
         <StickyDiscountBanner />
         <ExitIntentModal />
+        {/* Newsletter surfaces — sticky bottom banner + exit modal (newsletter) */}
+        <Suspense fallback={null}>
+          <NewsletterGlobalProvider />
+        </Suspense>
         <AuthProvider>
         <AutoLinkProvider>
           <main id="main-content" role="main">

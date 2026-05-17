@@ -7,6 +7,7 @@ import CommandPalette from '@/components/redesign/CommandPalette';
 import QuizPromoCard from '@/components/redesign/QuizPromoCard';
 import AdvisorPreviewBlock from '@/components/redesign/AdvisorPreviewBlock';
 import GoalsGrid from '@/components/redesign/GoalsGrid';
+import { NewsletterInlineBlock } from '@/components/newsletter/NewsletterInlineBlock';
 import ToolsSection from '@/components/redesign/ToolsSection';
 import VendorSection from '@/components/redesign/VendorSection';
 import Footer from '@/components/redesign/Footer';
@@ -172,6 +173,7 @@ export default function NewHomeClient({
       <QuizPromoCard />
       <AdvisorPreviewBlock />
       <GoalsGrid />
+      <NewsletterInlineBlock />
       <ToolsSection />
       <VendorSection />
       <Footer />
