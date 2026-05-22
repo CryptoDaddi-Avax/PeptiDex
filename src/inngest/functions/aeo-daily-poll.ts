@@ -39,8 +39,13 @@ async function withBackoff<T>(fn: () => Promise<T>, maxRetries = 4): Promise<T |
 }
 
 export const aeoDailyPoll = inngest.createFunction(
-  { id: 'aeo-daily-poll', retries: 1, cron: 'TZ=America/New_York 0 6 * * *' } as any,
+  { id: 'aeo-daily-poll', retries: 1 } as any,
+  [
+    { cron: 'TZ=America/New_York 0 6 * * *' },
+    { event: 'aeo/daily.poll.manual' },  // manual trigger for bootstrap testing
+  ] as any,
   async ({ step }: any) => {
+
     // Step 1: Check monthly burn rate
     await step.run('check-burn-rate', async () => {
       const burnAlert = await checkMonthlyBurnRate();
