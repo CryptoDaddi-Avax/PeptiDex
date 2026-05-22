@@ -5,6 +5,7 @@ export const verifiedPmids: Record<string, {
     year: number;
     verified_date: string;
     verified_by: string;
+    notes?: string;
 }> = {
 "9360512": { authors: "Khorram O et al.", title: "Effects of [norleucine27]growth hormone-releasing hormone (GHRH)(1-29)-NH2 administration on the immune system of aging men and women", journal: "Journal of Clinical Endocrinology and Metabolism", year: 1997, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "32107480": { authors: "Mookherjee N et al.", title: "Antimicrobial host defence peptides: functions and clinical potential", journal: "Nature Reviews Drug Discovery", year: 2020, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
