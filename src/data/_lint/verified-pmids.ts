@@ -1,5 +1,12 @@
 export const verifiedPmids: Record<string, {
-    "9360512": { authors: "Khorram O et al.", title: "Effects of [norleucine27]growth hormone-releasing hormone (GHRH)(1-29)-NH2 administration on the immune system of aging men and women", journal: "Journal of Clinical Endocrinology and Metabolism", year: 1997, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
+    authors: string;
+    title: string;
+    journal: string;
+    year: number;
+    verified_date: string;
+    verified_by: string;
+}> = {
+"9360512": { authors: "Khorram O et al.", title: "Effects of [norleucine27]growth hormone-releasing hormone (GHRH)(1-29)-NH2 administration on the immune system of aging men and women", journal: "Journal of Clinical Endocrinology and Metabolism", year: 1997, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "32107480": { authors: "Mookherjee N et al.", title: "Antimicrobial host defence peptides: functions and clinical potential", journal: "Nature Reviews Drug Discovery", year: 2020, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "11227856": { authors: "Khavinson VKh et al.", title: "Effect of pineal peptide on parameters of the biological age and life span in mice", journal: "Rossiiskii Fiziologicheskii Zhurnal Imeni I.M. Sechenova", year: 2001, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "38367045": { authors: "Mao X et al.", title: "A review of an investigational drug retatrutide, a novel triple agonist agent for the treatment of obesity and type 2 diabetes mellitus", journal: "European Journal of Clinical Pharmacology", year: 2024, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
@@ -263,7 +270,8 @@ export const verifiedPmids: Record<string, {
         year: 2020,
         verified_date: "2026-05-20",
         verified_by: "Antigravity/NLM-API"
-    }, authors: string; title: string; journal: string; year: number; verified_date: string; verified_by: string }> = {
+    }, authors: string; title: string; journal: string; year: number; verified_date: string; verified_by: string
+
     "37743481": {
         authors: "Wang Z, Chen M, Zhang T, et al.",
         title: "Thymalfasin therapy accelerates COVID-19 pneumonia rehabilitation through anti-inflammatory mechanisms",
