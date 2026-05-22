@@ -36,6 +36,9 @@ const nextConfig: NextConfig = {
       { source: '/research', destination: '/library', permanent: true },
       { source: '/research/bpc-157', destination: '/library/bpc-157', permanent: true },
       { source: '/research/tb-500', destination: '/library/tb-500', permanent: true },
+      // /best/ goal page consolidations — duplicate slug pairs → canonical URLs
+      { source: '/best/anti-aging', destination: '/best/longevity', permanent: true },
+      { source: '/best/skin-aesthetics', destination: '/best/skin-aesthetic', permanent: true },
       // Vendor review page consolidation — old static pages → dynamic template
       { source: '/vendors/amino-club-review', destination: '/vendors/amino-club', permanent: true },
       { source: '/vendors/bio-longevity-labs-review', destination: '/vendors/bio-longevity-labs', permanent: true },

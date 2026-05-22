@@ -30,7 +30,7 @@ export function RetatrutidePillar() {
             This delicate balance of receptor affinities is the "secret sauce" of retatrutide. The GLP-1 component slows gastric emptying and signals satiety in the hypothalamus. The GIP component enhances insulin secretion, improves white adipose tissue (WAT) blood flow, and may possess direct central nervous system effects that reduce nausea (a common side effect of pure GLP-1 agonists). Finally, the glucagon component acts directly on the liver to clear ectopic fat (steatosis) and increases basal metabolic rate. This tripartite attack on obesity is why retatrutide is often referred to in research circles as the "God Molecule" of metabolic peptides.
           </p>
           <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-zinc-400 bg-zinc-900/30 p-4 rounded-r-lg">
-            "Retatrutide is a single molecule with agonism at the GIP, GLP-1, and glucagon receptors... The addition of glucagon agonism is intended to increase energy expenditure and further improve hepatic fat metabolism." (Jastreboff et al., 2023, PMID: 37351564)
+            "Retatrutide is a single molecule with agonism at the GIP, GLP-1, and glucagon receptors... The addition of glucagon agonism is intended to increase energy expenditure and further improve hepatic fat metabolism." (Jastreboff et al., 2023, PMID: 37366315)
           </blockquote>
         </div>
       </section>
@@ -47,7 +47,7 @@ export function RetatrutidePillar() {
           </p>
           <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">The Phase 2 Obesity Trial (NEJM, 2023)</h4>
           <p>
-            The most consequential data published to date is the Phase 2, double-blind, randomized, placebo-controlled trial published in <em>The New England Journal of Medicine</em> by Jastreboff et al. (PMID: 37351564). This trial enrolled 338 adults with obesity (BMI ≥30) or overweight (BMI ≥27) with at least one weight-related condition. The study evaluated multiple dosing cohorts over a 48-week period.
+            The most consequential data published to date is the Phase 2, double-blind, randomized, placebo-controlled trial published in <em>The New England Journal of Medicine</em> by Jastreboff et al. (PMID: 37366315). This trial enrolled 338 adults with obesity (BMI ≥30) or overweight (BMI ≥27) with at least one weight-related condition. The study evaluated multiple dosing cohorts over a 48-week period.
           </p>
           <p>
             The results were, frankly, staggering. At 48 weeks, the mean body weight reductions were strictly dose-dependent:

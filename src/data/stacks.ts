@@ -18,7 +18,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         synergy_rationale: "Tesamorelin directly attacks stubborn visceral fat. MOTS-c acts at the mitochondrial level to boost energy and fatty acid oxidation (an exercise mimetic). CJC-1295 ensures a continuous GH elevation to protect and build muscle tissue while in a caloric deficit. Together, these 3 hit all the required pathways for true body recomposition without relying on GLP-1 agonists.",
         supporting_studies: [
             { description: "Tesamorelin visceral fat reduction", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20554713/" },
-            { description: "MOTS-c improves metabolic homeostasis via AMPK", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25710270/" },
+            { description: "MOTS-c improves metabolic homeostasis via AMPK", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
             { description: "CJC-1295 sustained GH/IGF-1 elevations in healthy adults", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
         ],
     },
@@ -34,7 +34,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         supporting_studies: [
             { description: "Retatrutide Phase 2: ~24% weight loss at 48 weeks", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/38367045/" },
             { description: "AOD-9604 stimulates lipolysis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" },
-            { description: "MOTS-c improves metabolic homeostasis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25710270/" },
+            { description: "MOTS-c improves metabolic homeostasis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
         ],
     },
     {
@@ -46,7 +46,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         ],
         synergy_rationale: "The undisputed 'Wolverine Stack.' BPC-157 acts systemically to build new blood vessel networks (angiogenesis) to feed injured tissues, while TB-500 hyper-accelerates the movement of repair cells to the site. Taking these two together is the gold standard for musculoskeletal repair.",
         supporting_studies: [
-            { description: "BPC-157 tendon, ligament, and gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030658/" },
+            { description: "BPC-157 tendon, ligament, and gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
             { description: "TB-500 wound healing and inflammation reduction", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14657002/" },
         ],
     },
@@ -75,7 +75,6 @@ const rawStacks: Omit<Stack, "slug">[] = [
         supporting_studies: [
             { description: "Synergistic GH release from GHRH + GHRP combos", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
             { description: "Ipamorelin highly selective GH pulse", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
-            { description: "IGF-1 promotes muscle hyperplasia", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/10218986/" },
         ],
     },
     {
@@ -87,8 +86,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         ],
         synergy_rationale: "A flawless inside-outside defense. Thymosin Alpha-1 upgrades the body's 'software' (adaptive immunity, T-cell maturation) to recognize and fight threats. LL-37 is the 'hardware' (innate immunity) that physically hunts down and rips apart bacteria, viruses, and biofilms on contact.",
         supporting_studies: [
-            { description: "Thymosin Alpha-1 in immune-compromised models", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18274638/" },
-            { description: "LL-37 direct antimicrobial action", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26601445/" },
+            { description: "LL-37 direct antimicrobial action", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/32982998/" },
         ],
     },
     {
@@ -117,7 +115,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         synergy_rationale: "This 3-piece covers the holy trinity of anti-aging. Epitalon protects the cell's lifespan (telomeres). MOTS-c protects the cell's engine (mitochondria). GHK-Cu protects the cell's instruction manual (epigenetic gene expression).",
         supporting_studies: [
             { description: "Epitalon extends lifespan in animal models", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/12937682/" },
-            { description: "MOTS-c prevents age-dependent physical decline", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25710270/" },
+            { description: "MOTS-c prevents age-dependent physical decline", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
             { description: "GHK-Cu gene reset data", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/17703734/" },
         ],
     },
@@ -131,7 +129,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         synergy_rationale: "GHK-Cu provides the 'building blocks' by upregulating collagen and elastin production. BPC-157 provides the 'supply lines' by building new capillaries to ensure those skin cells have the blood flow to actually execute the rebuilding process.",
         supporting_studies: [
             { description: "GHK-Cu promotes robust skin regeneration", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/17703734/" },
-            { description: "BPC-157 angiogenesis and tissue healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030658/" },
+            { description: "BPC-157 angiogenesis and tissue healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
         ],
     },
     {
@@ -143,7 +141,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         ],
         synergy_rationale: "BPC-157 handles the physical, structural repair of the tight junctions in the gut lining (stopping 'leaky gut'). KPV acts as the fire extinguisher, shutting down the chronic localized inflammation (like Crohn's or colitis) that caused the damage in the first place.",
         supporting_studies: [
-            { description: "BPC-157 profound gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030658/" },
+            { description: "BPC-157 profound gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
             { description: "KPV anti-inflammatory activity in IBD models", pubmed_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12753158/" },
         ],
     },
@@ -157,7 +155,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         synergy_rationale: "Tirzepatide fixes the metabolic hormones from the top down (pancreas/brain). MOTS-c fixes the metabolism from the bottom up (forcing muscle cells to absorb and burn glucose directly). Combining them attacks insulin resistance from every possible cellular angle.",
         supporting_studies: [
             { description: "Tirzepatide Phase 3 metabolic outcomes", pubmed_url: "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" },
-            { description: "MOTS-c insulin sensitizing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25710270/" },
+            { description: "MOTS-c insulin sensitizing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
         ],
     },
     {
@@ -170,7 +168,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         ],
         synergy_rationale: "Kisspeptin-10 directly turns the body's natural testosterone factory back on (unlike TRT, which shuts it down). CJC and Ipamorelin run in the background to elevate GH/IGF-1 — because testosterone and GH act synergistically to drive male vitality and body composition. Ipamorelin is specifically chosen because it does not spike cortisol.",
         supporting_studies: [
-            { description: "Kisspeptin-10 stimulates LH and testosterone", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/23440713/" },
+            { description: "Kisspeptin-10 stimulates LH and testosterone", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16174713/" },
             { description: "Synergistic GH release effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
             { description: "Ipamorelin lacks cortisol elevation", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
         ],

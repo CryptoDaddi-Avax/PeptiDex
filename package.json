@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/pmid-gate.mjs --diff",
     "build": "node scripts/seo-lint.mjs && next build",
+    "pmid:audit": "node scripts/pmid-gate.mjs",
+
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",

@@ -30,7 +30,7 @@ export function TesamorelinPillar() {
             Furthermore, the elevated hGH subsequently stimulates the liver to produce Insulin-like Growth Factor 1 (IGF-1), which mediates many of the anabolic and tissue-repairing effects associated with growth hormone, including skeletal muscle preservation and collagen synthesis.
           </p>
           <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-zinc-400 bg-zinc-900/30 p-4 rounded-r-lg">
-            "Tesamorelin, a stabilized GHRH analogue, significantly reduces visceral adipose tissue without clinically significant alterations in glucose parameters..." (Falutz et al., 2010, PMID: 20682528)
+            "Tesamorelin, a stabilized GHRH analogue, significantly reduces visceral adipose tissue without clinically significant alterations in glucose parameters..." (Falutz et al., 2010 Phase 3 pooled analysis, PMID: 20554713)
           </blockquote>
         </div>
       </section>
@@ -60,7 +60,7 @@ export function TesamorelinPillar() {
           
           <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">NAFLD/NASH Investigations (Lancet HIV, 2019)</h4>
           <p>
-            More recently, the focus on tesamorelin has shifted toward its hepatic effects. A landmark study published in <em>The Lancet Gastroenterology & Hepatology</em> (PMID: 31607674) investigated its effects on non-alcoholic fatty liver disease (NAFLD) in patients with HIV.
+            More recently, the focus on tesamorelin has shifted toward its hepatic effects. A landmark study published in <em>The Lancet Gastroenterology & Hepatology</em> (PMID: 32701508) investigated its effects on non-alcoholic fatty liver disease (NAFLD) in patients with HIV.
           </p>
           <p>
             The trial found that tesamorelin administration significantly reduced hepatic lipid fraction (liver fat content) and prevented the progression of liver fibrosis compared to placebo. Given that visceral adiposity directly dumps free fatty acids into the portal vein leading to the liver, the reduction in VAT mechanistically drives the clearance of hepatic fat.
