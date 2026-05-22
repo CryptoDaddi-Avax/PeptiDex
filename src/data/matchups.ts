@@ -251,7 +251,7 @@ export const matchups: Matchup[] = [
             { question: "Why do some people inject them instead of using nasal sprays?", answer: "While nasal sprays are highly bioavailable because the peptides can cross the blood-brain barrier via the olfactory bulb, some researchers prefer subcutaneous injections for precise dosing and slightly longer duration of action." }
         ],
         eeatNote: "In my professional review of nootropic peptide stacks, the Semax/Selank combination is unparalleled for cognitive enhancement without the burnout associated with traditional stimulants. If a researcher is dealing with ADHD-like symptoms or burnout, I lean toward Semax. If they are dealing with chronic stress or social anxiety, Selank is the tool of choice. I strongly recommend sourcing these as lyophilized powders and reconstituting them yourself, using a <a href='/peptidex-coupon' class='text-gold hover:underline'>PEPTIDEX coupon</a> at verified vendors. Pre-mixed nasal sprays often degrade during shipping. Also check our <a href='/where-to-buy/semax' class='text-gold hover:underline'>Where to Buy Semax guide</a>.",
-        citations: ["PMID: 18454096"],
+        citations: ["PMID: 18454096", "PMID: 18488898"],
         deepDiveHtml: `
             <p>The world of cognitive enhancement has largely been dominated by blunt instruments: amphetamines that burn out dopamine receptors, or racetams that yield unpredictable results. The Russian-developed peptides <a href="/library/semax" class="text-gold hover:underline">Semax</a> and <a href="/library/selank" class="text-gold hover:underline">Selank</a> represent a paradigm shift in neuro-pharmacology. By utilizing small, synthetic chains of amino acids, researchers can precisely target specific neurological pathways to induce either profound focus (Semax) or profound calm (Selank) without building chemical dependence.</p>
 
@@ -271,6 +271,8 @@ export const matchups: Matchup[] = [
             
             <h4 class="text-lg font-bold text-zinc-100 mt-6 mb-3">The Final Verdict</h4>
             <p>In my professional experience testing cognitive enhancement protocols, I consistently emphasize that sourcing is the most critical variable. Nootropic peptides are exceptionally fragile and must be handled with care, which is why I strongly recommend avoiding pre-mixed nasal sprays that degrade in hot shipping trucks. Always purchase lyophilized powder and reconstitute it yourself. The choice between Semax and Selank is entirely dependent on your neurological baseline. If you lack motivation, struggle with brain fog, or need to learn complex material quickly, Semax is the clear winner. If you suffer from overstimulation, anxiety, or stress that prevents you from functioning, Selank is unmatched. For serious cognitive optimization, run them together.</p>
+        
+            <p class="citations-footer"><strong>Key References:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/18454096/" target="_blank" rel="noopener">Zozulia et al. 2008 (Semax, Eksp Klin Farmakol)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/18488898/" target="_blank" rel="noopener">Kozlovskiy et al. 2008 (Selank, Eksp Klin Farmakol)</a></p>
         `
     },
     {
@@ -435,7 +437,7 @@ export const matchups: Matchup[] = [
             { question: "Do these peptides shut down natural GH production?", answer: "No. Unlike synthetic HGH which shuts down the pituitary through a negative feedback loop, secretagogues like Sermorelin and Ipamorelin simply stimulate the pituitary to produce its own endogenous GH. When you stop taking them, your body returns to its natural baseline." }
         ],
         eeatNote: "When reviewing introductory protocols for researchers looking to elevate their IGF-1 levels, the Sermorelin vs Ipamorelin question is the most common hurdle. While Sermorelin has the clinical pedigree, its extremely short half-life makes it less practical for monotherapy. I almost exclusively recommend Ipamorelin for those starting out. It's clean, effective, and highly tolerable. Check our <a href='/where-to-buy/ipamorelin' class='text-gold hover:underline'>Where to Buy Ipamorelin guide</a> and always utilize a <a href='/peptidex-coupon' class='text-gold hover:underline'>PEPTIDEX coupon</a> at trusted vendors.",
-        citations: ["PMID: 9849822"],
+        citations: ["PMID: 9849822", "PMID: 9360512"],
         deepDiveHtml: `
             <p>For decades, the standard protocol for elevating human growth hormone (GH) levels involved the direct administration of synthetic recombinant HGH (rhGH). While effective, rhGH comes with exorbitant costs and the severe risk of permanently shutting down the body's natural pituitary function. The evolution of peptide therapy introduced Growth Hormone Secretagogues (GHS)—compounds that ask the body to produce its own GH. In the debate of <a href="/library/sermorelin" class="text-gold hover:underline">Sermorelin</a> versus <a href="/library/ipamorelin" class="text-gold hover:underline">Ipamorelin</a>, we are comparing the grandfather of clinical secretagogues against the modern gold standard.</p>
 
@@ -454,6 +456,8 @@ export const matchups: Matchup[] = [
 
             <h4 class="text-lg font-bold text-zinc-100 mt-6 mb-3">The Final Verdict</h4>
             <p>In my extensive review of growth hormone protocols, the evolution from first-generation secretagogues to modern selective peptides represents a massive leap in safety and efficacy. I strongly advise all researchers to move away from older compounds that trigger cortisol and prolactin spikes, as these counter-productive side effects will negate the benefits of the elevated growth hormone. If you have a prescription from a conservative anti-aging clinic, you will likely receive Sermorelin. It is safe, effective, and has decades of clinical backing. However, if you are an independent researcher optimizing for body composition, deep sleep architecture, and accelerated recovery, Ipamorelin is the superior monotherapy. Its longer half-life, absolute lack of cortisol elevation, and ease of dosing make it the foundational peptide of the modern era.</p>
+        
+            <p class="citations-footer"><strong>Key References:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/9849822/" target="_blank" rel="noopener">Raun et al. 1998 (Ipamorelin, Eur J Endocrinol)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/9360512/" target="_blank" rel="noopener">Khorram et al. 1997 (GHRH/Sermorelin, J Clin Endocrinol Metab)</a></p>
         `
     }
 ];
@@ -461,3 +465,4 @@ export const matchups: Matchup[] = [
 export function getMatchup(slug: string): Matchup | undefined {
     return matchups.find((m) => m.slug === slug);
 }
+            <p class="citations-footer"><strong>Key References:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/18454096/" target="_blank" rel="noopener">Zozulia et al. 2008 (Semax efficacy, Eksp Klin Farmakol)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/18488898/" target="_blank" rel="noopener">Kozlovskiy et al. 2008 (Selank anxiolytic, Eksp Klin Farmakol)</a></p>
