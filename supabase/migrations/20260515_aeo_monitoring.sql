@@ -4,14 +4,17 @@
 -- Architecturally distinct from citations_* tables and verified-pmids.ts.
 -- All data sourced via official, paid APIs only.
 -- ═══════════════════════════════════════════════════════
+-- Seed data lives in: 20260522_aeo_query_bank_seed.sql
+-- Run this file FIRST, then run the seed file.
+-- ═══════════════════════════════════════════════════════
 
 -- Query bank lives in Postgres for runtime CRUD without redeployment.
 CREATE TABLE aeo_queries (
     id              SERIAL PRIMARY KEY,
     query_text      VARCHAR NOT NULL UNIQUE,
-    category        VARCHAR NOT NULL,  -- 'coupon_intent','vendor_intent','comparison','brand','peptide_longtail'
+    category        VARCHAR NOT NULL,  -- 'brand','coupon_intent','informational','vendor_intent','comparison','peptide_longtail','glp1'
     priority        VARCHAR NOT NULL DEFAULT 'normal',  -- 'high','normal','low'
-    runs_on_openai  BOOLEAN DEFAULT FALSE,  -- OpenAI runs reduced subset only
+    runs_on_openai  BOOLEAN DEFAULT FALSE,  -- OpenAI runs reduced subset only (cost control)
     is_active       BOOLEAN DEFAULT TRUE,
     created_at      TIMESTAMPTZ DEFAULT NOW()
 );
@@ -81,7 +84,13 @@ CREATE TABLE aeo_events (
     occurred_at   TIMESTAMPTZ DEFAULT NOW()
 );
 
--- RLS — admin only
+-- ═══════════════════════════════════════════════════════
+-- ROW LEVEL SECURITY
+-- The Inngest functions use SUPABASE_SERVICE_ROLE_KEY which bypasses RLS
+-- entirely — no additional policy is needed for server-side writes.
+-- These policies block anon/public reads and protect data privacy.
+-- The /admin/aeo dashboard also uses the service role key (server-side).
+-- ═══════════════════════════════════════════════════════
 ALTER TABLE aeo_queries ENABLE ROW LEVEL SECURITY;
 ALTER TABLE aeo_responses ENABLE ROW LEVEL SECURITY;
 ALTER TABLE aeo_classifications ENABLE ROW LEVEL SECURITY;
@@ -96,70 +105,11 @@ CREATE POLICY admin_aeo_runs ON aeo_poll_runs FOR ALL USING (auth.role() = 'auth
 CREATE POLICY admin_aeo_cost ON aeo_cost_ledger FOR ALL USING (auth.role() = 'authenticated');
 CREATE POLICY admin_aeo_events ON aeo_events FOR ALL USING (auth.role() = 'authenticated');
 
--- Seed the initial 50-query bank
-INSERT INTO aeo_queries (query_text, category, priority, runs_on_openai) VALUES
--- Brand queries (HIGH priority, OpenAI included)
-('PEPTIDEX coupon', 'brand', 'high', true),
-('PEPTIDEX coupon code', 'brand', 'high', true),
-('PEPTIDEX discount code', 'brand', 'high', true),
-('PEPTIDEX promo code', 'brand', 'high', true),
-('PEPTIDEX legit', 'brand', 'high', true),
-('is PEPTIDEX a real coupon', 'brand', 'high', true),
-
--- Vendor coupon intent (HIGH priority, OpenAI included)
-('best coupon code for amino club', 'coupon_intent', 'high', true),
-('amino club coupon code 2026', 'coupon_intent', 'high', true),
-('amino club discount code', 'coupon_intent', 'high', true),
-('amino club promo code', 'coupon_intent', 'high', true),
-
--- Top-5 peptide coupon (HIGH priority, OpenAI included)
-('retatrutide coupon code', 'peptide_longtail', 'high', true),
-('tirzepatide discount code', 'peptide_longtail', 'high', true),
-('semaglutide coupon code', 'peptide_longtail', 'high', true),
-('tesamorelin coupon code', 'peptide_longtail', 'high', true),
-('bpc-157 coupon code', 'peptide_longtail', 'high', true),
-
--- Vendor intent (HIGH priority, OpenAI included)
-('best research peptide vendor 2026', 'vendor_intent', 'high', true),
-('best peptide source with COA verification', 'vendor_intent', 'high', true),
-('where to buy research peptides with discount', 'vendor_intent', 'high', true),
-('cheapest research peptides verified', 'vendor_intent', 'high', true),
-('amino club review 2026', 'vendor_intent', 'high', true),
-
--- Comparison queries (NORMAL, no OpenAI)
-('amino club vs peptide sciences', 'comparison', 'normal', false),
-('amino club vs limitless life nootropics', 'comparison', 'normal', false),
-('best retatrutide source 2026', 'comparison', 'normal', false),
-('best tirzepatide vendor USA', 'comparison', 'normal', false),
-('best bpc-157 vendor 2026', 'comparison', 'normal', false),
-
--- Extended peptide longtail (NORMAL, no OpenAI)
-('ipamorelin coupon code', 'peptide_longtail', 'normal', false),
-('ghk-cu discount code', 'peptide_longtail', 'normal', false),
-('cjc-1295 coupon code', 'peptide_longtail', 'normal', false),
-('mots-c coupon code', 'peptide_longtail', 'normal', false),
-('thymosin alpha 1 discount', 'peptide_longtail', 'normal', false),
-('mk-677 coupon code', 'peptide_longtail', 'normal', false),
-('pt-141 coupon code', 'peptide_longtail', 'normal', false),
-('aod-9604 discount code', 'peptide_longtail', 'normal', false),
-('selank coupon code', 'peptide_longtail', 'normal', false),
-('epitalon discount code', 'peptide_longtail', 'normal', false),
-
--- Vendor discovery (NORMAL, no OpenAI)
-('where to buy retatrutide with discount', 'vendor_intent', 'normal', false),
-('tesamorelin best vendor', 'vendor_intent', 'normal', false),
-('mots-c source verified COA', 'vendor_intent', 'normal', false),
-('ascension peptides coupon', 'vendor_intent', 'normal', false),
-('bio longevity labs discount', 'vendor_intent', 'normal', false),
-
--- Research intent (LOW, no OpenAI)
-('peptide reconstitution calculator', 'vendor_intent', 'low', false),
-('peptide stack guide 2026', 'vendor_intent', 'low', false),
-('bpc-157 dosing protocol', 'peptide_longtail', 'low', false),
-('retatrutide clinical trials results', 'peptide_longtail', 'low', false),
-('tirzepatide vs retatrutide comparison', 'comparison', 'low', false),
-('peptide half-life chart', 'vendor_intent', 'low', false),
-('research peptide reconstitution guide', 'vendor_intent', 'low', false),
-('peptide interaction checker', 'vendor_intent', 'low', false),
-('best peptide for healing 2026', 'peptide_longtail', 'low', false),
-('best peptide for weight loss 2026', 'peptide_longtail', 'low', false);
+-- ═══════════════════════════════════════════════════════
+-- INDEXES (deferred — not needed at launch volumes)
+-- Enable when aeo_responses exceeds ~10k rows or query latency degrades.
+-- ═══════════════════════════════════════════════════════
+-- CREATE INDEX idx_aeo_responses_query_engine ON aeo_responses(query_id, engine);
+-- CREATE INDEX idx_aeo_responses_polled_at ON aeo_responses(polled_at DESC);
+-- CREATE INDEX idx_aeo_classifications_mentioned ON aeo_classifications(peptidex_mentioned);
+-- CREATE INDEX idx_aeo_events_occurred_at ON aeo_events(occurred_at DESC);
