@@ -270,7 +270,7 @@ export const verifiedPmids: Record<string, {
         year: 2020,
         verified_date: "2026-05-20",
         verified_by: "Antigravity/NLM-API"
-    }, authors: string; title: string; journal: string; year: number; verified_date: string; verified_by: string
+    },
 
     "37743481": {
         authors: "Wang Z, Chen M, Zhang T, et al.",
