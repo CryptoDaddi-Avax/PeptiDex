@@ -465,4 +465,3 @@ export const matchups: Matchup[] = [
 export function getMatchup(slug: string): Matchup | undefined {
     return matchups.find((m) => m.slug === slug);
 }
-            <p class="citations-footer"><strong>Key References:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/18454096/" target="_blank" rel="noopener">Zozulia et al. 2008 (Semax efficacy, Eksp Klin Farmakol)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/18488898/" target="_blank" rel="noopener">Kozlovskiy et al. 2008 (Selank anxiolytic, Eksp Klin Farmakol)</a></p>
