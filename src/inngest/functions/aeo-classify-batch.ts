@@ -38,11 +38,18 @@ export const aeoClassifyBatch = inngest.createFunction(
 
     if (!unclassified.length) return { status: 'no_unclassified_responses' };
 
-    // Step 2: Classify each response
+    // Step 2: Classify each response in rate-limited chunks
     await step.run('classify-all', async () => {
       const supabase = await createClient() as any;
+      const CHUNK_SIZE = 10;
+      const DELAY_BETWEEN_CALLS_MS = 300;   // 300ms between each call ~3 req/s
+      const DELAY_BETWEEN_CHUNKS_MS = 2000; // 2s cooldown between chunks
 
-      for (const response of unclassified) {
+      const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+      for (let chunkStart = 0; chunkStart < unclassified.length; chunkStart += CHUNK_SIZE) {
+        const chunk = unclassified.slice(chunkStart, chunkStart + CHUNK_SIZE);
+        for (const response of chunk) {
         try {
           // Fetch query text for context
           const { data: queryRow } = await supabase
@@ -146,7 +153,13 @@ export const aeoClassifyBatch = inngest.createFunction(
         } catch (err) {
           console.error(`Classification failed for response ${response.id}:`, err);
         }
-      }
+        await sleep(DELAY_BETWEEN_CALLS_MS); // rate limit: ~3 req/s
+        } // end inner response loop
+        // Pause between chunks to avoid sustained rate limit pressure
+        if (chunkStart + CHUNK_SIZE < unclassified.length) {
+          await sleep(DELAY_BETWEEN_CHUNKS_MS);
+        }
+      } // end chunk loop
     });
 
     return { status: 'classified', count: unclassified.length };
