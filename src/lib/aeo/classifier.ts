@@ -67,7 +67,7 @@ ${citedUrls.map(u => `- ${u}`).join('\n') || '(none)'}`;
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'claude-3-5-haiku-20241022',
+      model: 'claude-haiku-4-5',
       max_tokens: 512,
       messages: [
         { role: 'user', content: `${CLASSIFICATION_PROMPT}\n\n${userContent}` },
