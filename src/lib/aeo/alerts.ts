@@ -36,19 +36,28 @@ export async function sendEmailAlert(subject: string, htmlBody: string): Promise
     return;
   }
 
-  await fetch('https://api.resend.com/emails', {
+  // Use verified shared sender as fallback until peptidex.app domain is verified in Resend.
+  // Once domain is verified at resend.com/domains, switch from to: 'AEO Monitor <aeo@peptidex.app>'
+  const fromAddress = process.env.RESEND_FROM_EMAIL ?? 'AEO Monitor <onboarding@resend.dev>';
+
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${resendKey}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'AEO Monitor <aeo@peptidex.app>',
+      from: fromAddress,
       to: [toEmail],
       subject: `[PeptiDex AEO] ${subject}`,
       html: htmlBody,
     }),
   });
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    console.error('[AEO Alert] Resend failed:', res.status, JSON.stringify(body));
+  }
 }
 
 /**
