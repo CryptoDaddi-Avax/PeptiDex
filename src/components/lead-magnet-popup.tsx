@@ -2,6 +2,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2, CheckCircle, Gift, Zap, ShieldCheck, FlaskConical, ArrowRight, Sparkles } from "lucide-react";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 const BEEHIIV_PUBLICATION_ID = "pub_40e0b818-633b-4705-b254-36237b65b043";
 const STORAGE_KEY = "peptidex_newsletter_dismissed";
@@ -173,14 +176,15 @@ export function LeadMagnetPopup({ source = "welcome_popup" }: Props) {
                                             <p className="text-[10px] text-zinc-500 mt-3">Use at checkout on Amino Club for 20% off your first order.</p>
                                         </div>
 
-                                        <a
-                                            href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                        <AffiliateLink
+                                            href={buildAffiliateUrl(PRIMARY_PROMO, "popup_success")}
+                                            vendor="amino_club"
+                                            source="popup_success"
                                             className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-sm font-bold hover:brightness-110 transition-all shadow-lg shadow-emerald-900/30"
                                         >
                                             Shop Amino Club Now <ArrowRight className="w-4 h-4" />
-                                        </a>
+                                        </AffiliateLink>
+
                                         <button onClick={dismiss} className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
                                             I&apos;ll use it later
                                         </button>

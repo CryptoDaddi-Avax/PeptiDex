@@ -20,6 +20,9 @@ import { ShareModal } from "@/components/share-card/share-modal";
 import type { CompareCardData } from "@/components/share-card/card-templates";
 import type { Peptide } from "@/data/types";
 import './compare-redesign.css';
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 /* ═══════════════════════════════════════════════════════════
    HELPERS
@@ -412,13 +415,19 @@ function CompareClientInner() {
                             </div>
                             <div className="cmp-cta-grid" style={{ "--cols": compared.length } as React.CSSProperties}>
                                 {compared.map((p, i) => {
-                                    const baseSlug = aminoClubProductMapping[p.slug] || "https://aminoclub.com";
-                                    const ctaParams = baseSlug.includes("?") ? "&utm_source=affiliate_marketing&code=PEPTIDEX" : "?utm_source=affiliate_marketing&code=PEPTIDEX";
+                                    const baseUrl = aminoClubProductMapping[p.slug] || PRIMARY_PROMO.shopUrl;
+                                    const ctaUrl = buildAffiliateUrl({ ...PRIMARY_PROMO, shopUrl: baseUrl }, "compare_cta");
                                     return (
                                         <div key={p.slug} className={`cmp-cta-card ${i === 0 ? "winner" : ""}`}>
                                             <h4>{p.name}</h4>
                                             <p>{p.primary_benefits}</p>
-                                            <a href={`${baseSlug}${ctaParams}`} target="_blank" rel="noopener noreferrer" className="cmp-cta-btn">Buy {p.name} <ExternalLink style={{width: 14}}/></a>
+                                            <AffiliateLink
+                                                href={ctaUrl}
+                                                vendor="amino_club"
+                                                peptide={p.slug}
+                                                source="compare_cta"
+                                                className="cmp-cta-btn"
+                                            >Buy {p.name} <ExternalLink style={{width: 14}}/></AffiliateLink>
                                         </div>
                                     )
                                 })}

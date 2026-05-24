@@ -13,6 +13,9 @@ import type { QuizCardData } from "@/components/share-card/card-templates";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { ShoppingBag, ShieldCheck } from "lucide-react";
 import { getPeptideByName } from "@/data/peptides";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 /* ──────── Quiz Data ──────── */
 
@@ -365,11 +368,8 @@ export default function QuizPage() {
                                         const slug = fullPeptide?.slug || p.name.toLowerCase().replace(/\s+/g, '-');
                                         const benefits = fullPeptide?.primary_benefits || p.role_in_stack;
                                         
-                                        const baseSlug = aminoClubProductMapping[slug] || "https://aminoclub.com";
-                                        const ctaParams = baseSlug.includes("?") 
-                                            ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
-                                            : "?utm_source=affiliate_marketing&code=PEPTIDEX";
-                                        const affiliateUrl = `${baseSlug}${ctaParams}`;
+                                        const baseUrl = aminoClubProductMapping[slug] || PRIMARY_PROMO.shopUrl;
+                                        const affiliateUrl = buildAffiliateUrl({ ...PRIMARY_PROMO, shopUrl: baseUrl }, "quiz_sourcing");
 
                                         return (
                                             <div key={slug} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 gap-4 hover:border-emerald-500/30 transition-colors">
@@ -377,28 +377,29 @@ export default function QuizPage() {
                                                     <h4 className="font-bold text-zinc-200">{p.name}</h4>
                                                     <p className="text-xs text-zinc-400 mt-1 line-clamp-1">{benefits}</p>
                                                 </div>
-                                                <a 
+                                                <AffiliateLink
                                                     href={affiliateUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+                                                    vendor="amino_club"
+                                                    peptide={slug}
+                                                    source="quiz_sourcing"
                                                     className="inline-flex items-center justify-center whitespace-nowrap gap-2 px-5 py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 font-semibold transition-colors text-sm border border-emerald-500/20 shrink-0"
                                                 >
                                                     Buy from Amino Club <ArrowRight className="w-4 h-4" />
-                                                </a>
+                                                </AffiliateLink>
                                             </div>
                                         );
                                     })}
                                 </div>
                                 
                                 <div className="relative z-10 space-y-4 pt-4 border-t border-zinc-800/50">
-                                    <a 
-                                        href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <AffiliateLink
+                                        href={buildAffiliateUrl(PRIMARY_PROMO, "quiz_full_stack_cta")}
+                                        vendor="amino_club"
+                                        source="quiz_full_stack_cta"
                                         className="inline-flex items-center justify-center w-full gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold transition-all shadow-lg hover:shadow-emerald-500/20 hover:brightness-110 text-base"
                                     >
                                         Order Full Stack from Amino Club <ArrowRight className="w-5 h-5" />
-                                    </a>
+                                    </AffiliateLink>
                                     <div className="flex items-center justify-center gap-1.5 text-xs text-zinc-500 font-medium pb-2 text-center">
                                         <ShieldCheck className="w-4 h-4 text-emerald-400/70" />
                                         Amino Club — PeptiDex Editor's Choice 2026 · COA verified · 99%+ purity

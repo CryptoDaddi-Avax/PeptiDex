@@ -128,7 +128,7 @@ export default function CheatSheetPage() {
                     All compounds in these stacks should be sourced from vendors providing independent third-party COAs with ≥98% HPLC purity verification.
                 </p>
                 <a
-                    href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                    href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=cheat_sheet_footer&code=PEPTIDEX"
                     target="_blank"
                     rel="noopener noreferrer nofollow sponsored"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-colors shadow-lg shadow-violet-900/20 print:bg-violet-700 print:shadow-none"

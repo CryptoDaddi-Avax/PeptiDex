@@ -228,7 +228,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
               }
               const vialDisplay = pepData?.dosing?.typical_vial_mg ? `${pepData.dosing.typical_vial_mg}mg vial` : "Varies by vendor";
 
-              const aminoUrl = `https://www.aminoclub.com/us/products/${pepSlug}?utm_source=affiliate_marketing&code=PEPTIDEX`;
+              const aminoUrl = `https://www.aminoclub.com/us/products/${pepSlug}?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX`;
 
               return (
                 <div key={p.name} className="stack-source-item">
@@ -255,7 +255,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
 
           <div className="stack-promo-box">
             <a 
-              href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+              href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX"
               target="_blank"
               rel="noopener noreferrer"
               className="stack-promo-main-btn"

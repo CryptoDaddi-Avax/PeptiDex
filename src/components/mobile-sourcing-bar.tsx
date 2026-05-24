@@ -6,6 +6,9 @@ import { X, ExternalLink, ArrowRight, Beaker } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { peptides } from "@/data/peptides";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 export function MobileSourcingBar() {
   const pathname = usePathname();
@@ -64,7 +67,9 @@ export function MobileSourcingBar() {
 
   // Content logic
   let displayName = "peptides";
-  let targetUrl = "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX";
+  let targetUrl = "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=mobile_sourcing_bar&code=PEPTIDEX";
+  // peptideSlug for AffiliateLink (uses aminoClubProductMapping internally)
+  let peptideSlug: string | undefined = undefined;
 
   if (pathname.startsWith("/research/")) {
     const slug = pathname.split("/")[2];
@@ -76,12 +81,14 @@ export function MobileSourcingBar() {
         // Fallback title formatting from slug
         displayName = slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
       }
-      
-      const mapped = aminoClubProductMapping[slug];
-      if (mapped) {
-        targetUrl = mapped.includes("?") 
-          ? `${mapped}&utm_source=affiliate_marketing&code=PEPTIDEX` 
-          : `${mapped}?utm_source=affiliate_marketing&code=PEPTIDEX`;
+      if (aminoClubProductMapping[slug]) {
+        peptideSlug = slug;
+        const mapped = aminoClubProductMapping[slug];
+        if (mapped) {
+          targetUrl = mapped.includes("?")
+            ? `${mapped}&utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=mobile_sourcing_bar&code=PEPTIDEX`
+            : `${mapped}?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=mobile_sourcing_bar&code=PEPTIDEX`;
+        }
       }
     }
   }
@@ -93,6 +100,10 @@ export function MobileSourcingBar() {
     // Using homepage is fine and safe.
     displayName = "this stack";
   }
+
+  // Build canonical affiliate URL — use per-peptide URL if available, else PRIMARY_PROMO homepage
+  const baseUrl = (peptideSlug && aminoClubProductMapping[peptideSlug]) ?? PRIMARY_PROMO.shopUrl;
+  const targetUrl = buildAffiliateUrl({ ...PRIMARY_PROMO, shopUrl: baseUrl }, "mobile_sourcing_bar");
 
   if (isDismissed || !isVisible) return null;
 
@@ -132,14 +143,15 @@ export function MobileSourcingBar() {
               </div>
             </div>
 
-            <a
+            <AffiliateLink
               href={targetUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              vendor="amino_club"
+              peptide={peptideSlug}
+              source="mobile_sourcing_bar"
               className="flex-shrink-0 flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[12px] sm:text-[13px] font-bold transition-all whitespace-nowrap active:scale-95"
             >
               Shop Now <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </AffiliateLink>
           </div>
         </div>
       </motion.div>

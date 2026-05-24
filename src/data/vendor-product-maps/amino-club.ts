@@ -1,8 +1,8 @@
-/**
- * Amino Club — Product Map
+﻿/**
+ * Amino Club â€” Product Map
  * Tier: 2 (Deep Links) | Platform: Custom SPA
  * Product URL: aminoclub.com/us/products/{slug}
- * Affiliate: ?utm_source=affiliate_marketing&code=PEPTIDEX
+ * Affiliate: ?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX
  * Discount: 20% off with code PEPTIDEX (manual entry at checkout)
  * Last verified: 2026-05-10
  *
@@ -57,14 +57,15 @@ export function buildAminoClubProductUrl(peptideSlug: string): string {
   if (product) {
     return `https://www.aminoclub.com/us/products/${product.urlSlug}`;
   }
-  return "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX";
+  return "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX";
 }
 
 export function buildAminoClubAffiliateUrl(peptideSlug: string): string {
   const product = aminoClubProductMap[peptideSlug];
-  const base = "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX";
+  const base = "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX";
   if (product) {
     return `${base}&redirect=/us/products/${product.urlSlug}`;
   }
   return base;
 }
+

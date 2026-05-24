@@ -1,5 +1,11 @@
-import Link from "next/link";
+"use client";
+
 import { ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
+
+const BLOG_CTA_URL = buildAffiliateUrl(PRIMARY_PROMO, "blog_cta");
 
 export function BlogVendorCallout() {
     return (
@@ -60,10 +66,10 @@ export function BlogVendorCallout() {
                 </div>
 
                 <div>
-                    <a
-                        href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <AffiliateLink
+                        href={BLOG_CTA_URL}
+                        vendor="amino_club"
+                        source="blog_cta"
                         style={{
                             display: 'inline-flex', alignItems: 'center', gap: 8,
                             padding: '14px 24px',
@@ -76,7 +82,7 @@ export function BlogVendorCallout() {
                         }}
                     >
                         Shop Research Peptides <ArrowRight style={{ width: 14, height: 14 }} />
-                    </a>
+                    </AffiliateLink>
                 </div>
             </div>
         </div>

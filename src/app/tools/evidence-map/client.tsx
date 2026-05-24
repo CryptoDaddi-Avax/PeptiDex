@@ -8,6 +8,9 @@ import {
     ExternalLink, ChevronDown, Flame, Dumbbell, HeartPulse, Brain, Moon, Sparkles, Shield,
     Pill, Clock, Activity
 } from "lucide-react";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 // ── Evidence Tier Logic ──────────────────────────────────────────────
 type EvidenceTier = "fda-approved" | "strong-clinical" | "moderate-preclinical" | "emerging";
@@ -346,14 +349,14 @@ export function EvidenceMapClient({ peptides }: { peptides: Peptide[] }) {
                         Source COA-verified peptides from our recommended vendor
                     </p>
                 </div>
-                <a
-                    href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-                    target="_blank"
-                    rel="noopener noreferrer nofollow sponsored"
+                <AffiliateLink
+                    href={buildAffiliateUrl(PRIMARY_PROMO, "evidence_map_footer")}
+                    vendor="amino_club"
+                    source="evidence_map_footer"
                     className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-bold transition-colors shadow-lg shadow-violet-900/20 whitespace-nowrap"
                 >
                     Visit Amino Club <ExternalLink className="w-4 h-4" />
-                </a>
+                </AffiliateLink>
             </div>
 
             {/* ── Disclaimer ── */}

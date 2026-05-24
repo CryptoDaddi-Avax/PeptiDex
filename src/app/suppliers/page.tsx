@@ -23,7 +23,7 @@ const suppliers: Supplier[] = [
     {
         name: "Amino Club",
         url: "https://aminoclub.com",
-        affiliateUrl: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+        affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=suppliers_page&code=PEPTIDEX",
         affiliateCommission: "Affiliate partner",
         rating: 4.9,
         thirdPartyTested: true,

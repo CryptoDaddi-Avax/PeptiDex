@@ -138,7 +138,7 @@ export default function MOTSCDeepDivePage() {
             First identified in 2015 by Dr. Changhan David Lee&apos;s lab at the University of Southern California, <Link href="/library/mots-c">MOTS-c</Link> is a 16-amino acid peptide encoded within the mitochondrial 12S rRNA gene. Unlike virtually all other peptides in the body (which are encoded by nuclear DNA), MOTS-c originates from the mitochondrial genome — making it part of a small but rapidly growing class of molecules called mitochondrial-derived peptides (MDPs).¹
           </p>
           <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
-            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" target="_blank" rel="noopener noreferrer" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
+            For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=blog_body&code=PEPTIDEX" target="_blank" rel="nofollow noopener sponsored" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
           </p>
 
           <p>

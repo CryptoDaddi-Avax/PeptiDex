@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { vendors } from '@/data/vendors';
 
-// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+// â”€â”€ Discount lookups (single source of truth: vendors.ts) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const _aminoClub = vendors.find((v) => v.slug === 'amino-club')!;
 const _ascension = vendors.find((v) => v.slug === 'ascension-peptides')!;
 
@@ -82,12 +82,12 @@ export default function AminoClubVsAscension() {
             <span className="sep">/</span>
             <span className="current">vs Ascension</span>
           </nav>
-          <div className="section-label">§ Head to Head</div>
+          <div className="section-label">Â§ Head to Head</div>
           <h1 className="page-title">
             Amino Club<br /><em>vs Ascension</em>.
           </h1>
           <p className="page-subtitle">
-            Independent side-by-side analysis of testing transparency, pricing, catalog, and shipping — 2026.
+            Independent side-by-side analysis of testing transparency, pricing, catalog, and shipping â€” 2026.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
@@ -109,7 +109,7 @@ export default function AminoClubVsAscension() {
 
       <div className="about-content reveal space-y-16">
 
-        {/* ── QUICK TABLE ── */}
+        {/* â”€â”€ QUICK TABLE â”€â”€ */}
         <section id="comparison-table">
           <div className="flex items-center gap-3 mb-6">
             <BarChart3 className="w-6 h-6 text-amber-400 flex-shrink-0" />
@@ -140,8 +140,8 @@ export default function AminoClubVsAscension() {
                 </tr>
                 <tr className="border-b border-zinc-800/50">
                   <td className="py-4 px-6 text-zinc-300 font-medium">Purity Standard</td>
-                  <td className="py-4 px-6 text-zinc-300">≥99%</td>
-                  <td className="py-4 px-6 text-zinc-300">≥99%</td>
+                  <td className="py-4 px-6 text-zinc-300">â‰¥99%</td>
+                  <td className="py-4 px-6 text-zinc-300">â‰¥99%</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50 bg-zinc-900/30">
                   <td className="py-4 px-6 text-zinc-300 font-medium">Pricing (Average)</td>
@@ -163,9 +163,9 @@ export default function AminoClubVsAscension() {
           </div>
         </section>
 
-        {/* ── WHEN AMINO CLUB ── */}
+        {/* â”€â”€ WHEN AMINO CLUB â”€â”€ */}
         <section id="when-amino-club">
-          <div className="section-label">§ Choose Amino Club When</div>
+          <div className="section-label">Â§ Choose Amino Club When</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">When to choose Amino Club</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             Amino Club has modernized the peptide purchasing experience, making them our default recommendation for most researchers.
@@ -183,9 +183,9 @@ export default function AminoClubVsAscension() {
           </div>
         </section>
 
-        {/* ── WHEN ASCENSION ── */}
+        {/* â”€â”€ WHEN ASCENSION â”€â”€ */}
         <section id="when-ascension">
-          <div className="section-label">§ Choose Ascension When</div>
+          <div className="section-label">Â§ Choose Ascension When</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">When to choose Ascension Peptides</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             Ascension Peptides is a veteran in the space and holds an edge in specific catalog areas.
@@ -203,9 +203,9 @@ export default function AminoClubVsAscension() {
           </div>
         </section>
 
-        {/* ── PRICING TABLE ── */}
+        {/* â”€â”€ PRICING TABLE â”€â”€ */}
         <section id="pricing">
-          <div className="section-label">§ 2026 Pricing Data</div>
+          <div className="section-label">Â§ 2026 Pricing Data</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Pricing comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             Pricing between these two vendors is highly competitive. Both offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for {_aminoClub.discountPercent}% off, Ascension: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-indigo-300">PeptiDex</code> for {_ascension.discountPercent}% off).
@@ -251,7 +251,7 @@ export default function AminoClubVsAscension() {
           <p className="text-sm text-zinc-500 mt-3 italic">Note: Prices are subject to change. Always verify current pricing on the vendor's website.</p>
         </section>
 
-        {/* ── VERDICT ── */}
+        {/* â”€â”€ VERDICT â”€â”€ */}
         <section id="verdict">
           <div className="flex items-center gap-3 mb-6">
             <Trophy className="w-6 h-6 text-amber-400 flex-shrink-0" />
@@ -262,7 +262,7 @@ export default function AminoClubVsAscension() {
               Both Amino Club and Ascension Peptides operate with integrity and provide high-quality research materials. You will not go wrong with either.
             </p>
             <p className="text-zinc-400 leading-relaxed mb-4">
-              Overall, <strong className="text-zinc-200">we give the slight edge to Amino Club</strong>. Their modern approach to COA transparency — putting the exact batch test directly on the product page — is how the entire industry should operate. Furthermore, they generally edge out Ascension on pricing for the most popular GLP-1s and recovery peptides.
+              Overall, <strong className="text-zinc-200">we give the slight edge to Amino Club</strong>. Their modern approach to COA transparency â€” putting the exact batch test directly on the product page â€” is how the entire industry should operate. Furthermore, they generally edge out Ascension on pricing for the most popular GLP-1s and recovery peptides.
             </p>
             <p className="text-zinc-400 leading-relaxed mb-8">
               We recommend Ascension if you specifically require pre-mixed peptide blends that Amino Club does not carry.
@@ -270,11 +270,11 @@ export default function AminoClubVsAscension() {
           </AutoLink>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-6 text-center flex flex-col items-center">
-              <div className="text-xs font-bold text-emerald-400 font-mono mb-3">§ Best For Transparency & Pricing</div>
+              <div className="text-xs font-bold text-emerald-400 font-mono mb-3">Â§ Best For Transparency & Pricing</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Amino Club</h3>
               <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX ({_aminoClub.discountPercent}% Off)</span>
               <AffiliateLink
-                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_page&code=PEPTIDEX"
                 vendor="amino_club"
                 peptide="all"
                 source="vs_ascension_footer"
@@ -284,7 +284,7 @@ export default function AminoClubVsAscension() {
               </AffiliateLink>
             </div>
             <div className="rounded-xl border border-indigo-500/20 bg-indigo-950/15 p-6 text-center flex flex-col items-center">
-              <div className="text-xs font-bold text-indigo-400 font-mono mb-3">§ Best For Pre-Mixed Blends</div>
+              <div className="text-xs font-bold text-indigo-400 font-mono mb-3">Â§ Best For Pre-Mixed Blends</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Ascension</h3>
               <span className="text-xs font-mono font-bold text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded mb-4">Code: PeptiDex ({_ascension.discountPercent}% Off)</span>
               <AffiliateLink
@@ -316,3 +316,4 @@ export default function AminoClubVsAscension() {
     </main>
   );
 }
+

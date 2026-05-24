@@ -7,6 +7,7 @@ import { BarChart3, ShieldCheck, TrendingDown, ShoppingCart } from "lucide-react
 import { vendorPricing } from "@/data/vendor-pricing";
 import { vendors } from "@/data/vendors";
 import { trackCTAClick, trackOutboundClick } from "@/lib/ga4-events";
+import { trackClick } from "@/lib/tracking/click";
 import { AffiliateLink } from "@/components/affiliate-link";
 
 interface StickyQuickCompareProps {
@@ -159,7 +160,10 @@ export function StickyQuickCompare({ peptideSlug, peptideName }: StickyQuickComp
                                         href={bestVendor.coaUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        onClick={() => trackOutboundClick(bestVendor.vendor, bestVendor.coaUrl!, `sticky_bar_coa_${peptideSlug}`)}
+                                        onClick={() => {
+                                            trackOutboundClick(bestVendor.vendor, bestVendor.coaUrl!, `sticky_bar_coa_${peptideSlug}`);
+                                            trackClick({ peptide_slug: peptideSlug, vendor_slug: bestVendor.vendor, page_path: typeof window !== 'undefined' ? window.location.pathname : '/', surface: 'sticky_bar' });
+                                        }}
                                         className="flex items-center justify-center gap-1 px-2.5 py-2 min-h-[44px] min-w-[44px] rounded-xl border border-zinc-700 bg-zinc-900 text-[10px] font-semibold text-zinc-300 hover:border-blue-500/40 hover:text-blue-300 transition-all flex-shrink-0"
                                         aria-label="View Certificate of Analysis"
                                     >

@@ -1,16 +1,17 @@
 import { ExternalLink, ShieldCheck } from "lucide-react";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { aminoClubProductMapping } from "@/data/affiliates";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
 
 export function AffiliateSource({ peptideName, slug }: { peptideName: string; slug: string }) {
     // 1. DATA-DRIVEN MAPPING — prefer per-peptide URL, fall back to homepage
     const baseUrl = aminoClubProductMapping[slug] ?? "https://aminoclub.com";
 
-    // 2. APPEND UTM/AFFILIATE PARAMETERS
-    const ctaParams = baseUrl.includes("?")
-        ? "&utm_source=affiliate_marketing&code=PEPTIDEX"
-        : "?utm_source=affiliate_marketing&code=PEPTIDEX";
-    const affiliateUrl = `${baseUrl}${ctaParams}`;
+    // 2. Build canonical affiliate URL via central builder using PRIMARY_PROMO's code
+    //    Produces: ?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=detail_sourcing&code=PEPTIDEX
+    const promo = { ...PRIMARY_PROMO, shopUrl: baseUrl };
+    const affiliateUrl = buildAffiliateUrl(promo, "detail_sourcing");
 
     return (
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-900/10 to-indigo-900/10 p-5 mb-8 relative overflow-hidden">

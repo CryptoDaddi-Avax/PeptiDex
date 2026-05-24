@@ -601,8 +601,8 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
               
               const baseSlug = affiliateMapping[peptide.slug] || "https://aminoclub.com";
               const ctaParams = baseSlug.includes("?") 
-                ? "&utm_source=affiliate_marketing&code=PEPTIDEX" 
-                : "?utm_source=affiliate_marketing&code=PEPTIDEX";
+                ? "&utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX" 
+                : "?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX";
               const ctaUrl = `${baseSlug}${ctaParams}`;
               
               // Find the specific pricing data for this peptide

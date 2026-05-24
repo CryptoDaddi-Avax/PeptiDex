@@ -10,6 +10,7 @@ import { buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 import { ToolPageConversionBlock } from "@/components/promos/ToolPageConversionBlock";
 import { lookupLab, TIER_STYLES, type LabTier } from "@/data/coa-labs";
 import { trackOutboundClick } from "@/lib/ga4-events";
+import { trackClick } from "@/lib/tracking/click";
 
 // Molecular weights and expected mass spec data for all 51 peptides
 // All MW in g/mol (Daltons)
@@ -301,7 +302,10 @@ export default function CoaClient() {
                                             <div className="flex items-center gap-3">
                                                 <span className="font-mono text-sm font-bold text-zinc-100">${v.price_usd.toFixed(2)}</span>
                                                 <a href={v.affiliateUrl} target="_blank" rel="sponsored nofollow noopener"
-                                                    onClick={() => trackOutboundClick(v.vendor, v.affiliateUrl, 'coa_vendor_cta')}
+                                                    onClick={() => {
+                                                        trackOutboundClick(v.vendor, v.affiliateUrl, 'coa_vendor_cta');
+                                                        trackClick({ peptide_slug: selectedSlug || 'general', vendor_slug: v.vendor, page_path: typeof window !== 'undefined' ? window.location.pathname : '/', surface: 'tool_coa' });
+                                                    }}
                                                     className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors">
                                                     Shop <ExternalLink className="w-3 h-3" />
                                                 </a>

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { vendors } from '@/data/vendors';
 
-// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
+// â”€â”€ Discount lookups (single source of truth: vendors.ts) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const _aminoClub  = vendors.find((v) => v.slug === 'amino-club')!;
 const _limitless  = vendors.find((v) => v.slug === 'limitless-life')!;
 
@@ -56,7 +56,7 @@ const breadcrumbSchema = {
 };
 
 const AMINO_STRENGTHS = [
-  { title: 'Price-to-quality ratio', body: 'Amino Club consistently beats Limitless Life on pricing for core peptides (like BPC-157, Tirzepatide, and Tesamorelin) while matching their ≥99% purity standards.' },
+  { title: 'Price-to-quality ratio', body: 'Amino Club consistently beats Limitless Life on pricing for core peptides (like BPC-157, Tirzepatide, and Tesamorelin) while matching their â‰¥99% purity standards.' },
   { title: 'Simplified bulk ordering', body: 'Their website makes it exceptionally easy to purchase 5-pack or 10-pack vials of common compounds at a significant discount.' },
   { title: 'Transparent COAs', body: 'While both provide COAs, Amino Club integrates them seamlessly onto every product page, minimizing the effort required to verify the exact lot you are buying.' },
 ];
@@ -83,12 +83,12 @@ export default function AminoClubVsLimitlessLife() {
             <span className="sep">/</span>
             <span className="current">vs Limitless Life</span>
           </nav>
-          <div className="section-label">§ Head to Head</div>
+          <div className="section-label">Â§ Head to Head</div>
           <h1 className="page-title">
             Amino Club<br /><em>vs Limitless</em>.
           </h1>
           <p className="page-subtitle">
-            Independent analysis of third-party testing, catalog scope, pricing, and shipping — 2026.
+            Independent analysis of third-party testing, catalog scope, pricing, and shipping â€” 2026.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
@@ -110,7 +110,7 @@ export default function AminoClubVsLimitlessLife() {
 
       <div className="about-content reveal space-y-16">
 
-        {/* ── QUICK TABLE ── */}
+        {/* â”€â”€ QUICK TABLE â”€â”€ */}
         <section id="comparison-table">
           <div className="flex items-center gap-3 mb-6">
             <BarChart3 className="w-6 h-6 text-amber-400 flex-shrink-0" />
@@ -136,8 +136,8 @@ export default function AminoClubVsLimitlessLife() {
                 </tr>
                 <tr className="border-b border-zinc-800/50 bg-zinc-900/30">
                   <td className="py-4 px-6 text-zinc-300 font-medium">Purity Standard</td>
-                  <td className="py-4 px-6 text-zinc-300">≥99%</td>
-                  <td className="py-4 px-6 text-zinc-300">≥99%</td>
+                  <td className="py-4 px-6 text-zinc-300">â‰¥99%</td>
+                  <td className="py-4 px-6 text-zinc-300">â‰¥99%</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50">
                   <td className="py-4 px-6 text-zinc-300 font-medium">Catalog Size</td>
@@ -164,9 +164,9 @@ export default function AminoClubVsLimitlessLife() {
           </div>
         </section>
 
-        {/* ── WHEN AMINO CLUB ── */}
+        {/* â”€â”€ WHEN AMINO CLUB â”€â”€ */}
         <section id="when-amino-club">
-          <div className="section-label">§ Choose Amino Club When</div>
+          <div className="section-label">Â§ Choose Amino Club When</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">When to choose Amino Club</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             For the vast majority of researchers focusing on mainstream peptides, Amino Club is our top recommendation.
@@ -184,9 +184,9 @@ export default function AminoClubVsLimitlessLife() {
           </div>
         </section>
 
-        {/* ── WHEN LIMITLESS ── */}
+        {/* â”€â”€ WHEN LIMITLESS â”€â”€ */}
         <section id="when-limitless">
-          <div className="section-label">§ Choose Limitless When</div>
+          <div className="section-label">Â§ Choose Limitless When</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">When to choose Limitless Life</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             Limitless Life Nootropics is a premium vendor with a broader scope.
@@ -204,9 +204,9 @@ export default function AminoClubVsLimitlessLife() {
           </div>
         </section>
 
-        {/* ── PRICING ── */}
+        {/* â”€â”€ PRICING â”€â”€ */}
         <section id="pricing">
-          <div className="section-label">§ 2026 Pricing Data</div>
+          <div className="section-label">Â§ 2026 Pricing Data</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Pricing comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             Both vendors offer discount codes (Amino Club: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for {_aminoClub.discountPercent}% off, Limitless Life: <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">PEPTIDEX</code> for {_limitless.discountPercent}% off). The following comparison reflects standard pricing <em>before</em> the discount is applied.
@@ -252,7 +252,7 @@ export default function AminoClubVsLimitlessLife() {
           <p className="text-sm text-zinc-500 mt-3 italic">Note: Prices are subject to change. Always verify current pricing on the vendor's website.</p>
         </section>
 
-        {/* ── VERDICT ── */}
+        {/* â”€â”€ VERDICT â”€â”€ */}
         <section id="verdict">
           <div className="flex items-center gap-3 mb-6">
             <Trophy className="w-6 h-6 text-amber-400 flex-shrink-0" />
@@ -271,11 +271,11 @@ export default function AminoClubVsLimitlessLife() {
           </AutoLink>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-6 text-center flex flex-col items-center">
-              <div className="text-xs font-bold text-emerald-400 font-mono mb-3">§ Best For Core Peptides & Value</div>
+              <div className="text-xs font-bold text-emerald-400 font-mono mb-3">Â§ Best For Core Peptides & Value</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Amino Club</h3>
               <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX ({_aminoClub.discountPercent}% Off)</span>
               <AffiliateLink
-                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_page&code=PEPTIDEX"
                 vendor="amino_club"
                 peptide="all"
                 source="vs_limitless_footer"
@@ -285,7 +285,7 @@ export default function AminoClubVsLimitlessLife() {
               </AffiliateLink>
             </div>
             <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-6 text-center flex flex-col items-center">
-              <div className="text-xs font-bold text-amber-400 font-mono mb-3">§ Best For Niche Nootropics & Variety</div>
+              <div className="text-xs font-bold text-amber-400 font-mono mb-3">Â§ Best For Niche Nootropics & Variety</div>
               <h3 className="text-xl font-bold text-zinc-100 mb-2">Shop Limitless Life</h3>
               <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded mb-4">Code: PEPTIDEX ({_limitless.discountPercent}% Off)</span>
               <AffiliateLink
@@ -317,3 +317,4 @@ export default function AminoClubVsLimitlessLife() {
     </main>
   );
 }
+

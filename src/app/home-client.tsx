@@ -15,6 +15,11 @@ import {
 } from "lucide-react";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { trackAffiliateClick, trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
+import { AffiliateLink } from "@/components/affiliate-link";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
+
+const HOME_VENDOR_URL = buildAffiliateUrl(PRIMARY_PROMO, "home_vendor_card");
 
 export default function HomePage() {
   const router = useRouter();
@@ -231,21 +236,22 @@ export default function HomePage() {
                 <span className="flex items-center gap-1"><ArrowRight className="w-3.5 h-3.5 text-emerald-500" /> Fast US shipping</span>
               </div>
 
-              <a
-                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
-                target="_blank"
-                rel="nofollow noopener sponsored"
-                onClick={() => trackAffiliateClick({ vendor: "amino_club", peptide: "general", source_component: "vendor_card", url: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX" })}
+              <AffiliateLink
+                href={HOME_VENDOR_URL}
+                vendor="amino_club"
+                peptide="general"
+                source="home_vendor_card"
                 className="flex items-center justify-center gap-2 w-full py-3.5 min-h-[48px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 mb-2"
                 id="affiliate-home-vendor-card-amino-club"
+                aria-label="Compare Prices on Amino Club"
               >
                 Compare Prices <ExternalLink className="w-4 h-4 text-emerald-200" />
-              </a>
+              </AffiliateLink>
               <a
-                href="https://aminoclub.com/coa/bpc-157-latest.pdf"
+                href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex&utm_content=vendor_card_coa&code=PEPTIDEX"
                 target="_blank"
                 rel="nofollow noopener sponsored"
-                onClick={() => trackAffiliateClick({ vendor: "amino_club", peptide: "bpc-157", source_component: "vendor_card", url: "https://aminoclub.com/coa/bpc-157-latest.pdf" })}
+                onClick={() => trackAffiliateClick({ vendor: "amino_club", peptide: "bpc-157", source_component: "vendor_card", url: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex&utm_content=vendor_card_coa&code=PEPTIDEX" })}
                 className="flex items-center justify-center gap-2 w-full py-2.5 min-h-[44px] rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 text-sm font-semibold transition-all"
                 id="affiliate-home-vendor-card-amino-club-coa"
               >

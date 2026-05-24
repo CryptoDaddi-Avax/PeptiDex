@@ -222,7 +222,7 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
             </div>
             <div className="relative z-10 w-full md:w-auto flex flex-col items-center md:items-end">
               <AffiliateLink
-                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX"
                 vendor="amino_club"
                 peptide={slug}
                 source="product_page_hero"
@@ -350,7 +350,7 @@ export default function AminoClubProductPage({ params }: { params: { peptide: st
             </div>
             <div>
               <AffiliateLink
-                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX"
                 vendor="amino_club"
                 peptide={slug}
                 source="product_page_footer"

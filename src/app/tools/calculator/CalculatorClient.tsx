@@ -12,6 +12,7 @@ import { ShareModal } from "@/components/share-card/share-modal";
 import type { CalculatorCardData } from "@/components/share-card/card-templates";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { trackOutboundClick } from "@/lib/ga4-events";
+import { trackClick } from "@/lib/tracking/click";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
 
@@ -623,7 +624,7 @@ export default function CalculatorClient() {
                 // Fallback: Amino Club generic link if no pricing data
                 const fallbackUrl = (() => {
                     const base = aminoClubProductMapping[pepSlug] || 'https://aminoclub.com';
-                    return base + (base.includes('?') ? '&' : '?') + 'utm_source=affiliate_marketing&code=PEPTIDEX';
+                    return base + (base.includes('?') ? '&' : '?') + 'utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=calculator_fallback&code=PEPTIDEX';
                 })();
 
                 let supplyEstimate = '';
@@ -665,7 +666,10 @@ export default function CalculatorClient() {
                                                 href={v.affiliateUrl}
                                                 target="_blank"
                                                 rel="sponsored nofollow noopener"
-                                                onClick={() => trackOutboundClick(v.vendor, v.affiliateUrl, 'calculator_where_to_buy')}
+                                                onClick={() => {
+                                                    trackOutboundClick(v.vendor, v.affiliateUrl, 'calculator_where_to_buy');
+                                                    trackClick({ peptide_slug: pepSlug || 'general', vendor_slug: v.vendor, page_path: typeof window !== 'undefined' ? window.location.pathname : '/', surface: 'tool_calculator' });
+                                                }}
                                                 className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
                                             >
                                                 Shop <ExternalLink className="w-3 h-3" />
@@ -685,7 +689,10 @@ export default function CalculatorClient() {
                                     href={fallbackUrl}
                                     target="_blank"
                                     rel="sponsored nofollow noopener"
-                                    onClick={() => trackOutboundClick('Amino Club', fallbackUrl, 'calculator_where_to_buy_fallback')}
+                                    onClick={() => {
+                                        trackOutboundClick('Amino Club', fallbackUrl, 'calculator_where_to_buy_fallback');
+                                        trackClick({ peptide_slug: pepSlug || 'general', vendor_slug: 'amino-club', page_path: typeof window !== 'undefined' ? window.location.pathname : '/', surface: 'tool_calculator' });
+                                    }}
                                     className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
                                 >
                                     Shop <ExternalLink className="w-3 h-3" />

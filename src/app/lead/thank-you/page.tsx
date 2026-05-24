@@ -55,7 +55,7 @@ export default function ThankYouPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
                         <a
-                            href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                            href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=thank_you_cta&code=PEPTIDEX"
                             target="_blank"
                             rel="noopener noreferrer nofollow sponsored"
                             className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-colors shadow-lg shadow-violet-900/20"

@@ -1,4 +1,4 @@
-export interface VendorPrice {
+﻿export interface VendorPrice {
     vendor: string;
     price_usd: number;
     in_stock: boolean;
@@ -40,7 +40,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 49.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -66,7 +66,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 39.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -93,7 +93,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 59.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -119,7 +119,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -145,7 +145,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -171,7 +171,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 0,
                 "in_stock": false,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -198,7 +198,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -224,7 +224,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 69.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -250,7 +250,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 49.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -276,7 +276,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 39.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -302,7 +302,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 39.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -328,7 +328,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -354,7 +354,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -381,7 +381,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 69.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -407,7 +407,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 0,
                 "in_stock": false,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -434,7 +434,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -460,7 +460,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 0,
                 "in_stock": false,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -487,7 +487,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -513,7 +513,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 0,
                 "in_stock": false,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -539,7 +539,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 39.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -565,7 +565,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 69.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -591,7 +591,7 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 39.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -617,8 +617,9 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 0,
                 "in_stock": false,
-                "link": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     }
 ];
+

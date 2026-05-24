@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import {
   trackAffiliateClick,
   vendorKeyFromUrl,
@@ -29,6 +29,8 @@ interface AffiliateLinkProps {
   id?: string;
   /** Optional aria-label for accessibility */
   "aria-label"?: string;
+  /** Optional inline style override */
+  style?: React.CSSProperties;
 }
 
 /**
@@ -53,6 +55,7 @@ export function AffiliateLink({
   target = "_blank",
   id,
   "aria-label": ariaLabel,
+  style,
 }: AffiliateLinkProps) {
   const resolvedVendor: AffiliateVendor | "unknown" =
     vendor ?? vendorKeyFromUrl(href);
@@ -89,6 +92,7 @@ export function AffiliateLink({
       rel={rel}
       onClick={handleClick}
       className={className}
+      style={style}
       id={id}
       aria-label={ariaLabel}
     >

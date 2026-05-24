@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
@@ -56,7 +56,7 @@ const COA_CHECKLIST = [
   { num: '02', title: 'Compound Name', body: 'Verify it matches the product you are purchasing exactly.' },
   { num: '03', title: 'Batch / Lot Number', body: 'This is critical. The lot on the document must match the lot currently being sold. See the batch-specific section below.' },
   { num: '04', title: 'Purity Result', body: 'Look for the HPLC summary stating the calculated purity. PeptiDex considers anything above 98% acceptable for general research, but Amino Club consistently hits 99%+.' },
-  { num: '05', title: 'Mass Result', body: 'Look for the expected mass vs. the observed mass. They should match within a very tight margin of error (usually ±1 Da).' },
+  { num: '05', title: 'Mass Result', body: 'Look for the expected mass vs. the observed mass. They should match within a very tight margin of error (usually Â±1 Da).' },
 ];
 
 export default function AminoClubCOAVerification() {
@@ -75,12 +75,12 @@ export default function AminoClubCOAVerification() {
             <span className="sep">/</span>
             <span className="current">COA Verification</span>
           </nav>
-          <div className="section-label">§ Analytical Testing</div>
+          <div className="section-label">Â§ Analytical Testing</div>
           <h1 className="page-title">
             Amino Club<br /><em>COA audit</em>.
           </h1>
           <p className="page-subtitle">
-            How we read their Certificates of Analysis — HPLC purity, Mass Spec identity, and why batch-specific testing is the standard.
+            How we read their Certificates of Analysis â€” HPLC purity, Mass Spec identity, and why batch-specific testing is the standard.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function AminoClubCOAVerification() {
 
       <div className="about-content reveal space-y-16">
 
-        {/* ── WHAT IS A COA ── */}
+        {/* â”€â”€ WHAT IS A COA â”€â”€ */}
         <section id="what-is-a-coa">
           <div className="flex items-center gap-3 mb-6">
             <Shield className="w-6 h-6 text-violet-400 flex-shrink-0" />
@@ -120,7 +120,7 @@ export default function AminoClubCOAVerification() {
               { num: '02', title: 'Purity', body: 'What percentage of the vial contains the active peptide versus synthesis byproducts, truncated sequences, or inert salts?' },
             ].map((s) => (
               <div key={s.num} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
-                <div className="text-xs font-bold text-violet-400 font-mono mb-3">§ {s.num}</div>
+                <div className="text-xs font-bold text-violet-400 font-mono mb-3">Â§ {s.num}</div>
                 <h3 className="font-bold text-zinc-100 mb-2">{s.title}</h3>
                 <p className="text-sm text-zinc-400 leading-relaxed">{s.body}</p>
               </div>
@@ -131,7 +131,7 @@ export default function AminoClubCOAVerification() {
           </p>
         </section>
 
-        {/* ── HPLC vs MS ── */}
+        {/* â”€â”€ HPLC vs MS â”€â”€ */}
         <section id="hplc-vs-ms">
           <div className="flex items-center gap-3 mb-6">
             <FlaskConical className="w-6 h-6 text-amber-400 flex-shrink-0" />
@@ -149,7 +149,7 @@ export default function AminoClubCOAVerification() {
                 <h3 className="text-lg font-bold text-zinc-100">HPLC (Purity)</h3>
               </div>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                <strong className="text-zinc-200">High-Performance Liquid Chromatography</strong> separates the mixture into its individual components. The output is a graph (chromatogram) showing peaks. The main peak represents the target peptide. The area under the main peak relative to the total area of all peaks determines the purity percentage (e.g., 99.2%). Amino Club's standard is ≥99%.
+                <strong className="text-zinc-200">High-Performance Liquid Chromatography</strong> separates the mixture into its individual components. The output is a graph (chromatogram) showing peaks. The main peak represents the target peptide. The area under the main peak relative to the total area of all peaks determines the purity percentage (e.g., 99.2%). Amino Club's standard is â‰¥99%.
               </p>
             </div>
             <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
@@ -166,7 +166,7 @@ export default function AminoClubCOAVerification() {
           </div>
         </section>
 
-        {/* ── HOW TO READ ── */}
+        {/* â”€â”€ HOW TO READ â”€â”€ */}
         <section id="how-to-read">
           <div className="flex items-center gap-3 mb-6">
             <AlertCircle className="w-6 h-6 text-emerald-400 flex-shrink-0" />
@@ -178,7 +178,7 @@ export default function AminoClubCOAVerification() {
           <div className="space-y-4">
             {COA_CHECKLIST.map((s) => (
               <div key={s.num} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 flex items-start gap-4">
-                <div className="text-xs font-bold text-emerald-400 font-mono flex-shrink-0 pt-0.5">§ {s.num}</div>
+                <div className="text-xs font-bold text-emerald-400 font-mono flex-shrink-0 pt-0.5">Â§ {s.num}</div>
                 <div>
                   <h3 className="font-bold text-zinc-100 mb-1">{s.title}</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed">{s.body}</p>
@@ -188,15 +188,15 @@ export default function AminoClubCOAVerification() {
           </div>
         </section>
 
-        {/* ── BATCH SPECIFIC ── */}
+        {/* â”€â”€ BATCH SPECIFIC â”€â”€ */}
         <section id="batch-specific">
-          <div className="section-label">§ Why It Matters</div>
+          <div className="section-label">Â§ Why It Matters</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Why batch-specific testing matters</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             This is the primary reason we rate Amino Club so highly. Many inferior vendors practice "golden batch" testing. They will synthesize or purchase one highly pure batch, send it to a lab, get a pristine COA, and then use that same document for years across dozens of subsequent, untested batches.
           </p>
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-6">
-            <div className="text-xs font-bold text-emerald-400 font-mono mb-3">§ The Amino Club Standard</div>
+            <div className="text-xs font-bold text-emerald-400 font-mono mb-3">Â§ The Amino Club Standard</div>
             <h3 className="font-bold text-zinc-100 mb-2 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-emerald-400" /> Batch-Specific Testing
             </h3>
@@ -206,9 +206,9 @@ export default function AminoClubCOAVerification() {
           </div>
         </section>
 
-        {/* ── COMPARISON ── */}
+        {/* â”€â”€ COMPARISON â”€â”€ */}
         <section id="comparison">
-          <div className="section-label">§ Industry Benchmark</div>
+          <div className="section-label">Â§ Industry Benchmark</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Comparison vs. competitor testing frequency</h2>
           <AutoLink>
             <p className="text-zinc-400 leading-relaxed mb-4">
@@ -220,10 +220,10 @@ export default function AminoClubCOAVerification() {
           </AutoLink>
         </section>
 
-        {/* ── CTA ── */}
+        {/* â”€â”€ CTA â”€â”€ */}
         <section id="cta">
           <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-8 text-center">
-            <div className="text-xs font-bold text-amber-400 font-mono mb-4">§ Exclusive Code</div>
+            <div className="text-xs font-bold text-amber-400 font-mono mb-4">Â§ Exclusive Code</div>
             <h3 className="text-2xl font-bold text-zinc-100 mb-4">Source Verified Peptides</h3>
             <p className="text-zinc-300 mb-6">Never compromise on analytical testing. Order from a verified vendor and use our code to save.</p>
             <div className="inline-block bg-zinc-950 border border-zinc-800 rounded-lg px-6 py-3 mb-6">
@@ -232,7 +232,7 @@ export default function AminoClubCOAVerification() {
             </div>
             <div>
               <AffiliateLink
-                href="https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_page&code=PEPTIDEX"
                 vendor="amino_club"
                 peptide="all"
                 source="coa_page_footer"
@@ -260,3 +260,4 @@ export default function AminoClubCOAVerification() {
     </main>
   );
 }
+

@@ -55,24 +55,29 @@ export function buildAffiliateUrl(
     const base = promo.shopUrl.split("?")[0];
     const existingParams = new URLSearchParams(promo.shopUrl.split("?")[1] ?? "");
 
-    // Keep non-UTM vendor-specific params (e.g., aff_id, offer_id, ref codes)
+    // Keep non-UTM vendor-specific params (e.g., aff_id, offer_id, ref codes).
+    // NOTE: We intentionally do NOT exclude "code" here — it is kept from the
+    // existing URL if present, and then explicitly overwritten below from
+    // promo.code (the authoritative source), ensuring it always survives.
     const keepParams = new URLSearchParams();
     existingParams.forEach((value, key) => {
-      if (
-        !key.startsWith("utm_") &&
-        key !== "code" &&
-        key !== "utm_source"
-      ) {
+      if (!key.startsWith("utm_")) {
         keepParams.set(key, value);
       }
     });
 
-    // Build final URL with canonical UTMs
+    // Build final URL with canonical UTMs + promo code
     const params = new URLSearchParams(keepParams);
     params.set("utm_source", "peptidex");
     params.set("utm_medium", "affiliate");
     params.set("utm_campaign", "peptidex_code");
     params.set("utm_content", surface);
+    // Always append the promo code from the canonical PromoCode source.
+    // This ensures code=PEPTIDEX survives even if the base affiliateUrl
+    // doesn't include it (e.g., after UTM migration strips the query string).
+    if (promo.code) {
+      params.set("code", promo.code);
+    }
 
     return `${base}?${params.toString()}`;
   } catch {

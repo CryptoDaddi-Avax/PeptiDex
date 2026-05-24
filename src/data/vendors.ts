@@ -1,11 +1,11 @@
-/**
- * Centralized Vendor Registry — Single Source of Truth
+﻿/**
+ * Centralized Vendor Registry â€” Single Source of Truth
  * =====================================================
  * Created: 2026-04-30
  * 
  * WHY THIS FILE EXISTS:
  * Previously, vendor data was fragmented across 4 separate files:
- *   - vendor-comparison.ts  (vendorProfiles — rating, COA, shipping metadata)
+ *   - vendor-comparison.ts  (vendorProfiles â€” rating, COA, shipping metadata)
  *   - vendor-pricing.ts     (per-peptide vendor pricing)
  *   - pricing.ts            (legacy pricing data for /tools/pricing)
  *   - affiliates.ts         (Amino Club product URL mapping)
@@ -20,16 +20,16 @@
  * 
  * VENDOR LINEUP (as of 2026-04-30):
  *   Injectable:
- *     1. Amino Club          — Editor's Choice, 40+ compounds
- *     2. Bio Longevity Labs  — Triple-Tested Premium, 80+ compounds
- *     3. Limitless Life      — USA Made, 90+ compounds
- *     4. Ascension Peptides  — COA Verified, 60+ compounds
- *     5. Pantheon Peptides   — COA Verified, 50+ compounds
+ *     1. Amino Club          â€” Editor's Choice, 40+ compounds
+ *     2. Bio Longevity Labs  â€” Triple-Tested Premium, 80+ compounds
+ *     3. Limitless Life      â€” USA Made, 90+ compounds
+ *     4. Ascension Peptides  â€” COA Verified, 60+ compounds
+ *     5. Pantheon Peptides   â€” COA Verified, 50+ compounds
  *   Oral:
- *     6. LVLUP Health        — Oral specialist, 20+ compounds
+ *     6. LVLUP Health        â€” Oral specialist, 20+ compounds
  */
 
-// ── Types ────────────────────────────────────────────────────────────────────
+// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export type VendorCategory = "injectable" | "oral";
 export type BadgeStyle = "gold" | "green" | "premium" | "blue" | "orange";
@@ -49,7 +49,7 @@ export interface Vendor {
   sortOrder: number;
   /** Injectable or oral */
   category: VendorCategory;
-  /** Full affiliate URL — used for all outbound links */
+  /** Full affiliate URL â€” used for all outbound links */
   affiliateUrl: string;
   /** Discount code (if any) */
   discountCode?: string;
@@ -100,10 +100,10 @@ export interface Vendor {
   compounds?: string[];
 }
 
-// ── Vendor Data ──────────────────────────────────────────────────────────────
+// â”€â”€ Vendor Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const vendors: Vendor[] = [
-  // ── #1: Amino Club ──────────────────────────────────────────────────────
+  // â”€â”€ #1: Amino Club â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     slug: "amino-club",
     name: "Amino Club",
@@ -112,7 +112,7 @@ export const vendors: Vendor[] = [
     badgeStyle: "gold",
     sortOrder: 1,
     category: "injectable",
-    affiliateUrl: "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+    affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
     discountCode: "PEPTIDEX",
     discountPercent: 20,
     discountStackable: false,
@@ -121,7 +121,7 @@ export const vendors: Vendor[] = [
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
-    shippingSpeed: "2–4 business days (US)",
+    shippingSpeed: "2â€“4 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA", "International"],
     catalogSize: "40+ compounds",
@@ -135,7 +135,7 @@ export const vendors: Vendor[] = [
     verificationTier: "gold",
   },
 
-  // ── #2: Bio Longevity Labs ──────────────────────────────────────────────
+  // â”€â”€ #2: Bio Longevity Labs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     slug: "bio-longevity-labs",
     name: "Bio Longevity Labs",
@@ -153,13 +153,13 @@ export const vendors: Vendor[] = [
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "2–5 business days (US)",
+    shippingSpeed: "2â€“5 business days (US)",
     shippingCost: "Free over $150",
     shipsTo: ["USA", "International"],
     catalogSize: "80+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "30-day money-back guarantee",
-    editorialNote: "Use code PEPTIDEX for 15% off — stacks with any active sale for up to 40%+ savings",
+    editorialNote: "Use code PEPTIDEX for 15% off â€” stacks with any active sale for up to 40%+ savings",
     lastTestedDate: "2026-04-20",
     gaKey: "bio_longevity_labs",
     domainMatch: "biolongevitylabs.com",
@@ -167,7 +167,7 @@ export const vendors: Vendor[] = [
     verificationTier: "gold",
   },
 
-  // ── #3: Limitless Life ──────────────────────────────────────────────────
+  // â”€â”€ #3: Limitless Life â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     slug: "limitless-life",
     name: "Limitless Life",
@@ -185,7 +185,7 @@ export const vendors: Vendor[] = [
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "3–5 business days (US)",
+    shippingSpeed: "3â€“5 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA"],
     catalogSize: "90+ compounds",
@@ -198,11 +198,11 @@ export const vendors: Vendor[] = [
     verificationTier: "silver",
   },
 
-  // ── #4: Ascension Peptides ──────────────────────────────────────────────
+  // â”€â”€ #4: Ascension Peptides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     slug: "ascension-peptides",
     name: "Ascension Peptides",
-    tagline: "60+ COA-verified compounds — use code PEPTIDEX for 50% off",
+    tagline: "60+ COA-verified compounds â€” use code PEPTIDEX for 50% off",
     badge: "COA Verified",
     badgeStyle: "green",
     sortOrder: 4,
@@ -216,7 +216,7 @@ export const vendors: Vendor[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3–5 business days (US)",
+    shippingSpeed: "3â€“5 business days (US)",
     shippingCost: "Free over $150",
     shipsTo: ["USA"],
     catalogSize: "60+ compounds",
@@ -230,7 +230,7 @@ export const vendors: Vendor[] = [
     verificationTier: "silver",
   },
 
-  // ── #5: Pantheon Peptides ───────────────────────────────────────────────
+  // â”€â”€ #5: Pantheon Peptides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     slug: "pantheon-peptides",
     name: "Pantheon Peptides",
@@ -248,7 +248,7 @@ export const vendors: Vendor[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3–5 business days (US)",
+    shippingSpeed: "3â€“5 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA"],
     catalogSize: "50+ compounds",
@@ -261,7 +261,7 @@ export const vendors: Vendor[] = [
     verificationTier: "bronze",
   },
 
-  // ── #6: LVLUP Health (Oral) ─────────────────────────────────────────────
+  // â”€â”€ #6: LVLUP Health (Oral) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     slug: "lvlup-health",
     name: "LVLUP Health",
@@ -279,7 +279,7 @@ export const vendors: Vendor[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3–5 business days (US)",
+    shippingSpeed: "3â€“5 business days (US)",
     shippingCost: "Free over $75",
     shipsTo: ["USA"],
     catalogSize: "20+ compounds",
@@ -293,7 +293,7 @@ export const vendors: Vendor[] = [
   },
 ];
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
+// â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** All vendors sorted by sortOrder */
 export const vendorsSorted = [...vendors].sort((a, b) => a.sortOrder - b.sortOrder);
@@ -319,3 +319,4 @@ export const VENDOR_COUNT = vendors.length;
 
 /** Injectable vendor count */
 export const INJECTABLE_VENDOR_COUNT = injectableVendors.length;
+

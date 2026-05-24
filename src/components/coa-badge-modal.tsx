@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, Activity, ShieldCheck, FileSearch, Mail, ExternalLink, FlaskConical, Microscope } from "lucide-react";
 import { trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
+import { trackClick } from "@/lib/tracking/click";
 import { InlineDisclaimer } from "@/components/ui/DisclaimerCard";
 
 interface COAModalProps {
@@ -167,7 +168,10 @@ export function COABadge({
                                                         href={coaUrl}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        onClick={() => trackOutboundClick(vendorName, coaUrl, "coa_modal_external")}
+                                                        onClick={() => {
+                                                            trackOutboundClick(vendorName, coaUrl, "coa_modal_external");
+                                                            trackClick({ peptide_slug: 'general', vendor_slug: vendorName, page_path: typeof window !== 'undefined' ? window.location.pathname : '/', surface: 'coa_modal' });
+                                                        }}
                                                         className="ml-auto text-[10px] text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1 transition-colors"
                                                     >
                                                         Open Full Report <ExternalLink className="w-3 h-3" />
@@ -226,7 +230,10 @@ export function COABadge({
                                             href={coaUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            onClick={() => trackOutboundClick(vendorName, coaUrl!, "coa_modal_full_report")}
+                                            onClick={() => {
+                                                trackOutboundClick(vendorName, coaUrl!, "coa_modal_full_report");
+                                                trackClick({ peptide_slug: 'general', vendor_slug: vendorName, page_path: typeof window !== 'undefined' ? window.location.pathname : '/', surface: 'coa_modal' });
+                                            }}
                                             className="flex items-center justify-center gap-2 w-full py-3 min-h-[44px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-500/15"
                                         >
                                             <FileSearch className="w-4 h-4" /> View Full COA Report <ExternalLink className="w-3.5 h-3.5" />

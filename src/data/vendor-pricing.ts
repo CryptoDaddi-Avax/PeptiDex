@@ -1,5 +1,5 @@
-/**
- * @deprecated — Will be consolidated into /data/vendors.ts pricing module.
+﻿/**
+ * @deprecated â€” Will be consolidated into /data/vendors.ts pricing module.
  * This file is preserved for backward compatibility. Migration date: 2026-04-30
  */
 
@@ -31,7 +31,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick",
                 "coaUrl": "https://aminoclub.com/coa/bpc-157-latest.pdf",
                 "lastTestedDate": "2026-04-10"
@@ -72,7 +72,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -109,7 +109,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 59.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             }
         ]
@@ -123,7 +123,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 59.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -160,7 +160,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -198,7 +198,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -236,7 +236,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 50,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -274,7 +274,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -303,7 +303,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 49.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -324,7 +324,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -447,7 +447,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -476,7 +476,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             }
         ]
@@ -490,7 +490,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -510,7 +510,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 47.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -543,7 +543,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -607,7 +607,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 1,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -628,7 +628,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 500,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -650,7 +650,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 59.99,
                 "vial_mg": 1500,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -671,7 +671,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX",
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
                 "badge": "Editor's Pick"
             },
             {
@@ -693,7 +693,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 86.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -713,7 +713,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 54.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -733,7 +733,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 55.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=affiliate_marketing&code=PEPTIDEX"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -781,12 +781,12 @@ export const vendorPricing: PeptideVendorPricing[] =
             // Prices pending verification
         ]
     },
-    // NAD+ (slug "nad") is a duplicate — see "nad-" entry above for the real pricing
+    // NAD+ (slug "nad") is a duplicate â€” see "nad-" entry above for the real pricing
     {
         "slug": "tesofensine",
         "name": "Tesofensine",
         "vendors": [
-            // Prices pending verification — do not display until confirmed
+            // Prices pending verification â€” do not display until confirmed
         ]
     },
     {
@@ -979,3 +979,4 @@ export function getVendorPricing(slugOrName: string): PeptideVendorPricing | und
         v => v.slug === normalized || v.name.toLowerCase() === normalized
     );
 }
+
