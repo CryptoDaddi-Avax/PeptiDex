@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { SITE_STATS } from "@/data/site-stats";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, ArrowRight, CheckCircle, Loader2, FileText } from "lucide-react";
 
@@ -68,7 +69,7 @@ export function LeadMagnetInline({ source = "inline" }: Props) {
                             2026 Peptide Stack Cheat Sheet
                         </h4>
                         <p className="text-[11px] text-zinc-400 mb-3 leading-relaxed">
-                            12 stacks &bull; exact dosages &bull; cycle lengths &bull; printable reference
+                            {SITE_STATS.stacks.count} stacks &bull; exact dosages &bull; cycle lengths &bull; printable reference
                         </p>
 
                         <form onSubmit={handleSubmit} className="flex flex-col gap-2">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_STATS } from "@/data/site-stats";
 import { buildHowToSchema, buildSoftwareApplicationSchema } from "@/lib/seo/schema";
 import { SchemaInjector } from "@/components/schema-injector";
 import { EmbedModal } from "@/components/embed-modal";
@@ -250,7 +251,7 @@ export default function CalculatorPage() {
                             target dose in micrograms. It returns the solution
                             concentration (mcg/mL), the exact volume to draw on
                             a U-100 insulin syringe, and the total number of
-                            doses per vial. The tool supports all 51 peptides in
+                            doses per vial. The tool supports all {SITE_STATS.peptides.count} peptides in
                             our library plus popular blends, and pre-fills
                             typical protocol values when a compound is selected.
                         </p>

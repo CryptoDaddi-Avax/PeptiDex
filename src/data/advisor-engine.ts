@@ -4,6 +4,7 @@ import { pricingData } from "@/data/pricing";
 import { legalData, legalStatusLabels } from "@/data/legal-status";
 import { checkInteractions } from "@/data/peptide-interactions";
 import { getCategoryIcon } from "@/data/category-icons";
+import { SITE_STATS } from "@/data/site-stats";
 
 // --- Intent Detection ---
 
@@ -262,7 +263,7 @@ export function generateResponse(query: ParsedQuery): string {
         }
 
         case "legal_status": {
-            if (peptideNames.length === 0) return "Which peptide do you need legal status for? I have data for All 51 peptides across USA, Canada, UK, EU, and Australia.";
+            if (peptideNames.length === 0) return `Which peptide do you need legal status for? I have data for All ${SITE_STATS.peptides.count} peptides across USA, Canada, UK, EU, and Australia.`;
             const results = peptideNames.map((name) => {
                 const legal = legalData.find((l) => l.peptide_name === name);
                 if (!legal) return `**${name}**: No legal data available.`;

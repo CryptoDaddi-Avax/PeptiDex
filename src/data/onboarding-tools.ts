@@ -1,3 +1,5 @@
+import { SITE_STATS } from './site-stats';
+
 /**
  * Onboarding Step 5 — Toolkit Cross-sell Data
  * =============================================
@@ -47,7 +49,7 @@ export const ONBOARDING_TOOLS: OnboardingTool[] = [
     href: '/peptides',
     slug: 'peptide_library',
     title: 'Peptide Library',
-    desc: 'Browse 51+ research-grade peptides ranked by clinical evidence — filterable by goal, mechanism, and half-life.',
+    desc: `Browse ${SITE_STATS.peptides.count}+ research-grade peptides ranked by clinical evidence — filterable by goal, mechanism, and half-life.`,
   },
   {
     href: '/tools/interactions',

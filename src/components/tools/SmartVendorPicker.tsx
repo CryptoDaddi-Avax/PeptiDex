@@ -211,7 +211,7 @@ export function SmartVendorPicker({ mode, initialPeptideSlug }: Props) {
                         </p>
                         <input
                             type="text"
-                            placeholder="Search 52 peptides..."
+                            placeholder={`Search ${peptides.length}+ peptides...`}
                             value={search}
                             onChange={e => setSearch(e.target.value)}
                             autoFocus

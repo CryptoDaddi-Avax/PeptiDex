@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { SITE_STATS } from "@/data/site-stats";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Copy, Check, Tag, Star, ExternalLink, Zap, ChevronDown,
@@ -352,7 +353,7 @@ export function CouponHubClient({
           Peptide Vendor Coupon Codes
         </h1>
         <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-          Every active discount code across all 6 verified vendors — one code (PEPTIDEX) works everywhere.
+          Every active discount code across all {SITE_STATS.vendors.count} verified vendors — one code (PEPTIDEX) works everywhere.
           Up to 50% off. No hidden minimums.
         </p>
       </div>
@@ -403,7 +404,7 @@ export function CouponHubClient({
           </h2>
         </div>
         <p className="text-xs text-zinc-400 mb-4">
-          One code, six vendors. Works at checkout on all orders — no minimum purchase required at most vendors.
+          One code, {SITE_STATS.vendors.count} vendors. Works at checkout on all orders — no minimum purchase required at most vendors.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {sorted.map((deal) => (
@@ -504,7 +505,7 @@ export function CouponHubClient({
           {[
             {
               q: "Do I need different codes for each vendor?",
-              a: "No — the code PEPTIDEX works at all 6 vendors we list. Enter it at checkout on any vendor's site for the discount shown in the table above.",
+              a: `No — the code PEPTIDEX works at all ${SITE_STATS.vendors.count} vendors we list. Enter it at checkout on any vendor's site for the discount shown in the table above.`,
             },
             {
               q: "Can I stack the code with vendor sales?",

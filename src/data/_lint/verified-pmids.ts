@@ -513,4 +513,21 @@ export const verifiedPmids: Record<string, {
         year: 2018,
         verified_date: "2026-05-20",
         verified_by: "Antigravity/NLM-API"
-    },};
+    },
+    "9194528": {
+        authors: "Malinda KM, Goldstein AL, Kleinman HK",
+        title: "Thymosin beta 4 stimulates directional migration of human umbilical vein endothelial cells",
+        journal: "FASEB J",
+        year: 1997,
+        verified_date: "2026-05-24",
+        verified_by: "Antigravity/NLM-API"
+    },
+    "265572": {
+        authors: "Schoenenberger GA, Monnier M",
+        title: "Characterization of a delta-electroencephalogram (-sleep)-inducing peptide",
+        journal: "Proc Natl Acad Sci U S A",
+        year: 1977,
+        verified_date: "2026-05-24",
+        verified_by: "Antigravity/NLM-API"
+    },
+};

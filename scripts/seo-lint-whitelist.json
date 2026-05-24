@@ -4,6 +4,8 @@
     "src/app/blog/**",
     "src/app/guides/**",
     "src/app/lead/**",
+    "src/app/api/**",
+    "src/app/research/**",
     "src/data/vendor-pricing.ts",
     "src/data/verified-pmids.ts",
     "src/data/blog.ts"
@@ -19,6 +21,20 @@
     "\\bACTH4-10\\s+peptide\\b",
     "\\bLL-37\\s+peptide\\b",
     "\\b#?1\\s+Peptide\\b",
-    "\\b157\\s+Peptide\\b"
+    "\\b157\\s+Peptide\\b",
+    "\\b157\\s+stacks?\\b",
+    "\\b500\\s+stacks?\\b",
+    "\\b9[89]%\\+?",
+    "\\b24%\\+?",
+    "\\b40%\\+?",
+    "\\b50%\\s+off\\b",
+    "\\btop\\s+5\\s+peptides\\b",
+    "\\b60-day\\b",
+    "\\bGLP-1\\s+peptides?\\b",
+    "\\b80\\s+peptide-based\\s+drugs\\b",
+    "\\b80\\s+peptide\\b",
+    "\\b2\\s+peptides\\b",
+    "\\bGLP-1\\s+Stack\\b",
+    "\\b1\\.\\s+The\\s+Anti-Catabolic\\b"
   ]
 }

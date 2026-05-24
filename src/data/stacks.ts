@@ -47,7 +47,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         synergy_rationale: "The undisputed 'Wolverine Stack.' BPC-157 acts systemically to build new blood vessel networks (angiogenesis) to feed injured tissues, while TB-500 hyper-accelerates the movement of repair cells to the site. Taking these two together is the gold standard for musculoskeletal repair.",
         supporting_studies: [
             { description: "BPC-157 tendon, ligament, and gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
-            { description: "TB-500 wound healing and inflammation reduction", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14657002/" },
+            { description: "TB-500 stimulates cell migration and angiogenesis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9194528/" },
         ],
     },
     {
@@ -116,7 +116,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         supporting_studies: [
             { description: "Epitalon extends lifespan in animal models", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/12937682/" },
             { description: "MOTS-c prevents age-dependent physical decline", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
-            { description: "GHK-Cu gene reset data", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/17703734/" },
+            { description: "GHK-Cu gene reset data", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/29986520/" },
         ],
     },
     {
@@ -128,7 +128,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         ],
         synergy_rationale: "GHK-Cu provides the 'building blocks' by upregulating collagen and elastin production. BPC-157 provides the 'supply lines' by building new capillaries to ensure those skin cells have the blood flow to actually execute the rebuilding process.",
         supporting_studies: [
-            { description: "GHK-Cu promotes robust skin regeneration", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/17703734/" },
+            { description: "GHK-Cu promotes robust skin regeneration", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/29986520/" },
             { description: "BPC-157 angiogenesis and tissue healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
         ],
     },
@@ -142,7 +142,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
         synergy_rationale: "BPC-157 handles the physical, structural repair of the tight junctions in the gut lining (stopping 'leaky gut'). KPV acts as the fire extinguisher, shutting down the chronic localized inflammation (like Crohn's or colitis) that caused the damage in the first place.",
         supporting_studies: [
             { description: "BPC-157 profound gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
-            { description: "KPV anti-inflammatory activity in IBD models", pubmed_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12753158/" },
+            { description: "KPV anti-inflammatory activity in IBD models", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18061177/" },
         ],
     },
     {

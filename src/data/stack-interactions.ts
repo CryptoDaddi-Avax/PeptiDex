@@ -315,8 +315,8 @@ export const stackInteractions: StackInteraction[] = [
     headline: "Complementary nootropic peptides — anxiolytic + cognitive enhancement",
     detail: "Selank acts as an anxiolytic and immune modulator via tuftsin mimicry and serotonin/GABA modulation. Semax is a pro-cognitive peptide that upregulates BDNF and influences dopamine/serotonin systems. Their mechanisms are distinct: Selank reduces anxiety and stabilizes mood, while Semax drives cognitive processing speed and neuroplasticity. No pharmacological conflict identified. Widely co-used in Russian peptide research protocols.",
     citations: [
-      { type: "pubmed", label: "Semenova et al., 2010 — Bull Exp Biol Med (Selank anxiolytic)", url: "https://pubmed.ncbi.nlm.nih.gov/18488898/" },
-      { type: "pubmed", label: "Dolotov et al., 2006 — J Mol Neurosci (Semax BDNF)", url: "https://pubmed.ncbi.nlm.nih.gov/17353092/" },
+      { type: "pubmed", label: "Kozlovskiy et al., 2008 — Eksp Klin Farmakol (Selank mnestic)", url: "https://pubmed.ncbi.nlm.nih.gov/18488898/" },
+      { type: "pubmed", label: "Agapova et al., 2007 — Neurosci Lett (Semax neurotrophin)", url: "https://pubmed.ncbi.nlm.nih.gov/17353092/" },
       { type: "editorial", label: "Editorial: Distinct primary receptors; complementary CNS profile expected" },
     ],
   },
@@ -364,7 +364,7 @@ export const stackInteractions: StackInteraction[] = [
     headline: "Complementary immune modulators — innate + adaptive immunity",
     detail: "LL-37 (Cathelicidin) is an innate immune antimicrobial peptide that disrupts bacterial membranes and modulates inflammatory signaling via TLR4. Thymosin Alpha-1 (Thymalfasin) operates on the adaptive immune system by enhancing T-cell maturation and dendritic cell function. The two immunological axes are non-competing and potentially synergistic in supporting broad immune function.",
     citations: [
-      { type: "pubmed", label: "Hancock et al., 2016 — Nat Rev Drug Discov (LL-37 immune)", url: "https://pubmed.ncbi.nlm.nih.gov/32982998/" },
+      { type: "pubmed", label: "Alford et al., 2020 — Front Microbiol (LL-37 immune)", url: "https://pubmed.ncbi.nlm.nih.gov/32982998/" },
       { type: "editorial", label: "Editorial: Distinct mechanisms; innate + adaptive synergy is pharmacologically rational" },
     ],
   },
@@ -401,7 +401,7 @@ export const stackInteractions: StackInteraction[] = [
     headline: "Sleep-wake cycle + GH pulse — timing-dependent synergy",
     detail: "DSIP (Delta Sleep-Inducing Peptide) promotes slow-wave sleep and may enhance the natural nocturnal GH surge. Ipamorelin also stimulates GH release. Timing both pre-sleep may produce a complementary effect on overnight GH secretion and recovery. No documented adverse pharmacological interaction; the main consideration is timing (both ideally administered pre-sleep).",
     citations: [
-      { type: "pubmed", label: "Schoenenberger et al., 1983 — Eur J Biochem (DSIP)", url: "https://pubmed.ncbi.nlm.nih.gov/862769/" },
+      { type: "pubmed", label: "Monnier et al., 1977 — Experientia (DSIP sleep)", url: "https://pubmed.ncbi.nlm.nih.gov/862769/" },
       { type: "editorial", label: "Editorial: Timing synergy plausible; no adverse interaction documented" },
     ],
   },
@@ -424,7 +424,7 @@ export const stackInteractions: StackInteraction[] = [
     headline: "Additive sedation possible — stagger timing or reduce doses",
     detail: "Both DSIP and melatonin promote sleep onset and slow-wave activity through overlapping but distinct mechanisms. Co-administration at full doses of both may produce stronger sedation than intended, causing difficulty waking or daytime grogginess. If combining, reduce melatonin to ≤0.5 mg and administer DSIP 30–60 minutes before sleep separately.",
     citations: [
-      { type: "pubmed", label: "Schoenenberger & Monnier, 1977 — Proc Natl Acad Sci (DSIP)", url: "https://pubmed.ncbi.nlm.nih.gov/269364/" },
+      { type: "pubmed", label: "Schoenenberger & Monnier, 1977 — Proc Natl Acad Sci (DSIP)", url: "https://pubmed.ncbi.nlm.nih.gov/265572/" },
       { type: "editorial", label: "Editorial: Additive sedation risk at full doses; dose reduction recommended if combining" },
     ],
   },

@@ -2,8 +2,8 @@
  * PeptiDex PMID Integrity Gate (v2)
  *
  * Two-tier scanning architecture:
- *   BLOCK tier — inline claim files: any PMID not in registry or title-mismatched blocks deploy
- *   WARN  tier — bibliography files: mismatches emit warnings but never block deploy
+ *   BLOCK tier ï¿½ inline claim files: any PMID not in registry or title-mismatched blocks deploy
+ *   WARN  tier ï¿½ bibliography files: mismatches emit warnings but never block deploy
  *
  * Triggered automatically as `prebuild` hook via package.json.
  * Manual usage:
@@ -26,10 +26,10 @@ const registrySource = readFileSync(registryPath, 'utf8');
 
 // Extract all PMIDs from the registry (keys of the exported object)
 const registryPmids = new Set(
-    [...registrySource.matchAll(/"(\d{7,8})":\s*\{/g)].map(m => m[1])
+    [...registrySource.matchAll(/"(\d{6,8})":\s*\{/g)].map(m => m[1])
 );
 
-// --- BLOCK-tier files (inline claim citations — deploy blocker) ----------------
+// --- BLOCK-tier files (inline claim citations ï¿½ deploy blocker) ----------------
 const BLOCK_TIER_FILES = [
     join(__dirname, '..', 'src', 'data', 'goal-pages.ts'),
     join(__dirname, '..', 'src', 'data', 'matchups.ts'),
@@ -51,7 +51,7 @@ try {
     });
 } catch {}
 
-// --- WARN-tier files (bibliography links — warn only, never block) -------------
+// --- WARN-tier files (bibliography links ï¿½ warn only, never block) -------------
 const WARN_TIER_FILES = [
     join(__dirname, '..', 'src', 'data', 'peptides.ts'),
     join(__dirname, '..', 'src', 'data', 'blends.ts'),
@@ -59,9 +59,9 @@ const WARN_TIER_FILES = [
 
 // --- Extract PMIDs from a source string ---------------------------------------
 function extractPmids(source) {
-    const inline = [...source.matchAll(/\(PMID:\s*(\d{7,8})\)/g)].map(m => m[1]);
-    const links  = [...source.matchAll(/pubmed\.ncbi\.nlm\.nih\.gov\/(\d{7,8})/g)].map(m => m[1]);
-    const quoted = [...source.matchAll(/"PMID:\s*(\d{7,8})"/g)].map(m => m[1]);
+    const inline = [...source.matchAll(/\(PMID:\s*(\d{6,8})\)/g)].map(m => m[1]);
+    const links  = [...source.matchAll(/pubmed\.ncbi\.nlm\.nih\.gov\/(\d{6,8})/g)].map(m => m[1]);
+    const quoted = [...source.matchAll(/"PMID:\s*(\d{6,8})"/g)].map(m => m[1]);
     return new Set([...inline, ...links, ...quoted]);
 }
 
@@ -121,7 +121,7 @@ const warnings = [];
 let checked = 0;
 
 console.log(`\n${'-'.repeat(65)}`);
-console.log(`PeptiDex PMID Integrity Gate v2 — ${new Date().toISOString()}`);
+console.log(`PeptiDex PMID Integrity Gate v2 ï¿½ ${new Date().toISOString()}`);
 console.log('-'.repeat(65));
 
 // --- BLOCK-TIER SCAN ---------------------------------------------------------
@@ -156,7 +156,7 @@ if (!isWarnOnly) {
 
         if (result.status === 'api_error' || result.status === 'network_error') {
             warnings.push({ pmid, issue: `API error: ${result.error || result.status}`, files: fileList });
-            console.log(`?  PMID ${pmid}: API error — skipping (not blocking)`);
+            console.log(`?  PMID ${pmid}: API error ï¿½ skipping (not blocking)`);
             continue;
         }
 
@@ -170,7 +170,7 @@ if (!isWarnOnly) {
             if (matchRatio < 0.2 && claimWords.length > 3) {
                 errors.push({
                     pmid,
-                    issue: `Title mismatch — registry: "${registryClaim.substring(0, 55)}..." API: "${result.title}"`,
+                    issue: `Title mismatch ï¿½ registry: "${registryClaim.substring(0, 55)}..." API: "${result.title}"`,
                     files: fileList,
                 });
                 console.log(`? PMID ${pmid}: TITLE MISMATCH`);
@@ -180,7 +180,7 @@ if (!isWarnOnly) {
                 console.log(`? PMID ${pmid}: ${result.authors} (${result.year}) ${result.title.substring(0, 50)}...`);
             }
         } else {
-            warnings.push({ pmid, issue: `Not in registry — add to verified-pmids.ts: "${result.title}"`, files: fileList });
+            warnings.push({ pmid, issue: `Not in registry ï¿½ add to verified-pmids.ts: "${result.title}"`, files: fileList });
             console.log(`?  PMID ${pmid} (unregistered): ${result.authors} (${result.year}) ${result.title}`);
             console.log(`   ? Add to verified-pmids.ts before deploying`);
         }
@@ -193,7 +193,7 @@ if (!isWarnOnly) {
             console.log(`\n??  UNREGISTERED PMIDs found in block-tier files (not in verified-pmids.ts):`);
             for (const pmid of unregisteredInBlockTier) {
                 const fileList = blockPmidMap.get(pmid).join(', ');
-                errors.push({ pmid, issue: `Unregistered PMID in block-tier file — must be added to verified-pmids.ts`, files: fileList });
+                errors.push({ pmid, issue: `Unregistered PMID in block-tier file ï¿½ must be added to verified-pmids.ts`, files: fileList });
                 console.log(`  ? PMID ${pmid} in: ${fileList}`);
             }
         }
@@ -204,10 +204,10 @@ if (!isWarnOnly) {
 if (isWarnOnly || !isDiffMode) {
     const warnPmidMap = collectPmidsFromFiles(WARN_TIER_FILES);
     if (warnPmidMap.size > 0) {
-        console.log(`\n??  WARN TIER (${WARN_TIER_FILES.length} bibliography files, ${warnPmidMap.size} unique PMIDs) — warnings only, not blocking`);
+        console.log(`\n??  WARN TIER (${WARN_TIER_FILES.length} bibliography files, ${warnPmidMap.size} unique PMIDs) ï¿½ warnings only, not blocking`);
         const unregisteredInWarnTier = [...warnPmidMap.keys()].filter(pmid => !registryPmids.has(pmid));
         if (unregisteredInWarnTier.length > 0) {
-            console.log(`   ${unregisteredInWarnTier.length} bibliography PMIDs are not in the registry (expected — bibliography links are not registry-managed).`);
+            console.log(`   ${unregisteredInWarnTier.length} bibliography PMIDs are not in the registry (expected ï¿½ bibliography links are not registry-managed).`);
             console.log(`   Run 'node scripts/peptides-bibliography-audit.mjs' for a full sweep.`);
         }
     }
@@ -218,16 +218,16 @@ console.log(`\n${'-'.repeat(65)}`);
 console.log(`Checked: ${checked} PMIDs | Errors: ${errors.length} | Warnings: ${warnings.length}`);
 
 if (errors.length > 0) {
-    console.log(`\n?? GATE FAILED — ${errors.length} PMID error(s) must be resolved before deploy:\n`);
+    console.log(`\n?? GATE FAILED ï¿½ ${errors.length} PMID error(s) must be resolved before deploy:\n`);
     errors.forEach(e => console.log(`  ? PMID ${e.pmid} [${e.files}]: ${e.issue}`));
     console.log(`\nRun: node scripts/pmid-gate.mjs to recheck after fixing.`);
     process.exit(1);
 }
 
 if (warnings.length > 0) {
-    console.log(`\n?  ${warnings.length} warning(s) — not blocking, but review recommended:`);
-    warnings.forEach(w => console.log(`  · PMID ${w.pmid} [${w.files}]: ${w.issue}`));
+    console.log(`\n?  ${warnings.length} warning(s) ï¿½ not blocking, but review recommended:`);
+    warnings.forEach(w => console.log(`  ï¿½ PMID ${w.pmid} [${w.files}]: ${w.issue}`));
 }
 
-console.log(`\n? GATE PASSED — all verified PMIDs resolve to matching papers.`);
+console.log(`\n? GATE PASSED ï¿½ all verified PMIDs resolve to matching papers.`);
 process.exit(0);

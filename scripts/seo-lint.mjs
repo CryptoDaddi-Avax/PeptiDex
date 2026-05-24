@@ -207,7 +207,7 @@ for (const fileDef of FILES_TO_CHECK) {
 
 // ----- Numeric Claims AST Lint -----
 function checkNumericClaims() {
-  console.log('\\nAnalyzing AST for hardcoded numeric claims...');
+  console.log('\nAnalyzing AST for hardcoded numeric claims...');
   const whitelistPath = path.resolve(process.cwd(), 'scripts/seo-lint-whitelist.json');
   let whitelistPatterns = [];
   let whitelistFiles = [];
@@ -227,12 +227,12 @@ function checkNumericClaims() {
   }
 
   const targetPatterns = [
-    /\b\d+\s+peptides?\b/i,
-    /\b\d+\s+compounds?\b/i,
-    /\b\d+\s+stacks?\b/i,
-    /\b\d+\s+vendors?\b/i,
-    /\b\d+\s+tools?\b/i,
-    /\b\d+\s+studies\b/i,
+    /\b(?!202\d)\d+\s+peptides?\b/i,
+    /\b(?!202\d)\d+\s+compounds?\b/i,
+    /\b(?!202\d)\d+\s+stacks?\b/i,
+    /\b(?!202\d)\d+\s+vendors?\b/i,
+    /\b(?!202\d)\d+\s+tools?\b/i,
+    /\b(?!202\d)\d+\s+studies\b/i,
     /\b99(?:\.\d+)?(?:\+)?%\b/i,
     /\b\d+%\+/i
   ];
@@ -248,11 +248,16 @@ function checkNumericClaims() {
       // @ts-ignore - SyntaxKind not fully exported for some reason? we use literal strings or imports
       if (node.getKindName() !== 'StringLiteral' &&
           node.getKindName() !== 'NoSubstitutionTemplateLiteral' &&
+          node.getKindName() !== 'TemplateExpression' &&
           node.getKindName() !== 'JsxText') {
         return;
       }
 
-      const text = node.getText().replace(/^["'`]/, '').replace(/["'`]$/, '').trim();
+      let text = node.getText().replace(/^["'`]/, '').replace(/["'`]$/, '').trim();
+      if (node.getKindName() === 'TemplateExpression') {
+        // Replace dynamic template interpolations ${...} with empty/placeholder to test the static text parts
+        text = text.replace(/\$\{.*?\}/g, ' ');
+      }
       if (!text) return;
 
       let matchedPattern = null;
@@ -271,52 +276,60 @@ function checkNumericClaims() {
       let isCandidate = false;
       let contextName = '';
 
-      const parent = node.getParent();
-      if (parent) {
-        if (parent.getKindName() === 'PropertyAssignment') {
-          // @ts-ignore
-          const propName = parent.getName();
-          if (/^(title|description|desc|label|keywords|alt|content|text)$/.test(propName)) {
-            isCandidate = true;
-            contextName = `Property: ${propName}`;
-          }
-        } else if (parent.getKindName() === 'JsxAttribute') {
-          if (typeof parent.getName === 'function') {
-            const attrName = parent.getName();
-            if (/^(title|description|desc|label|alt|content|text)$/.test(attrName)) {
-              isCandidate = true;
-              contextName = `JSX Attribute: ${attrName}`;
-            }
-          }
-        } else if (node.getKindName() === 'JsxText') {
-          const jsxElement = parent.getParent();
-          if (jsxElement && (jsxElement.getKindName() === 'JsxElement' || jsxElement.getKindName() === 'JsxSelfClosingElement')) {
+      const normalizedPath = filePath.replace(/\\/g, '/');
+      const isAppOrComponent = normalizedPath.includes('/src/app/') || normalizedPath.includes('/src/components/');
+
+      if (isAppOrComponent) {
+        isCandidate = true;
+        contextName = `App/Component Text`;
+      } else {
+        const parent = node.getParent();
+        if (parent) {
+          if (parent.getKindName() === 'PropertyAssignment') {
             // @ts-ignore
-            const tagName = jsxElement.getKindName() === 'JsxElement' ? jsxElement.getOpeningElement().getTagNameNode().getText() : jsxElement.getTagNameNode().getText();
-            
-            if (/^h[1-6]$/i.test(tagName)) {
-               isCandidate = true;
-               contextName = `Heading: ${tagName}`;
-            } else if (/^(title|meta)$/i.test(tagName)) {
-               isCandidate = true;
-               contextName = `Meta Tag: ${tagName}`;
-            } else {
-               let ancestor = jsxElement;
-               let depth = 0;
-               while (ancestor && depth < 10) {
-                  if (ancestor.getKindName() === 'JsxElement' || ancestor.getKindName() === 'JsxSelfClosingElement') {
-                     // @ts-ignore
-                     const elemName = ancestor.getKindName() === 'JsxElement' ? ancestor.getOpeningElement().getTagNameNode().getText() : ancestor.getTagNameNode().getText();
-                     if (/footer/i.test(elemName) || /hero/i.test(elemName)) {
-                        isCandidate = true;
-                        contextName = `Component: ${elemName}`;
-                        break;
-                     }
-                  }
-                  if (isCandidate) break;
-                  ancestor = ancestor.getParent();
-                  depth++;
-               }
+            const propName = parent.getName();
+            if (/^(title|description|desc|label|keywords|alt|content|text)$/.test(propName)) {
+              isCandidate = true;
+              contextName = `Property: ${propName}`;
+            }
+          } else if (parent.getKindName() === 'JsxAttribute') {
+            if (typeof parent.getName === 'function') {
+              const attrName = parent.getName();
+              if (/^(title|description|desc|label|alt|content|text)$/.test(attrName)) {
+                isCandidate = true;
+                contextName = `JSX Attribute: ${attrName}`;
+              }
+            }
+          } else if (node.getKindName() === 'JsxText') {
+            const jsxElement = parent.getParent();
+            if (jsxElement && (jsxElement.getKindName() === 'JsxElement' || jsxElement.getKindName() === 'JsxSelfClosingElement')) {
+              // @ts-ignore
+              const tagName = jsxElement.getKindName() === 'JsxElement' ? jsxElement.getOpeningElement().getTagNameNode().getText() : jsxElement.getTagNameNode().getText();
+              
+              if (/^h[1-6]$/i.test(tagName)) {
+                 isCandidate = true;
+                 contextName = `Heading: ${tagName}`;
+              } else if (/^(title|meta)$/i.test(tagName)) {
+                 isCandidate = true;
+                 contextName = `Meta Tag: ${tagName}`;
+              } else {
+                 let ancestor = jsxElement;
+                 let depth = 0;
+                 while (ancestor && depth < 10) {
+                    if (ancestor.getKindName() === 'JsxElement' || ancestor.getKindName() === 'JsxSelfClosingElement') {
+                       // @ts-ignore
+                       const elemName = ancestor.getKindName() === 'JsxElement' ? ancestor.getOpeningElement().getTagNameNode().getText() : ancestor.getTagNameNode().getText();
+                       if (/footer/i.test(elemName) || /hero/i.test(elemName)) {
+                          isCandidate = true;
+                          contextName = `Component: ${elemName}`;
+                          break;
+                       }
+                    }
+                    if (isCandidate) break;
+                    ancestor = ancestor.getParent();
+                    depth++;
+                 }
+              }
             }
           }
         }

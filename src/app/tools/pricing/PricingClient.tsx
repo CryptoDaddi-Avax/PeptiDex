@@ -713,7 +713,7 @@ export default function PricingClient() {
             <p>
               💡 <strong>How PEPTIDEX discounts work:</strong> Enter code{" "}
               <strong>PEPTIDEX</strong> at checkout at any vendor showing the code badge above.
-              All 6 vendors in our index accept this code for 15–20% off.
+              All {vendorsSorted.length} vendors in our index accept this code for 15–20% off.
               Bio Longevity Labs code stacks with site-wide sales for up to 40%+ savings.
             </p>
             <p>
