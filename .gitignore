@@ -41,3 +41,21 @@ yarn-error.log*
 next-env.d.ts
 
 peptidex-keys.txt
+
+# secrets & VPS automation scripts — never commit these
+# (these files contained hardcoded API keys; blocked by GitHub Push Protection 2026-05-24)
+scripts/push_missing_keys.js
+scripts/test_anthropic*.js
+scripts/test_delivery_channels.js
+scripts/test_supabase_aeo.js
+scripts/trigger_aeo_poll.js
+scripts/check_cost_ledger.js
+scripts/check_vps*.js
+scripts/monitor_db_progress.js
+scripts/pm2_flush_and_restart.js
+scripts/pm2_update_env_and_check.js
+check_vps_env.js
+force_pm2_restart.js
+update_vps_env.js
+check_remote_git.js
+check_remote_logs.js
