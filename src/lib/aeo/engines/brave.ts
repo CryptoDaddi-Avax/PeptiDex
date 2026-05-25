@@ -20,7 +20,7 @@ export async function queryBrave(queryText: string, signal?: AbortSignal): Promi
     // Plain web search — no summary=1 (that requires a second API round-trip
     // to /summarizer/search?key=KEY; omitting it ensures data.web.results is populated)
     const searchRes = await fetch(
-      `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(queryText)}&count=10&result_filter=web`,
+      `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(queryText)}&count=10`,
       {
         signal,
         headers: {
