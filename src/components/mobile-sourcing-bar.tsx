@@ -67,7 +67,6 @@ export function MobileSourcingBar() {
 
   // Content logic
   let displayName = "peptides";
-  let targetUrl = "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=mobile_sourcing_bar&code=PEPTIDEX";
   // peptideSlug for AffiliateLink (uses aminoClubProductMapping internally)
   let peptideSlug: string | undefined = undefined;
 
@@ -83,12 +82,6 @@ export function MobileSourcingBar() {
       }
       if (aminoClubProductMapping[slug]) {
         peptideSlug = slug;
-        const mapped = aminoClubProductMapping[slug];
-        if (mapped) {
-          targetUrl = mapped.includes("?")
-            ? `${mapped}&utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=mobile_sourcing_bar&code=PEPTIDEX`
-            : `${mapped}?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=mobile_sourcing_bar&code=PEPTIDEX`;
-        }
       }
     }
   }
