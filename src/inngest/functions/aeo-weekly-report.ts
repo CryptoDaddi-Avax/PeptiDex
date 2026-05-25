@@ -119,7 +119,10 @@ API spend summary with per-engine breakdown if notable.`;
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          // NOTE: claude-sonnet-4-5 (no date suffix) per Anthropic's naming
+          // convention for this model family. claude-sonnet-4-20250514 uses
+          // a date format that doesn't exist for Sonnet 4.
+          model: 'claude-sonnet-4-5',
           max_tokens: 2048,
           messages: [{ role: 'user', content: prompt }],
         }),
