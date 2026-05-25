@@ -19,7 +19,10 @@ export async function queryAnthropic(queryText: string, signal?: AbortSignal): P
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20250301',
+        // NOTE: claude-haiku-4-5 (no date suffix) is the correct model ID.
+        // claude-haiku-4-5-20250301 returns HTTP 404 — the date-suffixed alias
+        // does not exist for this model family.
+        model: 'claude-haiku-4-5',
         max_tokens: 1024,
         tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
         messages: [

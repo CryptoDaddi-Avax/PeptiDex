@@ -1,6 +1,13 @@
 // ═══════════════════════════════════════════════════════
-// Brave Answers API Adapter
-// Replaced deprecated Summarizer. Returns grounded AI answers with citations.
+// Brave Web Search API Adapter
+// Uses plain web search (no summary=1) to reliably extract
+// web snippet content for AEO monitoring.
+//
+// Why no summary=1?
+// Brave's summarizer requires a two-step flow: first request returns
+// summarizer.key, second request to /summarizer/search?key=KEY returns
+// the actual text. Using summary=1 without the second request produces
+// empty content. Plain web search reliably returns data.web.results.
 // ═══════════════════════════════════════════════════════
 
 import type { EngineResponse } from './perplexity';
@@ -10,50 +17,66 @@ export async function queryBrave(queryText: string, signal?: AbortSignal): Promi
   if (!apiKey) return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: 0, error: 'BRAVE_SEARCH_API_KEY not set' };
 
   try {
-    // Step 1: Web Search to get results with AI summary
+    // Plain web search — no summary=1 (that requires a second API round-trip
+    // to /summarizer/search?key=KEY; omitting it ensures data.web.results is populated)
     const searchRes = await fetch(
-      `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(queryText)}&summary=1&count=10`,
+      `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(queryText)}&count=10&result_filter=web`,
       {
         signal,
         headers: {
           'Accept': 'application/json',
-          // NOTE: Do NOT send Accept-Encoding: gzip — Node.js fetch handles
-          // content negotiation automatically. Explicit gzip without
-          // built-in decompression causes JSON parse failures on the raw body.
+          // NOTE: No Accept-Encoding: gzip — Node.js fetch handles compression
+          // automatically. Explicit gzip without built-in decompression causes
+          // JSON parse failures.
           'X-Subscription-Token': apiKey,
         },
       }
     );
 
     if (!searchRes.ok) {
-      return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: searchRes.status, error: `HTTP ${searchRes.status}` };
+      const errText = await searchRes.text().catch(() => '');
+      return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: searchRes.status, error: `HTTP ${searchRes.status}: ${errText.slice(0, 200)}` };
     }
 
     const data = await searchRes.json();
 
-    // Extract AI summary if present
-    const summary = data.summarizer?.results?.[0]?.text
-      ?? data.summary?.text
-      ?? '';
+    // Extract web results
+    const webResults: any[] = data.web?.results ?? [];
 
-    // Extract cited URLs from web results
-    const citedUrls: string[] = (data.web?.results ?? [])
+    // Build cited URLs from top results
+    const citedUrls: string[] = webResults
       .slice(0, 10)
-      .map((r: any) => r.url)
+      .map((r: any) => r.url ?? r.profile?.url)
       .filter(Boolean);
 
-    // If summary available, also extract snippet-level content
-    const webSnippets = (data.web?.results ?? [])
-      .slice(0, 5)
-      .map((r: any) => `[${r.title}](${r.url}): ${r.description}`)
+    // Build rawText from titles + descriptions (mimics what a user reads in SERP)
+    const rawText = webResults
+      .slice(0, 7)
+      .map((r: any) => {
+        const title = r.title ?? '';
+        const desc = r.description ?? r.extra_snippets?.[0] ?? '';
+        const url = r.url ?? '';
+        return `[${title}](${url}): ${desc}`;
+      })
+      .filter((line: string) => line.length > 10)
       .join('\n');
 
-    const rawText = summary || webSnippets;
-
-    // Cost: $5/1k search requests = $0.005/req. Summary tokens billed separately at $5/1M.
+    // Cost: $5/1k requests = $0.005/req
     const estimatedTokens = Math.ceil(rawText.length / 4);
     const tokenCost = estimatedTokens * (5.0 / 1_000_000);
     const cost = 0.005 + tokenCost;
+
+    // If we got no web results, return a diagnostic error instead of silent empty success
+    if (!rawText) {
+      return {
+        rawText: '',
+        citedUrls: [],
+        tokens: 0,
+        cost: 0.005,
+        httpStatus: searchRes.status,
+        error: `No web results returned (response keys: ${Object.keys(data).join(', ')})`,
+      };
+    }
 
     return {
       rawText,
