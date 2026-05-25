@@ -55,22 +55,8 @@ export const dealOfTheWeekRefreshedDate = "2026-05-11";
 // ——————————————————————————————————————————————————————————————————————————————————————
 
 export const vendorDeals: VendorDeal[] = [
-  // DEACTIVATED 2026-05-24 — see vendor deactivation note
-  {
-    vendorSlug: "ascension-peptides",
-    vendorName: "Ascension Peptides",
-    code: "PEPTIDEX",
-    discountPercent: 50,
-    discountType: "percent",
-    headline: "50% off entire order — biggest discount in the space",
-    exclusions: [],
-    stackable: false,
-    expiresLabel: "No expiry — verified May 2026",
-    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
-    proTip: "Ascension's 50% code is the highest verified discount on any US peptide vendor. Works on first and repeat orders. No minimum order required.",
-    freeShippingThreshold: 150,
-    rating: 4.7,
-  },
+  // DEACTIVATED 2026-05-24 — ascension-peptides removed from customer-facing surfaces
+  // { vendorSlug: "ascension-peptides", discountPercent: 50, code: "PEPTIDEX", affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/" }
   {
     vendorSlug: "amino-club",
     vendorName: "Amino Club",
@@ -154,32 +140,9 @@ export const vendorDeals: VendorDeal[] = [
 // discountedPrice = price * (1 - discountPercent/100)
 
 export const peptideBestDeals: PeptideBestDeal[] = [
-  // DEACTIVATED 2026-05-24 — see vendor deactivation note
-  {
-    peptideSlug: "bpc-157",
-    peptideName: "BPC-157",
-    vendorName: "Ascension Peptides",
-    vendorSlug: "ascension-peptides",
-    price: 70,
-    vialMg: 10,
-    perMg: 3.5,
-    code: "PEPTIDEX",
-    discountedPrice: 35,
-    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
-  },
-  // DEACTIVATED 2026-05-24 — see vendor deactivation note
-  {
-    peptideSlug: "tb-500",
-    peptideName: "TB-500",
-    vendorName: "Ascension Peptides",
-    vendorSlug: "ascension-peptides",
-    price: 65,
-    vialMg: 10,
-    perMg: 3.25,
-    code: "PEPTIDEX",
-    discountedPrice: 32.5,
-    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
-  },
+  // DEACTIVATED 2026-05-24 — BPC-157 and TB-500 were cheapest at Ascension; replace with verified active-vendor data before re-adding
+  // { peptideSlug: "bpc-157", vendorSlug: "ascension-peptides", price: 70, discountedPrice: 35 }
+  // { peptideSlug: "tb-500",  vendorSlug: "ascension-peptides", price: 65, discountedPrice: 32.5 }
   {
     peptideSlug: "semaglutide",
     peptideName: "Semaglutide",
@@ -204,32 +167,9 @@ export const peptideBestDeals: PeptideBestDeal[] = [
     discountedPrice: 143.99,
     affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
   },
-  // DEACTIVATED 2026-05-24 — see vendor deactivation note
-  {
-    peptideSlug: "ipamorelin",
-    peptideName: "Ipamorelin",
-    vendorName: "Ascension Peptides",
-    vendorSlug: "ascension-peptides",
-    price: 55,
-    vialMg: 10,
-    perMg: 2.75,
-    code: "PEPTIDEX",
-    discountedPrice: 27.5,
-    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
-  },
-  // DEACTIVATED 2026-05-24 — see vendor deactivation note
-  {
-    peptideSlug: "cjc-1295",
-    peptideName: "CJC-1295",
-    vendorName: "Ascension Peptides",
-    vendorSlug: "ascension-peptides",
-    price: 55,
-    vialMg: 5,
-    perMg: 5.5,
-    code: "PEPTIDEX",
-    discountedPrice: 27.5,
-    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
-  },
+  // DEACTIVATED 2026-05-24 — Ipamorelin and CJC-1295 were cheapest at Ascension; replace with verified active-vendor data before re-adding
+  // { peptideSlug: "ipamorelin", vendorSlug: "ascension-peptides", price: 55, discountedPrice: 27.5 }
+  // { peptideSlug: "cjc-1295",  vendorSlug: "ascension-peptides", price: 55, discountedPrice: 27.5 }
   {
     peptideSlug: "ghk-cu",
     peptideName: "GHK-Cu",
@@ -266,19 +206,8 @@ export const peptideBestDeals: PeptideBestDeal[] = [
     discountedPrice: 212.49,
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
   },
-  // DEACTIVATED 2026-05-24 — see vendor deactivation note
-  {
-    peptideSlug: "pt-141",
-    peptideName: "PT-141",
-    vendorName: "Ascension Peptides",
-    vendorSlug: "ascension-peptides",
-    price: 60,
-    vialMg: 10,
-    perMg: 3,
-    code: "PEPTIDEX",
-    discountedPrice: 30,
-    affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
-  },
+  // DEACTIVATED 2026-05-24 — PT-141 was cheapest at Ascension; replace with verified active-vendor data before re-adding
+  // { peptideSlug: "pt-141", vendorSlug: "ascension-peptides", price: 60, discountedPrice: 30 }
 ];
 
 // â”€â”€ Schema.org helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€

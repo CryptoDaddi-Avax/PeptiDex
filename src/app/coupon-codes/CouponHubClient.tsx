@@ -354,7 +354,7 @@ export function CouponHubClient({
         </h1>
         <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
           Every active discount code across all {SITE_STATS.vendors.count} verified vendors — one code (PEPTIDEX) works everywhere.
-          Up to 50% off. No hidden minimums.
+          Up to 40%+ off when stacked. No hidden minimums.
         </p>
       </div>
 
