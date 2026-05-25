@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════
 // AEO Daily Poll — Core polling engine
-// Runs daily at 6am UTC. Iterates query bank × 4 engines.
+// Runs daily at 6am ET. Iterates query bank × 4 engines.
 // Respects per-engine budget caps and global $8/day ceiling.
 // ═══════════════════════════════════════════════════════
 
@@ -16,35 +16,66 @@ import { queryOpenAI } from '@/lib/aeo/engines/openai';
 const ENGINES = ['perplexity', 'brave', 'anthropic', 'openai'] as const;
 type EngineName = typeof ENGINES[number];
 
-const ENGINE_FUNCTIONS: Record<EngineName, (q: string) => Promise<any>> = {
+const ENGINE_FUNCTIONS: Record<EngineName, (q: string, signal?: AbortSignal) => Promise<any>> = {
   perplexity: queryPerplexity,
   brave: queryBrave,
   anthropic: queryAnthropic,
   openai: queryOpenAI,
 };
 
-// Exponential backoff: 1s → 2s → 4s → 8s → skip
-async function withBackoff<T>(fn: () => Promise<T>, maxRetries = 4): Promise<T | null> {
+// TIMEOUT_MS: abort any single engine API call after 30 seconds.
+// Prevents a hung connection from freezing the entire Inngest step.
+const TIMEOUT_MS = 30_000;
+
+/**
+ * Wraps an engine call with:
+ * 1. A 30-second AbortController timeout
+ * 2. Exponential backoff ONLY for rate-limit (429) errors
+ * 3. Returns null (not throws) for ALL other errors — critical so that one
+ *    engine's failure never crashes the Inngest step and skips subsequent engines.
+ */
+async function withBackoff<T>(fn: (signal: AbortSignal) => Promise<T>, maxRetries = 3): Promise<T | null> {
   for (let i = 0; i <= maxRetries; i++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort('timeout'), TIMEOUT_MS);
     try {
-      return await fn();
+      const result = await fn(controller.signal);
+      clearTimeout(timeout);
+      return result;
     } catch (err: any) {
-      if (i === maxRetries) return null;
+      clearTimeout(timeout);
+      if (i === maxRetries) {
+        console.error(`withBackoff: max retries (${maxRetries}) exceeded:`, err.message);
+        return null;
+      }
       const isRateLimit = err.message?.includes('429') || err.message?.includes('rate');
-      if (!isRateLimit) throw err;
+      if (!isRateLimit) {
+        // Non-rate-limit error (auth failure, network error, timeout, etc.)
+        // Return null instead of re-throwing — caller logs it as an engine error
+        // and the function continues to the next engine.
+        console.error(`withBackoff: non-retryable error on attempt ${i + 1}:`, err.message);
+        return null;
+      }
+      // Rate-limit: exponential backoff
       await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
     }
   }
   return null;
 }
 
+// ─────────────────────────────────────────────────────────────
+// FIX: Inngest SDK v4.4.0 types only accept 2 args, so we keep the 2-arg
+// form with 'as any'. Key change: 'trigger' (singular) in the config spec
+// is what Inngest's cron scheduler reads during deploy sync — the previous
+// 'triggers' (plural) key was silently ignored by the scheduler.
+// ─────────────────────────────────────────────────────────────
 export const aeoDailyPoll = inngest.createFunction(
   {
     id: 'aeo-daily-poll',
     retries: 1,
-    triggers: [
-      { cron: 'TZ=America/New_York 0 6 * * *' },
-      { event: 'aeo/daily.poll.manual' },  // manual trigger for bootstrap testing
+    trigger: [
+      { cron: 'TZ=America/New_York 0 6 * * *' },  // daily 6am ET
+      { event: 'aeo/daily.poll.manual' },          // manual/VPS-cron fallback
     ],
   } as any,
   async ({ step }: any) => {
@@ -97,7 +128,7 @@ export const aeoDailyPoll = inngest.createFunction(
             break;
           }
 
-          const result = await withBackoff(() => ENGINE_FUNCTIONS[engine](query.query_text));
+          const result = await withBackoff((signal) => ENGINE_FUNCTIONS[engine](query.query_text, signal));
 
           if (!result || result.error) {
             errors++;

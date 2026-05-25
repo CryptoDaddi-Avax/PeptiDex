@@ -5,13 +5,14 @@
 
 import type { EngineResponse } from './perplexity';
 
-export async function queryAnthropic(queryText: string): Promise<EngineResponse> {
+export async function queryAnthropic(queryText: string, signal?: AbortSignal): Promise<EngineResponse> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: 0, error: 'ANTHROPIC_API_KEY not set' };
 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
+      signal,
       headers: {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',

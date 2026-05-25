@@ -5,7 +5,7 @@
 
 import type { EngineResponse } from './perplexity';
 
-export async function queryBrave(queryText: string): Promise<EngineResponse> {
+export async function queryBrave(queryText: string, signal?: AbortSignal): Promise<EngineResponse> {
   const apiKey = process.env.BRAVE_SEARCH_API_KEY;
   if (!apiKey) return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: 0, error: 'BRAVE_SEARCH_API_KEY not set' };
 
@@ -14,9 +14,12 @@ export async function queryBrave(queryText: string): Promise<EngineResponse> {
     const searchRes = await fetch(
       `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(queryText)}&summary=1&count=10`,
       {
+        signal,
         headers: {
           'Accept': 'application/json',
-          'Accept-Encoding': 'gzip',
+          // NOTE: Do NOT send Accept-Encoding: gzip — Node.js fetch handles
+          // content negotiation automatically. Explicit gzip without
+          // built-in decompression causes JSON parse failures on the raw body.
           'X-Subscription-Token': apiKey,
         },
       }

@@ -5,13 +5,14 @@
 
 import type { EngineResponse } from './perplexity';
 
-export async function queryOpenAI(queryText: string): Promise<EngineResponse> {
+export async function queryOpenAI(queryText: string, signal?: AbortSignal): Promise<EngineResponse> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: 0, error: 'OPENAI_API_KEY not set' };
 
   try {
     const res = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
+      signal,
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',

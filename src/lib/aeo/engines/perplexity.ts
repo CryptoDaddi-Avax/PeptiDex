@@ -12,13 +12,14 @@ export type EngineResponse = {
   error?: string;
 };
 
-export async function queryPerplexity(queryText: string): Promise<EngineResponse> {
+export async function queryPerplexity(queryText: string, signal?: AbortSignal): Promise<EngineResponse> {
   const apiKey = process.env.PERPLEXITY_API_KEY;
   if (!apiKey) return { rawText: '', citedUrls: [], tokens: 0, cost: 0, httpStatus: 0, error: 'PERPLEXITY_API_KEY not set' };
 
   try {
     const res = await fetch('https://api.perplexity.ai/chat/completions', {
       method: 'POST',
+      signal,
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
