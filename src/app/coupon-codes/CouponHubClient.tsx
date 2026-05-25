@@ -453,21 +453,25 @@ export function CouponHubClient({
         </p>
       </div>
 
-      {/* Per-peptide best deals */}
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <Star className="w-4 h-4 text-amber-400" />
-          <h2 className="text-lg font-bold text-zinc-100">Cheapest Price Per Peptide</h2>
+      {/* Per-peptide best deals — hidden if no valid deals are available */}
+      {peptideBestDeals.filter((d) => d.discountedPrice > 0 && d.price > 0).length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <Star className="w-4 h-4 text-amber-400" />
+            <h2 className="text-lg font-bold text-zinc-100">Cheapest Price Per Peptide</h2>
+          </div>
+          <p className="text-sm text-zinc-400 mb-5">
+            Best price after applying PEPTIDEX — updated May 2026.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {peptideBestDeals
+              .filter((d) => d.discountedPrice > 0 && d.price > 0)
+              .map((deal) => (
+                <PeptideDealCard key={deal.peptideSlug} deal={deal} />
+              ))}
+          </div>
         </div>
-        <p className="text-sm text-zinc-400 mb-5">
-          Best price after applying PEPTIDEX — updated May 2026.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {peptideBestDeals.map((deal) => (
-            <PeptideDealCard key={deal.peptideSlug} deal={deal} />
-          ))}
-        </div>
-      </div>
+      )}
 
       {/* Email capture */}
       <EmailCapture />
