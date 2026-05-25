@@ -206,12 +206,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
-    {
-      url: `${baseUrl}/vendors/amino-club-vs-ascension`,
-      lastModified: vendorsDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.75,
-    },
+    // DEACTIVATED 2026-05-24: removed from sitemap (vendor deactivated)
+    // { url: `${baseUrl}/vendors/amino-club-vs-ascension`, ... }
     {
       url: `${baseUrl}/vendors/amino-club-coa-verification`,
       lastModified: vendorsDate,
@@ -236,12 +232,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/vendors/ascension-peptides`,
-      lastModified: vendorsDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.85,
-    },
+    // DEACTIVATED 2026-05-24: removed from sitemap (vendor deactivated)
+    // { url: `${baseUrl}/vendors/ascension-peptides`, ... }
     {
       url: `${baseUrl}/vendors/pantheon-peptides`,
       lastModified: vendorsDate,
@@ -376,7 +368,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "Amino Club": "amino-club",
     "Bio Longevity Labs": "bio-longevity-labs",
     "Limitless Life": "limitless-life",
-    "Ascension Peptides": "ascension-peptides",
+    // DEACTIVATED 2026-05-24: "Ascension Peptides": "ascension-peptides",
     "Pantheon Peptides": "pantheon-peptides",
     "LVLUP Health": "lvlup-health",
   };

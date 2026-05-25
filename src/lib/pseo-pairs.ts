@@ -22,7 +22,7 @@ const VENDOR_NAME_TO_SLUG: Record<string, string> = {
   "Amino Club": "amino-club",
   "Bio Longevity Labs": "bio-longevity-labs",
   "Limitless Life": "limitless-life",
-  "Ascension Peptides": "ascension-peptides",
+  // "Ascension Peptides" omitted — deactivated 2026-05-24
   "Pantheon Peptides": "pantheon-peptides",
   "LVLUP Health": "lvlup-health",
 };
@@ -66,6 +66,7 @@ export function getAllPseoPairs(): PseoPair[] {
       const vendorSlug = resolveVendorSlug(vp.vendor);
       const vendor = vendorBySlug[vendorSlug];
       if (!vendor) continue; // Skip if vendor not in vendors.ts
+      if (vendor.isActive === false) continue; // Skip deactivated vendors
 
       pairs.push({
         peptideSlug: pricingEntry.slug,

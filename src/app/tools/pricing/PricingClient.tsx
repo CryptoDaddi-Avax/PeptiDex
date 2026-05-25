@@ -40,7 +40,6 @@ const VENDOR_DOT: Record<string, string> = {
   "amino-club": "amino",
   "bio-longevity-labs": "bio-longevity",
   "limitless-life": "limitless",
-  "ascension-peptides": "ascension",
   "pantheon-peptides": "pantheon",
   "lvlup-health": "lvlup",
 };
@@ -478,7 +477,7 @@ export default function PricingClient() {
               Verified Vendors: <strong style={{ color: 'var(--gold)', fontWeight: 500 }}>{vendorsSorted.length}</strong>
             </div>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--ink-mute)' }}>
-              Vendors with PEPTIDEX Code: <strong style={{ color: 'var(--gold)', fontWeight: 500 }}>6</strong>
+              Vendors with PEPTIDEX Code: <strong style={{ color: 'var(--gold)', fontWeight: 500 }}>{vendorsSorted.length}</strong>
             </div>
           </div>
         </div>

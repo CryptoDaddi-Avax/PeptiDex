@@ -9,7 +9,6 @@ import { vendors } from '@/data/vendors';
 const aminoClub     = vendors.find((v) => v.slug === 'amino-club')!;
 const bioLongevity  = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
 const limitlessLife = vendors.find((v) => v.slug === 'limitless-life')!;
-const ascension     = vendors.find((v) => v.slug === 'ascension-peptides')!;
 
 export const metadata: Metadata = {
   title: 'Where to Buy Peptides Online (2026): COA-Verified Vendors',
@@ -42,7 +41,7 @@ export default function BuyIndexPage() {
     { q: 'How do I know if a peptide vendor is legit?', a: 'Legitimate vendors will provide batch-specific Certificates of Analysis (COAs) from independent third-party laboratories verifying both purity (via HPLC) and identity (via Mass Spectrometry).' },
     { q: 'What is the best peptide vendor in 2026?', a: 'PeptiDex rates Amino Club and Bio Longevity Labs as top-tier vendors due to their strict testing standards, transparency, and shipping reliability.' },
     { q: 'Is it legal to buy peptides online?', a: 'In the US, most peptides are sold legally strictly as "research chemicals" and are not approved for human consumption or therapeutic use. Some, like semaglutide, are FDA-approved but require a prescription for medical use.' },
-    { q: 'What is the PeptiDex discount code?', a: `You can use code PEPTIDEX at checkout for ${aminoClub.discountPercent}% off at Amino Club, and ${bioLongevity.discountPercent}% off at Bio Longevity Labs, Limitless Life, Ascension Peptides, and Pantheon Peptides.` },
+    { q: 'What is the PeptiDex discount code?', a: `You can use code PEPTIDEX at checkout for ${aminoClub.discountPercent}% off at Amino Club, and ${bioLongevity.discountPercent}% off at Bio Longevity Labs, Limitless Life, and Pantheon Peptides.` },
   ]);
 
   return (
@@ -149,7 +148,7 @@ export default function BuyIndexPage() {
             <p className="text-zinc-300 text-sm mb-4">
               PeptiDex maintains active relationships with verified vendors. Use our codes at checkout to support the platform and save on your research:
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="p-3 bg-zinc-900 rounded-lg text-center border border-zinc-800">
                 <div className="text-xs text-zinc-500 mb-1">Amino Club</div>
                 <div className="font-mono text-amber-400 font-bold text-lg">PEPTIDEX</div>
@@ -164,11 +163,6 @@ export default function BuyIndexPage() {
                 <div className="text-xs text-zinc-500 mb-1">Limitless Life</div>
                 <div className="font-mono text-amber-400 font-bold text-lg">PEPTIDEX</div>
                 <div className="text-xs font-bold text-emerald-400">{limitlessLife.discountPercent}% OFF</div>
-              </div>
-              <div className="p-3 bg-zinc-900 rounded-lg text-center border border-zinc-800">
-                <div className="text-xs text-zinc-500 mb-1">Ascension</div>
-                <div className="font-mono text-amber-400 font-bold text-lg">PEPTIDEX</div>
-                <div className="text-xs font-bold text-emerald-400">{ascension.discountPercent}% OFF</div>
               </div>
             </div>
           </div>

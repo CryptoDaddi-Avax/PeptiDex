@@ -18,15 +18,7 @@ export const metadata: Metadata = {
 
 import { comparisons } from '@/data/comparisons';
 
-const VENDOR_COMPARISONS = [
-  {
-    slug: 'amino-club-vs-ascension-peptides',
-    title: 'Amino Club vs Ascension Peptides',
-    subtitle: 'Side-by-side pricing, purity, and shipping — which vendor wins in 2026?',
-    tags: ['Vendor', 'Pricing', 'COA Verified'],
-    color: 'teal',
-  },
-];
+const VENDOR_COMPARISONS: { slug: string; title: string; subtitle: string; tags: string[]; color: string }[] = [];
 
 const COLOR_MAP: Record<string, { bg: string; border: string; text: string; badge: string }> = {
   violet: { bg: 'from-violet-900/20 to-zinc-900', border: 'border-violet-500/20 hover:border-violet-500/40', text: 'text-violet-400', badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30' },

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @deprecated â€” Use `/data/vendors.ts` instead.
  * This file is preserved as a backward-compatible re-export shim.
  * It will be removed once all imports are migrated to the centralized vendor registry.
@@ -50,6 +50,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     coaUrl: "https://aminoclub.com/coa/bpc-157-latest.pdf",
     lastTestedDate: "2026-04-10",
   },
+  // DEACTIVATED 2026-05-24
   "ascension-peptides": {
     slug: "ascension-peptides",
     name: "Ascension Peptides",
@@ -155,9 +156,7 @@ export const TOP_COMPARISON_PEPTIDES = [
  * /compare/vendors/amino-club-vs-ascension-peptides
  */
 export const VALID_VENDOR_COMPARISONS = [
-  "amino-club-vs-ascension-peptides",
   "amino-club-vs-limitless-life",
-  "ascension-peptides-vs-limitless-life",
 ] as const;
 
 export function getVendorPair(slug: string): [VendorProfile, VendorProfile] | null {

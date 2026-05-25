@@ -36,7 +36,6 @@ import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT, vendors } 
 const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
 const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
 const _limitless    = vendors.find((v) => v.slug === 'limitless-life')!;
-const _ascension    = vendors.find((v) => v.slug === 'ascension-peptides')!;
 const _pantheon     = vendors.find((v) => v.slug === 'pantheon-peptides')!;
 const _lvlup        = vendors.find((v) => v.slug === 'lvlup-health')!;
 import { VENDORS_FAQ_ITEMS } from './faqData';
@@ -214,7 +213,6 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
               { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club', badge: "Editor's Choice", note: `${_aminoClub.discountPercent}% code · Gold COA tier` },
               { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs', badge: 'Triple-Tested', note: `${_bioLongevity.discountPercent}% stackable · 80+ compounds` },
               { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life', badge: 'USA Made', note: `${_limitless.discountPercent}% code · 90+ compounds · ⚠ Mixed reviews` },
-              { name: 'Ascension Peptides', rating: 4.7, href: '/vendors/ascension-peptides', badge: 'COA Verified', note: `${_ascension.discountPercent}% code · Specialty catalog` },
               { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides', badge: 'Emerging', note: `${_pantheon?.discountPercent ? `${_pantheon.discountPercent}% code` : 'No code'} · Competitive pricing` },
               { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health', badge: 'Oral Specialist', note: `${_lvlup?.discountPercent ? `${_lvlup.discountPercent}% code` : 'No code'} · Needle-free formulations` },
             ].map(v => (

@@ -54,7 +54,6 @@ function vendorDisplayName(slug: string): string {
 function vendorReviewHref(slug: string): string {
     const map: Record<string, string> = {
         "amino-club": "/vendors/amino-club",
-        "ascension-peptides": "/vendors/ascension-peptides",
         "bio-longevity-labs": "/vendors/bio-longevity-labs",
         "limitless-life": "/vendors/limitless-life",
         "pantheon-peptides": "/vendors/pantheon-peptides",

@@ -190,7 +190,7 @@ export function generateShoppingList(results: CyclePeptideResult[], includeSuppl
     // Verified vendor discount rates (source: vendor-cart-config.ts)
     const VENDOR_DISCOUNTS: Record<string, { percent: number; code: string }> = {
         "Amino Club":          { percent: 20, code: "PEPTIDEX" },
-        "Ascension Peptides":  { percent: 15, code: "PEPTIDEX" },
+        // "Ascension Peptides" omitted — deactivated 2026-05-24
         "Bio Longevity Labs":  { percent: 15, code: "PEPTIDEX" },
         "Limitless Life":      { percent: 15, code: "PEPTIDEX" },
         "Pantheon Peptides":   { percent: 10, code: "peptidex10" },

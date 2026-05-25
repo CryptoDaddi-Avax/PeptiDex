@@ -4,14 +4,13 @@ import CouponPageClient from './CouponClient';
 
 // ── Metadata (OG + Twitter Card) ─────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: 'PEPTIDEX Coupon Code — Verified 20–50% Off Amino Club & Partner Vendors (2026)',
+  title: 'PEPTIDEX Coupon Code — Verified 15–20% Off Amino Club & Partner Vendors (2026)',
   description:
-    'PEPTIDEX is the verified coupon code for 20% off Amino Club, 50% off Ascension Peptides, and 15% off Bio Longevity Labs, Limitless Life, Pantheon, & LVLUP. Tested monthly. No expiration.',
+    'PEPTIDEX is the verified coupon code for 20% off Amino Club and 15% off Bio Longevity Labs, Limitless Life, Pantheon, & LVLUP. Tested monthly. No expiration.',
   keywords: [
     'PEPTIDEX coupon code',
     'Amino Club discount code',
     'Bio Longevity Labs coupon',
-    'Ascension Peptides discount',
     'peptide coupon code 2026',
     'research peptide discount',
     'PEPTIDEX promo code',
@@ -25,9 +24,9 @@ export const metadata: Metadata = {
     'semaglutide discount',
   ],
   openGraph: {
-    title: 'PEPTIDEX — Verified 20–50% Off Coupon Code for Research Peptides',
+    title: 'PEPTIDEX — Verified 15–20% Off Coupon Code for Research Peptides',
     description:
-      'Use code PEPTIDEX for 20% off Amino Club, 50% off Ascension Peptides, 15% off Bio Longevity Labs + 3 more vendors. Verified May 2026. No expiration.',
+      'Use code PEPTIDEX for 20% off Amino Club, 15% off Bio Longevity Labs + 4 more vendors. Verified May 2026. No expiration.',
     url: 'https://peptidex.app/peptidex-coupon',
     type: 'website',
     images: [
@@ -35,15 +34,15 @@ export const metadata: Metadata = {
         url: 'https://peptidex.app/api/og?type=coupon',
         width: 1200,
         height: 630,
-        alt: 'PEPTIDEX Coupon Code — 20–50% Off All Partner Vendors',
+        alt: 'PEPTIDEX Coupon Code — 15–20% Off All Partner Vendors',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PEPTIDEX — Verified 20–50% Off Coupon Code for Research Peptides',
+    title: 'PEPTIDEX — Verified 15–20% Off Coupon Code for Research Peptides',
     description:
-      'Use code PEPTIDEX for 20% off Amino Club, 50% off Ascension Peptides, 15% off Bio Longevity Labs. Verified May 2026.',
+      'Use code PEPTIDEX for 20% off Amino Club, 15% off Bio Longevity Labs. Verified May 2026.',
     images: ['https://peptidex.app/api/og?type=coupon'],
   },
   alternates: {

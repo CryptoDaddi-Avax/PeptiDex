@@ -10,7 +10,7 @@
  * Schedule:
  *   Email 1  — Day 0:  Welcome + Cheat Sheet
  *   Email 2  — Day 2:  How to Read a COA
- *   Email 3  — Day 4:  The 6 Vendors We Trust
+ *   Email 3  — Day 4:  The 5 Vendors We Trust
  *   Email 4  — Day 7:  Your First Cycle Walkthrough
  *   Email 5  — Day 10: Smart Vendor Picker Quiz
  *   Email 6  — Day 14: Deal of the Week
@@ -128,28 +128,27 @@ export function email2_coa(firstName = "there") {
     ${cta("Open the COA Analyzer", "https://peptidex.app/tools/coa")}
     ${divider()}
     ${p(`Quick tip: if a vendor doesn't have a publicly linked COA for the specific product you're buying, ask for one before ordering. Legitimate vendors have them ready.`)}
-    ${p(`Next email: the 6 vendors we've vetted and why we ranked them the way we did.`)}
+    ${p(`Next email: the 5 vendors we've vetted and why we ranked them the way we did.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/coa") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// EMAIL 3 — Day 4: The 6 Vendors We Trust
+// EMAIL 3 — Day 4: The 5 Vendors We Trust
 // ══════════════════════════════════════════════════════════════════════════════
 
 export function email3_vendors(firstName = "there") {
-  const subject = "The 6 peptide vendors we actually trust (and why)";
+  const subject = "The 5 peptide vendors we actually trust (and why)";
   const html = wrap(`
-    ${h1(`The 6 vendors in the PeptiDex index — and how we ranked them`)}
+    ${h1(`The 5 vendors in the PeptiDex index — and how we ranked them`)}
     ${p(`We review vendors on five criteria: testing methodology, COA transparency, purity specification, shipping reliability, and community sentiment. Here's the current lineup:`)}
     ${ul([
       `<strong>#1 Amino Club</strong> — Editor's Choice. Triple-tested (HPLC + LC-MS + Endotoxin). 60-day MBG. Ships internationally. Code <strong>PEPTIDEX</strong> = 20% off.`,
       `<strong>#2 Bio Longevity Labs</strong> — Triple-tested. 80+ compounds. PEPTIDEX discount stacks with their sales — up to 40%+ combined. Code <strong>PEPTIDEX</strong> = 15% off.`,
       `<strong>#3 Limitless Life</strong> — USA-manufactured. 90+ compounds. Largest catalog in the index. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#4 Ascension Peptides</strong> — Best value deal in the index. 60+ compounds. Code <strong>PEPTIDEX</strong> = 50% off.`,
-      `<strong>#5 Pantheon Peptides</strong> — Competitive pricing, solid COA. 50+ compounds.`,
-      `<strong>#6 LVLUP Health</strong> — Oral peptide specialist. Capsules + sublingual formats. Code <strong>PEPTIDEX</strong> = 15% off.`,
+      `<strong>#4 Pantheon Peptides</strong> — Competitive pricing, solid COA. 50+ compounds. Code <strong>PEPTIDEX</strong> = 15% off.`,
+      `<strong>#5 LVLUP Health</strong> — Oral peptide specialist. Capsules + sublingual formats. Code <strong>PEPTIDEX</strong> = 15% off.`,
     ])}
     ${p(`We update the rankings quarterly based on new COA data, Finnrick community reports, and our own verification testing.`)}
     ${cta("Read the full vendor comparison", "https://peptidex.app/vendors")}
@@ -203,7 +202,7 @@ export function email5_vendorPicker(firstName = "there") {
     ${cta("Take the 4-question picker", "https://peptidex.app/tools/vendor-picker")}
     ${divider()}
     ${p(`Quick note: if you're outside the US, your options are limited. Amino Club and Bio Longevity Labs are the only two vendors in our index that ship internationally.`)}
-    ${p(`If you're US-based and price is the main factor, Ascension Peptides with code <strong>PEPTIDEX</strong> is currently the best math — 50% off, 60+ compound catalog.`)}
+    ${p(`If your priority is value, Bio Longevity Labs lets you stack code <strong>PEPTIDEX</strong> (15% off) with their site-wide sales — the only vendor in our index where the code stacks with existing promotions. Total savings can exceed 30% during sales.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/vendor-picker") };
@@ -220,18 +219,18 @@ export function email6_deal(firstName = "there") {
     ${p(`Every two weeks I'll drop the current best value buy across our verified vendor index. This week:`)}
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:0 0 24px;">
       <p style="font-size:13px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 8px;">Featured Deal</p>
-      <p style="font-size:18px;font-weight:700;color:#111827;margin:0 0 4px;">Ascension Peptides — 50% off everything</p>
-      <p style="font-size:14px;color:#374151;margin:0 0 12px;">Use code <strong>PEPTIDEX</strong> at checkout. Applies to all 60+ compounds sitewide. No minimum order.</p>
-      <p style="font-size:13px;color:#6b7280;margin:0;">Sample prices after code: BPC-157 10mg → <strong>~$35</strong> | Ipamorelin 5mg → <strong>~$25</strong> | Sermorelin 10mg → <strong>~$42.50</strong></p>
+      <p style="font-size:18px;font-weight:700;color:#111827;margin:0 0 4px;">Bio Longevity Labs — 15% off, stackable with sales</p>
+      <p style="font-size:14px;color:#374151;margin:0 0 12px;">Use code <strong>PEPTIDEX</strong> at checkout. Stacks with site-wide sale prices — the only vendor in our index where this works. Triple-tested (HPLC + LC-MS + Endotoxin).</p>
+      <p style="font-size:13px;color:#6b7280;margin:0;">When stacked with a 20% site sale: BPC-157 10mg → <strong>~$27</strong> after combined discount | 80+ compound catalog available.</p>
     </div>
-    ${p(`For context: the next closest discount in our index is 20% (Amino Club). The 50% Ascension deal is the largest exclusive code we have.`)}
-    ${cta("Shop Ascension Peptides (code: PEPTIDEX)", "https://ascensionpeptides.com/ref/PeptiDex/")}
+    ${p(`What makes BLL unique in the index: their PEPTIDEX code stacks with sitewide sales. Every other vendor treats the code as a standalone discount. At BLL, during a sale you can combine both — routinely hitting 30%+ total off.`)}
+    ${cta("Shop Bio Longevity Labs (code: PEPTIDEX)", "https://biolongevitylabs.com/ref/PeptiDex/")}
     ${divider()}
-    ${p(`If BPC-157 or Ipamorelin are on your list: the post-code prices at Ascension are roughly half what you'd pay at full price elsewhere. Worth running the math on your planned order.`)}
-    ${p(`Affiliate disclosure: PeptiDex earns a commission on Ascension purchases through our link. This deal is featured because it's objectively the largest discount in our index — not because of commission rate.`)}
+    ${p(`Their triple-tested standard (HPLC + LC-MS + Endotoxin) is the same tier as Amino Club — which is why it's our #2 ranked vendor. Largest catalog among the triple-tested tier at 80+ compounds.`)}
+    ${p(`Affiliate disclosure: PeptiDex earns a commission on Bio Longevity Labs purchases through our link. This deal is featured because of the stackable discount mechanic — it's the only vendor in the index where you can combine the PEPTIDEX code with sale pricing.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
-  return { subject, html, text: textFallback(subject, "https://ascensionpeptides.com/ref/PeptiDex/") };
+  return { subject, html, text: textFallback(subject, "https://biolongevitylabs.com/ref/PeptiDex/") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -275,7 +274,7 @@ function textFallback(subject: string, ctaUrl: string): string {
 export const WELCOME_SEQUENCE = [
   { delayDays: 0,  key: "welcome",       fn: email1_welcome,     subject: "Your peptide cheat sheet is here 🧬" },
   { delayDays: 2,  key: "coa",           fn: email2_coa,         subject: "How to read a peptide COA" },
-  { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 6 vendors we actually trust" },
+  { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 5 vendors we actually trust" },
   { delayDays: 7,  key: "first_cycle",   fn: email4_firstCycle,  subject: "Your first peptide cycle" },
   { delayDays: 10, key: "vendor_picker", fn: email5_vendorPicker, subject: "4 questions → the right vendor" },
   { delayDays: 14, key: "deal",          fn: email6_deal,        subject: "Deal of the week" },

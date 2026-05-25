@@ -44,7 +44,6 @@ const vpVendorSlugMap: Record<string, string> = {
   'Amino Club': 'amino-club',
   'Bio Longevity Labs': 'bio-longevity-labs',
   'Limitless Life': 'limitless-life',
-  'Ascension Peptides': 'ascension-peptides',
   'Pantheon Peptides': 'pantheon-peptides',
   'LVLUP Health': 'lvlup-health',
 };
@@ -96,7 +95,7 @@ export default function CouponPageClient() {
 
           <p className="coupon-lead">
             <strong>PEPTIDEX</strong> is the only coupon code I've verified across {SITE_STATS.vendors.count} research peptide vendors —{' '}
-            <strong>20% off Amino Club</strong>, <strong>50% off Ascension Peptides</strong>, and{' '}
+            <strong>20% off Amino Club</strong> and{' '}
             <strong>15% off Bio Longevity Labs, Limitless Life, Pantheon, & LVLUP Health</strong>.
             No expiration. Verified {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.
           </p>
@@ -387,11 +386,6 @@ export default function CouponPageClient() {
                 text: '"Just saved $47 on a 3-vial BPC-157 order from Amino Club with PEPTIDEX. 20% off, no minimum. Code has been live for 6+ months now."',
                 handle: '@TheCryptoDaddi',
                 date: 'Apr 28, 2026',
-              },
-              {
-                text: '"Ascension Peptides running PEPTIDEX at 50% off is genuinely absurd. $50 for 5mg semaglutide. I verified the COA — it checks out."',
-                handle: '@TheCryptoDaddi',
-                date: 'May 7, 2026',
               },
               {
                 text: `"Monthly price check done. PEPTIDEX still live at all ${SITE_STATS.vendors.count} vendors. Bio Longevity Labs stacking with their 25% sale = 36% total. Best deal window I've tracked."`,

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Centralized Vendor Registry â€” Single Source of Truth
  * =====================================================
  * Created: 2026-04-30
@@ -23,13 +23,13 @@
  *     1. Amino Club          â€” Editor's Choice, 40+ compounds
  *     2. Bio Longevity Labs  â€” Triple-Tested Premium, 80+ compounds
  *     3. Limitless Life      â€” USA Made, 90+ compounds
- *     4. Ascension Peptides  â€” COA Verified, 60+ compounds
+ *     4. Ascension Peptides  — COA Verified, 60+ compounds [DEACTIVATED 2026-05-24]
  *     5. Pantheon Peptides   â€” COA Verified, 50+ compounds
  *   Oral:
  *     6. LVLUP Health        â€” Oral specialist, 20+ compounds
  */
 
-// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export type VendorCategory = "injectable" | "oral";
 export type BadgeStyle = "gold" | "green" | "premium" | "blue" | "orange";
@@ -98,6 +98,11 @@ export interface Vendor {
    * If undefined, the system falls back to assuming the vendor carries the compound.
    */
   compounds?: string[];
+  /**
+   * When false, vendor is deactivated and excluded from all customer-facing surfaces.
+   * Data is preserved for reactivation. Omitting this field defaults to active.
+   */
+  isActive?: boolean;
 }
 
 // â”€â”€ Vendor Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -198,11 +203,14 @@ export const vendors: Vendor[] = [
     verificationTier: "silver",
   },
 
-  // â”€â”€ #4: Ascension Peptides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // — #4: Ascension Peptides —————————————————————————————————————————————————————
   {
+    // DEACTIVATED 2026-05-24: 10% commission on post-discount basis with 50% customer
+    // discount = ~$5 per $100 order. Reactivate only if commission rate is renegotiated.
+    isActive: false,
     slug: "ascension-peptides",
     name: "Ascension Peptides",
-    tagline: "60+ COA-verified compounds â€” use code PEPTIDEX for 50% off",
+    tagline: "60+ COA-verified compounds — use code PEPTIDEX for 50% off",
     badge: "COA Verified",
     badgeStyle: "green",
     sortOrder: 4,
@@ -216,7 +224,7 @@ export const vendors: Vendor[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $150",
     shipsTo: ["USA"],
     catalogSize: "60+ compounds",
@@ -295,8 +303,10 @@ export const vendors: Vendor[] = [
 
 // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-/** All vendors sorted by sortOrder */
-export const vendorsSorted = [...vendors].sort((a, b) => a.sortOrder - b.sortOrder);
+/** All ACTIVE vendors sorted by sortOrder */
+export const vendorsSorted = [...vendors]
+  .filter(v => v.isActive !== false)
+  .sort((a, b) => a.sortOrder - b.sortOrder);
 
 /** Injectable vendors only */
 export const injectableVendors = vendorsSorted.filter(v => v.category === "injectable");
@@ -314,9 +324,11 @@ export const vendorByGaKey: Record<string, Vendor> = Object.fromEntries(
   vendors.map(v => [v.gaKey, v])
 );
 
-/** Total vendor count */
-export const VENDOR_COUNT = vendors.length;
+/** Total active vendor count */
+export const VENDOR_COUNT = vendorsSorted.length;
 
-/** Injectable vendor count */
+/** Active injectable vendor count */
 export const INJECTABLE_VENDOR_COUNT = injectableVendors.length;
 
+/** All vendors including deactivated — for internal/admin use only */
+export const allVendorsIncludingInactive = [...vendors].sort((a, b) => a.sortOrder - b.sortOrder);

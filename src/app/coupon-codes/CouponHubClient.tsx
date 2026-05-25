@@ -513,7 +513,7 @@ export function CouponHubClient({
             },
             {
               q: "Which vendor has the biggest discount?",
-              a: "Ascension Peptides offers 50% off — the largest verified discount on any US peptide vendor. Amino Club offers 20% off and is our Editor's Choice for quality. Bio Longevity Labs offers 15% that stacks with sales.",
+              a: "Amino Club offers 20% off and is our Editor's Choice for quality. Bio Longevity Labs offers 15% that stacks with sales — the only vendor where your code stacks with site-wide promotions.",
             },
             {
               q: "Are these codes for research use only?",

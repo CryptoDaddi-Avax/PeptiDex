@@ -5,7 +5,7 @@ import { peptides, getPeptideBySlug } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
 import {
   BookOpen, Beaker, FlaskConical, ShieldAlert, FileText, ArrowRight,
-  ExternalLink, ChevronRight, Activity, Dna, DollarSign
+  ExternalLink, Activity, Dna, DollarSign
 } from 'lucide-react';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -301,12 +301,6 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
                     Check Current Market Pricing <ArrowRight className="w-4 h-4" />
                   </Link>
                 )}
-                <Link
-                  href="/compare/vendors/amino-club-vs-ascension-peptides"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-zinc-700 hover:border-violet-500/40 text-zinc-300 font-semibold text-sm transition-all"
-                >
-                  Compare Vendors Side by Side <ChevronRight className="w-4 h-4" />
-                </Link>
               </div>
               <InlineDisclaimer type="affiliate" className="mt-2" />
             </div>

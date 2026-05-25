@@ -104,9 +104,11 @@ export const commissionRates: Record<string, CommissionRate> = {
 
   'ascension-peptides': {
     ratePercent: 10,
-    basis: 'unconfirmed',
+    basis: 'post_discount',
+    confirmedCustomerDiscountPct: 50,
     confirmedDate: '2026-05-24',
     notes: [
+      'DEACTIVATED 2026-05-24: 10% commission on post-discount basis + 50% customer discount = ~$5 per $100 order, worst economics of any vendor. Reactivate only if commission rate renegotiated.',
       'CRITICAL — BASIS UNCONFIRMED: 10% commission rate confirmed.',
       'However: Ascension\'s customer discount is 50% (vs 15-20% at all other vendors).',
       'Pre-discount basis: 10% of $70 list price = $7.00 per vial.',

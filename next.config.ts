@@ -42,7 +42,11 @@ const nextConfig: NextConfig = {
       // Vendor review page consolidation — old static pages → dynamic template
       { source: '/vendors/amino-club-review', destination: '/vendors/amino-club', permanent: true },
       { source: '/vendors/bio-longevity-labs-review', destination: '/vendors/bio-longevity-labs', permanent: true },
-      { source: '/vendors/ascension-peptides-review', destination: '/vendors/ascension-peptides', permanent: true },
+      // Ascension Peptides deactivated 2026-05-24 — redirect all indexed pages
+      { source: '/vendors/ascension-peptides', destination: '/vendors', permanent: true },
+      { source: '/vendors/amino-club-vs-ascension', destination: '/vendors/amino-club', permanent: true },
+      { source: '/compare/vendors/amino-club-vs-ascension-peptides', destination: '/vendors', permanent: true },
+      { source: '/vendors/ascension-peptides-review', destination: '/vendors', permanent: true },
       { source: '/vendors/limitless-life-review', destination: '/vendors/limitless-life', permanent: true },
       { source: '/vendors/pantheon-peptides-review', destination: '/vendors/pantheon-peptides', permanent: true },
       { source: '/vendors/lvlup-health-review', destination: '/vendors/lvlup-health', permanent: true },

@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Peptide Vendor Coupon Codes 2026 — All Active Discounts",
   description:
-    "All verified peptide vendor discount codes in one place. Use PEPTIDEX for up to 50% off at Ascension Peptides, 20% at Amino Club, 15% at Bio Longevity Labs, Limitless Life, Pantheon, and LVLUP Health.",
+    "All verified peptide vendor discount codes in one place. Use PEPTIDEX for 20% off at Amino Club, 15% at Bio Longevity Labs, Limitless Life, Pantheon, and LVLUP Health.",
   openGraph: {
     title: "Peptide Coupon Codes 2026 — Every Active Discount Code",
     description: `Use code PEPTIDEX for exclusive discounts at all ${SITE_STATS.vendors.count} verified peptide vendors. Updated weekly.`,

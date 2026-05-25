@@ -16,7 +16,6 @@ import Link from 'next/link';
 // ── Discount lookups (single source of truth: vendors.ts) ─────────────────
 const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
 const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
-const _ascension    = vendors.find((v) => v.slug === 'ascension-peptides')!;
 const _limitless    = vendors.find((v) => v.slug === 'limitless-life')!;
 
 const TARGET_SLUGS = [
@@ -74,7 +73,7 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
     { q: `How much does ${peptide.name} cost?`, a: `Pricing for ${peptide.name} varies by vial size and vendor. Use code PEPTIDEX at Amino Club or Bio Longevity Labs to save ${_bioLongevity.discountPercent}-${_aminoClub.discountPercent}%.` },
     { q: `Is ${peptide.name} legal to buy?`, a: `In the United States, ${peptide.name} is generally sold legally as a research chemical not for human consumption, unless it is an FDA-approved compound requiring a prescription.` },
     { q: `How do I verify ${peptide.name} purity?`, a: `Always demand a batch-specific Certificate of Analysis (COA) from a third-party laboratory proving HPLC purity of 98%+ before purchasing ${peptide.name}.` },
-    { q: `What's the PEPTIDEX discount code for ${peptide.name}?`, a: `Use code PEPTIDEX for ${_aminoClub.discountPercent}% off at Amino Club, or ${_bioLongevity.discountPercent}% off at Bio Longevity Labs, Ascension Peptides, and Limitless Life.` },
+    { q: `What's the PEPTIDEX discount code for ${peptide.name}?`, a: `Use code PEPTIDEX for ${_aminoClub.discountPercent}% off at Amino Club, or ${_bioLongevity.discountPercent}% off at Bio Longevity Labs and Limitless Life.` },
     { q: `Can I buy ${peptide.name} with a credit card?`, a: `Yes, select verified vendors on our list offer traditional credit card processing for ${peptide.name} purchases.` }
   ]);
 
@@ -182,7 +181,7 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
           <p>In the United States, {peptide.name} is generally sold legally strictly as a research chemical not for human consumption, unless it is an FDA-approved compound requiring a prescription.</p>
 
           <h4 className="font-bold text-zinc-100">What is the discount code for {peptide.name}?</h4>
-          <p>Use code <strong>PEPTIDEX</strong> for {_aminoClub.discountPercent}% off at Amino Club, or {_bioLongevity.discountPercent}% off at Bio Longevity Labs, Ascension Peptides, Pantheon Peptides, and Limitless Life.</p>
+          <p>Use code <strong>PEPTIDEX</strong> for {_aminoClub.discountPercent}% off at Amino Club, or {_bioLongevity.discountPercent}% off at Bio Longevity Labs, Pantheon Peptides, and Limitless Life.</p>
         </article>
 
         <TrustBlock />

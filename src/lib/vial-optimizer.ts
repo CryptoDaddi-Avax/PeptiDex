@@ -13,7 +13,6 @@
 
 import { vendorPricing, type PeptideVendorPricing, type VendorPrice } from "@/data/vendor-pricing";
 import { vendorCartConfigs, type VendorCartConfig, type CartTier } from "@/data/vendor-cart-config";
-import { ascensionProductMap, buildAscensionCartUrl } from "@/data/vendor-product-maps/ascension";
 import { aminoClubProductMap, buildAminoClubProductUrl } from "@/data/vendor-product-maps/amino-club";
 import { vendorBySlug } from "@/data/vendors";
 
@@ -95,7 +94,12 @@ export function optimizeVials(input: VialOptimizationInput): VialOptimizationRes
 
   // Step 3: Build vendor plans
   const vendorPlans: VendorPlan[] = pricingEntry.vendors
-    .filter((vp) => vp.inStock)
+    .filter((vp) => {
+      if (!vp.inStock) return false;
+      // Skip deactivated vendors (isActive: false in vendors.ts)
+      const slug = resolveVendorSlug(vp.vendor);
+      return vendorBySlug[slug]?.isActive !== false;
+    })
     .map((vp) => buildVendorPlan(vp, peptideSlug, bufferedMg))
     .sort((a, b) => a.subtotalAfterDiscount - b.subtotalAfterDiscount);
 
@@ -162,17 +166,6 @@ function resolveAction(
   peptideSlug: string,
   cartConfig?: VendorCartConfig
 ): { actionUrl: string; actionType: "cart" | "deeplink" | "affiliate" } {
-  // Ascension: Tier 1 — use cart pre-fill
-  if (vendorSlug === "ascension-peptides") {
-    const product = ascensionProductMap[peptideSlug];
-    if (product) {
-      return {
-        actionUrl: buildAscensionCartUrl(peptideSlug),
-        actionType: "cart",
-      };
-    }
-  }
-
   // Amino Club: Tier 2 — use deep links
   if (vendorSlug === "amino-club") {
     const product = aminoClubProductMap[peptideSlug];
@@ -206,7 +199,7 @@ const VENDOR_NAME_TO_SLUG: Record<string, string> = {
   "Amino Club": "amino-club",
   "Bio Longevity Labs": "bio-longevity-labs",
   "Limitless Life": "limitless-life",
-  "Ascension Peptides": "ascension-peptides",
+  // "Ascension Peptides" omitted — deactivated 2026-05-24
   "Pantheon Peptides": "pantheon-peptides",
   "LVLUP Health": "lvlup-health",
 };
