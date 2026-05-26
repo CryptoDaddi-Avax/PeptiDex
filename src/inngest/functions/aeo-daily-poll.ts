@@ -64,18 +64,21 @@ async function withBackoff<T>(fn: (signal: AbortSignal) => Promise<T>, maxRetrie
 }
 
 // ─────────────────────────────────────────────────────────────
-// FIX: Inngest SDK v4.4.0 types only accept 2 args, so we keep the 2-arg
-// form with 'as any'. Key change: 'trigger' (singular) in the config spec
-// is what Inngest's cron scheduler reads during deploy sync — the previous
-// 'triggers' (plural) key was silently ignored by the scheduler.
+// NOTE: 'triggers' (plural) in the 2-arg config is the correct format
+// for Inngest SDK v4.4.0. Confirmed working: May 23 tests used this
+// exact format and 4 invocations executed successfully.
+// 'trigger' (singular) was tested but Inngest silently ignores it —
+// events are accepted but no function picks them up.
+// Cron scheduling is handled by the VPS crontab (belt-and-suspenders)
+// rather than relying on Inngest's scheduler.
 // ─────────────────────────────────────────────────────────────
 export const aeoDailyPoll = inngest.createFunction(
   {
     id: 'aeo-daily-poll',
     retries: 1,
-    trigger: [
-      { cron: 'TZ=America/New_York 0 6 * * *' },  // daily 6am ET
-      { event: 'aeo/daily.poll.manual' },          // manual/VPS-cron fallback
+    triggers: [
+      { cron: 'TZ=America/New_York 0 6 * * *' },  // Inngest scheduler (if synced)
+      { event: 'aeo/daily.poll.manual' },          // VPS crontab + manual trigger
     ],
   } as any,
   async ({ step }: any) => {

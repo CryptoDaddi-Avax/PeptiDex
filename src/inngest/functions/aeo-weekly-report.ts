@@ -10,9 +10,7 @@ import { sendEmailAlert, sendSlackAlert } from '@/lib/aeo/alerts';
 import { recordCost } from '@/lib/aeo/cost-guard';
 
 export const aeoWeeklyReport = inngest.createFunction(
-  // FIX: 'trigger' (singular) is the correct Inngest config key for cron registration.
-  // The old 'cron' top-level key was silently ignored during Inngest scheduler sync.
-  { id: 'aeo-weekly-report', retries: 1, trigger: { cron: 'TZ=America/New_York 0 6 * * 0' } } as any,
+  { id: 'aeo-weekly-report', retries: 1, triggers: [{ cron: 'TZ=America/New_York 0 6 * * 0' }] } as any,
   async ({ step }: any) => {
     // Step 1: Aggregate week's data
     const weekData = await step.run('aggregate-week', async () => {
