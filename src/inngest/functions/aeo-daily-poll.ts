@@ -2,6 +2,12 @@
 // AEO Daily Poll — Core polling engine
 // Runs daily at 6am ET. Iterates query bank × 4 engines.
 // Respects per-engine budget caps and global $8/day ceiling.
+//
+// CONCURRENCY MODEL:
+// Each engine step runs queries concurrently (5 at a time) rather than
+// sequentially. This keeps each step well under Inngest's ~162s step
+// HTTP timeout. Sequential was ~249s for Perplexity alone — causing
+// a 504 that killed the function before Brave/Anthropic/OpenAI ran.
 // ═══════════════════════════════════════════════════════
 
 import { inngest } from '../client';
@@ -23,8 +29,19 @@ const ENGINE_FUNCTIONS: Record<EngineName, (q: string, signal?: AbortSignal) => 
   openai: queryOpenAI,
 };
 
-// TIMEOUT_MS: abort any single engine API call after 30 seconds.
-// Prevents a hung connection from freezing the entire Inngest step.
+// Per-engine concurrency limits. Higher = faster but more likely to hit
+// API rate limits. Calibrated to keep each step under 120s.
+// Perplexity: 5 concurrent × ~2.5s avg = ~34s for 67 queries ✅
+// Brave: 10 concurrent × ~0.5s avg = ~4s for 67 queries ✅
+// Anthropic: 5 concurrent × ~8s avg = ~108s for 67 queries ✅
+// OpenAI: 3 concurrent × ~5s avg = ~variable (fewer queries) ✅
+const ENGINE_CONCURRENCY: Record<EngineName, number> = {
+  perplexity: 5,
+  brave:      10,
+  anthropic:  5,
+  openai:     3,
+};
+
 const TIMEOUT_MS = 30_000;
 
 /**
@@ -50,9 +67,6 @@ async function withBackoff<T>(fn: (signal: AbortSignal) => Promise<T>, maxRetrie
       }
       const isRateLimit = err.message?.includes('429') || err.message?.includes('rate');
       if (!isRateLimit) {
-        // Non-rate-limit error (auth failure, network error, timeout, etc.)
-        // Return null instead of re-throwing — caller logs it as an engine error
-        // and the function continues to the next engine.
         console.error(`withBackoff: non-retryable error on attempt ${i + 1}:`, err.message);
         return null;
       }
@@ -61,6 +75,26 @@ async function withBackoff<T>(fn: (signal: AbortSignal) => Promise<T>, maxRetrie
     }
   }
   return null;
+}
+
+/**
+ * Run an array of async tasks with a concurrency cap.
+ * Preserves original order in the returned results array.
+ */
+async function runConcurrent<T>(
+  tasks: Array<() => Promise<T>>,
+  concurrency: number,
+): Promise<T[]> {
+  const results: T[] = new Array(tasks.length);
+  let idx = 0;
+  const worker = async () => {
+    while (idx < tasks.length) {
+      const i = idx++;
+      results[i] = await tasks[i]();
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(concurrency, tasks.length) }, worker));
+  return results;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -100,43 +134,69 @@ export const aeoDailyPoll = inngest.createFunction(
       return data ?? [];
     });
 
-    // Step 3: Poll each engine
+    // Step 3: Poll each engine — queries run CONCURRENTLY within each step
     for (const engine of ENGINES) {
       await step.run(`poll-${engine}`, async () => {
-        const supabase = await createClient() as any;
+        const supabase = createClient() as any;
         const startTime = Date.now();
-        let executed = 0;
-        let skipped = 0;
-        let errors = 0;
-        let totalCost = 0;
 
         // Check global ceiling first
         const globalCheck = await checkGlobalDailyCeiling();
         if (!globalCheck.allowed) {
           console.warn(`Global daily ceiling hit ($${globalCheck.totalSpend}). Skipping ${engine}.`);
+          await supabase.from('aeo_poll_runs').insert({
+            engine, queries_executed: 0, queries_skipped: 0,
+            total_cost: 0, errors: 0,
+            duration_ms: Date.now() - startTime,
+          });
+          return;
+        }
+
+        // Check engine budget upfront (once, not per-query)
+        const budgetCheck = await checkEngineBudget(engine);
+        if (!budgetCheck.allowed) {
+          await alertEnginePaused(engine, budgetCheck.currentSpend, budgetCheck.dailyCap);
+          const engineQueries = engine === 'openai'
+            ? queries.filter((q: any) => q.runs_on_openai)
+            : queries;
+          await supabase.from('aeo_poll_runs').insert({
+            engine, queries_executed: 0,
+            queries_skipped: engineQueries.length,
+            total_cost: 0, errors: 0,
+            duration_ms: Date.now() - startTime,
+          });
           return;
         }
 
         // Filter queries for this engine
-        const engineQueries = engine === 'openai'
+        const engineQueries: any[] = engine === 'openai'
           ? queries.filter((q: any) => q.runs_on_openai)
           : queries;
 
-        for (const query of engineQueries) {
-          // Per-engine budget check
-          const budgetCheck = await checkEngineBudget(engine);
-          if (!budgetCheck.allowed) {
-            await alertEnginePaused(engine, budgetCheck.currentSpend, budgetCheck.dailyCap);
-            skipped += engineQueries.length - executed;
-            break;
-          }
+        const concurrency = ENGINE_CONCURRENCY[engine];
 
-          const result = await withBackoff((signal) => ENGINE_FUNCTIONS[engine](query.query_text, signal));
+        // Build concurrent task list — one task per query
+        const tasks = engineQueries.map((query: any) => async () => {
+          const result = await withBackoff(
+            (signal) => ENGINE_FUNCTIONS[engine](query.query_text, signal)
+          );
+          return { query, result };
+        });
 
+        // Run concurrently
+        const rawResults = await runConcurrent(tasks, concurrency);
+
+        // Separate successes from errors
+        let executed = 0;
+        let errors = 0;
+        let totalCost = 0;
+        const responseRows: any[] = [];
+        const costEntries: number[] = [];
+
+        for (const { query, result } of rawResults) {
           if (!result || result.error) {
             errors++;
-            // Still store the error response for diagnostics
-            await supabase.from('aeo_responses').insert({
+            responseRows.push({
               query_id: query.id,
               engine,
               raw_response: result?.rawText ?? '',
@@ -146,37 +206,49 @@ export const aeoDailyPoll = inngest.createFunction(
               http_status: result?.httpStatus ?? 0,
               error_message: result?.error ?? 'Unknown error after retries',
             });
-            continue;
+          } else {
+            executed++;
+            totalCost += result.cost ?? 0;
+            costEntries.push(result.cost ?? 0);
+            responseRows.push({
+              query_id: query.id,
+              engine,
+              raw_response: result.rawText ?? '',
+              cited_urls: result.citedUrls ?? [],
+              response_tokens: result.tokens ?? 0,
+              cost_estimate: result.cost ?? 0,
+              http_status: result.httpStatus ?? 200,
+              error_message: null,
+            });
           }
+        }
 
-          // Store successful response
-          await supabase.from('aeo_responses').insert({
-            query_id: query.id,
-            engine,
-            raw_response: result.rawText,
-            cited_urls: result.citedUrls,
-            response_tokens: result.tokens,
-            cost_estimate: result.cost,
-            http_status: result.httpStatus,
-          });
+        // Batch insert all responses (1 Supabase call instead of 67)
+        if (responseRows.length > 0) {
+          const { error: insertErr } = await supabase
+            .from('aeo_responses')
+            .insert(responseRows);
+          if (insertErr) {
+            console.error(`[${engine}] aeo_responses batch insert error:`, insertErr.message);
+          }
+        }
 
-          await recordCost(engine, result.cost);
-          totalCost += result.cost;
-          executed++;
-
-          // Polite delay between queries (500ms)
-          await new Promise(r => setTimeout(r, 500));
+        // Record costs for successful queries
+        for (const cost of costEntries) {
+          await recordCost(engine, cost);
         }
 
         // Log the poll run
         await supabase.from('aeo_poll_runs').insert({
           engine,
           queries_executed: executed,
-          queries_skipped: skipped,
+          queries_skipped: 0,
           total_cost: totalCost,
           errors,
           duration_ms: Date.now() - startTime,
         });
+
+        console.log(`[${engine}] done: ${executed} ok, ${errors} errors, $${totalCost.toFixed(4)}, ${Math.round((Date.now() - startTime) / 1000)}s`);
       });
     }
 
