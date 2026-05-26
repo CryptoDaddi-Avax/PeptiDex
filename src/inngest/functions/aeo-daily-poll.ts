@@ -29,17 +29,24 @@ const ENGINE_FUNCTIONS: Record<EngineName, (q: string, signal?: AbortSignal) => 
   openai: queryOpenAI,
 };
 
-// Per-engine concurrency limits. Higher = faster but more likely to hit
-// API rate limits. Calibrated to keep each step under 120s.
-// Perplexity: 5 concurrent × ~2.5s avg = ~34s for 67 queries ✅
-// Brave: 10 concurrent × ~0.5s avg = ~4s for 67 queries ✅
-// Anthropic: 5 concurrent × ~8s avg = ~108s for 67 queries ✅
-// OpenAI: 3 concurrent × ~5s avg = ~variable (fewer queries) ✅
+// Per-engine concurrency limits and inter-request delays.
+// Anthropic without web_search: queries complete in ~0.3s each.
+// At concurrency 5 → ~575 RPM vs 50 RPM limit → 429s.
+// Fix: concurrency 1 + 1.5s delay → ~33 RPM, ~121s for 67 queries ✅
 const ENGINE_CONCURRENCY: Record<EngineName, number> = {
   perplexity: 5,
   brave:      10,
-  anthropic:  5,
+  anthropic:  1,   // sequential — fast queries hit RPM limit at any higher concurrency
   openai:     3,
+};
+
+// Inter-request delay (ms) applied before each query (except the first).
+// Anthropic: 1500ms → ~33 RPM, well under 50 RPM limit.
+const ENGINE_DELAY_MS: Record<EngineName, number> = {
+  perplexity: 0,
+  brave:      0,
+  anthropic:  1500,
+  openai:     0,
 };
 
 const TIMEOUT_MS = 30_000;
@@ -176,7 +183,12 @@ export const aeoDailyPoll = inngest.createFunction(
         const concurrency = ENGINE_CONCURRENCY[engine];
 
         // Build concurrent task list — one task per query
-        const tasks = engineQueries.map((query: any) => async () => {
+        const delayMs = ENGINE_DELAY_MS[engine];
+        const tasks = engineQueries.map((query: any, i: number) => async () => {
+          // Throttle requests for rate-limited engines (skip delay on first query)
+          if (delayMs > 0 && i > 0) {
+            await new Promise(r => setTimeout(r, delayMs));
+          }
           const result = await withBackoff(
             (signal) => ENGINE_FUNCTIONS[engine](query.query_text, signal)
           );
