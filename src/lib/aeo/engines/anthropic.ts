@@ -22,11 +22,21 @@ export async function queryAnthropic(queryText: string, signal?: AbortSignal): P
         // NOTE: claude-haiku-4-5 (no date suffix) is the correct model ID.
         // claude-haiku-4-5-20250301 returns HTTP 404 — the date-suffixed alias
         // does not exist for this model family.
+        //
+        // NO web_search tool: each web_search response adds ~17k input tokens,
+        // instantly blowing Anthropic's 50k ITPM tier limit at any concurrency.
+        // Without web_search, Anthropic serves as the "training-data baseline" —
+        // what does Claude know about this topic from its own training, without
+        // live web augmentation? This is distinctly valuable for AEO monitoring
+        // because the majority of Claude users do NOT have web search enabled.
+        // Perplexity and OpenAI already cover the web-augmented perspective.
         model: 'claude-haiku-4-5',
         max_tokens: 1024,
-        tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
         messages: [
-          { role: 'user', content: queryText },
+          {
+            role: 'user',
+            content: queryText,
+          },
         ],
       }),
     });
