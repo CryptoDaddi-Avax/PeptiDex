@@ -30,22 +30,22 @@ const ENGINE_FUNCTIONS: Record<EngineName, (q: string, signal?: AbortSignal) => 
 };
 
 // Per-engine concurrency limits and inter-request delays.
-// Anthropic without web_search: queries complete in ~0.3s each.
-// At concurrency 5 → ~575 RPM vs 50 RPM limit → 429s.
-// Fix: concurrency 1 + 1.5s delay → ~33 RPM, ~121s for 67 queries ✅
+// Anthropic without web_search: API takes ~3.5-4s per call naturally.
+// At concurrency 2: 2/3.5s = 34 RPM (under 50 RPM limit), ~119s total (under 162s timeout).
+// No artificial delay needed — the API is slow enough on its own.
 const ENGINE_CONCURRENCY: Record<EngineName, number> = {
   perplexity: 5,
   brave:      10,
-  anthropic:  1,   // sequential — fast queries hit RPM limit at any higher concurrency
+  anthropic:  2,   // 2 concurrent: 34 RPM, ~119s for 67 queries ✅
   openai:     3,
 };
 
 // Inter-request delay (ms) applied before each query (except the first).
-// Anthropic: 1500ms → ~33 RPM, well under 50 RPM limit.
+// Anthropic: 0ms — natural API latency (~3.5s/call) keeps it under 50 RPM.
 const ENGINE_DELAY_MS: Record<EngineName, number> = {
   perplexity: 0,
   brave:      0,
-  anthropic:  1500,
+  anthropic:  0,
   openai:     0,
 };
 
