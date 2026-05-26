@@ -28,8 +28,8 @@ export function generateStaticParams() {
   return SUPPORTED_SLUGS.map((slug) => ({ peptide: slug }));
 }
 
-export function generateMetadata({ params }: { params: { peptide: string } }): Metadata {
-  const { peptide: slug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ peptide: string }> }): Promise<Metadata> {
+  const { peptide: slug } = await params;
   if (!SUPPORTED_SLUGS.includes(slug)) return {};
 
   const pData = peptides.find(p => p.slug === slug);
@@ -72,8 +72,8 @@ export function generateMetadata({ params }: { params: { peptide: string } }): M
   };
 }
 
-export default function AminoClubProductPage({ params }: { params: { peptide: string } }) {
-  const { peptide: slug } = params;
+export default async function AminoClubProductPage({ params }: { params: Promise<{ peptide: string }> }) {
+  const { peptide: slug } = await params;
 
   if (!SUPPORTED_SLUGS.includes(slug)) notFound();
 

@@ -22,17 +22,18 @@ export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return {};
 
   return {
     title: `${post.frontmatter.title}`,
     description: post.frontmatter.description,
-    alternates: { canonical: `https://peptidex.app/blog/${params.slug}` },
+    alternates: { canonical: `https://peptidex.app/blog/${slug}` },
     openGraph: {
       type: 'article',
-      url: `https://peptidex.app/blog/${params.slug}`,
+      url: `https://peptidex.app/blog/${slug}`,
       title: post.frontmatter.title,
       description: post.frontmatter.description,
       siteName: 'PeptiDex',
@@ -40,15 +41,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
   const { title, description, publishDate, lastReviewed, author, faqSchema, readingTime, medicallyReviewedBy, factCheckedBy, reviewedDate } = post.frontmatter;
-  const canonical = `https://peptidex.app/blog/${params.slug}`;
+  const canonical = `https://peptidex.app/blog/${slug}`;
 
   const authorSlug = getAuthorSlug(author || 'PeptiDex Editorial');
   const authorRecord = getAuthorBySlug(authorSlug);
