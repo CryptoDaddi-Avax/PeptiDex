@@ -305,3 +305,35 @@
   .evi-control-group { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .evi-legend { gap: 12px; padding: 16px; }
 }
+
+/* ===== ROW ANCHOR WRAPPER + CITE BUTTON ===== */
+.evi-row-anchor {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+/* The Link (evi-card) grows to fill; cite button sits at end */
+.evi-row-anchor .evi-card {
+  flex: 1;
+  min-width: 0;
+}
+/* Show cite-link button on row hover */
+.evi-row-anchor:hover .evi-cite-btn {
+  opacity: 1 !important;
+}
+/* Keep button visible when focused for keyboard users */
+.evi-cite-btn:focus {
+  opacity: 1 !important;
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+/* Anchor highlight flash when jumped to via hash */
+.evi-row-anchor:target .evi-card,
+.evi-row-anchor:target {
+  animation: anchor-flash 1.2s ease-out;
+}
+@keyframes anchor-flash {
+  0%   { background: rgba(212,131,42,0.18); }
+  100% { background: transparent; }
+}
+

@@ -1,48 +1,90 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { peptides } from "@/data/peptides";
-import { EvidenceLevel } from "@/data/types";
-import { Filter } from "lucide-react";
+import { Filter, Link2, Check } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 import { ShareModal } from "@/components/share-card/share-modal";
 import type { EvidenceCardData } from "@/components/share-card/card-templates";
+import type { RankedPeptide } from "./page";
 import './evidence-redesign.css';
 
 const evidenceRank: Record<string, number> = {
-    "very-strong": 6, "strong": 5, "moderate-strong": 4, "moderate": 3, "emerging": 2, "preclinical": 1, "anecdotal": 0,
+    "very-strong": 6, "strong": 5, "moderate-strong": 4, "moderate": 3,
+    "emerging": 2, "preclinical": 1, "anecdotal": 0,
 };
-const evidenceLabel: Record<string, string> = {
+
+export const evidenceLabelMap: Record<string, string> = {
     "very-strong": "Very Strong", "strong": "Strong", "moderate-strong": "Moderate-Strong",
     "moderate": "Moderate", "emerging": "Emerging", "preclinical": "Preclinical", "anecdotal": "Anecdotal",
 };
 
-function getHighestEvidence(studies: { evidence_level: EvidenceLevel }[]): EvidenceLevel {
-    let best: EvidenceLevel = "anecdotal";
-    let bestRank = 0;
-    for (const s of studies) {
-        const rank = evidenceRank[s.evidence_level] || 0;
-        if (rank > bestRank) { bestRank = rank; best = s.evidence_level; }
-    }
-    return best;
-}
-
 type SortBy = "evidence" | "studies" | "name";
 
-export default function EvidenceClient() {
+interface Props {
+    initialRanked: RankedPeptide[];
+    dateModified: string;   // ISO date "2026-05-07"
+    formattedDate: string;  // "May 2026"
+}
+
+// ─── Cite-link button ─────────────────────────────────────────────────────────
+function CiteAnchorButton({ slug }: { slug: string }) {
+    const [copied, setCopied] = useState(false);
+
+    const copy = useCallback((e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const url = `https://peptidex.app/tools/evidence#${slug}`;
+        navigator.clipboard.writeText(url).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    }, [slug]);
+
+    return (
+        <button
+            onClick={copy}
+            title={`Copy link: /tools/evidence#${slug}`}
+            aria-label={`Copy anchor link for ${slug}`}
+            style={{
+                background: "none", border: "none", cursor: "pointer",
+                padding: "2px 4px", borderRadius: 4,
+                color: copied ? "var(--green, #22c55e)" : "var(--ink-mute)",
+                opacity: 0, transition: "opacity 0.15s, color 0.15s",
+                display: "flex", alignItems: "center",
+            }}
+            className="evi-cite-btn"
+        >
+            {copied
+                ? <Check style={{ width: 12, height: 12 }} />
+                : <Link2 style={{ width: 12, height: 12 }} />
+            }
+        </button>
+    );
+}
+
+export default function EvidenceClient({ initialRanked, dateModified, formattedDate }: Props) {
     const [sortBy, setSortBy] = useState<SortBy>("evidence");
     const [filterCategory, setFilterCategory] = useState("all");
     const containerRef = useRef<HTMLDivElement>(null);
+
+    // ── Scroll-to-anchor on mount ──────────────────────────────────────────
+    useEffect(() => {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+            // Wait for render then scroll
+            requestAnimationFrame(() => {
+                const el = document.getElementById(hash);
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+        }
+    }, []);
 
     const categories = useMemo(() => {
         const cats = new Set(peptides.map((p) => p.category));
         return ["all", ...Array.from(cats).sort()];
     }, []);
-
-    const peptidesWithEvidence = useMemo(() =>
-        peptides.map((p) => ({ ...p, highestEvidence: getHighestEvidence(p.key_studies) })),
-        []);
 
     /* Scroll reveal */
     useEffect(() => {
@@ -65,7 +107,7 @@ export default function EvidenceClient() {
             "very-strong": [], "strong": [], "moderate-strong": [], "moderate": [],
             "emerging": [], "preclinical": [], "anecdotal": [],
         };
-        peptidesWithEvidence.forEach(p => {
+        initialRanked.forEach(p => {
             if (tierMap[p.highestEvidence]) tierMap[p.highestEvidence].push(p.name);
         });
         return {
@@ -78,31 +120,43 @@ export default function EvidenceClient() {
             ],
             totalPeptides: peptides.length,
         };
-    }, [peptidesWithEvidence]);
+    }, [initialRanked]);
 
+    /* Client-side filtering/sorting — starts from server-computed list */
     const sorted = useMemo(() => {
-        let list = [...peptidesWithEvidence];
+        let list = [...initialRanked];
         if (filterCategory !== "all") list = list.filter((p) => p.category === filterCategory);
         if (sortBy === "evidence") {
             list.sort((a, b) => {
-                const diff = (evidenceRank[b.highestEvidence] || 0) - (evidenceRank[a.highestEvidence] || 0);
-                return diff !== 0 ? diff : b.key_studies.length - a.key_studies.length;
+                const diff = (evidenceRank[b.highestEvidence] ?? 0) - (evidenceRank[a.highestEvidence] ?? 0);
+                return diff !== 0 ? diff : b.key_studies_count - a.key_studies_count;
             });
         } else if (sortBy === "studies") {
-            list.sort((a, b) => b.key_studies.length - a.key_studies.length);
+            list.sort((a, b) => b.key_studies_count - a.key_studies_count);
         } else {
             list.sort((a, b) => a.name.localeCompare(b.name));
         }
         return list;
-    }, [sortBy, filterCategory, peptidesWithEvidence]);
+    }, [sortBy, filterCategory, initialRanked]);
 
-    const maxStudies = Math.max(...peptides.map((p) => p.key_studies.length));
-    const totalStudies = peptides.reduce((sum, p) => sum + p.key_studies.length, 0);
-    const fdaCount = peptides.filter(p => p.is_fda_approved).length;
-    const strongCount = peptidesWithEvidence.filter(p => evidenceRank[p.highestEvidence] >= 5).length;
+    const maxStudies = Math.max(...initialRanked.map((p) => p.key_studies_count));
+    const totalStudies = initialRanked.reduce((sum, p) => sum + p.key_studies_count, 0);
+    const fdaCount = initialRanked.filter(p => p.is_fda_approved).length;
+    const strongCount = initialRanked.filter(p => (evidenceRank[p.highestEvidence] ?? 0) >= 5).length;
+
+    // ── Suggested citation text ─────────────────────────────────────────────
+    const citationText = `PeptiDex Editorial Team. (${dateModified.slice(0, 4)}). Peptide Clinical Evidence Rankings. PeptiDex. https://peptidex.app/tools/evidence`;
+
+    const [citationCopied, setCitationCopied] = useState(false);
+    const copyCitation = useCallback(() => {
+        navigator.clipboard.writeText(citationText).then(() => {
+            setCitationCopied(true);
+            setTimeout(() => setCitationCopied(false), 2500);
+        });
+    }, [citationText]);
 
     return (
-            <>
+        <>
             {/* ── PAGE HEADER ── */}
             <header className="evi-hero">
                 <div className="page-header-grid" style={{
@@ -147,7 +201,8 @@ export default function EvidenceClient() {
                     {/* Page Meta */}
                     <div style={{
                         display: 'flex', gap: 32, marginTop: 32, paddingTop: 32,
-                        borderTop: '1px solid var(--line)', flexWrap: 'wrap' as const
+                        borderTop: '1px solid var(--line)', flexWrap: 'wrap' as const,
+                        alignItems: 'center',
                     }}>
                         <div style={{
                             fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.15em',
@@ -169,6 +224,16 @@ export default function EvidenceClient() {
                             display: 'flex', alignItems: 'center', gap: 8
                         }}>
                             FDA Approved: <strong style={{ color: 'var(--green)', fontWeight: 500 }}>{fdaCount}</strong>
+                        </div>
+                        {/* Timestamp — server-side date, live on page */}
+                        <div style={{
+                            fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.15em',
+                            textTransform: 'uppercase' as const, color: 'var(--ink-mute)',
+                            display: 'flex', alignItems: 'center', gap: 8,
+                            marginLeft: 'auto',
+                        }}>
+                            <span style={{ opacity: 0.5 }}>↻</span>
+                            Last updated: <strong style={{ color: 'var(--ink-dim)', fontWeight: 500 }}>{formattedDate}</strong>
                         </div>
                     </div>
                 </div>
@@ -197,12 +262,76 @@ export default function EvidenceClient() {
                         </div>
                     </div>
 
+                    {/* ── CITE THIS block ── */}
+                    <div className="reveal" style={{
+                        margin: '32px 0',
+                        padding: '20px 24px',
+                        borderRadius: 12,
+                        border: '1px solid var(--line)',
+                        background: 'rgba(212,131,42,0.04)',
+                        display: 'flex',
+                        flexWrap: 'wrap' as const,
+                        alignItems: 'center',
+                        gap: 16,
+                    }}>
+                        <div style={{ flex: 1, minWidth: 280 }}>
+                            <div style={{
+                                fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.2em',
+                                textTransform: 'uppercase' as const, color: 'var(--gold)',
+                                marginBottom: 8,
+                            }}>
+                                Cite this dataset
+                            </div>
+                            <p style={{
+                                fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-mute)',
+                                lineHeight: 1.6, margin: 0,
+                                userSelect: 'all' as const,
+                            }}>
+                                {citationText}
+                            </p>
+                        </div>
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexShrink: 0 }}>
+                            <button
+                                onClick={copyCitation}
+                                style={{
+                                    display: 'flex', alignItems: 'center', gap: 6,
+                                    padding: '8px 14px', borderRadius: 8,
+                                    border: '1px solid var(--line)',
+                                    background: citationCopied ? 'rgba(34,197,94,0.1)' : 'var(--surface)',
+                                    color: citationCopied ? 'var(--green, #22c55e)' : 'var(--ink-dim)',
+                                    fontFamily: 'var(--mono)', fontSize: 11, cursor: 'pointer',
+                                    letterSpacing: '0.1em', transition: 'all 0.2s',
+                                }}
+                            >
+                                {citationCopied
+                                    ? <><Check style={{ width: 12, height: 12 }} /> Copied</>
+                                    : "Copy citation"
+                                }
+                            </button>
+                            <a
+                                href="https://creativecommons.org/licenses/by/4.0/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.1em',
+                                    color: 'var(--ink-mute)', textDecoration: 'none',
+                                    padding: '8px 10px', borderRadius: 8,
+                                    border: '1px solid var(--line)',
+                                    whiteSpace: 'nowrap' as const,
+                                    transition: 'color 0.15s',
+                                }}
+                            >
+                                CC-BY 4.0
+                            </a>
+                        </div>
+                    </div>
+
                     {/* Legend */}
                     <div className="evi-legend reveal">
-                        {Object.keys(evidenceLabel).map((level) => (
+                        {Object.keys(evidenceLabelMap).map((level) => (
                             <div key={level} className="evi-legend-item">
                                 <div className={`evi-legend-dot evi-color-bg-${level}`} />
-                                <span className="evi-legend-text">{evidenceLabel[level]}</span>
+                                <span className="evi-legend-text">{evidenceLabelMap[level]}</span>
                             </div>
                         ))}
                     </div>
@@ -269,27 +398,34 @@ export default function EvidenceClient() {
                             <div style={{ textAlign: 'right' }}>Studies</div>
                         </div>
                         {sorted.map((p, i) => (
-                            <Link
+                            <div
                                 key={p.slug}
-                                href={`/library/${p.slug}`}
-                                className={`evi-card evi-color-border-${p.highestEvidence}`}
-                                style={{ animationDelay: `${i * 30}ms` }}
+                                id={p.slug}
+                                className="evi-row-anchor"
+                                style={{ scrollMarginTop: 80 }}
                             >
-                                <span className="evi-card-icon">{getCategoryIcon(p.category)}</span>
-                                <div className="evi-card-name">
-                                    <span className="evi-card-title">{p.name}</span>
-                                    <span className={`evi-card-badge evi-color-bg-${p.highestEvidence}`}>
-                                        {evidenceLabel[p.highestEvidence]}
-                                    </span>
-                                </div>
-                                <div className="evi-card-bar-wrap">
-                                    <div
-                                        className={`evi-card-bar evi-color-bg-${p.highestEvidence}`}
-                                        style={{ width: `${(p.key_studies.length / maxStudies) * 100}%` }}
-                                    />
-                                </div>
-                                <span className="evi-card-count">{p.key_studies.length} studies</span>
-                            </Link>
+                                <Link
+                                    href={`/library/${p.slug}`}
+                                    className={`evi-card evi-color-border-${p.highestEvidence}`}
+                                    style={{ animationDelay: `${i * 30}ms` }}
+                                >
+                                    <span className="evi-card-icon">{getCategoryIcon(p.category)}</span>
+                                    <div className="evi-card-name">
+                                        <span className="evi-card-title">{p.name}</span>
+                                        <span className={`evi-card-badge evi-color-bg-${p.highestEvidence}`}>
+                                            {evidenceLabelMap[p.highestEvidence]}
+                                        </span>
+                                    </div>
+                                    <div className="evi-card-bar-wrap">
+                                        <div
+                                            className={`evi-card-bar evi-color-bg-${p.highestEvidence}`}
+                                            style={{ width: `${(p.key_studies_count / maxStudies) * 100}%` }}
+                                        />
+                                    </div>
+                                    <span className="evi-card-count">{p.key_studies_count} studies</span>
+                                </Link>
+                                <CiteAnchorButton slug={p.slug} />
+                            </div>
                         ))}
                     </div>
 
@@ -312,9 +448,9 @@ export default function EvidenceClient() {
                     letterSpacing: '0.1em',
                     color: 'var(--amber)',
                 }}>
-                    ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+                    ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved · Data: {formattedDate}
                 </div>
             </div>
-            </>
+        </>
     );
 }
