@@ -171,14 +171,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     const ratingValue = topEvidenceLevel ? EVIDENCE_RATING[topEvidenceLevel] : 3.0;
     const ratingCount = Math.max(peptide.key_studies.length, 1);
 
-    const aggregateRating = {
-        "@type": "AggregateRating",
-        ratingValue: ratingValue.toFixed(1),
-        bestRating: "5",
-        worstRating: "1",
-        ratingCount,
-        description: "Rating reflects strength of clinical evidence indexed by PeptiDex, not consumer reviews.",
-    };
+
 
     const inStockVendors = pricingEntry?.vendors.filter((v) => v.inStock) ?? [];
     const prices = inStockVendors.map((v) => v.price_usd);
@@ -212,7 +205,6 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         drugClass: peptide.category,
         warning: peptide.safety_notes,
         url: `https://peptidex.app/library/${slug}`,
-        aggregateRating,
         ...(aggregateOffer ? { offers: aggregateOffer } : {}),
     };
 
