@@ -27,11 +27,12 @@ const schema = buildSoftwareApplicationSchema({
     applicationCategory: "UtilityApplication",
 });
 
-export default function PKPage() {
+export default async function PKPage({ searchParams }: { searchParams: Promise<{ peptide?: string }> }) {
+    const { peptide } = await searchParams;
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-            <PKClient />
+            <PKClient initialPeptide={peptide} />
         </>
     );
 }

@@ -373,7 +373,7 @@ export default function PeptideLibraryPage() {
       {/* Disclaimer */}
       <div className="pt-8 border-t border-zinc-800">
         <p className="text-xs text-zinc-500 leading-relaxed text-center">
-          All peptide information is presented for educational and research purposes only. PeptiDex does not sell peptides. Consult a qualified healthcare provider before starting any therapy. <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
+          All peptide information is presented for educational and research purposes only. PeptiDex does not sell peptides. Consult a qualified healthcare provider before starting any therapy. <Link href="/disclaimers" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
         </p>
       </div>
     </div>

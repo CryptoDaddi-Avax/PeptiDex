@@ -1,0 +1,1108 @@
+[
+  {
+    "url": "/about",
+    "status": 200
+  },
+  {
+    "url": "/about/editorial-policy",
+    "status": 200
+  },
+  {
+    "url": "/advisor",
+    "status": 200
+  },
+  {
+    "url": "/beginners-guide",
+    "status": 200
+  },
+  {
+    "url": "/blog",
+    "status": 200
+  },
+  {
+    "url": "/blog/best-peptide-stack-injury-recovery",
+    "status": 404
+  },
+  {
+    "url": "/blog/best-peptide-vendor-2026",
+    "status": 404
+  },
+  {
+    "url": "/blog/best-peptides-for-fat-loss",
+    "status": 404
+  },
+  {
+    "url": "/blog/best-peptides-for-muscle-growth",
+    "status": 404
+  },
+  {
+    "url": "/blog/bpc-157-dosage-complete-guide",
+    "status": 404
+  },
+  {
+    "url": "/blog/cjc-1295-vs-sermorelin",
+    "status": 200
+  },
+  {
+    "url": "/blog/fda-peptide-reclassification-2026",
+    "status": 200
+  },
+  {
+    "url": "/blog/fda-peptide-reclassification-patients-providers",
+    "status": 200
+  },
+  {
+    "url": "/blog/ghk-cu-breakout-peptide-2026",
+    "status": 200
+  },
+  {
+    "url": "/blog/how-to-read-peptide-coa",
+    "status": 404
+  },
+  {
+    "url": "/blog/ipamorelin-vs-cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/blog/mk-677-vs-ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/blog/mots-c-mitochondrial-peptide",
+    "status": 200
+  },
+  {
+    "url": "/blog/oral-peptide-revolution",
+    "status": 200
+  },
+  {
+    "url": "/blog/oral-vs-injectable-peptides",
+    "status": 200
+  },
+  {
+    "url": "/blog/peptide-cycle-length-research-guide",
+    "status": 404
+  },
+  {
+    "url": "/blog/peptide-stacking-2026-combination-protocols",
+    "status": 200
+  },
+  {
+    "url": "/blog/research-peptide-safety-explained",
+    "status": 404
+  },
+  {
+    "url": "/blog/retatrutide-explained",
+    "status": 200
+  },
+  {
+    "url": "/blog/tesamorelin-growth-hormone-peptide-comparison",
+    "status": 200
+  },
+  {
+    "url": "/blog/tirzepatide-vs-semaglutide-which-is-better",
+    "status": 404
+  },
+  {
+    "url": "/blog/where-to-buy-research-peptides-legally",
+    "status": 404
+  },
+  {
+    "url": "/buy",
+    "status": 200
+  },
+  {
+    "url": "/buy/bpc-157",
+    "status": 200
+  },
+  {
+    "url": "/buy/cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/buy/ghk-cu",
+    "status": 200
+  },
+  {
+    "url": "/buy/ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/buy/mk-677",
+    "status": 200
+  },
+  {
+    "url": "/buy/mots-c",
+    "status": 200
+  },
+  {
+    "url": "/buy/retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/buy/semaglutide",
+    "status": 200
+  },
+  {
+    "url": "/buy/sermorelin",
+    "status": 200
+  },
+  {
+    "url": "/buy/tb-500",
+    "status": 200
+  },
+  {
+    "url": "/buy/tesamorelin",
+    "status": 200
+  },
+  {
+    "url": "/buy/tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/compare",
+    "status": 200
+  },
+  {
+    "url": "/compare/aod-9604-vs-tesamorelin",
+    "status": 200
+  },
+  {
+    "url": "/compare/bpc-157-vs-kpv",
+    "status": 200
+  },
+  {
+    "url": "/compare/bpc-157-vs-tb-500",
+    "status": 200
+  },
+  {
+    "url": "/compare/cjc-1295-dac-vs-no-dac",
+    "status": 200
+  },
+  {
+    "url": "/compare/cjc-1295-vs-ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/compare/cjc-1295-vs-sermorelin",
+    "status": 200
+  },
+  {
+    "url": "/compare/epitalon-vs-mots-c",
+    "status": 200
+  },
+  {
+    "url": "/compare/epitalon-vs-nad",
+    "status": 200
+  },
+  {
+    "url": "/compare/ghk-cu-vs-argireline",
+    "status": 200
+  },
+  {
+    "url": "/compare/ghk-cu-vs-bpc-157",
+    "status": 200
+  },
+  {
+    "url": "/compare/ghrp-2-vs-ghrp-6",
+    "status": 200
+  },
+  {
+    "url": "/compare/hexarelin-vs-ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/compare/ipamorelin-vs-ghrp-2",
+    "status": 200
+  },
+  {
+    "url": "/compare/ipamorelin-vs-ghrp-6",
+    "status": 200
+  },
+  {
+    "url": "/compare/ll-37-vs-thymosin-alpha-1",
+    "status": 200
+  },
+  {
+    "url": "/compare/mk-677-vs-cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/compare/mots-c-vs-aod-9604",
+    "status": 200
+  },
+  {
+    "url": "/compare/pt-141-vs-melanotan-ii",
+    "status": 200
+  },
+  {
+    "url": "/compare/selank-vs-semax",
+    "status": 200
+  },
+  {
+    "url": "/compare/semaglutide-vs-retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/compare/semaglutide-vs-tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/compare/sermorelin-vs-tesamorelin",
+    "status": 200
+  },
+  {
+    "url": "/compare/tesamorelin-vs-cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/compare/tesofensine-vs-tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/compare/tirzepatide-vs-retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/compare/tirzepatide-vs-semaglutide",
+    "status": 200
+  },
+  {
+    "url": "/compare/tirzepatide-vs-wegovy",
+    "status": 200
+  },
+  {
+    "url": "/coupon-codes",
+    "status": 200
+  },
+  {
+    "url": "/coupon-codes/amino-club",
+    "status": 200
+  },
+  {
+    "url": "/coupon-codes/bio-longevity-labs",
+    "status": 200
+  },
+  {
+    "url": "/coupon-codes/limitless-life",
+    "status": 200
+  },
+  {
+    "url": "/coupon-codes/lvlup-health",
+    "status": 200
+  },
+  {
+    "url": "/coupon-codes/pantheon-peptides",
+    "status": 200
+  },
+  {
+    "url": "/disclaimer",
+    "status": 404
+  },
+  {
+    "url": "/faq",
+    "status": 200
+  },
+  {
+    "url": "/glossary",
+    "status": 200
+  },
+  {
+    "url": "/guides/glp1-alternatives",
+    "status": 200
+  },
+  {
+    "url": "/learn",
+    "status": 200
+  },
+  {
+    "url": "/learn/5-amino-1mq",
+    "status": 200
+  },
+  {
+    "url": "/learn/aod-9604",
+    "status": 200
+  },
+  {
+    "url": "/learn/ara-290",
+    "status": 200
+  },
+  {
+    "url": "/learn/argireline",
+    "status": 200
+  },
+  {
+    "url": "/learn/bpc-157",
+    "status": 200
+  },
+  {
+    "url": "/learn/cagrilintide",
+    "status": 200
+  },
+  {
+    "url": "/learn/cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/learn/cortagen",
+    "status": 200
+  },
+  {
+    "url": "/learn/dihexa",
+    "status": 200
+  },
+  {
+    "url": "/learn/dsip",
+    "status": 200
+  },
+  {
+    "url": "/learn/epitalon",
+    "status": 200
+  },
+  {
+    "url": "/learn/fgl-loop",
+    "status": 200
+  },
+  {
+    "url": "/learn/follistatin-344",
+    "status": 200
+  },
+  {
+    "url": "/learn/foxo4-dri",
+    "status": 200
+  },
+  {
+    "url": "/learn/ghk-cu",
+    "status": 200
+  },
+  {
+    "url": "/learn/ghrp-2",
+    "status": 200
+  },
+  {
+    "url": "/learn/ghrp-6",
+    "status": 200
+  },
+  {
+    "url": "/learn/glutathione",
+    "status": 200
+  },
+  {
+    "url": "/learn/gonadorelin",
+    "status": 200
+  },
+  {
+    "url": "/learn/hexarelin",
+    "status": 200
+  },
+  {
+    "url": "/learn/humanin",
+    "status": 200
+  },
+  {
+    "url": "/learn/igf-1-lr3",
+    "status": 200
+  },
+  {
+    "url": "/learn/ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/learn/kisspeptin-10",
+    "status": 200
+  },
+  {
+    "url": "/learn/klotho",
+    "status": 200
+  },
+  {
+    "url": "/learn/kpv",
+    "status": 200
+  },
+  {
+    "url": "/learn/larazotide",
+    "status": 200
+  },
+  {
+    "url": "/learn/ll-37",
+    "status": 200
+  },
+  {
+    "url": "/learn/melanotan-ii",
+    "status": 200
+  },
+  {
+    "url": "/learn/mk-677",
+    "status": 200
+  },
+  {
+    "url": "/learn/mots-c",
+    "status": 200
+  },
+  {
+    "url": "/learn/nad",
+    "status": 200
+  },
+  {
+    "url": "/learn/os-01",
+    "status": 200
+  },
+  {
+    "url": "/learn/oxytocin",
+    "status": 200
+  },
+  {
+    "url": "/learn/pe-22-28",
+    "status": 200
+  },
+  {
+    "url": "/learn/pinealon",
+    "status": 200
+  },
+  {
+    "url": "/learn/pt-141",
+    "status": 200
+  },
+  {
+    "url": "/learn/retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/learn/selank",
+    "status": 200
+  },
+  {
+    "url": "/learn/semaglutide",
+    "status": 200
+  },
+  {
+    "url": "/learn/semax",
+    "status": 200
+  },
+  {
+    "url": "/learn/sermorelin",
+    "status": 200
+  },
+  {
+    "url": "/learn/ss-31",
+    "status": 200
+  },
+  {
+    "url": "/learn/synapsin",
+    "status": 200
+  },
+  {
+    "url": "/learn/tb-500",
+    "status": 200
+  },
+  {
+    "url": "/learn/tesamorelin",
+    "status": 200
+  },
+  {
+    "url": "/learn/tesofensine",
+    "status": 200
+  },
+  {
+    "url": "/learn/thymalin",
+    "status": 200
+  },
+  {
+    "url": "/learn/thymosin-alpha-1",
+    "status": 200
+  },
+  {
+    "url": "/learn/tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/learn/vip",
+    "status": 200
+  },
+  {
+    "url": "/legal",
+    "status": 200
+  },
+  {
+    "url": "/library",
+    "status": 200
+  },
+  {
+    "url": "/library/5-amino-1mq",
+    "status": 200
+  },
+  {
+    "url": "/library/aod-9604",
+    "status": 200
+  },
+  {
+    "url": "/library/ara-290",
+    "status": 200
+  },
+  {
+    "url": "/library/argireline",
+    "status": 200
+  },
+  {
+    "url": "/library/bpc-157",
+    "status": 200
+  },
+  {
+    "url": "/library/cagrilintide",
+    "status": 200
+  },
+  {
+    "url": "/library/cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/library/cortagen",
+    "status": 200
+  },
+  {
+    "url": "/library/dihexa",
+    "status": 200
+  },
+  {
+    "url": "/library/dsip",
+    "status": 200
+  },
+  {
+    "url": "/library/epitalon",
+    "status": 200
+  },
+  {
+    "url": "/library/fgl-loop",
+    "status": 200
+  },
+  {
+    "url": "/library/follistatin-344",
+    "status": 200
+  },
+  {
+    "url": "/library/foxo4-dri",
+    "status": 200
+  },
+  {
+    "url": "/library/ghk-cu",
+    "status": 200
+  },
+  {
+    "url": "/library/ghrp-2",
+    "status": 200
+  },
+  {
+    "url": "/library/ghrp-6",
+    "status": 200
+  },
+  {
+    "url": "/library/glutathione",
+    "status": 200
+  },
+  {
+    "url": "/library/gonadorelin",
+    "status": 200
+  },
+  {
+    "url": "/library/hexarelin",
+    "status": 200
+  },
+  {
+    "url": "/library/humanin",
+    "status": 200
+  },
+  {
+    "url": "/library/igf-1-lr3",
+    "status": 200
+  },
+  {
+    "url": "/library/ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/library/kisspeptin-10",
+    "status": 200
+  },
+  {
+    "url": "/library/klotho",
+    "status": 200
+  },
+  {
+    "url": "/library/kpv",
+    "status": 200
+  },
+  {
+    "url": "/library/larazotide",
+    "status": 200
+  },
+  {
+    "url": "/library/ll-37",
+    "status": 200
+  },
+  {
+    "url": "/library/melanotan-ii",
+    "status": 200
+  },
+  {
+    "url": "/library/mk-677",
+    "status": 200
+  },
+  {
+    "url": "/library/mots-c",
+    "status": 200
+  },
+  {
+    "url": "/library/nad",
+    "status": 200
+  },
+  {
+    "url": "/library/os-01",
+    "status": 200
+  },
+  {
+    "url": "/library/oxytocin",
+    "status": 200
+  },
+  {
+    "url": "/library/pe-22-28",
+    "status": 200
+  },
+  {
+    "url": "/library/pinealon",
+    "status": 200
+  },
+  {
+    "url": "/library/pt-141",
+    "status": 200
+  },
+  {
+    "url": "/library/retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/library/selank",
+    "status": 200
+  },
+  {
+    "url": "/library/semaglutide",
+    "status": 200
+  },
+  {
+    "url": "/library/semax",
+    "status": 200
+  },
+  {
+    "url": "/library/sermorelin",
+    "status": 200
+  },
+  {
+    "url": "/library/ss-31",
+    "status": 200
+  },
+  {
+    "url": "/library/synapsin",
+    "status": 200
+  },
+  {
+    "url": "/library/tb-500",
+    "status": 200
+  },
+  {
+    "url": "/library/tesamorelin",
+    "status": 200
+  },
+  {
+    "url": "/library/tesofensine",
+    "status": 200
+  },
+  {
+    "url": "/library/thymalin",
+    "status": 200
+  },
+  {
+    "url": "/library/thymosin-alpha-1",
+    "status": 200
+  },
+  {
+    "url": "/library/tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/library/vip",
+    "status": 200
+  },
+  {
+    "url": "/peptides",
+    "status": 308,
+    "location": "/library"
+  },
+  {
+    "url": "/quiz",
+    "status": 200
+  },
+  {
+    "url": "/stacks",
+    "status": 200
+  },
+  {
+    "url": "/stacks/body-recomposition-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/deep-sleep-recovery-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/fat-loss-focus-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/gut-health-recovery-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/hormonal-optimization-stack-male",
+    "status": 200
+  },
+  {
+    "url": "/stacks/immune-support-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/injury-recovery-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/longevity-anti-aging-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/mental-clarity-cognitive-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/metabolic-insulin-sensitivity-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/muscle-growth-stack",
+    "status": 200
+  },
+  {
+    "url": "/stacks/skin-aesthetic-rejuvenation-stack",
+    "status": 200
+  },
+  {
+    "url": "/team/dr-e-vance",
+    "status": 200
+  },
+  {
+    "url": "/team/peptidex-editorial",
+    "status": 200
+  },
+  {
+    "url": "/team/peptidex-research",
+    "status": 200
+  },
+  {
+    "url": "/tools/bloodwork",
+    "status": 200
+  },
+  {
+    "url": "/tools/calculator",
+    "status": 200
+  },
+  {
+    "url": "/tools/coa",
+    "status": 200
+  },
+  {
+    "url": "/tools/compare",
+    "status": 200
+  },
+  {
+    "url": "/tools/cycle-planner",
+    "status": 200
+  },
+  {
+    "url": "/tools/halflife",
+    "status": 200
+  },
+  {
+    "url": "/tools/interactions",
+    "status": 200
+  },
+  {
+    "url": "/tools/pk",
+    "status": 200
+  },
+  {
+    "url": "/tools/vendor-picker",
+    "status": 200
+  },
+  {
+    "url": "/vendors",
+    "status": 200
+  },
+  {
+    "url": "/vendors/amino-club",
+    "status": 200
+  },
+  {
+    "url": "/vendors/amino-club-coa-verification",
+    "status": 200
+  },
+  {
+    "url": "/vendors/amino-club-discount-code",
+    "status": 200
+  },
+  {
+    "url": "/vendors/amino-club-faq",
+    "status": 200
+  },
+  {
+    "url": "/vendors/amino-club-vs-limitless-life",
+    "status": 200
+  },
+  {
+    "url": "/vendors/amino-club/bpc-157",
+    "status": 404
+  },
+  {
+    "url": "/vendors/amino-club/retatrutide",
+    "status": 404
+  },
+  {
+    "url": "/vendors/amino-club/semaglutide",
+    "status": 404
+  },
+  {
+    "url": "/vendors/amino-club/tesamorelin",
+    "status": 404
+  },
+  {
+    "url": "/vendors/amino-club/tirzepatide",
+    "status": 404
+  },
+  {
+    "url": "/vendors/bio-longevity-labs",
+    "status": 200
+  },
+  {
+    "url": "/vendors/is-amino-club-legit",
+    "status": 200
+  },
+  {
+    "url": "/vendors/limitless-life",
+    "status": 200
+  },
+  {
+    "url": "/vendors/lvlup-health",
+    "status": 200
+  },
+  {
+    "url": "/vendors/pantheon-peptides",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/bpc-157",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/cjc-1295",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/epitalon",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/ghk-cu",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/ipamorelin",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/mots-c",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/semaglutide",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/tb-500",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/about/editorial-team",
+    "status": 404
+  },
+  {
+    "url": "/about/lab-data-methodology",
+    "status": 200
+  },
+  {
+    "url": "/about/methodology",
+    "status": 200
+  },
+  {
+    "url": "/about/peptidex-editorial",
+    "status": 200
+  },
+  {
+    "url": "/admin/aeo",
+    "status": 200
+  },
+  {
+    "url": "/admin/citations",
+    "status": 200
+  },
+  {
+    "url": "/blog/best-peptide-vendors-2026",
+    "status": 404
+  },
+  {
+    "url": "/coa",
+    "status": 200
+  },
+  {
+    "url": "/contact",
+    "status": 404
+  },
+  {
+    "url": "/corrections",
+    "status": 200
+  },
+  {
+    "url": "/disclaimers",
+    "status": 200
+  },
+  {
+    "url": "/editorial-process",
+    "status": 200
+  },
+  {
+    "url": "/guides",
+    "status": 404
+  },
+  {
+    "url": "/guides/reconstitution",
+    "status": 200
+  },
+  {
+    "url": "/intro",
+    "status": 200
+  },
+  {
+    "url": "/lab-data",
+    "status": 200
+  },
+  {
+    "url": "/lead/cheat-sheet",
+    "status": 200
+  },
+  {
+    "url": "/library/blends",
+    "status": 200
+  },
+  {
+    "url": "/log-protocol",
+    "status": 200
+  },
+  {
+    "url": "/logs",
+    "status": 200
+  },
+  {
+    "url": "/peptidex-coupon",
+    "status": 200
+  },
+  {
+    "url": "/practitioners",
+    "status": 200
+  },
+  {
+    "url": "/profile",
+    "status": 200
+  },
+  {
+    "url": "/protocol",
+    "status": 200
+  },
+  {
+    "url": "/saved",
+    "status": 200
+  },
+  {
+    "url": "/suppliers",
+    "status": 308,
+    "location": "/vendors"
+  },
+  {
+    "url": "/team",
+    "status": 200
+  },
+  {
+    "url": "/team/legal-dept",
+    "status": 404
+  },
+  {
+    "url": "/tools",
+    "status": 200
+  },
+  {
+    "url": "/tools/evidence",
+    "status": 200
+  },
+  {
+    "url": "/tools/pricing",
+    "status": 200
+  },
+  {
+    "url": "/tools/reconstitution-calculator",
+    "status": 404
+  },
+  {
+    "url": "/tools/reconstitution-calculator/bpc-157",
+    "status": 200
+  },
+  {
+    "url": "/tools/reconstitution-calculator/retatrutide",
+    "status": 200
+  },
+  {
+    "url": "/tools/reconstitution-calculator/tesamorelin",
+    "status": 200
+  },
+  {
+    "url": "/tools/reconstitution-calculator/tirzepatide",
+    "status": 200
+  },
+  {
+    "url": "/tracker",
+    "status": 200
+  },
+  {
+    "url": "/where-to-buy/semax",
+    "status": 404
+  },
+  {
+    "url": "/where-to-buy/tesamorelin",
+    "status": 404
+  }
+]

@@ -92,7 +92,7 @@ export default function VendorPickerPage() {
                 <p className="mt-6" style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--ink-mute)", lineHeight: 1.6 }}>
                     Scoring is based on verified vendor data: purity claims, testing methods, shipping speeds, COA documentation quality,
                     and post-discount pricing. PeptiDex may earn affiliate commissions from purchases.
-                    This does not affect scoring. <Link href="/disclaimer" style={{ color: "var(--ink-mute)" }}>Full disclosure →</Link>
+                    This does not affect scoring. <Link href="/disclaimers" style={{ color: "var(--ink-mute)" }}>Full disclosure →</Link>
                 </p>
             </div>
         </div>

@@ -33,11 +33,29 @@ interface Selection {
     slug: string;
 }
 
-export default function CalculatorClient() {
-    const [selection, setSelection] = useState<Selection | null>(null);
-    const [vialMg, setVialMg] = useState("");
-    const [bacWaterMl, setBacWaterMl] = useState("");
-    const [targetConcentrationMcg, setTargetConcentrationMcg] = useState("");
+interface CalculatorClientProps {
+    initialPeptideSlug?: string;
+    initialVialMg?: string;
+    initialBacWaterMl?: string;
+    initialTargetConcentrationMcg?: string;
+}
+
+export default function CalculatorClient({
+    initialPeptideSlug = "",
+    initialVialMg = "",
+    initialBacWaterMl = "",
+    initialTargetConcentrationMcg = ""
+}: CalculatorClientProps = {}) {
+    const [selection, setSelection] = useState<Selection | null>(() => {
+        if (initialPeptideSlug) {
+            const isBlend = peptideBlends.some((b) => b.slug === initialPeptideSlug);
+            return { type: isBlend ? "blend" : "peptide", slug: initialPeptideSlug };
+        }
+        return null;
+    });
+    const [vialMg, setVialMg] = useState(initialVialMg);
+    const [bacWaterMl, setBacWaterMl] = useState(initialBacWaterMl);
+    const [targetConcentrationMcg, setTargetConcentrationMcg] = useState(initialTargetConcentrationMcg);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [showMathTooltip, setShowMathTooltip] = useState(false);

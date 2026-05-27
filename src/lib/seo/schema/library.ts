@@ -46,7 +46,7 @@ export function buildLibraryMedicalWebPageSchema(params: LibraryMedicalWebPagePa
     author: {
       '@type': 'Person',
       name: 'Dr. E. Vance',
-      url: 'https://peptidex.app/authors/dr-e-vance',
+      url: 'https://peptidex.app/team/peptidex-research',
     },
     publisher: {
       '@type': 'Organization',

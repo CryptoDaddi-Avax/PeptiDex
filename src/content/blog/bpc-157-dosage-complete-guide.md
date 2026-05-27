@@ -217,6 +217,6 @@ In preclinical models of acute injury (such as muscle tears), accelerated healin
 
 ## Related Articles
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
-- [Best Peptide Vendors 2026](/blog/best-peptide-vendors-2026)
-- [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa)
+- [Best Peptide Vendors 2026](/blog/best-peptide-vendor-2026)
+- [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Best Peptide Stack for Injury Recovery](/blog/best-peptide-stack-injury-recovery)

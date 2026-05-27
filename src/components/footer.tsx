@@ -109,7 +109,7 @@ export function Footer() {
             <Link href="/editorial-process" className="hover:text-zinc-400 transition-colors">Editorial Process</Link>
             <Link href="/corrections" className="hover:text-zinc-400 transition-colors">Corrections</Link>
             <Link href="/about/methodology" className="hover:text-zinc-400 transition-colors">Methodology</Link>
-            <Link href="/disclaimer" className="hover:text-zinc-400 transition-colors">Medical Disclaimer</Link>
+            <Link href="/disclaimers" className="hover:text-zinc-400 transition-colors">Medical Disclaimer</Link>
             <Link href="/legal" className="hover:text-zinc-400 transition-colors">Privacy &amp; Terms</Link>
           </div>
         </div>

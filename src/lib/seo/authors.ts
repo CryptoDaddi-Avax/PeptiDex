@@ -9,19 +9,19 @@ export const authors: Record<string, AuthorProfile> = {
   vance: {
     name: "Dr. E. Vance",
     jobTitle: "Clinical Research Director",
-    url: "https://peptidex.app/authors/dr-e-vance",
+    url: "https://peptidex.app/team/dr-e-vance",
     sameAs: [],
   },
   researchTeam: {
     name: "PEPTIDEX Research Team",
     jobTitle: "Editorial Team",
-    url: "https://peptidex.app/authors/research-team",
+    url: "https://peptidex.app/team/research-team",
     sameAs: ["https://peptidex.app"],
   },
   cryptoDaddi: {
     name: "The Crypto Daddi",
     jobTitle: "Founder & Lead Researcher",
-    url: "https://peptidex.app/authors/the-crypto-daddi",
+    url: "https://peptidex.app/team/the-crypto-daddi",
     sameAs: ["https://x.com/TheCryptoDaddi"],
   },
 };

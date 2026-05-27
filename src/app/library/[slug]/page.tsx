@@ -235,7 +235,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         url: `https://peptidex.app/library/${slug}`,
         dateModified,
         datePublished: "2026-01-15",
-        reviewedBy: { name: "Dr. E. Vance, PhD", url: "https://peptidex.app/authors/dr-e-vance" },
+        reviewedBy: { name: "Dr. E. Vance, PhD", url: "https://peptidex.app/team/peptidex-research" },
         about: drugSchema,
         keywords: [
             peptide.name,
@@ -283,7 +283,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
         datePublished: "2026-01-15",
         dateModified,
-        author: { name: "Dr. E. Vance", url: "https://peptidex.app/authors/dr-e-vance" },
+        author: { name: "Dr. E. Vance", url: "https://peptidex.app/team/peptidex-research" },
         url: `https://peptidex.app/library/${slug}`,
     });
 

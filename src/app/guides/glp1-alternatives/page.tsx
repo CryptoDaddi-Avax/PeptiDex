@@ -43,7 +43,7 @@ export default function GlpAlternativesPage() {
     url: CANONICAL,
     datePublished: '2026-05-07',
     dateModified: '2026-05-07',
-    reviewedBy: { name: 'Dr. E. Vance, PhD', url: 'https://peptidex.app/authors/dr-e-vance' },
+    reviewedBy: { name: 'Dr. E. Vance, PhD', url: 'https://peptidex.app/team/peptidex-research' },
     about: { '@type': 'MedicalCondition', name: 'Obesity' },
     keywords: ['GLP-1 alternatives', 'weight loss peptides', 'semaglutide alternative', 'tirzepatide alternative', 'retatrutide']
   });

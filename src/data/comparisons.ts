@@ -5,11 +5,34 @@ export interface ComparisonFAQItem {
   a: string;
 }
 
+export interface TrialWeightLossData {
+  compoundA: {
+    percentage: string;
+    trial: string;
+    duration: string;
+    n: number;
+    phase: string;
+    estimandNote?: string;
+    pmid: string;
+  };
+  compoundB: {
+    percentage: string;
+    trial: string;
+    duration: string;
+    n: number;
+    phase: string;
+    estimandNote?: string;
+    pmid: string;
+  };
+  crossTrialCaveat: string;
+}
+
 export interface Comparison {
   slug: string;
   peptideA: string;
   peptideB: string;
   title: string;
+  seoTitle?: string;
   subtitle: string;
   seoDescription: string;
   recommendation: string;
@@ -22,6 +45,7 @@ export interface Comparison {
   stackCompatible?: boolean;
   faqs?: ComparisonFAQItem[];
   editorNote?: string;
+  trialWeightLoss?: TrialWeightLossData;
 }
 
 export const comparisons: Comparison[] = [
@@ -52,12 +76,13 @@ export const comparisons: Comparison[] = [
     peptideA: 'semaglutide',
     peptideB: 'tirzepatide',
     title: 'Semaglutide vs Tirzepatide',
+    seoTitle: 'Semaglutide vs Tirzepatide: 14.9% vs 20.9% Weight Loss Compared | PeptiDex',
     subtitle: 'Weight Loss & GLP-1',
-    seoDescription: 'Side-by-side research comparison of Semaglutide and Tirzepatide: dosing, half-life, side effects, and mechanism of action.',
-    recommendation: `Tirzepatide is better for maximizing total weight loss, while Semaglutide is a proven, often more affordable starting point for metabolic research. Semaglutide is a single-agonist that mimics only the GLP-1 hormone to reduce appetite and lower blood sugar. Tirzepatide is a dual-agonist that mimics both GLP-1 and GIP, creating a synergistic effect that typically results in greater fat loss and better tolerability. Choose Semaglutide if you are new to metabolic research and want the most established safety profile with solid results. Choose Tirzepatide if you want maximum efficacy, need to break through a plateau, or struggle with the gastrointestinal side effects of GLP-1 alone. For advanced weight loss research, Tirzepatide is the superior, more modern default.`,
+    seoDescription: 'Clinical research comparison of Semaglutide vs Tirzepatide: STEP 1 & SURMOUNT-1 trial data, half-life, mechanisms, and side effects.',
+    recommendation: `**Data Context & Limitations:** The clinical figures cited below are drawn from separate clinical trials—the STEP 1 trial (68 weeks) and SURMOUNT-1 trial (72 weeks). There are no direct, head-to-head trials comparing these specific compounds. Weight loss percentages are therefore not perfectly comparable due to differing trial durations, populations, and designs.\n\n**The Verdict:**\nTirzepatide (Zepbound/Mounjaro) has demonstrated a higher ceiling for weight reduction in its clinical trials compared to semaglutide (Wegovy/Ozempic), driven by its dual agonism of both GLP-1 and GIP receptors. In the 72-week SURMOUNT-1 trial, tirzepatide reached up to a ~20.9% average body weight reduction (treatment-regimen estimand; note some sources cite the 22.5% efficacy estimand), while semaglutide achieved ~14.9% over 68 weeks in the STEP 1 trial.\n\nHowever, semaglutide has the longest track record and broadest regulatory approval. For research purposes, semaglutide is often a reliable starting point due to its extensive long-term data. Tirzepatide is typically investigated when maximizing metabolic response or total weight loss is the primary objective. *This information is provided for research and educational purposes only and does not constitute medical or prescribing advice.*`,
     tags: ['Weight Loss', 'Research'],
     color: 'emerald',
-    quickVerdict: 'Tirzepatide wins on efficacy (~21% vs ~15% weight loss) due to dual GLP-1/GIP mechanism. Semaglutide wins on track record — 6+ years of real-world safety data and more established cardiovascular evidence (SELECT trial).',
+    quickVerdict: 'Tirzepatide achieved ~20.9% weight loss (SURMOUNT-1, 72wk) via dual GLP-1/GIP mechanisms. Semaglutide achieved ~14.9% (STEP 1, 68wk) but offers a longer real-world safety track record.',
     personaA: 'Choose Semaglutide if you:\n• Are new to GLP-1 agonists and want the most proven starting point\n• Have cardiovascular disease concerns (SELECT trial: 20% CV event reduction)\n• Want a more affordable research option with longer safety data\n• Are researching T2DM or pre-diabetic metabolic states',
     personaB: 'Choose Tirzepatide if you:\n• Want maximum weight loss efficacy in a single agent\n• Have experienced intolerable nausea on Semaglutide (Tirzepatide is often better tolerated)\n• Have plateaued on a GLP-1 and need a mechanistic upgrade\n• Are researching insulin resistance alongside obesity',
     stackNote: 'Do NOT stack Semaglutide and Tirzepatide — they share the GLP-1 receptor. Additive GLP-1 stimulation creates severe nausea, hypoglycemia risk, and potential cardiovascular complications. They are competing agents, not complements.',
@@ -68,18 +93,40 @@ export const comparisons: Comparison[] = [
       { q: 'Is Semaglutide or Tirzepatide safer for the heart?', a: 'Semaglutide has the stronger cardiovascular safety data — the SELECT trial showed a 20% reduction in major cardiac events in non-diabetic obese patients. Tirzepatide\'s SURPASS-CVOT data is emerging but not yet as complete.' },
       { q: 'Which has fewer side effects?', a: 'Tirzepatide tends to have slightly lower nausea rates than Semaglutide in head-to-head data, attributed to the GIP component partially buffering GLP-1 GI effects. Both cause nausea, constipation, and injection site reactions.' },
     ],
+    editorNote: 'These weight-loss percentages come from SEPARATE trials of different durations (STEP 1: 68 weeks vs SURMOUNT-1: 72 weeks) and populations. No head-to-head randomized trial has directly compared these specific weight-loss figures. Tirzepatide’s ~20.9% is the treatment-regimen estimand; the efficacy estimand (which excludes dropouts) reports ~22.5% at the 15mg dose.',
+    trialWeightLoss: {
+      compoundA: {
+        percentage: '~14.9%',
+        trial: 'STEP 1',
+        duration: '68 weeks',
+        n: 1961,
+        phase: 'Phase 3',
+        pmid: '33567185',
+      },
+      compoundB: {
+        percentage: '~20.9%',
+        trial: 'SURMOUNT-1',
+        duration: '72 weeks',
+        n: 2539,
+        phase: 'Phase 3',
+        estimandNote: 'Treatment-regimen estimand; efficacy estimand reports ~22.5% at 15mg',
+        pmid: '35658024',
+      },
+      crossTrialCaveat: 'These percentages are from separate trials with different durations, populations, and designs. No head-to-head trial has directly compared these compounds for weight loss.',
+    },
   },
   {
     slug: 'tirzepatide-vs-retatrutide',
     peptideA: 'tirzepatide',
     peptideB: 'retatrutide',
     title: 'Tirzepatide vs Retatrutide',
+    seoTitle: 'Retatrutide vs Tirzepatide: 24.2% vs 20.9% Weight Loss Compared | PeptiDex',
     subtitle: 'Advanced Weight Loss',
-    seoDescription: 'Side-by-side research comparison of Tirzepatide and Retatrutide: dosing, half-life, side effects, and mechanism of action.',
-    recommendation: `Retatrutide is better for extreme weight loss and lipid metabolism, while Tirzepatide remains the gold standard for balanced, well-tolerated metabolic research. Tirzepatide activates two receptors (GLP-1 and GIP) to reduce appetite and improve insulin sensitivity. Retatrutide activates three receptors (GLP-1, GIP, and Glucagon), adding a direct thermogenic effect that increases basal metabolic rate and burns stored fat. Choose Tirzepatide for a highly predictable, effective intervention with a strong safety profile. Choose Retatrutide if you are researching severe obesity, stubborn liver fat, or need to exceed the 20% weight loss threshold seen with dual-agonists. Tirzepatide remains the safer, more established default for general metabolic use.`,
+    seoDescription: 'Clinical research comparison of Tirzepatide vs Retatrutide: SURMOUNT-1 Phase 3 vs Phase 2 trial data, mechanisms, and half-life.',
+    recommendation: `**Data Context & Limitations:** The clinical figures cited below are drawn from separate clinical trials—the SURMOUNT-1 trial (72 weeks) and Jastreboff et al. Phase 2 trial (48 weeks). There are no direct, head-to-head trials comparing these specific compounds. Weight loss percentages are therefore not perfectly comparable. Furthermore, while tirzepatide figures stem from large Phase 3 registration trials supporting FDA approval, retatrutide data is currently limited to Phase 2 investigational data (338 participants) and is not FDA-approved.\n\n**The Verdict:**\nRetatrutide represents the next investigational frontier in metabolic therapies. By adding glucagon receptor agonism to the GLP-1 and GIP activity seen in tirzepatide, retatrutide achieved a striking ~24.2% average weight loss in 48 weeks during Phase 2 trials—a higher figure than the ~20.9% (treatment-regimen estimand) seen with tirzepatide in its separate 72-week trial.\n\nCrucially, tirzepatide is a thoroughly evaluated medication backed by massive Phase 3 data (SURMOUNT trials). Retatrutide remains an experimental, unapproved compound currently undergoing Phase 3 trials (TRIUMPH). While its initial Phase 2 efficacy ceiling appears higher, its full safety profile and long-term tolerability remain unestablished compared to tirzepatide. For researchers, retatrutide offers a novel mechanism to study tri-agonist pharmacology, whereas tirzepatide is a highly validated dual-agonist. *This information is provided for research and educational purposes only and does not constitute medical or prescribing advice.*`,
     tags: ['Advanced', 'Research'],
     color: 'emerald',
-    quickVerdict: 'Tirzepatide is the FDA-approved gold standard (dual GLP-1/GIP). Retatrutide adds glucagon agonism for thermogenesis — Phase 2 shows ~24% weight loss but Phase 3 data is pending. Choose Tirzepatide for proven safety; choose Retatrutide for cutting-edge maximum-efficacy research.',
+    quickVerdict: 'Tirzepatide achieved ~20.9% weight loss in Phase 3 trials (72wk). Retatrutide Phase 2 data showed ~24.2% (48wk) via tri-agonist mechanisms. Tirzepatide is established; Retatrutide is highly experimental.',
     personaA: 'Choose Tirzepatide if you:\n• Want a fully FDA-approved, well-characterized agent\n• Need comorbid T2DM glycemic control alongside weight loss\n• Prefer extensive Phase 3 and real-world safety data\n• Are a first-time GLP-1 researcher needing a reliable benchmark',
     personaB: 'Choose Retatrutide if you:\n• Are researching extreme obesity (BMI >40) where dual agonism has plateaued\n• Want to study glucagon receptor-mediated thermogenesis and lipolysis\n• Are comfortable with Phase 2 data and research-phase compounds\n• Need to target MASLD (metabolic-associated steatotic liver disease)',
     stackNote: 'Do NOT stack Tirzepatide and Retatrutide — both share GLP-1 and GIP receptors. Concurrent use creates additive receptor saturation risk with compounded nausea and hypoglycemia. Use only one GLP-1-class agent at a time.',
@@ -89,6 +136,28 @@ export const comparisons: Comparison[] = [
       { q: 'What is the glucagon component of Retatrutide?', a: 'Retatrutide\'s glucagon receptor agonism directly increases basal metabolic rate and promotes fat oxidation in the liver, independently of appetite suppression. This is the key mechanistic differentiator from dual GLP-1/GIP agents.' },
       { q: 'When will Retatrutide be available?', a: 'Eli Lilly\'s Phase 3 trials for Retatrutide are ongoing. Earliest projected FDA submission is 2026–2027. Research-grade Retatrutide is available from compounders for in-vitro and preclinical use.' },
     ],
+    editorNote: 'IMPORTANT: These weight-loss figures come from SEPARATE trials of different durations (SURMOUNT-1: 72 weeks vs Jastreboff Phase 2: 48 weeks) and are not directly comparable. Furthermore, retatrutide data is Phase 2 (338 participants, investigational, not FDA-approved), while tirzepatide data is from Phase 3 registration trials for an approved drug. Phase 2 results should not be treated as equivalent-strength evidence to Phase 3.',
+    trialWeightLoss: {
+      compoundA: {
+        percentage: '~20.9%',
+        trial: 'SURMOUNT-1',
+        duration: '72 weeks',
+        n: 2539,
+        phase: 'Phase 3',
+        estimandNote: 'Treatment-regimen estimand; efficacy estimand reports ~22.5% at 15mg',
+        pmid: '35658024',
+      },
+      compoundB: {
+        percentage: '~24.2%',
+        trial: 'Jastreboff et al. Phase 2',
+        duration: '48 weeks',
+        n: 338,
+        phase: 'Phase 2',
+        estimandNote: 'Phase 2 investigational data — not FDA-approved; Phase 3 TRIUMPH trials ongoing',
+        pmid: '37351564',
+      },
+      crossTrialCaveat: 'These percentages are from separate trials of different durations (72wk vs 48wk), sample sizes (2,539 vs 338), and evidence maturity (Phase 3 vs Phase 2). No head-to-head trial exists. Phase 2 results should not be treated as equivalent evidence to Phase 3 registration data.',
+    },
   },
   {
     slug: 'cjc-1295-vs-sermorelin',

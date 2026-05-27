@@ -244,7 +244,7 @@ export default async function LogDetailPage({
                 <p className="mt-8" style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--ink-mute)", lineHeight: 1.6 }}>
                     This is a community-submitted protocol log for research purposes only. It is not medical advice.
                     Verification level: <strong>{log.verification_level.replace(/_/g, " ")}</strong>.
-                    {" "}<Link href="/disclaimer" style={{ color: "var(--ink-mute)" }}>Full disclaimer →</Link>
+                    {" "}<Link href="/disclaimers" style={{ color: "var(--ink-mute)" }}>Full disclaimer →</Link>
                 </p>
             </div>
         </div>

@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 
+const BUY_SUPPORTED_SLUGS = ['bpc-157', 'tirzepatide', 'retatrutide', 'semaglutide', 'tesamorelin', 'cjc-1295', 'ipamorelin', 'tb-500', 'ghk-cu', 'mk-677', 'mots-c', 'cagrilintide'];
+
 interface WhereToBuySectionProps {
   peptideName: string;
   peptideSlug: string;
@@ -55,19 +57,23 @@ export function WhereToBuySection({
             <strong className="pd-wtb-code">PEPTIDEX</strong> for up to 20% off
           </p>
         </div>
-        <div className="ml-auto">
-          <Link href={`/buy/${peptideSlug}`} className="hidden sm:flex items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 px-4 py-2 rounded-lg border border-amber-500/20 transition-colors">
-            View full buying guide <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+        {BUY_SUPPORTED_SLUGS.includes(peptideSlug) && (
+          <div className="ml-auto">
+            <Link href={`/buy/${peptideSlug}`} className="hidden sm:flex items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 px-4 py-2 rounded-lg border border-amber-500/20 transition-colors">
+              View full buying guide <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
       </div>
       
       {/* Mobile buy guide link */}
-      <div className="sm:hidden mb-6">
-        <Link href={`/buy/${peptideSlug}`} className="flex justify-center items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 px-4 py-3 rounded-lg border border-amber-500/20 w-full text-center">
-          View full buying guide <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
+      {BUY_SUPPORTED_SLUGS.includes(peptideSlug) && (
+        <div className="sm:hidden mb-6">
+          <Link href={`/buy/${peptideSlug}`} className="flex justify-center items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 px-4 py-3 rounded-lg border border-amber-500/20 w-full text-center">
+            View full buying guide <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      )}
 
       {hasPricing ? (
         <>
@@ -115,7 +121,7 @@ export function WhereToBuySection({
                         <span className={discounted ? 'pd-wtb-price-original' : 'pd-wtb-price'}>
                           ${v.price_usd.toFixed(2)}
                         </span>
-                        <span className="pd-wtb-vial-size">/{v.vial_mg}mg</span>
+                        <span className="pd-wtb-vial-size">{v.vial_mg} mg</span>
                       </td>
                       <td>
                         {discounted ? (
@@ -180,7 +186,7 @@ export function WhereToBuySection({
                   </div>
                   <div className="pd-wtb-card-prices">
                     <span className={discounted ? 'pd-wtb-price-original' : 'pd-wtb-price'}>
-                      ${v.price_usd.toFixed(2)}/{v.vial_mg}mg
+                      ${v.price_usd.toFixed(2)} · {v.vial_mg} mg
                     </span>
                     {discounted && (
                       <>

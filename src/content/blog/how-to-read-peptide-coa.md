@@ -185,5 +185,5 @@ Generally, no. A 5% impurity margin in a synthetic chemical means a massive volu
 ## Related Articles
 - [Research Peptide Safety Explained](/blog/research-peptide-safety-explained)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
-- [Best Peptide Vendors 2026](/blog/best-peptide-vendors-2026)
+- [Best Peptide Vendors 2026](/blog/best-peptide-vendor-2026)
 - [Tirzepatide vs Semaglutide: Which is Better?](/blog/tirzepatide-vs-semaglutide-which-is-better)

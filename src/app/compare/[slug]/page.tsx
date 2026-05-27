@@ -1,7 +1,7 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign } from 'lucide-react';
+import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign, Activity, FlaskConical, Calculator, ShieldAlert } from 'lucide-react';
 import { comparisons } from '@/data/comparisons';
 import { getPeptideBySlug } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
@@ -25,7 +25,8 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
     const nameA = peptideA.name;
     const nameB = comp.peptideA === comp.peptideB ? `${peptideB.name} (Variant)` : peptideB.name;
-    const title = `${nameA} vs ${nameB}: Dosing, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
+    const defaultTitle = `${nameA} vs ${nameB}: Dosing, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
+    const title = comp.seoTitle || defaultTitle;
     const url = `https://peptidex.app/compare/${slug}`;
     const description = comp.seoDescription.length > 155 ? comp.seoDescription.slice(0, 152) + '...' : comp.seoDescription;
 
@@ -41,8 +42,18 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
 export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const comp = comparisons.find((c) => c.slug === slug);
-  if (!comp) notFound();
+  let comp = comparisons.find((c) => c.slug === slug);
+  if (!comp) {
+    const parts = slug.split('-vs-');
+    if (parts.length === 2) {
+      const reverseSlug = `${parts[1]}-vs-${parts[0]}`;
+      const reverseComp = comparisons.find((c) => c.slug === reverseSlug);
+      if (reverseComp) {
+        permanentRedirect(`/compare/${reverseSlug}`);
+      }
+    }
+    notFound();
+  }
 
   const peptideA = getPeptideBySlug(comp.peptideA);
   const peptideB = getPeptideBySlug(comp.peptideB);
@@ -222,6 +233,23 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
                 <td className="px-4 py-4 text-zinc-300">{peptideA.key_studies.length}+ indexed</td>
                 <td className="px-4 py-4 text-zinc-300">{peptideB.key_studies.length}+ indexed</td>
               </tr>
+              {comp.trialWeightLoss && (
+              <tr className="bg-violet-500/5">
+                <td className="px-4 py-4 text-zinc-400 font-medium flex items-center gap-1.5"><FlaskConical className="w-3.5 h-3.5 text-violet-400" />Weight Loss (Trial)</td>
+                <td className="px-4 py-4">
+                  <div className="text-violet-300 font-bold text-base">{comp.trialWeightLoss.compoundA.percentage}</div>
+                  <div className="text-xs text-zinc-500 mt-0.5">{comp.trialWeightLoss.compoundA.trial} · {comp.trialWeightLoss.compoundA.duration} · n={comp.trialWeightLoss.compoundA.n.toLocaleString()}</div>
+                  <div className="text-xs text-zinc-600 mt-0.5">{comp.trialWeightLoss.compoundA.phase} · <a href={`https://pubmed.ncbi.nlm.nih.gov/${comp.trialWeightLoss.compoundA.pmid}/`} target="_blank" rel="noopener noreferrer" className="text-violet-500 hover:text-violet-400">PMID {comp.trialWeightLoss.compoundA.pmid}</a></div>
+                  {comp.trialWeightLoss.compoundA.estimandNote && <div className="text-[10px] text-zinc-600 mt-1 italic">{comp.trialWeightLoss.compoundA.estimandNote}</div>}
+                </td>
+                <td className="px-4 py-4">
+                  <div className="text-violet-300 font-bold text-base">{comp.trialWeightLoss.compoundB.percentage}</div>
+                  <div className="text-xs text-zinc-500 mt-0.5">{comp.trialWeightLoss.compoundB.trial} · {comp.trialWeightLoss.compoundB.duration} · n={comp.trialWeightLoss.compoundB.n.toLocaleString()}</div>
+                  <div className="text-xs text-zinc-600 mt-0.5">{comp.trialWeightLoss.compoundB.phase} · <a href={`https://pubmed.ncbi.nlm.nih.gov/${comp.trialWeightLoss.compoundB.pmid}/`} target="_blank" rel="noopener noreferrer" className="text-violet-500 hover:text-violet-400">PMID {comp.trialWeightLoss.compoundB.pmid}</a></div>
+                  {comp.trialWeightLoss.compoundB.estimandNote && <div className="text-[10px] text-zinc-600 mt-1 italic">{comp.trialWeightLoss.compoundB.estimandNote}</div>}
+                </td>
+              </tr>
+              )}
               <tr className="bg-emerald-500/5">
                 <td className="px-4 py-4 text-zinc-400 font-medium flex items-center gap-1.5"><DollarSign className="w-3.5 h-3.5 text-emerald-400" />Lowest Price</td>
                 <td className="px-4 py-4">
@@ -317,6 +345,41 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               {nameB} Research Profile <ArrowRight className="w-4 h-4" />
             </Link>
           )}
+        </div>
+      </div>
+
+      {/* ── RESEARCH TOOLS ── */}
+      <div className="pt-8 border-t border-zinc-800/50">
+        <h3 className="text-lg font-bold text-zinc-100 mb-4 flex items-center gap-2">
+          <Calculator className="w-5 h-5 text-zinc-400" />
+          Research Tools
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Link href={`/tools/pk?peptide=${comp.peptideA}`} className="group p-4 rounded-xl border border-zinc-800 bg-zinc-900/30 hover:border-violet-500/30 hover:bg-violet-500/5 transition-all">
+            <div className="flex items-center gap-2 mb-1">
+              <Activity className="w-4 h-4 text-violet-400" />
+              <span className="text-sm font-bold text-zinc-200 group-hover:text-zinc-100">PK Plasma Curves</span>
+            </div>
+            <p className="text-xs text-zinc-500">Visualize {nameA} {!isSamePeptide ? `& ${nameB} ` : ''}plasma concentration over time</p>
+          </Link>
+          <Link href="/tools/reconstitution-calculator" className="group p-4 rounded-xl border border-zinc-800 bg-zinc-900/30 hover:border-violet-500/30 hover:bg-violet-500/5 transition-all">
+            <div className="flex items-center gap-2 mb-1">
+              <FlaskConical className="w-4 h-4 text-emerald-400" />
+              <span className="text-sm font-bold text-zinc-200 group-hover:text-zinc-100">Reconstitution Calculator</span>
+            </div>
+            <p className="text-xs text-zinc-500">Calculate precise dilution volumes and concentrations</p>
+          </Link>
+        </div>
+      </div>
+
+      {/* ── MEDICAL DISCLAIMER ── */}
+      <div className="pt-8 border-t border-zinc-800/50">
+        <div className="flex items-start gap-3 rounded-xl border border-zinc-700/50 bg-zinc-900/40 p-5">
+          <ShieldAlert className="w-5 h-5 text-zinc-500 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-xs font-bold text-zinc-400 mb-1 uppercase tracking-wider">Research Use Only — Not Medical Advice</p>
+            <p className="text-xs text-zinc-500 leading-relaxed">This comparison is provided for educational and research purposes only. It does not constitute medical, prescribing, or treatment advice. Clinical data cited here is sourced from published peer-reviewed trials and FDA labels. Consult a qualified healthcare professional before making any decisions about medications or research compounds. PeptiDex is an informational resource and does not sell pharmaceutical products.</p>
+          </div>
         </div>
       </div>
 

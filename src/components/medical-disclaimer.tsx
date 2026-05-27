@@ -45,7 +45,7 @@ export function MedicalDisclaimer({ variant = 'callout', className = '' }: Props
           </p>
           <p className="mt-3 text-xs text-amber-200/70">
             Read the full{' '}
-            <Link href="/disclaimer" className="underline hover:text-amber-200 transition-colors">
+            <Link href="/disclaimers" className="underline hover:text-amber-200 transition-colors">
               disclaimer
             </Link>{' '}
             and our{' '}

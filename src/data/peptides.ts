@@ -4049,10 +4049,10 @@ export const peptides: Peptide[] = [
         evidence_level: "moderate",
       },
       {
-        title: "Retatrutide reduces liver fat (NAFLD sub-study)",
-        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/37840095/",
+        title: "Retatrutide reduces liver fat (MASLD Phase 2a sub-study)",
+        pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/38858523/",
         summary:
-          "Phase 2 sub-study showing retatrutide significantly reduces liver fat content, with ~90% of participants with baseline steatosis achieving resolution at 48 weeks.",
+          "Randomized Phase 2a sub-study (n=98, Nature Medicine 2024): retatrutide 12mg achieved 82.4% relative liver fat reduction at 24 weeks, with 86% of participants normalizing liver fat (<5%). At 48 weeks in the broader Phase 2 trial, 89–93% of participants on 8–12mg doses achieved steatosis resolution.",
         evidence_level: "strong",
       },
       {
@@ -4161,7 +4161,7 @@ export const peptides: Peptide[] = [
       }],
     safety_notes:
       "GI side effects (nausea, diarrhea) common; investigational   not FDA-approved as of 2026. Phase 3 TRIUMPH trials ongoing.",
-    half_life_hours: 120,
+    half_life_hours: 144,
     dosing: {
       route: "SubQ",
       typical_dose_mcg: [2000, 2000],
@@ -4190,13 +4190,13 @@ export const peptides: Peptide[] = [
     side_effects: [
       {
         name: "Nausea",
-        incidence: "~45% of users",
+        incidence: "~36–60% (dose-dependent)",
         severity: "moderate",
-        note: "From Phase 2 trial; most pronounced during escalation",
+        note: "Phase 2 trial: 36% at 4mg, 44% at 8mg, 60% at 12mg; most pronounced during dose escalation",
       },
-      { name: "Diarrhea", incidence: "~25% of users", severity: "mild" },
-      { name: "Vomiting", incidence: "~20% of users", severity: "moderate" },
-      { name: "Constipation", incidence: "~20% of users", severity: "mild" },
+      { name: "Diarrhea", incidence: "~20–34% (dose-dependent)", severity: "mild", note: "Higher incidence at 8–12mg doses" },
+      { name: "Vomiting", incidence: "~10–22% (dose-dependent)", severity: "moderate" },
+      { name: "Constipation", incidence: "~6–16% (dose-dependent)", severity: "mild" },
     ],
   }),
   p({
@@ -5807,13 +5807,13 @@ export const peptides: Peptide[] = [
     side_effects: [
       {
         name: "Nausea",
-        incidence: "~32% of users",
+        incidence: "~25–33% (dose-dependent)",
         severity: "moderate",
-        note: "From SURMOUNT-1 Phase 3 trial",
+        note: "SURMOUNT-1 Phase 3: 24.6% at 5mg, 33.3% at 10mg, 31.0% at 15mg",
       },
-      { name: "Diarrhea", incidence: "~23% of users", severity: "mild" },
-      { name: "Vomiting", incidence: "~20% of users", severity: "moderate" },
-      { name: "Constipation", incidence: "~18% of users", severity: "mild" },
+      { name: "Diarrhea", incidence: "~19–23% (dose-dependent)", severity: "mild", note: "SURMOUNT-1 Phase 3" },
+      { name: "Vomiting", incidence: "~9–13% (dose-dependent)", severity: "moderate", note: "SURMOUNT-1 Phase 3" },
+      { name: "Constipation", incidence: "~11–18% (dose-dependent)", severity: "mild" },
       {
         name: "Hypoglycemia",
         incidence: "~5% of users",

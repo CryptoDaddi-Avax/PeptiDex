@@ -15,7 +15,7 @@ export function buildOrganizationSchema() {
     "founder": {
       "@type": "Person",
       "name": "The Crypto Daddi",
-      "url": "https://peptidex.app/authors/the-crypto-daddi",
+      "url": "https://peptidex.app/team/peptidex-research",
       "sameAs": ["https://x.com/TheCryptoDaddi"]
     },
     "sameAs": [

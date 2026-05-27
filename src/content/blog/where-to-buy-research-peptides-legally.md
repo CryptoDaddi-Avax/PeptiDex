@@ -123,7 +123,7 @@ When evaluating a source, you must look for two specific analytical tests:
 - **HPLC (High-Performance Liquid Chromatography):** This test confirms the purity percentage by separating the components of the mixture based on their chemical properties. In a high-quality product, you want to see a single, massive, sharp peak on the graph representing the target peptide, with minimal "noise" or smaller peaks representing impurities.
 - **Mass Spectrometry (MS):** While HPLC tells you the substance is pure, it does not confirm *what* the substance is. Mass Spectrometry confirms the exact molecular weight of the compound. You must cross-reference the molecular weight shown on the MS report with the known molecular weight of the target peptide to ensure you are actually receiving what you ordered.
 
-Learn exactly what to look for, how to read the graphs, and how to spot forged documents in our dedicated guide on [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa).
+Learn exactly what to look for, how to read the graphs, and how to spot forged documents in our dedicated guide on [How to Read a Peptide COA](/blog/how-to-read-peptide-coa).
 
 ### 2. Prioritize Domestic Fulfillment and Shipping
 
@@ -194,6 +194,6 @@ The only definitive way to know your peptide is real and accurately dosed is to 
 
 ## Related Articles
 
-- [Best Peptide Vendors 2026](/blog/best-peptide-vendors-2026)
-- [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa)
+- [Best Peptide Vendors 2026](/blog/best-peptide-vendor-2026)
+- [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Are Peptides Safe?](/blog/are-peptides-safe)

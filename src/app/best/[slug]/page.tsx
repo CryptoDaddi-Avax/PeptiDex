@@ -83,7 +83,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             description: goal.metaDescription,
             datePublished: "2026-01-15",
             dateModified: "2026-04-29",
-            author: { name: "Dr. E. Vance", url: "https://peptidex.app/about/dr-e-vance" },
+            author: { name: "Dr. E. Vance", url: "https://peptidex.app/team/peptidex-research" },
             url: `https://peptidex.app/best/${slug}`,
             image: "https://peptidex.app/icon-512.png"
         }),

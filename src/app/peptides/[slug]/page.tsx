@@ -742,7 +742,7 @@ export default async function PeptideProfilePage({ params }: { params: Promise<{
             <p className="text-sm text-amber-200/90 font-semibold mb-1">Medical Disclaimer</p>
             <p className="text-xs text-amber-200/70 leading-relaxed">
               The information provided in this profile is for educational and research purposes only. {peptide.name} is {peptide.is_fda_approved ? 'FDA-approved for specific indications but many uses remain investigational' : 'not FDA-approved for human therapeutic use'}. Nothing on this page should be interpreted as medical advice. Always consult a licensed healthcare professional before interacting with any peptide compound.{' '}
-              <Link href="/disclaimer" className="underline hover:text-amber-200 transition-colors">Read our full disclaimer.</Link>
+              <Link href="/disclaimers" className="underline hover:text-amber-200 transition-colors">Read our full disclaimer.</Link>
             </p>
           </div>
         </div>

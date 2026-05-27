@@ -58,7 +58,7 @@ export default function Footer() {
             <ul>
               <li><a href="/about">Our Mission</a></li>
               <li><a href="/about/editorial-policy">Editorial Policy</a></li>
-              <li><a href="/disclaimer">Medical Disclaimer</a></li>
+              <li><a href="/disclaimers">Medical Disclaimer</a></li>
               <li><a href="/about">Contact</a></li>
             </ul>
           </div>
@@ -89,7 +89,7 @@ export default function Footer() {
           <div className="footer-bottom-links">
             <a href="/legal">Privacy</a>
             <a href="/legal">Terms</a>
-            <a href="/disclaimer">Disclosures</a>
+            <a href="/disclaimers">Disclosures</a>
           </div>
         </div>
       </div>

@@ -177,5 +177,5 @@ Before reconstitution, lyophilized (freeze-dried) powder should be stored in a f
 ## Related Articles
 - [Tirzepatide vs Semaglutide: Which is Better?](/blog/tirzepatide-vs-semaglutide-which-is-better)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
-- [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa)
+- [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Best Peptides for Muscle Growth](/blog/best-peptides-for-muscle-growth)

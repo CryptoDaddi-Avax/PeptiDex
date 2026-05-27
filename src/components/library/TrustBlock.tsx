@@ -11,7 +11,7 @@ export function TrustBlock() {
           strictly for educational and informational purposes. Peptides discussed may be
           unapproved research chemicals — consult a licensed healthcare professional before
           considering any peptide compound.{' '}
-          <a href="/disclaimer" className="pd-trust-link">
+          <a href="/disclaimers" className="pd-trust-link">
             Read our full disclaimer <ExternalLink className="w-3 h-3 inline" />
           </a>
         </p>

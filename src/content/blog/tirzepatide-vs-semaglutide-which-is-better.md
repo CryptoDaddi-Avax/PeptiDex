@@ -176,5 +176,5 @@ Yes. The landmark SELECT trial demonstrated that semaglutide (Wegovy) reduced th
 
 ## Related Articles
 - [Are Peptides Safe?](/blog/are-peptides-safe)
-- [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa)
+- [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Best Peptides for Fat Loss](/blog/best-peptides-for-fat-loss)

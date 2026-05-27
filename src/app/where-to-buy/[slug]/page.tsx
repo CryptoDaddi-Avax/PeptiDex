@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getPeptideBySlug } from '@/data/peptides';
@@ -88,6 +88,10 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
   const { slug } = await params;
   
   if (!TARGET_SLUGS.includes(slug)) {
+    const libraryEntry = getPeptideBySlug(slug);
+    if (libraryEntry) {
+      permanentRedirect(`/library/${slug}`);
+    }
     notFound();
   }
 

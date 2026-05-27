@@ -153,7 +153,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/disclaimer`,
+      url: `${baseUrl}/disclaimers`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.4,
@@ -312,6 +312,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
+  // Reconstitution Calculator Compound Pages
+  const reconstitutionSlugs = ['bpc-157'];
+  const reconstitutionUrls = [
+    {
+      url: `${baseUrl}/tools/reconstitution-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    ...reconstitutionSlugs.map((slug) => ({
+      url: `${baseUrl}/tools/reconstitution-calculator/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    }))
+  ];
+
   // Author / Team Pages
   const authorSlugs = getAllAuthorSlugs();
   const teamUrls = authorSlugs.map((slug) => ({
@@ -405,6 +422,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     ...whereToBuyUrls,
+    ...reconstitutionUrls,
     ...buyUrls,
     {
       url: `${baseUrl}/buy`,

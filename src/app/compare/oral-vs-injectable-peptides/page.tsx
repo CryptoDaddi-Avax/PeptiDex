@@ -185,7 +185,7 @@ export default function OralVsInjectablePage() {
           <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-amber-200/70 leading-relaxed">
             This comparison is for educational purposes only. Prescription medications require a physician&apos;s supervision.{' '}
-            <Link href="/disclaimer" className="underline hover:text-amber-200 transition-colors">Read full disclaimer.</Link>
+            <Link href="/disclaimers" className="underline hover:text-amber-200 transition-colors">Read full disclaimer.</Link>
           </p>
         </div>
       </div>

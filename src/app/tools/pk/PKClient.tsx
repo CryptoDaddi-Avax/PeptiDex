@@ -27,7 +27,7 @@ const pkData: Record<string, { halfLifeHours: number; peakHours: number; bioavai
     "melanotan-ii": { halfLifeHours: 22, peakHours: 2, bioavailability: "~80%", model: "mono" },
     "pt-141": { halfLifeHours: 22, peakHours: 2, bioavailability: "~80%", model: "mono" },
     "dsip": { halfLifeHours: 1.5, peakHours: 0.5, bioavailability: "~75%", model: "mono" },
-    "retatrutide": { halfLifeHours: 168, peakHours: 24, bioavailability: "~90%", model: "biexp" },
+    "retatrutide": { halfLifeHours: 144, peakHours: 24, bioavailability: "~90%", model: "biexp" },
     "tirzepatide": { halfLifeHours: 120, peakHours: 8, bioavailability: "~88%", model: "biexp" },
     "semaglutide": { halfLifeHours: 168, peakHours: 24, bioavailability: "~89%", model: "biexp" },
     "sermorelin": { halfLifeHours: 0.3, peakHours: 0.2, bioavailability: "~70%", model: "mono" },
@@ -107,9 +107,13 @@ function CustomTooltip({ active, payload, label }: any) {
     );
 }
 
-export default function PKClient() {
-    const [selectedSlug, setSelectedSlug] = useState("bpc-157");
-    const [doseMcg, setDoseMcg] = useState(250);
+export default function PKClient({ initialPeptide }: { initialPeptide?: string }) {
+    const validInitial = initialPeptide && pkData[initialPeptide] ? initialPeptide : "bpc-157";
+    const [selectedSlug, setSelectedSlug] = useState(validInitial);
+    const [doseMcg, setDoseMcg] = useState(() => {
+        const p = peptides.find(pp => pp.slug === validInitial);
+        return p?.dosing?.typical_dose_mcg[0] ?? 250;
+    });
     const [freqHours, setFreqHours] = useState(24);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 

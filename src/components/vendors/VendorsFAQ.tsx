@@ -121,7 +121,7 @@ export function VendorsFAQ({ faqs }: VendorsFAQProps) {
             PeptiDex is an independent research index. We are not affiliated
             with any vendor. All peptides in this index are for laboratory
             research use only.{" "}
-            <Link href="/disclaimer" className="vfaq-footer-link">
+            <Link href="/disclaimers" className="vfaq-footer-link">
               Read full disclaimer →
             </Link>
           </span>

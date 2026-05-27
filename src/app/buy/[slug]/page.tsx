@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { getPeptideBySlug } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
 import { vendors } from '@/data/vendors';
@@ -53,6 +53,10 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
   const { slug } = await params;
   
   if (!TARGET_SLUGS.includes(slug)) {
+    const libraryEntry = getPeptideBySlug(slug);
+    if (libraryEntry) {
+      permanentRedirect(`/library/${slug}`);
+    }
     notFound();
   }
 

@@ -98,7 +98,7 @@ If a researcher injects a highly contaminated, immunogenic peptide, the subject'
 
 Because the FDA does not inspect the facilities of research chemical suppliers to enforce Good Manufacturing Practices (GMP), researchers must enforce their own quality control through analytical testing.
 
-As detailed in our guide on [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa), a legitimate Certificate of Analysis from an independent, third-party laboratory is non-negotiable. 
+As detailed in our guide on [How to Read a Peptide COA](/blog/how-to-read-peptide-coa), a legitimate Certificate of Analysis from an independent, third-party laboratory is non-negotiable. 
 
 ### Sourcing High-Purity Reagents
 
@@ -173,7 +173,7 @@ A burning sensation can indicate several issues: the peptide was reconstituted w
 ---
 
 ## Related Articles
-- [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa)
+- [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
 - [Are Peptides Safe?](/blog/are-peptides-safe)
 - [Peptide Cycle Length Research Guide](/blog/peptide-cycle-length-research-guide)

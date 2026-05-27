@@ -142,7 +142,7 @@ export default function CompareIndexPage() {
           Every comparison on PeptiDex is sourced from peer-reviewed research, registered clinical trials, and published pharmacological data. We present objective analysis — not rankings or endorsements. All compounds discussed are for educational reference only.
         </p>
         <p className="text-xs text-zinc-500 italic">
-          <Link href="/disclaimer" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
+          <Link href="/disclaimers" className="text-violet-400 hover:text-violet-300 transition-colors">Read our full medical disclaimer.</Link>
         </p>
       </section>
       </div>

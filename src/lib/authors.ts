@@ -51,6 +51,8 @@ const RAW: RawAuthor[] = [peptidexResearch];
 const SLUG_ALIASES: Record<string, string> = {
   'dr-e-vance': 'peptidex-research',
   'peptidex-editorial': 'peptidex-research',
+  'the-crypto-daddi': 'peptidex-research',
+  'research-team': 'peptidex-research',
 };
 
 function labelForUrl(url: string): string {

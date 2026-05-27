@@ -167,7 +167,7 @@ export default function LabDataMethodologyPage() {
                 <section className="mb-10">
                     <h2 style={h2Style}>For Vendors</h2>
                     <p style={pStyle}>
-                        If you are a vendor and believe any data is inaccurate, please <Link href="/contact" style={{ color: "var(--gold)" }}>contact us</Link>.
+                        If you are a vendor and believe any data is inaccurate, please <Link href="/about" style={{ color: "var(--gold)" }}>contact us</Link>.
                         We will investigate and correct any errors within 48 hours. Vendors can improve their trust scores by:
                     </p>
                     <ul style={ulStyle}>

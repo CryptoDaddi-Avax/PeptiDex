@@ -50,6 +50,33 @@ const nextConfig: NextConfig = {
       { source: '/vendors/limitless-life-review', destination: '/vendors/limitless-life', permanent: true },
       { source: '/vendors/pantheon-peptides-review', destination: '/vendors/pantheon-peptides', permanent: true },
       { source: '/vendors/lvlup-health-review', destination: '/vendors/lvlup-health', permanent: true },
+
+      // Blog slug variants — 301 redirects
+      { source: '/blog/how-to-read-a-peptide-coa', destination: '/blog/how-to-read-peptide-coa', permanent: true },
+      { source: '/blog/best-peptide-vendors-2026', destination: '/blog/best-peptide-vendor-2026', permanent: true },
+      { source: '/blog/semaglutide-vs-tirzepatide', destination: '/compare/semaglutide-vs-tirzepatide', permanent: true },
+      { source: '/blog/peptide-safety-beginners-guide', destination: '/blog/research-peptide-safety-explained', permanent: true },
+      { source: '/blog/peptide-stacking-guide', destination: '/blog/peptide-stacking-2026-combination-protocols', permanent: true },
+      { source: '/blog/bpc-157-complete-guide', destination: '/blog/bpc-157-dosage-complete-guide', permanent: true },
+      { source: '/blog/ghk-cu-skin-rejuvenation', destination: '/blog/ghk-cu-breakout-peptide-2026', permanent: true },
+      { source: '/blog/retatrutide-triple-agonist', destination: '/blog/retatrutide-explained', permanent: true },
+      { source: '/blog/tesamorelin-growth-hormone', destination: '/blog/tesamorelin-growth-hormone-peptide-comparison', permanent: true },
+      { source: '/blog/mk-677-ibutamoren-guide', destination: '/blog/mk-677-vs-ipamorelin', permanent: true },
+      { source: '/blog/peptide-reconstitution-guide', destination: '/guides/reconstitution', permanent: true },
+
+      // Authors → Team redirect
+      { source: '/authors/:slug', destination: '/team/:slug', permanent: true },
+
+      // Legacy singles
+      { source: '/disclaimer', destination: '/disclaimers', permanent: true },
+      { source: '/about/editorial-team', destination: '/about/editorial-policy', permanent: true },
+      { source: '/contact', destination: '/about', permanent: true },
+
+      // COA PDF old naming → new naming
+      { source: '/coa/retatrutide-amino-club-batch-2604.pdf', destination: '/coa/retatrutide-RT0001.pdf', permanent: true },
+      { source: '/coa/tesamorelin-bll-batch-2603.pdf', destination: '/coa/tesamorelin-TES0001.pdf', permanent: true },
+      { source: '/coa/semaglutide-limitless-batch-2603.pdf', destination: '/coa', permanent: true },
+      { source: '/coa/tirzepatide-bll-batch-2603.pdf', destination: '/coa', permanent: true },
     ];
   },
 

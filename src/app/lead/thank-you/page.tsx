@@ -63,7 +63,7 @@ export default function ThankYouPage() {
                             Visit Amino Club <ExternalLink className="w-4 h-4" />
                         </a>
                         <Link
-                            href="/blog/best-peptide-vendors-2026"
+                            href="/blog/best-peptide-vendor-2026"
                             className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-zinc-700 text-zinc-300 font-semibold hover:bg-zinc-800 transition-colors"
                         >
                             See All Reviewed Vendors <ArrowRight className="w-4 h-4" />

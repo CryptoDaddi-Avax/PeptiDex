@@ -131,7 +131,7 @@ export default function BlogPostTemplate() {
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4 text-amber-400" />
-              <Link href={`/about/editorial-team`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">Editorial Team</Link>
+              <Link href={`/about/editorial-policy`} className="font-semibold text-zinc-200 hover:text-amber-400 transition-colors">Editorial Team</Link>
             </div>
             <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
             <div className="flex items-center gap-2">

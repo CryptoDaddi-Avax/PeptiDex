@@ -178,5 +178,5 @@ Most lyophilized (freeze-dried) peptides are relatively stable at room temperatu
 ## Related Articles
 
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
-- [How to Read a Peptide COA](/blog/how-to-read-a-peptide-coa)
+- [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Research Peptide Safety Explained](/blog/research-peptide-safety-explained)
