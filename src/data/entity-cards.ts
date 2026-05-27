@@ -29,7 +29,7 @@ export const entityCardOverrides: Record<string, EntityCardData> = {
     className: 'Triple Agonist (GLP-1 / GIP / Glucagon)',
     developer: 'Eli Lilly',
     trialStatus: 'Phase 3 (TRIUMPH program)',
-    halfLife: '~5 days (120 hours)',
+    halfLife: '~6 days (144 hours)',
     molecularWeight: '4731.4 Da',
     fdaStatus: 'Not approved',
     bestPrice: '$5.60/mg (Amino Club + PEPTIDEX)',
