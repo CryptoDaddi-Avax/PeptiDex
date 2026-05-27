@@ -311,6 +311,9 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         id: `https://peptidex.app/library/${slug}#product`,
         name: peptide.name,
         description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
+        // image is required by Google for Product rich results — fixes GSC critical error.
+        // Uses /api/og?title=NAME&type=profile which returns 200 image/png (confirmed live).
+        image: `https://peptidex.app/api/og?title=${encodeURIComponent(peptide.name)}&type=profile`,
         brand: "PEPTIDEX Reviewed",
         offers: productOffers,
         dateModified,
