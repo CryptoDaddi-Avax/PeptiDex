@@ -23,7 +23,7 @@ interface EnrichedVendorRow {
   lastTestedDate?: string;
   discount: DiscountResult;
   dotClass: string;
-  costPerDose: number; // price_usd / vial_mg, 0 if unknown
+  pricePerMg: number; // price_usd / total_mg in USD, 0 if unknown. For real cost-per-dose, use lib/pricing/costPerDose.ts
   isBestPrice?: boolean;
 }
 
@@ -64,7 +64,11 @@ function buildEnrichedData(): EnrichedPeptide[] {
           vendor.discountStackable
         );
         const discount = applyDiscount(vp.price_usd, discountDescriptor, p.slug);
-        const costPerDose = vp.vial_mg > 0 ? vp.price_usd / vp.vial_mg : 0;
+        // price_per_mg: uses total_mg (vial_mg × quantity). For current data, quantity=1.
+        // For real cost-per-dose (using a dose_mcg), see lib/pricing/costPerDose.ts.
+        const quantity = 1; // vendor-pricing.ts rows are single-listing; will come from listings.quantity
+        const totalMg = vp.vial_mg * quantity;
+        const pricePerMg = totalMg > 0 ? vp.price_usd / totalMg : 0;
 
         rows.push({
           vendor,
@@ -75,7 +79,7 @@ function buildEnrichedData(): EnrichedPeptide[] {
           lastTestedDate: vp.lastTestedDate,
           discount,
           dotClass: VENDOR_DOT[vendor.slug] ?? "amino",
-          costPerDose,
+          pricePerMg,
         });
       }
 
@@ -114,7 +118,7 @@ function exportCSV(peptideName: string, rows: EnrichedVendorRow[]) {
     r.discount.finalPrice.toFixed(2),
     r.discount.discountApplied ? r.discount.savings.toFixed(2) : "0.00",
     r.vial_mg,
-    r.costPerDose > 0 ? r.costPerDose.toFixed(4) : "",
+    r.pricePerMg > 0 ? r.pricePerMg.toFixed(4) : "",
     r.vendor.discountCode ?? "",
     r.inStock ? "Yes" : "No",
     r.affiliateUrl,
@@ -205,8 +209,8 @@ function DesktopRow({ row }: { row: EnrichedVendorRow }) {
 
       {/* Cost/mg */}
       <div className="prc-table-cell">
-        {row.costPerDose > 0 ? (
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-dim)' }}>${row.costPerDose.toFixed(2)}/mg</span>
+        {row.pricePerMg > 0 ? (
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-dim)' }}>${row.pricePerMg.toFixed(2)}/mg</span>
         ) : (
           <span className="prc-no-code">—</span>
         )}
@@ -365,8 +369,8 @@ export default function PricingClient() {
           ? a.vendor.name.localeCompare(b.vendor.name)
           : b.vendor.name.localeCompare(a.vendor.name);
       } else if (sortMode === "cpd") {
-        av = a.costPerDose > 0 ? a.costPerDose : Infinity;
-        bv = b.costPerDose > 0 ? b.costPerDose : Infinity;
+        av = a.pricePerMg > 0 ? a.pricePerMg : Infinity;
+        bv = b.pricePerMg > 0 ? b.pricePerMg : Infinity;
       } else {
         av = a.discount.finalPrice;
         bv = b.discount.finalPrice;
