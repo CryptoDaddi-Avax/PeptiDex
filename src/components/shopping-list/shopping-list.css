@@ -114,9 +114,9 @@
   border: 1px solid rgba(127, 183, 126, 0.25);
 }
 .vendor-tier-badge.tier-2 {
-  background: rgba(74, 158, 255, 0.1);
-  color: var(--plasma);
-  border: 1px solid rgba(74, 158, 255, 0.2);
+  background: rgba(196,242,92, 0.1);
+  color: var(--lime);
+  border: 1px solid rgba(196,242,92, 0.2);
 }
 
 .vendor-card-meta {
@@ -216,12 +216,12 @@
 /* Tier 2: Secondary CTA (deep link) */
 .vendor-cta.cta-deeplink {
   background: transparent;
-  color: var(--plasma);
-  border: 1px solid rgba(74, 158, 255, 0.3);
+  color: var(--lime);
+  border: 1px solid rgba(196,242,92, 0.3);
 }
 .vendor-cta.cta-deeplink:hover {
-  background: rgba(74, 158, 255, 0.08);
-  border-color: var(--plasma);
+  background: rgba(196,242,92, 0.08);
+  border-color: var(--lime);
 }
 
 /* Phase 1B: Deferred CTA */

@@ -26,8 +26,8 @@
 .evi-color-bg-strong { background: var(--lime); }
 .evi-color-border-strong { border-left-color: var(--lime) !important; }
 
-.evi-color-bg-moderate-strong { background: var(--plasma); }
-.evi-color-border-moderate-strong { border-left-color: var(--plasma) !important; }
+.evi-color-bg-moderate-strong { background: var(--teal-2); }
+.evi-color-border-moderate-strong { border-left-color: var(--teal-2) !important; }
 
 .evi-color-bg-moderate { background: var(--rust); }
 .evi-color-border-moderate { border-left-color: var(--rust) !important; }

@@ -101,7 +101,7 @@
   font-weight: 500;
 }
 
-.vr-green { color: var(--green, #7fb77e) !important; }
+.vr-green { color: var(--lime-2) !important; }
 
 .vr-tier-badge {
   display: inline-block;
@@ -240,7 +240,7 @@
   padding-bottom: 12px;
   border-bottom: 1px solid var(--line, #27272a);
 }
-.vr-pros .vr-proscons-label { color: var(--green, #7fb77e); }
+.vr-pros .vr-proscons-label { color: var(--lime-2); }
 .vr-cons .vr-proscons-label { color: #ef4444; }
 .vr-procon-item {
   padding: 12px 0;
@@ -399,7 +399,7 @@
 .vr-code-inline {
   font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
   font-size: 13px;
-  color: var(--green, #7fb77e);
+  color: var(--lime-2);
   background: rgba(127, 183, 126, 0.1);
   padding: 2px 8px;
   border-radius: 4px;

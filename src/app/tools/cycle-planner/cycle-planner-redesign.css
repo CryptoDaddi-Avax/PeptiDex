@@ -454,7 +454,7 @@
   text-transform: uppercase; white-space: nowrap;
 }
 .combobox-in-cycle {
-  font-family: var(--mono); font-size: 9px; color: var(--green, #7fb77e);
+  font-family: var(--mono); font-size: 9px; color: var(--lime-2);
   letter-spacing: 0.1em; white-space: nowrap;
 }
 .combobox-empty {

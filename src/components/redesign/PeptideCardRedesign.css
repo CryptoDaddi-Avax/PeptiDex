@@ -122,9 +122,9 @@
   border: 1px solid rgba(196,242,92, 0.15);
 }
 .pcr-badge-halflife {
-  background: rgba(74, 158, 255, 0.08);
-  color: var(--plasma);
-  border: 1px solid rgba(74, 158, 255, 0.15);
+  background: rgba(40,78,75, 0.08);
+  color: var(--teal-2);
+  border: 1px solid rgba(40,78,75, 0.15);
 }
 
 .pcr-arrow {

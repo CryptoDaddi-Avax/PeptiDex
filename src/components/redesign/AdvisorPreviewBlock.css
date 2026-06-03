@@ -25,7 +25,7 @@
   left: -100px;
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, rgba(74,158,255,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196,242,92,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -49,7 +49,7 @@
 }
 .advisor-headline em {
   font-style: italic;
-  color: var(--plasma);
+  color: var(--lime);
 }
 
 .advisor-subhead {
@@ -96,7 +96,7 @@
   align-items: center;
   gap: 10px;
   padding: 16px 32px;
-  background: var(--plasma);
+  background: var(--lime);
   color: #fff;
   font-family: var(--sans);
   font-size: 13px;
@@ -205,8 +205,8 @@
   align-self: flex-end;
   max-width: 85%;
   padding: 10px 14px;
-  background: rgba(74,158,255,0.12);
-  border: 1px solid rgba(74,158,255,0.2);
+  background: rgba(196,242,92,0.12);
+  border: 1px solid rgba(196,242,92,0.2);
   font-family: var(--sans);
   font-size: 13px;
   color: var(--paper);
@@ -215,8 +215,8 @@
   transition: background 0.2s, border-color 0.2s;
 }
 .advisor-q:hover {
-  background: rgba(74,158,255,0.18);
-  border-color: rgba(74,158,255,0.35);
+  background: rgba(196,242,92,0.18);
+  border-color: rgba(196,242,92,0.35);
 }
 
 /* Advisor bubble (left-aligned) */
@@ -240,7 +240,7 @@
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--plasma);
+  color: var(--lime);
   margin-bottom: 6px;
 }
 
