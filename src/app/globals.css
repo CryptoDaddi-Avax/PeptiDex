@@ -67,6 +67,8 @@
   --radius-v: 14px;
   --radius-v-lg: 22px;
   --max: 1240px;
+  --disclaimer-h: 34px;
+  --banner-h: 40px;
 
   /* ── shadcn / Tailwind tokens ── */
   --radius: 0.625rem;

@@ -7,7 +7,9 @@
 /* ---------- FIXED NAV SHELL ---------- */
 .site-nav {
   position: fixed;
-  top: 0;
+  /* Push below disclaimer bar (34px) + promo banner (40px when visible).
+     --banner-h is set to 0px by PromoBanner.tsx when dismissed. */
+  top: calc(var(--disclaimer-h, 34px) + var(--banner-h, 40px));
   left: 0;
   right: 0;
   z-index: 900;
