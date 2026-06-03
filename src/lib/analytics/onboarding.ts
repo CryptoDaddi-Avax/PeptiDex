@@ -1,5 +1,16 @@
 /**
  * Onboarding Analytics — GA4 event helpers
+ *
+ * KEPT:
+ *  - trackOnboardingStarted  — fired by OnboardingAccordion on first open
+ *  - trackAffiliateClicked   — fired by OnboardingAccordion on supply link clicks
+ *  - trackOnboardingCompleted — reserved for future accordion completion wiring
+ *  - trackVendorClicked      — generic site-wide vendor click tracking
+ *
+ * PRUNED (modal-stepper specific, no callers):
+ *  trackOnboardingViewed, trackOnboardingStepViewed, trackOnboardingStepCompleted,
+ *  trackOnboardingDismissed, trackOnboardingBarShown, trackOnboardingBarClicked,
+ *  trackOnboardingToolLaunched
  */
 
 declare global {
@@ -17,28 +28,8 @@ function fire(event: string, params: Record<string, unknown> = {}) {
   }
 }
 
-export function trackOnboardingViewed() {
-  fire('onboarding_viewed');
-}
-
 export function trackOnboardingStarted(source: 'hero_block' | 'bar' | 'deep_link') {
   fire('onboarding_started', { source });
-}
-
-export function trackOnboardingStepViewed(payload: {
-  step_number: number;
-  step_name: string;
-  time_on_previous_step_ms: number;
-}) {
-  fire('onboarding_step_viewed', payload);
-}
-
-export function trackOnboardingStepCompleted(payload: {
-  step_number: number;
-  step_name: string;
-  dwell_time_ms: number;
-}) {
-  fire('onboarding_step_completed', payload);
 }
 
 export function trackAffiliateClicked(payload: {
@@ -62,33 +53,10 @@ export function trackVendorClicked(payload: {
   });
 }
 
-export function trackOnboardingToolLaunched(payload: {
-  tool: string;
-  step_number: number;
-}) {
-  fire('onboarding_tool_launched', payload);
-}
-
 export function trackOnboardingCompleted(payload: {
   total_time_ms: number;
   steps_viewed: number[];
   affiliate_clicks: number;
 }) {
   fire('onboarding_completed', payload);
-}
-
-export function trackOnboardingDismissed(payload: {
-  dismissed_at_step: number;
-  total_time_ms: number;
-}) {
-  fire('onboarding_dismissed', payload);
-}
-
-// Keeping the bar metrics around, unless they're not needed
-export function trackOnboardingBarShown(returning_after_days: number) {
-  fire('onboarding_bar_shown', { returning_after_days });
-}
-
-export function trackOnboardingBarClicked(resume_step: number) {
-  fire('onboarding_bar_clicked', { resume_step });
 }

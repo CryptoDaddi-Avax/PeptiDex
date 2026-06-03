@@ -1,3 +1,17 @@
+/**
+ * Onboarding Storage — localStorage helpers
+ *
+ * KEPT:
+ *  - getOnboardingState  — called by OnboardingAccordion
+ *  - getOnboardingStep   — generic state read
+ *  - setEngaged          — called by OnboardingAccordion on first open
+ *  - setCompleted        — reserved for future accordion completion wiring
+ *  - resetOnboarding     — dev/debug utility
+ *
+ * PRUNED (modal-stepper specific, no callers):
+ *  setDismissed, setOnboardingStep
+ */
+
 export const LS_ONBOARDING_STATE = 'peptidex_onboarding_state';
 export const LS_ONBOARDING_STEP = 'peptidex_onboarding_step';
 export const LS_ONBOARDING_TS = 'peptidex_onboarding_ts';
@@ -47,17 +61,8 @@ export function getOnboardingStep(): number {
   return step ? parseInt(step, 10) : 0;
 }
 
-export function setOnboardingStep(step: number) {
-  safeSet(LS_ONBOARDING_STEP, String(step));
-}
-
 export function setEngaged() {
   safeSet(LS_ONBOARDING_STATE, 'engaged');
-  safeSet(LS_ONBOARDING_TS, new Date().toISOString());
-}
-
-export function setDismissed() {
-  safeSet(LS_ONBOARDING_STATE, 'dismissed');
   safeSet(LS_ONBOARDING_TS, new Date().toISOString());
 }
 
