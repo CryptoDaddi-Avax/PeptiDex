@@ -155,7 +155,7 @@ export default function ToolsClient() {
                             <h3 className="tool-small-title">Suppliers</h3>
                             <p className="tool-small-desc">Vetted sources</p>
                         </Link>
-                        <Link href="/buy" className="tool-small-card">
+                        <Link href="/where-to-buy" className="tool-small-card">
                             <ShoppingCart />
                             <h3 className="tool-small-title">Where to Buy</h3>
                             <p className="tool-small-desc">Compare prices</p>

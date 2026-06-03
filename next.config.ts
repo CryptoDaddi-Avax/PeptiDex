@@ -31,6 +31,20 @@ const nextConfig: NextConfig = {
       { source: '/peptides', destination: '/library', permanent: true },
       { source: '/peptides/:slug', destination: '/library/:slug', permanent: true },
       { source: '/goals/:slug', destination: '/best/:slug', permanent: true },
+      // IA Consolidation (added June 2026)
+      { source: '/buy', destination: '/where-to-buy', permanent: true },
+      { source: '/buy/:slug', destination: '/where-to-buy/:slug', permanent: true },
+      { source: '/vs', destination: '/compare', permanent: true },
+      { source: '/vs/bpc-157-vs-tb-500', destination: '/compare/bpc-157-vs-tb-500', permanent: true },
+      { source: '/vs/semaglutide-vs-tirzepatide', destination: '/compare/semaglutide-vs-tirzepatide', permanent: true },
+      { source: '/vs/cjc-1295-vs-ipamorelin', destination: '/compare/cjc-1295-vs-ipamorelin', permanent: true },
+      { source: '/vs/ghk-cu-vs-bpc-157', destination: '/compare/ghk-cu-vs-bpc-157', permanent: true },
+      { source: '/vs/semax-vs-selank', destination: '/compare/selank-vs-semax', permanent: true },
+      { source: '/vs/retatrutide-vs-tirzepatide', destination: '/compare/tirzepatide-vs-retatrutide', permanent: true },
+      { source: '/vs/tesamorelin-vs-ipamorelin', destination: '/compare', permanent: true },
+      { source: '/vs/epitalon-vs-ghk-cu', destination: '/compare', permanent: true },
+      { source: '/vs/sermorelin-vs-ipamorelin', destination: '/compare', permanent: true },
+      
       // Legacy route clean-up (added May 2026)
       { source: '/suppliers', destination: '/vendors', permanent: true },
       { source: '/research', destination: '/library', permanent: true },
@@ -47,6 +61,8 @@ const nextConfig: NextConfig = {
       { source: '/vendors/amino-club-vs-ascension', destination: '/vendors/amino-club', permanent: true },
       { source: '/compare/vendors/amino-club-vs-ascension-peptides', destination: '/vendors', permanent: true },
       { source: '/vendors/ascension-peptides-review', destination: '/vendors', permanent: true },
+      // fix(seo): B2 — /tools/price-tracker consolidated into /tools/pricing (canonical URL)
+      { source: '/tools/price-tracker', destination: '/tools/pricing', permanent: true },
       { source: '/vendors/limitless-life-review', destination: '/vendors/limitless-life', permanent: true },
       { source: '/vendors/pantheon-peptides-review', destination: '/vendors/pantheon-peptides', permanent: true },
       { source: '/vendors/lvlup-health-review', destination: '/vendors/lvlup-health', permanent: true },

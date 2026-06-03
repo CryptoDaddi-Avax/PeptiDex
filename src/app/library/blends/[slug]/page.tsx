@@ -1,25 +1,90 @@
-"use client";
-import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
+/**
+ * /library/blends/[slug] — Server Component
+ * ============================================
+ * fix(seo): B4 — Converted from "use client" + useParams() to a proper
+ * Next.js App Router server component with:
+ *  - generateStaticParams() for static pre-rendering at build time
+ *  - generateMetadata() for per-blend title/description/canonical/OG
+ *  - Server-rendered HTML content (all blend data is static — no SSR overhead)
+ *  - JSON-LD structured data (BreadcrumbList, MedicalWebPage, FAQPage)
+ *
+ * The motion.div animations have been replaced with standard divs because
+ * framer-motion requires "use client". If animations are desired in the future,
+ * extract the animated wrappers into a small "BlendAnimatedSection" client child.
+ */
+
+import type { Metadata } from "next";
 import Link from "next/link";
-import { peptideBlends } from "@/data/blends";
-import { ArrowLeft, FlaskConical, Clock, Beaker, AlertTriangle, BookOpen, TrendingUp, ExternalLink, ShieldCheck } from "lucide-react";
+import { notFound } from "next/navigation";
+import {
+    ArrowLeft,
+    FlaskConical,
+    Clock,
+    Beaker,
+    AlertTriangle,
+    BookOpen,
+    TrendingUp,
+    ExternalLink,
+    ShieldCheck,
+} from "lucide-react";
+import { peptideBlends, getBlendBySlug } from "@/data/blends";
+import { getPeptideBySlug } from "@/data/peptides";
 import { getCategoryIcon } from "@/data/category-icons";
 
-export default function BlendDetailPage() {
-    const params = useParams();
-    const blend = peptideBlends.find((b) => b.slug === params.slug);
+// ─── Static Params ────────────────────────────────────────────────────────────
 
-    if (!blend) {
-        return (
-            <div className="max-w-3xl mx-auto px-4 py-12 text-center">
-                <p className="text-zinc-400">Blend not found.</p>
-                <Link href="/library/blends" className="text-violet-400 underline mt-2 inline-block">
-                    ← Back to Blends
-                </Link>
-            </div>
-        );
-    }
+export async function generateStaticParams() {
+    return peptideBlends.map((b) => ({ slug: b.slug }));
+}
+
+// ─── Metadata ─────────────────────────────────────────────────────────────────
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const blend = getBlendBySlug(slug);
+    if (!blend) return {};
+
+    const title = `${blend.name} Stack — Dosing, Mechanism & Research | PeptiDex`;
+    const description =
+        `${blend.nickname}: ${blend.primary_benefits}. ` +
+        `Research-backed blend combining ${blend.components.join(", ")}. ` +
+        blend.dosing_notes.slice(0, 80);
+
+    return {
+        title,
+        description: description.slice(0, 160),
+        alternates: {
+            canonical: `https://peptidex.app/library/blends/${slug}`,
+        },
+        openGraph: {
+            title,
+            description: description.slice(0, 160),
+            url: `https://peptidex.app/library/blends/${slug}`,
+            type: "article",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description: description.slice(0, 160),
+        },
+    };
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
+export default async function BlendDetailPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    const blend = getBlendBySlug(slug);
+
+    if (!blend) notFound();
 
     const timelineSteps = [
         { key: "week_1", label: "Week 1", color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },
@@ -28,15 +93,90 @@ export default function BlendDetailPage() {
         { key: "long_term", label: "Long-term", color: "text-amber-400", bg: "bg-amber-500/10 border-amber-500/20" },
     ] as const;
 
+    // ─── JSON-LD ──────────────────────────────────────────────────────────────
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://peptidex.app/" },
+            { "@type": "ListItem", position: 2, name: "Library", item: "https://peptidex.app/library" },
+            { "@type": "ListItem", position: 3, name: "Blends", item: "https://peptidex.app/library/blends" },
+            { "@type": "ListItem", position: 4, name: blend.name, item: `https://peptidex.app/library/blends/${slug}` },
+        ],
+    };
+
+    const medicalPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        name: `${blend.name} — Research Peptide Stack`,
+        description: blend.primary_benefits,
+        url: `https://peptidex.app/library/blends/${slug}`,
+        about: {
+            "@type": "Drug",
+            name: blend.name,
+            description: blend.mechanism,
+            alternateName: blend.nickname,
+        },
+        audience: { "@type": "Audience", audienceType: "Research professionals" },
+        lastReviewed: "2026-05-29",
+        reviewedBy: { "@type": "Organization", name: "PeptiDex Editorial Team", url: "https://peptidex.app/about" },
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+            {
+                "@type": "Question",
+                name: `What is the ${blend.name} stack used for?`,
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: blend.primary_benefits,
+                },
+            },
+            {
+                "@type": "Question",
+                name: `How does ${blend.name} work?`,
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: blend.mechanism,
+                },
+            },
+            {
+                "@type": "Question",
+                name: `What are the safety notes for ${blend.name}?`,
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: blend.safety_notes,
+                },
+            },
+        ],
+    };
+
+    // ─── Component peptide link validation (fix for audit section 8B) ─────────
+    // Generate slugs the same way blends.ts does, then validate against peptides.ts.
+    // Only render a link if the slug matches a known peptide — avoids dead /library/ URLs.
+    function getValidPeptideSlug(compName: string): string | null {
+        const derived = compName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+        const match = getPeptideBySlug(derived);
+        return match ? derived : null;
+    }
+
     return (
         <div className="max-w-3xl mx-auto px-3 py-4 md:px-4 md:py-6">
+            {/* JSON-LD */}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalPageSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
             {/* Back Link */}
             <Link href="/library/blends" className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-violet-400 transition-colors mb-4">
                 <ArrowLeft className="w-3 h-3" /> All Blends
             </Link>
 
             {/* Header */}
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
+            <div className="mb-6">
                 <div className="flex items-center gap-2 mb-1">
                     <span className="text-2xl">{getCategoryIcon(blend.category)}</span>
                     <div>
@@ -54,37 +194,37 @@ export default function BlendDetailPage() {
                         {blend.category}
                     </span>
                 </div>
-            </motion.div>
+            </div>
 
             {/* Benefits */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.05 }} className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+            <div className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
                 <div className="flex items-center gap-2 mb-2">
                     <TrendingUp className="w-4 h-4 text-emerald-400" />
                     <h2 className="text-sm font-semibold text-zinc-200">Benefits</h2>
                 </div>
                 <p className="text-sm text-zinc-300 leading-relaxed">{blend.primary_benefits}</p>
-            </motion.div>
+            </div>
 
             {/* Why This Blend? */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="mb-4 p-4 rounded-2xl bg-violet-500/5 border border-violet-500/15">
+            <div className="mb-4 p-4 rounded-2xl bg-violet-500/5 border border-violet-500/15">
                 <div className="flex items-center gap-2 mb-2">
                     <FlaskConical className="w-4 h-4 text-violet-400" />
                     <h2 className="text-sm font-semibold text-zinc-200">Why This Blend?</h2>
                 </div>
                 <p className="text-sm text-zinc-300 leading-relaxed">{blend.why_blend}</p>
-            </motion.div>
+            </div>
 
             {/* Mechanism */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+            <div className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
                 <div className="flex items-center gap-2 mb-2">
                     <Beaker className="w-4 h-4 text-cyan-400" />
                     <h2 className="text-sm font-semibold text-zinc-200">Mechanism of Action</h2>
                 </div>
                 <p className="text-sm text-zinc-300 leading-relaxed">{blend.mechanism}</p>
-            </motion.div>
+            </div>
 
             {/* Dosing */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/15">
+            <div className="mb-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/15">
                 <div className="flex items-center gap-2 mb-2">
                     <Clock className="w-4 h-4 text-emerald-400" />
                     <h2 className="text-sm font-semibold text-zinc-200">Dosing Protocol</h2>
@@ -93,10 +233,10 @@ export default function BlendDetailPage() {
                     <p className="text-xs text-zinc-400"><strong className="text-zinc-300">Typical Ratio:</strong> {blend.typical_ratio}</p>
                     <p className="text-xs text-zinc-400 leading-relaxed">{blend.dosing_notes}</p>
                 </div>
-            </motion.div>
+            </div>
 
             {/* Outcomes Timeline */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="mb-4">
+            <div className="mb-4">
                 <h2 className="text-sm font-semibold text-zinc-200 mb-3 flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-violet-400" />
                     Expected Timeline
@@ -113,10 +253,10 @@ export default function BlendDetailPage() {
                         );
                     })}
                 </div>
-            </motion.div>
+            </div>
 
             {/* Studies */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+            <div className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
                 <div className="flex items-center gap-2 mb-3">
                     <BookOpen className="w-4 h-4 text-blue-400" />
                     <h2 className="text-sm font-semibold text-zinc-200">Supporting Studies</h2>
@@ -137,31 +277,44 @@ export default function BlendDetailPage() {
                         </a>
                     ))}
                 </div>
-            </motion.div>
+            </div>
 
             {/* Safety */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="mb-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/15">
+            <div className="mb-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/15">
                 <div className="flex items-center gap-2 mb-2">
                     <ShieldCheck className="w-4 h-4 text-amber-400" />
                     <h2 className="text-sm font-semibold text-zinc-200">Safety Notes</h2>
                 </div>
                 <p className="text-sm text-zinc-300 leading-relaxed">{blend.safety_notes}</p>
-            </motion.div>
+            </div>
 
-            {/* Component Links */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="mb-6">
+            {/* Component Links — validated against peptides.ts (fix: audit section 8B) */}
+            <div className="mb-6">
                 <h2 className="text-sm font-semibold text-zinc-200 mb-3">📚 Individual Peptide Profiles</h2>
                 <div className="flex flex-wrap gap-2">
                     {blend.components.map((comp) => {
-                        const compSlug = comp.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                        const validSlug = getValidPeptideSlug(comp);
+                        if (!validSlug) return (
+                            <span key={comp} className="px-3 py-1.5 rounded-xl bg-zinc-800 border border-zinc-700 text-xs font-medium text-zinc-500">
+                                {comp}
+                            </span>
+                        );
                         return (
-                            <Link key={comp} href={`/library/${compSlug}`} className="px-3 py-1.5 rounded-xl bg-zinc-800 border border-zinc-700 text-xs font-medium text-violet-300 hover:bg-violet-500/10 hover:border-violet-500/30 transition-colors">
+                            <Link key={comp} href={`/library/${validSlug}`} className="px-3 py-1.5 rounded-xl bg-zinc-800 border border-zinc-700 text-xs font-medium text-violet-300 hover:bg-violet-500/10 hover:border-violet-500/30 transition-colors">
                                 {comp} →
                             </Link>
                         );
                     })}
                 </div>
-            </motion.div>
+            </div>
+
+            {/* Research disclaimer */}
+            <div className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/15 flex items-start gap-2">
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
+                <p className="text-[11px] text-amber-400/80 leading-relaxed">
+                    Research use only. Not FDA-approved for the combination described. Consult a qualified healthcare provider before use.
+                </p>
+            </div>
         </div>
     );
 }

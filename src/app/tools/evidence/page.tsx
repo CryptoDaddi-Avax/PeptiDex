@@ -67,7 +67,7 @@ const FORMATTED_DATE = new Date(DATE_MODIFIED).toLocaleDateString("en-US", {
 });
 
 export const metadata: Metadata = {
-    title: `Peptide Evidence Rankings: ${peptides.length} Compounds Ranked by Clinical Proof | PeptiDex`,
+    title: `Peptide Evidence Rankings 2026 | PeptiDex`,
     description: `The definitive ranked reference: FDA-approved to anecdotal — ${peptides.length} peptides, ${peptides.reduce((s, p) => s + p.key_studies.length, 0)}+ indexed studies. Updated ${FORMATTED_DATE}. Cite this dashboard.`,
     alternates: {
         canonical: "https://peptidex.app/tools/evidence",

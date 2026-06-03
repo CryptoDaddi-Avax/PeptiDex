@@ -15,7 +15,7 @@ export function BuyPageHero({
         <nav className="breadcrumb">
           <Link href="/">Home</Link>
           <span className="sep">/</span>
-          <Link href="/buy">Where to Buy</Link>
+          <Link href="/where-to-buy">Where to Buy</Link>
           <span className="sep">/</span>
           <span className="current">{peptideName}</span>
         </nav>

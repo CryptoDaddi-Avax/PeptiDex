@@ -1,5 +1,15 @@
-export const metadata = {
+import type { Metadata } from 'next';
+
+// fix(seo): H8 — Added description and canonical. Decision: index this page.
+// It is a legitimate public-facing page for site admins who receive bot traffic
+// from PeptiDex-CitationMonitor and want to understand it.
+export const metadata: Metadata = {
   title: 'Citation Monitor Bot Info | PeptiDex',
+  description:
+    'Information about the PeptiDex Citation Monitor bot (PeptiDex-CitationMonitor/1.0): what it does, how it behaves, and how to opt out.',
+  alternates: {
+    canonical: 'https://peptidex.app/bot-info',
+  },
 };
 
 export default function BotInfoPage() {

@@ -19,18 +19,18 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const author = getAuthorBySlug(slug);
   if (!author) return {};
 
-  const canonicalSlug = getCanonicalSlug(slug);
-
+  // fix(seo): B1 — canonical was pointing to /team/${canonicalSlug};
+  // this page serves at /about/${slug} so the canonical must match.
   return {
     title: `${author.name} — ${author.title}`,
     description: author.bio.slice(0, 160),
     alternates: {
-      canonical: `https://peptidex.app/team/${canonicalSlug}`,
+      canonical: `https://peptidex.app/about/${slug}`,
     },
     openGraph: {
       title: `${author.name} — ${author.title}`,
       description: author.bio.slice(0, 160),
-      url: `https://peptidex.app/team/${canonicalSlug}`,
+      url: `https://peptidex.app/about/${slug}`,
       type: 'profile',
       images: [{ url: author.image, width: 400, height: 400 }],
     },
@@ -47,7 +47,7 @@ export default async function AuthorProfilePage(props: Props) {
     .filter((p) => getAuthorSlug(p.author) === slug)
     .sort((a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime());
 
-  // JSON-LD Person Schema
+  // JSON-LD Person Schema — url uses /about/${slug} (matches canonical above)
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',

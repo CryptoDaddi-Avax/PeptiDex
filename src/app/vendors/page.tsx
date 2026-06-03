@@ -13,8 +13,7 @@ export const LAST_REVIEWED = '2026-05-01';
 // ── SEO Metadata ──────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title:
-    `Best Place to Buy Peptides Online (2026): ${SITE_STATS.vendors.count} COA-Verified Vendors Ranked`,
+  title: `Best Peptide Vendors 2026 — COA-Verified Sources | PeptiDex`,
   description:
     `Independent 2026 review of the best places to buy research peptides online. We rank Amino Club, Bio Longevity Labs, Limitless Life, and ${SITE_STATS.vendors.count - 3} more on purity (HPLC/MS COA), shipping speed, discount codes, and return policy. Research use only.`,
   keywords: [
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
     canonical: 'https://peptidex.app/vendors',
   },
   openGraph: {
-    title: `Best Place to Buy Peptides Online (2026): ${SITE_STATS.vendors.count} COA-Verified Vendors Ranked`,
+    title: `Best Peptide Vendors 2026 — COA-Verified Sources | PeptiDex`,
     description:
       `Independent ranking of the ${SITE_STATS.vendors.count} best research peptide vendors in 2026 — evaluated on HPLC/MS purity COAs, shipping speed, discount codes, and return policy.`,
     url: 'https://peptidex.app/vendors',
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Best Place to Buy Peptides Online (2026) — ${SITE_STATS.vendors.count} COA-Verified Vendors Ranked`,
+    title: `Best Peptide Vendors 2026 — COA-Verified | PeptiDex`,
     description:
       `Independent 2026 review: Amino Club, Bio Longevity Labs, Limitless Life, and ${SITE_STATS.vendors.count - 3} more ranked on purity, shipping, and value.`,
     images: ['https://peptidex.app/og-image.png'],

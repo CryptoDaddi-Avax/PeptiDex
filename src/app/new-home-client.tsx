@@ -1,16 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import Navigation from '@/components/redesign/Navigation';
 import StatsStrip from '@/components/redesign/StatsStrip';
-import CommandPalette from '@/components/redesign/CommandPalette';
 import QuizPromoCard from '@/components/redesign/QuizPromoCard';
 import AdvisorPreviewBlock from '@/components/redesign/AdvisorPreviewBlock';
 import GoalsGrid from '@/components/redesign/GoalsGrid';
 import { NewsletterInlineBlock } from '@/components/newsletter/NewsletterInlineBlock';
 import ToolsSection from '@/components/redesign/ToolsSection';
 import VendorSection from '@/components/redesign/VendorSection';
-import Footer from '@/components/redesign/Footer';
 import OnboardingStepper from '@/components/redesign/onboarding/OnboardingStepper';
 import OnboardingBar from '@/components/redesign/onboarding/OnboardingBar';
 import OnboardingTrigger from '@/components/redesign/onboarding/OnboardingTrigger';
@@ -21,7 +18,6 @@ import {
   setDismissed,
 } from '@/lib/storage/onboarding';
 import { trackOnboardingStarted, trackOnboardingBarShown } from '@/lib/analytics/onboarding';
-import '@/components/redesign/redesign.css';
 
 // Bug 4 fix: Dynamic import Hero so Three.js only loads on the homepage
 const Hero = dynamic(() => import('@/components/redesign/Hero'), {
@@ -63,7 +59,7 @@ export default function NewHomeClient({
   initialStep?: number;
   skipHero?: boolean;
 }) {
-  const [paletteOpen, setPaletteOpen] = useState(false);
+  // paletteOpen state removed — palette is now managed by GlobalShell in root layout
   // P2 FIX: Props are resolved server-side in page.tsx, so server and client
   // render the SAME initial step on first paint. No lazy initializer or
   // window.location needed here.
@@ -105,27 +101,7 @@ export default function NewHomeClient({
     }
   }, [initialGuideOpen]);
 
-  // Global ⌘K / Ctrl+K / forward-slash listener
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setPaletteOpen((prev) => !prev);
-      }
-      if (e.key === '/' && !paletteOpen && document.activeElement?.tagName !== 'INPUT') {
-        e.preventDefault();
-        setPaletteOpen(true);
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [paletteOpen]);
-
-  // Lock body scroll when palette is open
-  useEffect(() => {
-    document.body.style.overflow = paletteOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [paletteOpen]);
+  // ⌘K listener and body-scroll-lock removed — handled by GlobalShell in root layout
 
   function handleGuideOpen() {
     setGuideOpen(true);
@@ -153,9 +129,7 @@ export default function NewHomeClient({
 
   return (
     <>
-      <Navigation onSearchOpen={() => setPaletteOpen(true)} />
-      <CommandPalette isOpen={paletteOpen} onClose={() => setPaletteOpen(false)} />
-      {!skipHero && <Hero onSearchOpen={() => setPaletteOpen(true)} />}
+      {!skipHero && <Hero />}
       {/* BUG 1 FIX: Trigger lives OUTSIDE <Hero> to avoid overflow:hidden clipping.
           It is conditionally rendered by showTrigger state, same as before. */}
       {showTrigger && !guideOpen && (
@@ -176,7 +150,6 @@ export default function NewHomeClient({
       <NewsletterInlineBlock />
       <ToolsSection />
       <VendorSection />
-      <Footer />
       {showBar && !guideOpen && (
         <OnboardingBar
           resumeStep={resumeStep}

@@ -13,6 +13,7 @@ import { buildWebSiteSchema, buildOrganizationSchema } from "@/lib/seo/schema";
 import { GlobalDisclaimerBanner } from "@/components/ui/GlobalDisclaimerBanner";
 import { SITE_STATS } from "@/data/site-stats";
 import { NewsletterGlobalProvider } from "@/components/newsletter/NewsletterGlobalProvider";
+import GlobalShell from "@/components/redesign/GlobalShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -142,9 +143,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
         <AuthProvider>
         <AutoLinkProvider>
-          <main id="main-content" role="main">
-            {children}
-          </main>
+          <GlobalShell>
+            <main id="main-content" role="main">
+              {children}
+            </main>
+          </GlobalShell>
         </AutoLinkProvider>
         </AuthProvider>
 

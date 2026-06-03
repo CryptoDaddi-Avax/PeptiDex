@@ -1,10 +1,10 @@
-import RedesignLayout from '@/components/redesign/RedesignLayout';
+import '@/components/redesign/redesign.css';
 import './blog-redesign.css';
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
     return (
-        <RedesignLayout>
+        <div className="redesign-content">
             {children}
-        </RedesignLayout>
+        </div>
     );
 }

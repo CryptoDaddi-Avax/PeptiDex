@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import RedesignLayout from '@/components/redesign/RedesignLayout';
+import '@/components/redesign/redesign.css';
 import { ToolsBreadcrumbs } from '@/components/tools/ToolsBreadcrumbs';
 
 export const metadata: Metadata = {
@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 
 export default function ToolsGroupLayout({ children }: { children: React.ReactNode }) {
     return (
-        <RedesignLayout>
+        <div className="redesign-content">
             <ToolsBreadcrumbs />
             {children}
-        </RedesignLayout>
+        </div>
     );
 }
 

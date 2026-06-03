@@ -103,9 +103,9 @@ export default async function PeptideAtVendorPage({
                     <nav className="breadcrumb">
                         <Link href="/">Home</Link>
                         <span className="sep">/</span>
-                        <Link href="/peptides">Peptides</Link>
+                        <Link href="/library">Peptides</Link>
                         <span className="sep">/</span>
-                        <Link href={`/peptides/${slug}`}>{peptide.name}</Link>
+                        <Link href={`/library/${slug}`}>{peptide.name}</Link>
                         <span className="sep">/</span>
                         <span className="current">{vendorObj.name}</span>
                     </nav>

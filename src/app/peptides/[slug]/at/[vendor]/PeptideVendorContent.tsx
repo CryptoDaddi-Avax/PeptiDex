@@ -385,7 +385,7 @@ export function PeptideVendorContent({ pair }: Props) {
             📐 Plan a {peptide.name} cycle →
           </Link>
           {relatedComparisons.slice(0, 2).map(comp => (
-            <Link key={comp.slug} href={`/vs/${comp.slug}`} style={{ ...linkStyle, fontSize: 13 }}>
+            <Link key={comp.slug} href={`/compare/${comp.slug}`} style={{ ...linkStyle, fontSize: 13 }}>
               ⚖️ {comp.slug.replace(/-/g, " ").replace(/\bvs\b/, "vs.")} →
             </Link>
           ))}

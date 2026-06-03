@@ -50,6 +50,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
+    // fix(seo): H9 — /library/blends now has metadata; add to sitemap
+    {
+      url: `${baseUrl}/library/blends`,
+      lastModified: peptidesDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/stacks`,
       lastModified: stacksDate,
@@ -134,36 +141,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
-    {
-      url: `${baseUrl}/quiz`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
+    // fix(seo): H4 — /quiz removed from sitemap (pure client component, zero SSR content for Googlebot)
     {
       url: `${baseUrl}/legal`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.4,
     },
-    {
-      url: `${baseUrl}/advisor`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
+    // fix(seo): H4 — /advisor removed from sitemap (AI chat UI, zero SSR content for Googlebot)
     {
       url: `${baseUrl}/disclaimers`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.4,
     },
-    {
-      url: `${baseUrl}/peptides`,
-      lastModified: peptidesDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
+    // /peptides removed from sitemap — 301 redirects to /library
     {
       url: `${baseUrl}/faq`,
       lastModified: currentDate,
@@ -248,11 +240,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Standard Blog Post Pages
+  // Standard Blog Post Pages (dynamic — iterates blogPosts data array)
   const blogUrls = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.dateModified || post.datePublished),
-    changeFrequency: 'weekly' as const,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // fix(seo): B3 — Static blog post pages that live as page.tsx files but are
+  // NOT registered in the blogPosts data array. The dynamic blogUrls loop above
+  // only covers posts in that array; these hardcoded pages need explicit entries.
+  const STATIC_BLOG_DATE = '2026-05-29';
+  const staticBlogUrls: MetadataRoute.Sitemap = [
+    '/blog/cjc-1295-vs-sermorelin',
+    '/blog/fda-peptide-reclassification-2026',
+    '/blog/fda-peptide-reclassification-patients-providers',
+    '/blog/ghk-cu-breakout-peptide-2026',
+    '/blog/ipamorelin-vs-cjc-1295',
+    '/blog/mk-677-vs-ipamorelin',
+    '/blog/mots-c-mitochondrial-peptide',
+    '/blog/oral-peptide-revolution',
+    '/blog/oral-vs-injectable-peptides',
+    '/blog/peptide-stacking-2026-combination-protocols',
+    '/blog/retatrutide-explained',
+    '/blog/tesamorelin-growth-hormone-peptide-comparison',
+  ].map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(STATIC_BLOG_DATE),
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
@@ -338,18 +354,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // Dynamic Buy Pages
-  const TARGET_SLUGS = [
-    'bpc-157', 'tb-500', 'ghk-cu', 'semaglutide', 'tirzepatide', 
-    'retatrutide', 'cjc-1295', 'ipamorelin', 'mk-677', 'sermorelin', 
-    'tesamorelin', 'mots-c'
-  ];
-  const buyUrls = TARGET_SLUGS.map((slug) => ({
-    url: `${baseUrl}/buy/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.85,
-  }));
+  // /buy/* removed from sitemap — 301 redirects to /where-to-buy/*
 
   // ── pSEO Drip-Feed: /peptides/[slug]/at/[vendor] ──────────────────────────
   // Decision 3: 6 weeks, 4 waves, 13-14 pages each.
@@ -423,13 +428,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...whereToBuyUrls,
     ...reconstitutionUrls,
-    ...buyUrls,
-    {
-      url: `${baseUrl}/buy`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
+    // /buy and /buy/* entries removed — 301 to /where-to-buy
     {
       url: `${baseUrl}/guides/glp1-alternatives`,
       lastModified: new Date(),
@@ -444,5 +443,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.85,
     })),
+    // fix(seo): B5 — /intro now has metadata; add to sitemap
+    {
+      url: `${baseUrl}/intro`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    // fix(seo): B3 — 12 static blog posts previously missing from sitemap
+    ...staticBlogUrls,
+    // fix(seo): H6 — Affiliate coupon landing page (high commercial value)
+    {
+      url: `${baseUrl}/peptidex-coupon`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    // fix(seo): H7 — Evidence tools not previously in sitemap
+    {
+      url: `${baseUrl}/tools/evidence`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/tools/evidence-map`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    // fix(seo): B2 — Canonical price comparison tool
+    {
+      url: `${baseUrl}/tools/pricing`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
   ];
 }

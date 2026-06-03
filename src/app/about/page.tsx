@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './about-redesign.css';
-import { SITE_STATS } from '@/data/site-stats';
+
 
 export const metadata: Metadata = {
   title: 'About PeptiDex — Independent Peptide Research Index',
@@ -25,17 +25,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'PeptiDex',
-    alternateName: ['PeptiDex Research Index', 'peptidex.app'],
-    url: 'https://peptidex.app',
-    logo: 'https://peptidex.app/logo.png',
-    description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.`,
-    publishingPrinciples: 'https://peptidex.app/about/editorial-policy',
-  };
-
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -88,7 +77,6 @@ export default function AboutPage() {
 
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

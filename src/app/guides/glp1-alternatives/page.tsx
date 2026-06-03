@@ -114,7 +114,7 @@ export default function GlpAlternativesPage() {
           </ul>
           <div className="flex gap-4 not-prose mb-12">
             <Link href="/library/tirzepatide" className="text-sm font-bold text-violet-400 hover:text-violet-300">Read Tirzepatide Profile →</Link>
-            <Link href="/buy/tirzepatide" className="text-sm font-bold text-amber-400 hover:text-amber-300">Where to Buy →</Link>
+            <Link href="/where-to-buy/tirzepatide" className="text-sm font-bold text-amber-400 hover:text-amber-300">Where to Buy →</Link>
           </div>
 
           <h3>2. Retatrutide (LY3437943)</h3>
@@ -127,7 +127,7 @@ export default function GlpAlternativesPage() {
           </ul>
           <div className="flex gap-4 not-prose mb-12">
             <Link href="/library/retatrutide" className="text-sm font-bold text-violet-400 hover:text-violet-300">Read Retatrutide Profile →</Link>
-            <Link href="/buy/retatrutide" className="text-sm font-bold text-amber-400 hover:text-amber-300">Where to Buy →</Link>
+            <Link href="/where-to-buy/retatrutide" className="text-sm font-bold text-amber-400 hover:text-amber-300">Where to Buy →</Link>
           </div>
 
           <h3>3. Tesofensine</h3>
@@ -164,7 +164,7 @@ export default function GlpAlternativesPage() {
           </ul>
           <div className="flex gap-4 not-prose mb-12">
             <Link href="/library/mots-c" className="text-sm font-bold text-violet-400 hover:text-violet-300">Read MOTS-c Profile →</Link>
-            <Link href="/buy/mots-c" className="text-sm font-bold text-amber-400 hover:text-amber-300">Where to Buy →</Link>
+            <Link href="/where-to-buy/mots-c" className="text-sm font-bold text-amber-400 hover:text-amber-300">Where to Buy →</Link>
           </div>
 
           <hr className="my-12 border-zinc-800" />
@@ -185,7 +185,7 @@ export default function GlpAlternativesPage() {
             <p className="text-zinc-300 text-sm m-0">
               Many of the compounds on this list (like Retatrutide and Tesofensine) are strictly in the clinical trial phase and are not FDA-approved for human use. They are available only as research chemicals. If you are conducting in-vitro research, ensure you are sourcing from vendors that provide 3rd-party HPLC Certificates of Analysis. 
             </p>
-            <Link href="/buy" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold text-sm mt-4">
+            <Link href="/where-to-buy" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold text-sm mt-4">
               View our directory of COA-Verified Vendors <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

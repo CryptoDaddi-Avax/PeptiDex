@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { buildWebSiteSchema, buildOrganizationSchema, buildFAQPageSchema } from '@/lib/seo/schema';
+import { buildFAQPageSchema } from '@/lib/seo/schema';
 import { peptides } from '@/data/peptides';
 import { stacks } from '@/data/stacks';
 
@@ -54,8 +54,6 @@ export default async function Page({
 }) {
   const resolvedParams = await searchParams;
   const deepLink = resolveDeepLink(resolvedParams);
-  const websiteSchema = buildWebSiteSchema();
-  const orgSchema = buildOrganizationSchema();
   const faqSchema = buildFAQPageSchema([
     {
       q: "What are research peptides?",
@@ -100,7 +98,7 @@ export default async function Page({
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@graph': [websiteSchema, orgSchema, collectionPageSchema, faqSchema]
+    '@graph': [collectionPageSchema, faqSchema]
   };
 
   return (

@@ -7,7 +7,7 @@ import { Beaker, Calendar } from "lucide-react";
 import { EmbedModal } from "@/components/embed-modal";
 
 export const metadata: Metadata = {
-    title: `Peptide Evidence Map: ${SITE_STATS.peptides.count} Research Peptides Ranked by Scientific Evidence [2026]`,
+    title: `Peptide Evidence Map 2026 | PeptiDex`,
     description:
         `Interactive visualization of ${SITE_STATS.peptides.count} research peptides ranked by scientific evidence — from FDA-approved compounds to emerging research. Filter by goal, compare evidence tiers, and explore clinical trial data. Updated April 2026.`,
     keywords: [

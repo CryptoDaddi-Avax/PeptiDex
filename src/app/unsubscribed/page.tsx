@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+// fix(seo): H8 — Unsubscribed is a confirmation page. Must not be indexed.
+export const metadata: Metadata = {
+  title: 'Unsubscribed — PeptiDex',
+  robots: { index: false, follow: false },
+};
+
 export default function UnsubscribedPage() {
   return (
     <main style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#0a0a0b" }}>

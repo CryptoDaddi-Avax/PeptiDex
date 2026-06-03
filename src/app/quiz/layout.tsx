@@ -1,5 +1,5 @@
-import RedesignLayout from '@/components/redesign/RedesignLayout';
+import '@/components/redesign/redesign.css';
 
 export default function QuizLayout({ children }: { children: React.ReactNode }) {
-  return <RedesignLayout>{children}</RedesignLayout>;
+  return <div className="redesign-content">{children}</div>;
 }
