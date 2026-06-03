@@ -31,29 +31,13 @@ import { buildFAQPageSchema } from '@/lib/seo/schema';
 import { peptides } from '@/data/peptides';
 import { stacks } from '@/data/stacks';
 
-// P2 FIX: Page receives searchParams from Next.js App Router at request time.
-// Parsing here (server component) means the resolved values are embedded in
-// the initial HTML — server and client render the SAME step on first paint.
-function resolveDeepLink(searchParams: Record<string, string | string[] | undefined>): {
-  guideOpen: boolean;
-  initialStep: number;
-  skipHero: boolean;
-} {
-  const guide = searchParams['guide'];
-  const skipHero = searchParams['noHero'] === '1';
-  if (guide !== '1') return { guideOpen: false, initialStep: 0, skipHero };
-  const raw = parseInt(String(searchParams['step'] ?? '1'), 10);
-  const step = isNaN(raw) ? 0 : Math.max(0, Math.min(4, raw - 1));
-  return { guideOpen: true, initialStep: step, skipHero };
-}
-
 export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const resolvedParams = await searchParams;
-  const deepLink = resolveDeepLink(resolvedParams);
+  const skipHero = resolvedParams['noHero'] === '1';
   const faqSchema = buildFAQPageSchema([
     {
       q: "What are research peptides?",
@@ -108,10 +92,9 @@ export default async function Page({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <NewHomeClient
-        initialGuideOpen={deepLink.guideOpen}
-        initialStep={deepLink.initialStep}
-        skipHero={deepLink.skipHero}
+        skipHero={skipHero}
       />
     </>
   );
 }
+
