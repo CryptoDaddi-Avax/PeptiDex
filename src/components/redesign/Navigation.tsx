@@ -1,136 +1,141 @@
 'use client';
-import { useEffect, useState, useCallback } from 'react';
-import { Bookmark } from 'lucide-react';
-import { useSavedItems } from '@/hooks/useSavedItems';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import './Navigation.css';
 
 export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void }) {
-  const [shrunk, setShrunk] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const { count } = useSavedItems();
+  const navRef = useRef<HTMLElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  /* ── 1. Scroll state ── */
   useEffect(() => {
-    const onScroll = () => setShrunk(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    let last = 0;
+    let trailing: ReturnType<typeof setTimeout> | null = null;
+    const threshold = () => (window.innerHeight || document.documentElement.clientHeight) * 0.8;
 
-  const closeMobile = useCallback(() => {
-    setMobileOpen(false);
-    document.body.style.overflow = '';
-  }, []);
-
-  const toggleMobile = () => {
-    if (mobileOpen) {
-      closeMobile();
-    } else {
-      setMobileOpen(true);
-      document.body.style.overflow = 'hidden';
+    function update() {
+      last = Date.now();
+      const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      setScrolled(y > threshold());
     }
-  };
-
-  // Auto-close mobile menu when viewport becomes desktop-width
-  useEffect(() => {
-    const mql = window.matchMedia('(min-width: 769px)');
-    const handler = (e: MediaQueryListEvent) => {
-      if (e.matches) closeMobile();
+    function onScroll() {
+      const now = Date.now();
+      if (now - last >= 80) {
+        update();
+      } else if (!trailing) {
+        trailing = setTimeout(() => { trailing = null; update(); }, 80 - (now - last));
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (trailing) clearTimeout(trailing);
     };
-    mql.addEventListener('change', handler);
-    // Also close immediately if already desktop
-    if (mql.matches && mobileOpen) closeMobile();
-    return () => mql.removeEventListener('change', handler);
-  }, [mobileOpen, closeMobile]);
+  }, []);
+
+  /* ── 2. Mobile menu ── */
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeMenu(); };
+    const onResize = () => { if (window.innerWidth > 900) closeMenu(); };
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+    return () => { document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize); };
+  }, [menuOpen, closeMenu]);
+
+  /* ── 3. Body .loaded for draw-in animation ── */
+  useEffect(() => {
+    document.body.classList.add('loaded');
+  }, []);
+
+  const navCls = [
+    'site-nav',
+    scrolled ? 'scrolled' : '',
+    menuOpen ? 'menu-open' : '',
+  ].filter(Boolean).join(' ');
 
   return (
-    <>
-      <nav className={shrunk ? 'nav-shrunk' : ''}>
-        <a href="/" className="nav-logo">
-          <span className="mark" />
-          Pepti<em>Dex</em>
+    <header className={navCls} id="siteNav" ref={navRef}>
+      <div className="nav-inner">
+        {/* ── Logo + molecule mark ── */}
+        <a className="nav-logo" href="/" aria-label="Peptidex home">
+          <svg className="nav-mark" viewBox="0 0 70 28" fill="none" aria-hidden="true">
+            <line className="nm-bond" x1="10" y1="19" x2="27" y2="9" />
+            <line className="nm-bond" x1="27" y1="9" x2="44" y2="19" />
+            <line className="nm-bond" x1="44" y1="19" x2="60" y2="9" />
+            <circle className="nm-node lime"  cx="10" cy="19" r="5" />
+            <circle className="nm-node paper" cx="27" cy="9"  r="5" />
+            <circle className="nm-node paper" cx="44" cy="19" r="5" />
+            <circle className="nm-node lime"  cx="60" cy="9"  r="5" />
+          </svg>
+          <span className="nav-wordmark">Peptidex</span>
         </a>
-        <ul className="nav-links">
-          <li><a href="/library">Library</a></li>
-          <li><a href="/stacks">Stacks</a></li>
-          <li><a href="/tools">Tools</a></li>
-          <li><a href="/vendors">Vendors</a></li>
-          <li><a href="/coupon-codes">Coupons</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/about/methodology">About</a></li>
-        </ul>
-        <div className="nav-right">
-          <button className="search-trigger" onClick={onSearchOpen}>
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+
+        {/* ── Center links ── */}
+        <nav className="nav-links" aria-label="Primary">
+          <a href="/library">Library</a>
+          <a href="/stacks">Stacks</a>
+          <a href="/tools">Tools</a>
+          <a href="/vendors">Vendors</a>
+          <a href="/coupon-codes">Coupons</a>
+          <a href="/blog">Blog</a>
+          <a href="/saved">Saved</a>
+        </nav>
+
+        {/* ── Right actions ── */}
+        <div className="nav-actions">
+          <button className="nav-search" type="button" aria-label="Search" onClick={onSearchOpen}>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M10.5 10.5 14 14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="placeholder">Search peptides, studies, vendors…</span>
+            <span className="label-text">Search</span>
             <span className="kbd">⌘K</span>
           </button>
-          {/* Mobile search button — 44pt touch target, visible ≤768px */}
+          <span className="magnetic">
+            <a className="btn-inner pill-btn pill-lime" href="/intro">
+              Start
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M5 11 11 5M6 5h5v5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </span>
           <button
-            className="mobile-search-btn"
-            onClick={onSearchOpen}
-            aria-label="Search"
-          >
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-            </svg>
-          </button>
-          {/* Saved bookmark icon — shows count badge */}
-          <a href="/saved" className="nav-saved-icon" aria-label={`Saved items (${count})`}>
-            <Bookmark size={18} />
-            {count > 0 && (
-              <span className="nav-saved-badge">{count}</span>
-            )}
-          </a>
-          <a href="/intro" className="nav-cta">Start</a>
-          <button
-            className={`mobile-menu-btn ${mobileOpen ? 'open' : ''}`}
-            onClick={toggleMobile}
-            aria-label="Menu"
+            className={`nav-burger${menuOpen ? ' open' : ''}`}
+            id="navBurger"
+            type="button"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(prev => !prev)}
           >
             <span /><span /><span />
           </button>
         </div>
-      </nav>
-
-      {/* Mobile menu drawer — only render when open */}
-      {mobileOpen && (
-      <div className="mobile-menu open">
-        <ul className="mobile-menu-links">
-          {[
-            { label: 'Library', href: '/library' },
-            { label: 'Stacks', href: '/stacks' },
-            { label: 'Tools', href: '/tools' },
-            { label: 'Vendors', href: '/vendors' },
-            { label: 'Coupons', href: '/coupon-codes' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'About', href: '/about/methodology' },
-          ].map(({ label, href }, i) => (
-            <li key={label}>
-              <a href={href} onClick={closeMobile}>
-                <span>{label}</span>
-                <span className="num">§ 0{i + 1}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className="mobile-menu-footer">
-          <div className="meta">§ Search the index</div>
-          <button className="search-mobile" onClick={() => { closeMobile(); setTimeout(() => onSearchOpen?.(), 300); }}>
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" />
-            </svg>
-            <span>Peptides, studies, vendors…</span>
-          </button>
-          <div className="meta" style={{ marginTop: 16 }}>
-            Vol. I · Edition 2026 · <span style={{ color: 'var(--gold)' }}>Independent</span>
-          </div>
-        </div>
       </div>
-      )}
-    </>
+
+      {/* ── Mobile slide-down menu (always in DOM, CSS-driven visibility) ── */}
+      <div className="nav-mobile">
+        <a href="/library" onClick={closeMenu}>Library</a>
+        <a href="/stacks" onClick={closeMenu}>Stacks</a>
+        <a href="/tools" onClick={closeMenu}>Tools</a>
+        <a href="/vendors" onClick={closeMenu}>Vendors</a>
+        <a href="/coupon-codes" onClick={closeMenu}>Coupons</a>
+        <a href="/blog" onClick={closeMenu}>Blog</a>
+        <a href="/saved" onClick={closeMenu}>Saved</a>
+        <span className="nav-mobile-cta">
+          <a className="btn-inner pill-btn pill-lime" href="/intro" onClick={closeMenu}>
+            Start
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M5 11 11 5M6 5h5v5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </span>
+      </div>
+    </header>
   );
 }
