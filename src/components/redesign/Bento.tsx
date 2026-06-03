@@ -1,7 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { stacks } from '@/data/stacks';
 import './Bento.css';
+
+const STACK_COUNT = stacks.length;
 
 /**
  * Bento — v13 asymmetric grid section ("The Index").
@@ -151,7 +154,7 @@ export default function Bento() {
                   <p className="card-desc" style={{ marginTop: 8 }}>Synergies grounded in published research — indexed by goal, with full citation trails.</p>
                 </div>
                 <div className="card-side">
-                  <p className="card-stat">{'12 STACKS\nBY RESEARCH GOAL\nFULL CITATIONS'}</p>
+                  <p className="card-stat">{`${STACK_COUNT} STACKS\nBY RESEARCH GOAL\nFULL CITATIONS`}</p>
                   <Link className="pill-btn pill-glass small" href="/stacks">
                     Browse stacks
                     <ArrowRight />
