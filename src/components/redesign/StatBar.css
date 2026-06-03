@@ -1,0 +1,89 @@
+/* =============================================================
+   Peptidex v13 — Stat Bar
+   Horizontal row of key metrics between Hero and Bento.
+   Ported from /_design-reference/v13/sections.css .stat-bar
+   ============================================================= */
+
+.stat-bar {
+  position: relative;
+  z-index: 2;
+  background: var(--ink);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 32px;
+}
+
+.stat-bar-inner {
+  max-width: var(--max, 1240px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stat-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+  padding: 36px 20px;
+}
+
+/* Hairline divider between cells */
+.stat-cell + .stat-cell::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 26px;
+  bottom: 26px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stat-fig {
+  font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
+  font-weight: 500;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+.stat-fig .em {
+  font-style: normal;
+  color: var(--lime);
+}
+
+.stat-label {
+  font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .stat-bar { padding: 0 16px; }
+  .stat-bar-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Reset dividers for 2-col layout */
+  .stat-cell + .stat-cell::before { display: none; }
+  .stat-cell:nth-child(2n+1):not(:first-child) {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .stat-cell:nth-child(even)::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 26px;
+    bottom: 26px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .stat-cell { padding: 28px 16px; }
+  .stat-fig { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+}
