@@ -1,28 +1,11 @@
-/* PeptiDex Redesign — Shared Design Tokens */
-:root {
-  --bg: #0a0a0b;
-  --bg-soft: #111113;
-  --bg-card: #16161a;
-  --ink: #f4efe6;
-  --ink-dim: #a8a196;
-  --ink-mute: #6b6860;
-  --line: rgba(244,239,230,0.08);
-  --line-strong: rgba(244,239,230,0.16);
-  --gold: #c9a961;
-  --gold-bright: #e8c987;
-  --amber: #d4832a;
-  --plasma: #4a9eff;
-  --green: #7fb77e;
-  --serif: 'Fraunces', 'Times New Roman', serif;
-  --sans: 'Inter', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', monospace;
-}
+/* PeptiDex Redesign — Shared Design Tokens (v13 lime/teal/Geist) */
+/* Note: :root tokens now live in globals.css — no duplication here */
 
 /* Shared button styles */
 .btn-primary {
   padding: 18px 36px;
-  background: var(--gold);
-  color: var(--bg);
+  background: var(--lime);
+  color: var(--ink);
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 0.1em;
@@ -41,7 +24,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--gold-bright);
+  background: var(--lime-2);
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
 }
@@ -53,7 +36,7 @@
 .btn-ghost {
   padding: 18px 36px;
   background: transparent;
-  color: var(--ink);
+  color: var(--paper);
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 0.1em;
@@ -66,7 +49,7 @@
   gap: 12px;
   transition: all 0.3s;
 }
-.btn-ghost:hover { border-color: var(--ink); background: rgba(244,239,230,0.04); }
+.btn-ghost:hover { border-color: var(--paper); background: rgba(242,238,229,0.04); }
 
 /* Section shared */
 .section-label {
@@ -74,7 +57,7 @@
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -84,7 +67,7 @@
   content: '';
   width: 32px;
   height: 1px;
-  background: var(--gold);
+  background: var(--lime);
 }
 
 /* Animations */
@@ -118,7 +101,7 @@
   padding-top: 80px;   /* clear fixed nav height */
   min-height: calc(100vh - 80px);
   font-family: var(--sans);
-  color: var(--ink);
+  color: var(--paper);
 }
 
 /* ── Save Button ── */
@@ -127,22 +110,22 @@
   align-items: center;
   justify-content: center;
   width: 40px; height: 40px;
-  background: rgba(244,239,230,0.04);
+  background: rgba(242,238,229,0.04);
   border: 1px solid var(--line);
-  color: var(--ink-mute);
+  color: var(--paper-3);
   cursor: pointer;
   transition: all 0.3s;
   flex-shrink: 0;
 }
 .save-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(201,169,97,0.06);
+  border-color: var(--lime);
+  color: var(--lime);
+  background: rgba(196,242,92,0.06);
 }
 .save-btn--active {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(201,169,97,0.1);
+  border-color: var(--lime);
+  color: var(--lime);
+  background: rgba(196,242,92,0.1);
 }
 
 /* Save toast notification */
@@ -155,9 +138,9 @@
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--gold);
-  color: var(--ink);
+  background: var(--ink-2);
+  border: 1px solid var(--lime);
+  color: var(--paper);
   font-family: var(--sans);
   font-size: 13px;
   z-index: 9999;
@@ -172,7 +155,7 @@
 /* ── Newsletter Signup ── */
 .newsletter-signup {
   padding: 48px 32px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   text-align: center;
   position: relative;
@@ -183,7 +166,7 @@
   position: absolute;
   top: -60px; right: -60px;
   width: 160px; height: 160px;
-  background: rgba(201,169,97,0.06);
+  background: rgba(196,242,92,0.06);
   border-radius: 50%;
   filter: blur(50px);
   pointer-events: none;
@@ -193,20 +176,20 @@
   font-size: 10px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   margin-bottom: 16px;
 }
 .newsletter-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 28px;
   font-weight: 300;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
-.newsletter-title em { font-style: italic; color: var(--gold); }
+.newsletter-title em { font-style: italic; color: var(--lime); }
 .newsletter-subtitle {
   font-size: 14px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   margin-bottom: 24px;
   max-width: 480px;
   margin-left: auto;
@@ -222,20 +205,20 @@
 .newsletter-input {
   flex: 1;
   padding: 14px 18px;
-  background: var(--bg);
+  background: var(--ink);
   border: 1px solid var(--line);
-  color: var(--ink);
+  color: var(--paper);
   font-family: var(--sans);
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s;
 }
-.newsletter-input::placeholder { color: var(--ink-mute); }
-.newsletter-input:focus { border-color: var(--gold); }
+.newsletter-input::placeholder { color: var(--paper-3); }
+.newsletter-input:focus { border-color: var(--lime); }
 .newsletter-submit {
   padding: 14px 24px;
-  background: var(--gold);
-  color: var(--bg);
+  background: var(--lime);
+  color: var(--ink);
   border: none;
   font-family: var(--sans);
   font-size: 13px;
@@ -246,19 +229,19 @@
   transition: background 0.3s;
   white-space: nowrap;
 }
-.newsletter-submit:hover { background: var(--gold-bright); }
+.newsletter-submit:hover { background: var(--lime-2); }
 .newsletter-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 .newsletter-success {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: var(--green);
+  color: var(--lime);
 }
-.newsletter-success p { font-size: 14px; color: var(--ink-dim); margin-top: 4px; }
+.newsletter-success p { font-size: 14px; color: var(--paper-2); margin-top: 4px; }
 .newsletter-fine {
   font-size: 11px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   margin-top: 12px;
 }
 @media (max-width: 480px) {
@@ -272,15 +255,15 @@
   width: 44px; height: 44px;
   background: transparent;
   border: 1px solid var(--line);
-  color: var(--ink-dim);
+  color: var(--paper-2);
   cursor: pointer;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
 }
 .mobile-search-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--lime);
+  color: var(--lime);
 }
 @media (max-width: 768px) {
   .mobile-search-btn { display: flex; }
@@ -294,4 +277,3 @@
     transition: none !important;
   }
 }
-

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Suspense } from "react";
@@ -15,9 +15,16 @@ import { SITE_STATS } from "@/data/site-stats";
 import { NewsletterGlobalProvider } from "@/components/newsletter/NewsletterGlobalProvider";
 import GlobalShell from "@/components/redesign/GlobalShell";
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
+  display: "swap",
+  preload: true,
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
   preload: true,
 });
@@ -103,16 +110,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* Google Fonts — Fraunces (serif), Inter (sans), JetBrains Mono (mono) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
+        {/* Geist fonts loaded via next/font — no CDN link needed */}
 
         {/* SEO / PWA meta tags */}
-        <meta name="theme-color" content="#0a0a0b" />
+        <meta name="theme-color" content="#0B0D10" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="PeptiDex" />
@@ -121,13 +122,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c9a961" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#C4F25C" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#0a0a0b" />
+        <meta name="msapplication-TileColor" content="#0B0D10" />
         {/* Site-wide JSON-LD: Organization + WebSite on every page */}
         <SchemaInjector schema={[buildOrganizationSchema(), buildWebSiteSchema()]} />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-zinc-950 text-zinc-100 min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}>
         <GoogleAnalytics gaId="G-FBJ7CJVJK9" />
         {/* Skip to content - accessibility */}
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-violet-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
