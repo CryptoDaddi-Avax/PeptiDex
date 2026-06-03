@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<title>Peptide Research Tools — 8 Free Calculators · PeptiDex</title>
+<meta name="description" content="Eight free interactive research tools: cycle planner, COA analyzer, reconstitution calculator, PK plasma curves, comparison, and more." />
+<meta name="keywords" content="peptide calculator, reconstitution, COA analyzer, peptide tools" />
+<meta name="author" content="PeptiDex" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://peptidex.app/tools" />
+<link rel="alternate" type="application/llms-full+txt" href="https://peptidex.app/llms-full.txt" title="PeptiDex full content index for LLMs" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PeptiDex" />
+<meta property="og:title" content="Peptide Research Tools — 8 Free Calculators · PeptiDex" />
+<meta property="og:description" content="Eight free interactive research tools: cycle planner, COA analyzer, reconstitution calculator, PK plasma curves, comparison, and more." />
+<meta property="og:url" content="https://peptidex.app/tools" />
+<meta property="og:image" content="https://peptidex.app/api/og?title=Research%20Tools&amp;eyebrow=FREE%20TOOLKIT&amp;stat=8%20interactive%20tools%20%C2%B7%20no%20account" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@peptidex" />
+<meta name="twitter:title" content="Peptide Research Tools — 8 Free Calculators · PeptiDex" />
+<meta name="twitter:description" content="Eight free interactive research tools: cycle planner, COA analyzer, reconstitution calculator, PK plasma curves, comparison, and more." />
+<meta name="twitter:image" content="https://peptidex.app/api/og?title=Research%20Tools&amp;eyebrow=FREE%20TOOLKIT&amp;stat=8%20interactive%20tools%20%C2%B7%20no%20account" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="base.css" />
+<link rel="stylesheet" href="motion.css" />
+<link rel="stylesheet" href="nav.css" />
+<link rel="stylesheet" href="loader.css" />
+<link rel="stylesheet" href="interaction.css" />
+<link rel="stylesheet" href="sections.css" />
+<link rel="stylesheet" href="interior.css" />
+<link rel="stylesheet" href="aeo.css" />
+<link rel="stylesheet" href="legal.css" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeptiDex Research Tools","applicationCategory":"HealthApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Eight free peptide research tools including reconstitution calculator, PK plasma curves, and live vendor price comparison."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What research tools does PeptiDex offer?","acceptedAnswer":{"@type":"Answer","text":"PeptiDex offers eight free tools: cycle planner, reconstitution calculator, PK plasma curves, COA analyzer, evidence dashboard, peptide comparison, interaction checker, and price comparison."}},{"@type":"Question","name":"Is the reconstitution calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes. All eight tools are free and require no account. They are methodology-reference tools that describe research calculations, not personal-use guidance."}},{"@type":"Question","name":"What does the COA Analyzer do?","acceptedAnswer":{"@type":"Answer","text":"The COA Analyzer helps read and validate a Certificate of Analysis — confirming HPLC purity and mass-spec identity for a peptide batch."}}]}
+</script>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"><span class="cursor-label">explore</span></div>
+
+<div class="disclaimer-bar" role="note">
+  <span class="warn">⚠ Research Use Only</span>
+  <span class="dim verbose">— Not FDA-approved for human use. Not medical advice.</span>
+  <a href="/disclaimers">Full disclaimers →</a>
+</div>
+
+<div class="loader" id="loader" role="status" aria-label="Loading Peptidex">
+  <div class="loader-stage">
+    <svg class="loader-mark" viewBox="0 0 200 82" fill="none" aria-hidden="true">
+      <line class="lm-bond" x1="26" y1="54" x2="74" y2="28" />
+      <line class="lm-bond" x1="74" y1="28" x2="122" y2="54" />
+      <line class="lm-bond" x1="122" y1="54" x2="170" y2="28" />
+      <circle class="lm-node lime"  cx="26"  cy="54" r="13" />
+      <circle class="lm-node paper" cx="74"  cy="28" r="13" />
+      <circle class="lm-node paper" cx="122" cy="54" r="13" />
+      <circle class="lm-node lime"  cx="170" cy="28" r="13" />
+    </svg>
+    <div class="loader-wordmark">Peptidex</div>
+    <div class="loader-progress"><div class="loader-bar"></div></div>
+    <div class="loader-caption" id="loaderCaption">indexing compounds…</div>
+  </div>
+</div>
+
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="Peptidex home">
+      <svg class="nav-mark" viewBox="0 0 70 28" fill="none" aria-hidden="true">
+        <line class="nm-bond" x1="10" y1="19" x2="27" y2="9" />
+        <line class="nm-bond" x1="27" y1="9" x2="44" y2="19" />
+        <line class="nm-bond" x1="44" y1="19" x2="60" y2="9" />
+        <circle class="nm-node lime"  cx="10" cy="19" r="5" />
+        <circle class="nm-node paper" cx="27" cy="9"  r="5" />
+        <circle class="nm-node paper" cx="44" cy="19" r="5" />
+        <circle class="nm-node lime"  cx="60" cy="9"  r="5" />
+      </svg>
+      <span class="nav-wordmark">Peptidex</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/library">Library</a>
+      <a href="/stacks">Stacks</a>
+      <a href="/tools" class="active">Tools</a>
+      <a href="/vendors">Vendors</a>
+      <a href="/coupon-codes">Coupons</a>
+      <a href="/blog">Blog</a>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="nav-search" type="button" aria-label="Search">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="label-text">Search</span>
+        <span class="kbd">⌘K</span>
+      </button>
+      <span class="magnetic">
+        <a class="btn-inner pill-btn pill-lime" href="/intro">
+          Start
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </span>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-mobile">
+    <a href="/library">Library</a>
+    <a href="/stacks">Stacks</a>
+    <a href="/tools">Tools</a>
+    <a href="/vendors">Vendors</a>
+    <a href="/coupon-codes">Coupons</a>
+    <a href="/blog">Blog</a>
+    <span class="nav-mobile-cta">
+      <a class="btn-inner pill-btn pill-lime" href="/intro">Start
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </span>
+  </div>
+</header>
+
+<main class="interior">
+  <section class="interior-hero">
+    <div class="interior-aurora" aria-hidden="true"></div>
+    <div class="interior-head">
+      <p class="interior-eyebrow fade-up">§ TOOLS</p>
+      <h1 class="interior-h1 fade-up" style="--delay: 80ms;">Research <span class="em">tools</span>.</h1>
+      <p class="interior-sub fade-up" style="--delay: 160ms;">Eight free interactive tools — from dosing math to plasma curves. No account required.</p>
+      <p class="ruo-strip fade-up" style="--delay: 220ms;"><span class="rs-ico">⚠</span> Methodology reference tools. Outputs describe research calculations, not personal use guidance.</p>
+    </div>
+  </section>
+  <div style="max-width:var(--max);margin:0 auto;padding:24px 32px 0;">
+    <div class="aeo-answer glass-light" role="region" aria-label="Quick answer">
+      <span class="aeo-label">Quick answer</span>
+      <p class="aeo-summary">PeptiDex offers eight free peptide research tools — a cycle planner, reconstitution calculator, PK plasma-curve modeler, COA analyzer, evidence dashboard, peptide comparison, interaction checker, and live vendor price comparison — with no account required.</p>
+      <ul class="aeo-facts">
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Reconstitution calculator solves BAC-water volumes and per-dose units.</span></li>
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>PK plasma curves model concentration over time from half-life inputs.</span></li>
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Price comparison shows live per-mg pricing across 4 COA-verified vendors.</span></li>
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Evidence dashboard makes 668+ studies browsable by peptide and goal.</span></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="interior-body">
+    <div class="tools-lg-grid stagger-children" data-tilt-grid>
+
+      <!-- 1. Cycle Planner -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/cycle-planner">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <span class="tool-lg-name">Cycle Planner</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.2">
+            <rect x="14" y="12" width="20" height="14" rx="2"/><rect x="40" y="12" width="20" height="14" rx="2"/><rect x="66" y="12" width="20" height="14" rx="2"/><rect x="92" y="12" width="20" height="14" rx="2"/><rect x="118" y="12" width="20" height="14" rx="2"/><rect x="144" y="12" width="20" height="14" rx="2"/><rect x="170" y="12" width="16" height="14" rx="2"/>
+            <rect x="14" y="32" width="20" height="14" rx="2"/><rect x="40" y="32" width="20" height="14" rx="2" fill="currentColor" fill-opacity="0.5"/><rect x="66" y="32" width="20" height="14" rx="2"/><rect x="92" y="32" width="20" height="14" rx="2" fill="currentColor" fill-opacity="0.5"/><rect x="118" y="32" width="20" height="14" rx="2"/><rect x="144" y="32" width="20" height="14" rx="2" fill="currentColor" fill-opacity="0.5"/><rect x="170" y="32" width="16" height="14" rx="2"/>
+            <rect x="14" y="52" width="20" height="12" rx="2"/><rect x="40" y="52" width="20" height="12" rx="2"/><rect x="66" y="52" width="20" height="12" rx="2" fill="currentColor" fill-opacity="0.5"/>
+          </g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Map dosing schedules across a full research cycle.</p>
+            <span class="tool-lg-index">01 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 2. Evidence Dashboard -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/evidence">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V4M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="8" y="11" width="3" height="6" fill="currentColor"/><rect x="13" y="7" width="3" height="10" fill="currentColor"/><rect x="18" y="13" width="3" height="4" fill="currentColor"/></svg></span>
+            <span class="tool-lg-name">Evidence Dashboard</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><g>
+            <rect x="14" y="14" width="120" height="8" rx="4" fill="currentColor" fill-opacity="0.55"/><rect x="14" y="14" width="172" height="8" rx="4" stroke="currentColor" stroke-width="1"/>
+            <rect x="14" y="31" width="86" height="8" rx="4" fill="currentColor" fill-opacity="0.55"/><rect x="14" y="31" width="172" height="8" rx="4" stroke="currentColor" stroke-width="1"/>
+            <rect x="14" y="48" width="150" height="8" rx="4" fill="currentColor" fill-opacity="0.55"/><rect x="14" y="48" width="172" height="8" rx="4" stroke="currentColor" stroke-width="1"/>
+          </g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Browse 668+ studies by peptide, goal, and outcome.</p>
+            <span class="tool-lg-index">02 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 3. Peptide Comparison -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/compare">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <span class="tool-lg-name">Peptide Comparison</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.2">
+            <rect x="14" y="10" width="80" height="50" rx="3"/><rect x="106" y="10" width="80" height="50" rx="3"/>
+            <path d="M24 24h60M24 34h60M24 44h44M116 24h60M116 34h44M116 44h60" stroke-opacity="0.7"/>
+          </g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Compare mechanisms, dosing, and evidence side-by-side.</p>
+            <span class="tool-lg-index">03 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 4. Price Comparison -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/pricing">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M8 7h6a3 3 0 010 6H9a3 3 0 000 6h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tool-lg-name">Price Comparison</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><polyline points="14,52 50,40 86,46 122,26 158,32 186,16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><g fill="currentColor"><circle cx="50" cy="40" r="2.5"/><circle cx="122" cy="26" r="2.5"/><circle cx="186" cy="16" r="2.5"/></g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Track vendor pricing per mg across verified sources.</p>
+            <span class="tool-lg-index">04 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 5. Reconstitution Calculator -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/calculator">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3l7 7M18 6l-9 9-4 1 1-4 9-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19l2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <span class="tool-lg-name">Reconstitution Calculator</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.3">
+            <rect x="40" y="16" width="22" height="40" rx="3"/><path d="M40 28h22" /><rect x="46" y="10" width="10" height="6" rx="1"/><rect x="44" y="44" width="14" height="12" fill="currentColor" fill-opacity="0.5"/>
+            <path d="M96 36h70M158 30l8 6-8 6" stroke-linecap="round" stroke-linejoin="round"/>
+          </g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Solve BAC water volumes and per-dose units.</p>
+            <span class="tool-lg-index">05 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 6. COA Analyzer -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/coa">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tool-lg-name">COA Analyzer</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.2">
+            <rect x="62" y="8" width="76" height="54" rx="3"/><path d="M74 22h52M74 30h52M74 38h36" stroke-opacity="0.7"/><path d="M74 48l5 5 10-10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Read and validate certificates of analysis.</p>
+            <span class="tool-lg-index">06 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 7. Interaction Checker -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/interactions">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="6" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 10.6l6.8-3.2M8.6 13.4l6.8 3.2" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <span class="tool-lg-name">Interaction Checker</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.4"><line x1="66" y1="35" x2="134" y2="35"/><circle cx="66" cy="35" r="12" fill="currentColor" fill-opacity="0.4"/><circle cx="134" cy="35" r="12" fill="currentColor" fill-opacity="0.4"/></g></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Flag known peptide–peptide interactions.</p>
+            <span class="tool-lg-index">07 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- 8. PK Plasma Curves -->
+      <div class="tool-lg-cell" data-tilt-cell>
+        <a class="tool-lg glass tilt-card" data-tilt href="/tools/pk">
+          <div class="tool-lg-head">
+            <span class="tool-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V4M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 17C9 6 12 6 14 11s5 5 5-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></span>
+            <span class="tool-lg-name">PK Plasma Curves</span>
+          </div>
+          <div class="tool-preview"><svg viewBox="0 0 200 70" fill="none" aria-hidden="true"><path d="M14 58C40 58 44 18 70 18s30 34 56 38 46 2 60 2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M14 58C40 58 44 18 70 18s30 34 56 38 46 2 60 2V64H14Z" fill="currentColor" fill-opacity="0.18"/></svg></div>
+          <div class="tool-lg-foot">
+            <p class="tool-lg-desc">Model plasma concentration over time.</p>
+            <span class="tool-lg-index">08 / 08</span>
+          </div>
+          <span class="open-pill pill-btn pill-lime" style="pointer-events:none;">Open tool
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- methodology callout -->
+    <div class="method-callout glass-light fade-up">
+      <p>These tools generate <span class="em">research scenarios</span> from published literature. None of this is medical advice.</p>
+      <a class="pill-btn pill-outline" href="/disclaimers" style="color: var(--ink); border-color: rgba(11,13,16,0.2);">Read our methodology
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+
+<section class="aeo-faq" style="max-width:var(--max);margin:0 auto;padding:8px 32px 72px;">
+  <h2 class="pf-h2" style="font-family:Geist,sans-serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-0.025em;color:var(--paper);margin:0 0 8px;">Common <span style="color:var(--lime);">questions</span></h2>
+  <h3 class="aeo-q">What research tools does PeptiDex offer?</h3>
+  <p class="aeo-a">PeptiDex offers eight free tools: cycle planner, reconstitution calculator, PK plasma curves, COA analyzer, evidence dashboard, peptide comparison, interaction checker, and <a href="/tools/pricing">price comparison</a>.</p>
+  <h3 class="aeo-q">Is the reconstitution calculator free?</h3>
+  <p class="aeo-a">Yes. All eight tools are free and require no account. They are methodology-reference tools that describe research calculations, not personal-use guidance.</p>
+  <h3 class="aeo-q">What does the COA Analyzer do?</h3>
+  <p class="aeo-a">The COA Analyzer helps read and validate a Certificate of Analysis — confirming HPLC purity and mass-spec identity for a peptide batch.</p>
+</section>
+
+<!-- LEGAL BAND -->
+<div class="legal-band">
+  <p>PeptiDex is an independent research reference. We are not a pharmacy, clinic, or medical provider. We do not sell, ship, or handle controlled substances. We provide educational reference material for researchers studying peptide pharmacology. All efficacy claims attributed to published peer-reviewed sources.</p>
+</div>
+
+<footer class="site-footer">
+  <p class="affiliate-disclosure">
+    <strong>Affiliate Disclosure:</strong> Some links earn PeptiDex a small commission at no extra cost to you. This keeps the site free and ad-free. We only feature products we've independently verified.
+  </p>
+  <div class="footer-inner">
+    <p class="footer-tagline">The independent, evidence-based peptide research index.</p>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>§ Learn</h4>
+        <ul>
+          <li><a href="/intro">Peptide 101</a></li>
+          <li><a href="/library">Library</a></li>
+          <li><a href="/tools">Evidence Dashboard</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Tools</h4>
+        <ul>
+          <li><a href="/tools">Cycle Planner</a></li>
+          <li><a href="/tools">Evidence Dashboard</a></li>
+          <li><a href="/tools">Comparison</a></li>
+          <li><a href="/tools">Pricing</a></li>
+          <li><a href="/tools">Reconstitution</a></li>
+          <li><a href="/tools">COA Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Source</h4>
+        <ul>
+          <li><a href="/vendors">Vendor Reviews</a></li>
+          <li><a href="/vendors">Amino Club Review</a></li>
+          <li><a href="/coa">COA Library</a></li>
+          <li><a href="/stacks">Stacks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ About</h4>
+        <ul>
+          <li><a href="/about">Our Mission</a></li>
+          <li><a href="/about/editorial-policy">Editorial Policy</a></li>
+          <li><a href="/disclaimers">Medical Disclaimer</a></li>
+          <li><a href="/about">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 PeptiDex</span>
+      <span class="footer-legal">
+        <a href="/legal">Privacy</a>
+        <a href="/legal">Terms</a>
+        <a href="/disclaimers">Disclosures</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- RUO BANNER -->
+<div class="rou-banner glass-light" id="rouBanner" role="dialog" aria-label="Research use only notice">
+  <span class="rou-ico" aria-hidden="true">⚠</span>
+  <p class="rou-body"><strong>RESEARCH USE ONLY.</strong> This site provides educational information about research chemicals not approved for human use. Nothing here is medical advice, a prescription, or a recommendation for self-administration. By continuing, you acknowledge you are a researcher accessing reference material.</p>
+  <span class="rou-actions">
+    <a class="rou-read" href="/disclaimers">Read full disclaimers</a>
+    <button class="pill-btn pill-lime" id="rouAck" type="button">Acknowledge &amp; continue</button>
+  </span>
+  <button class="rou-close" id="rouClose" type="button" aria-label="Dismiss">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<script src="loader.js"></script>
+<script src="raf.js"></script>
+<script src="motion.js"></script>
+<script src="hero.js"></script>
+<script src="nav.js"></script>
+<script src="interaction.js"></script>
+<script src="legal.js"></script>
+
+</body>
+</html>

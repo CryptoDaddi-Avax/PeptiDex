@@ -1,0 +1,78 @@
+/* =============================================================
+   Peptidex — Answer Engine Optimization (AEO) patterns
+   tl;dr answer block, editorial trust byline, question-shaped
+   FAQ section, and comparison table. Reuses shared tokens.
+   Linked on comparison pages and injected into profile pages.
+   ============================================================= */
+
+:root { --aeo-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ---------- TL;DR ANSWER BLOCK ---------- */
+.aeo-answer {
+  margin: 18px 0 0;
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  color: var(--ink);
+  background: radial-gradient(72% 130% at 8% 0%, color-mix(in srgb, var(--lime) 13%, transparent), transparent 70%), var(--paper);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
+  border-left: 3px solid var(--lime);
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.aeo-answer::before { content: none; }
+.aeo-label {
+  display: inline-block;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px;
+}
+.aeo-summary { font-size: 16px; line-height: 1.55; color: var(--ink); font-weight: 500; margin: 0 0 14px; max-width: 74ch; }
+.aeo-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.aeo-facts li { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: color-mix(in srgb, var(--ink) 74%, transparent); }
+.aeo-facts svg { width: 16px; height: 16px; flex: 0 0 auto; margin-top: 1px; stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- EDITORIAL TRUST BYLINE ---------- */
+.aeo-byline {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+  margin: 16px 0 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--paper) 52%, transparent);
+}
+.aeo-byline .b-sep { color: color-mix(in srgb, var(--paper) 28%, transparent); }
+.aeo-byline strong { color: color-mix(in srgb, var(--paper) 72%, transparent); font-weight: 500; }
+/* on light surfaces */
+.aeo-byline.on-light { color: color-mix(in srgb, var(--ink) 55%, transparent); }
+.aeo-byline.on-light .b-sep { color: color-mix(in srgb, var(--ink) 30%, transparent); }
+.aeo-byline.on-light strong { color: color-mix(in srgb, var(--ink) 72%, transparent); }
+
+/* ---------- QUESTION-SHAPED FAQ SECTION ---------- */
+.aeo-faq { margin-top: 8px; }
+.aeo-faq .aeo-q {
+  font-family: "Geist", sans-serif; font-weight: 500;
+  font-size: 17px; letter-spacing: -0.01em; line-height: 1.25;
+  color: var(--paper); margin: 24px 0 8px;
+}
+.aeo-faq .aeo-a { font-size: 14.5px; line-height: 1.6; color: color-mix(in srgb, var(--paper) 76%, transparent); margin: 0; max-width: 72ch; }
+.aeo-faq .aeo-a a { color: var(--lime); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- COMPARISON TABLE ---------- */
+.cmp2-table { border-radius: var(--radius-lg); overflow: hidden; color: var(--ink); margin: 24px 0; }
+.cmp2-table table { width: 100%; border-collapse: collapse; }
+.cmp2-table th, .cmp2-table td { text-align: left; padding: 14px 18px; font-size: 14px; border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); vertical-align: top; }
+.cmp2-table thead th { font-family: "Geist", sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); border-top: none; border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.cmp2-table thead th:first-child { font-family: "Geist Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: color-mix(in srgb, var(--ink) 50%, transparent); }
+.cmp2-table tbody th { font-family: "Geist Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: color-mix(in srgb, var(--ink) 52%, transparent); width: 150px; }
+.cmp2-table td .mono { font-family: "Geist Mono", ui-monospace, monospace; }
+.cmp2-table td .lime { color: var(--teal); font-weight: 500; }
+
+.cmp2-wrap { max-width: 920px; margin: 0 auto; padding: 24px 32px 110px; }
+.cmp2-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.cmp2-links .pill-outline { color: var(--paper); border-color: rgba(255,255,255,0.22); }
+.cmp2-links .pill-outline:hover { border-color: var(--paper); background: rgba(255,255,255,0.06); }
+
+@media (max-width: 600px) {
+  .cmp2-wrap { padding: 20px 18px 80px; }
+  .cmp2-table th, .cmp2-table td { padding: 11px 12px; }
+  .cmp2-table tbody th { width: 110px; }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+}

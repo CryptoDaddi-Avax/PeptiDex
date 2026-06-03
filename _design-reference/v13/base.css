@@ -1,0 +1,34 @@
+/* =============================================================
+   Peptidex — Shared base (tokens + document defaults)
+   Linked by the interior pages so they share the exact token set
+   and base typography used by the landing page.
+   ============================================================= */
+:root {
+  --ink: #0B0D10;
+  --ink-2: #14171C;
+  --ink-3: #1E2229;
+  --paper: #F2EEE5;
+  --paper-2: #E9E4D6;
+  --paper-3: #DBD4C1;
+  --lime: #C4F25C;
+  --lime-2: #A9E03A;
+  --teal: #1A3C3A;
+  --teal-2: #284E4B;
+  --rust: #C7613B;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --max: 1240px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { background: var(--ink); }
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Geist", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+::selection { background: var(--lime); color: var(--ink); }

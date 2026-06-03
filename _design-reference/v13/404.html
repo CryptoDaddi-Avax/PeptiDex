@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<title>Page Not Found · PeptiDex</title>
+<meta name="description" content="This page doesn't exist in the index." />
+<meta name="keywords" content="404, not found" />
+<meta name="author" content="PeptiDex" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://peptidex.app/404" />
+<link rel="alternate" type="application/llms-full+txt" href="https://peptidex.app/llms-full.txt" title="PeptiDex full content index for LLMs" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PeptiDex" />
+<meta property="og:title" content="Page Not Found · PeptiDex" />
+<meta property="og:description" content="This page doesn't exist in the index." />
+<meta property="og:url" content="https://peptidex.app/404" />
+<meta property="og:image" content="https://peptidex.app/api/og?title=Page%20Not%20Found&amp;eyebrow=404&amp;stat=Back%20to%20the%20index" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@peptidex" />
+<meta name="twitter:title" content="Page Not Found · PeptiDex" />
+<meta name="twitter:description" content="This page doesn't exist in the index." />
+<meta name="twitter:image" content="https://peptidex.app/api/og?title=Page%20Not%20Found&amp;eyebrow=404&amp;stat=Back%20to%20the%20index" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="base.css" />
+<link rel="stylesheet" href="motion.css" />
+<link rel="stylesheet" href="nav.css" />
+<link rel="stylesheet" href="loader.css" />
+<link rel="stylesheet" href="interaction.css" />
+<link rel="stylesheet" href="sections.css" />
+<link rel="stylesheet" href="interior.css" />
+<link rel="stylesheet" href="legal.css" />
+<style>
+  .nf-main { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; isolation: isolate; background: var(--ink); }
+  .nf-aurora {
+    position: absolute; inset: -15% -10% auto -10%; height: 720px; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(38% 60% at 20% 12%, color-mix(in srgb, var(--teal) 60%, transparent), transparent 70%),
+      radial-gradient(34% 50% at 82% 4%, color-mix(in srgb, var(--rust) 30%, transparent), transparent 72%),
+      radial-gradient(46% 56% at 56% 30%, color-mix(in srgb, var(--lime) 16%, transparent), transparent 72%);
+    filter: blur(40px); opacity: 0.7;
+  }
+  .nf-dotgrid {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle at 1px 1px, rgba(242,238,229,0.045) 1px, transparent 1.5px);
+    background-size: 30px 30px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000, transparent 82%);
+            mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000, transparent 82%);
+  }
+  /* floating molecule marks */
+  .nf-mol { position: absolute; z-index: 0; pointer-events: none; opacity: 0.06; width: 320px; animation: nf-float 18s ease-in-out infinite; }
+  .nf-mol.a { top: 12%; left: 6%; }
+  .nf-mol.b { bottom: 10%; right: 7%; width: 240px; animation-delay: -7s; animation-duration: 22s; }
+  .nf-mol .b { stroke: var(--paper); stroke-width: 3; }
+  .nf-mol .n { fill: var(--lime); }
+  .nf-mol .np { fill: var(--paper); }
+  @keyframes nf-float { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-22px) rotate(4deg); } }
+
+  .nf-inner { position: relative; z-index: 2; max-width: 640px; width: 100%; padding: 120px 24px 64px; text-align: center; }
+  .nf-eyebrow { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 58%, transparent); margin: 0 0 18px; }
+  .nf-code { font-family: "Geist", sans-serif; font-weight: 500; font-size: clamp(80px, 22vw, 160px); line-height: 0.9; letter-spacing: -0.04em; color: var(--paper); margin: 0; }
+  .nf-code .em { font-style: normal; color: var(--lime); }
+  .nf-h2 { font-family: "Geist", sans-serif; font-weight: 400; font-size: clamp(1.4rem, 3.4vw, 2rem); letter-spacing: -0.025em; color: var(--paper); margin: 18px 0 0; text-wrap: balance; }
+  .nf-h2 .em { font-style: normal; color: var(--lime); }
+  .nf-sub { margin: 14px auto 0; max-width: 46ch; font-size: 15.5px; line-height: 1.55; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+
+  .nf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 36px 0 0; text-align: left; }
+  .nf-cell { position: relative; display: block; }
+  .nf-card { display: flex; flex-direction: column; gap: 4px; padding: 20px 20px 18px; border-radius: var(--radius-lg); text-decoration: none; color: var(--ink); height: 100%; }
+  .nf-card .nf-name { font-family: "Geist", sans-serif; font-weight: 500; font-size: 17px; letter-spacing: -0.015em; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .nf-card .nf-name svg { width: 15px; height: 15px; color: color-mix(in srgb, var(--ink) 42%, transparent); transition: transform 240ms cubic-bezier(0.22,1,0.36,1), color 240ms cubic-bezier(0.22,1,0.36,1); }
+  [data-tilt-cell]:hover .nf-card .nf-name svg { transform: translate(3px,-3px); color: var(--teal); }
+  .nf-card .nf-desc { font-size: 13px; line-height: 1.4; color: color-mix(in srgb, var(--ink) 60%, transparent); }
+
+  .nf-home { margin: 28px 0 0; }
+  .nf-home .pill-btn { color: var(--paper); border-color: rgba(255,255,255,0.22); }
+  .nf-home .pill-btn:hover { border-color: var(--paper); background: rgba(255,255,255,0.06); }
+  .nf-contact { margin: 32px 0 0; font-family: "Geist Mono", ui-monospace, monospace; font-size: 11.5px; line-height: 1.6; letter-spacing: 0.02em; color: color-mix(in srgb, var(--paper) 46%, transparent); }
+  .nf-contact a { color: var(--lime); text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (max-width: 600px) {
+    .nf-grid { grid-template-columns: 1fr; }
+    .nf-inner { padding: 104px 18px 56px; }
+    .nf-mol { display: none; }
+    .fade-up { opacity: 1 !important; transform: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { .nf-mol { animation: none; } }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"><span class="cursor-label">explore</span></div>
+
+<div class="disclaimer-bar" role="note">
+  <span class="warn">⚠ Research Use Only</span>
+  <span class="dim verbose">— Not FDA-approved for human use. Not medical advice.</span>
+  <a href="/disclaimers">Full disclaimers →</a>
+</div>
+
+<div class="loader" id="loader" role="status" aria-label="Loading Peptidex">
+  <div class="loader-stage">
+    <svg class="loader-mark" viewBox="0 0 200 82" fill="none" aria-hidden="true">
+      <line class="lm-bond" x1="26" y1="54" x2="74" y2="28" /><line class="lm-bond" x1="74" y1="28" x2="122" y2="54" /><line class="lm-bond" x1="122" y1="54" x2="170" y2="28" />
+      <circle class="lm-node lime" cx="26" cy="54" r="13" /><circle class="lm-node paper" cx="74" cy="28" r="13" /><circle class="lm-node paper" cx="122" cy="54" r="13" /><circle class="lm-node lime" cx="170" cy="28" r="13" />
+    </svg>
+    <div class="loader-wordmark">Peptidex</div>
+    <div class="loader-progress"><div class="loader-bar"></div></div>
+    <div class="loader-caption" id="loaderCaption">indexing compounds…</div>
+  </div>
+</div>
+
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="Peptidex home">
+      <svg class="nav-mark" viewBox="0 0 70 28" fill="none" aria-hidden="true">
+        <line class="nm-bond" x1="10" y1="19" x2="27" y2="9" /><line class="nm-bond" x1="27" y1="9" x2="44" y2="19" /><line class="nm-bond" x1="44" y1="19" x2="60" y2="9" />
+        <circle class="nm-node lime" cx="10" cy="19" r="5" /><circle class="nm-node paper" cx="27" cy="9" r="5" /><circle class="nm-node paper" cx="44" cy="19" r="5" /><circle class="nm-node lime" cx="60" cy="9" r="5" />
+      </svg>
+      <span class="nav-wordmark">Peptidex</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/library">Library</a>
+      <a href="/stacks">Stacks</a>
+      <a href="/tools">Tools</a>
+      <a href="/vendors">Vendors</a>
+      <a href="/coupon-codes">Coupons</a>
+      <a href="/blog">Blog</a>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-search" type="button" aria-label="Search">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span class="label-text">Search</span><span class="kbd">⌘K</span>
+      </button>
+      <span class="magnetic"><a class="btn-inner pill-btn pill-lime" href="/intro">Start
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-mobile">
+    <a href="/library">Library</a><a href="/stacks">Stacks</a><a href="/tools">Tools</a><a href="/vendors">Vendors</a><a href="/coupon-codes">Coupons</a><a href="/blog">Blog</a>
+    <span class="nav-mobile-cta"><a class="btn-inner pill-btn pill-lime" href="/intro">Start
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+  </div>
+</header>
+
+<main class="nf-main">
+  <div class="nf-aurora" aria-hidden="true"></div>
+  <div class="nf-dotgrid" aria-hidden="true"></div>
+
+  <svg class="nf-mol a" viewBox="0 0 200 82" fill="none" aria-hidden="true">
+    <line class="b" x1="26" y1="54" x2="74" y2="28" /><line class="b" x1="74" y1="28" x2="122" y2="54" /><line class="b" x1="122" y1="54" x2="170" y2="28" />
+    <circle class="n" cx="26" cy="54" r="13" /><circle class="np" cx="74" cy="28" r="13" /><circle class="np" cx="122" cy="54" r="13" /><circle class="n" cx="170" cy="28" r="13" />
+  </svg>
+  <svg class="nf-mol b" viewBox="0 0 200 82" fill="none" aria-hidden="true">
+    <line class="b" x1="26" y1="54" x2="74" y2="28" /><line class="b" x1="74" y1="28" x2="122" y2="54" /><line class="b" x1="122" y1="54" x2="170" y2="28" />
+    <circle class="n" cx="26" cy="54" r="13" /><circle class="np" cx="74" cy="28" r="13" /><circle class="np" cx="122" cy="54" r="13" /><circle class="n" cx="170" cy="28" r="13" />
+  </svg>
+
+  <div class="nf-inner">
+    <p class="nf-eyebrow fade-up">§ 404 / NOT FOUND</p>
+    <h1 class="nf-code fade-up" style="--delay: 60ms;">4<span class="em">0</span>4</h1>
+    <p class="nf-h2 fade-up" style="--delay: 140ms;">This page <span class="em">doesn't exist</span> in the index.</p>
+    <p class="nf-sub fade-up" style="--delay: 200ms;">Either it moved, was retired, or you found a typo. Try one of these:</p>
+
+    <div class="nf-grid stagger-children" data-tilt-grid>
+      <div class="nf-cell" data-tilt-cell>
+        <a class="nf-card glass-light tilt-card is-light" data-tilt href="/library">
+          <span class="nf-name">Browse the Library <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nf-desc">51 peptide profiles</span>
+        </a>
+      </div>
+      <div class="nf-cell" data-tilt-cell>
+        <a class="nf-card glass-light tilt-card is-light" data-tilt href="/stacks">
+          <span class="nf-name">Explore Stacks <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nf-desc">12 research combinations</span>
+        </a>
+      </div>
+      <div class="nf-cell" data-tilt-cell>
+        <a class="nf-card glass-light tilt-card is-light" data-tilt href="/tools">
+          <span class="nf-name">Use the Tools <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nf-desc">8 research calculators</span>
+        </a>
+      </div>
+      <div class="nf-cell" data-tilt-cell>
+        <a class="nf-card glass-light tilt-card is-light" data-tilt href="/quiz">
+          <span class="nf-name">Take the Quiz <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nf-desc">60 seconds to matched stacks</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="nf-home fade-up">
+      <span class="magnetic"><a class="btn-inner pill-btn pill-outline" href="/">Return home
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+    </div>
+
+    <p class="nf-contact">If you got here from a link on this site, please tell us so we can fix it:<br /><a href="mailto:hello@peptidex.app">hello@peptidex.app</a></p>
+  </div>
+</main>
+
+<!-- LEGAL BAND -->
+<div class="legal-band">
+  <p>PeptiDex is an independent research reference. We are not a pharmacy, clinic, or medical provider. We do not sell, ship, or handle controlled substances. We provide educational reference material for researchers studying peptide pharmacology. All efficacy claims attributed to published peer-reviewed sources.</p>
+</div>
+
+<footer class="site-footer">
+  <p class="affiliate-disclosure">
+    <strong>Affiliate Disclosure:</strong> Some links earn PeptiDex a small commission at no extra cost to you. This keeps the site free and ad-free. We only feature products we've independently verified.
+  </p>
+  <div class="footer-inner">
+    <p class="footer-tagline">The independent, evidence-based peptide research index.</p>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>§ Learn</h4>
+        <ul>
+          <li><a href="/intro">Peptide 101</a></li>
+          <li><a href="/library">Library</a></li>
+          <li><a href="/tools">Evidence Dashboard</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Tools</h4>
+        <ul>
+          <li><a href="/tools">Cycle Planner</a></li>
+          <li><a href="/tools/pricing">Pricing</a></li>
+          <li><a href="/advisor">Advisor</a></li>
+          <li><a href="/coa">COA Library</a></li>
+          <li><a href="/saved">Saved</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Source</h4>
+        <ul>
+          <li><a href="/vendors">Vendor Reviews</a></li>
+          <li><a href="/coupon-codes">Coupon Codes</a></li>
+          <li><a href="/coa">COA Library</a></li>
+          <li><a href="/stacks">Stacks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ About</h4>
+        <ul>
+          <li><a href="/about">Our Mission</a></li>
+          <li><a href="/about/editorial-policy">Editorial Policy</a></li>
+          <li><a href="/disclaimers">Medical Disclaimer</a></li>
+          <li><a href="/legal">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 PeptiDex</span>
+      <span class="footer-legal">
+        <a href="/legal">Privacy</a>
+        <a href="/legal">Terms</a>
+        <a href="/disclaimers">Disclosures</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- RUO BANNER -->
+<div class="rou-banner glass-light" id="rouBanner" role="dialog" aria-label="Research use only notice">
+  <span class="rou-ico" aria-hidden="true">⚠</span>
+  <p class="rou-body"><strong>RESEARCH USE ONLY.</strong> This site provides educational information about research chemicals not approved for human use. Nothing here is medical advice, a prescription, or a recommendation for self-administration. By continuing, you acknowledge you are a researcher accessing reference material.</p>
+  <span class="rou-actions">
+    <a class="rou-read" href="/disclaimers">Read full disclaimers</a>
+    <button class="pill-btn pill-lime" id="rouAck" type="button">Acknowledge &amp; continue</button>
+  </span>
+  <button class="rou-close" id="rouClose" type="button" aria-label="Dismiss">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<script src="loader.js"></script>
+<script src="raf.js"></script>
+<script src="motion.js"></script>
+<script src="hero.js"></script>
+<script src="nav.js"></script>
+<script src="interaction.js"></script>
+<script src="legal.js"></script>
+
+</body>
+</html>

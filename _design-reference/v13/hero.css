@@ -1,0 +1,575 @@
+/* =============================================================
+   Peptidex — Hero (MotionSites-style)
+   Depends on tokens defined in :root and on motion.css.
+   Additive only.
+   ============================================================= */
+
+/* ---------- HERO SHELL ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  isolation: isolate;
+}
+
+/* Full-bleed background video */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  filter: saturate(0.85) contrast(1.05);
+}
+
+/* Dark gradient scrim — strongest at edges, transparent at center.
+   Stacked layers: horizontal vignette, top fade, bottom anchor. */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* horizontal vignette: ink on both edges, transparent center */
+    linear-gradient(
+      to right,
+      var(--ink) 0%,
+      color-mix(in srgb, var(--ink) 75%, transparent) 18%,
+      transparent 42%,
+      transparent 58%,
+      color-mix(in srgb, var(--ink) 70%, transparent) 82%,
+      var(--ink) 100%
+    ),
+    /* top fade — readable status bar zone */
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ink) 50%, transparent) 0%,
+      transparent 22%,
+      transparent 72%,
+      color-mix(in srgb, var(--ink) 85%, transparent) 100%
+    );
+}
+
+/* Subtle film grain layer (CSS-only) */
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  animation: grain-shift 7s steps(8) infinite;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-12px, 8px); }
+  40%  { transform: translate(8px, -10px); }
+  60%  { transform: translate(-6px, -4px); }
+  80%  { transform: translate(10px, 6px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- TOP NAV (tiny, sits in hero) ---------- */
+.hero-nav {
+  position: relative;
+  z-index: 3;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.hero-wordmark {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-wordmark .mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--lime);
+  display: inline-block;
+  position: relative;
+}
+.hero-wordmark .mark::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 3px;
+  background: var(--ink);
+}
+.hero-wordmark .mark::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 2px;
+  background: var(--lime);
+}
+.hero-wordmark em {
+  font-style: normal;
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
+  margin-left: 2px;
+}
+.hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+.hero-nav-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-nav-links a:hover { color: var(--paper); }
+
+/* ---------- HERO INNER GRID ---------- */
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  min-height: calc(100svh - 96px);
+}
+
+/* ---------- LEFT COLUMN ---------- */
+.hero-left { max-width: 620px; }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+  margin: 0 0 28px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--lime) 25%, transparent);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--lime) 25%, transparent); }
+  50%      { box-shadow: 0 0 0 8px color-mix(in srgb, var(--lime) 0%, transparent); }
+}
+
+/* HEADLINE */
+.hero-h1 {
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin: 0;
+  text-wrap: balance;
+}
+.hero-h1 .line {
+  display: block;
+}
+.hero-h1 .line-2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.32em;
+}
+.hero-h1 .em {
+  font-style: normal;
+  letter-spacing: -0.01em;
+  color: var(--lime);
+  /* preserve layout while invisible — opacity:0 keeps the box */
+  display: inline-block;
+}
+/* In-flow pill — sits in line 2, slightly raised to match cap-height */
+.hero-h1 .pill-glass.inline {
+  font-size: 0.32em;
+  padding: 10px 16px 10px 14px;
+  transform-origin: left center;
+  position: relative;
+  top: -0.18em;
+  letter-spacing: 0;
+  color: var(--paper);
+}
+.hero-h1 .pill-glass.inline svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* CTA ROW */
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.hero-ctas .pill-lime {
+  font-size: 15px;
+  padding: 14px 22px 14px 22px;
+}
+.hero-ctas .pill-lime svg {
+  width: 15px;
+  height: 15px;
+}
+.ghost-link {
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--paper);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px;
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 25%, transparent);
+  transition: border-color 280ms cubic-bezier(0.22, 1, 0.36, 1), gap 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ghost-link:hover {
+  border-color: var(--paper);
+  gap: 12px;
+}
+
+/* TRUST ROW */
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.hero-trust .stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--lime);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.hero-trust .trust-text {
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  letter-spacing: -0.005em;
+}
+.hero-trust .trust-text strong {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+/* ---------- RIGHT COLUMN ---------- */
+.hero-right {
+  position: relative;
+  perspective: 1400px;
+}
+
+.helix-card-shell {
+  /* fade-up wrapper; tilt lives on the inner .helix-card */
+  display: block;
+}
+
+.helix-card {
+  position: relative;
+  padding: 22px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--paper);
+  transform: perspective(1400px) rotateX(0deg) rotateY(0deg);
+  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.helix-card.is-tilting {
+  /* JS sets inline transform during mousemove — instant follow */
+  transition: transform 80ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* status pill above helix */
+.status-pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 12px;
+  border-radius: 9999px;
+  background: rgba(11, 13, 16, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--paper) 85%, transparent);
+}
+.status-pill .num {
+  color: var(--paper);
+  letter-spacing: 0.02em;
+}
+.status-pill .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 22%, transparent);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+.status-pill .sep {
+  color: color-mix(in srgb, var(--paper) 30%, transparent);
+}
+.status-pill .live {
+  font-family: "Geist Mono", monospace;
+  color: var(--lime);
+  letter-spacing: 0.16em;
+}
+
+/* helix stage */
+.helix-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 600 / 280;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 50%, rgba(26, 60, 58, 0.5), transparent 70%),
+    linear-gradient(180deg, rgba(11, 13, 16, 0.4), rgba(11, 13, 16, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.helix-stage svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.helix-stage::after {
+  /* faint scanline overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.02) 3px,
+    rgba(255, 255, 255, 0.02) 4px
+  );
+  pointer-events: none;
+}
+
+/* corner crosshair ticks on the stage */
+.helix-stage .tick {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid color-mix(in srgb, var(--paper) 35%, transparent);
+}
+.helix-stage .tick.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.helix-stage .tick.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.helix-stage .tick.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.helix-stage .tick.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+.helix-stage .stage-label {
+  position: absolute;
+  top: 12px;
+  left: 30px;
+  font-family: "Geist Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+.helix-stage .stage-coords {
+  position: absolute;
+  bottom: 12px;
+  right: 30px;
+  font-family: "Geist Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+
+/* readouts row */
+.readouts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.readout {
+  padding: 12px 14px;
+  background: rgba(11, 13, 16, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.readout-label {
+  font-family: "Geist Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
+}
+.readout-value {
+  font-family: "Geist Mono", monospace;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: var(--paper);
+}
+.readout-value .em {
+  font-style: normal;
+  color: var(--lime);
+  margin-left: 2px;
+}
+
+/* floating purity-audit panel — overlaps card bottom-right */
+.purity-panel {
+  position: absolute;
+  right: -18px;
+  bottom: -26px;
+  width: 260px;
+  padding: 16px 16px 14px;
+  color: var(--ink);
+  font-family: "Geist", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 4;
+}
+.purity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.purity-label {
+  font-family: "Geist Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.purity-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Geist Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--teal);
+}
+.purity-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+.purity-bar {
+  height: 6px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.purity-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--teal), var(--lime-2));
+  border-radius: 999px;
+  width: 0;
+  animation: fill-99 1600ms cubic-bezier(0.16, 1, 0.3, 1) 800ms forwards;
+}
+@keyframes fill-99 {
+  from { width: 0; }
+  to   { width: 99.7%; }
+}
+.purity-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Geist Mono", monospace;
+  font-size: 10.5px;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+  letter-spacing: 0.02em;
+}
+.purity-meta strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding: 40px 22px 80px;
+    gap: 56px;
+    align-items: start;
+  }
+  .hero-bg { opacity: 0.3; }
+  .hero-scrim {
+    background:
+      linear-gradient(
+        to bottom,
+        var(--ink) 0%,
+        color-mix(in srgb, var(--ink) 50%, transparent) 30%,
+        color-mix(in srgb, var(--ink) 60%, transparent) 70%,
+        var(--ink) 100%
+      );
+  }
+  .hero-nav-links { display: none; }
+  .hero-h1 .line-2 { gap: 0.28em; }
+  .hero-h1 .pill-glass.inline {
+    font-size: 13px;
+    top: 0;
+  }
+  .purity-panel {
+    right: 8px;
+    bottom: -18px;
+    width: calc(100% - 16px);
+    max-width: 320px;
+  }
+  .hero-trust { margin-top: 36px; }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg { animation: none; }
+  .hero-grain { animation: none; }
+  .hero-eyebrow::before { animation: none; }
+  .status-pill .dot { animation: none; }
+  .purity-fill {
+    animation: none;
+    width: 99.7%;
+  }
+  .helix-card,
+  .helix-card.is-tilting {
+    transition: none;
+    transform: none !important;
+  }
+}

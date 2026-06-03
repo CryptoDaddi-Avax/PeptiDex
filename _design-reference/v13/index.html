@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>PeptiDex — The Independent Peptide Research Index</title>
+<meta name="description" content="51 peptide profiles, 12 evidence-based research stacks, 8 free tools, and COA-verified vendors. Independent research reference for peptide pharmacology — affiliate-funded, never paid placement." />
+<meta name="keywords" content="peptide research, peptide database, BPC-157, retatrutide, tirzepatide, COA verified, peptide vendors" />
+<meta name="author" content="PeptiDex" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://peptidex.app/" />
+<link rel="alternate" type="application/llms-full+txt" href="https://peptidex.app/llms-full.txt" title="PeptiDex full content index for LLMs" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PeptiDex" />
+<meta property="og:title" content="PeptiDex — The Independent Peptide Research Index" />
+<meta property="og:description" content="51 peptide profiles, 12 evidence-based research stacks, 8 free tools, and COA-verified vendors. Independent research reference for peptide pharmacology — affiliate-funded, never paid placement." />
+<meta property="og:url" content="https://peptidex.app/" />
+<meta property="og:image" content="https://peptidex.app/api/og?title=The%20Independent%20Peptide%20Research%20Index&amp;eyebrow=PEPTIDE%20INTELLIGENCE&amp;stat=51%20profiles%20%C2%B7%20668%2B%20studies%20%C2%B7%2099%25%20COA%20purity" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@peptidex" />
+<meta name="twitter:title" content="PeptiDex — The Independent Peptide Research Index" />
+<meta name="twitter:description" content="51 peptide profiles, 12 evidence-based research stacks, 8 free tools, and COA-verified vendors. Independent research reference for peptide pharmacology — affiliate-funded, never paid placement." />
+<meta name="twitter:image" content="https://peptidex.app/api/og?title=The%20Independent%20Peptide%20Research%20Index&amp;eyebrow=PEPTIDE%20INTELLIGENCE&amp;stat=51%20profiles%20%C2%B7%20668%2B%20studies%20%C2%B7%2099%25%20COA%20purity" />
+<!-- Organization schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"PeptiDex",
+  "url":"https://peptidex.app",
+  "logo":"https://peptidex.app/logo.png",
+  "description":"The independent, evidence-based peptide research index — 51 profiles, 12 stacks, free tools, and COA-verified vendors.",
+  "sameAs":["https://x.com/peptidex"]
+}
+</script>
+<!-- WebSite + sitelinks search box -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"PeptiDex",
+  "url":"https://peptidex.app",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":{"@type":"EntryPoint","urlTemplate":"https://peptidex.app/library?q={search_term_string}"},
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+<!-- Breadcrumb schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://peptidex.app/"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* === Tokens — your existing :root, unchanged === */
+  :root {
+    --ink: #0B0D10;
+    --ink-2: #14171C;
+    --ink-3: #1E2229;
+    --paper: #F2EEE5;
+    --paper-2: #E9E4D6;
+    --paper-3: #DBD4C1;
+    --lime: #C4F25C;
+    --lime-2: #A9E03A;
+    --teal: #1A3C3A;
+    --teal-2: #284E4B;
+    --rust: #C7613B;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --max: 1240px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { background: var(--ink); }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Geist", system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.45;
+  }
+  ::selection { background: var(--lime); color: var(--ink); }
+</style>
+
+<link rel="stylesheet" href="motion.css" />
+<link rel="stylesheet" href="hero.css" />
+<link rel="stylesheet" href="bento.css" />
+<link rel="stylesheet" href="interstitial.css" />
+<link rel="stylesheet" href="nav.css" />
+<link rel="stylesheet" href="loader.css" />
+<link rel="stylesheet" href="pricing.css" />
+<link rel="stylesheet" href="interaction.css" />
+<link rel="stylesheet" href="sections.css" />
+<link rel="stylesheet" href="legal.css" />
+</head>
+<body>
+
+<!-- ================ INTERACTION LAYER ELEMENTS ================ -->
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"><span class="cursor-label">explore</span></div>
+
+<!-- ================ DISCLAIMER BAR ================ -->
+<div class="disclaimer-bar" role="note">
+  <span class="warn">⚠ Research Use Only</span>
+  <span class="dim verbose">— Not FDA-approved for human use. Not medical advice.</span>
+  <a href="/disclaimers">Full disclaimers →</a>
+</div>
+
+<!-- ================ ENTRANCE LOADER ================ -->
+<div class="loader" id="loader" role="status" aria-label="Loading Peptidex">
+  <div class="loader-stage">
+    <svg class="loader-mark" viewBox="0 0 200 82" fill="none" aria-hidden="true">
+      <line class="lm-bond" x1="26" y1="54" x2="74" y2="28" />
+      <line class="lm-bond" x1="74" y1="28" x2="122" y2="54" />
+      <line class="lm-bond" x1="122" y1="54" x2="170" y2="28" />
+      <circle class="lm-node lime"  cx="26"  cy="54" r="13" />
+      <circle class="lm-node paper" cx="74"  cy="28" r="13" />
+      <circle class="lm-node paper" cx="122" cy="54" r="13" />
+      <circle class="lm-node lime"  cx="170" cy="28" r="13" />
+    </svg>
+    <div class="loader-wordmark">Peptidex</div>
+    <div class="loader-progress"><div class="loader-bar"></div></div>
+    <div class="loader-caption" id="loaderCaption">indexing compounds…</div>
+  </div>
+</div>
+
+<!-- ================ GLOBAL NAV ================ -->
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top" aria-label="Peptidex home">
+      <svg class="nav-mark" viewBox="0 0 70 28" fill="none" aria-hidden="true">
+        <line class="nm-bond" x1="10" y1="19" x2="27" y2="9" />
+        <line class="nm-bond" x1="27" y1="9" x2="44" y2="19" />
+        <line class="nm-bond" x1="44" y1="19" x2="60" y2="9" />
+        <circle class="nm-node lime"  cx="10" cy="19" r="5" />
+        <circle class="nm-node paper" cx="27" cy="9"  r="5" />
+        <circle class="nm-node paper" cx="44" cy="19" r="5" />
+        <circle class="nm-node lime"  cx="60" cy="9"  r="5" />
+      </svg>
+      <span class="nav-wordmark">Peptidex</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/library">Library</a>
+      <a href="/stacks">Stacks</a>
+      <a href="/tools">Tools</a>
+      <a href="/vendors">Vendors</a>
+      <a href="/coupon-codes">Coupons</a>
+      <a href="/blog">Blog</a>
+      <a href="/saved">Saved</a>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="nav-search" type="button" aria-label="Search">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="label-text">Search</span>
+        <span class="kbd">⌘K</span>
+      </button>
+      <span class="magnetic">
+        <a class="btn-inner pill-btn pill-lime" href="/intro">
+          Start
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </span>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-mobile">
+    <a href="/library">Library</a>
+    <a href="/stacks">Stacks</a>
+    <a href="/tools">Tools</a>
+    <a href="/vendors">Vendors</a>
+    <a href="/coupon-codes">Coupons</a>
+    <a href="/blog">Blog</a>
+    <a href="/saved">Saved</a>
+    <span class="nav-mobile-cta">
+      <a class="btn-inner pill-btn pill-lime" href="/intro">
+        Start
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </span>
+  </div>
+</header>
+
+<section class="hero" id="top" aria-label="Peptidex hero">
+
+  <!-- Full-bleed background video -->
+  <!-- poster: first frame of clip1.mp4 (hero) — extract still here if a poster is wanted -->
+  <video
+    class="hero-bg"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    src="https://pub-bb44e23f2db2497da1abd5de2ab102a4.r2.dev/clip1.mp4"
+  ></video>
+
+  <!-- Scrim + grain layers -->
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+
+    <!-- ============ LEFT COLUMN ============ -->
+    <div class="hero-left">
+
+      <p class="hero-eyebrow fade-up">PEPTIDE INTELLIGENCE / 2026</p>
+
+      <h1 class="hero-h1">
+        <span class="line line-1 fade-up">Every peptide,</span>
+
+        <span class="line line-2">
+          <em class="em fade-up" style="--delay: 340ms;">researched</em>
+          <a
+            class="pill-btn pill-glass inline fade-up"
+            style="--delay: 120ms;"
+            href="/library"
+          >
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            see the library
+          </a>
+        </span>
+
+        <span class="line line-3 fade-up" style="--delay: 240ms;">sourced &amp; verified.</span>
+      </h1>
+
+      <p class="hero-sub fade-up" style="--delay: 400ms;">The independent peptide research index — 51 profiles, 12 evidence-based stacks, and free tools. Affiliate-funded, never paid placement.</p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas fade-up" style="--delay: 500ms;">
+        <span class="magnetic">
+          <a class="btn-inner pill-btn pill-lime" href="/library">
+            Explore the library
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </span>
+        <a class="ghost-link" href="/quiz">
+          Take the 60-second stack quiz
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="12" height="12">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust row -->
+      <div class="hero-trust fade-up" style="--delay: 600ms;">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <span class="trust-text">
+          Read by <strong>researchers, clinicians, and educators</strong>
+        </span>
+      </div>
+
+    </div>
+
+    <!-- ============ RIGHT COLUMN ============ -->
+    <div class="hero-right">
+      <div class="helix-card-shell fade-up" style="--delay: 300ms;">
+        <div class="glass helix-card">
+
+          <!-- Status pill above helix -->
+          <div class="status-pill">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="num">51</span> peptides
+            <span class="sep">·</span>
+            <span class="num">668+</span> studies
+            <span class="sep">·</span>
+            <span class="live">INDEXED</span>
+          </div>
+
+          <!-- Helix stage (SVG injected by hero.js) -->
+          <div class="helix-stage">
+            <span class="stage-label">HLX-04 · LIVE FEED</span>
+            <span class="stage-coords">θ 4.71 · Δ 0.03Å</span>
+            <span class="tick tl" aria-hidden="true"></span>
+            <span class="tick tr" aria-hidden="true"></span>
+            <span class="tick bl" aria-hidden="true"></span>
+            <span class="tick br" aria-hidden="true"></span>
+            <svg id="helix" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+          </div>
+
+          <!-- Readouts -->
+          <div class="readouts" role="list">
+            <div class="readout" role="listitem">
+              <span class="readout-label">PROFILES</span>
+              <span class="readout-value">51</span>
+            </div>
+            <div class="readout" role="listitem">
+              <span class="readout-label">STACKS</span>
+              <span class="readout-value">12</span>
+            </div>
+            <div class="readout" role="listitem">
+              <span class="readout-label">COA PURITY</span>
+              <span class="readout-value">99<span class="em">%</span></span>
+            </div>
+          </div>
+
+          <!-- Floating purity-audit panel -->
+          <aside class="purity-panel glass-light" aria-label="Latest purity audit">
+            <div class="purity-row">
+              <span class="purity-label">HPLC AUDIT</span>
+              <span class="purity-status">VERIFIED</span>
+            </div>
+            <div class="purity-bar" role="progressbar" aria-valuenow="99.7" aria-valuemin="0" aria-valuemax="100">
+              <div class="purity-fill"></div>
+            </div>
+            <div class="purity-meta">
+              <span><strong>99.7%</strong></span>
+              <span>2025-11-12</span>
+              <span>LCMS ×2</span>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================ STAT BAR ================ -->
+<section class="stat-bar" aria-label="PeptiDex at a glance">
+  <div class="stat-bar-inner stagger-children">
+    <div class="stat">
+      <span class="stat-fig">51<span class="em">+</span></span>
+      <span class="stat-label">Research Peptides</span>
+    </div>
+    <div class="stat">
+      <span class="stat-fig">12</span>
+      <span class="stat-label">Curated Stacks</span>
+    </div>
+    <div class="stat">
+      <span class="stat-fig">668<span class="em">+</span></span>
+      <span class="stat-label">Peer-Reviewed Studies</span>
+    </div>
+    <div class="stat">
+      <span class="stat-fig">99<span class="em">%</span></span>
+      <span class="stat-label">COA Purity Threshold</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================ THE INDEX (BENTO) ================ -->
+<section class="bento" id="index" aria-label="The Index">
+  <div class="bento-inner">
+
+    <!-- Section header (§ rule + eyebrow + h2) -->
+    <header class="bento-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">02</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="bento-eyebrow fade-up" style="--delay: 60ms;">THE INDEX</p>
+      <h2 class="bento-h2 fade-up" style="--delay: 140ms;">Researched like a library, <span class="em">verified</span> like a lab.</h2>
+      <p class="bento-sub fade-up" style="--delay: 240ms;">Every profile traces back to a mechanism, the published studies behind it, and a COA-verified vendor. Nothing here is taken on trust.</p>
+    </header>
+
+    <!-- The bento -->
+    <div class="bento-grid stagger-children">
+
+      <!-- ============ CARD A — Peptide Library ============ -->
+      <article class="bento-card card-a">
+        <div class="card-shell glass">
+          <div class="card-bg">
+            <!-- poster: first frame of clip3.mp4 — extract still here if a poster is wanted -->
+            <video class="card-video" muted loop playsinline preload="metadata"
+                   src="https://pub-bb44e23f2db2497da1abd5de2ab102a4.r2.dev/clip3.mp4"></video>
+            <div class="card-scrim card-scrim-dark" aria-hidden="true"></div>
+          </div>
+          <div class="card-inner">
+            <header class="card-meta">
+              <span class="pill-btn pill-glass tiny">
+                <span class="dot" aria-hidden="true"></span> 51 PROFILES
+              </span>
+              <span class="card-id">A · 01</span>
+            </header>
+            <footer class="card-foot">
+              <h3 class="card-title">Peptide <span class="em">Library</span></h3>
+              <p class="card-desc">51 profiles — mechanism, dosing, half-life, and the published studies behind each one. Search by what you mean, not what you remember.</p>
+              <p class="card-stat">51 PROFILES · MECHANISM TO DOSING</p>
+            </footer>
+          </div>
+          <a class="card-link" href="/library">Open the Peptide Library</a>
+        </div>
+      </article>
+
+      <!-- ============ CARD B — COA Verified (lime accent) ============ -->
+      <article class="bento-card card-b">
+        <div class="card-shell card-shell-light">
+          <div class="card-bg">
+            <!-- poster: first frame of clip4.mp4 — extract still here if a poster is wanted -->
+            <video class="card-video" muted loop playsinline preload="metadata"
+                   src="https://pub-bb44e23f2db2497da1abd5de2ab102a4.r2.dev/clip4.mp4"></video>
+            <div class="card-scrim card-scrim-lime" aria-hidden="true"></div>
+          </div>
+          <div class="card-inner card-inner-light">
+            <header class="card-meta">
+              <span class="pill-btn tiny pill-ink">
+                <span class="dot dot-teal" aria-hidden="true"></span> VERIFIED
+              </span>
+              <span class="card-id ink">B · 02</span>
+            </header>
+            <div class="card-body">
+              <h3 class="card-title ink">COA <span class="em">Verified</span></h3>
+              <p class="card-desc ink-soft">HPLC + Mass Spec on every vendor batch — against a 99% purity threshold.</p>
+
+              <div class="audit-bars">
+                <div class="audit-bar">
+                  <span class="audit-label">HPLC</span>
+                  <div class="audit-track"><div class="audit-fill" data-fill="99.7"></div></div>
+                  <span class="audit-num" data-count="99.7" data-decimals="1" data-suffix="%">0.0%</span>
+                </div>
+                <div class="audit-bar">
+                  <span class="audit-label">MASS SPEC</span>
+                  <div class="audit-track"><div class="audit-fill" data-fill="98.9"></div></div>
+                  <span class="audit-num" data-count="98.9" data-decimals="1" data-suffix="%">0.0%</span>
+                </div>
+                <div class="audit-bar">
+                  <span class="audit-label">PURITY MIN</span>
+                  <div class="audit-track"><div class="audit-fill" data-fill="99"></div></div>
+                  <span class="audit-num" data-count="99" data-decimals="0" data-suffix="%">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="card-link" href="/coa">See COA verification</a>
+        </div>
+      </article>
+
+      <!-- ============ CARD C — Evidence-Based Stacks (wide, sheen) ============ -->
+      <article class="bento-card card-c">
+        <div class="card-shell glass">
+          <div class="card-sheen" aria-hidden="true"></div>
+          <div class="card-inner card-inner-row">
+            <div>
+              <header class="card-meta" style="margin-bottom: 12px;">
+                <span class="card-id">C · 03</span>
+              </header>
+              <h3 class="card-title">12 Evidence-Based <span class="em">Stacks</span></h3>
+              <p class="card-desc" style="margin-top: 8px;">Synergies grounded in published research — indexed by goal, with full citation trails.</p>
+            </div>
+            <div class="card-side">
+              <p class="card-stat">12 STACKS
+BY RESEARCH GOAL
+FULL CITATIONS</p>
+              <span class="magnetic">
+                <a class="btn-inner pill-btn pill-glass small" href="/stacks">
+                  Browse stacks
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============ CARD D — PeptiDex Advisor (square) ============ -->
+      <article class="bento-card card-d">
+        <div class="card-shell glass">
+          <div class="card-inner">
+            <header class="card-meta">
+              <span class="card-id">D · 04</span>
+            </header>
+            <div class="card-body card-body-center">
+              <div class="big-num">668<span class="em">+</span></div>
+              <p class="card-desc">peer-reviewed studies grounding the Advisor</p>
+            </div>
+            <footer class="card-foot">
+              <h3 class="card-title-sm">PeptiDex Advisor</h3>
+            </footer>
+          </div>
+          <a class="card-link" href="/advisor">Open the PeptiDex Advisor</a>
+        </div>
+      </article>
+
+      <!-- ============ CARD E — The Peptide Brief (square + video) ============ -->
+      <article class="bento-card card-e">
+        <div class="card-shell glass">
+          <div class="card-bg">
+            <!-- poster: first frame of clip5.mp4 — extract still here if a poster is wanted -->
+            <video class="card-video" muted loop playsinline preload="metadata"
+                   src="https://pub-bb44e23f2db2497da1abd5de2ab102a4.r2.dev/clip5.mp4"></video>
+            <div class="card-scrim card-scrim-dark" aria-hidden="true"></div>
+          </div>
+          <div class="card-inner">
+            <header class="card-meta">
+              <span class="pill-btn pill-glass tiny">
+                <span class="dot live-dot" aria-hidden="true"></span> LIVE
+              </span>
+              <span class="card-id">E · 05</span>
+            </header>
+            <div class="card-body">
+              <h3 class="card-title">The Peptide Brief</h3>
+              <p class="card-desc">Bi-weekly research updates, vendor pricing, and protocol analyses.</p>
+            </div>
+          </div>
+          <a class="card-link" href="#newsletter">Subscribe to The Peptide Brief</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================ CINEMATIC INTERSTITIAL ================ -->
+<section class="interstitial" id="methodology" aria-label="Accountability">
+  <!-- poster: first frame of clip2.mp4 (interstitial) — extract still here if a poster is wanted -->
+  <video
+    class="interstitial-bg"
+    muted loop playsinline preload="metadata"
+    src="https://pub-bb44e23f2db2497da1abd5de2ab102a4.r2.dev/clip2.mp4"
+  ></video>
+  <div class="interstitial-scrim" aria-hidden="true"></div>
+  <div class="interstitial-grain" aria-hidden="true"></div>
+
+  <span class="interstitial-corner tl" aria-hidden="true"></span>
+  <span class="interstitial-corner tr" aria-hidden="true"></span>
+  <span class="interstitial-corner bl" aria-hidden="true"></span>
+  <span class="interstitial-corner br" aria-hidden="true"></span>
+
+  <div class="interstitial-stamp" aria-hidden="true">
+    <span class="rec"></span>REC · 03:21:08
+  </div>
+  <div class="interstitial-coords" aria-hidden="true">
+    LAT 41.882° N · LON 12.483° E
+  </div>
+
+  <div class="interstitial-inner">
+    <p class="interstitial-eyebrow fade-up">§ 03 / ACCOUNTABILITY</p>
+    <h2 class="interstitial-h2 fade-up" style="--delay: 140ms;">
+      Every claim here is <span class="em">traceable</span> to a lab report.
+    </h2>
+    <div class="interstitial-cta fade-up" style="--delay: 280ms;">
+      <span class="magnetic">
+        <span class="btn-inner pill-btn pill-outline">
+          Read our methodology
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ================ RESEARCH TOOLS (§04) ================ -->
+<section class="sec" id="tools" aria-label="Research tools">
+  <div class="sec-inner">
+    <header class="sec-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">04</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">TOOLS</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">Research <span class="em">tools</span>.</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">Eight free, interactive tools — from dosing math to plasma curves. No account required.</p>
+    </header>
+
+    <div class="tools-grid stagger-children">
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/cycle-planner">
+          <div class="tool-head"><span class="tool-name">Cycle Planner</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Map dosing schedules across a full research cycle.</p>
+          <span class="tool-index">01 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/evidence">
+          <div class="tool-head"><span class="tool-name">Evidence Dashboard</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Browse 668+ studies by peptide, goal, and outcome.</p>
+          <span class="tool-index">02 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/compare">
+          <div class="tool-head"><span class="tool-name">Peptide Comparison</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Compare mechanisms, dosing, and evidence side-by-side.</p>
+          <span class="tool-index">03 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/pricing">
+          <div class="tool-head"><span class="tool-name">Price Comparison</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Track vendor pricing per mg across verified sources.</p>
+          <span class="tool-index">04 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/calculator">
+          <div class="tool-head"><span class="tool-name">Reconstitution Calculator</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Solve BAC water volumes and per-dose units.</p>
+          <span class="tool-index">05 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/coa">
+          <div class="tool-head"><span class="tool-name">COA Analyzer</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Read and validate certificates of analysis.</p>
+          <span class="tool-index">06 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/interactions">
+          <div class="tool-head"><span class="tool-name">Interaction Checker</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Flag known peptide–peptide interactions.</p>
+          <span class="tool-index">07 / 08</span>
+        </a>
+      </div>
+      <div class="tool-cell" data-tilt-cell>
+        <a class="tool-card glass-light tilt-card is-light" data-tilt href="/tools/pk">
+          <div class="tool-head"><span class="tool-name">PK Plasma Curves</span><span class="tool-arrow"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <p class="tool-desc">Model plasma concentration over time.</p>
+          <span class="tool-index">08 / 08</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ RESEARCH GOALS (§05) ================ -->
+<section class="sec" id="goals" aria-label="Research goals">
+  <div class="sec-inner">
+    <header class="sec-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">05</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">RESEARCH GOALS</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">What are you <span class="em">optimizing</span> for?</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">Start from a goal and we'll point you to the peptides and stacks researched for it.</p>
+    </header>
+
+    <div class="goals-grid stagger-children">
+      <a class="goal-card glass" href="/best/body-recomposition"><span class="goal-emoji">🏋️</span><span class="goal-label">Body Recomposition</span></a>
+      <a class="goal-card glass" href="/best/injury-recovery"><span class="goal-emoji">🩹</span><span class="goal-label">Injury Recovery</span></a>
+      <a class="goal-card glass" href="/best/mental-clarity"><span class="goal-emoji">🧠</span><span class="goal-label">Mental Clarity</span></a>
+      <a class="goal-card glass" href="/best/fat-loss"><span class="goal-emoji">🔥</span><span class="goal-label">Fat Loss</span></a>
+      <a class="goal-card glass" href="/best/muscle-growth"><span class="goal-emoji">💪</span><span class="goal-label">Muscle Growth</span></a>
+      <a class="goal-card glass" href="/best/immune-support"><span class="goal-emoji">🛡️</span><span class="goal-label">Immune Support</span></a>
+      <a class="goal-card glass" href="/best/sleep-recovery"><span class="goal-emoji">🌙</span><span class="goal-label">Sleep / Recovery</span></a>
+      <a class="goal-card glass" href="/best/longevity"><span class="goal-emoji">⏳</span><span class="goal-label">Longevity</span></a>
+      <a class="goal-card glass" href="/best/skin-aesthetic"><span class="goal-emoji">✨</span><span class="goal-label">Skin &amp; Aesthetics</span></a>
+      <a class="goal-card glass" href="/best/gut-health"><span class="goal-emoji">🫁</span><span class="goal-label">Gut Health</span></a>
+      <a class="goal-card glass" href="/best/hormonal-optimization"><span class="goal-emoji">⚡</span><span class="goal-label">Hormonal</span></a>
+      <a class="goal-card glass" href="/best/metabolic-health"><span class="goal-emoji">🔬</span><span class="goal-label">Metabolic Health</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================ PERSONALIZED QUIZ (§06) ================ -->
+<section class="sec" id="quiz-cta" aria-label="Personalized peptide stack quiz">
+  <div class="sec-inner">
+    <header class="sec-head" style="max-width: 760px;">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">06</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">PERSONALIZED</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">Get your custom peptide stack in <span class="em">60 seconds</span>.</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">5 quick questions → personalized peptide recommendations backed by published research.</p>
+    </header>
+
+    <div class="quiz-card glass fade-up" style="--delay: 320ms;">
+      <span class="quiz-badge"><span class="dot" aria-hidden="true"></span>5 QUESTIONS · NO ACCOUNT</span>
+      <div class="quiz-chips">
+        <span class="quiz-chip"><span class="qc-dot" aria-hidden="true"></span>Based on <strong>668+ studies</strong></span>
+        <span class="quiz-chip"><span class="qc-dot" aria-hidden="true"></span>Vendor pricing included</span>
+        <span class="quiz-chip"><span class="qc-dot" aria-hidden="true"></span><strong>PEPTIDEX</strong> coupon auto-applied</span>
+      </div>
+      <div class="quiz-cta">
+        <span class="magnetic">
+          <a class="btn-inner pill-btn pill-lime" href="/quiz">
+            Start the Quiz
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </span>
+        <p class="quiz-fine">No email required to see results</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ GETTING STARTED (§07) ================ -->
+<section class="sec" id="getting-started" aria-label="Getting started with peptide research">
+  <div class="sec-inner">
+    <header class="sec-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">07</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">FIRST VIAL</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">Getting started, <span class="em">step by step</span>.</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">Five steps from an empty vial to safe, sterile research practice — beginning with everything you need on hand.</p>
+    </header>
+
+    <ol class="gs-steps stagger-children">
+
+      <!-- STEP 01 — expands into the Supplies Checklist (monetization block) -->
+      <li class="gs-step">
+        <details class="gs-acc glass" open>
+          <summary class="gs-row gs-summary">
+            <span class="gs-num">01</span>
+            <span class="gs-text">
+              <span class="gs-title">Your Supplies Checklist</span>
+              <span class="gs-desc">Everything you need before your first vial</span>
+            </span>
+            <span class="gs-chevron" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+
+          <div class="gs-panel">
+            <p class="supply-callout supply-why"><strong>Why this matters:</strong> Contamination is the #1 cause of injection-site reactions. Using sterile, single-use supplies isn't optional — it's the baseline for safe research practice.</p>
+            <p class="supply-callout supply-aff"><strong>Affiliate Disclosure:</strong> Some links below earn PeptiDex a small commission at no extra cost to you. This keeps the site free and ad-free. We only recommend products we've independently verified and actually use in our own research.</p>
+
+            <ul class="supplies-list">
+              <li class="supply-item">
+                <span class="supply-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="supply-body">
+                  <span class="supply-name">Amino Club Amino H2O — Bacteriostatic Water</span>
+                  <span class="supply-note">Pharma-grade BAC water, 0.9% benzyl alcohol; the only safe diluent for multi-dose vials.</span>
+                </span>
+                <a class="supply-link supply-link-lime" href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=onboarding_supplies&code=PEPTIDEX" target="_blank" rel="noopener noreferrer sponsored">Shop <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </li>
+              <li class="supply-item">
+                <span class="supply-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="supply-body">
+                  <span class="supply-name">3ml Reconstitution Syringes 22G–25G luer-lock</span>
+                  <span class="supply-note">Mixing only, never injection.</span>
+                </span>
+                <a class="supply-link" href="https://amzn.to/4nmTvqh" target="_blank" rel="noopener noreferrer sponsored">Get it <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </li>
+              <li class="supply-item">
+                <span class="supply-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="supply-body">
+                  <span class="supply-name">1ml Insulin Syringes 31G U-100</span>
+                  <span class="supply-note">Subcutaneous injection.</span>
+                </span>
+                <a class="supply-link" href="https://amzn.to/4uNcJbf" target="_blank" rel="noopener noreferrer sponsored">Get it <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </li>
+              <li class="supply-item">
+                <span class="supply-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="supply-body">
+                  <span class="supply-name">Alcohol Prep Pads 70% ISO</span>
+                  <span class="supply-note">Swab every stopper and injection site.</span>
+                </span>
+                <a class="supply-link" href="https://amzn.to/433Gqc0" target="_blank" rel="noopener noreferrer sponsored">Get it <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </li>
+              <li class="supply-item">
+                <span class="supply-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="supply-body">
+                  <span class="supply-name">Sharps Disposal Container</span>
+                  <span class="supply-note">FDA-cleared biohazard container.</span>
+                </span>
+                <a class="supply-link" href="https://amzn.to/4d5c0MA" target="_blank" rel="noopener noreferrer sponsored">Get it <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </li>
+              <li class="supply-item">
+                <span class="supply-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="supply-body">
+                  <span class="supply-name">Peptide Storage &amp; Travel Case</span>
+                  <span class="supply-note">Insulated, lockable.</span>
+                </span>
+                <a class="supply-link" href="https://amzn.to/4djqt6b" target="_blank" rel="noopener noreferrer sponsored">Get it <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <!-- STEP 02 -->
+      <li class="gs-step">
+        <a class="gs-row gs-link glass" href="/vendors">
+          <span class="gs-num">02</span>
+          <span class="gs-text">
+            <span class="gs-title">Trusted Vendor Sources</span>
+            <span class="gs-desc">COA-verified vendors we independently review</span>
+          </span>
+          <span class="gs-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </li>
+
+      <!-- STEP 03 -->
+      <li class="gs-step">
+        <a class="gs-row gs-link glass" href="/tools/calculator">
+          <span class="gs-num">03</span>
+          <span class="gs-text">
+            <span class="gs-title">How to Reconstitute</span>
+            <span class="gs-desc">Turn powder into injectable solution, safely</span>
+          </span>
+          <span class="gs-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </li>
+
+      <!-- STEP 04 — reference step (no dedicated page yet) -->
+      <li class="gs-step">
+        <div class="gs-row gs-static glass">
+          <span class="gs-num">04</span>
+          <span class="gs-text">
+            <span class="gs-title">Dosing &amp; Safe Injection</span>
+            <span class="gs-desc">SubQ protocol, syringe math, and injection sites</span>
+          </span>
+        </div>
+      </li>
+
+      <!-- STEP 05 -->
+      <li class="gs-step">
+        <a class="gs-row gs-link glass" href="/tools">
+          <span class="gs-num">05</span>
+          <span class="gs-text">
+            <span class="gs-title">Explore the Full Toolkit</span>
+            <span class="gs-desc">Free calculators, comparisons, and planners</span>
+          </span>
+          <span class="gs-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+<!-- ================ VERIFIED VENDORS (§08) ================ -->
+<section class="sec" id="vendors" aria-label="Verified vendors">
+  <div class="sec-inner">
+    <header class="sec-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">08</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">VERIFIED SOURCING</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">COA-verified <span class="em">vendors</span>.</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">Independently tested via HPLC and Mass Spectrometry. Use code <span class="code-chip">PEPTIDEX</span> for discounts.</p>
+    </header>
+
+    <div class="vendor-grid stagger-children">
+
+      <div class="vendor-cell" data-tilt-cell>
+        <div class="vendor-card glass tilt-card" data-tilt>
+          <span class="vendor-tag">Editor's Choice</span>
+          <h3 class="vendor-name">Amino Club</h3>
+          <div class="vendor-rating"><span class="stars">★★★★★</span> 4.9 <span>(400+)</span></div>
+          <span class="vendor-purity">99%+ purity</span>
+          <div class="vendor-rule" aria-hidden="true"></div>
+          <p class="vendor-discount">Code <span class="code-chip">PEPTIDEX</span> — 20% off</p>
+          <div class="vendor-cta">
+            <span class="magnetic">
+              <a class="btn-inner pill-btn pill-lime" href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX" target="_blank" rel="noopener sponsored">
+                Shop Amino Club
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-cell" data-tilt-cell>
+        <div class="vendor-card glass tilt-card" data-tilt>
+          <span class="vendor-tag">Triple-Tested</span>
+          <h3 class="vendor-name">Bio Longevity Labs</h3>
+          <div class="vendor-rating"><span class="stars">★★★★★</span> 4.8 <span>(350+)</span></div>
+          <span class="vendor-purity">99%+ purity</span>
+          <div class="vendor-rule" aria-hidden="true"></div>
+          <p class="vendor-discount">Code <span class="code-chip">PEPTIDEX</span> — 15% off</p>
+          <div class="vendor-cta">
+            <span class="magnetic">
+              <a class="btn-inner pill-btn pill-glass" href="https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443" target="_blank" rel="noopener sponsored">
+                Shop
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-cell" data-tilt-cell>
+        <div class="vendor-card glass tilt-card" data-tilt>
+          <span class="vendor-tag">USA Made</span>
+          <h3 class="vendor-name">Limitless Life</h3>
+          <div class="vendor-rating"><span class="stars">★★★★★</span> 4.8 <span>(300+)</span></div>
+          <span class="vendor-purity">99%+ purity</span>
+          <div class="vendor-rule" aria-hidden="true"></div>
+          <p class="vendor-discount">Code <span class="code-chip">PEPTIDEX</span> — 15% off</p>
+          <div class="vendor-cta">
+            <span class="magnetic">
+              <a class="btn-inner pill-btn pill-glass" href="https://www.kb6dp3dq.com/PEPTIDEX/" target="_blank" rel="noopener sponsored">
+                Shop
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-cell" data-tilt-cell>
+        <div class="vendor-card glass tilt-card" data-tilt>
+          <span class="vendor-tag">COA Verified</span>
+          <h3 class="vendor-name">Pantheon Peptides</h3>
+          <div class="vendor-rating"><span class="stars">★★★★★</span> 4.6 <span>(150+)</span></div>
+          <span class="vendor-purity">98%+ purity</span>
+          <div class="vendor-rule" aria-hidden="true"></div>
+          <p class="vendor-discount">Code <span class="code-chip">PEPTIDEX</span> — 15% off</p>
+          <div class="vendor-cta">
+            <span class="magnetic">
+              <a class="btn-inner pill-btn pill-glass" href="https://pantheonpeptides.com/partner/PeptiDex/" target="_blank" rel="noopener sponsored">
+                Shop
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================ AI ADVISOR (§09) ================ -->
+<section class="sec" id="advisor" aria-label="PeptiDex Advisor">
+  <div class="sec-inner">
+    <header class="sec-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">09</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">INTELLIGENCE</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">Ask the <span class="em">PeptiDex</span> Advisor.</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">AI-powered research summaries grounded in published literature and verified vendor data.</p>
+    </header>
+
+    <div class="advisor-grid">
+      <div>
+        <ul class="advisor-bullets fade-up">
+          <li><span class="ico">📋</span><span>Build <strong>personalized stacks</strong> based on your goals</span></li>
+          <li><span class="ico">💊</span><span>Get <strong>dosing protocols</strong> from clinical literature</span></li>
+          <li><span class="ico">🔍</span><span>Compare peptides <strong>side-by-side with citations</strong></span></li>
+        </ul>
+        <div class="fade-up" style="--delay: 120ms;">
+          <span class="magnetic">
+            <a class="btn-inner pill-btn pill-lime" href="/advisor">
+              Open the Advisor
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <div class="glass advisor-chat fade-up" style="--delay: 200ms;">
+        <div class="chat-head">
+          <span class="dot" aria-hidden="true"></span>
+          PeptiDex Advisor
+          <span class="chat-sub">GROUNDED IN 668+ STUDIES</span>
+        </div>
+        <div class="chat-body stagger-children">
+          <div class="chat-msg user"><div class="chat-bubble">Which peptides are most studied for cutting?</div></div>
+          <div class="chat-msg bot">
+            <div class="chat-bubble">In the Phase 2 NEJM trial, subjects receiving Retatrutide at 12mg weekly achieved 24.2% body weight loss at 48 weeks. The literature documents combinations pairing it with AOD-9604. Researchers sourcing Retatrutide for laboratory use can verify vendor pricing at <span class="code-chip">/tools/pricing</span>.</div>
+            <span class="chat-time">10:42 AM</span>
+          </div>
+          <div class="chat-msg user"><div class="chat-bubble">What's the half-life of Tesamorelin?</div></div>
+          <div class="chat-msg bot">
+            <div class="chat-bubble">Tesamorelin has a plasma half-life of ~26 minutes (FDA Egrifta prescribing info), administered subcutaneously once daily.</div>
+            <span class="chat-time">10:44 AM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ NEWSLETTER (§10) ================ -->
+<section class="sec" id="newsletter" aria-label="Newsletter">
+  <div class="sec-inner">
+    <header class="sec-head">
+      <div class="section-rule fade-up" aria-hidden="true">
+        <span class="rule-line"></span>
+        <span class="rule-mark">§<span class="num">10</span></span>
+        <span class="rule-line"></span>
+      </div>
+      <p class="sec-eyebrow fade-up" style="--delay: 60ms;">STAY CURRENT</p>
+      <h2 class="sec-h2 fade-up" style="--delay: 140ms;">Get the next issue of <span class="em">The Peptide Brief</span>.</h2>
+      <p class="sec-sub fade-up" style="--delay: 240ms;">Twice a month: new research summaries, vendor pricing updates, and protocol analyses. Read by researchers and biohackers.</p>
+    </header>
+
+    <div class="glass newsletter-card fade-up" style="--delay: 320ms; padding: 30px;">
+      <form class="newsletter-form">
+        <input class="newsletter-input" type="email" placeholder="you@lab.com" aria-label="Email address" autocomplete="email" />
+        <span class="magnetic">
+          <button class="btn-inner pill-btn pill-lime" type="submit">Subscribe</button>
+        </span>
+      </form>
+      <p class="newsletter-fine">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================ FOOTER ================ -->
+<!-- LEGAL BAND -->
+<div class="legal-band">
+  <p>PeptiDex is an independent research reference. We are not a pharmacy, clinic, or medical provider. We do not sell, ship, or handle controlled substances. We provide educational reference material for researchers studying peptide pharmacology. All efficacy claims attributed to published peer-reviewed sources.</p>
+</div>
+
+<footer class="site-footer">
+  <p class="affiliate-disclosure">
+    <strong>Affiliate Disclosure:</strong> Some links earn PeptiDex a small commission at no extra cost to you. This keeps the site free and ad-free. We only feature products we've independently verified.
+  </p>
+  <div class="footer-inner">
+    <p class="footer-tagline">The independent, evidence-based peptide research index.</p>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>§ Learn</h4>
+        <ul>
+          <li><a href="/intro">Peptide 101</a></li>
+          <li><a href="/library">Library</a></li>
+          <li><a href="/tools">Evidence Dashboard</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Tools</h4>
+        <ul>
+          <li><a href="/tools">Cycle Planner</a></li>
+          <li><a href="/tools">Evidence Dashboard</a></li>
+          <li><a href="/tools">Comparison</a></li>
+          <li><a href="/tools">Pricing</a></li>
+          <li><a href="/tools">Reconstitution</a></li>
+          <li><a href="/tools">COA Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ Source</h4>
+        <ul>
+          <li><a href="/vendors">Vendor Reviews</a></li>
+          <li><a href="/vendors">Amino Club Review</a></li>
+          <li><a href="/coa">COA Library</a></li>
+          <li><a href="/stacks">Stacks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>§ About</h4>
+        <ul>
+          <li><a href="/about">Our Mission</a></li>
+          <li><a href="/about/editorial-policy">Editorial Policy</a></li>
+          <li><a href="/disclaimers">Medical Disclaimer</a></li>
+          <li><a href="/about">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 PeptiDex</span>
+      <span class="footer-legal">
+        <a href="/legal">Privacy</a>
+        <a href="/legal">Terms</a>
+        <a href="/disclaimers">Disclosures</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- Loader runs FIRST so it can park hero entrance before motion.js boots -->
+<!-- RUO BANNER -->
+<div class="rou-banner glass-light" id="rouBanner" role="dialog" aria-label="Research use only notice">
+  <span class="rou-ico" aria-hidden="true">⚠</span>
+  <p class="rou-body"><strong>RESEARCH USE ONLY.</strong> This site provides educational information about research chemicals not approved for human use. Nothing here is medical advice, a prescription, or a recommendation for self-administration. By continuing, you acknowledge you are a researcher accessing reference material.</p>
+  <span class="rou-actions">
+    <a class="rou-read" href="/disclaimers">Read full disclaimers</a>
+    <button class="pill-btn pill-lime" id="rouAck" type="button">Acknowledge &amp; continue</button>
+  </span>
+  <button class="rou-close" id="rouClose" type="button" aria-label="Dismiss">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<script src="loader.js"></script>
+<!-- Shared animation loop — must precede any per-frame system -->
+<script src="raf.js"></script>
+<!-- Foundation + section behavior -->
+<script src="motion.js"></script>
+<script src="hero.js"></script>
+<script src="bento.js"></script>
+<script src="interstitial.js"></script>
+<script src="nav.js"></script>
+<script src="interaction.js"></script>
+<script src="legal.js"></script>
+<script src="newsletter.js"></script>
+
+</body>
+</html>

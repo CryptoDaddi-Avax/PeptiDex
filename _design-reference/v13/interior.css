@@ -1,0 +1,916 @@
+/* =============================================================
+   Peptidex — Interior page patterns
+   Shared by library.html, tools.html, vendors.html. Reuses the
+   landing primitives (.glass, .glass-light, .fade-up, .pill-btn,
+   .tilt-card, .sec scaffolding, nav, footer). Interior pages use a
+   small header aurora instead of full-bleed video.
+   ============================================================= */
+
+/* ---------- INTERIOR HERO (aurora behind header only) ---------- */
+.interior-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ink);
+}
+.interior-aurora {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 560px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 60% at 18% 8%, color-mix(in srgb, var(--teal) 60%, transparent), transparent 70%),
+    radial-gradient(34% 50% at 82% 0%, color-mix(in srgb, var(--rust) 32%, transparent), transparent 72%),
+    radial-gradient(46% 56% at 58% 26%, color-mix(in srgb, var(--lime) 16%, transparent), transparent 72%);
+  filter: blur(34px);
+  opacity: 0.72;
+}
+/* faint dot grid over the aurora */
+.interior-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(242, 238, 229, 0.04) 1px, transparent 1.5px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 25%, #000, transparent 80%);
+          mask-image: radial-gradient(ellipse 70% 70% at 50% 25%, #000, transparent 80%);
+}
+
+.interior-head {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 150px 32px 52px;
+}
+.interior-eyebrow {
+  margin: 0 0 16px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 62%, transparent);
+}
+.interior-h1 {
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--paper);
+  text-wrap: balance;
+}
+.interior-h1 .em { font-style: normal; color: var(--lime); }
+.interior-sub {
+  margin: 20px 0 0;
+  max-width: 60ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+.interior-stat {
+  margin: 22px 0 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--paper) 58%, transparent);
+}
+
+/* generic interior content section */
+.interior-body {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 32px 120px;
+}
+
+/* ===========================================================
+   LIBRARY — sticky filter bar
+   =========================================================== */
+.lib-filter-wrap {
+  position: sticky;
+  top: 86px;                 /* clears disclaimer (34) + scrolled nav */
+  z-index: 60;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.lib-filter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 9999px;
+  flex-wrap: nowrap;
+}
+.lib-filter-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+.lib-filter-scroll::-webkit-scrollbar { display: none; }
+.filter-pill {
+  flex: 0 0 auto;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 240ms cubic-bezier(0.22, 1, 0.36, 1), color 240ms cubic-bezier(0.22, 1, 0.36, 1), border-color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.filter-pill:hover { border-color: rgba(255, 255, 255, 0.3); color: var(--paper); }
+.filter-pill.active {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--ink);
+}
+.lib-search {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(11, 13, 16, 0.4);
+}
+.lib-search svg { width: 15px; height: 15px; color: color-mix(in srgb, var(--paper) 55%, transparent); flex: 0 0 auto; }
+.lib-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--paper);
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  width: 150px;
+}
+.lib-search input::placeholder { color: color-mix(in srgb, var(--paper) 42%, transparent); }
+
+/* ===========================================================
+   PEPTIDE GRID
+   =========================================================== */
+.lib-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.peptide-cell { position: relative; display: block; }
+.peptide-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 22px;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--ink);
+}
+.peptide-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.peptide-name {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.class-tag {
+  flex: 0 0 auto;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 9999px;
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 500;
+}
+.peptide-mech {
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+  flex: 1;
+}
+.peptide-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  padding-top: 12px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.peptide-stats .sep { color: color-mix(in srgb, var(--ink) 30%, transparent); }
+.peptide-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  color: var(--ink);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1), transform 280ms cubic-bezier(0.22, 1, 0.36, 1), background-color 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-tilt-cell]:hover .peptide-arrow { opacity: 1; transform: translate(0, 0); background: var(--lime); border-color: var(--lime); }
+.peptide-arrow svg { width: 13px; height: 13px; }
+
+/* pagination */
+.lib-more {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.lib-count {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+
+/* ===========================================================
+   TOOLS — large 2-up cards with mini previews
+   =========================================================== */
+.tools-lg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 8px;
+}
+.tool-lg-cell { position: relative; display: block; }
+.tool-lg {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 28px 24px;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--paper);
+  overflow: hidden;
+}
+.tool-lg-head { display: flex; align-items: center; gap: 14px; }
+.tool-ico {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
+  background: color-mix(in srgb, var(--lime) 12%, transparent);
+  color: var(--lime);
+}
+.tool-ico svg { width: 20px; height: 20px; }
+.tool-lg-name {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+.tool-preview {
+  position: relative;
+  height: 96px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tool-preview svg { width: 100%; height: 100%; opacity: 0.4; color: var(--lime); }
+.tool-lg-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+}
+.tool-lg-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--paper) 74%, transparent);
+  max-width: 34ch;
+}
+.tool-lg-index {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--paper) 42%, transparent);
+}
+.tool-lg .open-pill {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* methodology callout */
+.method-callout {
+  margin-top: 22px;
+  padding: 24px 26px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--ink);
+  flex-wrap: wrap;
+}
+.method-callout p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  max-width: 70ch;
+}
+.method-callout .em { color: var(--teal); font-style: normal; font-weight: 500; }
+
+/* ===========================================================
+   VENDORS — methodology strip + large rows + FAQ
+   =========================================================== */
+.method-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 8px;
+  color: var(--ink);
+}
+.method-col {
+  background: var(--paper);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.method-col h3 {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.method-col h3::before {
+  content: "";
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--teal);
+}
+.method-col p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 66%, transparent);
+}
+
+.vendor-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24px;
+}
+.vendor-row-cell { position: relative; display: block; }
+.vendor-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr 0.85fr;
+  gap: 28px;
+  padding: 28px 30px;
+  border-radius: var(--radius-lg);
+  color: var(--paper);
+  align-items: stretch;
+}
+.vrow-left { display: flex; flex-direction: column; gap: 12px; }
+.vendor-logo {
+  width: 52px; height: 52px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, var(--teal-2), var(--ink-3));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--lime);
+}
+.vrow-name {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin: 0;
+}
+.vrow-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+.vrow-rating .stars { color: var(--lime); letter-spacing: 1px; }
+.vrow-est {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--paper) 45%, transparent);
+}
+.vrow-mid { display: flex; flex-direction: column; gap: 10px; }
+.vrow-mid .mid-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
+  margin-bottom: 2px;
+}
+.vrow-bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.vrow-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--paper) 82%, transparent);
+}
+.vrow-bullets svg { width: 16px; height: 16px; flex: 0 0 auto; margin-top: 1px; stroke: var(--lime); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.vrow-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 24px;
+}
+.purity-big {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+.purity-big small { font-size: 13px; color: color-mix(in srgb, var(--paper) 55%, transparent); letter-spacing: 0; }
+.code-chip-lg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--lime);
+  padding: 9px 12px;
+  border: 1px dashed color-mix(in srgb, var(--lime) 50%, transparent);
+  border-radius: 9px;
+}
+.code-chip-lg .disc { color: color-mix(in srgb, var(--paper) 70%, transparent); }
+.vrow-ctas { display: flex; flex-direction: column; gap: 8px; }
+.vrow-ctas .pill-btn,
+.vrow-ctas .magnetic { width: 100%; }
+.vrow-ctas .btn-inner { width: 100%; justify-content: center; }
+.vendor-tag {
+  align-self: flex-start;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 9999px;
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ---------- FAQ ACCORDION ---------- */
+.faq {
+  margin-top: 64px;
+  max-width: 860px;
+}
+.faq-head {
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin: 0 0 24px;
+}
+.faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-item:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+}
+.faq-toggle {
+  flex: 0 0 auto;
+  width: 26px; height: 26px;
+  position: relative;
+  color: var(--lime);
+}
+.faq-toggle::before,
+.faq-toggle::after {
+  content: "";
+  position: absolute;
+  background: var(--lime);
+  border-radius: 2px;
+  transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1), transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-toggle::before { top: 50%; left: 3px; right: 3px; height: 2px; transform: translateY(-50%); }
+.faq-toggle::after { left: 50%; top: 3px; bottom: 3px; width: 2px; transform: translateX(-50%); }
+.faq-item.open .faq-toggle::after { transform: translateX(-50%) scaleY(0); opacity: 0; }
+.faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-a-inner {
+  padding: 0 4px 24px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+  max-width: 70ch;
+}
+.faq-a-inner a { color: var(--lime); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width: 1080px) {
+  .lib-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vendor-row { grid-template-columns: 1fr 1fr; }
+  .vrow-right { grid-column: 1 / 3; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 20px; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .vrow-right .purity-big { flex: 0 0 auto; }
+  .code-chip-lg { flex: 1; min-width: 180px; }
+  .vrow-ctas { flex: 1; min-width: 200px; flex-direction: row; }
+}
+@media (max-width: 768px) {
+  .interior-head { padding: 132px 18px 40px; }
+  .interior-body { padding: 24px 18px 80px; }
+  .lib-filter-wrap { padding: 0 18px; top: 80px; }
+  .tools-lg-grid { grid-template-columns: 1fr; }
+  .method-strip { grid-template-columns: 1fr; }
+  .lib-search input { width: 110px; }
+}
+@media (max-width: 600px) {
+  .lib-grid { grid-template-columns: 1fr; }
+  .vendor-row { grid-template-columns: 1fr; gap: 20px; }
+  .vrow-right { grid-column: auto; flex-direction: column; align-items: stretch; }
+  .vrow-ctas { flex-direction: column; }
+  .method-callout { flex-direction: column; align-items: flex-start; }
+}
+
+/* ===========================================================
+   STACKS — filter bar sort dropdown
+   =========================================================== */
+.lib-sort {
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 8px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(11, 13, 16, 0.4);
+}
+.lib-sort .sort-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 48%, transparent);
+}
+.lib-sort select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--paper);
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding-right: 16px;
+  cursor: pointer;
+}
+.lib-sort select option { background: var(--ink-2); color: var(--paper); }
+.lib-sort .sort-caret {
+  position: absolute;
+  right: 13px;
+  width: 11px;
+  height: 11px;
+  pointer-events: none;
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
+}
+
+/* ===========================================================
+   STACKS — grid + cards (2-up, larger than library cells)
+   =========================================================== */
+.stacks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.stack-cell { position: relative; display: block; }
+.stack-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 26px 64px;
+  border-radius: var(--radius-lg);
+  color: var(--paper);
+  overflow: hidden;
+}
+.stack-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.diff-tag {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.diff-beginner { background: var(--paper); color: var(--ink); }
+.diff-intermediate { background: var(--teal-2); color: var(--paper); }
+.diff-advanced { background: var(--rust); color: var(--paper); }
+
+.stack-name {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 27px;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  color: var(--paper);
+  margin: -2px 0 0;
+}
+.stack-pos {
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  margin: -6px 0 0;
+  max-width: 44ch;
+}
+
+/* component peptide chips */
+.stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stack-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 9999px;
+}
+.stack-chip .chip-name {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.stack-chip .chip-dose {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
+/* mini stat row */
+.stack-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.stack-stat { display: flex; flex-direction: column; gap: 3px; }
+.stack-stat .s-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 45%, transparent);
+}
+.stack-stat .s-val {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+}
+
+/* footer buttons */
+.stack-note {
+  margin: 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 9.5px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--paper) 42%, transparent);
+}
+.stack-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stack-foot .pill-btn { padding: 10px 16px; }
+.stack-foot .pill-outline {
+  color: var(--paper);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.stack-foot .pill-outline:hover,
+.stack-foot .magnetic:hover > .btn-inner.pill-outline {
+  border-color: var(--paper);
+  background: rgba(255, 255, 255, 0.06);
+}
+.stack-index {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--paper) 40%, transparent);
+}
+
+/* ===========================================================
+   STACKS — methodology card (3-column)
+   =========================================================== */
+.method-build {
+  margin-top: 40px;
+  padding: 32px 32px 30px;
+  border-radius: var(--radius-lg);
+  color: var(--ink);
+}
+.method-build-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+.method-build-head h2 {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--ink);
+}
+.method-build-head .em { color: var(--teal); font-style: normal; }
+.method-build-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.method-build-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.method-build-col .mb-num {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--teal);
+}
+.method-build-col h3 {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+.method-build-col p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 66%, transparent);
+}
+
+/* ===========================================================
+   STACKS — bottom CTA band
+   =========================================================== */
+.stack-cta {
+  margin-top: 18px;
+  padding: 40px 36px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.stack-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 120% at 12% 0%, color-mix(in srgb, var(--teal) 55%, transparent), transparent 70%),
+    radial-gradient(50% 120% at 92% 100%, color-mix(in srgb, var(--lime) 14%, transparent), transparent 72%);
+  pointer-events: none;
+}
+.stack-cta-copy h2 {
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--paper);
+  text-wrap: balance;
+}
+.stack-cta-copy h2 .em { color: var(--lime); font-style: normal; }
+.stack-cta-copy p {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  max-width: 46ch;
+}
+.stack-cta .magnetic { flex: 0 0 auto; }
+
+/* ===========================================================
+   STACKS — responsive
+   =========================================================== */
+@media (max-width: 768px) {
+  .stacks-grid { grid-template-columns: 1fr; }
+  .method-build-cols { grid-template-columns: 1fr; gap: 22px; }
+  .stack-cta { flex-direction: column; align-items: flex-start; }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+}
+@media (max-width: 600px) {
+  .stack-card { padding: 22px 22px 60px; }
+  .stack-name { font-size: 24px; }
+}

@@ -1,0 +1,190 @@
+/* =============================================================
+   Peptidex — Premium Interaction Layer
+     1. Custom cursor (dot + lagging ring, state-aware)
+     2. 3D tilt glare (transform composition lives in bento/pricing CSS;
+        this file styles the cursor, scroll-progress, active-nav)
+     3. Scroll progress bar + active-nav sliding indicator
+   All cursor/tilt visuals are gated to fine pointers and disabled
+   under prefers-reduced-motion (handled in JS + the queries below).
+   ============================================================= */
+
+/* ---------- CUSTOM CURSOR ---------- */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+  border-radius: 50%;
+  pointer-events: none;
+  display: none;             /* shown only when JS activates (fine pointer) */
+  will-change: transform;
+}
+body.has-custom-cursor .cursor-dot,
+body.has-custom-cursor .cursor-ring { display: flex; }
+
+/* hide the native cursor only while the custom one is live */
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor .pill-btn,
+body.has-custom-cursor [role="button"] { cursor: none !important; }
+
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--lime);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--lime) 60%, transparent);
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1), background-color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid color-mix(in srgb, var(--lime) 70%, transparent);
+  background: color-mix(in srgb, var(--lime) 0%, transparent);
+  transition:
+    background-color 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color     280ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity          240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* state: over links / buttons */
+.cursor-ring.is-link {
+  background: color-mix(in srgb, var(--lime) 16%, transparent);
+}
+/* state: over glass cards (handled by scale in JS) */
+/* state: over hero molecule — show label */
+.cursor-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+  opacity: 0;
+  transform: translateY(0.5px);
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+.cursor-ring.is-molecule .cursor-label { opacity: 1; }
+
+/* color adaptation over light surfaces */
+.cursor-dot.on-light { background: var(--ink); box-shadow: none; }
+.cursor-ring.on-light { border-color: color-mix(in srgb, var(--ink) 55%, transparent); }
+.cursor-ring.on-light.is-link { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+.cursor-ring.on-light .cursor-label { color: var(--ink); }
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1500;
+  background: linear-gradient(90deg, var(--lime-2), var(--lime));
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--lime) 45%, transparent);
+}
+
+/* ---------- ACTIVE-NAV SLIDING INDICATOR ---------- */
+.nav-links { position: relative; }
+.nav-indicator {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 1.5px;
+  width: 0;
+  background: var(--lime);
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateX(0);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    width     320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   240ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.nav-indicator.show { opacity: 1; }
+.nav-links a.active { opacity: 1; }
+/* persistent underline for the current page's nav link (interior pages) */
+.nav-links a.active::after { transform: scaleX(1); }
+
+/* ---------- TOUCH / COARSE POINTER: native everything ---------- */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+  .scroll-progress { box-shadow: none; }
+  .nav-indicator { transition: opacity 1ms linear; }
+}
+
+/* ---------- GLOBAL FOCUS RINGS (AA, keyboard) ---------- */
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+a:focus-visible,
+button:focus-visible,
+.pill-btn:focus-visible,
+.nav-links a:focus-visible,
+.nav-mobile a:focus-visible,
+.nav-login:focus-visible,
+.ghost-link:focus-visible,
+.nav-burger:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+/* On the light pricing card, ink ring keeps AA contrast over paper. */
+.tier-light a:focus-visible,
+.tier-light .pill-btn:focus-visible {
+  outline-color: var(--teal);
+}
+
+/* ===========================================================
+   MOBILE PERFORMANCE (<768px)
+   backdrop-filter blur is expensive on mobile GPUs — swap the
+   glass surfaces for semi-opaque solids (same palette, no blur).
+   =========================================================== */
+@media (max-width: 768px) {
+  .glass {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    background: rgba(11, 13, 16, 0.86);
+  }
+  .glass-light {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    background: rgba(238, 233, 222, 0.97);
+  }
+  .pill-glass {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    background: rgba(11, 13, 16, 0.72);
+  }
+  .site-nav.scrolled {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    background: rgba(11, 13, 16, 0.92);
+  }
+  .nav-mobile {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    background: rgba(11, 13, 16, 0.96);
+  }
+  .nav-burger {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    background: rgba(11, 13, 16, 0.7);
+  }
+  /* keep tap targets comfortable */
+  .nav-mobile a { min-height: 44px; display: flex; align-items: center; }
+}
+

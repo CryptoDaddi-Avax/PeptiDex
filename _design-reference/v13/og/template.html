@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PeptiDex OG Card Template</title>
+<!--
+  ============================================================
+  PeptiDex dynamic OG card — 1200×630
+  ------------------------------------------------------------
+  Renders the social-share image for every page. Driven by 3
+  query params (all URL-encoded):
+     ?title=    headline (peptide / comparison / stack name).
+                Wrap an accent word in [em]…[/em] for lime.
+     ?eyebrow=  category / class line (top-right pill).
+     ?stat=     ONE hard stat or hook. A leading number is
+                auto-highlighted lime and set in Geist Mono.
+  Example:
+     /api/og?title=Retatrutide&eyebrow=GLP-1%2FGIP%2FGlucagon
+            &stat=24.2%25%20body-weight%20loss%20(Phase%202%2C%20NEJM)
+
+  ── DEPLOY ──────────────────────────────────────────────────
+  On the live stack this file is the design source for the
+  Next.js  app/api/og/route.tsx  (@vercel/og + Satori). Port
+  this markup into ImageResponse and read the same 3 params.
+  Static <meta og:image>/<twitter:image> tags already point at
+  /api/og?…  (see og-map.js for the per-page params), so once
+  the route ships, every share card renders server-side.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{ --ink:#0B0D10; --ink-2:#14171C; --paper:#F2EEE5; --lime:#C4F25C; --teal:#1A3C3A; --teal-2:#284E4B; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ width:1200px; height:630px; overflow:hidden; }
+  body{ background:var(--ink); color:var(--paper); font-family:"Geist",sans-serif; position:relative; }
+
+  /* atmosphere */
+  .aurora{ position:absolute; width:760px; height:760px; right:-160px; top:-200px;
+    background:radial-gradient(42% 50% at 70% 35%, color-mix(in srgb,var(--teal-2) 85%,transparent), transparent 70%),
+               radial-gradient(34% 44% at 82% 62%, color-mix(in srgb,var(--lime) 20%,transparent), transparent 72%);
+    filter:blur(28px); }
+  .grain{ position:absolute; inset:0; opacity:0.05;
+    background-image:radial-gradient(circle at 1px 1px, rgba(242,238,229,0.5) 1px, transparent 1.6px); background-size:22px 22px; }
+  .mol{ position:absolute; right:64px; top:50%; transform:translateY(-50%) rotate(-8deg); width:430px; opacity:0.16; }
+  .mol .b{ stroke:var(--paper); stroke-width:3; } .mol .n{ fill:var(--lime); } .mol .np{ fill:var(--paper); }
+  .hair{ position:absolute; left:72px; right:72px; height:1px; background:rgba(242,238,229,0.12); }
+  .hair.t{ top:128px; } .hair.b{ bottom:120px; }
+
+  .pad{ position:absolute; inset:0; padding:56px 72px; display:flex; flex-direction:column; z-index:2; }
+
+  /* top bar */
+  .top{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .logo{ display:flex; align-items:center; gap:15px; }
+  .logo svg{ width:70px; height:28px; }
+  .logo .word{ font-weight:600; font-size:31px; letter-spacing:-0.02em; color:var(--paper); }
+  .cat{ font-family:"Geist Mono",monospace; font-size:16px; letter-spacing:0.16em; text-transform:uppercase; color:var(--lime);
+    border:1px solid color-mix(in srgb,var(--lime) 55%,transparent); padding:9px 18px; border-radius:9999px; max-width:560px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  /* middle */
+  .mid{ margin-top:auto; margin-bottom:auto; max-width:880px; position:relative; z-index:2; }
+  .title{ font-weight:500; font-size:84px; line-height:1.0; letter-spacing:-0.03em; color:var(--paper); text-wrap:balance; }
+  .title em{ font-style:normal; color:var(--lime); }
+  .title.lg{ font-size:66px; } .title.xl{ font-size:52px; } .title.xxl{ font-size:42px; }
+
+  /* the hook / hard stat */
+  .stat{ margin-top:30px; display:flex; align-items:flex-start; gap:18px; max-width:840px; }
+  .stat .bar{ flex:0 0 auto; width:5px; align-self:stretch; min-height:40px; border-radius:3px; background:var(--lime); }
+  .stat .txt{ font-family:"Geist Mono",monospace; font-size:30px; line-height:1.32; letter-spacing:-0.01em;
+    color:color-mix(in srgb,var(--paper) 86%,transparent); }
+  .stat .txt em{ font-style:normal; color:var(--lime); font-weight:500; }
+  .stat.sm .txt{ font-size:25px; }
+
+  /* bottom */
+  .bottom{ display:flex; align-items:flex-end; justify-content:space-between; }
+  .cred{ font-family:"Geist Mono",monospace; font-size:16px; letter-spacing:0.12em; text-transform:uppercase;
+    color:color-mix(in srgb,var(--paper) 52%,transparent); }
+  .domain{ font-family:"Geist Mono",monospace; font-size:18px; letter-spacing:0.02em; color:color-mix(in srgb,var(--lime) 82%,var(--paper)); }
+</style>
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grain"></div>
+  <svg class="mol" viewBox="0 0 200 82" fill="none" aria-hidden="true">
+    <line class="b" x1="26" y1="54" x2="74" y2="28" /><line class="b" x1="74" y1="28" x2="122" y2="54" /><line class="b" x1="122" y1="54" x2="170" y2="28" />
+    <circle class="n" cx="26" cy="54" r="13" /><circle class="np" cx="74" cy="28" r="13" /><circle class="np" cx="122" cy="54" r="13" /><circle class="n" cx="170" cy="28" r="13" />
+  </svg>
+  <div class="hair t"></div>
+  <div class="hair b"></div>
+
+  <div class="pad">
+    <div class="top">
+      <div class="logo">
+        <svg viewBox="0 0 70 28" fill="none" aria-hidden="true"><line x1="10" y1="19" x2="27" y2="9" stroke="#F2EEE5" stroke-width="2.4"/><line x1="27" y1="9" x2="44" y2="19" stroke="#F2EEE5" stroke-width="2.4"/><line x1="44" y1="19" x2="60" y2="9" stroke="#F2EEE5" stroke-width="2.4"/><circle cx="10" cy="19" r="5" fill="#C4F25C"/><circle cx="27" cy="9" r="5" fill="#F2EEE5"/><circle cx="44" cy="19" r="5" fill="#F2EEE5"/><circle cx="60" cy="9" r="5" fill="#C4F25C"/></svg>
+        <span class="word">Peptidex</span>
+      </div>
+      <span class="cat" id="cat">RESEARCH INDEX</span>
+    </div>
+
+    <div class="mid">
+      <h1 class="title" id="title">The Independent Peptide Research Index</h1>
+      <div class="stat" id="statWrap">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="txt" id="stat">51 profiles · 668+ studies · 99% COA purity</span>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span class="cred">Independent · Evidence-based · COA-verified</span>
+      <span class="domain">peptidex.app</span>
+    </div>
+  </div>
+
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+    var title = q.get("title");
+    var eyebrow = q.get("eyebrow");
+    var stat = q.get("stat");
+
+    if (eyebrow) document.getElementById("cat").textContent = eyebrow;
+
+    if (title) {
+      var t = document.getElementById("title");
+      // [em]…[/em] -> lime accent
+      t.innerHTML = esc(title).replace(/\[em\]([\s\S]*?)\[\/em\]/g, '<em>$1</em>');
+      var len = title.replace(/\[\/?em\]/g, "").length;
+      t.classList.remove("lg","xl","xxl");
+      if (len > 60) t.classList.add("xxl");
+      else if (len > 42) t.classList.add("xl");
+      else if (len > 26) t.classList.add("lg");
+    }
+
+    if (stat) {
+      var el = document.getElementById("stat");
+      var clean = esc(stat);
+      // highlight a leading numeric token (e.g. "24.2%", "$8.20/mg", "668+", "12")
+      clean = clean.replace(/^(\s*[$]?\d[\d.,]*\s*(?:%|\+|x|×|h|mg(?:\/[a-z]+)?|\/mg)?)/i, '<em>$1</em>');
+      el.innerHTML = clean;
+      var wrap = document.getElementById("statWrap");
+      if (stat.length > 64) wrap.classList.add("sm");
+    }
+  })();
+</script>
+</body>
+</html>

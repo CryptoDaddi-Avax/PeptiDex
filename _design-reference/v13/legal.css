@@ -1,0 +1,108 @@
+/* =============================================================
+   Peptidex — Legal compliance scaffolding
+   Dismissible "Research Use Only" banner + footer legal band.
+   Reuses shared tokens. Loaded on every page (../legal.css from
+   subdirectories). Additive only — no existing rules changed.
+   ============================================================= */
+
+:root { --legal-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ---------- DISMISSIBLE RUO BANNER ---------- */
+.rou-banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1500;
+  display: none;
+  align-items: center;
+  gap: 18px;
+  max-width: var(--max);
+  margin: 0 auto 16px;
+  left: 16px; right: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--rust);
+  color: var(--ink);
+  transform: translateY(140%);
+  transition: transform 420ms var(--legal-ease);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.5);
+}
+.rou-banner.mounted { display: flex; }
+.rou-banner.show { transform: translateY(0); }
+.rou-banner .rou-ico { flex: 0 0 auto; font-size: 18px; color: var(--rust); line-height: 1.4; }
+.rou-banner .rou-body {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 78%, transparent);
+}
+.rou-banner .rou-body strong { color: var(--rust); font-weight: 600; letter-spacing: 0.02em; }
+.rou-banner .rou-actions { flex: 0 0 auto; display: flex; align-items: center; gap: 10px; }
+.rou-banner .rou-actions .pill-btn { white-space: nowrap; }
+.rou-banner .rou-read {
+  font-family: "Geist", sans-serif; font-size: 13px; font-weight: 500;
+  color: var(--ink); text-decoration: underline; text-underline-offset: 2px;
+  white-space: nowrap;
+}
+.rou-banner .rou-read:hover { color: var(--teal); }
+.rou-banner .rou-close {
+  flex: 0 0 auto;
+  width: 30px; height: 30px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 13, 16, 0.16);
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: border-color 200ms var(--legal-ease), background-color 200ms var(--legal-ease);
+}
+.rou-banner .rou-close:hover { border-color: var(--ink); background: rgba(11, 13, 16, 0.05); }
+.rou-banner .rou-close svg { width: 13px; height: 13px; }
+
+@media (max-width: 760px) {
+  .rou-banner { flex-wrap: wrap; gap: 12px; left: 10px; right: 10px; margin-bottom: 10px; padding: 14px 16px; }
+  .rou-banner .rou-body { flex: 1 1 100%; order: 2; }
+  .rou-banner .rou-ico { order: 1; }
+  .rou-banner .rou-close { order: 1; margin-left: auto; }
+  .rou-banner .rou-actions { order: 3; flex: 1 1 100%; }
+  .rou-banner .rou-actions .pill-btn { flex: 1; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rou-banner { transition: transform 1ms linear; }
+}
+
+/* ---------- METHODOLOGY / JURISDICTION STRIP (tool + vendor headers) ---------- */
+.ruo-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 18px 0 0;
+  padding: 9px 14px;
+  border-radius: 9999px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid rgba(199, 97, 59, 0.3);
+  background: rgba(199, 97, 59, 0.07);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+.ruo-strip .rs-ico { color: var(--rust); flex: 0 0 auto; }
+
+/* ---------- FOOTER LEGAL BAND ---------- */
+.legal-band {
+  background: var(--ink-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.legal-band p {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 22px 32px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--paper) 46%, transparent);
+}
+@media (max-width: 768px) {
+  .legal-band p { padding: 20px 18px; }
+}

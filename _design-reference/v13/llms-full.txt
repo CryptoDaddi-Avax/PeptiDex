@@ -1,0 +1,894 @@
+# Peptidex — Full Content Index
+
+> Independent peptide research index. Evidence-graded profiles of 52 research peptides, 12 evidence-based stacks, 8 free tools, and COA-verified vendor sourcing. Affiliate-funded, never paid placement.
+
+## About this file
+This file is for AI crawlers and answer engines. It contains the canonical short-form answers to common questions about every peptide, stack, tool, goal, and vendor in the PeptiDex index. For full evidence and citations, visit the source URL listed under each entry.
+
+---
+
+## Peptide Profiles
+
+### 5-Amino-1MQ
+**URL:** https://peptidex.app/library/5-amino-1mq
+**Class:** NNMT INHIBITOR
+**Summary:** 5-Amino-1MQ is a selective NNMT inhibitor studied for fat loss, NAD+ preservation, and metabolic optimization.
+**Key facts:**
+- Reduced adipose tissue and improved metabolism in DIO mice.
+- 5-Amino-1MQ has a research half-life of ~12h, with Oral administration documented in published protocols.
+- Dose ranges in published research: 50–150mg/day.
+- Stocked by COA-verified vendors from $0.42/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### AOD-9604
+**URL:** https://peptidex.app/library/aod-9604
+**Class:** GH FRAGMENT
+**Summary:** AOD-9604 is a modified C-terminal fragment of human GH. Studied for lipolysis without GH's anabolic or glycemic effects.
+**Key facts:**
+- Increased lipolysis in rat adipocytes without GH side effects.
+- AOD-9604 has a research half-life of ~30min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 300mcg/day.
+- Stocked by COA-verified vendors from $1.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### ARA-290
+**URL:** https://peptidex.app/library/ara-290
+**Class:** EPO RECEPTOR AGONIST
+**Summary:** ARA-290 (cibinetide) is an 11-aa erythropoietin-derived peptide. Studied for neuropathic pain and small-fiber neuropathy without erythropoietic effects.
+**Key facts:**
+- Reduced neuropathic pain in sarcoidosis patients.
+- ARA-290 has a research half-life of ~2min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 2–8mg/day.
+- Stocked by COA-verified vendors from $5.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Argireline
+**URL:** https://peptidex.app/library/argireline
+**Class:** COSMETIC PEPTIDE
+**Summary:** Argireline is a topical hexapeptide that inhibits SNAP-25, modeling botulinum-like muscle relaxation for wrinkle reduction.
+**Key facts:**
+- 30% wrinkle depth reduction at 4 weeks topical.
+- Argireline has a research half-life of Topical, with Topical administration documented in published protocols.
+- Dose ranges in published research: 5–10% topical.
+- Stocked by COA-verified vendors from $0.45/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### BPC-157
+**URL:** https://peptidex.app/library/bpc-157
+**Class:** BODY PROTECTIVE COMPOUND
+**Summary:** BPC-157 is a synthetic pentadecapeptide derived from a gastric protein. Studied for tendon, ligament, and gut healing in animal models.
+**Key facts:**
+- Accelerated Achilles tendon healing in rat model.
+- BPC-157 has a research half-life of ~4h, with SubQ / Oral administration documented in published protocols.
+- Dose ranges in published research: 250–500mcg/day.
+- Stocked by COA-verified vendors from $2.10/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Cagrilintide
+**URL:** https://peptidex.app/library/cagrilintide
+**Class:** METABOLIC
+**Summary:** Cagrilintide is a long-acting amylin analog studied with semaglutide (the CagriSema combination) for additive weight loss.
+**Key facts:**
+- 15.6% additional weight loss added to semaglutide.
+- Cagrilintide has a research half-life of 168h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 0.3–4.5mg/wk.
+- Stocked by COA-verified vendors from $7.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Cerebrolysin
+**URL:** https://peptidex.app/library/cerebrolysin
+**Class:** NEUROPEPTIDE COMPLEX
+**Summary:** Cerebrolysin is a peptide complex derived from porcine brain tissue, studied for stroke recovery, traumatic brain injury, and vascular dementia in 60+ countries.
+
+---
+
+### CJC-1295
+**URL:** https://peptidex.app/library/cjc-1295
+**Class:** GHRH ANALOG
+**Summary:** CJC-1295 is a synthetic GHRH analog. The DAC variant has an extended half-life via albumin binding; it is commonly studied alongside Ipamorelin.
+**Key facts:**
+- Sustained GH elevation over 14 days with a single dose.
+- CJC-1295 has a research half-life of 6–8d (DAC), with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–300mcg/day.
+- Stocked by COA-verified vendors from $1.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Cortagen
+**URL:** https://peptidex.app/library/cortagen
+**Class:** KHAVINSON PEPTIDE
+**Summary:** Cortagen is a synthetic tetrapeptide developed by Khavinson. Studied for neuroregeneration and cardiac protection.
+**Key facts:**
+- Accelerated peripheral nerve regeneration.
+- Cortagen has a research half-life of ~1h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–300mcg/day cycles.
+- Stocked by COA-verified vendors from $4.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Dihexa
+**URL:** https://peptidex.app/library/dihexa
+**Class:** NEUROTROPIC PEPTIDE
+**Summary:** Dihexa is a synthetic angiotensin IV analog studied for synaptogenesis and memory enhancement in preclinical models.
+**Key facts:**
+- Robust synaptogenesis in hippocampal neurons.
+- Dihexa has a research half-life of ~10h, with Oral administration documented in published protocols.
+- Dose ranges in published research: 8–45mg/day.
+- Stocked by COA-verified vendors from $42.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### DSIP
+**URL:** https://peptidex.app/library/dsip
+**Class:** SLEEP PEPTIDE
+**Summary:** DSIP is a naturally occurring nonapeptide isolated from rabbit brain. Studied for sleep induction, stress reduction, and analgesia.
+**Key facts:**
+- Increased delta-wave sleep in chronic insomnia.
+- DSIP has a research half-life of ~2h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–200mcg HS.
+- Stocked by COA-verified vendors from $1.60/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Epitalon
+**URL:** https://peptidex.app/library/epitalon
+**Class:** TELOMERASE ACTIVATOR
+**Summary:** Epitalon is a synthetic tetrapeptide modeled on the pineal hormone epithalamin. Studied for telomerase activation and circadian regulation.
+**Key facts:**
+- Telomerase reactivation in human somatic cells.
+- Epitalon has a research half-life of ~1h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 5–10mg/day cycles.
+- Stocked by COA-verified vendors from $1.60/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### FGL Loop
+**URL:** https://peptidex.app/library/fgl-loop
+**Class:** NEUROTROPIC PEPTIDE
+**Summary:** FGL Loop is a synthetic peptide derived from the second fibronectin type III module of NCAM, studied for synaptogenesis.
+**Key facts:**
+- NCAM-mediated neurite outgrowth and memory enhancement.
+- FGL Loop has a research half-life of ~2h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–300mcg/day.
+- Stocked by COA-verified vendors from $12.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Follistatin-344
+**URL:** https://peptidex.app/library/follistatin-344
+**Class:** MYOSTATIN INHIBITOR
+**Summary:** Follistatin-344 is a glycoprotein studied for myostatin inhibition and skeletal-muscle hypertrophy.
+**Key facts:**
+- Muscle hypertrophy via myostatin neutralization in murine model.
+- Follistatin-344 has a research half-life of ~70h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100mcg/day.
+- Stocked by COA-verified vendors from $32.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### FOXO4-DRI
+**URL:** https://peptidex.app/library/foxo4-dri
+**Class:** SENOLYTIC PEPTIDE
+**Summary:** FOXO4-DRI is a synthetic senolytic peptide that selectively triggers apoptosis in senescent cells. Studied for longevity.
+**Key facts:**
+- Selective senescent cell clearance and tissue rejuvenation in aged mice.
+- FOXO4-DRI has a research half-life of ~4h, with IV / SubQ administration documented in published protocols.
+- Dose ranges in published research: 1–5mg/wk.
+- Stocked by COA-verified vendors from $48.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### GHK-Cu
+**URL:** https://peptidex.app/library/ghk-cu
+**Class:** COPPER PEPTIDE
+**Summary:** GHK-Cu is a naturally occurring copper-binding tripeptide. Studied for skin remodeling, wound healing, and gene-expression modulation.
+**Key facts:**
+- Modulates 4,192 human genes in skin fibroblasts.
+- GHK-Cu has a research half-life of ~30min, with SubQ / Topical administration documented in published protocols.
+- Dose ranges in published research: 1–3mg/day.
+- Stocked by COA-verified vendors from $1.85/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### GHRP-2
+**URL:** https://peptidex.app/library/ghrp-2
+**Class:** GHRP
+**Summary:** GHRP-2 is a synthetic hexapeptide ghrelin mimetic with strong GH-releasing properties.
+**Key facts:**
+- 5x GH elevation over baseline.
+- GHRP-2 has a research half-life of ~30min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–300mcg 2–3x/d.
+- Stocked by COA-verified vendors from $1.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### GHRP-6
+**URL:** https://peptidex.app/library/ghrp-6
+**Class:** GHRP
+**Summary:** GHRP-6 is a synthetic hexapeptide ghrelin mimetic with marked appetite stimulation alongside GH release.
+**Key facts:**
+- GH release with concurrent appetite stimulation.
+- GHRP-6 has a research half-life of ~30min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–200mcg 2–3x/d.
+- Stocked by COA-verified vendors from $1.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Glutathione
+**URL:** https://peptidex.app/library/glutathione
+**Class:** ANTIOXIDANT
+**Summary:** Glutathione is the body's primary endogenous antioxidant tripeptide. Studied for liver function, detoxification, and skin brightening.
+**Key facts:**
+- Increased systemic GSH and skin lightening with oral form.
+- Glutathione has a research half-life of ~10min, with IV / SubQ administration documented in published protocols.
+- Dose ranges in published research: 200–600mg 2–3x/wk.
+- Stocked by COA-verified vendors from $0.18/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Gonadorelin
+**URL:** https://peptidex.app/library/gonadorelin
+**Class:** GnRH ANALOG
+**Summary:** Gonadorelin is a synthetic GnRH decapeptide. Studied for HPG-axis support during TRT and fertility preservation.
+**Key facts:**
+- Restored LH/FSH pulsatility and fertility.
+- Gonadorelin has a research half-life of ~10min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–300mcg 2–3x/wk.
+- Stocked by COA-verified vendors from $0.95/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Hexarelin
+**URL:** https://peptidex.app/library/hexarelin
+**Class:** GHRP
+**Summary:** Hexarelin is the most potent of the standard GHRPs in terms of GH release, and has documented cardioprotective effects.
+**Key facts:**
+- Cardioprotection observed independent of GH.
+- Hexarelin has a research half-life of ~70min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–200mcg 2x/d.
+- Stocked by COA-verified vendors from $2.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Humanin
+**URL:** https://peptidex.app/library/humanin
+**Class:** MITOCHONDRIAL PEPTIDE
+**Summary:** Humanin is a 24-aa mitochondrial-derived peptide studied for neuroprotection and anti-apoptotic effects.
+**Key facts:**
+- Neuroprotection in Alzheimer's models.
+- Humanin has a research half-life of ~30min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 2–5mg/wk.
+- Stocked by COA-verified vendors from $9.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### IGF-1 LR3
+**URL:** https://peptidex.app/library/igf-1-lr3
+**Class:** GROWTH FACTOR
+**Summary:** IGF-1 LR3 is a modified Insulin-like Growth Factor 1 with an extended half-life and reduced binding-protein affinity.
+**Key facts:**
+- Increased muscle hyperplasia in rodent models.
+- IGF-1 LR3 has a research half-life of ~20h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 20–50mcg/day.
+- Stocked by COA-verified vendors from $4.60/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Ipamorelin
+**URL:** https://peptidex.app/library/ipamorelin
+**Class:** GHRP
+**Summary:** Ipamorelin is a selective ghrelin mimetic that triggers pulsatile GH release without affecting cortisol or prolactin.
+**Key facts:**
+- Selective GH release without ACTH/cortisol elevation.
+- Ipamorelin has a research half-life of ~2h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 200–300mcg 2–3x/d.
+- Stocked by COA-verified vendors from $0.95/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Kisspeptin-10
+**URL:** https://peptidex.app/library/kisspeptin-10
+**Class:** REPRODUCTIVE PEPTIDE
+**Summary:** Kisspeptin-10 is a synthetic decapeptide fragment of kisspeptin. Studied for HPG-axis activation and reproductive function.
+**Key facts:**
+- Robust LH and testosterone elevation in healthy men.
+- Kisspeptin-10 has a research half-life of ~28min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100mcg 2–3x/wk.
+- Stocked by COA-verified vendors from $2.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Klotho
+**URL:** https://peptidex.app/library/klotho
+**Class:** ANTI-AGING PROTEIN
+**Summary:** Klotho is an anti-aging protein studied for cognitive-aging reversal and FGF23 regulation.
+**Key facts:**
+- Cognitive aging reversal in aged mice.
+- Klotho has a research half-life of Variable, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 0.1–1mg/wk.
+- Stocked by COA-verified vendors from $580.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### KPV
+**URL:** https://peptidex.app/library/kpv
+**Class:** ANTI-INFLAMMATORY
+**Summary:** KPV is a tripeptide C-terminal fragment of alpha-MSH with potent anti-inflammatory and antimicrobial effects.
+**Key facts:**
+- Reduced colitis severity in mouse model.
+- KPV has a research half-life of ~1h, with SubQ / Oral administration documented in published protocols.
+- Dose ranges in published research: 250–500mcg/day.
+- Stocked by COA-verified vendors from $1.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Larazotide
+**URL:** https://peptidex.app/library/larazotide
+**Class:** ZONULIN ANTAGONIST
+**Summary:** Larazotide acetate is an octapeptide zonulin antagonist studied for celiac disease and intestinal permeability ('leaky gut').
+**Key facts:**
+- Reduced symptoms in celiac disease Phase 2b.
+- Larazotide has a research half-life of ~50min, with Oral administration documented in published protocols.
+- Dose ranges in published research: 250–500mcg pre-meal.
+- Stocked by COA-verified vendors from $4.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### LL-37
+**URL:** https://peptidex.app/library/ll-37
+**Class:** ANTIMICROBIAL PEPTIDE
+**Summary:** LL-37 is a human cathelicidin antimicrobial peptide with broad-spectrum activity and immune modulation.
+**Key facts:**
+- Broad antimicrobial activity against MRSA and biofilm.
+- LL-37 has a research half-life of ~1h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–500mcg/day.
+- Stocked by COA-verified vendors from $3.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Melanotan II
+**URL:** https://peptidex.app/library/melanotan-ii
+**Class:** MELANOCORTIN AGONIST
+**Summary:** Melanotan II is a synthetic analog of α-MSH studied for tanning, libido, and appetite reduction.
+**Key facts:**
+- Increased eumelanin synthesis and skin darkening.
+- Melanotan II has a research half-life of ~33h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 250–500mcg/day.
+- Stocked by COA-verified vendors from $1.10/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### MK-677
+**URL:** https://peptidex.app/library/mk-677
+**Class:** ORAL GH SECRETAGOGUE
+**Summary:** MK-677 (ibutamoren) is an orally-active non-peptide ghrelin mimetic. Studied for sustained GH/IGF-1 elevation.
+**Key facts:**
+- Sustained IGF-1 elevation over 12 months.
+- MK-677 has a research half-life of ~24h, with Oral administration documented in published protocols.
+- Dose ranges in published research: 10–25mg/day.
+- Stocked by COA-verified vendors from $0.85/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### MOTS-c
+**URL:** https://peptidex.app/library/mots-c
+**Class:** MITOCHONDRIAL PEPTIDE
+**Summary:** MOTS-c is a 16-amino acid peptide encoded within mitochondrial DNA. Studied for metabolic regulation, exercise-mimetic effects, and longevity.
+**Key facts:**
+- Improved insulin sensitivity and exercise capacity in aged mice.
+- MOTS-c has a research half-life of ~5h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 5–10mg/wk.
+- Stocked by COA-verified vendors from $4.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### NAD+
+**URL:** https://peptidex.app/library/nad-plus
+**Class:** LONGEVITY
+**Summary:** NAD+ is a critical cellular coenzyme for energy production and DNA repair. Studied for longevity, mitochondrial function, and metabolism.
+**Key facts:**
+- Restored mitochondrial function in aged mice.
+- NAD+ has a research half-life of ~8h, with IV / SubQ / Oral administration documented in published protocols.
+- Dose ranges in published research: 100–500mg 2–3x/wk.
+- Stocked by COA-verified vendors from $0.32/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### OS-01
+**URL:** https://peptidex.app/library/os-01
+**Class:** COSMETIC PEPTIDE
+**Summary:** OS-01 is a cosmetic peptide studied for skin cellular age reversal and senescent-cell clearance in epidermal tissue.
+**Key facts:**
+- Reduced epidermal senescence markers at 12 weeks.
+- OS-01 has a research half-life of Topical, with Topical administration documented in published protocols.
+- Dose ranges in published research: 1–3% topical.
+- Stocked by COA-verified vendors from $0.85/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Oxytocin
+**URL:** https://peptidex.app/library/oxytocin
+**Class:** NEUROPEPTIDE
+**Summary:** Oxytocin is a naturally occurring nonapeptide studied for social bonding, anxiety reduction, and gut motility.
+**Key facts:**
+- Reduced amygdala reactivity to social stress.
+- Oxytocin has a research half-life of ~3min, with Intranasal / SubQ administration documented in published protocols.
+- Dose ranges in published research: 10–40 IU IN.
+- Stocked by COA-verified vendors from $2.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### PE-22-28
+**URL:** https://peptidex.app/library/pe-22-28
+**Class:** NOOTROPIC PEPTIDE
+**Summary:** PE-22-28 is a synthetic spadin analog studied for fast-acting antidepressant effects via TREK-1 channel blockade.
+**Key facts:**
+- Antidepressant effects within 4 days in murine model.
+- PE-22-28 has a research half-life of ~40min, with Intranasal / SubQ administration documented in published protocols.
+- Dose ranges in published research: 200–400mcg/day.
+- Stocked by COA-verified vendors from $8.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Pinealon
+**URL:** https://peptidex.app/library/pinealon
+**Class:** KHAVINSON PEPTIDE
+**Summary:** Pinealon is a synthetic tripeptide developed by Khavinson. Studied for neuroprotection and circadian-rhythm support.
+**Key facts:**
+- Neuroprotection and cognitive improvement in aged rats.
+- Pinealon has a research half-life of ~1h, with SubQ / Intranasal administration documented in published protocols.
+- Dose ranges in published research: 200–400mcg/day cycles.
+- Stocked by COA-verified vendors from $3.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### PT-141
+**URL:** https://peptidex.app/library/pt-141
+**Class:** MELANOCORTIN AGONIST
+**Summary:** PT-141 (bremelanotide) is an FDA-approved melanocortin receptor agonist (Vyleesi). Studied for hypoactive sexual desire disorder.
+**Key facts:**
+- Significant HSDD response vs placebo.
+- PT-141 has a research half-life of ~2h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 1–2mg PRN.
+- Stocked by COA-verified vendors from $3.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Retatrutide
+**URL:** https://peptidex.app/library/retatrutide
+**Class:** GLP-1 / GIP / GLUCAGON AGONIST
+**Summary:** Retatrutide is an investigational once-weekly triple-agonist peptide acting on the GLP-1, GIP, and glucagon receptors. Phase 2 trials reported the largest body-weight reductions of any incretin agent to date.
+**Key facts:**
+- 24.2% body weight loss at 48 weeks.
+- Retatrutide has a research half-life of 168h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 2–12mg/wk.
+- Stocked by COA-verified vendors from $8.72/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Selank
+**URL:** https://peptidex.app/library/selank
+**Class:** ANXIOLYTIC PEPTIDE
+**Summary:** Selank is a synthetic analog of tuftsin developed in Russia. Studied for anxiolytic, nootropic, and immunomodulatory effects.
+**Key facts:**
+- GABA-A modulation without sedation.
+- Selank has a research half-life of ~30min, with Intranasal / SubQ administration documented in published protocols.
+- Dose ranges in published research: 300mcg/day.
+- Stocked by COA-verified vendors from $3.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Semaglutide
+**URL:** https://peptidex.app/library/semaglutide
+**Class:** GLP-1 AGONIST
+**Summary:** Semaglutide is the first GLP-1 agonist approved for chronic weight management, and the most-studied incretin agent.
+**Key facts:**
+- 14.9% body weight loss at 68 weeks.
+- Semaglutide has a research half-life of 168h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 0.25–2.4mg/wk.
+- Stocked by COA-verified vendors from $11.50/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Semax
+**URL:** https://peptidex.app/library/semax
+**Class:** COGNITIVE PEPTIDE
+**Summary:** Semax is a synthetic analog of ACTH(4-10). Studied in Russia for stroke, cognitive function, and neuroprotection.
+**Key facts:**
+- BDNF and NGF upregulation in rat hippocampus.
+- Semax has a research half-life of ~30min, with Intranasal administration documented in published protocols.
+- Dose ranges in published research: 600mcg/day.
+- Stocked by COA-verified vendors from $2.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Sermorelin
+**URL:** https://peptidex.app/library/sermorelin
+**Class:** GHRH ANALOG
+**Summary:** Sermorelin is a synthetic GHRH(1-29) fragment. It stimulates endogenous GH release via the pituitary GHRH receptor.
+**Key facts:**
+- Restored GH pulsatility in GH-deficient adults.
+- Sermorelin has a research half-life of ~12min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 100–500mcg/day.
+- Stocked by COA-verified vendors from $1.85/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### SS-31
+**URL:** https://peptidex.app/library/ss-31
+**Class:** MITOCHONDRIAL PEPTIDE
+**Summary:** SS-31 (elamipretide) is a cardiolipin-targeted tetrapeptide. Studied for mitochondrial dysfunction, heart failure, and neuroprotection.
+**Key facts:**
+- Improved mitochondrial function in heart-failure patients.
+- SS-31 has a research half-life of ~2h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 1–5mg/day.
+- Stocked by COA-verified vendors from $5.40/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Synapsin
+**URL:** https://peptidex.app/library/synapsin
+**Class:** NOOTROPIC PEPTIDE
+**Summary:** Synapsin is a proprietary nootropic blend studied for cognitive enhancement and mitochondrial support.
+**Key facts:**
+- Improved cognitive performance in TBI patient series.
+- Synapsin has a research half-life of Variable, with Intranasal administration documented in published protocols.
+- Dose ranges in published research: 0.5–1mg/day.
+- Stocked by COA-verified vendors from $6.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### TB-500
+**URL:** https://peptidex.app/library/tb-500
+**Class:** THYMOSIN BETA-4 FRAGMENT
+**Summary:** TB-500 is a synthetic fragment of Thymosin Beta-4. Studied for wound healing, tissue repair, and cardiovascular regeneration.
+**Key facts:**
+- Improved cardiac function post-MI in mouse model.
+- TB-500 has a research half-life of ~70h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 2–5mg/wk.
+- Stocked by COA-verified vendors from $4.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Tesamorelin
+**URL:** https://peptidex.app/library/tesamorelin
+**Class:** GHRH ANALOG
+**Summary:** Tesamorelin is an FDA-approved GHRH analog (Egrifta) studied for HIV-associated lipodystrophy and visceral fat reduction.
+**Key facts:**
+- 15.2% visceral adipose tissue reduction at 26 weeks.
+- Tesamorelin has a research half-life of ~26min, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 1–2mg/day.
+- Stocked by COA-verified vendors from $11.00/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Tesofensine
+**URL:** https://peptidex.app/library/tesofensine
+**Class:** SMALL MOLECULE
+**Summary:** Tesofensine is a triple monoamine reuptake inhibitor (dopamine, norepinephrine, serotonin). Phase 2 trials showed weight loss exceeding GLP-1 agents.
+**Key facts:**
+- 12.8% body weight loss at 24 weeks at 1mg.
+- Tesofensine has a research half-life of ~9d, with Oral administration documented in published protocols.
+- Dose ranges in published research: 0.25–1mg/day.
+- Stocked by COA-verified vendors from $3.80/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Thymalin
+**URL:** https://peptidex.app/library/thymalin
+**Class:** THYMIC PEPTIDE
+**Summary:** Thymalin is a peptide complex extracted from calf thymus. Studied for immune restoration and longevity.
+**Key facts:**
+- Improved immune function and reduced mortality in elderly cohort.
+- Thymalin has a research half-life of ~3h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 5–10mg/day cycles.
+- Stocked by COA-verified vendors from $3.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Thymosin Alpha-1
+**URL:** https://peptidex.app/library/thymosin-alpha-1
+**Class:** IMMUNE PEPTIDE
+**Summary:** Thymosin Alpha-1 is a 28-amino acid peptide approved in 35+ countries for hepatitis B and immunocompromised patients.
+**Key facts:**
+- Improved survival in severe sepsis.
+- Thymosin Alpha-1 has a research half-life of ~2h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 1.6mg 2x/wk.
+- Stocked by COA-verified vendors from $6.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### Tirzepatide
+**URL:** https://peptidex.app/library/tirzepatide
+**Class:** DUAL AGONIST (GLP-1/GIP)
+**Summary:** Tirzepatide is a once-weekly dual-agonist peptide targeting GLP-1 and GIP receptors. FDA-approved as Mounjaro and Zepbound.
+**Key facts:**
+- 22.5% body weight reduction at 72 weeks.
+- Tirzepatide has a research half-life of 120h, with SubQ administration documented in published protocols.
+- Dose ranges in published research: 2.5–15mg/wk.
+- Stocked by COA-verified vendors from $8.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+### VIP
+**URL:** https://peptidex.app/library/vip
+**Class:** NEUROPEPTIDE
+**Summary:** VIP is a 28-amino acid neuropeptide studied for systemic anti-inflammation, CIRS treatment, and pulmonary vasodilation.
+**Key facts:**
+- Reduced inflammation in CIRS patients.
+- VIP has a research half-life of ~2min, with Intranasal administration documented in published protocols.
+- Dose ranges in published research: 50mcg 4x/day.
+- Stocked by COA-verified vendors from $4.20/mg with the PEPTIDEX code (as of May 2026).
+
+---
+
+## Research Stacks
+
+### The Cognitive Stack
+**URL:** https://peptidex.app/stacks/cognitive-stack
+**Goal:** Cognitive (Intermediate)
+**Summary:** The Cognitive Stack is an intermediate cognition research combination pairing the neurotrophic nootropic Semax, the anxiolytic Selank, and the neuropeptide complex Cerebrolysin, studied for focus, memory, and neuroprotection over an 8-week cycle.
+**Components:** Semax 600mcg/day · Selank 300mcg/day · Cerebrolysin 5ml 5x/wk
+
+### The Cutting Stack
+**URL:** https://peptidex.app/stacks/cutting-stack
+**Goal:** Fat Loss (Foundational)
+**Summary:** The Cutting Stack is a foundational fat-loss research combination pairing the GLP-1 agonist Semaglutide with the GH-fragment lipolytic AOD-9604 and L-Carnitine, studied for appetite control plus direct fat breakdown over a 10-week cycle.
+**Components:** Semaglutide 1mg/wk · AOD-9604 300mcg/day · L-Carnitine 500mg/day
+
+### The Healing Stack
+**URL:** https://peptidex.app/stacks/healing-stack
+**Goal:** Healing (Foundational)
+**Summary:** The Healing Stack is a foundational healing research combination pairing BPC-157 and TB-500 with the copper-tripeptide GHK-Cu, studied for angiogenesis, tissue remodeling, and wound repair over an 8-week cycle.
+**Components:** BPC-157 500mcg 2x/day · TB-500 5mg 1x/wk · GHK-Cu 2mg/day
+
+### The Hormonal Reset
+**URL:** https://peptidex.app/stacks/hormonal-reset
+**Goal:** Hormonal (Advanced)
+**Summary:** The Hormonal Reset is an advanced hormonal research combination pairing Gonadorelin and Kisspeptin-10 for HPG-axis stimulation with Tesamorelin for GH/IGF-1 support, studied over a 12-week cycle.
+**Components:** Gonadorelin 100mcg 2x/wk · Kisspeptin-10 100mcg 3x/wk · Tesamorelin 1mg/day
+
+### The Immune Stack
+**URL:** https://peptidex.app/stacks/immune-stack
+**Goal:** Immune (Intermediate)
+**Summary:** The Immune Stack is an intermediate immune research combination pairing Thymosin Alpha-1 for T-cell maturation, the cathelicidin LL-37 for antimicrobial defense, and KPV for anti-inflammation over a 10-week cycle.
+**Components:** Thymosin Alpha-1 1.6mg 2x/wk · LL-37 100mcg/day · KPV 500mcg/day
+
+### The Libido Stack
+**URL:** https://peptidex.app/stacks/libido-stack
+**Goal:** Sexual Health (Foundational)
+**Summary:** The Libido Stack is a foundational sexual-health research combination pairing the melanocortin agonist PT-141 with the HPG-axis activators Kisspeptin-10 and Gonadorelin, studied for desire and drive.
+**Components:** PT-141 1mg as needed · Kisspeptin-10 100mcg 3x/wk · Gonadorelin 100mcg 2x/wk
+
+### The Longevity Stack
+**URL:** https://peptidex.app/stacks/longevity-stack
+**Goal:** Longevity (Intermediate)
+**Summary:** The Longevity Stack is an intermediate healthspan research combination pairing the telomerase peptide Epitalon, the coenzyme NAD+, and the copper-tripeptide GHK-Cu, studied for telomere maintenance, cellular energy, and tissue renewal over a 12-week cycle.
+**Components:** Epitalon 10mg cycles · NAD+ 100mg 3x/wk · GHK-Cu 2mg/day
+
+### The Mass Stack
+**URL:** https://peptidex.app/stacks/mass-stack
+**Goal:** Muscle Growth (Advanced)
+**Summary:** The Mass Stack is an advanced muscle-growth research combination layering the GHRH analog Tesamorelin, the GH secretagogue Ipamorelin, and the IGF-1 analog IGF-1 LR3 for maximal GH/IGF-1-axis stimulation over a 16-week cycle.
+**Components:** Tesamorelin 2mg/day · Ipamorelin 200mcg 3x/day · IGF-1 LR3 40mcg/day
+
+### The Recomp Stack
+**URL:** https://peptidex.app/stacks/recomp-stack
+**Goal:** Body Recomp (Intermediate)
+**Summary:** The Recomp Stack is a documented body-recomposition research combination pairing the incretin agonist Retatrutide with the CJC-1295/Ipamorelin GH-secretagogue pair and BPC-157, studied for simultaneous fat loss and lean-mass preservation.
+**Components:** Retatrutide 4mg/wk · CJC-1295/Ipamorelin 300mcg 5x/wk · BPC-157 250mcg 2x/day
+
+### The Recovery Protocol
+**URL:** https://peptidex.app/stacks/recovery-protocol
+**Goal:** Recovery (Foundational)
+**Summary:** The Recovery Protocol is a foundational injury-recovery research combination pairing the repair peptides BPC-157 and TB-500 with the anti-inflammatory KPV, studied for soft-tissue and gut repair over an 8-week cycle.
+**Components:** BPC-157 250mcg 2x/day · TB-500 2mg 2x/wk · KPV 500mcg/day
+
+### The Skin Protocol
+**URL:** https://peptidex.app/stacks/skin-protocol
+**Goal:** Skin (Foundational)
+**Summary:** The Skin Protocol is a foundational skin research combination pairing topical and systemic GHK-Cu, BPC-157, and Epitalon, studied for collagen synthesis, dermal repair, and cellular renewal over a 12-week cycle.
+**Components:** GHK-Cu 2mg topical · BPC-157 250mcg/day · Epitalon 5mg cycles
+
+### The Sleep Stack
+**URL:** https://peptidex.app/stacks/sleep-stack
+**Goal:** Sleep (Foundational)
+**Summary:** The Sleep Stack is a foundational sleep research combination pairing the delta-sleep peptide DSIP, the circadian regulator Epitalon, and Glycine, studied for sleep quality and recovery over a 6-week cycle.
+**Components:** DSIP 100mcg before bed · Epitalon 5mg cycles · Glycine 3g
+
+---
+
+## Research Goals
+
+### Peptides most studied for body recomposition
+**URL:** https://peptidex.app/best/body-recomposition
+**Summary:** Body recomposition research centers on combining an incretin agonist (Retatrutide or Tirzepatide) for fat loss with a growth-hormone secretagogue pair (CJC-1295/Ipamorelin) to preserve lean mass during a caloric deficit.
+
+### Peptides most studied for fat loss
+**URL:** https://peptidex.app/best/fat-loss
+**Summary:** Fat-loss research is anchored by Semaglutide, the most-studied GLP-1 agonist, supported by the GH-fragment lipolytic AOD-9604 and the triple-monoamine agent Tesofensine for appetite and energy-expenditure effects.
+
+### Peptides most studied for gut health
+**URL:** https://peptidex.app/best/gut-health
+**Summary:** Gut-health research centers on BPC-157 for mucosal repair, KPV for intestinal anti-inflammation, and Larazotide for tight-junction integrity — covering structural repair, inflammation, and permeability.
+
+### Peptides most studied for hormonal optimization
+**URL:** https://peptidex.app/best/hormonal-optimization
+**Summary:** Hormonal research targets the HPG axis with Gonadorelin and Kisspeptin-10, plus GH/IGF-1 support via Tesamorelin — restarting and supporting endogenous hormone production rather than replacing it.
+
+### Peptides most studied for immune support
+**URL:** https://peptidex.app/best/immune-support
+**Summary:** Immune research is led by Thymosin Alpha-1 for T-cell maturation, the cathelicidin LL-37 for broad antimicrobial defense, and KPV for anti-inflammatory modulation — the most-studied immune-resilience combination.
+
+### Peptides most studied for injury recovery
+**URL:** https://peptidex.app/best/injury-recovery
+**Summary:** Injury-recovery research is led by BPC-157 for angiogenesis-driven tendon and gut repair, TB-500 for systemic cell migration, and KPV for anti-inflammatory support — the most-studied tissue-repair combination.
+
+### Peptides most studied for longevity
+**URL:** https://peptidex.app/best/longevity
+**Summary:** Longevity research focuses on Epitalon for telomerase induction, NAD+ for cellular energy and DNA repair, and MOTS-c for mitochondrial metabolic regulation — three distinct anti-aging mechanisms.
+
+### Peptides most studied for mental clarity
+**URL:** https://peptidex.app/best/mental-clarity
+**Summary:** Cognition research centers on Semax for BDNF/NGF upregulation, Selank for anxiolytic-nootropic balance, and Dihexa for potent synaptogenesis — covering neurotrophic, calming, and connectivity mechanisms.
+
+### Peptides most studied for metabolic health
+**URL:** https://peptidex.app/best/metabolic-health
+**Summary:** Metabolic research combines Tirzepatide for incretin-driven glucose control, MOTS-c for mitochondrial metabolic regulation, and 5-Amino-1MQ for NNMT inhibition and NAD+ preservation — three complementary metabolic mechanisms.
+
+### Peptides most studied for muscle growth
+**URL:** https://peptidex.app/best/muscle-growth
+**Summary:** Muscle-growth research targets the GH/IGF-1 axis with Tesamorelin and IGF-1 LR3, and the myostatin pathway with Follistatin-344 — the most direct anabolic mechanisms studied in peptide literature.
+
+### Peptides most studied for skin &amp; aesthetic
+**URL:** https://peptidex.app/best/skin-aesthetic
+**Summary:** Skin research centers on GHK-Cu for collagen synthesis and gene modulation, Argireline for topical expression-line reduction, and Epitalon for systemic cellular renewal — covering structural, muscular, and cellular angles.
+
+### Peptides most studied for sleep &amp; recovery
+**URL:** https://peptidex.app/best/sleep-recovery
+**Summary:** Sleep research focuses on DSIP for delta-wave sleep induction, Epitalon for circadian and melatonin regulation, and Pinealon for neuroprotective circadian support — a layered approach to restorative sleep.
+
+---
+
+## Tools
+
+### Reconstitution Calculator
+**URL:** https://peptidex.app/tools/calculator
+**Summary:** The Reconstitution Calculator solves the math of dissolving a lyophilized peptide: enter vial size and BAC-water volume and it returns concentration, per-unit dose, and doses per vial for methodology reference.
+
+### COA Analyzer
+**URL:** https://peptidex.app/tools/coa
+**Summary:** The COA Analyzer reads a vendor Certificate of Analysis and validates it against expected values, checking molecular weight and HPLC purity so researchers can confirm a batch matches the labeled compound.
+
+### Peptide Comparison
+**URL:** https://peptidex.app/tools/compare
+**Summary:** The Peptide Comparison tool places two or three peptides side by side across mechanism, half-life, dose range, study count, and adverse events, making it easy to weigh closely related compounds.
+
+### Cycle Planner
+**URL:** https://peptidex.app/tools/cycle-planner
+**Summary:** The Cycle Planner maps research dosing schedules across a full cycle, turning a list of peptides, doses, frequencies, and cycle length into a visual week-by-week calendar for methodology reference.
+
+### Evidence Dashboard
+**URL:** https://peptidex.app/tools/evidence
+**Summary:** The Evidence Dashboard ranks all 51 indexed peptides by strength of clinical evidence, surfacing study counts and trial phases so researchers can see at a glance which compounds are best supported.
+
+### Interaction Checker
+**URL:** https://peptidex.app/tools/interactions
+**Summary:** The Interaction Checker flags documented synergies, cautions, and mechanistic overlaps between peptides, helping researchers see how compounds relate before studying them in combination.
+
+### PK Plasma Curves
+**URL:** https://peptidex.app/tools/pk
+**Summary:** The PK Plasma Curves tool models plasma concentration over time from a peptide's half-life and dosing interval, plotting accumulation and decay so researchers can visualize exposure across a protocol.
+
+### 
+**URL:** https://peptidex.app/tools/pricing
+**Summary:** The PeptiDex Price Comparison tool shows live per-mg pricing across four COA-verified peptide vendors, with the PEPTIDEX discount applied automatically and a 90-day price trend for every tracked compound.
+
+---
+
+## Vendor Reviews
+
+### Amino Club (review)
+**URL:** https://peptidex.app/vendors/amino-club
+**Summary:** Amino Club is PeptiDex's Editor's Choice vendor, earning the highest marks for consistent 99.2% average HPLC purity, transparent third-party COAs, and reliable US-based fulfillment. The 20% PEPTIDEX discount also makes it the lowest per-mg source for several flagship peptides.
+
+### Bio Longevity Labs (review)
+**URL:** https://peptidex.app/vendors/bio-longevity-labs
+**Summary:** Bio Longevity Labs is a Triple-Tested vendor distinguished by a three-stage QC process and one of the deepest catalogs of longevity and mitochondrial peptides. Independent testing confirmed 99%+ purity, and the 15% PEPTIDEX discount keeps pricing competitive.
+
+### Limitless Life (review)
+**URL:** https://peptidex.app/vendors/limitless-life
+**Summary:** Limitless Life is a USA-Made vendor that synthesizes and fulfills domestically, appealing to researchers who prioritize US-based supply chains. Independent testing confirmed 99%+ purity, and the 15% PEPTIDEX discount keeps it competitive on mainstream compounds.
+
+### Pantheon Peptides (review)
+**URL:** https://peptidex.app/vendors/pantheon-peptides
+**Summary:** Pantheon Peptides is a COA-Verified vendor with broad catalog availability and consistent 98%+ purity. It rounds out the verified four as a reliable stock-breadth option, with a 15% PEPTIDEX discount, though its average purity sits marginally below the top three.
+
+---
+
+## Glossary
+
+**Peptide** — A peptide is a short chain of amino acids linked by peptide bonds, typically fewer than 50 residues. Research peptides are studied for their signaling activity at specific receptors.
+**Reconstitution** — Reconstitution is the process of dissolving a lyophilized (freeze-dried) peptide into bacteriostatic water to create an injectable solution. The volume of BAC water used determines the final concentration.
+**Bacteriostatic Water (BAC)** — Bacteriostatic water is sterile water containing 0.9% benzyl alcohol as a preservative. It is the standard diluent for multi-dose peptide vials, allowing reconstituted peptides to be stored for up to 28 days under refrigeration.
+**Lyophilization** — Lyophilization is freeze-drying — removing water from a peptide under vacuum to produce a stable powder that must be reconstituted before use.
+**HPLC** — HPLC (High-Performance Liquid Chromatography) is an analytical technique used to verify peptide purity. A Certificate of Analysis should include HPLC results showing percent purity, typically 98% or higher for research-grade peptides.
+**Mass Spectrometry** — Mass spectrometry is an analytical technique that confirms a peptide's molecular weight and identity by measuring the mass-to-charge ratio of its ions. It complements HPLC on a Certificate of Analysis.
+**Certificate of Analysis (COA)** — A Certificate of Analysis is a vendor-supplied document reporting a peptide batch's measured purity (HPLC) and identity (mass spec). COA transparency is a primary signal of vendor reliability.
+**Purity** — Purity is the percentage of a sample that is the intended peptide, measured by HPLC. Research-grade peptides typically report 98–99%+ purity.
+**Half-life** — Half-life (t½) is the time required for the plasma concentration of a compound to fall by half. It determines dosing frequency — longer half-lives support less frequent administration.
+**Pharmacokinetics (PK)** — Pharmacokinetics describes how a compound is absorbed, distributed, metabolized, and eliminated over time, often visualized as a plasma-concentration curve.
+**Subcutaneous (SubQ)** — Subcutaneous administration delivers a compound into the fatty layer beneath the skin using a short, fine needle. It is the most common route in peptide research protocols.
+**Intramuscular (IM)** — Intramuscular administration delivers a compound directly into muscle tissue, producing different absorption kinetics than subcutaneous injection.
+**Intranasal** — Intranasal administration delivers a peptide across the nasal mucosa, used for several neuropeptides such as Semax and Selank to reach the central nervous system.
+**Insulin Syringe (U-100)** — A U-100 insulin syringe is graduated so that 100 units equal 1 mL. It is the standard tool for measuring small subcutaneous peptide doses.
+**Titration** — Titration is the gradual stepwise increase of a dose over time, used to improve tolerability — common with incretin agonists that cause initial nausea.
+**Loading Dose** — A loading dose is a larger initial dose given to reach an effective concentration quickly before transitioning to a lower maintenance dose.
+**Maintenance Dose** — A maintenance dose is the ongoing dose used to sustain a steady plasma concentration after initiation or loading.
+**Cycle** — A cycle is a defined period of administration followed by a break, used in research protocols to model intermittent exposure.
+**GLP-1** — GLP-1 (glucagon-like peptide-1) is an incretin hormone that enhances glucose-dependent insulin secretion and reduces appetite. GLP-1 receptor agonists are studied for weight and glycemic outcomes.
+**GIP** — GIP (glucose-dependent insulinotropic polypeptide) is an incretin hormone that enhances insulin secretion and insulin sensitivity; it is targeted alongside GLP-1 by dual agonists such as tirzepatide.
+**Glucagon Receptor** — The glucagon receptor mediates increased energy expenditure and hepatic fat mobilization; it is the third target of triple agonists such as retatrutide.
+**Incretin** — An incretin is a gut hormone (GLP-1 or GIP) released after eating that stimulates insulin secretion. Incretin-based agonists are the foundation of modern weight-management research.
+**Triple Agonist** — A triple agonist is a single peptide that activates three receptors at once — for retatrutide, the GLP-1, GIP, and glucagon receptors.
+**GHRH** — GHRH (growth-hormone-releasing hormone) stimulates the pituitary to release growth hormone. GHRH analogs such as CJC-1295, sermorelin, and tesamorelin amplify natural GH pulses.
+**GHRP** — A GHRP (growth-hormone-releasing peptide) is a ghrelin-receptor agonist that triggers a pulse of growth hormone — examples include ipamorelin, GHRP-2, GHRP-6, and hexarelin.
+**Ghrelin Receptor (GHSR)** — The growth-hormone secretagogue receptor (GHSR-1a) is the target of ghrelin and synthetic GHRPs, driving pulsatile GH release.
+**Secretagogue** — A secretagogue is a compound that stimulates the secretion of another substance — GH secretagogues prompt the body to release its own growth hormone.
+**IGF-1** — IGF-1 (insulin-like growth factor 1) is the principal downstream mediator of growth hormone, produced mainly in the liver, that drives tissue growth and repair.
+**Myostatin** — Myostatin (GDF-8) is the chief negative regulator of muscle mass. Inhibiting it — as follistatin does — releases the brake on muscle growth.
+**Angiogenesis** — Angiogenesis is the formation of new blood vessels. Peptides such as BPC-157 promote angiogenesis to support tissue repair.
+**Pulsatile Release** — Pulsatile release is the natural pattern of hormone secretion in discrete bursts. GHRH analogs and GnRH peptides preserve this rhythm, unlike continuous exogenous hormone.
+**Melanocortin Receptor** — Melanocortin receptors (MC1R–MC5R) mediate effects from skin pigmentation (MC1R) to sexual arousal (MC4R). PT-141 and Melanotan II are melanocortin agonists.
+**Telomerase** — Telomerase is the enzyme that maintains telomeres, the protective caps on chromosomes. Epitalon is studied for transient telomerase induction.
+**Senolytic** — A senolytic is a compound that selectively triggers death in senescent ('zombie') cells. FOXO4-DRI is a peptide senolytic studied for tissue rejuvenation.
+**Cellular Senescence** — Cellular senescence is a state in which cells stop dividing but resist death, secreting inflammatory factors that accumulate with age.
+**NAD+** — NAD+ (nicotinamide adenine dinucleotide) is a coenzyme essential to energy metabolism and DNA repair, and the substrate for sirtuin enzymes. Its levels decline with age.
+**Sirtuins** — Sirtuins are NAD+-dependent enzymes that regulate stress resistance, metabolism, and aging by deacetylating target proteins.
+**Mitochondrial-Derived Peptide (MDP)** — An MDP is a peptide encoded within mitochondrial DNA — examples are MOTS-c and humanin — studied for metabolic and cytoprotective signaling.
+**Cardiolipin** — Cardiolipin is a phospholipid of the inner mitochondrial membrane essential to the electron-transport chain; SS-31 binds and stabilizes it.
+**BDNF** — BDNF (brain-derived neurotrophic factor) supports neuron survival and synaptic plasticity. Nootropic peptides such as Semax and Selank upregulate it.
+**NGF** — NGF (nerve growth factor) supports the growth and maintenance of neurons; it is upregulated by peptides such as Semax.
+**Nootropic** — A nootropic is a compound studied for cognitive enhancement — improving memory, focus, or neuroprotection.
+**Anxiolytic** — An anxiolytic reduces anxiety. Selank is studied as an anxiolytic that does not cause the sedation or dependence associated with benzodiazepines.
+**GABA** — GABA (gamma-aminobutyric acid) is the principal inhibitory neurotransmitter; anxiolytic peptides modulate GABAergic tone.
+**Synaptogenesis** — Synaptogenesis is the formation of new synapses between neurons. Dihexa is studied for potent synaptogenesis via the HGF/c-Met pathway.
+**TREK-1** — TREK-1 is a potassium channel that regulates mood and neuronal excitability; blocking it (as PE-22-28 does) is linked to rapid antidepressant effects.
+**HPG Axis** — The hypothalamic-pituitary-gonadal (HPG) axis governs reproductive hormones. Gonadorelin and kisspeptin act at successive points along this axis.
+**GnRH** — GnRH (gonadotropin-releasing hormone) drives pituitary release of LH and FSH. Gonadorelin is synthetic GnRH; kisspeptin acts one step upstream.
+**Kisspeptin** — Kisspeptin is the neuropeptide at the top of the reproductive cascade, stimulating GnRH neurons via the KISS1 receptor.
+**LH / FSH** — Luteinizing hormone (LH) and follicle-stimulating hormone (FSH) are pituitary gonadotropins that drive gonadal steroidogenesis and fertility.
+**Zonulin** — Zonulin is the protein that loosens intestinal tight junctions, increasing gut permeability. Larazotide antagonizes it to support barrier integrity.
+**Tight Junctions** — Tight junctions are protein complexes sealing the space between intestinal epithelial cells; their integrity governs gut-barrier function.
+**Cathelicidin** — Cathelicidin (LL-37) is the only human cathelicidin antimicrobial peptide, providing innate immune defense and immune modulation.
+**Antimicrobial Peptide** — An antimicrobial peptide disrupts microbial membranes as part of innate immunity; LL-37 and KPV have antimicrobial activity.
+**Thymosin** — Thymosins are thymus-derived peptides; Thymosin Alpha-1 modulates immunity and Thymosin Beta-4 (TB-500) regulates tissue repair.
+**Lipolysis** — Lipolysis is the breakdown of stored fat into free fatty acids. AOD-9604 is studied for lipolytic activity without growth-hormone side effects.
+**NNMT** — NNMT (nicotinamide N-methyltransferase) is an enzyme overexpressed in obese adipose tissue; inhibiting it (5-Amino-1MQ) preserves NAD+ and shifts metabolism.
+**Amylin** — Amylin is a pancreatic hormone co-secreted with insulin that signals satiety; cagrilintide is a long-acting amylin analog.
+**mTOR** — mTOR is a central signaling pathway that drives protein synthesis and cell growth, activated downstream of IGF-1 and IGF-1 LR3.
+**VEGFR2** — VEGFR2 is a vascular endothelial growth factor receptor central to angiogenesis; BPC-157 upregulates VEGFR2 signaling.
+**Lipohypertrophy** — Lipohypertrophy is the buildup of fatty lumps at repeatedly used injection sites; rotating sites helps prevent it.
+**Aspiration** — Aspiration is briefly pulling back the syringe plunger before injecting to check for blood, indicating the needle is not in a vessel.
+**Sharps Container** — A sharps container is an FDA-cleared puncture-resistant bin for safe disposal of used needles and syringes.
+**MASH** — MASH (metabolic dysfunction-associated steatohepatitis) is a liver condition studied as an endpoint for incretin agents such as retatrutide.
+**Phase 2 / Phase 3** — Phase 2 and Phase 3 are stages of clinical trials testing efficacy and safety in progressively larger participant groups.
+**MACE** — MACE (major adverse cardiovascular events) is a composite trial endpoint used to assess cardiovascular safety.
+**PEPTIDEX Code** — PEPTIDEX is the discount code applied at participating COA-verified vendors; per editorial policy, affiliate codes do not affect vendor rankings.
+**Research Use Only (RUO)** — Research Use Only means a compound is intended for laboratory study and is not approved by the FDA or other regulators for human use.
+**DOI** — A DOI (Digital Object Identifier) is a persistent link to a published study, used throughout Peptidex profiles to attribute every efficacy claim.
+**PubMed** — PubMed is the U.S. National Library of Medicine database of biomedical literature, a primary source for peptide study citations.
+
+---
+
+## Disclaimers (canonical)
+- PeptiDex is an educational reference for research chemicals not approved for human use
+- All efficacy claims attributed to specific peer-reviewed sources
+- Affiliate commission on vendor links does not affect editorial rankings
+- Not medical advice; consult licensed professionals for health decisions

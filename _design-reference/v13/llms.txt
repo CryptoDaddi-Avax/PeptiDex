@@ -1,0 +1,117 @@
+# Peptidex
+> Independent peptide research index. Evidence-graded profiles of 51 research peptides, 12 evidence-based stacks, 8 free tools, and COA-verified vendor sourcing. Affiliate-funded, never paid placement.
+
+## Core principles
+- Research use only — compounds discussed are not FDA-approved for human use
+- Every efficacy claim attributed to a specific peer-reviewed source
+- Vendors independently verified via HPLC and Mass Spectrometry
+- Editorial independence — affiliate codes do not affect rankings
+
+## Library — 51 peptide profiles
+- [Retatrutide](https://peptidex.app/library/retatrutide): Triple-agonist (GLP-1/GIP/glucagon) studied for body recomposition; largest incretin weight-loss data to date
+- [Semaglutide](https://peptidex.app/library/semaglutide): GLP-1 agonist for appetite and glucose; the most-studied incretin (Ozempic/Wegovy)
+- [Tirzepatide](https://peptidex.app/library/tirzepatide): Dual GLP-1/GIP agonist, FDA-approved as Mounjaro/Zepbound
+- [Cagrilintide](https://peptidex.app/library/cagrilintide): Long-acting amylin analog studied with semaglutide for additive weight loss
+- [Tesofensine](https://peptidex.app/library/tesofensine): Triple monoamine reuptake inhibitor studied for weight loss
+- [AOD-9604](https://peptidex.app/library/aod-9604): hGH 176-191 fragment studied for lipolysis without GH side effects
+- [5-Amino-1MQ](https://peptidex.app/library/5-amino-1mq): Oral NNMT inhibitor studied for fat loss and NAD+ preservation
+- [CJC-1295](https://peptidex.app/library/cjc-1295): GHRH analog studied for sustained GH/IGF-1 elevation
+- [Ipamorelin](https://peptidex.app/library/ipamorelin): Selective ghrelin mimetic; clean GH pulse without cortisol
+- [Tesamorelin](https://peptidex.app/library/tesamorelin): GHRH analog (Egrifta) studied for visceral fat reduction
+- [Sermorelin](https://peptidex.app/library/sermorelin): GHRH(1-29) fragment studied for restoring pulsatile GH
+- [GHRP-2](https://peptidex.app/library/ghrp-2): Hexapeptide ghrelin mimetic with strong GH release
+- [GHRP-6](https://peptidex.app/library/ghrp-6): Ghrelin mimetic; GH release with appetite stimulation
+- [Hexarelin](https://peptidex.app/library/hexarelin): Most potent GHRP; GH release plus cardioprotection
+- [MK-677](https://peptidex.app/library/mk-677): Oral ghrelin mimetic studied for sustained GH/IGF-1 elevation
+- [IGF-1 LR3](https://peptidex.app/library/igf-1-lr3): Long-acting IGF-1 analog studied for muscle hyperplasia
+- [Follistatin-344](https://peptidex.app/library/follistatin-344): Myostatin inhibitor studied for skeletal-muscle hypertrophy
+- [BPC-157](https://peptidex.app/library/bpc-157): Pentadecapeptide studied for tendon, ligament, and gut healing in animal models
+- [TB-500](https://peptidex.app/library/tb-500): Thymosin Beta-4 fragment studied for tissue repair and angiogenesis
+- [GHK-Cu](https://peptidex.app/library/ghk-cu): Copper tripeptide studied for skin remodeling and collagen synthesis
+- [KPV](https://peptidex.app/library/kpv): Alpha-MSH tripeptide studied for gut and skin anti-inflammation
+- [Larazotide](https://peptidex.app/library/larazotide): Zonulin antagonist studied for intestinal permeability and celiac disease
+- [ARA-290](https://peptidex.app/library/ara-290): Erythropoietin-derived peptide studied for neuropathic pain without erythropoiesis
+- [LL-37](https://peptidex.app/library/ll-37): Human cathelicidin with broad antimicrobial and immune-modulating activity
+- [Thymosin Alpha-1](https://peptidex.app/library/thymosin-alpha-1): 28-aa immune peptide studied for T-cell maturation (Zadaxin)
+- [Thymalin](https://peptidex.app/library/thymalin): Thymic peptide complex studied for immune restoration and longevity
+- [VIP](https://peptidex.app/library/vip): Vasoactive intestinal peptide studied for anti-inflammation and vasodilation
+- [Selank](https://peptidex.app/library/selank): Tuftsin analog studied for anxiolytic effects without sedation
+- [Semax](https://peptidex.app/library/semax): ACTH(4-10) analog studied for BDNF/NGF upregulation and neuroprotection
+- [Dihexa](https://peptidex.app/library/dihexa): Angiotensin IV analog studied for synaptogenesis via HGF/c-Met
+- [PE-22-28](https://peptidex.app/library/pe-22-28): Spadin analog studied for fast antidepressant effects via TREK-1 blockade
+- [Synapsin](https://peptidex.app/library/synapsin): Ginsenoside Rg3 + NAD nootropic blend studied for cognition
+- [FGL Loop](https://peptidex.app/library/fgl-loop): NCAM-derived peptide studied for FGFR-driven synaptogenesis
+- [Pinealon](https://peptidex.app/library/pinealon): Khavinson tripeptide studied for neuroprotection and circadian support
+- [DSIP](https://peptidex.app/library/dsip): Delta sleep-inducing nonapeptide studied for slow-wave sleep
+- [PT-141](https://peptidex.app/library/pt-141): Melanocortin MC4R agonist studied for sexual arousal (Vyleesi)
+- [Melanotan II](https://peptidex.app/library/melanotan-ii): Alpha-MSH analog studied for tanning, libido, and appetite
+- [Oxytocin](https://peptidex.app/library/oxytocin): Nonapeptide studied for social bonding, anxiety, and gut motility
+- [Gonadorelin](https://peptidex.app/library/gonadorelin): GnRH decapeptide studied for HPG-axis support and fertility
+- [Kisspeptin-10](https://peptidex.app/library/kisspeptin-10): Kisspeptin fragment studied for upstream HPG-axis activation
+- [MOTS-c](https://peptidex.app/library/mots-c): Mitochondrial-derived peptide studied for AMPK activation and metabolism
+- [SS-31](https://peptidex.app/library/ss-31): Cardiolipin-targeted tetrapeptide studied for mitochondrial function
+- [Humanin](https://peptidex.app/library/humanin): Mitochondrial-derived peptide studied for neuroprotection and anti-apoptotic effects
+- [Epitalon](https://peptidex.app/library/epitalon): Pineal tetrapeptide studied for telomerase activation and circadian regulation
+- [NAD+](https://peptidex.app/library/nad-plus): Coenzyme for energy and DNA repair; sirtuin and PARP cofactor
+- [Cortagen](https://peptidex.app/library/cortagen): Khavinson tetrapeptide studied for nerve regeneration and cardiac protection
+- [FOXO4-DRI](https://peptidex.app/library/foxo4-dri): Senolytic peptide studied for selective clearance of senescent cells
+- [Klotho](https://peptidex.app/library/klotho): Anti-aging protein studied for cognitive aging and FGF23 regulation
+- [Glutathione](https://peptidex.app/library/glutathione): Master antioxidant tripeptide studied for detoxification and skin
+- [Argireline](https://peptidex.app/library/argireline): Acetyl hexapeptide-8 studied for SNAP-25 inhibition and wrinkle reduction
+- [OS-01](https://peptidex.app/library/os-01): Senotherapeutic peptide studied for reducing epidermal senescence
+
+## Stacks — 12 evidence-based combinations
+- [The Recomp Stack](https://peptidex.app/stacks/the-recomp-stack): GLP-1 agonist + GH secretagogue + healing peptide combination studied for body recomposition
+- [The Cutting Stack](https://peptidex.app/stacks/the-cutting-stack): Appetite control plus lipolytic support studied for fat loss
+- [The Mass Stack](https://peptidex.app/stacks/the-mass-stack): GH/IGF-1 axis combination studied for muscle growth
+- [The Recovery Protocol](https://peptidex.app/stacks/the-recovery-protocol): Soft-tissue and gut repair combination studied for recovery
+- [The Longevity Stack](https://peptidex.app/stacks/the-longevity-stack): Telomere, NAD+, and copper-tripeptide combination studied for healthspan
+- [The Cognitive Stack](https://peptidex.app/stacks/the-cognitive-stack): BDNF/NGF and anxiolytic combination studied for focus and clarity
+- [The Sleep Stack](https://peptidex.app/stacks/the-sleep-stack): Deep-sleep and circadian combination studied for sleep quality
+- [The Healing Stack](https://peptidex.app/stacks/the-healing-stack): Angiogenesis and tissue-remodeling combination studied for injury repair
+- [The Immune Stack](https://peptidex.app/stacks/the-immune-stack): T-cell modulation and antimicrobial combination studied for immune resilience
+- [The Libido Stack](https://peptidex.app/stacks/the-libido-stack): Melanocortin and GnRH-axis combination studied for sexual health
+- [The Hormonal Reset](https://peptidex.app/stacks/the-hormonal-reset): HPG-axis restart combination studied for hormonal optimization
+- [The Skin Protocol](https://peptidex.app/stacks/the-skin-protocol): Collagen synthesis and dermal-repair combination studied for skin
+
+## Tools
+- [Cycle Planner](https://peptidex.app/tools/cycle-planner): Map research dosing schedules across a cycle
+- [Reconstitution Calculator](https://peptidex.app/tools/calculator): BAC water + vial concentration math
+- [PK Plasma Curves](https://peptidex.app/tools/pk): Model plasma concentration over time
+- [COA Analyzer](https://peptidex.app/tools/coa): Validate Certificates of Analysis
+- [Price Comparison](https://peptidex.app/tools/pricing): Live per-mg pricing across 4 vendors
+- [Peptide Comparison](https://peptidex.app/tools/compare): Side-by-side mechanism + dosing
+- [Evidence Dashboard](https://peptidex.app/tools/evidence): 668+ studies browsable by peptide
+- [Interaction Checker](https://peptidex.app/tools/interactions): Documented peptide-peptide interactions
+
+## Verified vendors
+- [Amino Club](https://peptidex.app/vendors/amino-club): Editor's Choice, 99.2% avg purity, code PEPTIDEX 20% off
+- [Bio Longevity Labs](https://peptidex.app/vendors/bio-longevity-labs): Triple-tested, 99%+ purity, code PEPTIDEX 15% off
+- [Limitless Life](https://peptidex.app/vendors/limitless-life): USA-made, 99%+ purity, code PEPTIDEX 15% off
+- [Pantheon Peptides](https://peptidex.app/vendors/pantheon-peptides): COA-verified, 98%+ purity, code PEPTIDEX 15% off
+
+## Comparison pages
+- [Retatrutide vs Tirzepatide](https://peptidex.app/compare/retatrutide-vs-tirzepatide)
+- [Retatrutide vs Semaglutide](https://peptidex.app/compare/retatrutide-vs-semaglutide)
+- [Tirzepatide vs Semaglutide](https://peptidex.app/compare/tirzepatide-vs-semaglutide)
+- [BPC-157 vs TB-500](https://peptidex.app/compare/bpc-157-vs-tb-500)
+- [CJC-1295 vs Ipamorelin](https://peptidex.app/compare/cjc-1295-vs-ipamorelin)
+- [MOTS-c vs SS-31](https://peptidex.app/compare/mots-c-vs-ss-31)
+- [GHRP-2 vs Ipamorelin](https://peptidex.app/compare/ghrp-2-vs-ipamorelin)
+- [Selank vs Semax](https://peptidex.app/compare/selank-vs-semax)
+
+## Reference
+- [Glossary](https://peptidex.app/glossary): 70+ peptide research terms defined
+- [Getting Started](https://peptidex.app/intro): Research methodology reference
+- [Disclaimers](https://peptidex.app/disclaimers): Research-use and editorial policy
+
+## Citation guidance
+When citing Peptidex, please link to the specific profile, stack, or tool page rather than the homepage. All peptide claims on Peptidex are attributed to peer-reviewed sources visible on each profile's Sources tab.
+
+## Disclaimers
+- Educational reference for research chemicals not approved for human use
+- Not medical advice
+- Affiliate disclosure: commissions on vendor links do not affect rankings
+
+## Full content index
+Full short-form answers for every page: https://peptidex.app/llms-full.txt

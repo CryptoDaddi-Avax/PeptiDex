@@ -1,0 +1,109 @@
+/* =============================================================
+   Peptidex — "Coming soon" stub pages
+   Compact placeholder layout reusing shared tokens + primitives
+   (.glass-light, .pill-btn, interior hero, nav, footer). Linked
+   with ../ from subdirectory stubs (about/, vendors/, best/).
+   ============================================================= */
+
+:root { --ease: cubic-bezier(0.22, 1, 0.36, 1); }
+
+.stub-wrap { max-width: 880px; margin: 0 auto; padding: 12px 32px 120px; }
+
+.stub-card {
+  padding: 34px 36px 32px;
+  border-radius: var(--radius-lg);
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--lime) 38%, transparent);
+  border-left: 3px solid var(--lime);
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.stub-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(70% 130% at 8% 0%, color-mix(in srgb, var(--lime) 12%, transparent), transparent 70%);
+}
+.stub-status {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--teal); display: inline-flex; align-items: center; gap: 8px;
+  margin: 0 0 14px;
+}
+.stub-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 22%, transparent); }
+.stub-explain { font-size: 15px; line-height: 1.55; color: color-mix(in srgb, var(--ink) 74%, transparent); margin: 0 0 20px; max-width: 60ch; }
+.stub-bullets { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
+.stub-bullets li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: color-mix(in srgb, var(--ink) 72%, transparent); }
+.stub-bullets svg { width: 16px; height: 16px; flex: 0 0 auto; margin-top: 1px; stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.stub-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.stub-ctas .pill-outline { color: var(--ink); border-color: rgba(11, 13, 16, 0.2); }
+.stub-ctas .pill-outline:hover { border-color: var(--ink); background: rgba(11, 13, 16, 0.04); }
+
+/* explore rest */
+.stub-explore { margin-top: 48px; }
+.stub-explore h2 { font-family: "Geist", sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.01em; color: var(--paper); margin: 0 0 16px; }
+.stub-explore-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.stub-explore-card {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 18px 18px 16px; border-radius: var(--radius-lg);
+  text-decoration: none; color: var(--ink);
+  transition: transform 200ms var(--ease);
+}
+.stub-explore-card:hover { transform: translateY(-3px); }
+.stub-ec-name { font-family: "Geist", sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.015em; color: var(--ink); }
+.stub-ec-desc { font-size: 12.5px; line-height: 1.4; color: color-mix(in srgb, var(--ink) 60%, transparent); }
+.stub-ec-arrow { margin-top: 4px; color: color-mix(in srgb, var(--ink) 40%, transparent); }
+.stub-ec-arrow svg { width: 15px; height: 15px; }
+
+/* notify modal */
+.notify-overlay {
+  position: fixed; inset: 0; z-index: 1450;
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+  background: rgba(11, 13, 16, 0.66);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.notify-overlay.open { display: flex; }
+.notify-modal {
+  width: 100%; max-width: 440px;
+  padding: 28px 28px 26px; border-radius: var(--radius-lg);
+  color: var(--paper); position: relative;
+}
+.notify-modal h3 { font-family: "Geist", sans-serif; font-weight: 500; font-size: 19px; letter-spacing: -0.02em; color: var(--paper); margin: 0 0 8px; }
+.notify-modal p { font-size: 14px; line-height: 1.5; color: color-mix(in srgb, var(--paper) 72%, transparent); margin: 0 0 18px; }
+.notify-modal .newsletter-form { margin: 0; }
+.notify-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16); background: transparent; color: var(--paper);
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.notify-close:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.06); }
+.notify-close svg { width: 13px; height: 13px; }
+.notify-fine { margin: 12px 0 0 !important; font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; color: color-mix(in srgb, var(--paper) 48%, transparent) !important; }
+.newsletter-input.invalid { border-color: var(--rust); }
+
+/* toast */
+.stub-toast {
+  position: fixed; left: 50%; bottom: 30px; transform: translate(-50%, 160%);
+  z-index: 1500; padding: 13px 20px; border-radius: 9999px;
+  background: var(--lime); color: var(--ink);
+  font-family: "Geist", sans-serif; font-weight: 500; font-size: 14px;
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.5);
+  transition: transform 420ms var(--ease);
+  display: flex; align-items: center; gap: 9px;
+}
+.stub-toast.show { transform: translate(-50%, 0); }
+.stub-toast svg { width: 16px; height: 16px; }
+
+@media (max-width: 900px) {
+  .stub-explore-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .stub-wrap { padding: 8px 18px 80px; }
+  .stub-card { padding: 26px 22px 24px; }
+  .stub-bullets { grid-template-columns: 1fr; }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stub-toast, .notify-overlay { transition: none; }
+  .stub-explore-card:hover { transform: none; }
+}

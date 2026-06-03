@@ -1,0 +1,298 @@
+/* =============================================================
+   Peptidex — Global Nav + Peptide Mark
+   Depends on motion.css (.pill-btn, .pill-lime, .magnetic) + tokens.
+   ============================================================= */
+
+/* ---------- FIXED NAV SHELL ---------- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  /* transparent over hero on load */
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter  320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color     320ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding          320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow       320ms cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 22px 0;
+}
+
+.site-nav.scrolled {
+  background: rgba(11, 13, 16, 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+          backdrop-filter: blur(20px) saturate(140%);
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 30px -18px rgba(0, 0, 0, 0.6);
+  padding: 12px 0;
+}
+
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* ---------- LOGO + PEPTIDE MARK ---------- */
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--paper);
+  flex: 0 0 auto;
+}
+.nav-mark {
+  width: 64px;
+  height: 26px;
+  display: block;
+  overflow: visible;
+}
+.nav-mark .nm-bond {
+  stroke: color-mix(in srgb, var(--paper) 70%, transparent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  /* prepared for draw-in: hidden until .loaded */
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+}
+.nav-mark .nm-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0);
+}
+.nav-mark .nm-node.lime { fill: var(--lime); }
+.nav-mark .nm-node.paper { fill: var(--paper); }
+
+/* one-time draw-in, triggered when body gets .loaded */
+body.loaded .nav-mark .nm-node {
+  animation: nm-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+body.loaded .nav-mark .nm-node:nth-of-type(1) { animation-delay: 120ms; }
+body.loaded .nav-mark .nm-node:nth-of-type(2) { animation-delay: 240ms; }
+body.loaded .nav-mark .nm-node:nth-of-type(3) { animation-delay: 360ms; }
+body.loaded .nav-mark .nm-node:nth-of-type(4) { animation-delay: 480ms; }
+body.loaded .nav-mark .nm-bond {
+  animation: nm-draw 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+body.loaded .nav-mark .nm-bond:nth-of-type(1) { animation-delay: 180ms; }
+body.loaded .nav-mark .nm-bond:nth-of-type(2) { animation-delay: 300ms; }
+body.loaded .nav-mark .nm-bond:nth-of-type(3) { animation-delay: 420ms; }
+@keyframes nm-pop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+@keyframes nm-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.nav-wordmark {
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+}
+
+/* ---------- CENTER LINKS ---------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin: 0 auto;
+}
+.nav-links a {
+  position: relative;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--paper);
+  opacity: 0.7;
+  text-decoration: none;
+  padding: 4px 0;
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1.5px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-links a:hover {
+  opacity: 1;
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- RIGHT ACTIONS ---------- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 0 0 auto;
+}
+.nav-login {
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--paper);
+  opacity: 0.75;
+  text-decoration: none;
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-login:hover { opacity: 1; }
+
+.nav-actions .pill-lime {
+  font-size: 14px;
+  padding: 11px 18px;
+}
+.nav-actions .pill-lime svg { width: 14px; height: 14px; }
+
+/* ---------- HAMBURGER ---------- */
+.nav-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(11, 13, 16, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  flex: 0 0 auto;
+}
+.nav-burger span {
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  height: 1.6px;
+  background: var(--paper);
+  border-radius: 2px;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-burger span:nth-child(1) { top: 15px; }
+.nav-burger span:nth-child(2) { top: 20px; }
+.nav-burger span:nth-child(3) { top: 25px; }
+.nav-burger.open span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+/* ---------- MOBILE SLIDE-DOWN MENU ---------- */
+.nav-mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(11, 13, 16, 0.78);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+          backdrop-filter: blur(22px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.7);
+  padding: 18px 32px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* collapsed */
+  transform: translateY(-12px);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   300ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 360ms;
+}
+.site-nav.menu-open .nav-mobile {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   320ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+.nav-mobile a {
+  font-family: "Geist", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--paper);
+  text-decoration: none;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  /* staggered entrance */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-nav.menu-open .nav-mobile a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.site-nav.menu-open .nav-mobile a:nth-child(1) { transition-delay: 80ms; }
+.site-nav.menu-open .nav-mobile a:nth-child(2) { transition-delay: 140ms; }
+.site-nav.menu-open .nav-mobile a:nth-child(3) { transition-delay: 200ms; }
+.site-nav.menu-open .nav-mobile a:nth-child(4) { transition-delay: 260ms; }
+.site-nav.menu-open .nav-mobile a:nth-child(5) { transition-delay: 320ms; }
+.nav-mobile .nav-mobile-cta {
+  margin-top: 16px;
+  border-bottom: none;
+}
+.nav-mobile .pill-lime {
+  width: 100%;
+  justify-content: center;
+  padding: 14px 18px;
+}
+
+/* keep hero content clear of the fixed nav */
+.hero .hero-inner {
+  min-height: 100svh;
+  padding-top: 116px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-actions .nav-login,
+  .nav-actions .magnetic { display: none; }
+  .nav-burger { display: block; }
+}
+@media (min-width: 901px) {
+  .nav-mobile { display: none; }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .site-nav {
+    transition: background-color 1ms linear, border-color 1ms linear;
+  }
+  .nav-mark .nm-node { transform: scale(1); }
+  .nav-mark .nm-bond { stroke-dashoffset: 0; }
+  body.loaded .nav-mark .nm-node,
+  body.loaded .nav-mark .nm-bond { animation: none; }
+  .nav-mobile,
+  .site-nav.menu-open .nav-mobile { transition: opacity 1ms linear, visibility 0s; transform: none; }
+  .nav-mobile a,
+  .site-nav.menu-open .nav-mobile a { transition: none; transform: none; }
+}
