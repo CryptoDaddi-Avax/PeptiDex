@@ -1,6 +1,6 @@
 /* GoalsGrid styles */
 .goals {
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border-top: 1px solid var(--line);
   padding: 140px 48px;
 }
@@ -20,7 +20,7 @@
   align-items: center;
   gap: 20px;
   padding: 28px 32px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   cursor: pointer;
   text-decoration: none;
@@ -34,12 +34,12 @@
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
 }
 .goal-card:hover {
-  border-color: var(--gold);
+  border-color: var(--lime);
   background: #18181c;
   transform: translateY(-2px);
 }
@@ -57,16 +57,16 @@
 }
 .goal-content { flex: 1; min-width: 0; }
 .goal-content h3 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 20px;
   font-weight: 400;
   letter-spacing: -0.01em;
   margin-bottom: 4px;
-  color: var(--ink);
+  color: var(--paper);
 }
 .goal-content p {
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.5;
   margin-bottom: 8px;
 }
@@ -75,17 +75,17 @@
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
 }
 .goal-arrow {
   font-family: var(--mono);
   font-size: 18px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   transition: color 0.3s, transform 0.3s;
   flex-shrink: 0;
 }
 .goal-card:hover .goal-arrow {
-  color: var(--gold);
+  color: var(--lime);
   transform: translateX(4px);
 }
 

@@ -2,24 +2,24 @@
 
 .about-content{max-width: 800px; margin: 60px auto 100px; padding: 0 48px}
 .about-content p{
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 22px;
   line-height: 1.7;
-  color: var(--ink);
+  color: var(--paper);
   font-weight: 300;
   margin-bottom: 28px;
 }
-.about-content p strong{color: var(--gold-bright); font-weight: 400}
-.about-content p em{font-style: italic; color: var(--ink-dim)}
+.about-content p strong{color: var(--lime-2); font-weight: 400}
+.about-content p em{font-style: italic; color: var(--paper-2)}
 .about-content h2{
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 40px;
   font-weight: 300;
   letter-spacing: -0.02em;
   margin: 56px 0 24px;
   line-height: 1.1;
 }
-.about-content h2 em{font-style: italic; color: var(--gold)}
+.about-content h2 em{font-style: italic; color: var(--lime)}
 
 .principles{
   display: grid;
@@ -29,22 +29,22 @@
   border: 1px solid var(--line);
   margin: 48px 0;
 }
-.principle{padding: 32px; background: var(--bg-card)}
-.principle .num{font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 12px}
-.principle h4{font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 12px; letter-spacing: -0.01em}
-.principle p{font-size: 15px !important; line-height: 1.6 !important; margin: 0 !important; font-family: var(--sans) !important; color: var(--ink-dim) !important}
+.principle{padding: 32px; background: var(--ink-2)}
+.principle .num{font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; color: var(--lime); margin-bottom: 12px}
+.principle h4{font-family: var(--sans); font-size: 24px; font-weight: 400; margin-bottom: 12px; letter-spacing: -0.01em}
+.principle p{font-size: 15px !important; line-height: 1.6 !important; margin: 0 !important; font-family: var(--sans) !important; color: var(--paper-2) !important}
 
 .about-content a.email-link{
-  color: var(--gold);
-  border-bottom: 1px solid rgba(201,169,97,0.3);
+  color: var(--lime);
+  border-bottom: 1px solid rgba(196,242,92,0.3);
   text-decoration: none;
   transition: border-color 0.3s;
 }
-.about-content a.email-link:hover{border-color: var(--gold)}
+.about-content a.email-link:hover{border-color: var(--lime)}
 
 .about-content .affiliate-note{
   font-size: 16px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   font-style: italic;
   margin-top: 64px;
   padding-top: 32px;

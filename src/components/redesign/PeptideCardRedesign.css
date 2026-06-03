@@ -1,7 +1,7 @@
 /* ── PeptideCardRedesign — Editorial index card ── */
 
 .peptide-card-r {
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 22px 24px;
@@ -23,15 +23,15 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--lime) 50%, transparent 100%);
   opacity: 0;
   transition: opacity 0.4s;
 }
 
 .peptide-card-r:hover {
-  border-color: rgba(201, 169, 97, 0.35);
+  border-color: rgba(196,242,92, 0.35);
   transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(201, 169, 97, 0.07);
+  box-shadow: 0 8px 32px rgba(196,242,92, 0.07);
 }
 .peptide-card-r:hover::before {
   opacity: 1;
@@ -43,7 +43,7 @@
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -55,16 +55,16 @@
 
 /* Peptide name */
 .pcr-name {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 20px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--paper);
   line-height: 1.15;
   margin: 0;
   transition: color 0.3s;
 }
 .peptide-card-r:hover .pcr-name {
-  color: var(--gold-bright);
+  color: var(--lime-2);
 }
 
 /* Benefits list */
@@ -80,11 +80,11 @@
   gap: 8px;
   font-family: var(--sans);
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.45;
 }
 .pcr-benefit-dot {
-  color: var(--gold);
+  color: var(--lime);
   font-size: 7px;
   flex-shrink: 0;
   margin-top: 2px;
@@ -113,13 +113,13 @@
 }
 .pcr-badge-fda {
   background: rgba(127, 183, 126, 0.12);
-  color: var(--green);
+  color: var(--lime-2);
   border: 1px solid rgba(127, 183, 126, 0.22);
 }
 .pcr-badge-evidence {
-  background: rgba(201, 169, 97, 0.08);
-  color: var(--gold);
-  border: 1px solid rgba(201, 169, 97, 0.15);
+  background: rgba(196,242,92, 0.08);
+  color: var(--lime);
+  border: 1px solid rgba(196,242,92, 0.15);
 }
 .pcr-badge-halflife {
   background: rgba(74, 158, 255, 0.08);
@@ -129,14 +129,14 @@
 
 .pcr-arrow {
   margin-left: auto;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   transition: all 0.3s;
   width: 14px;
   height: 14px;
   flex-shrink: 0;
 }
 .peptide-card-r:hover .pcr-arrow {
-  color: var(--gold);
+  color: var(--lime);
   transform: translateX(4px);
 }
 

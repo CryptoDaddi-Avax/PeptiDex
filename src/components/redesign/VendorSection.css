@@ -1,14 +1,14 @@
 /* VendorSection styles */
 .vendors-section {
   padding: 140px 48px;
-  background: var(--bg);
+  background: var(--paper);
 }
 .vendors-head {
   max-width: 1400px;
   margin: 0 auto 60px;
 }
 .vendors-sub {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 18px;
   max-width: 600px;
   line-height: 1.6;
@@ -23,7 +23,7 @@
 }
 .vendor-card {
   padding: 48px 40px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
@@ -40,12 +40,12 @@
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
   transform: translateX(-100%);
   transition: transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
 }
 .vendor-card:hover {
-  border-color: var(--gold);
+  border-color: var(--lime);
   background: #18181c;
   transform: translateY(-4px);
 }
@@ -57,18 +57,18 @@
   font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--bg);
-  background: var(--gold);
+  color: var(--paper);
+  background: var(--lime);
   padding: 4px 12px;
 }
 .vendor-header { display: flex; flex-direction: column; gap: 8px; }
 .vendor-name-row { display: flex; align-items: center; gap: 16px; }
 .vendor-name-row h3 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 28px;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: var(--paper);
 }
 .vendor-rating {
   display: flex;
@@ -76,15 +76,15 @@
   gap: 4px;
   font-family: var(--mono);
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
 }
-.vendor-rating .star { color: var(--gold); font-size: 16px; }
-.vendor-rating .count { font-size: 11px; color: var(--ink-mute); }
+.vendor-rating .star { color: var(--lime); font-size: 16px; }
+.vendor-rating .count { font-size: 11px; color: var(--paper-3); }
 .vendor-purity {
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: var(--green);
+  color: var(--lime-2);
 }
 /* Discount callout strip */
 .vendor-discount-strip {
@@ -92,11 +92,11 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: rgba(201, 169, 97, 0.08);
-  border: 1px solid rgba(201, 169, 97, 0.25);
+  background: rgba(196,242,92, 0.08);
+  border: 1px solid rgba(196,242,92, 0.25);
   font-family: var(--sans);
   font-size: 13px;
-  color: var(--gold);
+  color: var(--lime);
   letter-spacing: 0.01em;
 }
 .vendor-discount-strip .discount-tag {
@@ -108,11 +108,11 @@
   font-size: 12px;
   letter-spacing: 0.12em;
   padding: 2px 6px;
-  background: rgba(201, 169, 97, 0.15);
-  border: 1px solid rgba(201, 169, 97, 0.3);
+  background: rgba(196,242,92, 0.15);
+  border: 1px solid rgba(196,242,92, 0.3);
 }
 .vendor-discount-strip .stackable-note {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 12px;
 }
 .vendor-features {
@@ -134,11 +134,11 @@
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   width: 80px;
   flex-shrink: 0;
 }
-.feature-value { color: var(--ink-dim); }
+.feature-value { color: var(--paper-2); }
 .vendor-cta {
   display: inline-flex;
   align-items: center;
@@ -147,7 +147,7 @@
   font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--line);

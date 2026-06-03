@@ -11,7 +11,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   padding: 56px;
   position: relative;
@@ -39,12 +39,12 @@
 }
 
 .advisor-headline {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 32px;
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: var(--ink);
+  color: var(--paper);
   margin: 0;
 }
 .advisor-headline em {
@@ -55,7 +55,7 @@
 .advisor-subhead {
   font-family: var(--sans);
   font-size: 14px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.65;
   margin: 0;
   max-width: 420px;
@@ -75,7 +75,7 @@
   gap: 12px;
   font-family: var(--sans);
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.5;
 }
 
@@ -140,7 +140,7 @@
 .advisor-chat {
   position: relative;
   z-index: 1;
-  background: var(--bg);
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 2px;
   overflow: hidden;
@@ -152,14 +152,14 @@
   gap: 8px;
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
-  background: var(--bg-soft);
+  background: var(--ink-2);
 }
 
 .advisor-chat-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--lime-2);
   animation: advisorPulse 2.5s ease-in-out infinite;
 }
 
@@ -173,7 +173,7 @@
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
 }
 
 .advisor-chat-body {
@@ -209,7 +209,7 @@
   border: 1px solid rgba(74,158,255,0.2);
   font-family: var(--sans);
   font-size: 13px;
-  color: var(--ink);
+  color: var(--paper);
   line-height: 1.5;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
@@ -228,7 +228,7 @@
   border: 1px solid var(--line);
   font-family: var(--sans);
   font-size: 12px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.6;
 }
 
@@ -250,7 +250,7 @@
 
 .advisor-a cite {
   font-style: normal;
-  color: var(--gold);
+  color: var(--lime);
   font-size: 11px;
 }
 
@@ -258,7 +258,7 @@
 .advisor-ts {
   font-family: var(--mono);
   font-size: 9px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   letter-spacing: 0.05em;
   text-align: right;
   margin-top: 2px;

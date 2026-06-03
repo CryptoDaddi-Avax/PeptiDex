@@ -1,6 +1,6 @@
 /* Footer styles */
 footer {
-  background: var(--bg);
+  background: var(--paper);
   padding: 80px 48px 40px;
   border-top: 1px solid var(--line);
 }
@@ -16,14 +16,14 @@ footer {
   border-bottom: 1px solid var(--line);
 }
 .footer-brand h3 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 28px;
   font-weight: 400;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
 .footer-brand p {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 14px;
   line-height: 1.7;
   max-width: 400px;
@@ -33,17 +33,17 @@ footer {
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   margin-bottom: 24px;
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 .footer-col a {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s;
 }
-.footer-col a:hover { color: var(--gold); }
+.footer-col a:hover { color: var(--lime); }
 .footer-bottom {
   padding-top: 32px;
   display: flex;
@@ -53,11 +53,11 @@ footer {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.15em;
-  color: var(--ink-mute);
+  color: var(--paper-3);
 }
 .footer-bottom-links { display: flex; gap: 32px; }
-.footer-bottom-links a { color: var(--ink-mute); text-decoration: none; transition: color 0.3s; }
-.footer-bottom-links a:hover { color: var(--gold); }
+.footer-bottom-links a { color: var(--paper-3); text-decoration: none; transition: color 0.3s; }
+.footer-bottom-links a:hover { color: var(--lime); }
 .footer-last-reviewed {
   text-align: center;
   padding: 24px 0 0;
@@ -66,10 +66,10 @@ footer {
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
 }
 .footer-last-reviewed time {
-  color: var(--gold);
+  color: var(--lime);
   font-weight: 500;
 }
 

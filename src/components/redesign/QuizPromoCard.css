@@ -8,7 +8,7 @@
 
 .quiz-promo-card {
   position: relative;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   padding: 48px 56px;
   overflow: hidden;
@@ -17,8 +17,8 @@
 }
 
 .quiz-promo-card:hover {
-  border-color: rgba(201,169,97,0.25);
-  box-shadow: 0 0 60px -20px rgba(201,169,97,0.12);
+  border-color: rgba(196,242,92,0.25);
+  box-shadow: 0 0 60px -20px rgba(196,242,92,0.12);
 }
 
 /* Subtle background glow */
@@ -28,7 +28,7 @@
   right: -80px;
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, rgba(201,169,97,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196,242,92,0.08) 0%, transparent 70%);
   pointer-events: none;
   transition: opacity 0.4s;
 }
@@ -46,23 +46,23 @@
 }
 
 .quiz-promo-headline {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 32px;
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: var(--ink);
+  color: var(--paper);
   margin: 0;
 }
 .quiz-promo-headline em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--lime);
 }
 
 .quiz-promo-subhead {
   font-family: var(--sans);
   font-size: 15px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.6;
   margin: 0;
   max-width: 540px;
@@ -82,12 +82,12 @@
   gap: 6px;
   font-family: var(--sans);
   font-size: 12px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   letter-spacing: 0.01em;
 }
 
 .quiz-trust-pill svg {
-  color: var(--gold);
+  color: var(--lime);
   flex-shrink: 0;
 }
 
@@ -104,8 +104,8 @@
   align-items: center;
   gap: 10px;
   padding: 16px 32px;
-  background: var(--gold);
-  color: var(--bg);
+  background: var(--lime);
+  color: var(--paper);
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
@@ -123,7 +123,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--gold-bright);
+  background: var(--lime-2);
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
 }
@@ -145,7 +145,7 @@
 .quiz-promo-noemail {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   letter-spacing: 0.02em;
 }
 

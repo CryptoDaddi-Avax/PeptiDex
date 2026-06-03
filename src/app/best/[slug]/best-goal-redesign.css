@@ -13,7 +13,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 40%, rgba(201,169,97,0.1), transparent 60%);
+  background: radial-gradient(ellipse at 70% 40%, rgba(196,242,92,0.1), transparent 60%);
   pointer-events: none;
 }
 .goal-hero-grid {
@@ -36,7 +36,7 @@
 .goal-icon-large {
   font-size: 72px;
   margin-bottom: 24px;
-  filter: drop-shadow(0 0 20px rgba(201,169,97,0.4));
+  filter: drop-shadow(0 0 20px rgba(196,242,92,0.4));
   line-height: 1;
 }
 
@@ -46,7 +46,7 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   margin-bottom: 32px;
   display: flex;
   align-items: center;
@@ -54,13 +54,13 @@
   flex-wrap: wrap;
 }
 .goal-breadcrumb a {
-  color: var(--ink-mute);
+  color: var(--paper-3);
   text-decoration: none;
   transition: color 0.3s;
 }
-.goal-breadcrumb a:hover { color: var(--gold); }
+.goal-breadcrumb a:hover { color: var(--lime); }
 .goal-breadcrumb .sep { color: var(--line-strong); }
-.goal-breadcrumb .current { color: var(--gold); }
+.goal-breadcrumb .current { color: var(--lime); }
 
 /* ═══════ SECTION LABEL ═══════ */
 .goal-section-label {
@@ -68,7 +68,7 @@
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -77,12 +77,12 @@
 .goal-section-label::before {
   content: '';
   width: 32px; height: 1px;
-  background: var(--gold);
+  background: var(--lime);
 }
 
 /* ═══════ PAGE TITLE ═══════ */
 .goal-page-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(48px, 7vw, 96px);
   font-weight: 300;
   line-height: 1;
@@ -90,11 +90,11 @@
   margin-bottom: 24px;
   max-width: 1100px;
 }
-.goal-page-title em { font-style: italic; color: var(--gold); }
+.goal-page-title em { font-style: italic; color: var(--lime); }
 
 .goal-page-subtitle {
   font-size: 18px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   max-width: 680px;
   line-height: 1.6;
 }
@@ -112,17 +112,17 @@
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.goal-meta-item strong { color: var(--gold); font-weight: 500; }
+.goal-meta-item strong { color: var(--lime); font-weight: 500; }
 
 /* ═══════ PROTOCOL SECTION ═══════ */
 .goal-protocol-section {
   padding: 80px 0;
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -132,16 +132,16 @@
   padding: 0 48px;
 }
 .goal-protocol-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.05;
   margin-bottom: 16px;
 }
-.goal-protocol-title em { font-style: italic; color: var(--gold); }
+.goal-protocol-title em { font-style: italic; color: var(--lime); }
 .goal-protocol-desc {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 17px;
   line-height: 1.6;
   max-width: 720px;
@@ -149,21 +149,21 @@
 
 /* Protocol block */
 .goal-protocol-block {
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   padding: 48px;
   margin-top: 48px;
 }
 .goal-protocol-block-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 32px;
   font-weight: 300;
   margin-bottom: 8px;
   letter-spacing: -0.02em;
 }
-.goal-protocol-block-title em { font-style: italic; color: var(--gold); }
+.goal-protocol-block-title em { font-style: italic; color: var(--lime); }
 .goal-protocol-block-desc {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 24px;
@@ -178,8 +178,8 @@
 }
 .goal-protocol-pep {
   padding: 24px;
-  background: var(--bg-soft);
-  border-left: 2px solid var(--gold);
+  background: var(--ink-2);
+  border-left: 2px solid var(--lime);
   text-decoration: none;
   color: inherit;
   display: block;
@@ -190,7 +190,7 @@
   padding-left: 22px;
 }
 .goal-protocol-pep h4 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 26px;
   font-weight: 400;
   margin-bottom: 8px;
@@ -200,20 +200,20 @@
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: var(--gold);
+  color: var(--lime);
   text-transform: uppercase;
   margin-bottom: 12px;
 }
 .goal-protocol-pep p {
   font-size: 14px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.6;
 }
 .goal-protocol-pep.cta-card {
-  border-left-color: var(--green);
+  border-left-color: var(--lime-2);
 }
 .goal-protocol-pep.cta-card .goal-pep-role {
-  color: var(--green);
+  color: var(--lime-2);
 }
 
 /* ═══════ EXPECTED RESULTS ═══════ */
@@ -221,14 +221,14 @@
   margin-top: 64px;
 }
 .goal-outcomes-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin-bottom: 48px;
 }
-.goal-outcomes-title em { font-style: italic; color: var(--gold); }
+.goal-outcomes-title em { font-style: italic; color: var(--lime); }
 
 .goal-expected-results {
   display: grid;
@@ -239,29 +239,29 @@
 }
 .goal-result-card {
   padding: 32px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   text-align: left;
 }
 .goal-result-label {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.25em;
-  color: var(--gold);
+  color: var(--lime);
   text-transform: uppercase;
   margin-bottom: 12px;
 }
 .goal-result-value {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 32px;
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1;
   margin-bottom: 8px;
-  color: var(--ink);
+  color: var(--paper);
 }
 .goal-result-desc {
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.5;
 }
 
@@ -278,14 +278,14 @@
   padding: 80px 0;
 }
 .goal-faq-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin-bottom: 48px;
 }
-.goal-faq-title em { font-style: italic; color: var(--gold); }
+.goal-faq-title em { font-style: italic; color: var(--lime); }
 .goal-faq-list {
   max-width: 800px;
   display: flex;
@@ -300,12 +300,12 @@
 .goal-faq-item h3 {
   font-size: 18px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--paper);
   margin: 0 0 8px;
 }
 .goal-faq-item p {
   font-size: 15px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.6;
   margin: 0;
 }
@@ -320,7 +320,7 @@
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -329,7 +329,7 @@
 .goal-related-label::before {
   content: '';
   width: 32px; height: 1px;
-  background: var(--gold);
+  background: var(--lime);
 }
 .goal-related-grid {
   display: flex;
@@ -341,30 +341,30 @@
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 14px;
   text-decoration: none;
   transition: all 0.3s;
 }
 .goal-related-link:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-  background: var(--bg-elevated);
+  border-color: var(--lime);
+  color: var(--paper);
+  background: var(--ink-3);
 }
 
 /* ═══════ DISCLAIMER STRIP ═══════ */
 .goal-disclaimer {
-  background: rgba(212,131,42,0.04);
-  border-top: 1px solid rgba(212,131,42,0.2);
-  border-bottom: 1px solid rgba(212,131,42,0.2);
+  background: rgba(199,97,59,0.04);
+  border-top: 1px solid rgba(199,97,59,0.2);
+  border-bottom: 1px solid rgba(199,97,59,0.2);
   padding: 16px 48px;
   text-align: center;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--amber);
+  color: var(--rust);
 }
 
 /* ═══════ LAST REVIEWED ═══════ */
@@ -375,11 +375,11 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   border-top: 1px solid var(--line);
 }
 .goal-last-reviewed time {
-  color: var(--gold);
+  color: var(--lime);
   font-weight: 500;
 }
 

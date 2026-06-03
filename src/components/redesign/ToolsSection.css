@@ -1,7 +1,7 @@
 /* ToolsSection — homepage tools grid */
 .tools-home-section {
   padding: 140px 48px;
-  background: var(--bg);
+  background: var(--paper);
   border-top: 1px solid var(--line);
 }
 .tools-home-head {
@@ -9,7 +9,7 @@
   margin: 0 auto 60px;
 }
 .tools-home-sub {
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-size: 18px;
   max-width: 520px;
   line-height: 1.6;
@@ -31,7 +31,7 @@
   align-items: flex-start;
   gap: 20px;
   padding: 32px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   cursor: pointer;
   text-decoration: none;
@@ -47,12 +47,12 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .tool-home-card:hover {
-  border-color: var(--gold);
+  border-color: var(--lime);
   background: #18181c;
   transform: translateY(-2px);
 }
@@ -69,8 +69,8 @@
   font-size: 8px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--bg);
-  background: var(--gold);
+  color: var(--paper);
+  background: var(--lime);
   padding: 3px 10px;
 }
 
@@ -82,9 +82,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(201, 169, 97, 0.06);
+  background: rgba(196,242,92, 0.06);
   border: 1px solid var(--line);
-  color: var(--gold);
+  color: var(--lime);
 }
 .tool-home-icon svg {
   width: 20px;
@@ -97,23 +97,23 @@
   min-width: 0;
 }
 .tool-home-text h3 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: -0.01em;
   margin-bottom: 6px;
-  color: var(--ink);
+  color: var(--paper);
 }
 .tool-home-text p {
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.55;
 }
 
 /* Arrow */
 .tool-home-arrow {
   flex-shrink: 0;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   transition: color 0.3s, transform 0.3s;
   margin-top: 2px;
 }
@@ -122,7 +122,7 @@
   height: 16px;
 }
 .tool-home-card:hover .tool-home-arrow {
-  color: var(--gold);
+  color: var(--lime);
   transform: translateX(4px);
 }
 

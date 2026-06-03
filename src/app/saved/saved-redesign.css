@@ -3,26 +3,26 @@
 .saved-empty{
   text-align: center;
   padding: 100px 32px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   border-style: dashed;
   margin-top: 60px;
 }
 .saved-empty .icon{
   font-size: 48px;
-  color: var(--gold);
+  color: var(--lime);
   margin-bottom: 24px;
   opacity: 0.5;
 }
 .saved-empty h2{
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 36px;
   font-weight: 300;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
-.saved-empty h2 em{font-style: italic; color: var(--gold)}
-.saved-empty p{color: var(--ink-dim); font-size: 16px; max-width: 480px; margin: 0 auto 32px; line-height: 1.6}
+.saved-empty h2 em{font-style: italic; color: var(--lime)}
+.saved-empty p{color: var(--paper-2); font-size: 16px; max-width: 480px; margin: 0 auto 32px; line-height: 1.6}
 
 .saved-list{margin-top: 48px}
 .saved-item{
@@ -30,7 +30,7 @@
   grid-template-columns: 60px 1fr auto;
   gap: 24px;
   padding: 24px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
@@ -38,24 +38,24 @@
   margin-bottom: -1px;
   align-items: center;
 }
-.saved-item:hover{background: var(--bg-elevated)}
+.saved-item:hover{background: var(--ink-3)}
 .saved-icon{
   width: 40px; height: 40px;
-  background: rgba(201,169,97,0.08);
-  border: 1px solid rgba(201,169,97,0.3);
+  background: rgba(196,242,92,0.08);
+  border: 1px solid rgba(196,242,92,0.3);
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold);
+  color: var(--lime);
 }
-.saved-item h4{font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 4px}
-.saved-item .saved-meta{font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--ink-mute); text-transform: uppercase}
+.saved-item h4{font-family: var(--sans); font-size: 20px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 4px}
+.saved-item .saved-meta{font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--paper-3); text-transform: uppercase}
 .saved-actions{display: flex; gap: 8px}
 .saved-remove{
   width: 32px; height: 32px;
   background: transparent;
   border: 1px solid var(--line);
-  color: var(--ink-mute);
+  color: var(--paper-3);
   cursor: pointer;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 18px;
   line-height: 1;
   transition: all 0.3s;

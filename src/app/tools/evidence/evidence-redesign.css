@@ -1,5 +1,5 @@
 /* ── Evidence Dashboard — Editorial Redesign v2 ──
-   Matches PeptiDex design system (Fraunces + JetBrains Mono + Inter)
+   v13 design system (Geist + Geist Mono)
    Full-width page header, editorial controls, bar-chart rows
    ──────────────────────────────────────────────────────────── */
 
@@ -8,35 +8,35 @@
   padding: 160px 48px 80px;
   position: relative;
   border-bottom: 1px solid var(--line);
-  background: var(--bg);
+  background: var(--paper);
   overflow: hidden;
 }
 .evi-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 30%, rgba(201,169,97,0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 70% 30%, rgba(196,242,92,0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
 /* ===== EVIDENCE COLORS (matching design system) ===== */
-.evi-color-bg-very-strong { background: var(--green); }
-.evi-color-border-very-strong { border-left-color: var(--green) !important; }
+.evi-color-bg-very-strong { background: var(--lime-2); }
+.evi-color-border-very-strong { border-left-color: var(--lime-2) !important; }
 
-.evi-color-bg-strong { background: var(--gold); }
-.evi-color-border-strong { border-left-color: var(--gold) !important; }
+.evi-color-bg-strong { background: var(--lime); }
+.evi-color-border-strong { border-left-color: var(--lime) !important; }
 
 .evi-color-bg-moderate-strong { background: var(--plasma); }
 .evi-color-border-moderate-strong { border-left-color: var(--plasma) !important; }
 
-.evi-color-bg-moderate { background: var(--amber); }
-.evi-color-border-moderate { border-left-color: var(--amber) !important; }
+.evi-color-bg-moderate { background: var(--rust); }
+.evi-color-border-moderate { border-left-color: var(--rust) !important; }
 
-.evi-color-bg-emerging { background: #d4832a; }
-.evi-color-border-emerging { border-left-color: #d4832a !important; }
+.evi-color-bg-emerging { background: #C7613B; }
+.evi-color-border-emerging { border-left-color: #C7613B !important; }
 
-.evi-color-bg-preclinical { background: var(--ink-mute); }
-.evi-color-border-preclinical { border-left-color: var(--ink-mute) !important; }
+.evi-color-bg-preclinical { background: var(--paper-3); }
+.evi-color-border-preclinical { border-left-color: var(--paper-3) !important; }
 
 .evi-color-bg-anecdotal { background: #52504a; }
 .evi-color-border-anecdotal { border-left-color: #52504a !important; }
@@ -47,7 +47,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
   border: 1px solid var(--line);
-  background: var(--bg-card);
+  background: var(--ink-2);
   margin-bottom: 48px;
 }
 .evi-stat {
@@ -60,17 +60,17 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   margin-bottom: 8px;
 }
 .evi-stat-value {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 28px;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: var(--paper);
 }
-.evi-stat-value em { font-style: italic; color: var(--gold); }
+.evi-stat-value em { font-style: italic; color: var(--lime); }
 
 /* ===== LEGEND ===== */
 .evi-legend {
@@ -80,7 +80,7 @@
   margin-bottom: 32px;
   padding: 20px 24px;
   border: 1px solid var(--line);
-  background: var(--bg-soft);
+  background: var(--ink-2);
 }
 .evi-legend-item {
   display: flex;
@@ -96,7 +96,7 @@
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--paper-2);
 }
 
 /* ===== CONTROLS ===== */
@@ -111,7 +111,7 @@
   align-items: center;
   gap: 0;
   border: 1px solid var(--line);
-  background: var(--bg-soft);
+  background: var(--ink-2);
 }
 .evi-control-label {
   display: flex;
@@ -122,11 +122,11 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--lime);
   border-right: 1px solid var(--line);
   white-space: nowrap;
 }
-.evi-control-label svg { width: 12px; height: 12px; color: var(--gold); }
+.evi-control-label svg { width: 12px; height: 12px; color: var(--lime); }
 .evi-control-btn {
   padding: 12px 16px;
   font-family: var(--mono);
@@ -137,16 +137,16 @@
   border: none;
   border-right: 1px solid var(--line);
   background: transparent;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   cursor: pointer;
   transition: all 0.3s;
   white-space: nowrap;
 }
 .evi-control-btn:last-child { border-right: none; }
-.evi-control-btn:hover { color: var(--ink); background: rgba(244,239,230,0.03); }
+.evi-control-btn:hover { color: var(--paper); background: rgba(244,239,230,0.03); }
 .evi-control-btn.active {
-  background: var(--gold);
-  color: var(--bg);
+  background: var(--lime);
+  color: var(--paper);
   font-weight: 500;
 }
 
@@ -156,7 +156,7 @@
   flex-direction: column;
   gap: 0;
   border: 1px solid var(--line);
-  background: var(--bg-card);
+  background: var(--ink-2);
 }
 
 /* Chart Header */
@@ -165,13 +165,13 @@
   grid-template-columns: 44px 200px 1fr 100px;
   gap: 16px;
   padding: 14px 24px;
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border-bottom: 1px solid var(--line);
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   align-items: center;
 }
 
@@ -191,7 +191,7 @@
 }
 .evi-card:last-child { border-bottom: none; }
 .evi-card:hover {
-  background: var(--bg-elevated);
+  background: var(--ink-3);
   border-left-color: currentColor;
 }
 
@@ -214,17 +214,17 @@
   min-width: 0;
 }
 .evi-card-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 17px;
   font-weight: 400;
-  color: var(--ink);
+  color: var(--paper);
   letter-spacing: -0.01em;
   transition: color 0.3s;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.evi-card:hover .evi-card-title { color: var(--gold); }
+.evi-card:hover .evi-card-title { color: var(--lime); }
 .evi-card-badge {
   display: inline-flex;
   align-items: center;
@@ -235,7 +235,7 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--bg);
+  color: var(--paper);
   width: fit-content;
 }
 
@@ -255,7 +255,7 @@
 .evi-card-count {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   text-align: right;
   letter-spacing: 0.05em;
 }
@@ -264,14 +264,14 @@
 .evi-warning {
   margin-top: 48px;
   padding: 24px 32px;
-  background: rgba(212,131,42,0.04);
-  border-left: 3px solid var(--amber);
+  background: rgba(199,97,59,0.04);
+  border-left: 3px solid var(--rust);
   font-size: 13px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.7;
 }
 .evi-warning strong {
-  color: var(--amber);
+  color: var(--rust);
   display: block;
   margin-bottom: 8px;
   font-family: var(--mono);
@@ -324,7 +324,7 @@
 /* Keep button visible when focused for keyboard users */
 .evi-cite-btn:focus {
   opacity: 1 !important;
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--lime);
   outline-offset: 2px;
 }
 /* Anchor highlight flash when jumped to via hash */
@@ -333,7 +333,7 @@
   animation: anchor-flash 1.2s ease-out;
 }
 @keyframes anchor-flash {
-  0%   { background: rgba(212,131,42,0.18); }
+  0%   { background: rgba(199,97,59,0.18); }
   100% { background: transparent; }
 }
 

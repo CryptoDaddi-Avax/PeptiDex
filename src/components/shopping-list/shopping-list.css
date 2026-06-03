@@ -19,20 +19,20 @@
 }
 
 .shopping-list-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 28px;
   font-weight: 300;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: var(--paper);
 }
-.shopping-list-title em { font-style: italic; color: var(--gold); }
+.shopping-list-title em { font-style: italic; color: var(--lime); }
 
 .shopping-list-subtitle {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--paper-3);
 }
 
 /* ── Vendor Cards Grid ── */
@@ -48,7 +48,7 @@
   gap: 20px;
   align-items: center;
   padding: 24px 28px;
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   transition: border-color 0.3s, box-shadow 0.3s;
   position: relative;
@@ -59,8 +59,8 @@
 
 /* Best deal highlight — first card in list (cheapest) */
 .vendor-card.best-deal {
-  border-color: rgba(201, 169, 97, 0.35);
-  background: linear-gradient(135deg, rgba(201, 169, 97, 0.06), rgba(201, 169, 97, 0.02));
+  border-color: rgba(196,242,92, 0.35);
+  background: linear-gradient(135deg, rgba(196,242,92, 0.06), rgba(196,242,92, 0.02));
 }
 .vendor-card.best-deal::before {
   content: 'BEST DEAL';
@@ -70,8 +70,8 @@
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.2em;
-  color: var(--bg);
-  background: var(--gold);
+  color: var(--paper);
+  background: var(--lime);
   padding: 3px 10px;
   text-transform: uppercase;
   font-weight: 600;
@@ -90,10 +90,10 @@
 }
 
 .vendor-card-name {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 20px;
   font-weight: 400;
-  color: var(--ink);
+  color: var(--paper);
   letter-spacing: -0.01em;
   display: flex;
   align-items: center;
@@ -110,7 +110,7 @@
 }
 .vendor-tier-badge.tier-1 {
   background: rgba(127, 183, 126, 0.15);
-  color: var(--green);
+  color: var(--lime-2);
   border: 1px solid rgba(127, 183, 126, 0.25);
 }
 .vendor-tier-badge.tier-2 {
@@ -124,7 +124,7 @@
   gap: 20px;
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   letter-spacing: 0.05em;
 }
 
@@ -140,11 +140,11 @@
   gap: 4px;
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
 }
 .vendor-card-pricing .vial-count {
   font-size: 11px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   letter-spacing: 0.1em;
 }
 
@@ -157,20 +157,20 @@
 }
 
 .vendor-cost-total {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 28px;
   font-weight: 400;
-  color: var(--ink);
+  color: var(--paper);
   letter-spacing: -0.02em;
 }
 .vendor-card.best-deal .vendor-cost-total {
-  color: var(--gold);
+  color: var(--lime);
 }
 
 .vendor-cost-original {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   text-decoration: line-through;
 }
 
@@ -181,7 +181,7 @@
   text-transform: uppercase;
   padding: 3px 10px;
   background: rgba(127, 183, 126, 0.1);
-  color: var(--green);
+  color: var(--lime-2);
   border: 1px solid rgba(127, 183, 126, 0.2);
 }
 
@@ -204,13 +204,13 @@
 
 /* Tier 1: Primary CTA (cart pre-fill) */
 .vendor-cta.cta-cart {
-  background: var(--gold);
-  color: var(--bg);
+  background: var(--lime);
+  color: var(--paper);
   font-weight: 600;
 }
 .vendor-cta.cta-cart:hover {
-  background: var(--gold-bright);
-  box-shadow: 0 4px 16px rgba(201, 169, 97, 0.3);
+  background: var(--lime-2);
+  box-shadow: 0 4px 16px rgba(196,242,92, 0.3);
 }
 
 /* Tier 2: Secondary CTA (deep link) */
@@ -227,7 +227,7 @@
 /* Phase 1B: Deferred CTA */
 .vendor-cta.cta-deferred {
   background: transparent;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   border: 1px solid var(--line);
   cursor: default;
 }
@@ -243,14 +243,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border-bottom: 1px solid var(--line);
   cursor: pointer;
   user-select: none;
   transition: background 0.2s;
 }
 .peptide-breakdown-header:hover {
-  background: var(--bg-card);
+  background: var(--ink-2);
 }
 
 .peptide-breakdown-title {
@@ -258,13 +258,13 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--paper-2);
 }
 
 .peptide-breakdown-toggle {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   transition: transform 0.3s;
 }
 .peptide-breakdown-toggle.open {
@@ -288,14 +288,14 @@
 }
 .peptide-breakdown-row:last-child { border-bottom: none; }
 .peptide-breakdown-row .pep-name {
-  font-family: var(--serif);
-  color: var(--ink);
+  font-family: var(--sans);
+  color: var(--paper);
   font-weight: 400;
 }
 .peptide-breakdown-row .pep-detail {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
 }
 
 /* ── Copy Overlay (Tier 2 vendors) ── */
@@ -313,7 +313,7 @@
 }
 
 .copy-overlay-card {
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line-strong);
   padding: 40px;
   max-width: 500px;
@@ -323,17 +323,17 @@
 }
 
 .copy-overlay-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 24px;
   font-weight: 300;
-  color: var(--ink);
+  color: var(--paper);
   margin-bottom: 8px;
 }
 
 .copy-overlay-sub {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-mute);
+  color: var(--paper-3);
   letter-spacing: 0.1em;
   margin-bottom: 24px;
 }
@@ -350,24 +350,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   font-size: 13px;
 }
-.copy-overlay-item .item-name { color: var(--ink); }
+.copy-overlay-item .item-name { color: var(--paper); }
 .copy-overlay-item .item-qty {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--gold);
+  color: var(--lime);
 }
 
 .copy-overlay-code {
   padding: 12px 16px;
-  background: rgba(201, 169, 97, 0.06);
-  border: 1px solid rgba(201, 169, 97, 0.2);
+  background: rgba(196,242,92, 0.06);
+  border: 1px solid rgba(196,242,92, 0.2);
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--gold);
+  color: var(--lime);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -382,7 +382,7 @@
   padding: 12px;
   background: transparent;
   border: 1px solid var(--line);
-  color: var(--ink-dim);
+  color: var(--paper-2);
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.15em;
@@ -392,14 +392,14 @@
 }
 .copy-overlay-close:hover {
   border-color: var(--line-strong);
-  color: var(--ink);
+  color: var(--paper);
 }
 
 /* ── Email CTA ── */
 .email-capture {
   margin-top: 24px;
   padding: 20px 24px;
-  background: var(--bg-soft);
+  background: var(--ink-2);
   border: 1px solid var(--line);
   display: flex;
   gap: 12px;
@@ -409,25 +409,25 @@
 .email-capture-input {
   flex: 1;
   padding: 10px 14px;
-  background: var(--bg-card);
+  background: var(--ink-2);
   border: 1px solid var(--line);
-  color: var(--ink);
+  color: var(--paper);
   font-family: var(--sans);
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s;
 }
 .email-capture-input:focus {
-  border-color: var(--gold);
+  border-color: var(--lime);
 }
 .email-capture-input::placeholder {
-  color: var(--ink-mute);
+  color: var(--paper-3);
 }
 
 .email-capture-btn {
   padding: 10px 20px;
-  background: var(--gold);
-  color: var(--bg);
+  background: var(--lime);
+  color: var(--paper);
   border: none;
   font-family: var(--mono);
   font-size: 11px;
@@ -439,7 +439,7 @@
   white-space: nowrap;
 }
 .email-capture-btn:hover:not(:disabled) {
-  background: var(--gold-bright);
+  background: var(--lime-2);
 }
 .email-capture-btn:disabled {
   opacity: 0.5;
@@ -465,16 +465,16 @@
 .safety-buffer-note {
   margin-top: 16px;
   padding: 12px 16px;
-  background: rgba(212, 131, 42, 0.04);
-  border-left: 3px solid var(--amber);
+  background: rgba(199,97,59, 0.04);
+  border-left: 3px solid var(--rust);
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-dim);
+  color: var(--paper-2);
   line-height: 1.6;
   letter-spacing: 0.02em;
 }
 .safety-buffer-note strong {
-  color: var(--amber);
+  color: var(--rust);
   font-weight: 500;
 }
 
