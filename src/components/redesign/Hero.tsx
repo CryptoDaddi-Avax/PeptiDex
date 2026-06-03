@@ -1,300 +1,238 @@
 'use client';
-import { useEffect, useRef } from 'react';
-import { peptides } from '@/data/peptides';
-import { stacks } from '@/data/stacks';
+
+import Link from 'next/link';
 import './Hero.css';
 
-const PEPTIDE_COUNT = peptides.length;
-const STUDY_COUNT = peptides.reduce((sum, p) => sum + p.key_studies.length, 0);
-const STACK_COUNT = stacks.length;
+/**
+ * Hero — v13 homepage hero section.
+ *
+ * DELETED from previous version:
+ *  - Entire Three.js scene (CDN script injection, useEffect with
+ *    Scene/PerspectiveCamera/WebGLRenderer, SphereGeometry atoms,
+ *    CylinderGeometry bonds, BufferGeometry particles, DirectionalLight,
+ *    PointLight, AmbientLight, animation loop, IntersectionObserver-gated
+ *    lazy loading, resize handler, visibility observer)
+ *  - "BACKBONE CHAIN / C62H98N16O22" coordinate labels
+ *  - "BPC-157 — RESEARCH PEPTIDE / TISSUE REPAIR · ANGIOGENESIS" label
+ *  - "The reference for peptide research." headline
+ *  - "Enter the library" / "Search the index" CTAs
+ *  - "Vol. I · Edition 2026" bottom meta bar
+ *  - All useRef hooks (canvasRef, containerRef)
+ *  - Grid background + radial gradient background effects
+ *
+ * REPLACED with v13 reference:
+ *  - Full-bleed <video> background (Cloudflare R2)
+ *  - Scrim + grain overlay layers
+ *  - 2-column grid: headline/CTAs left, helix-card right
+ *  - Inline "see the library" pill-in-headline pattern
+ *  - Static helix SVG waveform in the helix-card
+ *  - Purity audit panel with animated bar
+ *  - Trust row with 5-star glyphs
+ */
 
-interface HeroProps {
-  onSearchOpen?: () => void;
-}
-
-export default function Hero({ onSearchOpen }: HeroProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
-
-    let animId: number;
-    let isVisible = true;
-    let cleanupResize: (() => void) | undefined;
-    let cleanupVisibility: (() => void) | undefined;
-    let scriptInjected = false;
-
-    // ── PERFORMANCE FIX: defer Three.js load until canvas is near the viewport.
-    // Previously the script was injected immediately on mount, landing in the
-    // LCP window and causing 750ms TBT. Now it only loads when the user is
-    // about to actually see the helix — or on low-end devices that took longer
-    // to render above-the-fold content.
-    const loadObserver = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting || scriptInjected) return;
-        scriptInjected = true;
-        loadObserver.disconnect();
-
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-        script.onload = () => {
-          const THREE = (window as any).THREE;
-          if (!THREE) return;
-
-          const scene = new THREE.Scene();
-          const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-          camera.position.z = 30;
-
-          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-
-          const ambient = new THREE.AmbientLight(0xffffff, 0.3);
-          scene.add(ambient);
-          const keyLight = new THREE.DirectionalLight(0xc9a961, 1.2);
-          keyLight.position.set(5, 8, 10);
-          scene.add(keyLight);
-          const fillLight = new THREE.DirectionalLight(0x4a9eff, 0.3);
-          fillLight.position.set(-8, -4, 4);
-          scene.add(fillLight);
-          const rimLight = new THREE.PointLight(0xe8c987, 2, 30);
-          rimLight.position.set(-5, 3, -8);
-          scene.add(rimLight);
-
-          const molecule = new THREE.Group();
-          scene.add(molecule);
-
-          const numResidues = 12;
-          const helixRadius = 2.7;
-          const helixPitch = 0.72;
-          const residuesPerTurn = 4;
-
-          const colors = { alpha: 0xe8c987, nitrogen: 0x4a9eff, oxygen: 0xd4832a, carbon: 0xd8d2c2 };
-          const atomData: any[] = [];
-
-          for (let i = 0; i < numResidues; i++) {
-            const t = i / residuesPerTurn;
-            const angle = t * Math.PI * 2;
-            const y = (i - numResidues / 2) * helixPitch;
-            const x = Math.cos(angle) * helixRadius;
-            const z = Math.sin(angle) * helixRadius;
-
-            const alpha = new THREE.Mesh(
-              new THREE.SphereGeometry(0.28, 24, 24),
-              new THREE.MeshPhongMaterial({ color: colors.alpha, shininess: 80, emissive: 0xc9a961, emissiveIntensity: 0.15 })
-            );
-            alpha.position.set(x, y, z);
-            molecule.add(alpha);
-
-            const n = new THREE.Mesh(
-              new THREE.SphereGeometry(0.2, 20, 20),
-              new THREE.MeshPhongMaterial({ color: colors.nitrogen, shininess: 90, emissive: 0x1a3a66, emissiveIntensity: 0.2 })
-            );
-            const nAngle = angle - 0.3;
-            n.position.set(Math.cos(nAngle) * (helixRadius + 0.6), y + 0.2, Math.sin(nAngle) * (helixRadius + 0.6));
-            molecule.add(n);
-
-            const o = new THREE.Mesh(
-              new THREE.SphereGeometry(0.19, 20, 20),
-              new THREE.MeshPhongMaterial({ color: colors.oxygen, shininess: 100, emissive: 0x6b3f14, emissiveIntensity: 0.3 })
-            );
-            const oAngle = angle + 0.3;
-            o.position.set(Math.cos(oAngle) * (helixRadius + 0.5), y - 0.15, Math.sin(oAngle) * (helixRadius + 0.5));
-            molecule.add(o);
-
-            const side = new THREE.Mesh(
-              new THREE.SphereGeometry(0.17, 18, 18),
-              new THREE.MeshPhongMaterial({ color: colors.carbon, shininess: 60, emissive: 0x2a2a28, emissiveIntensity: 0.2 })
-            );
-            side.position.set(Math.cos(angle + 0.8) * (helixRadius - 1.4), y + 0.4, Math.sin(angle + 0.8) * (helixRadius - 1.4));
-            molecule.add(side);
-
-            atomData.push({ alpha, n, o, side });
-          }
-
-          // Bonds
-          function makeBond(a: any, b: any, color = 0xa8a196, radius = 0.06) {
-            const dir = new THREE.Vector3().subVectors(b.position, a.position);
-            const len = dir.length();
-            const geo = new THREE.CylinderGeometry(radius, radius, len, 8);
-            const mat = new THREE.MeshPhongMaterial({ color, transparent: true, opacity: 0.7 });
-            const mesh = new THREE.Mesh(geo, mat);
-            mesh.position.copy(a.position).add(b.position).multiplyScalar(0.5);
-            mesh.lookAt(b.position);
-            mesh.rotateX(Math.PI / 2);
-            molecule.add(mesh);
-          }
-          for (let i = 0; i < atomData.length - 1; i++) makeBond(atomData[i].alpha, atomData[i + 1].alpha, 0xc9a961, 0.065);
-          for (let i = 0; i < atomData.length; i++) {
-            makeBond(atomData[i].alpha, atomData[i].n, 0x6b6860, 0.04);
-            makeBond(atomData[i].alpha, atomData[i].o, 0x6b6860, 0.04);
-            makeBond(atomData[i].alpha, atomData[i].side, 0x6b6860, 0.03);
-          }
-
-          // Particles
-          const pGeo = new THREE.BufferGeometry();
-          const pPos = new Float32Array(80 * 3);
-          for (let i = 0; i < 80; i++) { pPos[i*3]=(Math.random()-0.5)*30; pPos[i*3+1]=(Math.random()-0.5)*20; pPos[i*3+2]=(Math.random()-0.5)*30; }
-          pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-          const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xc9a961, size: 0.04, transparent: true, opacity: 0.6, sizeAttenuation: true }));
-          scene.add(particles);
-
-          molecule.scale.set(0.01, 0.01, 0.01);
-          let entryProgress = 0;
-          const clock = new THREE.Clock();
-
-          const onResize = () => {
-            const w = canvas.clientWidth, h = canvas.clientHeight;
-            if (w === 0 || h === 0) return;
-            renderer.setSize(w, h, false);
-            camera.aspect = w / h;
-            if (window.innerWidth <= 480) {
-              camera.position.z = 16;
-            } else if (window.innerWidth <= 768) {
-              camera.position.z = 18;
-            } else {
-              camera.position.z = 30;
-            }
-            camera.updateProjectionMatrix();
-          };
-          window.addEventListener('resize', onResize);
-          cleanupResize = () => window.removeEventListener('resize', onResize);
-          onResize();
-
-          // Pause/resume animation when hero scrolls off-screen
-          const visibilityObserver = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                isVisible = entry.isIntersecting;
-                if (isVisible) {
-                  clock.start();
-                  animId = requestAnimationFrame(animate);
-                }
-              });
-            },
-            { threshold: 0 }
-          );
-          visibilityObserver.observe(container);
-          cleanupVisibility = () => visibilityObserver.disconnect();
-
-          function animate() {
-            if (!isVisible) return;
-            animId = requestAnimationFrame(animate);
-            const t = clock.getElapsedTime();
-            if (entryProgress < 1) {
-              entryProgress += 0.012;
-              const eased = 1 - Math.pow(1 - Math.min(1, entryProgress), 3);
-              molecule.scale.set(eased, eased, eased);
-            }
-            molecule.rotation.y += 0.003;
-            if (entryProgress >= 1) {
-              const breathe = Math.sin(t * 0.6) * 0.015 + 1;
-              molecule.scale.setScalar(breathe);
-            }
-            particles.rotation.y += 0.0008;
-            rimLight.intensity = 2 + Math.sin(t * 1.2) * 0.4;
-            renderer.render(scene, camera);
-          }
-          animate();
-        };
-        document.head.appendChild(script);
-      },
-      // 200px rootMargin: begin loading slightly before the canvas enters the viewport
-      { rootMargin: '200px', threshold: 0 }
-    );
-    loadObserver.observe(container);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      loadObserver.disconnect();
-      cleanupResize?.();
-      cleanupVisibility?.();
-    };
-  }, []);
+/* ── Static helix SVG (replaces Three.js) ── */
+function HelixSVG() {
+  // 8-node zigzag waveform matching v13's helix visual
+  const nodes = [
+    { cx: 60,  cy: 180, type: 'lime' },
+    { cx: 130, cy: 80,  type: 'paper' },
+    { cx: 200, cy: 160, type: 'teal' },
+    { cx: 270, cy: 70,  type: 'paper' },
+    { cx: 340, cy: 170, type: 'lime' },
+    { cx: 410, cy: 85,  type: 'paper' },
+    { cx: 480, cy: 175, type: 'teal' },
+    { cx: 540, cy: 90,  type: 'lime' },
+  ];
 
   return (
-    <header className="hero">
-      {/* Background effects — grid + radial gradients */}
-      <div className="hero-bg">
-        <div className="hero-grid" />
-      </div>
+    <svg
+      className="helix-svg-static"
+      viewBox="0 0 600 280"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      {/* Bonds */}
+      {nodes.map((node, i) => {
+        if (i === nodes.length - 1) return null;
+        const next = nodes[i + 1];
+        return (
+          <line
+            key={`bond-${i}`}
+            className="helix-bond"
+            x1={node.cx}
+            y1={node.cy}
+            x2={next.cx}
+            y2={next.cy}
+          />
+        );
+      })}
+      {/* Nodes */}
+      {nodes.map((node, i) => (
+        <circle
+          key={`node-${i}`}
+          className={`helix-node-${node.type}`}
+          cx={node.cx}
+          cy={node.cy}
+          r={node.type === 'lime' ? 9 : node.type === 'teal' ? 7 : 8}
+        />
+      ))}
+    </svg>
+  );
+}
 
-      {/* Desktop molecule labels — positioned absolutely over the canvas area */}
-      <div className="molecule-label tl">
-        Backbone chain<br />
-        <span>C₆₂H₉₈N₁₆O₂₂</span>
-      </div>
-      <div className="molecule-label br">
-        BPC-157 — research peptide<br />
-        <span>Tissue repair · Angiogenesis</span>
-      </div>
+/* ── Inline SVG atoms ── */
+const ArrowUpRight = () => (
+  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M5 11 11 5M6 5h5v5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-      {/* Main layout container */}
-      <div className="hero-layout">
-        {/* Top row: on mobile this becomes a 2-column grid (headline | helix) */}
-        <div className="hero-top">
-          <div className="hero-text-col">
-            <div className="hero-eyebrow">
-              <span className="dot" />
-              Research Index · Est. 2026
-            </div>
-            <h1>
-              The reference<br />
-              for <em>peptide</em><br />
-              research.
-            </h1>
-            <h2 className="hero-kicker">
-              Research peptides indexed: BPC-157, Tesamorelin, Semaglutide, Tirzepatide, and {PEPTIDE_COUNT - 4} more
-            </h2>
-          </div>
+const SearchIcon = () => (
+  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.4" />
+    <path d="M10.5 10.5 14 14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+  </svg>
+);
 
-          {/* Three.js canvas — grid cell on mobile, absolute on desktop */}
-          <div className="hero-molecule" ref={containerRef}>
-            <canvas ref={canvasRef} id="molecule-canvas" />
-          </div>
-        </div>
+const ArrowRight = () => (
+  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="12" height="12">
+    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-        {/* Below the top row: paragraph + CTAs — always full width, never overlapped */}
-        <div className="hero-bottom">
-          <p className="hero-sub">
-            An independent index of {PEPTIDE_COUNT} research peptides, {STACK_COUNT} curated stacks, and {STUDY_COUNT}+ peer-reviewed studies — verified against third-party Certificates of Analysis. Built for those who read the data, not the hype.
+export default function Hero() {
+  return (
+    <section className="hero" id="top" aria-label="Peptidex hero">
+
+      {/* Full-bleed background video */}
+      <video
+        className="hero-bg-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        src="https://pub-bb44e23f2db2497da1abd5de2ab102a4.r2.dev/clip1.mp4"
+      />
+
+      {/* Scrim + grain layers */}
+      <div className="hero-scrim" aria-hidden="true" />
+      <div className="hero-grain" aria-hidden="true" />
+
+      <div className="hero-inner">
+
+        {/* ── LEFT COLUMN ── */}
+        <div className="hero-left">
+
+          <p className="hero-eyebrow fade-up">PEPTIDE INTELLIGENCE / 2026</p>
+
+          <h1 className="hero-h1">
+            <span className="line line-1 fade-up">Every peptide,</span>
+
+            <span className="line line-2">
+              <em className="em fade-up" style={{ '--delay': '340ms' } as React.CSSProperties}>researched</em>
+              <Link
+                className="pill-btn pill-glass inline fade-up"
+                style={{ '--delay': '120ms' } as React.CSSProperties}
+                href="/library"
+              >
+                <SearchIcon />
+                see the library
+              </Link>
+            </span>
+
+            <span className="line line-3 fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>sourced &amp; verified.</span>
+          </h1>
+
+          <p className="hero-sub fade-up" style={{ '--delay': '400ms' } as React.CSSProperties}>
+            The independent peptide research index — 51 profiles, 12 evidence-based stacks, and free tools. Affiliate-funded, never paid placement.
           </p>
-          <div className="hero-ctas">
-            <a href="/library" className="btn-primary">
-              <span>Enter the library</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
-            <button className="btn-ghost" onClick={onSearchOpen}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginRight: -4 }}>
-                <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
-                <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" />
-              </svg>
-              Search the index
-            </button>
+
+          {/* CTAs */}
+          <div className="hero-ctas fade-up" style={{ '--delay': '500ms' } as React.CSSProperties}>
+            <Link className="pill-btn pill-lime" href="/library">
+              Explore the library
+              <ArrowUpRight />
+            </Link>
+            <Link className="ghost-link" href="/quiz">
+              Take the 60-second stack quiz
+              <ArrowRight />
+            </Link>
+          </div>
+
+          {/* Trust row */}
+          <div className="hero-trust fade-up" style={{ '--delay': '600ms' } as React.CSSProperties}>
+            <span className="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <span className="trust-text">
+              Read by <strong>researchers, clinicians, and educators</strong>
+            </span>
           </div>
 
         </div>
-      </div>
 
-      <div className="hero-meta">
-        <div>
-          <div>Vol. I · Edition 2026</div>
-          <div style={{ marginTop: 6, color: 'var(--gold)' }}>Independent · Evidence-based</div>
+        {/* ── RIGHT COLUMN ── */}
+        <div className="hero-right">
+          <div className="helix-card-shell fade-up" style={{ '--delay': '300ms' } as React.CSSProperties}>
+            <div className="glass helix-card">
+
+              {/* Status pill */}
+              <div className="status-pill">
+                <span className="dot" aria-hidden="true" />
+                <span className="num">51</span> peptides
+                <span className="sep">·</span>
+                <span className="num">668+</span> studies
+                <span className="sep">·</span>
+                <span className="live">INDEXED</span>
+              </div>
+
+              {/* Helix stage */}
+              <div className="helix-stage">
+                <span className="stage-label">HLX-04 · LIVE FEED</span>
+                <span className="stage-coords">θ 4.71 · Δ 0.03Å</span>
+                <span className="tick tl" aria-hidden="true" />
+                <span className="tick tr" aria-hidden="true" />
+                <span className="tick bl" aria-hidden="true" />
+                <span className="tick br" aria-hidden="true" />
+                <HelixSVG />
+              </div>
+
+              {/* Readouts */}
+              <div className="readouts" role="list">
+                <div className="readout" role="listitem">
+                  <span className="readout-label">PROFILES</span>
+                  <span className="readout-value">51</span>
+                </div>
+                <div className="readout" role="listitem">
+                  <span className="readout-label">STACKS</span>
+                  <span className="readout-value">12</span>
+                </div>
+                <div className="readout" role="listitem">
+                  <span className="readout-label">COA PURITY</span>
+                  <span className="readout-value">99<span className="em">%</span></span>
+                </div>
+              </div>
+
+              {/* Floating purity-audit panel */}
+              <aside className="purity-panel glass-light" aria-label="Latest purity audit">
+                <div className="purity-row">
+                  <span className="purity-label">HPLC AUDIT</span>
+                  <span className="purity-status">VERIFIED</span>
+                </div>
+                <div className="purity-bar" role="progressbar" aria-valuenow={99.7} aria-valuemin={0} aria-valuemax={100}>
+                  <div className="purity-fill" />
+                </div>
+                <div className="purity-meta">
+                  <span><strong>99.7%</strong></span>
+                  <span>2025-11-12</span>
+                  <span>LCMS ×2</span>
+                </div>
+              </aside>
+
+            </div>
+          </div>
         </div>
-        <div className="scroll-hint">
-          <div>Scroll</div>
-          <div className="scroll-line" />
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <div>Peer-reviewed index</div>
-          <div style={{ marginTop: 6 }}>COA-verified sourcing</div>
-        </div>
+
       </div>
-    </header>
+    </section>
   );
 }
