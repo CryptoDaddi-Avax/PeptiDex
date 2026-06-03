@@ -59,3 +59,5 @@ force_pm2_restart.js
 update_vps_env.js
 check_remote_git.js
 check_remote_logs.js
+
+# _design-reference/  # uncomment before merge to prod
