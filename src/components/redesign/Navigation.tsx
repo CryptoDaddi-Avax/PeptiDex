@@ -48,10 +48,7 @@ export default function Navigation({ onSearchOpen }: { onSearchOpen?: () => void
     return () => { document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize); };
   }, [menuOpen, closeMenu]);
 
-  /* ── 3. Body .loaded for draw-in animation ── */
-  useEffect(() => {
-    document.body.classList.add('loaded');
-  }, []);
+
 
   const navCls = [
     'site-nav',

@@ -4,15 +4,21 @@ import Navigation from './Navigation';
 import CommandPalette from './CommandPalette';
 import Footer from './Footer';
 import ScrollReveal from './ScrollReveal';
+import Loader from './Loader';
+import Cursor from './Cursor';
+import ScrollProgress from './ScrollProgress';
 import './redesign.css';
 
 /**
  * GlobalShell — site-wide wrapper rendered in the root layout.
  *
  * Provides:
- *  1. Redesign Navigation (sticky, shrink-on-scroll, mobile drawer)
- *  2. CommandPalette (⌘K / Ctrl+K / "/" to open)
- *  3. Redesign Footer
+ *  1. Entrance Loader (sessionStorage-gated, adds body.loaded)
+ *  2. Scroll Progress bar (lime gradient at viewport top)
+ *  3. Custom Cursor (fine-pointer only dot + ring)
+ *  4. Redesign Navigation (sticky, shrink-on-scroll, mobile slide-down)
+ *  5. CommandPalette (⌘K / Ctrl+K / "/" to open)
+ *  6. Redesign Footer
  *
  * Unlike RedesignLayout, this does NOT wrap {children} in
  * `.redesign-content` — that padding is applied by the per-route
@@ -52,6 +58,15 @@ export default function GlobalShell({ children }: { children: ReactNode }) {
 
   return (
     <>
+      {/* ── Entrance Loader (must be before nav — adds body.loaded) ── */}
+      <Loader />
+
+      {/* ── Scroll Progress bar ── */}
+      <ScrollProgress />
+
+      {/* ── Custom Cursor (fine-pointer only) ── */}
+      <Cursor />
+
       {/* ── Scroll-reveal observer (global IntersectionObserver) ── */}
       <ScrollReveal />
 

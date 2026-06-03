@@ -1,0 +1,164 @@
+/* =============================================================
+   Peptidex v13 — Entrance Loader
+   Full-viewport overlay above everything. sessionStorage-gated.
+   Hands off to hero entrance via body.loaded.
+   ============================================================= */
+
+/* ---------- OVERLAY ---------- */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+}
+.loader.is-exiting {
+  animation: loader-out 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes loader-out {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+
+/* faint dot-grid texture behind the mark */
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(242, 238, 229, 0.05) 1px, transparent 1.5px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000, transparent 75%);
+          mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000, transparent 75%);
+  pointer-events: none;
+}
+
+.loader-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  width: min(340px, 80vw);
+}
+
+/* ---------- PEPTIDE MARK (large) ---------- */
+.loader-mark {
+  width: 200px;
+  height: 82px;
+  overflow: visible;
+}
+.loader-mark .lm-bond {
+  stroke: color-mix(in srgb, var(--paper) 65%, transparent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+}
+.loader-mark .lm-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0);
+  opacity: 0;
+}
+.loader-mark .lm-node.lime {
+  fill: var(--lime);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--lime) 45%, transparent));
+}
+.loader-mark .lm-node.paper { fill: var(--paper); }
+
+/* Animations start when .is-animating is applied */
+.loader.is-animating .lm-node {
+  animation: lm-pop 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.loader.is-animating .lm-node:nth-of-type(1) { animation-delay: 80ms; }
+.loader.is-animating .lm-node:nth-of-type(2) { animation-delay: 200ms; }
+.loader.is-animating .lm-node:nth-of-type(3) { animation-delay: 320ms; }
+.loader.is-animating .lm-node:nth-of-type(4) { animation-delay: 440ms; }
+.loader.is-animating .lm-bond {
+  animation: lm-draw 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.loader.is-animating .lm-bond:nth-of-type(1) { animation-delay: 160ms; }
+.loader.is-animating .lm-bond:nth-of-type(2) { animation-delay: 280ms; }
+.loader.is-animating .lm-bond:nth-of-type(3) { animation-delay: 400ms; }
+@keyframes lm-pop {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.16); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes lm-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- WORDMARK ---------- */
+.loader-wordmark {
+  font-family: var(--sans, "Geist", sans-serif);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  opacity: 0;
+  transform: translateY(10px);
+}
+.loader.is-animating .loader-wordmark {
+  animation: lm-word 600ms cubic-bezier(0.22, 1, 0.36, 1) 520ms forwards;
+}
+@keyframes lm-word {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- PROGRESS BAR ---------- */
+.loader-progress {
+  width: 140px;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 14%, transparent);
+  overflow: hidden;
+  margin-top: 4px;
+}
+.loader-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--lime-2), var(--lime));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--lime) 55%, transparent);
+}
+.loader.is-animating .loader-bar {
+  animation: lm-fill 1100ms cubic-bezier(0.16, 1, 0.3, 1) 300ms forwards;
+}
+@keyframes lm-fill {
+  to { width: 100%; }
+}
+
+/* ---------- CAPTION ---------- */
+.loader-caption {
+  font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+  min-height: 1.2em;
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .loader.is-exiting {
+    animation: loader-out-rm 260ms linear forwards;
+  }
+  @keyframes loader-out-rm {
+    to { opacity: 0; }
+  }
+  .loader .lm-node { transform: scale(1); opacity: 1; }
+  .loader .lm-bond { stroke-dashoffset: 0; }
+  .loader .loader-wordmark { opacity: 1; transform: none; }
+  .loader .loader-bar { width: 100%; }
+  .loader.is-animating .lm-node,
+  .loader.is-animating .lm-bond,
+  .loader.is-animating .loader-wordmark,
+  .loader.is-animating .loader-bar { animation: none; }
+}

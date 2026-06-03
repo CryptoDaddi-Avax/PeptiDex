@@ -1,0 +1,23 @@
+/* =============================================================
+   Peptidex v13 — Scroll Progress Bar
+   Fixed at top of viewport, fills horizontally with lime gradient.
+   ============================================================= */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1500;
+  background: linear-gradient(90deg, var(--lime-2), var(--lime));
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--lime) 45%, transparent);
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { box-shadow: none; }
+}
