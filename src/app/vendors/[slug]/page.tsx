@@ -193,7 +193,7 @@ export default async function VendorReviewPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
         {/* ══════════ 1. SUMMARY CARD ══════════ */}
         <section id="summary" className="vr-summary-card">

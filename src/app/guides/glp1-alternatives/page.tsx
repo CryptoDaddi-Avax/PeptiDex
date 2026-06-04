@@ -78,7 +78,7 @@ export default function GlpAlternativesPage() {
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
         <div className="bg-zinc-900 border-l-4 border-violet-500 p-6 rounded-r-xl mb-12">
           <h2 className="text-lg font-bold text-white mb-2">Quick Answer</h2>
           <p className="text-zinc-300">

@@ -86,7 +86,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
         return ["all", ...Array.from(cats).sort()];
     }, []);
 
-    /* Scroll reveal */
+    /* Scroll fade-up */
     useEffect(() => {
         if (!containerRef.current) return;
         const io = new IntersectionObserver(entries => {
@@ -243,7 +243,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
             <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 48px' }} ref={containerRef}>
                 <section style={{ padding: '80px 0' }}>
                     {/* Stats Row */}
-                    <div className="evi-stats-row reveal">
+                    <div className="evi-stats-row fade-up">
                         <div className="evi-stat">
                             <div className="evi-stat-label">Compounds</div>
                             <div className="evi-stat-value"><em>{peptides.length}</em></div>
@@ -263,7 +263,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* ── CITE THIS block ── */}
-                    <div className="reveal" style={{
+                    <div className="fade-up" style={{
                         margin: '32px 0',
                         padding: '20px 24px',
                         borderRadius: 12,
@@ -327,7 +327,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* Legend */}
-                    <div className="evi-legend reveal">
+                    <div className="evi-legend fade-up">
                         {Object.keys(evidenceLabelMap).map((level) => (
                             <div key={level} className="evi-legend-item">
                                 <div className={`evi-legend-dot evi-color-bg-${level}`} />
@@ -337,7 +337,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* Controls */}
-                    <div className="evi-controls reveal">
+                    <div className="evi-controls fade-up">
                         <div className="evi-control-group">
                             <div className="evi-control-label">
                                 <Filter style={{ width: 12, height: 12 }} />
@@ -370,7 +370,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* Share */}
-                    <div style={{ marginBottom: 32 }} className="reveal">
+                    <div style={{ marginBottom: 32 }} className="fade-up">
                         <ShareModal
                             data={evidenceShareData}
                             shareUrl="https://peptidex.app/tools/evidence"
@@ -380,7 +380,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* Section Label */}
-                    <div className="reveal" style={{
+                    <div className="fade-up" style={{
                         fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
                         textTransform: 'uppercase' as const, color: 'var(--gold)',
                         marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12
@@ -390,7 +390,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* Chart */}
-                    <div className="evi-chart-list reveal">
+                    <div className="evi-chart-list fade-up">
                         <div className="evi-chart-header">
                             <div />
                             <div>Peptide</div>
@@ -430,7 +430,7 @@ export default function EvidenceClient({ initialRanked, dateModified, formattedD
                     </div>
 
                     {/* Warning */}
-                    <div className="evi-warning reveal">
+                    <div className="evi-warning fade-up">
                         <strong>⚠ Research reference only</strong>
                         Evidence levels are based on a qualitative assessment of published research. This is not a clinical recommendation. Many compounds are in early research stages and are not FDA-approved for human use.
                     </div>

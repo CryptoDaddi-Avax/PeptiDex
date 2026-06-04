@@ -26,7 +26,7 @@ export default function LegalPage() {
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
             <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--ink-mute)' }}>Last updated: May 11, 2026</p>
 

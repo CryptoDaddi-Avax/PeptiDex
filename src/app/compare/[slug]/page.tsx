@@ -140,7 +140,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
       {/* ── EDITOR NOTE (thin data warning) ── */}
       {comp.editorNote && (

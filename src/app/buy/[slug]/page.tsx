@@ -123,7 +123,7 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
         subhead={`Compare verified vendors, pricing, and active discount codes for ${peptide.name} research.`} 
       />
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
         <WhereToBuySection 
           peptideName={peptide.name} 
           peptideSlug={peptide.slug} 

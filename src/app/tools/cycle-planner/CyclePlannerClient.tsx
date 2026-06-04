@@ -373,7 +373,7 @@ export default function CyclePlannerClient() {
                     {/* MAIN OUTPUT */}
                     <main className="planner-output">
                         {/* Summary Banner */}
-                        <div className="summary-banner reveal">
+                        <div className="summary-banner fade-up">
                             <h3>Your <em>research</em> protocol.</h3>
                             <p className="summary-subtitle">Based on published dosing references and protocol literature.</p>
                             <div className="summary-stats">
@@ -397,7 +397,7 @@ export default function CyclePlannerClient() {
                         </div>
 
                         {/* Visual Timeline */}
-                        <div className="section-label reveal" style={{
+                        <div className="section-label fade-up" style={{
                             fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
                             textTransform: 'uppercase' as const, color: 'var(--gold)',
                             marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12
@@ -407,7 +407,7 @@ export default function CyclePlannerClient() {
                         </div>
 
                         {selectedPeptides.length > 0 ? (
-                            <div className="timeline reveal">
+                            <div className="timeline fade-up">
                                 {/* Week Headers */}
                                 <div className="timeline-header">
                                     <div />
@@ -454,7 +454,7 @@ export default function CyclePlannerClient() {
                         )}
 
                         {/* Reference Dosing */}
-                        <div className="section-label reveal" style={{
+                        <div className="section-label fade-up" style={{
                             fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
                             textTransform: 'uppercase' as const, color: 'var(--gold)',
                             marginTop: 32, marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12
@@ -464,7 +464,7 @@ export default function CyclePlannerClient() {
                         </div>
 
                         {selectedPeptides.length > 0 && (
-                            <div className="dosing-table reveal">
+                            <div className="dosing-table fade-up">
                                 <div className="dt-row header">
                                     <div>Peptide</div>
                                     <div>Dose</div>
@@ -494,7 +494,7 @@ export default function CyclePlannerClient() {
                         )}
 
                         {/* Action Row */}
-                        <div className="action-row reveal">
+                        <div className="action-row fade-up">
                             <button className="btn-primary" onClick={() => window.print()}>
                                 <span>Export protocol PDF</span>
                                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -532,7 +532,7 @@ export default function CyclePlannerClient() {
                         {/* ── Procurement Bridge — ShoppingList ── */}
                         {selectedPeptides.length > 0 && results.length > 0 && (
                             <div style={{ marginTop: 40 }}>
-                                <div className="section-label reveal" style={{
+                                <div className="section-label fade-up" style={{
                                     fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.25em',
                                     textTransform: 'uppercase' as const, color: 'var(--gold)',
                                     marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12
@@ -548,7 +548,7 @@ export default function CyclePlannerClient() {
                         )}
 
                         {/* Warning */}
-                        <div className="tool-warning reveal">
+                        <div className="tool-warning fade-up">
                             <strong>⚠ Research reference only</strong>
                             {SHORT_DISCLAIMER}
                         </div>

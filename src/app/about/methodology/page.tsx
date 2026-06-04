@@ -88,7 +88,7 @@ export default function MethodologyPage() {
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
         {/* ── SECTION 1: Evidence Grading ── */}
         <section id="evidence-grading">

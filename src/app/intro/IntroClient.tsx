@@ -88,7 +88,7 @@ export default function IntroClient() {
           Pick the path that matches where you are. Each track is a structured sequence of articles, profiles, and tools.
         </p>
 
-        <div className="intro-tracks reveal">
+        <div className="intro-tracks fade-up">
           {tracks.map((t) => (
             <Link href={t.anchor} key={t.num} className="track-card">
               <div className="num-large">{t.num}</div>
@@ -103,7 +103,7 @@ export default function IntroClient() {
         </div>
 
         {/* ── Beginner Track ── */}
-        <div className="reveal" id="beginner">
+        <div className="fade-up" id="beginner">
           <div className="section-label">§ Beginner — The Basics</div>
           <h2 className="serif" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
             Start with the <em className="text-gold italic">fundamentals</em>.
@@ -120,7 +120,7 @@ export default function IntroClient() {
         </div>
 
         {/* ── Practical Track ── */}
-        <div className="reveal" id="intermediate" style={{ marginTop: 80 }}>
+        <div className="fade-up" id="intermediate" style={{ marginTop: 80 }}>
           <div className="section-label">§ Practical — Protocols & Research</div>
           <h2 className="serif" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
             From theory to <em className="text-gold italic">practice</em>.
@@ -137,7 +137,7 @@ export default function IntroClient() {
         </div>
 
         {/* ── Sourcing Track ── */}
-        <div className="reveal" id="advanced" style={{ marginTop: 80 }}>
+        <div className="fade-up" id="advanced" style={{ marginTop: 80 }}>
           <div className="section-label">§ Sourcing — Verification & Procurement</div>
           <h2 className="serif" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
             Source with <em className="text-gold italic">confidence</em>.

@@ -105,7 +105,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
             )}
 
             {/* ═══ PROTOCOL SECTION ═══ */}
-            <section className="goal-protocol-section reveal">
+            <section className="goal-protocol-section fade-up">
                 <div className="goal-container">
                     <div className="goal-section-label">§ The Protocol</div>
                     <h2 className="goal-protocol-title">

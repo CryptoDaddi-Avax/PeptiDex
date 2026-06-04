@@ -125,7 +125,7 @@ export default function IsAminoClubLegit() {
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
         {/* â”€â”€ LEAD â”€â”€ */}
         <section id="overview">

@@ -147,7 +147,7 @@ export default function BlogPostTemplate() {
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

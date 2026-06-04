@@ -170,7 +170,7 @@ export default function StacksClient() {
                     )}
                 </div>
 
-                <div style={{ marginTop: '80px', padding: '48px', background: 'var(--bg-card)', borderLeft: '3px solid var(--gold)' }} className="reveal in">
+                <div style={{ marginTop: '80px', padding: '48px', background: 'var(--bg-card)', borderLeft: '3px solid var(--gold)' }} className="fade-up is-visible">
                     <div className="section-label">§ Need help choosing?</div>
                     <h3 style={{ fontFamily: 'var(--serif)', fontSize: '36px', fontWeight: 300, marginBottom: '16px', letterSpacing: '-0.02em' }}>
                         Try the <em className="text-gold italic">Cycle Planner</em>.

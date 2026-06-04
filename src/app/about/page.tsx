@@ -100,7 +100,7 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <div className="about-content reveal">
+      <div className="about-content fade-up">
         <p>
           We started PeptiDex in 2026 with a single observation: <strong>nobody was indexing peptide research the way
           it deserved to be indexed</strong>. Forums had anecdotes. Vendors had marketing copy. Medical journals had

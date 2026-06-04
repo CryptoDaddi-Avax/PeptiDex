@@ -55,7 +55,7 @@ export default function DisclaimerPage() {
         </div>
       </header>
 
-      <div className="legal-content reveal">
+      <div className="legal-content fade-up">
         <div className="legal-callout">
           <strong>⚠ Educational use only</strong>
           <p>

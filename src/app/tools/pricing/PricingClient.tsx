@@ -492,7 +492,7 @@ export default function PricingClient() {
         <section style={{ padding: '48px 0 80px' }}>
 
           {/* Disclaimer */}
-          <div className="prc-disclaimer reveal">
+          <div className="prc-disclaimer fade-up">
             <Info />
             <p>
               Prices are sourced directly from vendor websites and updated periodically. All listed vendors
@@ -507,7 +507,7 @@ export default function PricingClient() {
           <DisclaimerCard variant="tool" className="mb-8" />
 
           {/* Controls */}
-          <div className="prc-controls reveal">
+          <div className="prc-controls fade-up">
             {/* Peptide Selector */}
             <div className="prc-selector" ref={dropdownRef}>
               <button
@@ -664,7 +664,7 @@ export default function PricingClient() {
 
           {/* Stats strip */}
           {currentPeptide && (
-            <div className="prc-stats reveal">
+            <div className="prc-stats fade-up">
               <div className="prc-stat">
                 Viewing: <strong>{currentPeptide.name}</strong>
               </div>
@@ -685,7 +685,7 @@ export default function PricingClient() {
           )}
 
           {/* ── Desktop Table ──────────────────────────────────────────── */}
-          <div className="prc-table reveal">
+          <div className="prc-table fade-up">
             <div className="prc-table-header">
               <div>Vendor</div>
               <div>List Price</div>
@@ -712,7 +712,7 @@ export default function PricingClient() {
           </div>
 
           {/* Footnote */}
-          <div className="prc-footnote reveal">
+          <div className="prc-footnote fade-up">
             <p>
               💡 <strong>How PEPTIDEX discounts work:</strong> Enter code{" "}
               <strong>PEPTIDEX</strong> at checkout at any vendor showing the code badge above.

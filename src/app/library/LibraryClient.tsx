@@ -69,7 +69,7 @@ export default function LibraryClient() {
   const deferredCategory = useDeferredValue(selectedCategory);
   const deferredEvidence = useDeferredValue(selectedEvidence);
 
-  /* Scroll reveal */
+  /* Scroll fade-up */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

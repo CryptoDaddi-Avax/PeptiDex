@@ -182,7 +182,7 @@ export default async function AminoClubProductPage({ params }: { params: Promise
         </div>
       </header>
 
-      <div className="about-content reveal space-y-16">
+      <div className="about-content fade-up space-y-16">
 
         {/* ── DISCLAIMER ── */}
         <div className="rounded-xl bg-amber-950/25 border border-amber-500/20 p-4">

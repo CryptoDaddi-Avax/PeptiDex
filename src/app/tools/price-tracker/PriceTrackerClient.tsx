@@ -298,7 +298,7 @@ export default function PriceTrackerClient({ listings }: Props) {
           </div>
 
           {/* Stat chips */}
-          <div className="pt-stats reveal" role="status" aria-live="polite" aria-label="Listing statistics">
+          <div className="pt-stats fade-up" role="status" aria-live="polite" aria-label="Listing statistics">
             <span className="pt-stat-chip"><strong>{stats.listings}</strong> listings</span>
             <span className="pt-stat-chip"><strong>{stats.peptides}</strong> peptides</span>
             <span className="pt-stat-chip"><strong>{stats.vendors}</strong> vendors</span>
@@ -352,7 +352,7 @@ export default function PriceTrackerClient({ listings }: Props) {
           </div>
 
           {/* ── DESKTOP TABLE ── */}
-          <div className="pt-table-wrap reveal" role="region" aria-label="Price comparison table">
+          <div className="pt-table-wrap fade-up" role="region" aria-label="Price comparison table">
             {filtered.length === 0 ? (
               <div className="pt-empty" role="status">No listings match your filters.</div>
             ) : (
@@ -568,7 +568,7 @@ export default function PriceTrackerClient({ listings }: Props) {
           </div>
 
           {/* ── MOBILE CARDS ── */}
-          <div className="pt-cards reveal" role="region" aria-label="Price listings (mobile)">
+          <div className="pt-cards fade-up" role="region" aria-label="Price listings (mobile)">
             {filtered.length === 0 ? (
               <div className="pt-empty" role="status">No listings match your filters.</div>
             ) : filtered.map((row) => {
