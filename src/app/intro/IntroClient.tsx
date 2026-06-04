@@ -31,7 +31,7 @@ const tracks = [
 ];
 
 const beginnerLessons = [
-  { num: '§ Lesson 01', title: 'What are peptides?', desc: 'Amino acid chains, biology, and what makes a peptide different from a protein.', href: '/blog/are-peptides-safe' },
+  { num: '§ Lesson 01', title: 'What are peptides?', desc: 'Amino acid chains, biology, and what makes a peptide different from a protein.', href: '/beginners-guide' },
   { num: '§ Lesson 02', title: 'How peptides work', desc: 'Receptor binding, signaling cascades, and what "selectivity" actually means.', href: '#' },
   { num: '§ Lesson 03', title: 'The regulatory landscape', desc: "FDA-approved vs research-only. Understanding what's legal and what isn't.", href: '#' },
   { num: '§ Lesson 04', title: 'Key terminology', desc: 'SubQ, IM, reconstitution, BAC water, lyophilized — the vocab you need.', href: '#' },

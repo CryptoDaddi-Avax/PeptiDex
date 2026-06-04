@@ -93,6 +93,12 @@ const nextConfig: NextConfig = {
       { source: '/coa/tesamorelin-bll-batch-2603.pdf', destination: '/coa/tesamorelin-TES0001.pdf', permanent: true },
       { source: '/coa/semaglutide-limitless-batch-2603.pdf', destination: '/coa', permanent: true },
       { source: '/coa/tirzepatide-bll-batch-2603.pdf', destination: '/coa', permanent: true },
+
+      // Deactivated vendor coupon page (2026-05-24)
+      { source: '/coupon-codes/ascension-peptides', destination: '/coupon-codes', permanent: true },
+
+      // Malformed NAD+ slug (crawlers encode "+" as nothing, producing "nad-")
+      { source: '/library/nad-', destination: '/library/nad', permanent: true },
     ];
   },
 

@@ -175,5 +175,5 @@ A burning sensation can indicate several issues: the peptide was reconstituted w
 ## Related Articles
 - [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
-- [Are Peptides Safe?](/blog/are-peptides-safe)
+- [Are Peptides Safe?](/blog/research-peptide-safety-explained)
 - [Peptide Cycle Length Research Guide](/blog/peptide-cycle-length-research-guide)

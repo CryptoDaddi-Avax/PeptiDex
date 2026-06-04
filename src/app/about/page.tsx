@@ -132,7 +132,7 @@ export default function AboutPage() {
             <Link href="/team/dr-e-vance" className="text-emerald-400 font-bold hover:underline">Dr. E. Vance, PhD</Link> — Independent contributor and principal author of our educational library.
           </li>
           <li>
-            <Link href="/team/legal-dept" className="text-emerald-400 font-bold hover:underline">Legal & Compliance</Link> — Manages our regulatory tracking and terms of service.
+            <span className="text-emerald-400 font-bold">Legal &amp; Compliance</span> — Manages our regulatory tracking and terms of service.
           </li>
         </ul>
 

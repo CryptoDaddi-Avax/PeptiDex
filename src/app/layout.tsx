@@ -29,11 +29,6 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peptidex.app"),
-  alternates: {
-    languages: {
-      "en": "https://peptidex.app",
-    },
-  },
   title: {
     default: "PeptiDex — Peptide Research Index, Stacks & Reconstitution Tools",
     template: "%s | PeptiDex",
