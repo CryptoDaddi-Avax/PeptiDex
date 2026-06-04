@@ -16,9 +16,8 @@ const STACK_COUNT = stacks.length;
  *  D: PeptiDex Advisor (square, big numeral)
  *  E: The Peptide Brief / newsletter CTA (square, video bg)
  *
- * Card E newsletter: links to #newsletter-inline to scroll to the
- * existing NewsletterInlineBlock. The NewsletterGlobalProvider handles
- * the sticky banner + exit modal sitewide.
+ * Card E newsletter: links to /lead/cheat-sheet (newsletter signup page).
+ * The NewsletterGlobalProvider handles the sticky banner + exit modal sitewide.
  *
  * No hardcoded affiliate URLs — all links are internal routes.
  */
@@ -210,9 +209,9 @@ export default function Bento() {
                   <p className="card-desc">Bi-weekly research updates, vendor pricing, and protocol analyses.</p>
                 </div>
               </div>
-              {/* Scroll to existing NewsletterInlineBlock — the
-                  NewsletterGlobalProvider handles the sticky banner + exit modal. */}
-              <a className="card-link" href="#newsletter-inline">Subscribe to The Peptide Brief</a>
+              {/* Newsletter signup page — NewsletterGlobalProvider
+                  handles the sticky banner + exit modal sitewide. */}
+              <a className="card-link" href="/lead/cheat-sheet">Subscribe to The Peptide Brief</a>
             </div>
           </article>
 
