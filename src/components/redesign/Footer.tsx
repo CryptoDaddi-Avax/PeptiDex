@@ -11,7 +11,7 @@ export default function Footer() {
   };
 
   return (
-    <footer>
+    <footer className="site-footer">
       <div className="footer-wrap">
         {/* Newsletter above footer columns */}
         <div style={{ marginBottom: 48 }}>
