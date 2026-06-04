@@ -1,95 +1,179 @@
-/* Footer styles — scoped to .site-footer to avoid leaking into
-   <footer> elements inside bento cards (card-foot). */
-.site-footer {
-  background: var(--paper);
-  padding: 80px 48px 40px;
-  border-top: 1px solid var(--line);
+/* =============================================================
+   Footer — v13 reference port
+   Scoped to .site-footer to avoid leaking into bento card-foot.
+   Matches /_design-reference/v13/sections.css footer block.
+   ============================================================= */
+
+/* ── Newsletter wrapper (sits above the footer, still on page bg) ── */
+.footer-newsletter-wrap {
+  padding: 80px 32px 0;
 }
-.footer-wrap {
+.footer-newsletter-inner {
   max-width: 1400px;
   margin: 0 auto;
 }
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 60px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid var(--line);
+
+/* ── Legal / disclaimer band ── */
+.legal-band {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 32px 40px;
+  font-family: var(--sans, "Geist", sans-serif);
+  font-size: 12px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--ink) 50%, transparent);
 }
-.footer-brand h3 {
-  font-family: var(--sans);
-  font-size: 28px;
+.legal-band p {
+  margin: 0;
+  max-width: 80ch;
+}
+
+/* ── Footer shell ── */
+.site-footer {
+  position: relative;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0 32px 48px;
+}
+
+/* ── Affiliate disclosure ── */
+.affiliate-disclosure {
+  max-width: var(--max, 1400px);
+  margin: 0 auto;
+  padding: 24px 0 40px;
+  font-family: var(--sans, "Geist", sans-serif);
+  font-size: 12px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--paper) 48%, transparent);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.affiliate-disclosure strong {
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  font-weight: 500;
+}
+
+/* ── Inner container ── */
+.footer-inner {
+  max-width: var(--max, 1400px);
+  margin: 0 auto;
+}
+
+/* ── Tagline ── */
+.footer-tagline {
+  font-family: var(--sans, "Geist", sans-serif);
+  font-size: clamp(20px, 2.4vw, 30px);
   font-weight: 400;
   letter-spacing: -0.02em;
-  margin-bottom: 16px;
+  color: var(--paper);
+  max-width: 30ch;
+  margin: 0 0 48px;
+  text-wrap: balance;
 }
-.footer-brand p {
-  color: var(--paper-2);
-  font-size: 14px;
-  line-height: 1.7;
-  max-width: 400px;
+
+/* ── 4-column link grid ── */
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.footer-col h4 {
-  font-family: var(--mono);
+
+/* ── Column headings ── */
+.site-footer .footer-col h4 {
+  font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
   font-size: 11px;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lime);
-  margin-bottom: 24px;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+  margin: 0 0 16px;
 }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.footer-col a {
-  color: var(--paper-2);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-.footer-col a:hover { color: var(--lime); }
-.footer-bottom {
-  padding-top: 32px;
+
+/* ── Column links ── */
+.site-footer .footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  color: var(--paper-3);
+  flex-direction: column;
+  gap: 10px;
 }
-.footer-bottom-links { display: flex; gap: 32px; }
-.footer-bottom-links a { color: var(--paper-3); text-decoration: none; transition: color 0.3s; }
-.footer-bottom-links a:hover { color: var(--lime); }
+.site-footer .footer-col a {
+  font-family: var(--sans, "Geist", sans-serif);
+  font-size: 14px;
+  color: color-mix(in srgb, var(--paper) 75%, transparent);
+  text-decoration: none;
+  transition: color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-footer .footer-col a:hover {
+  color: var(--paper);
+}
+
+/* ── Last-reviewed line ── */
 .footer-last-reviewed {
   text-align: center;
   padding: 24px 0 0;
-  margin-top: 0;
-  font-family: var(--mono);
+  font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--paper-3);
+  color: color-mix(in srgb, var(--paper) 45%, transparent);
 }
 .footer-last-reviewed time {
   color: var(--lime);
   font-weight: 500;
 }
 
+/* ── Bottom bar (© + legal links) ── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 26px;
+  flex-wrap: wrap;
+}
+.footer-copy {
+  font-family: var(--mono, "Geist Mono", ui-monospace, monospace);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+.footer-legal {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.footer-legal a {
+  font-family: var(--sans, "Geist", sans-serif);
+  font-size: 13px;
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
+  text-decoration: none;
+  transition: color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.footer-legal a:hover {
+  color: var(--paper);
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 28px; }
 }
 @media (max-width: 768px) {
-  .site-footer { padding: 60px 20px 32px; }
-  .footer-top { grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; }
-  .footer-brand h3 { font-size: 24px; }
-  .footer-brand p { font-size: 13px; }
-  .footer-col h4 { margin-bottom: 18px; }
-  .footer-col ul { gap: 12px; }
-  .footer-col a { font-size: 13px; }
+  .footer-newsletter-wrap { padding: 60px 20px 0; }
+  .legal-band { padding: 40px 20px 32px; }
+  .site-footer { padding: 0 18px 40px; padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
+  .footer-tagline { font-size: clamp(18px, 5vw, 24px); margin-bottom: 36px; }
+  .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .site-footer .footer-col a { display: inline-flex; align-items: center; min-height: 40px; }
+  .footer-legal a { display: inline-flex; align-items: center; min-height: 40px; }
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
     font-size: 10px;
   }
-  .footer-bottom-links { gap: 20px; }
+}
+@media (max-width: 600px) {
+  .footer-cols { grid-template-columns: 1fr 1fr; }
 }
