@@ -1,81 +1,123 @@
 'use client';
 
+import { useMemo } from 'react';
 import Link from 'next/link';
 import './Hero.css';
 
 /**
  * Hero — v13 homepage hero section.
  *
- * DELETED from previous version:
- *  - Entire Three.js scene (CDN script injection, useEffect with
- *    Scene/PerspectiveCamera/WebGLRenderer, SphereGeometry atoms,
- *    CylinderGeometry bonds, BufferGeometry particles, DirectionalLight,
- *    PointLight, AmbientLight, animation loop, IntersectionObserver-gated
- *    lazy loading, resize handler, visibility observer)
- *  - "BACKBONE CHAIN / C62H98N16O22" coordinate labels
- *  - "BPC-157 — RESEARCH PEPTIDE / TISSUE REPAIR · ANGIOGENESIS" label
- *  - "The reference for peptide research." headline
- *  - "Enter the library" / "Search the index" CTAs
- *  - "Vol. I · Edition 2026" bottom meta bar
- *  - All useRef hooks (canvasRef, containerRef)
- *  - Grid background + radial gradient background effects
- *
- * REPLACED with v13 reference:
- *  - Full-bleed <video> background (Cloudflare R2)
- *  - Scrim + grain overlay layers
- *  - 2-column grid: headline/CTAs left, helix-card right
- *  - Inline "see the library" pill-in-headline pattern
- *  - Static helix SVG waveform in the helix-card
- *  - Purity audit panel with animated bar
- *  - Trust row with 5-star glyphs
+ * Helix waveform: v13-accurate animated double-helix SVG.
+ * Two 240-sample sine wave polylines (phase 0 and π),
+ * 30 depth-sorted rungs, lime/paper beads with front/back
+ * depth scaling, horizontal-scroll CSS animation (14s linear,
+ * seamless loop via 2× width trick).
  */
 
-/* ── Static helix SVG (replaces Three.js) ── */
+/* ── Animated helix SVG (matches v13 hero.js exactly) ── */
 function HelixSVG() {
-  // 8-node zigzag waveform matching v13's helix visual
-  const nodes = [
-    { cx: 60,  cy: 180, type: 'lime' },
-    { cx: 130, cy: 80,  type: 'paper' },
-    { cx: 200, cy: 160, type: 'teal' },
-    { cx: 270, cy: 70,  type: 'paper' },
-    { cx: 340, cy: 170, type: 'lime' },
-    { cx: 410, cy: 85,  type: 'paper' },
-    { cx: 480, cy: 175, type: 'teal' },
-    { cx: 540, cy: 90,  type: 'lime' },
-  ];
+  const helix = useMemo(() => {
+    const W = 1200;           // total path width (2× viewBox for seamless loop)
+    const VB_W = 600;         // viewBox width
+    const H = 280;            // viewBox height
+    const cy = H / 2;
+    const amp = 78;           // amplitude
+    const period = 200;       // one full sine wavelength
+    const samples = 240;      // polyline density
+    const rungCount = 30;     // total rungs along W
+
+    // Generate strand path data
+    function strand(phase: number): string {
+      let d = '';
+      for (let i = 0; i <= samples; i++) {
+        const x = (i / samples) * W;
+        const y = cy + amp * Math.sin((2 * Math.PI * x) / period + phase);
+        d += (i === 0 ? 'M' : 'L') + x.toFixed(2) + ',' + y.toFixed(2) + ' ';
+      }
+      return d;
+    }
+
+    const d1 = strand(0);
+    const d2 = strand(Math.PI);
+
+    // Rungs + beads
+    const rungs: { x: number; y1: number; y2: number; front: boolean }[] = [];
+    const beads1: { x: number; y: number; front: boolean }[] = [];
+    const beads2: { x: number; y: number; front: boolean }[] = [];
+
+    for (let r = 0; r < rungCount; r++) {
+      const x = (r / rungCount) * W + W / rungCount / 2;
+      const y1 = cy + amp * Math.sin((2 * Math.PI * x) / period);
+      const y2 = cy + amp * Math.sin((2 * Math.PI * x) / period + Math.PI);
+      const isFront = y1 < y2;
+      rungs.push({ x, y1, y2, front: isFront });
+      beads1.push({ x, y: y1, front: isFront });
+      beads2.push({ x, y: y2, front: !isFront });
+    }
+
+    return { VB_W, H, cy, W, d1, d2, rungs, beads1, beads2 };
+  }, []);
 
   return (
     <svg
-      className="helix-svg-static"
-      viewBox="0 0 600 280"
+      className="helix-svg"
+      viewBox={`0 0 ${helix.VB_W} ${helix.H}`}
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      {/* Bonds */}
-      {nodes.map((node, i) => {
-        if (i === nodes.length - 1) return null;
-        const next = nodes[i + 1];
-        return (
-          <line
-            key={`bond-${i}`}
-            className="helix-bond"
-            x1={node.cx}
-            y1={node.cy}
-            x2={next.cx}
-            y2={next.cy}
-          />
-        );
-      })}
-      {/* Nodes */}
-      {nodes.map((node, i) => (
-        <circle
-          key={`node-${i}`}
-          className={`helix-node-${node.type}`}
-          cx={node.cx}
-          cy={node.cy}
-          r={node.type === 'lime' ? 9 : node.type === 'teal' ? 7 : 8}
+      <defs>
+        <linearGradient id="strandLime" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#C4F25C" stopOpacity="0.0" />
+          <stop offset="12%"  stopColor="#C4F25C" stopOpacity="0.95" />
+          <stop offset="88%"  stopColor="#C4F25C" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#C4F25C" stopOpacity="0.0" />
+        </linearGradient>
+        <linearGradient id="strandPaper" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#F2EEE5" stopOpacity="0.0" />
+          <stop offset="12%"  stopColor="#F2EEE5" stopOpacity="0.7" />
+          <stop offset="88%"  stopColor="#F2EEE5" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#F2EEE5" stopOpacity="0.0" />
+        </linearGradient>
+      </defs>
+      <g className="helix-group">
+        {/* Dashed center axis */}
+        <line
+          x1="0" y1={helix.cy}
+          x2={helix.W} y2={helix.cy}
+          className="helix-axis"
         />
-      ))}
+        {/* Strand 1: lime */}
+        <path d={helix.d1} className="helix-strand helix-strand-1" />
+        {/* Strand 2: paper */}
+        <path d={helix.d2} className="helix-strand helix-strand-2" />
+        {/* Rungs */}
+        {helix.rungs.map((r, i) => (
+          <line
+            key={`rung-${i}`}
+            x1={r.x.toFixed(2)} y1={r.y1.toFixed(2)}
+            x2={r.x.toFixed(2)} y2={r.y2.toFixed(2)}
+            className={`helix-rung ${r.front ? 'front' : 'back'}`}
+          />
+        ))}
+        {/* Beads — strand 1 (lime) */}
+        {helix.beads1.map((b, i) => (
+          <circle
+            key={`bead1-${i}`}
+            cx={b.x.toFixed(2)} cy={b.y.toFixed(2)}
+            r="3.2"
+            className={`helix-bead helix-bead-a ${b.front ? 'front' : 'back'}`}
+          />
+        ))}
+        {/* Beads — strand 2 (paper) */}
+        {helix.beads2.map((b, i) => (
+          <circle
+            key={`bead2-${i}`}
+            cx={b.x.toFixed(2)} cy={b.y.toFixed(2)}
+            r="3.2"
+            className={`helix-bead helix-bead-b ${b.front ? 'front' : 'back'}`}
+          />
+        ))}
+      </g>
     </svg>
   );
 }

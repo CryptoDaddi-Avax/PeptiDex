@@ -505,25 +505,59 @@
   color: var(--ink);
 }
 
-/* ---------- STATIC HELIX SVG ---------- */
-.helix-svg-static {
+/* ---------- ANIMATED HELIX SVG (matches v13 hero.js) ---------- */
+.helix-svg {
   width: 100%;
   height: 100%;
   display: block;
 }
-.helix-svg-static .helix-bond {
-  stroke: color-mix(in srgb, var(--lime) 35%, transparent);
-  stroke-width: 1.2;
+.helix-group {
+  animation: helix-flow 14s linear infinite;
+  transform-origin: 0 0;
 }
-.helix-svg-static .helix-node-lime {
-  fill: var(--lime);
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--lime) 40%, transparent));
+@keyframes helix-flow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-200px); }
 }
-.helix-svg-static .helix-node-paper {
-  fill: color-mix(in srgb, var(--paper) 70%, transparent);
+.helix-axis {
+  stroke: rgba(242, 238, 229, 0.06);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 4;
 }
-.helix-svg-static .helix-node-teal {
-  fill: var(--teal-2);
+.helix-strand {
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.helix-strand-1 {
+  stroke: url(#strandLime);
+  filter: drop-shadow(0 0 6px rgba(196, 242, 92, 0.35));
+}
+.helix-strand-2 {
+  stroke: url(#strandPaper);
+  opacity: 0.7;
+}
+.helix-rung {
+  stroke: rgba(242, 238, 229, 0.18);
+  stroke-width: 0.8;
+}
+.helix-rung.front {
+  stroke: rgba(242, 238, 229, 0.32);
+}
+.helix-bead {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.helix-bead-a { fill: #C4F25C; }
+.helix-bead-b { fill: #F2EEE5; }
+.helix-bead.back {
+  opacity: 0.55;
+  transform: scale(0.78);
+}
+.helix-bead.front {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 4px rgba(196, 242, 92, 0.45));
 }
 
 /* ---------- MOBILE ---------- */
@@ -569,4 +603,7 @@
     width: 99.7%;
   }
   .ghost-link { transition: none; }
+  .helix-group { animation: none; }
+  .helix-bead.back,
+  .helix-bead.front { transform: none; }
 }
