@@ -8,6 +8,7 @@ import GoalsGridV13 from '@/components/redesign/v13/GoalsGridV13';
 import QuizCTA from '@/components/redesign/v13/QuizCTA';
 import OnboardingAccordion from '@/components/redesign/OnboardingAccordion';
 import VendorsGridV13 from '@/components/redesign/v13/VendorsGridV13';
+import AdvisorSectionV13 from '@/components/redesign/v13/AdvisorSectionV13';
 
 // Dynamic import Hero — video + static SVG, client-only
 const Hero = dynamic(() => import('@/components/redesign/Hero'), {
@@ -32,6 +33,7 @@ export default function NewHomeClient({
       <QuizCTA />
       <OnboardingAccordion />
       <VendorsGridV13 />
+      <AdvisorSectionV13 />
     </>
   );
 }
