@@ -24,9 +24,9 @@ conn.on('ready', () => {
             const cmds = `
 set -e
 cd ${REMOTE}
+rm -rf src public .next
 tar -xzf sync.tar.gz
 rm sync.tar.gz
-rm -rf .next
 npm install
 npm run build
 pm2 restart peptidex
