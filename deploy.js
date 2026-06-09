@@ -1,7 +1,7 @@
 const { Client } = require('ssh2');
 
 const config = {
-    host: 'peptidex.app',
+    host: '76.13.26.209',
     port: 22,
     username: 'root',
     privateKey: require('fs').readFileSync('C:/Users/ender/.ssh/id_ed25519'),
