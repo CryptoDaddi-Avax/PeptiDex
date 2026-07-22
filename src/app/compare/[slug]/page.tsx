@@ -9,41 +9,90 @@ import { ComparisonFAQ } from '@/components/compare/ComparisonFAQ';
 import { PersonaBlock } from '@/components/compare/PersonaBlock';
 import { StackCompatibility } from '@/components/compare/StackCompatibility';
 import { ComparisonPricingBox } from '@/components/compare/ComparisonPricingBox';
+import { comparisonPairs, isProgrammaticPair, EXISTING_COMPARISON_SLUGS } from '@/data/comparison-pairs';
+import { ProgrammaticComparisonPage } from '@/components/compare/ProgrammaticComparison';
 
 export function generateStaticParams() {
-  return comparisons.map((comp) => ({ slug: comp.slug }));
+  // Hand-built comparison slugs
+  const handBuilt = comparisons.map((comp) => ({ slug: comp.slug }));
+  // Programmatic comparison slugs (excluding any that overlap with hand-built)
+  const handBuiltSlugs = new Set(comparisons.map((c) => c.slug));
+  const programmatic = comparisonPairs
+    .filter((p) => !handBuiltSlugs.has(p.slug))
+    .map((p) => ({ slug: p.slug }));
+  return [...handBuilt, ...programmatic];
 }
 
 export function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   return params.then(({ slug }) => {
+    // Try hand-built comparison first
     const comp = comparisons.find((c) => c.slug === slug);
-    if (!comp) return { title: 'Not Found' };
+    if (comp) {
+      const peptideA = getPeptideBySlug(comp.peptideA);
+      const peptideB = getPeptideBySlug(comp.peptideB);
+      if (!peptideA || !peptideB) return { title: 'Not Found' };
 
-    const peptideA = getPeptideBySlug(comp.peptideA);
-    const peptideB = getPeptideBySlug(comp.peptideB);
-    if (!peptideA || !peptideB) return { title: 'Not Found' };
+      const nameA = peptideA.name;
+      const nameB = comp.peptideA === comp.peptideB ? `${peptideB.name} (Variant)` : peptideB.name;
+      const defaultTitle = `${nameA} vs ${nameB}: Dosing, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
+      const title = comp.seoTitle || defaultTitle;
+      const url = `https://peptidex.app/compare/${slug}`;
+      const description = comp.seoDescription.length > 155 ? comp.seoDescription.slice(0, 152) + '...' : comp.seoDescription;
 
-    const nameA = peptideA.name;
-    const nameB = comp.peptideA === comp.peptideB ? `${peptideB.name} (Variant)` : peptideB.name;
-    const defaultTitle = `${nameA} vs ${nameB}: Dosing, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
-    const title = comp.seoTitle || defaultTitle;
-    const url = `https://peptidex.app/compare/${slug}`;
-    const description = comp.seoDescription.length > 155 ? comp.seoDescription.slice(0, 152) + '...' : comp.seoDescription;
+      return {
+        title,
+        description,
+        alternates: { canonical: url },
+        openGraph: { title, description, url, type: 'article', images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }] },
+        twitter: { card: 'summary_large_image', title, description, images: ['https://peptidex.app/og-image.png'] },
+      };
+    }
 
-    return {
-      title,
-      description,
-      alternates: { canonical: url },
-      openGraph: { title, description, url, type: 'article', images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }] },
-      twitter: { card: 'summary_large_image', title, description, images: ['https://peptidex.app/og-image.png'] },
-    };
+    // Try programmatic comparison
+    const pair = isProgrammaticPair(slug);
+    if (pair) {
+      const peptideA = getPeptideBySlug(pair.slugA);
+      const peptideB = getPeptideBySlug(pair.slugB);
+      if (!peptideA || !peptideB) return { title: 'Not Found' };
+
+      const title = `${peptideA.name} vs ${peptideB.name}: Mechanism, Evidence & Price Comparison | PeptiDex`;
+      const description = `Research comparison of ${peptideA.name} vs ${peptideB.name}: mechanism of action, ${peptideA.key_studies.length}+ vs ${peptideB.key_studies.length}+ studies, dosing, half-life, and per-mg vendor pricing.`;
+      const url = `https://peptidex.app/compare/${pair.slug}`;
+
+      return {
+        title,
+        description: description.length > 155 ? description.slice(0, 152) + '...' : description,
+        alternates: { canonical: url },
+        openGraph: { title, description, url, type: 'article', images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }] },
+        twitter: { card: 'summary_large_image', title, description, images: ['https://peptidex.app/og-image.png'] },
+      };
+    }
+
+    return { title: 'Not Found' };
   });
 }
 
 export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+
+  // ─── 1. Try hand-built comparison (comparisons.ts) ───
   let comp = comparisons.find((c) => c.slug === slug);
   if (!comp) {
+    // ─── 2. Try programmatic comparison (comparison-pairs.ts) ───
+    const pair = isProgrammaticPair(slug);
+    if (pair) {
+      // If the slug doesn't match the canonical (alphabetical) form, redirect
+      if (pair.slug !== slug) {
+        permanentRedirect(`/compare/${pair.slug}`);
+      }
+      // Render programmatic page
+      const peptideA = getPeptideBySlug(pair.slugA);
+      const peptideB = getPeptideBySlug(pair.slugB);
+      if (!peptideA || !peptideB) notFound();
+      return <ProgrammaticComparisonPage pair={pair} peptideA={peptideA} peptideB={peptideB} />;
+    }
+
+    // ─── 3. Try reverse slug for hand-built comparisons ───
     const parts = slug.split('-vs-');
     if (parts.length === 2) {
       const reverseSlug = `${parts[1]}-vs-${parts[0]}`;

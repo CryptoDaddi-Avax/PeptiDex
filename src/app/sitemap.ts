@@ -6,6 +6,7 @@ import { comparisons, LAST_UPDATED as COMPARISONS_LAST_UPDATED } from '@/data/co
 import { LAST_REVIEWED as VENDORS_LAST_REVIEWED } from '@/app/vendors/page';
 import { vendorDeals } from '@/data/coupon-deals';
 import { getAllAuthorSlugs } from '@/lib/authors';
+import { comparisonPairs, WAVE_DATES, isWaveActive } from '@/data/comparison-pairs';
 
 export const dynamic = 'force-static';
 
@@ -299,13 +300,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
-  // Dynamic Compare Pages
+  // Dynamic Compare Pages (hand-built)
   const compareUrls = comparisons.map((comp) => ({
     url: `${baseUrl}/compare/${comp.slug}`,
     lastModified: comparisonsDate,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
+
+  // Dynamic Compare Pages (programmatic — wave-gated)
+  const handBuiltSlugs = new Set(comparisons.map((c) => c.slug));
+  const programmaticCompareUrls = comparisonPairs
+    .filter((p) => !handBuiltSlugs.has(p.slug) && isWaveActive(p.wave))
+    .map((p) => ({
+      url: `${baseUrl}/compare/${p.slug}`,
+      lastModified: new Date(WAVE_DATES[p.wave]),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
 
   // Amino Club Dynamic Product Pages
   const aminoClubProducts = ['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'];
@@ -419,6 +431,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...stackUrls, 
     ...learnUrls, 
     ...compareUrls, 
+    ...programmaticCompareUrls,
     ...aminoClubUrls,
     {
       url: `${baseUrl}/where-to-buy`,
