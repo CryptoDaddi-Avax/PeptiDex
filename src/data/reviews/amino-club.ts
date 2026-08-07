@@ -1,4 +1,4 @@
-﻿import type { VendorReviewData } from '../vendor-review-types';
+import type { VendorReviewData } from '../vendor-review-types';
 
 export const aminoClubReview: VendorReviewData = {
   slug: 'amino-club',
@@ -10,14 +10,14 @@ export const aminoClubReview: VendorReviewData = {
   discountStackable: false,
   websiteDisplay: 'aminoclub.com',
   location: 'United States',
-  overallRating: 4.9,
+  overallRating: 4.7,
   coaScore: '9.5/10',
   purityScore: '9.8/10',
   shippingScore: '9.5/10',
   valueScore: '9.0/10',
   supportScore: '9.0/10',
   verdictHeadline: 'Is Amino Club Legit?',
-  verdictBody: 'Yes. Amino Club is a legitimate US-based research peptide supplier and PeptiDex\'s top-rated vendor for 2026. Per their publicly available COAs, they conduct batch-specific HPLC + Mass Spectrometry + Endotoxin testing, with published purity results consistently exceeding 99%. Their 60-day money-back guarantee is the longest in the industry, and code PEPTIDEX takes 20% off every order. For research use only.',
+  verdictBody: 'Yes. Amino Club is a legitimate US-based research peptide supplier and PeptiDex\'s #2 rated vendor for 2026. Per their publicly available COAs, they conduct batch-specific HPLC + Mass Spectrometry + Endotoxin testing, with published purity results consistently exceeding 99%. Their 60-day money-back guarantee is the longest in the industry, and code PEPTIDEX takes 20% off every order. For research use only.',
   purity: '99%+',
   coaType: 'Batch-specific',
   testingMethods: ['HPLC', 'Mass Spec', 'Endotoxin'],
@@ -56,9 +56,9 @@ export const aminoClubReview: VendorReviewData = {
   shippingDetail: 'Per vendor disclosure, Amino Club processes most orders within 24 hours (excluding weekends) from US-based domestic facilities. Domestic shipping via USPS typically arrives in 2â€“4 business days with full tracking. Free shipping applies to orders over $100.\n\nInternational shipping is available â€” a genuine differentiator in the research peptide market where most verified vendors restrict to US-only delivery. International transit times vary by destination. Payment options include major credit cards through encrypted gateways, cryptocurrency, and Zelle â€” the broadest payment flexibility in this index.',
   bestFor: ['Researchers who prioritize COA verification depth and batch traceability', 'First-time buyers who want a risk-free trial (60-day MBG)', 'International researchers who need a US-based verified vendor', 'Budget-conscious buyers who want the largest single discount code (20%)'],
   alternatives: [
-    { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.8, bestFor: 'Triple-tested + stackable discount', href: '/vendors/bio-longevity-labs' },
-    { name: 'Limitless Life', slug: 'limitless-life', rating: 4.8, bestFor: 'Largest catalog (90+ compounds)', href: '/vendors/limitless-life' },
-    { name: 'Ascension Peptides', slug: 'ascension-peptides', rating: 4.7, bestFor: 'Best value (50% off with PEPTIDEX)', href: '/vendors/ascension-peptides' },
+    { name: 'Elyria Bio', slug: 'elyria-bio', rating: 4.9, bestFor: 'Editor\'s Choice — #1 rated vendor', href: '/vendors/elyria-bio' },
+    { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.6, bestFor: 'Triple-tested + stackable discount', href: '/vendors/bio-longevity-labs' },
+    { name: 'Limitless Life', slug: 'limitless-life', rating: 4.6, bestFor: 'Largest catalog (90+ compounds)', href: '/vendors/limitless-life' },
   ],
   faqs: [
     { q: 'Is Amino Club legit?', a: 'Yes. Amino Club is a US-based research peptide supplier that provides batch-specific COAs verified by MZ Biolabs and Janoshik using HPLC, Mass Spectrometry, and Endotoxin testing. They have 400+ reviews on Trustpilot averaging 4.9/5 and offer a 60-day money-back guarantee. All compounds are sold for research use only.' },
@@ -78,7 +78,7 @@ export const aminoClubReview: VendorReviewData = {
     { category: 'Value (with code)', score: '9.0/10', note: '20% off every order â€” best single-code discount among gold-tier vendors' },
     { category: 'Customer Support', score: '9.0/10', note: 'Responsive communication; 60-day MBG is industry-leading' },
   ],
-  finalVerdictBody: 'Amino Club earns the #1 spot in the PeptiDex vendor index for 2026 through a combination of uncompromising batch-specific COA verification, the industry\'s longest return window (60 days), international shipping capability, and the largest single affiliate discount code (20%) among gold-tier vendors. The catalog of 40+ compounds covers all core research peptides, though researchers seeking obscure or edge-case compounds may need to supplement with a larger-catalog vendor like Limitless Life. For the vast majority of research protocols, Amino Club is the default recommendation. All compounds are for research use only.',
+  finalVerdictBody: 'Amino Club earns the #2 spot in the PeptiDex vendor index for 2026 through a combination of uncompromising batch-specific COA verification, the industry\'s longest return window (60 days), international shipping capability, and the largest single affiliate discount code (20%) among all vendors. The catalog of 40+ compounds covers all core research peptides, though researchers seeking obscure or edge-case compounds may need to supplement with a larger-catalog vendor like Limitless Life. For the vast majority of research protocols, Amino Club remains a top-tier recommendation. All compounds are for research use only.',
   titleTag: 'Amino Club Review (2026): Pricing, COA & Quality | PeptiDex',
   metaDescription: 'Independent Amino Club review (2026). Batch-specific COAs, 99%+ purity, 60-day MBG, and 20% off with code PEPTIDEX. Read our evidence-based analysis.',
   datePublished: '2026-04-30',

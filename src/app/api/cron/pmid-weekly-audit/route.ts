@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { verifiedPmids } from '@/data/_lint/verified-pmids';
 import { createClient } from '@supabase/supabase-js';
+import { citationMap, getAllCitedPmids } from '@/data/citation-map';
 
 export const maxDuration = 300;
 export const dynamic = 'force-dynamic';
@@ -100,6 +101,24 @@ export async function GET(request: Request) {
       }
     }
 
+    // ─── CITATION MAP CROSS-CHECK ───────────────────────────────────────
+    // Verify every PMID referenced by citation-map.ts exists in verified-pmids
+    const citationMapOrphans: { slug: string; pmid: string }[] = [];
+    for (const slug of Object.keys(citationMap)) {
+      const citedPmids = getAllCitedPmids(slug);
+      for (const pmid of citedPmids) {
+        if (!verifiedPmids[pmid]) {
+          citationMapOrphans.push({ slug, pmid });
+          console.error(
+            `[pmid-audit] 🔴 CITATION-MAP ORPHAN — ${slug} cites PMID ${pmid} but it is NOT in verified-pmids.ts`
+          );
+        }
+      }
+    }
+    if (citationMapOrphans.length === 0) {
+      console.log(`[pmid-audit] ✅ Citation-map integrity clean — all inline PMIDs are in verified registry`);
+    }
+
     // Persist delta report to Supabase if credentials are present
     if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
       const supabase = createClient(
@@ -125,9 +144,11 @@ export async function GET(request: Request) {
       not_found: errors.filter(r => r.status === 'not_found').length,
       api_errors: errors.filter(r => r.status === 'api_error').length,
       mismatches: mismatches.length,
-      corpus_health: errors.length === 0 && mismatches.length === 0 ? 'CLEAN' : 'ERRORS_FOUND',
+      citation_map_orphans: citationMapOrphans.length,
+      corpus_health: errors.length === 0 && mismatches.length === 0 && citationMapOrphans.length === 0 ? 'CLEAN' : 'ERRORS_FOUND',
       error_details: errors,
       mismatch_details: mismatches,
+      orphan_details: citationMapOrphans.length > 0 ? citationMapOrphans : undefined,
     };
 
     if (errors.length > 0 || mismatches.length > 0) {

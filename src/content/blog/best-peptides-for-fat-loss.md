@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Where can I buy peptides for fat loss research?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Researchers can source analytical-grade peptides like AOD-9604, Tirzepatide, and Tesamorelin from verified domestic chemical suppliers that provide independent HPLC and Mass Spectrometry testing, such as Amino Club."
+          "text": "Researchers can source analytical-grade peptides like AOD-9604, Tirzepatide, and Tesamorelin from verified domestic chemical suppliers that provide independent HPLC and Mass Spectrometry testing, such as Elyria Bio."
         }
       }
     ]
@@ -137,13 +137,13 @@ When conducting a laboratory study on lipid oxidation, the purity of your raw ma
 
 Because the FDA restricts the compounding of many of these peptides for human use, researchers must procure them as raw analytical chemicals. As detailed in our guide on [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally), you must rely exclusively on vendors that provide batch-specific, independent HPLC and Mass Spectrometry testing.
 
-### Our Recommended Vendor: Amino Club
+### Our Recommended Vendor: Elyria Bio
 
-If you are setting up a laboratory study requiring unbranded, high-purity analytical standards of Tirzepatide, AOD-9604, or Tesamorelin, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. 
+If you are setting up a laboratory study requiring unbranded, high-purity analytical standards of Tirzepatide, AOD-9604, or Tesamorelin, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Amino Club consistently supplies ≥99% pure lyophilized peptides for research purposes and provides full third-party laboratory documentation (via independent labs like MZ Biolabs) for every single batch they synthesize. 
+Elyria Bio consistently supplies ≥99% pure lyophilized peptides for research purposes and provides full third-party laboratory documentation (via independent labs like MZ Biolabs) for every single batch they synthesize. 
 
-By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 20% off wholesale pricing while guaranteeing the absolute integrity of your experimental data. 
+By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 20% off wholesale pricing while guaranteeing the absolute integrity of your experimental data. 
 
 ## Protocol Design: Stacking for Body Recomposition
 

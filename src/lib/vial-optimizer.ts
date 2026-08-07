@@ -196,6 +196,7 @@ function resolveAction(
 // ── Vendor Slug Resolution ───────────────────────────────────────────────
 
 const VENDOR_NAME_TO_SLUG: Record<string, string> = {
+  "Elyria Bio": "elyria-bio",
   "Amino Club": "amino-club",
   "Bio Longevity Labs": "bio-longevity-labs",
   "Limitless Life": "limitless-life",

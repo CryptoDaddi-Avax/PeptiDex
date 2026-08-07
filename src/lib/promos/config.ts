@@ -39,13 +39,15 @@ export interface PromoCode {
 
 // ── Priority Map ──────────────────────────────────────────────────────────────
 // Defines which vendors get which priority tier for promo surfaces.
-// Amino Club = PRIMARY (highest discount, Editor's Choice).
-// Bio Longevity Labs = SECONDARY (stackable discount).
+// Elyria Bio = PRIMARY (Editor's Choice, 10% PEPTIDEX discount).
+// Amino Club = SECONDARY (20% discount, COA Verified).
+// Bio Longevity Labs = TERTIARY (stackable discount).
 // Others = not featured in promo surfaces (still have codes, but not promoted).
 
 const PROMO_PRIORITY: Record<string, number> = {
-  "amino-club": 1,
-  "bio-longevity-labs": 2,
+  "elyria-bio": 1,
+  "amino-club": 2,
+  "bio-longevity-labs": 3,
 };
 
 // ── Build PROMO_CODES from vendor data ───────────────────────────────────────

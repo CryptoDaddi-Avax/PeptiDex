@@ -13,6 +13,8 @@ import { legalData, legalStatusLabels } from "@/data/legal-status";
 import { peptideFAQOverrides } from "@/data/peptide-faqs";
 import { entityCardOverrides } from "@/data/entity-cards";
 import { buildEntityCardSchema } from "@/components/library/EntityCard";
+import { citationMap, qualifiers, buildCitationIndex, getAllCitedPmids } from "@/data/citation-map";
+import type { ReferenceEntry } from "@/components/citations/ReferenceList";
 
 // ── Discount lookups (single source of truth: vendors.ts) ─────────────────
 const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
@@ -270,14 +272,27 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     }
 
     // ─── JSON-LD: Article ───────────────────────────────────────────────────
-    const articleSchema = buildArticleSchema({
-        headline: `${peptide.name}: Dosage, Half-Life, Benefits & Where to Buy`,
-        description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
-        datePublished: "2026-01-15",
-        dateModified,
-        author: { name: "Dr. E. Vance", url: "https://peptidex.app/team/peptidex-research" },
-        url: `https://peptidex.app/library/${slug}`,
-    });
+    // Build citation references for Article schema
+    const citedPmids = getAllCitedPmids(slug);
+    const citationRefs = citedPmids.size > 0
+        ? Array.from(citedPmids).map(pmid => ({
+            "@type": "CreativeWork" as const,
+            url: `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`,
+            name: peptide.key_studies.find(s => s.pubmed_url.includes(pmid))?.title ?? `PubMed ${pmid}`,
+        }))
+        : undefined;
+
+    const articleSchema = {
+        ...buildArticleSchema({
+            headline: `${peptide.name}: Dosage, Half-Life, Benefits & Where to Buy`,
+            description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
+            datePublished: "2026-01-15",
+            dateModified,
+            author: { name: "Dr. E. Vance", url: "https://peptidex.app/team/peptidex-research" },
+            url: `https://peptidex.app/library/${slug}`,
+        }),
+        ...(citationRefs ? { citation: citationRefs } : {}),
+    };
 
     // ─── JSON-LD: FAQPage (server-side) ────────────────────────────────────
     const faqItems = buildLibraryFAQItems(peptide);
@@ -336,6 +351,30 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         allSchemas.push(buildEntityCardSchema(entityCardData, slug));
     }
 
+    // ─── CITATION DATA ────────────────────────────────────────────────────
+    const fieldCitations = citationMap[slug] ?? {};
+    const fieldQuals = qualifiers[slug] ?? {};
+    const citationIdx = buildCitationIndex(slug);
+
+    // Build reference entries from cited PMIDs
+    const references: ReferenceEntry[] = [];
+    const extractPmid = (url: string) => url.match(/\/(\d+)\/?$/)?.[1] ?? null;
+    for (const [pmid, n] of citationIdx) {
+        const study = peptide.key_studies.find(s => extractPmid(s.pubmed_url) === pmid);
+        if (study) {
+            references.push({
+                n,
+                pmid,
+                title: study.title,
+                evidenceLevel: study.evidence_level,
+            });
+        }
+    }
+    references.sort((a, b) => a.n - b.n);
+
+    // Determine last reviewed date
+    const lastReviewedDate = peptide.reviewedDate ?? dateModified;
+
     return (
         <>
             <SchemaInjector schema={allSchemas} />
@@ -344,6 +383,11 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
                 relatedStacks={relatedStacks}
                 pricingEntry={pricingEntry}
                 allVendors={vendors}
+                citationIndex={citationIdx}
+                fieldCitations={fieldCitations}
+                fieldQualifiers={fieldQuals}
+                references={references}
+                lastReviewedDate={lastReviewedDate}
             />
         </>
     );

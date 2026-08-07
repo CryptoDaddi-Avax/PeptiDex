@@ -19,6 +19,7 @@ import type { Vendor } from "@/data/vendors";
 // ── Vendor name → slug resolution (matches vial-optimizer.ts) ───────────────
 
 const VENDOR_NAME_TO_SLUG: Record<string, string> = {
+  "Elyria Bio": "elyria-bio",
   "Amino Club": "amino-club",
   "Bio Longevity Labs": "bio-longevity-labs",
   "Limitless Life": "limitless-life",

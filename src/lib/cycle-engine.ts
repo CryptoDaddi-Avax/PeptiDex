@@ -189,6 +189,7 @@ export function generateShoppingList(results: CyclePeptideResult[], includeSuppl
 
     // Verified vendor discount rates (source: vendor-cart-config.ts)
     const VENDOR_DISCOUNTS: Record<string, { percent: number; code: string }> = {
+        "Elyria Bio":          { percent: 10, code: "PEPTIDEX" },
         "Amino Club":          { percent: 20, code: "PEPTIDEX" },
         // "Ascension Peptides" omitted — deactivated 2026-05-24
         "Bio Longevity Labs":  { percent: 15, code: "PEPTIDEX" },

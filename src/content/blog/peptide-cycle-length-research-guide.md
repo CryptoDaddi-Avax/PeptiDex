@@ -138,9 +138,9 @@ As we covered in our [Research Peptide Safety](/blog/research-peptide-safety-exp
 
 ### Where to Source Safe Analytical Peptides
 
-For long-term research cycles, securing a reliable, high-purity supply chain is paramount. If your laboratory requires analytical standards of CJC-1295, Ipamorelin, or BPC-157, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. 
+For long-term research cycles, securing a reliable, high-purity supply chain is paramount. If your laboratory requires analytical standards of CJC-1295, Ipamorelin, or BPC-157, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Amino Club is our Editor's Choice because they utilize independent laboratories (like MZ Biolabs) to ensure every batch is ≥99% pure and free of heavy metals or toxic TFA salts. Furthermore, long-term cycles are expensive. By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, researchers can secure a 15% discount on wholesale pricing, making 16-week cycles significantly more financially viable for independent labs.
+Elyria Bio is our Editor's Choice because they utilize independent laboratories (like MZ Biolabs) to ensure every batch is ≥99% pure and free of heavy metals or toxic TFA salts. Furthermore, long-term cycles are expensive. By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, researchers can secure a 10% discount on wholesale pricing, making 16-week cycles significantly more financially viable for independent labs.
 
 ## Protocol Management: Washout Periods
 

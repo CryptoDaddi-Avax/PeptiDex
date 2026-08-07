@@ -155,11 +155,11 @@ The research chemical market is highly lucrative, and deception is common. Here 
 
 When conducting an in-vitro assay or animal study, you cannot afford to compromise on chemical purity. The cost of a failed experiment due to degraded or contaminated reagents far exceeds the cost of purchasing verified peptides from a reputable domestic supplier.
 
-If you are looking for vendors that adhere strictly to these analytical transparency standards, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. 
+If you are looking for vendors that adhere strictly to these analytical transparency standards, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Amino Club is our Editor's Choice because they do not hide their data. They provide batch-specific, high-resolution, independent COAs from MZ Biolabs for every compound they sell. You can verify the HPLC purity, the Mass Spectrometry identity, and the exact mass content before you make a purchase. 
+Elyria Bio is our Editor's Choice because they do not hide their data. They provide batch-specific, high-resolution, independent COAs from MZ Biolabs for every compound they sell. You can verify the HPLC purity, the Mass Spectrometry identity, and the exact mass content before you make a purchase. 
 
-Furthermore, by utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure a 15% discount on wholesale pricing, making it the most cost-effective way to source analytically verified compounds in 2026.
+Furthermore, by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure a 15% discount on wholesale pricing, making it the most cost-effective way to source analytically verified compounds in 2026.
 
 ---
 
