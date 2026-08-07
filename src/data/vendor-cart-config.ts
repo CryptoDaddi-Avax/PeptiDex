@@ -48,7 +48,7 @@ export const vendorCartConfigs: Record<string, VendorCartConfig> = {
     phase: "1A",
     platform: "unknown",
     autoAppliesDiscount: false,
-    discountDisplay: "Use code PEPTIDEX for 10% off",
+    discountDisplay: "Use code PEPTIDEX for 10% off · Free shipping over $150",
     discountPercent: 10,
     cartUrlPattern: null,
     productUrlPattern: null,

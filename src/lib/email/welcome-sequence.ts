@@ -144,7 +144,7 @@ export function email3_vendors(firstName = "there") {
     ${h1(`The 5 vendors in the PeptiDex index — and how we ranked them`)}
     ${p(`We review vendors on five criteria: testing methodology, COA transparency, purity specification, shipping reliability, and community sentiment. Here's the current lineup:`)}
     ${ul([
-      `<strong>#1 Elyria Bio</strong> — Editor's Choice. COA-verified with batch-specific testing (HPLC + Mass Spec + Endotoxin). Ships internationally. Code <strong>PEPTIDEX</strong> = 10% off.`,
+      `<strong>#1 Elyria Bio</strong> — Editor's Choice. ≥99% HPLC purity floor, third-party US lab COAs, lot-traceable. 24h dispatch. US only. Code <strong>PEPTIDEX</strong> = 10% off.`,
       `<strong>#2 Amino Club</strong> — Triple-tested (HPLC + LC-MS + Endotoxin). 60-day MBG. Ships internationally. Code <strong>PEPTIDEX</strong> = 20% off.`,
       `<strong>#3 Bio Longevity Labs</strong> — Triple-tested. 80+ compounds. PEPTIDEX discount stacks with their sales — up to 40%+ combined. Code <strong>PEPTIDEX</strong> = 15% off.`,
       `<strong>#4 Limitless Life</strong> — USA-manufactured. 90+ compounds. Largest catalog in the index. Code <strong>PEPTIDEX</strong> = 15% off.`,
@@ -202,7 +202,7 @@ export function email5_vendorPicker(firstName = "there") {
     ${p(`It cross-references our vendor index, catalog data, and current pricing to give you a ranked list — not a generic "all are good" answer.`)}
     ${cta("Take the 4-question picker", "https://peptidex.app/tools/vendor-picker")}
     ${divider()}
-    ${p(`Quick note: if you're outside the US, your options are limited. Elyria Bio, Amino Club, and Bio Longevity Labs are the only vendors in our index that ship internationally.`)}
+    ${p(`Quick note: if you're outside the US, your options are limited. Amino Club and Bio Longevity Labs are the only vendors in our index that ship internationally. Elyria Bio (#1) ships US only.`)}
     ${p(`If your priority is value, Bio Longevity Labs lets you stack code <strong>PEPTIDEX</strong> (15% off) with their site-wide sales — the only vendor in our index where the code stacks with existing promotions. Total savings can exceed 30% during sales.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);

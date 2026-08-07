@@ -20,7 +20,7 @@
  * 
  * VENDOR LINEUP (as of 2026-08-07):
  *   Injectable:
- *     1. Elyria Bio          — Editor's Choice, 50+ compounds
+ *     1. Elyria Bio          — Editor's Choice, 29 peptides
  *     2. Amino Club          — COA Verified, 40+ compounds
  *     3. Bio Longevity Labs  — Triple-Tested Premium, 80+ compounds
  *     4. Limitless Life      — USA Made, 90+ compounds
@@ -113,7 +113,7 @@ export const vendors: Vendor[] = [
   {
     slug: "elyria-bio",
     name: "Elyria Bio",
-    tagline: "Premium research peptides — COA-verified with rigorous batch testing",
+    tagline: "Lyophilized research-grade peptides — ≥99% HPLC purity floor, third-party COA, lot-traceable",
     badge: "Editor's Choice",
     badgeStyle: "gold",
     sortOrder: 1,
@@ -126,13 +126,13 @@ export const vendors: Vendor[] = [
     ratingCount: "200+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
-    testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
-    shippingSpeed: "2–4 business days (US)",
-    shippingCost: "Free over $100",
-    shipsTo: ["USA", "International"],
-    catalogSize: "50+ compounds",
-    paymentMethods: ["Credit Card", "Crypto"],
-    returnPolicy: "30-day money-back guarantee",
+    testingMethods: ["HPLC", "Mass Spec"],
+    shippingSpeed: "Ships within 24 hours",
+    shippingCost: "Free over $150 · Free express over $250",
+    shipsTo: ["USA"],
+    catalogSize: "29 peptides + bac water",
+    paymentMethods: ["Credit Card"],
+    returnPolicy: "Replacement or refund for nonconforming product",
     lastTestedDate: "2026-08-01",
     gaKey: "elyria_bio",
     domainMatch: "elyriabio.com",

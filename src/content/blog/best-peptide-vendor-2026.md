@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Do peptide vendors ship internationally?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Many US-based peptide vendors do not ship internationally due to customs seizure risks. However, top-tier vendors like Elyria Bio and Amino Club have established international shipping lanes for research institutions."
+          "text": "Many US-based peptide vendors do not ship internationally due to customs seizure risks. Amino Club and Bio Longevity Labs ship internationally. Elyria Bio (#1) ships US only."
         }
       }
     ]
@@ -59,7 +59,7 @@ faqSchema: |
 <div className="bg-gradient-to-r from-violet-900/20 to-zinc-900/40 border-l-4 border-l-violet-500 border-y border-r border-zinc-800 rounded-lg p-6 my-8 shadow-xl">
   <h2 className="text-xl font-bold text-zinc-100 mb-3 mt-0 border-none pb-0">TL;DR: The Top Verified Vendors</h2>
   <ul className="space-y-2 text-zinc-300 text-sm font-medium m-0 list-disc list-inside">
-    <li><strong>#1 Elyria Bio (Editor's Choice):</strong> Premium COA-verified peptides with rigorous batch-specific testing, international shipping, and code PEPTIDEX = 10% off.</li>
+    <li><strong>#1 Elyria Bio (Editor's Choice):</strong> ≥99% HPLC purity floor, third-party US lab COAs, lot-traceable, 24h dispatch. US only. Code PEPTIDEX = 10% off.</li>
     <li><strong>#2 Amino Club:</strong> Best single discount code (20% off), 60-day MBG, flawless batch-specific third-party COA transparency.</li>
     <li><strong>#3 Bio Longevity Labs:</strong> Triple-tested with stackable PEPTIDEX discount — up to 40%+ off during sales.</li>
   </ul>
@@ -161,7 +161,7 @@ Based on comprehensive testing of shipping speeds, customer service, and third-p
 Cheaper vendors almost always skip independent laboratory testing to cut costs, or they source low-purity, unwashed peptides from bulk overseas manufacturers. The "cheap" peptide often contains synthesis byproducts or is severely under-dosed.
 
 **Do these vendors ship internationally?**
-While many domestic US vendors restrict shipping to within the United States to avoid customs seizures, premium vendors like Elyria Bio and Amino Club have established specific international shipping lanes for researchers in Canada, the UK, and Australia. 
+While many domestic US vendors restrict shipping to within the United States, Amino Club and Bio Longevity Labs have established international shipping lanes for researchers in Canada, the UK, and Australia. Elyria Bio (#1) ships US only.
 
 **Is it safe to pay with a credit card?**
 Yes, if the vendor is reputable. The peptide industry is considered "high risk" by payment processors, so many vendors use alternative gateways. However, top-tier vendors secure reliable credit card processing, which offers you chargeback protection.
