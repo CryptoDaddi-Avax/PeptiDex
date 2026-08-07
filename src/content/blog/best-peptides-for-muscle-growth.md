@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Where can I buy peptides for muscle growth?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Researchers can source unbranded, high-purity analytical standards of CJC-1295, Ipamorelin, and other secretagogues from verified domestic chemical suppliers that provide independent COAs, such as Amino Club."
+          "text": "Researchers can source unbranded, high-purity analytical standards of CJC-1295, Ipamorelin, and other secretagogues from verified domestic chemical suppliers that provide independent COAs, such as Elyria Bio."
         }
       }
     ]
@@ -123,13 +123,13 @@ When conducting an in-vitro assay or animal study utilizing secretagogues, verif
 
 As we covered in our guide on [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally), researchers must demand batch-specific testing from independent third-party laboratories.
 
-### Our Recommended Vendor: Amino Club
+### Our Recommended Vendor: Elyria Bio
 
-If you require unbranded, raw analytical standards of CJC-1295, Ipamorelin, or advanced hypertrophy agents like IGF-1 LR3, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. 
+If you require unbranded, raw analytical standards of CJC-1295, Ipamorelin, or advanced hypertrophy agents like IGF-1 LR3, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Amino Club is one of the few domestic chemical suppliers that provides full MZ Biolabs or Janoshik Analytical documentation for every single batch they produce, ensuring your reagents are free of heavy metals and synthesis byproducts. 
+Elyria Bio is one of the few domestic chemical suppliers that provides full MZ Biolabs or Janoshik Analytical documentation for every single batch they produce, ensuring your reagents are free of heavy metals and synthesis byproducts. 
 
-By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 20% off wholesale pricing while guaranteeing the integrity and validity of your experimental hypertrophy data.
+By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 10% off wholesale pricing while guaranteeing the integrity and validity of your experimental hypertrophy data.
 
 ## 3. The Hyperplasia Agents: IGF-1 LR3 and PEG-MGF
 

@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Where can I source these peptides safely?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Researchers must source these analytical chemicals from verified domestic suppliers that provide batch-specific, independent HPLC and Mass Spectrometry documentation, such as Amino Club."
+          "text": "Researchers must source these analytical chemicals from verified domestic suppliers that provide batch-specific, independent HPLC and Mass Spectrometry documentation, such as Elyria Bio."
         }
       }
     ]
@@ -145,11 +145,11 @@ You cannot rely on vendor marketing. You must demand batch-specific Certificates
 
 ### Sourcing the Regenerative Stack
 
-If your laboratory requires high-purity analytical standards of BPC-157, TB-500, or CJC-1295, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. 
+If your laboratory requires high-purity analytical standards of BPC-157, TB-500, or CJC-1295, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Amino Club is our top-rated vendor for 2026 because they provide flawless, independently verified documentation for every single compound they synthesize. Their transparency eliminates the guesswork associated with poly-peptide protocols.
+Elyria Bio is our top-rated vendor for 2026 because they provide flawless, independently verified documentation for every single compound they synthesize. Their transparency eliminates the guesswork associated with poly-peptide protocols.
 
-Furthermore, by utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, researchers can secure a 15% discount on wholesale pricing, which is critical when funding multi-compound, long-duration regenerative studies.
+Furthermore, by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, researchers can secure a 10% discount on wholesale pricing, which is critical when funding multi-compound, long-duration regenerative studies.
 
 ---
 

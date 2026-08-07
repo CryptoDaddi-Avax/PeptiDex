@@ -120,13 +120,13 @@ Here is the breakdown of the concentration:
 
 If your research protocol calls for a 250mcg dose, you draw the syringe to the "10" mark. If the protocol calls for a 500mcg dose, you draw to the "20" mark. This 2.0mL ratio eliminates complex fractional math and reduces the risk of drawing errors.
 
-If you are looking for verified, accurately dosed 5mg vials for your laboratory, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. They are one of the few suppliers that provide third-party mass spectrometry data confirming exactly 5.0mg of active ingredient per vial, ensuring your reconstitution math is actually accurate. 
+If you are looking for verified, accurately dosed 5mg vials for your laboratory, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. They are one of the few suppliers that provide third-party mass spectrometry data confirming exactly 5.0mg of active ingredient per vial, ensuring your reconstitution math is actually accurate. 
 
 ### Sourcing Quality Reagents
 
 When conducting a study, the purity of your raw materials dictates the validity of your data. If you mix your BPC-157 and the solution turns cloudy or milky, the peptide has degraded, or the synthesis was heavily contaminated with byproducts. High-purity BPC-157 should reconstitute completely clear within seconds.
 
-You can secure 20% off wholesale pricing for these high-purity analytical standards by utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>. Utilizing verified sources is the only way to guarantee your research is not compromised by heavy metals or truncated amino acid sequences.
+You can secure 20% off wholesale pricing for these high-purity analytical standards by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>. Utilizing verified sources is the only way to guarantee your research is not compromised by heavy metals or truncated amino acid sequences.
 
 ## Systemic vs. Local Administration
 

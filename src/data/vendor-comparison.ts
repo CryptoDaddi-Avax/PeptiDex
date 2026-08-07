@@ -31,10 +31,28 @@ export interface VendorProfile {
 }
 
 export const vendorProfiles: Record<string, VendorProfile> = {
+  "elyria-bio": {
+    slug: "elyria-bio",
+    name: "Elyria Bio",
+    rating: 4.9,
+    ratingCount: "200+",
+    affiliateUrl: "https://elyriabio.com?ref=PEPTIDEX",
+    purity: "99%+",
+    coaStatus: "Batch-specific COA",
+    testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
+    shippingSpeed: "2â€“4 business days (US)",
+    shippingCost: "Free over $100",
+    shipsTo: ["USA", "International"],
+    catalogSize: "50+ compounds",
+    paymentMethods: ["Credit Card", "Crypto"],
+    returnPolicy: "30-day money-back guarantee",
+    badge: "Editor's Choice",
+    lastTestedDate: "2026-08-01",
+  },
   "amino-club": {
     slug: "amino-club",
     name: "Amino Club",
-    rating: 4.9,
+    rating: 4.7,
     ratingCount: "400+",
     affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
     purity: "99%+",
@@ -46,7 +64,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     catalogSize: "40+ compounds",
     paymentMethods: ["Credit Card", "Crypto", "Zelle"],
     returnPolicy: "60-day money-back guarantee",
-    badge: "Editor's Choice",
+    badge: "COA Verified",
     coaUrl: "https://aminoclub.com/coa/bpc-157-latest.pdf",
     lastTestedDate: "2026-04-10",
   },
@@ -54,7 +72,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
   "ascension-peptides": {
     slug: "ascension-peptides",
     name: "Ascension Peptides",
-    rating: 4.7,
+    rating: 4.5,
     ratingCount: "250+",
     affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
     purity: "98%+",
@@ -72,7 +90,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
   "limitless-life": {
     slug: "limitless-life",
     name: "Limitless Life",
-    rating: 4.8,
+    rating: 4.6,
     ratingCount: "300+",
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     purity: "99%+",
@@ -90,7 +108,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
   "bio-longevity-labs": {
     slug: "bio-longevity-labs",
     name: "Bio Longevity Labs",
-    rating: 4.8,
+    rating: 4.6,
     ratingCount: "350+",
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
     purity: "99%+",
@@ -108,7 +126,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
   "pantheon-peptides": {
     slug: "pantheon-peptides",
     name: "Pantheon Peptides",
-    rating: 4.6,
+    rating: 4.4,
     ratingCount: "150+",
     affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
     purity: "98%+",
@@ -125,7 +143,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
   "lvlup-health": {
     slug: "lvlup-health",
     name: "LVLUP Health",
-    rating: 4.5,
+    rating: 4.3,
     ratingCount: "100+",
     affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
     purity: "98%+",

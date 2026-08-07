@@ -1,0 +1,3592 @@
+{
+  "summary": {
+    "totalPeptides": 51,
+    "totalClaims": 403,
+    "highConfidence": 143,
+    "mediumConfidence": 116,
+    "noneConfidence": 144
+  },
+  "peptides": [
+    {
+      "name": "AOD-9604",
+      "slug": "aod-9604",
+      "studyCount": 18,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Mimics GH fat-burning domain. Stimulates lipolysis and inhibits lipogenesis by acting on beta-3 adrenergic receptors in fat tissue, without ",
+          "candidatePmid": "11146367",
+          "candidateTitle": "AOD-9604 lipolysis stimulation in preclinical models",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Fat loss without GH side effects",
+          "candidatePmid": "29739849",
+          "candidateTitle": "A novel inhibitor of pyruvate dehydrogenase kinase stimulates myocardial carbohy",
+          "score": 100,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Research-only. Received GRAS status from FDA as food supplement ingredient. Banned by WADA. Phase 3 trial discontinued due to insufficient e",
+          "candidatePmid": "19268492",
+          "candidateTitle": "AOD-9604 clinical safety   six randomized controlled trials",
+          "score": 18,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "AOD-9604 is a synthetic fragment of human growth hormone studied for its ability to burn fat without the blood sugar or growth side effects ",
+          "candidatePmid": "16625817",
+          "candidateTitle": "Obesity drugs in clinical development.",
+          "score": 54,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 1 hours",
+          "candidatePmid": "26578461",
+          "candidateTitle": "Simplifying and expanding the screening for peptides <2 kDa by direct urine inje",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Early lipolysis effects, especially in abdominal area",
+          "candidatePmid": "11146367",
+          "candidateTitle": "AOD-9604 lipolysis stimulation in preclinical models",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Noticeable fat reduction in visceral stores; improved metabolic markers",
+          "candidatePmid": "15655039",
+          "candidateTitle": "AOD-9604 Phase IIb trial   short-term fat reduction",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained fat loss; may preserve muscle mass better than caloric restriction alone",
+          "candidatePmid": "26275694",
+          "candidateTitle": "Effect of Intra-articular Injection of AOD9604 with or without Hyaluronic Acid i",
+          "score": 14,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "BPC-157",
+      "slug": "bpc-157",
+      "studyCount": 18,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Promotes angiogenesis, collagen deposition, and modulates growth factors for accelerated healing. Acts on multiple repair pathways simultane",
+          "candidatePmid": "39754825",
+          "candidateTitle": "BPC-157 systematic review: musculoskeletal healing (2025)",
+          "score": 35,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Injury recovery, gut healing, tissue repair, reduced inflammation",
+          "candidatePmid": "41898733",
+          "candidateTitle": "From Regeneration to Analgesia: The Role of BPC-157 in Tissue Repair and Pain Ma",
+          "score": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Excellent research safety profile; commonly used for recovery. Not FDA-approved. Most evidence from animal models. FDA restricted use in com",
+          "candidatePmid": "20225319",
+          "candidateTitle": "BPC-157 and neuroprotection: stroke and spinal cord models",
+          "score": 23,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "BPC-157 is a synthetic peptide derived from a protein found in gastric juice, studied in animal research for accelerating injury recovery an",
+          "candidatePmid": "41898733",
+          "candidateTitle": "From Regeneration to Analgesia: The Role of BPC-157 in Tissue Repair and Pain Ma",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 4 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Reduced pain/inflammation at injury site; improved GI comfort if used for gut healing",
+          "candidatePmid": "39754825",
+          "candidateTitle": "BPC-157 systematic review: musculoskeletal healing (2025)",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Noticeable mobility improvement; significant reduction in injury-site swelling",
+          "candidatePmid": "41476424",
+          "candidateTitle": "Injectable Peptide Therapy: A Primer for Orthopaedic and Sports Medicine Physici",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Substantial tissue remodeling; most acute injuries showing measurable repair",
+          "candidatePmid": "41966639",
+          "candidateTitle": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskel",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Full tendon/ligament functional recovery in most preclinical models; sustained GI remission",
+          "candidatePmid": "20225319",
+          "candidateTitle": "BPC-157 and neuroprotection: stroke and spinal cord models",
+          "score": 57,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Cagrilintide",
+      "slug": "cagrilintide",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Long-acting amylin analog that activates amylin receptors in the area postrema and hypothalamus to reduce appetite, slow gastric emptying, a",
+          "candidatePmid": "35150361",
+          "candidateTitle": "Amylin analogs in obesity management: mechanism review",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Weight loss, appetite reduction, glycemic control",
+          "candidatePmid": "42009015",
+          "candidateTitle": "Efficacy and safety of co-administered cagrilintide and semaglutide versus semag",
+          "score": 60,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Generally well-tolerated in Phase 2 trials. Main side effects are GI-related (nausea, vomiting). Novo Nordisk is developing CagriSema (cagri",
+          "candidatePmid": "41834765",
+          "candidateTitle": "Efficacy and Safety of Cagrilintide and Cagrisema Versus Semaglutide as Anti-Obe",
+          "score": 28,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Cagrilintide is a long-acting amylin analog investigated for weight loss, studied in Phase 2 trials for achieving over 10% body weight reduc",
+          "candidatePmid": "42009015",
+          "candidateTitle": "Efficacy and safety of co-administered cagrilintide and semaglutide versus semag",
+          "score": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 168 hours",
+          "candidatePmid": "41344603",
+          "candidateTitle": "Amylin receptors as therapeutic targets in obesity: Emerging peptide-based strat",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Appetite suppression begins; reduced food cravings",
+          "candidatePmid": "41328546",
+          "candidateTitle": "CagriSema Reduces Blood Pressure in Adults With Overweight or Obesity: REDEFINE ",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Measurable weight loss (1-2 lbs/week); improved meal portion control",
+          "candidatePmid": "41549439",
+          "candidateTitle": "Amylin Revisited: A 5-Year Perspective on Its Emerging Role in the Treatment of ",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "10-11% body weight loss at clinical doses; improved glycemic markers",
+          "candidatePmid": "41549439",
+          "candidateTitle": "Amylin Revisited: A 5-Year Perspective on Its Emerging Role in the Treatment of ",
+          "score": 57,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Clinical trials show sustained weight loss through 26+ weeks; CagriSema in Phase 3 trials",
+          "candidatePmid": "37385275",
+          "candidateTitle": "CagriSema (cagrilintide + semaglutide) Phase 2 results",
+          "score": 44,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "CJC-1295",
+      "slug": "cjc-1295",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Stimulates prolonged GH and IGF-1 release by mimicking the body's natural GHRH signal to the pituitary gland. Preserves natural pulsatile GH",
+          "candidatePmid": "16595882",
+          "candidateTitle": "CJC-1295 preserves pulsatile GH secretion in humans",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Muscle growth, fat loss, recovery",
+          "candidatePmid": "35298973",
+          "candidateTitle": "An antibody-free, ultrafiltration-based assay for the detection of growth hormon",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Often stacked with Ipamorelin; injection site reactions possible. Not FDA-approved.",
+          "candidatePmid": "16352683",
+          "candidateTitle": "CJC-1295 GH/IGF-1 elevation in humans",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "CJC-1295 is a synthetic growth-hormone-releasing hormone analog studied for its ability to sustainably elevate GH and IGF-1, supporting musc",
+          "candidatePmid": "34665524",
+          "candidateTitle": "Advances in the detection of growth hormone releasing hormone synthetic analogs.",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 168 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved sleep depth; occasional GH flush sensation; increased hunger in morning",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Elevated energy and faster post-workout recovery; mild water retention",
+          "candidatePmid": "35298973",
+          "candidateTitle": "An antibody-free, ultrafiltration-based assay for the detection of growth hormon",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable lean mass improvements; visible fat redistribution; IGF-1 elevation confirmed on bloodwork",
+          "candidatePmid": "16352683",
+          "candidateTitle": "CJC-1295 GH/IGF-1 elevation in humans",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained GH axis support; anti-aging body composition benefits; improved bone density over 6+ months",
+          "candidatePmid": "41476424",
+          "candidateTitle": "Injectable Peptide Therapy: A Primer for Orthopaedic and Sports Medicine Physici",
+          "score": 25,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "DSIP",
+      "slug": "dsip",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Modulates sleep-wake cycle. Promotes delta-wave (deep) sleep phases. Interacts with GABA, serotonin, and opioid pathways.",
+          "candidatePmid": "6895513",
+          "candidateTitle": "DSIP delta sleep promotion in chronic insomniacs",
+          "score": 9,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Improved sleep quality, stress reduction",
+          "candidatePmid": "30107169",
+          "candidateTitle": "Phosphorylated delta sleep inducing peptide restores spatial memory and p-CREB e",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Limited modern data. Most studies from the 1980s-90s. Safety profile incompletely defined.",
+          "candidatePmid": "32637907",
+          "candidateTitle": "A review of the newly identified impurity profiles in methamphetamine seizures.",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "DSIP (Delta Sleep-Inducing Peptide) is a naturally occurring neuropeptide studied for improving deep sleep quality and reducing nighttime aw",
+          "candidatePmid": "6895513",
+          "candidateTitle": "DSIP delta sleep promotion in chronic insomniacs",
+          "score": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.13 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved sleep onset and delta-wave sleep depth",
+          "candidatePmid": "30107169",
+          "candidateTitle": "Phosphorylated delta sleep inducing peptide restores spatial memory and p-CREB e",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "More restful sleep; potential pain modulation via opioid pathways",
+          "candidatePmid": "6895513",
+          "candidateTitle": "DSIP delta sleep promotion in chronic insomniacs",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Circadian rhythm stabilization; stress resilience improvement",
+          "candidatePmid": "3271161",
+          "candidateTitle": "DSIP normalizes sleep in elderly insomniacs",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Effects require cycling; cumulative normalization of sleep architecture",
+          "candidatePmid": "2879047",
+          "candidateTitle": "Repeated DSIP administration and sleep structure normalization",
+          "score": 57,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Epitalon",
+      "slug": "epitalon",
+      "studyCount": 30,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Lengthens telomeres via telomerase activation. May also regulate melatonin production and circadian rhythm, and modulate antioxidant enzyme ",
+          "candidatePmid": "11524632",
+          "candidateTitle": "Epithalamin (parent compound) regulates melatonin in elderly",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Anti-aging, longevity, sleep",
+          "candidatePmid": "11524632",
+          "candidateTitle": "Epithalamin (parent compound) regulates melatonin in elderly",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Research-only. Telomerase activation carries theoretical cancer risk. Long-term safety unknown.",
+          "candidatePmid": "40908429",
+          "candidateTitle": "Epitalon increases telomere length in human cell lines through telomerase upregu",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Epitalon is a synthetic tetrapeptide studied for anti-aging effects, investigated for activating telomerase to lengthen telomeres and potent",
+          "candidatePmid": "14501182",
+          "candidateTitle": "Epitalon activates telomerase and lengthens telomeres in human cells",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved sleep quality and circadian rhythm normalization",
+          "candidatePmid": "11524632",
+          "candidateTitle": "Epithalamin (parent compound) regulates melatonin in elderly",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Antioxidant enzyme upregulation; potential telomere lengthening",
+          "candidatePmid": "40908429",
+          "candidateTitle": "Epitalon increases telomere length in human cell lines through telomerase upregu",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Anti-aging effects; melatonin regulation; potential lifespan extension (animal data)",
+          "candidatePmid": "12937682",
+          "candidateTitle": "Epitalon lifespan extension in animals",
+          "score": 63,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Follistatin-344",
+      "slug": "follistatin-344",
+      "studyCount": 9,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Blocks myostatin (the body's muscle growth limiter) and activin, allowing enhanced muscle development and regeneration beyond normal physiol",
+          "candidatePmid": "27787698",
+          "candidateTitle": "The transgenic expression of human follistatin-344 increases skeletal muscle mas",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Muscle hypertrophy, strength",
+          "candidatePmid": "19208403",
+          "candidateTitle": "Follistatin gene therapy increases muscle mass and strength",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Research-only. Potent effects   potential for unregulated growth. Limited human safety data. Phase I gene therapy trials show safety.",
+          "candidatePmid": "41966639",
+          "candidateTitle": "Safety and Efficacy of Approved and Unapproved Peptide Therapies for Musculoskel",
+          "score": 23,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Follistatin-344 is a naturally occurring protein studied for its ability to block myostatin, the body's built-in muscle growth limiter, enab",
+          "candidatePmid": "27787698",
+          "candidateTitle": "The transgenic expression of human follistatin-344 increases skeletal muscle mas",
+          "score": 28,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 6 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Initial myostatin inhibition; muscle fullness and pumps",
+          "candidatePmid": "19208403",
+          "candidateTitle": "Follistatin gene therapy increases muscle mass and strength",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable lean mass increase; strength gains",
+          "candidatePmid": "19208403",
+          "candidateTitle": "Follistatin gene therapy increases muscle mass and strength",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Very limited long-term human data; Phase I gene therapy shows safety",
+          "candidatePmid": "25358937",
+          "candidateTitle": "Follistatin gene transfer for Becker muscular dystrophy (Phase I)",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "GHK-Cu",
+      "slug": "ghk-cu",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Copper delivery for collagen/elastin synthesis. Activates tissue remodeling, attracts immune cells to injury sites. Levels decline significa",
+          "candidatePmid": "41371501",
+          "candidateTitle": "Golgi-targeted copper delivery strategy via enhancing copper-dependent proteins'",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Skin repair, anti-aging, wound healing",
+          "candidatePmid": "41594073",
+          "candidateTitle": "Smart Healing for Wound Repair: Emerging Multifunctional Strategies in Personali",
+          "score": 75,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Topical or injectable; low risk. Long history of safe topical use in cosmetics.",
+          "candidatePmid": "41476424",
+          "candidateTitle": "Injectable Peptide Therapy: A Primer for Orthopaedic and Sports Medicine Physici",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "GHK-Cu is a naturally occurring copper peptide studied for stimulating collagen production, accelerating wound healing, and reversing visibl",
+          "candidatePmid": "17703734",
+          "candidateTitle": "GHK-Cu skin regeneration and anti-aging effects",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.5 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved skin texture and elasticity (topical); wound healing acceleration",
+          "candidatePmid": "18047532",
+          "candidateTitle": "GHK-Cu wound healing and tissue remodeling review",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Visible collagen synthesis; skin tightening; improved scar appearance",
+          "candidatePmid": "17703734",
+          "candidateTitle": "GHK-Cu skin regeneration and anti-aging effects",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Progressive anti-aging effects; hair follicle stimulation with consistent use",
+          "candidatePmid": "17703734",
+          "candidateTitle": "GHK-Cu skin regeneration and anti-aging effects",
+          "score": 33,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "GHRP-2",
+      "slug": "ghrp-2",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic hexapeptide GH secretagogue acting on the GHSR1a receptor. GHRP-2 produces the most potent GH release among standard GHRPs (strong",
+          "candidatePmid": "9089484",
+          "candidateTitle": "GHRP-2 potent GH release in healthy adults",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Strongest GH release of standard GHRPs, muscle growth, anti-aging, recovery",
+          "candidatePmid": "9089484",
+          "candidateTitle": "GHRP-2 potent GH release in healthy adults",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "The most potent standard GHRP. Approved in Japan as a diagnostic tool (Pralmorelin). Raises cortisol and prolactin more than Ipamorelin but ",
+          "candidatePmid": "15565092",
+          "candidateTitle": "GHRP-2 approved diagnostic agent for GH deficiency",
+          "score": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "GHRP-2 is a synthetic growth-hormone-releasing peptide studied for producing strong GH pulses, approved in Japan as a diagnostic tool for de",
+          "candidatePmid": "38958228",
+          "candidateTitle": "Robust growth hormone responses to GH-releasing peptide 2 in adolescents.",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 1.5 hours",
+          "candidatePmid": "33197153",
+          "candidateTitle": "On the road of dried blood spot sampling for antidoping tests: Detection of GHRP",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved sleep quality; moderate appetite increase; GH flush sensation",
+          "candidatePmid": "39672241",
+          "candidateTitle": "Growth Hormone-Releasing Peptide 2 May Be Associated With Decreased M1 Macrophag",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Enhanced recovery; early body composition shifts; IGF-1 elevation on bloodwork",
+          "candidatePmid": "9089484",
+          "candidateTitle": "GHRP-2 potent GH release in healthy adults",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Significant lean mass improvement; fat redistribution; skin quality enhancement",
+          "candidatePmid": "41482410",
+          "candidateTitle": "Diurnal and Daily Variations in Growth Hormone and Growth Hormone Stimulation Te",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained somatotropic axis support; cycling recommended every 12-16 weeks",
+          "candidatePmid": "9054473",
+          "candidateTitle": "GHRP-2 effects on sleep and nocturnal GH secretion",
+          "score": 13,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "GHRP-6",
+      "slug": "ghrp-6",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic hexapeptide that stimulates GH release by acting on the ghrelin/GHS receptor (GHSR1a) in the pituitary and hypothalamus. Unlike Ip",
+          "candidatePmid": "15265829",
+          "candidateTitle": "GHRP-6 stimulates gastric motility and appetite",
+          "score": 28,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Potent GH release, appetite stimulation, muscle growth, recovery, gastric motility",
+          "candidatePmid": "15265829",
+          "candidateTitle": "GHRP-6 stimulates gastric motility and appetite",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Well-studied but less selective than Ipamorelin. Raises cortisol (~15-20% transient) and prolactin modestly. Strong appetite stimulation can",
+          "candidatePmid": "15265829",
+          "candidateTitle": "GHRP-6 stimulates gastric motility and appetite",
+          "score": 11,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "GHRP-6 is one of the earliest synthetic growth-hormone-releasing peptides studied for stimulating GH secretion and increasing appetite, maki",
+          "candidatePmid": "15265829",
+          "candidateTitle": "GHRP-6 stimulates gastric motility and appetite",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2.5 hours",
+          "candidatePmid": "41090425",
+          "candidateTitle": "Assessing The Effectiveness of Growth Hormone Releasing Protein-6 in Improving H",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Intense appetite increase; improved sleep depth; possible cortisol-related water retention",
+          "candidatePmid": "40025613",
+          "candidateTitle": "Ghrelin promotes neurologic recovery and neurogenesis in the chronic phase after",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Elevated GH confirmed on bloodwork; faster recovery; early lean mass shifts",
+          "candidatePmid": "41090425",
+          "candidateTitle": "Assessing The Effectiveness of Growth Hormone Releasing Protein-6 in Improving H",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable body composition improvement; sustained appetite increase; IGF-1 elevation",
+          "candidatePmid": "15265829",
+          "candidateTitle": "GHRP-6 stimulates gastric motility and appetite",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Continued GH axis support; may develop mild tachyphylaxis requiring cycling",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "Glutathione",
+      "slug": "glutathione",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Glutathione is the body's master antioxidant — a tripeptide (glutamate-cysteine-glycine) present in every cell. It neutralizes reactive oxyg",
+          "candidatePmid": "23506484",
+          "candidateTitle": "Glutathione: overview of biosynthesis, regulation, and clinical role",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Detoxification, antioxidant defense, immune support, skin brightening",
+          "candidatePmid": "11115795",
+          "candidateTitle": "Glutathione and immune function",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Excellent safety profile. Used clinically for decades. IV and SubQ routes well-tolerated. Rare allergic reactions possible. May reduce effec",
+          "candidatePmid": "42052167",
+          "candidateTitle": "Multilayered analysis of cisplatin resistance mechanisms in bladder cancer: from",
+          "score": 10,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Glutathione is the body's most important natural antioxidant, studied for detoxification, immune support, skin brightening, and protecting c",
+          "candidatePmid": "23506484",
+          "candidateTitle": "Glutathione: overview of biosynthesis, regulation, and clinical role",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved energy and reduced oxidative stress markers",
+          "candidatePmid": "42053112",
+          "candidateTitle": "Combating Cadmium-Induced Neurotoxicity, Oxidative Stress, and Inflammatory Path",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Skin brightening begins; improved liver function markers",
+          "candidatePmid": "42053112",
+          "candidateTitle": "Combating Cadmium-Induced Neurotoxicity, Oxidative Stress, and Inflammatory Path",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Noticeable skin lightening effect; improved immune markers; better hangover recovery",
+          "candidatePmid": "42053112",
+          "candidateTitle": "Combating Cadmium-Induced Neurotoxicity, Oxidative Stress, and Inflammatory Path",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained antioxidant protection; potential neuroprotective benefits",
+          "candidatePmid": "42053112",
+          "candidateTitle": "Combating Cadmium-Induced Neurotoxicity, Oxidative Stress, and Inflammatory Path",
+          "score": 17,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "Hexarelin",
+      "slug": "hexarelin",
+      "studyCount": 4,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic hexapeptide and the most potent GH secretagogue in the GHRP class. Acts on GHSR1a to produce the strongest acute GH pulse, but als",
+          "candidatePmid": "15240607",
+          "candidateTitle": "Hexarelin cardioprotective effects via CD36 receptor",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Most potent GH release of any GHRP, cardioprotection, muscle growth, recovery",
+          "candidatePmid": "15240607",
+          "candidateTitle": "Hexarelin cardioprotective effects via CD36 receptor",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Most potent but least selective GHRP. Significant cortisol and prolactin elevation limits chronic use. Develops tachyphylaxis within 4-8 wee",
+          "candidatePmid": "9284088",
+          "candidateTitle": "Hexarelin tachyphylaxis with chronic administration",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Hexarelin is the most potent growth-hormone-releasing peptide available, studied for producing the strongest GH pulses of any GHRP and for d",
+          "candidatePmid": "15240607",
+          "candidateTitle": "Hexarelin cardioprotective effects via CD36 receptor",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.9 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Dramatic GH pulse; notable flush and warmth sensation; improved sleep depth",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Peak body composition effects; strongest anabolic window; IGF-1 significantly elevated",
+          "candidatePmid": "9150611",
+          "candidateTitle": "Hexarelin produces the strongest GH release among GHRPs",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Tachyphylaxis onset; GH response diminishes 40-60% by week 6-8; must cycle off",
+          "candidatePmid": "9284088",
+          "candidateTitle": "Hexarelin tachyphylaxis with chronic administration",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Best used cyclically; cardiac benefits may persist beyond GH effects",
+          "candidatePmid": "15240607",
+          "candidateTitle": "Hexarelin cardioprotective effects via CD36 receptor",
+          "score": 33,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "IGF-1 LR3",
+      "slug": "igf-1-lr3",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "IGF-1 analog with extended half-life for muscle cell hyperplasia (new cell creation, not just hypertrophy). Promotes nitrogen retention and ",
+          "candidatePmid": "10218986",
+          "candidateTitle": "IGF-1 LR3 promotes muscle growth in animal models",
+          "score": 46,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Muscle growth, recovery, hyperplasia",
+          "candidatePmid": "10218986",
+          "candidateTitle": "IGF-1 LR3 promotes muscle growth in animal models",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Potent; use caution. Risk of hypoglycemia. Theoretical cancer promotion concern well-documented in literature. Research-only.",
+          "candidatePmid": "27016193",
+          "candidateTitle": "IGF-1 and cancer risk   comprehensive epidemiological review",
+          "score": 10,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "IGF-1 LR3 is a long-acting analog of Insulin-like Growth Factor 1 studied for its ability to trigger new muscle cell creation (hyperplasia) ",
+          "candidatePmid": "39610283",
+          "candidateTitle": "Intranasal long R3 insulin-like growth factor-1 treatment promotes amyloid plaqu",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 20 hours",
+          "candidatePmid": "10218986",
+          "candidateTitle": "IGF-1 LR3 promotes muscle growth in animal models",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Enhanced nutrient partitioning; increased post-workout pumps",
+          "candidatePmid": "33427051",
+          "candidateTitle": "IGF-1 infusion to fetal sheep increases organ growth but not by stimulating nutr",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Lean mass and recovery improvements; possible hypoglycemia if undereating",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Significant body composition changes; hyperplasia (new cell creation) possible",
+          "candidatePmid": "10218986",
+          "candidateTitle": "IGF-1 LR3 promotes muscle growth in animal models",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Theoretical cancer promotion risk with chronic use; short cycles essential",
+          "candidatePmid": "27016193",
+          "candidateTitle": "IGF-1 and cancer risk   comprehensive epidemiological review",
+          "score": 14,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "Ipamorelin",
+      "slug": "ipamorelin",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Selective GH secretagogue that mimics ghrelin at the GHS receptor. Does not significantly raise cortisol or prolactin, making it one of the ",
+          "candidatePmid": "9849822",
+          "candidateTitle": "Ipamorelin selective GH release   original characterization",
+          "score": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "GH release, muscle growth, recovery without cortisol spike",
+          "candidatePmid": "9849822",
+          "candidateTitle": "Ipamorelin selective GH release   original characterization",
+          "score": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "One of the safest GH peptides. Side effects may include transient headache, flushing. Not FDA-approved.",
+          "candidatePmid": "42021992",
+          "candidateTitle": "Therapeutic peptides in gerontology: mechanisms and applications for healthy agi",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Ipamorelin is a selective growth-hormone-releasing peptide studied for stimulating clean GH pulses without raising cortisol or prolactin, ma",
+          "candidatePmid": "9849822",
+          "candidateTitle": "Ipamorelin selective GH release   original characterization",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": "16796559",
+          "candidateTitle": "Ipamorelin PK/PD modeling in healthy human volunteers",
+          "score": 100,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved sleep quality; increased hunger around dosing window",
+          "candidatePmid": "39043357",
+          "candidateTitle": "The growth hormone secretagogue receptor 1a agonists, anamorelin and ipamorelin,",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved recovery and energy; early body composition shifts",
+          "candidatePmid": "17457097",
+          "candidateTitle": "Ipamorelin accelerates postoperative GI recovery",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Visible lean mass gains; fat loss (especially combined with CJC-1295)",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained IGF-1 support; preserved muscle during caloric deficit",
+          "candidatePmid": "27497113",
+          "candidateTitle": "Doping control container for urine stabilization: a pilot study.",
+          "score": 25,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Kisspeptin-10",
+      "slug": "kisspeptin-10",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Endogenous neuropeptide that is the master upstream regulator of the hypothalamic-pituitary-gonadal (HPG) axis. Kisspeptin-10 binds to the G",
+          "candidatePmid": "21795442",
+          "candidateTitle": "Kisspeptin potently stimulates LH and testosterone in healthy men",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "LH/FSH stimulation, testosterone support, fertility enhancement, HPG axis activation",
+          "candidatePmid": "21795442",
+          "candidateTitle": "Kisspeptin potently stimulates LH and testosterone in healthy men",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Endogenous human neuropeptide with growing clinical trial data. Tachyphylaxis (desensitization) occurs with continuous dosing; pulsatile/int",
+          "candidatePmid": "24456164",
+          "candidateTitle": "Kisspeptin tachyphylaxis with continuous administration",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Kisspeptin-10 is a naturally occurring reproductive neuropeptide studied for stimulating testosterone production in men and supporting ovula",
+          "candidatePmid": "21795442",
+          "candidateTitle": "Kisspeptin potently stimulates LH and testosterone in healthy men",
+          "score": 21,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.5 hours",
+          "candidatePmid": "24456164",
+          "candidateTitle": "Kisspeptin tachyphylaxis with continuous administration",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Acute LH surge within hours; increase in morning testosterone levels; improved libido in hypogonadal individuals",
+          "candidatePmid": "24828487",
+          "candidateTitle": "Kisspeptin restores LH pulsatility in hypogonadal men",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Sustained testosterone elevation with pulsatile dosing; improved energy and mood; fertility markers improving",
+          "candidatePmid": "24456164",
+          "candidateTitle": "Kisspeptin tachyphylaxis with continuous administration",
+          "score": 30,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Stable HPG axis activation; measurable testosterone/LH improvement on bloodwork; improved reproductive parameters",
+          "candidatePmid": "41873723",
+          "candidateTitle": "Asprosin infusion modulates central circuits to rescue selective serotonin reupt",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Must maintain pulsatile dosing to avoid desensitization; promising IVF trigger data; long-term reproductive axis support",
+          "candidatePmid": "24456164",
+          "candidateTitle": "Kisspeptin tachyphylaxis with continuous administration",
+          "score": 30,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "KPV",
+      "slug": "kpv",
+      "studyCount": 19,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Alpha-MSH fragment that potently suppresses NF-ÎºB inflammatory signaling. Reduces pro-inflammatory cytokines and promotes mucosal healing.",
+          "candidatePmid": "21640730",
+          "candidateTitle": "KPV reduces pro-inflammatory cytokines (IL-1β, IL-6, TNF-α)",
+          "score": 42,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Gut/injury healing, inflammation reduction",
+          "candidatePmid": "41209547",
+          "candidateTitle": "Exploring the Role of Tripeptides in Wound Healing and Skin Regeneration: A Comp",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Excellent profile. Research-only compound with limited human data but strong preclinical safety.",
+          "candidatePmid": "41769616",
+          "candidateTitle": "Diagnostic Yield and Safety of Medical Thoracoscopic Biopsy in Undiagnosed Exuda",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "KPV is a tripeptide fragment of alpha-MSH studied for powerfully reducing gut inflammation, investigated as a potential treatment for inflam",
+          "candidatePmid": "41209547",
+          "candidateTitle": "Exploring the Role of Tripeptides in Wound Healing and Skin Regeneration: A Comp",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.5 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Potent anti-inflammatory effect; rapid symptom relief in gut/injury",
+          "candidatePmid": "17095019",
+          "candidateTitle": "KPV anti-inflammatory effects in murine colitis",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Mucosal healing acceleration; reduced IBD flare symptoms",
+          "candidatePmid": "41209547",
+          "candidateTitle": "Exploring the Role of Tripeptides in Wound Healing and Skin Regeneration: A Comp",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Wound healing and IBD remission in study models; sustained anti-inflammatory effect",
+          "candidatePmid": "17095019",
+          "candidateTitle": "KPV anti-inflammatory effects in murine colitis",
+          "score": 38,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "LL-37",
+      "slug": "ll-37",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "The only human cathelicidin antimicrobial peptide. LL-37 is a 37-amino acid cationic peptide that directly disrupts microbial membranes (bac",
+          "candidatePmid": "33646013",
+          "candidateTitle": "Synergistic effect of antimicrobial peptide LL-37 and colistin combination again",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Broad-spectrum antimicrobial, anti-biofilm, wound healing, immune modulation, anti-inflammatory",
+          "candidatePmid": "24828484",
+          "candidateTitle": "LL-37 broad-spectrum antimicrobial and immunomodulatory effects",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Endogenous human peptide with well-characterized biology. Cytotoxic to eukaryotic cells at high concentrations (>25mcg/mL). Concentration-de",
+          "candidatePmid": "31825534",
+          "candidateTitle": "Antimicrobial peptide LL-37 and its pro-form, hCAP18, in desquamated epithelial ",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "LL-37 is the only human antimicrobial cathelicidin peptide studied for directly killing bacteria, viruses, and fungi while also promoting wo",
+          "candidatePmid": "24828484",
+          "candidateTitle": "LL-37 broad-spectrum antimicrobial and immunomodulatory effects",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 4 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Immune activation; some users report mild flu-like response as immune system engages",
+          "candidatePmid": "23838041",
+          "candidateTitle": "LL-37 in chronic inflammatory conditions and immune regulation",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Reduced infection symptoms; improved wound healing at treatment sites; systemic immune upregulation",
+          "candidatePmid": "24828484",
+          "candidateTitle": "LL-37 broad-spectrum antimicrobial and immunomodulatory effects",
+          "score": 18,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained antimicrobial effects; biofilm disruption in chronic infections; improved mucosal barrier integrity",
+          "candidatePmid": "24828484",
+          "candidateTitle": "LL-37 broad-spectrum antimicrobial and immunomodulatory effects",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Best used in targeted protocols for active infections or chronic immune challenges; not typically used indefinitely",
+          "candidatePmid": "23838041",
+          "candidateTitle": "LL-37 in chronic inflammatory conditions and immune regulation",
+          "score": 22,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Melanotan II",
+      "slug": "melanotan-ii",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "MC4R activation. Non-selectively activates melanocortin receptors to stimulate melanin production, suppress appetite, and increase sexual ar",
+          "candidatePmid": "10834511",
+          "candidateTitle": "Melanotan II as potent initiator of penile erection",
+          "score": 8,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Tanning, libido enhancement",
+          "candidatePmid": "12851303",
+          "candidateTitle": "Melanotan II tanning and erectile effects   Phase I",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Nausea common; research-only. SIGNIFICANT SAFETY CONCERNS: changes to moles, elevated BP. Actively warned against by FDA/TGA.",
+          "candidatePmid": "12851303",
+          "candidateTitle": "Melanotan II tanning and erectile effects   Phase I",
+          "score": 8,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Melanotan II is a synthetic melanocortin analog studied for stimulating skin tanning, suppressing appetite, and increasing sexual arousal, t",
+          "candidatePmid": "12851303",
+          "candidateTitle": "Melanotan II tanning and erectile effects   Phase I",
+          "score": 12,
+          "confidence": "NONE"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 1 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Nausea common during initial dose; spontaneous erections in men; early tanning begins",
+          "candidatePmid": "12851303",
+          "candidateTitle": "Melanotan II tanning and erectile effects   Phase I",
+          "score": 44,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Significant skin pigmentation; libido effects",
+          "candidatePmid": "12851303",
+          "candidateTitle": "Melanotan II tanning and erectile effects   Phase I",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Persistent tan maintained with UV exposure; long-term safety concerns with mole changes",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "MK-677",
+      "slug": "mk-677",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Non-peptide ghrelin receptor (GHSR1a) agonist that stimulates prolonged, pulsatile growth hormone release from the pituitary gland. Unlike i",
+          "candidatePmid": "9467534",
+          "candidateTitle": "MK-677 increases GH and IGF-1 without altering cortisol in healthy elderly",
+          "score": 21,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Sustained GH/IGF-1 elevation, muscle growth, improved sleep, bone density, oral dosing convenience",
+          "candidatePmid": "18981485",
+          "candidateTitle": "MK-677 2-year study: sustained IGF-1 elevation and body composition effects",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Oral GH secretagogue with extensive clinical data (2+ year RCTs). Key concern: impairs insulin sensitivity and raises fasting glucose, espec",
+          "candidatePmid": "18981485",
+          "candidateTitle": "MK-677 2-year study: sustained IGF-1 elevation and body composition effects",
+          "score": 12,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "MK-677 (Ibutamoren) is an orally bioavailable growth hormone secretagogue studied for sustainably elevating GH and IGF-1 levels over 24 hour",
+          "candidatePmid": "9467534",
+          "candidateTitle": "MK-677 increases GH and IGF-1 without altering cortisol in healthy elderly",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 24 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Significant appetite increase; deeper sleep onset; vivid dreams; mild water retention",
+          "candidatePmid": "9467542",
+          "candidateTitle": "MK-677 increases fat-free mass in healthy obese males",
+          "score": 30,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Sustained IGF-1 elevation confirmed on bloodwork; improved recovery; skin quality improvement; morning puffiness from water retention",
+          "candidatePmid": "18981485",
+          "candidateTitle": "MK-677 2-year study: sustained IGF-1 elevation and body composition effects",
+          "score": 23,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable fat-free mass increase (~1-2 lbs); improved bone turnover markers; hair/nail growth acceleration; monitor fasting glucose",
+          "candidatePmid": "18981485",
+          "candidateTitle": "MK-677 2-year study: sustained IGF-1 elevation and body composition effects",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "2-year clinical data shows sustained IGF-1 without tachyphylaxis; continued body composition benefits; requires ongoing glucose monitoring",
+          "candidatePmid": "18981485",
+          "candidateTitle": "MK-677 2-year study: sustained IGF-1 elevation and body composition effects",
+          "score": 36,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "MOTS-c",
+      "slug": "mots-c",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Regulates mitochondrial function and AMPK. Enhances glucose uptake and fatty acid oxidation, improves insulin sensitivity, and protects agai",
+          "candidatePmid": "25710270",
+          "candidateTitle": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+          "score": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Energy, metabolism, fat loss, longevity",
+          "candidatePmid": "25710270",
+          "candidateTitle": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Promising but limited human data. As an endogenous peptide, theoretical biocompatibility favorable.",
+          "candidatePmid": "36233287",
+          "candidateTitle": "MOTS-c, the Most Recent Mitochondrial Derived Peptide in Human Aging and Age-Rel",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "MOTS-c is a peptide encoded in mitochondrial DNA studied for improving insulin sensitivity, boosting exercise performance, and protecting ag",
+          "candidatePmid": "25710270",
+          "candidateTitle": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+          "score": 35,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 4 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved insulin sensitivity; increased energy during exercise",
+          "candidatePmid": "25710270",
+          "candidateTitle": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Enhanced exercise performance and endurance; reduced muscle fatigue",
+          "candidatePmid": "31577362",
+          "candidateTitle": "MOTS-c improves skeletal muscle glucose metabolism",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Metabolic adaptations; improved body composition",
+          "candidatePmid": "25710270",
+          "candidateTitle": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Mitochondrial health optimization; age-related metabolic protection",
+          "candidatePmid": "25710270",
+          "candidateTitle": "MOTS-c regulates metabolic homeostasis (Cell Metabolism)",
+          "score": 33,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "NAD+",
+      "slug": "nad-",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "NAD+ is a critical coenzyme in every cell, essential for mitochondrial energy production (oxidative phosphorylation), DNA repair via PARP an",
+          "candidatePmid": "32686947",
+          "candidateTitle": "NAD+ decline is a driver of aging",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Cellular energy, DNA repair, longevity",
+          "candidatePmid": "35707274",
+          "candidateTitle": "SS-31, a Mitochondria-Targeting Peptide, Ameliorates Kidney Disease.",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Generally well-tolerated. IV NAD+ infusions may cause chest tightness, nausea, and cramping during administration. Subcutaneous injection is",
+          "candidatePmid": "29514064",
+          "candidateTitle": "NAD+ intermediates: NMN and NR clinical trial overview",
+          "score": 16,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "NAD+ is a coenzyme essential for cellular energy and DNA repair that declines sharply with age, studied for restoring mitochondrial function",
+          "candidatePmid": "32686947",
+          "candidateTitle": "NAD+ decline is a driver of aging",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 4 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Increased energy, mental clarity, reduced brain fog",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved exercise recovery, better sleep quality, mood stabilization",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable improvements in metabolic markers, sustained energy throughout the day",
+          "candidatePmid": "29514064",
+          "candidateTitle": "NAD+ intermediates: NMN and NR clinical trial overview",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "NAD+ level restoration; potential longevity benefits (animal data for lifespan extension)",
+          "candidatePmid": "32686947",
+          "candidateTitle": "NAD+ decline is a driver of aging",
+          "score": 38,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "PT-141",
+      "slug": "pt-141",
+      "studyCount": 19,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Central melanocortin pathway. Activates MC4R in the CNS to stimulate sexual desire through brain pathways rather than vascular effects.",
+          "candidatePmid": "12851303",
+          "candidateTitle": "PT-141: a melanocortin agonist for the treatment of sexual dysfunction.",
+          "score": 23,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Sexual arousal, libido",
+          "candidatePmid": "16839319",
+          "candidateTitle": "An effect on the subjective sexual response in premenopausal women with sexual a",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Nausea/hypertension possible. FDA-approved (Vyleesi) for HSDD in premenopausal women. Limited to 8 doses/month.",
+          "candidatePmid": "30689646",
+          "candidateTitle": "PT-141 (Bremelanotide) for hypoactive sexual desire   Phase 3",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "PT-141 (Bremelanotide) is an FDA-approved melanocortin agonist prescribed as Vyleesi for hypoactive sexual desire disorder in premenopausal ",
+          "candidatePmid": "16839319",
+          "candidateTitle": "An effect on the subjective sexual response in premenopausal women with sexual a",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2.7 hours",
+          "candidatePmid": "31385737",
+          "candidateTitle": "Bremelanotide mechanism of action and pharmacology review",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Libido enhancement typically onset within 45 minutes of dosing",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Consistent improvement in sexual response and desire",
+          "candidatePmid": "30689646",
+          "candidateTitle": "PT-141 (Bremelanotide) for hypoactive sexual desire   Phase 3",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Psychological effects may plateau; effectiveness maintained with intermittent use",
+          "candidatePmid": "15319808",
+          "candidateTitle": "Gateways to clinical trials.",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "FDA-approved for long-term use; limit to 8 doses/month",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "Retatrutide",
+      "slug": "retatrutide",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Multi-receptor activation for appetite suppression, fat oxidation, energy expenditure. Unique triple agonism at GLP-1, GIP, and glucagon rec",
+          "candidatePmid": "37115596",
+          "candidateTitle": "Triple GLP-1/GIP/glucagon agonism   pharmacological rationale",
+          "score": 55,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Superior body recomposition, massive fat loss, metabolic health",
+          "candidatePmid": "37115596",
+          "candidateTitle": "Triple GLP-1/GIP/glucagon agonism   pharmacological rationale",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "GI side effects (nausea, diarrhea) common; investigational   not FDA-approved as of 2026. Phase 3 TRIUMPH trials ongoing.",
+          "candidatePmid": "41997446",
+          "candidateTitle": "GIPR:GCGR co-agonism restores normal weight in obese rodents.",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Retatrutide is an investigational triple GLP-1/GIP/glucagon receptor agonist studied in Phase 2 trials, producing the highest weight loss ev",
+          "candidatePmid": "37351564",
+          "candidateTitle": "Retatrutide Phase 2 trial: ~24% weight loss at 48 weeks",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 144 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "GI adjustment; nausea during dose escalation",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Rapid appetite reduction; early weight loss 1-2 lbs/week",
+          "candidatePmid": "37351564",
+          "candidateTitle": "Retatrutide Phase 2 trial: ~24% weight loss at 48 weeks",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "10-15% body weight reduction at therapeutic dose",
+          "candidatePmid": "37351564",
+          "candidateTitle": "Retatrutide Phase 2 trial: ~24% weight loss at 48 weeks",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Up to 24.2% weight loss at 48 weeks (NEJM Phase 2 trial, 12mg dose)",
+          "candidatePmid": "37351564",
+          "candidateTitle": "Retatrutide Phase 2 trial: ~24% weight loss at 48 weeks",
+          "score": 100,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Selank",
+      "slug": "selank",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Modulates GABA/serotonin neurotransmitter systems. Enhances immune function by influencing IL-6 and T-helper cell balance. Stabilizes enkeph",
+          "candidatePmid": "25109699",
+          "candidateTitle": "Selank modulates GABA receptor gene expression",
+          "score": 8,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Anxiety reduction, mental clarity, mood",
+          "candidatePmid": "18454096",
+          "candidateTitle": "Selank anxiolytic effects in humans",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Very safe profile. No reported dependence or withdrawal. Approved as anxiolytic in Russia. Not FDA-approved in US.",
+          "candidatePmid": "18454096",
+          "candidateTitle": "Selank anxiolytic effects in humans",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Selank is a synthetic anxiolytic peptide approved in Russia studied for reducing anxiety and improving mental clarity, with effects comparab",
+          "candidatePmid": "18454096",
+          "candidateTitle": "Selank anxiolytic effects in humans",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.5 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Rapid reduction in anxiety within days; improved stress resilience; calmer baseline",
+          "candidatePmid": "28280289",
+          "candidateTitle": "Peptide Selank Enhances the Effect of Diazepam in Reducing Anxiety in Unpredicta",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Stable anxiolytic effects without sedation; improved sleep onset",
+          "candidatePmid": "18454096",
+          "candidateTitle": "Selank anxiolytic effects in humans",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Adaptive reduction in baseline anxiety; improved immune markers in some studies",
+          "candidatePmid": "18454096",
+          "candidateTitle": "Selank anxiolytic effects in humans",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Effects generally require cycling; tolerance is low compared to benzodiazepines",
+          "candidatePmid": "18454096",
+          "candidateTitle": "Selank anxiolytic effects in humans",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Semaglutide",
+      "slug": "semaglutide",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "GLP-1 receptor agonism mimics the incretin hormone to reduce appetite, slow gastric emptying, improve insulin sensitivity, and provide cardi",
+          "candidatePmid": "36050763",
+          "candidateTitle": "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist for the treatment of type 2 di",
+          "score": 19,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Fat loss, appetite control, cardiovascular benefits",
+          "candidatePmid": "36050763",
+          "candidateTitle": "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist for the treatment of type 2 di",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "FDA-approved for diabetes (Ozempic) and obesity (Wegovy). Well-studied long-term. GI side effects possible. Prescription required.",
+          "candidatePmid": "40544432",
+          "candidateTitle": "Cagrilintide-Semaglutide in Adults with Overweight or Obesity and Type 2 Diabete",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Semaglutide is an FDA-approved GLP-1 receptor agonist used to treat type 2 diabetes (Ozempic) and obesity (Wegovy), reducing appetite and im",
+          "candidatePmid": "36050763",
+          "candidateTitle": "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist for the treatment of type 2 di",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 168 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "GI adjustment; appetite suppression significant from week 1",
+          "candidatePmid": "31189511",
+          "candidateTitle": "Oral semaglutide (Rybelsus) in type 2 diabetes   PIONEER program",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "0.5-1 lb/week weight loss; improved blood sugar control",
+          "candidatePmid": "35441470",
+          "candidateTitle": "STEP program overview: pooled Phase 3 weight loss data",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "~10-14% body weight reduction; cardiovascular markers improving",
+          "candidatePmid": "36050763",
+          "candidateTitle": "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist for the treatment of type 2 di",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "14.9% mean weight loss at 68 weeks (STEP 1 trial); 20% reduction in major CV events",
+          "candidatePmid": "37952131",
+          "candidateTitle": "SELECT trial: semaglutide reduces cardiovascular events by 20%",
+          "score": 67,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Semax",
+      "slug": "semax",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "BDNF upregulation, nootropic effects. Enhances neural plasticity, protects neurons from oxidative stress, and improves cerebral blood circul",
+          "candidatePmid": "26552305",
+          "candidateTitle": "[EFFECT OF PEPTIDE SEMAX ON SYNAPTIC ACTIVITY AND SHORT-TERM PLASTICITY OF GLUTA",
+          "score": 21,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Mental clarity, focus, neuroprotection",
+          "candidatePmid": "20617398",
+          "candidateTitle": "The effect of Semax and its C-end peptide PGP on the morphology and proliferativ",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Nasal spray common; well-tolerated. Approved in Russia/Ukraine. Not FDA-approved in the US.",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Semax is a synthetic ACTH-derived cognitive peptide approved in Russia studied for enhancing memory, focus, and neuroprotection by upregulat",
+          "candidatePmid": "20387390",
+          "candidateTitle": "Semax cognitive improvement in humans",
+          "score": 19,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.33 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Noticeable cognitive enhancement: sharper focus, mental clarity, faster recall within days",
+          "candidatePmid": "20387390",
+          "candidateTitle": "Semax cognitive improvement in humans",
+          "score": 10,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "BDNF-mediated improvements in memory consolidation and mood stability",
+          "candidatePmid": "20387390",
+          "candidateTitle": "Semax cognitive improvement in humans",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Neuroprotective adaptation; reduced cognitive fatigue under stress",
+          "candidatePmid": "20387390",
+          "candidateTitle": "Semax cognitive improvement in humans",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained cognitive baseline improvement; may support neurogenesis",
+          "candidatePmid": "20387390",
+          "candidateTitle": "Semax cognitive improvement in humans",
+          "score": 33,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Sermorelin",
+      "slug": "sermorelin",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Natural GH pulse stimulation. Mimics endogenous GHRH to stimulate the pituitary gland's own growth hormone production in a physiologic, puls",
+          "candidatePmid": "40244089",
+          "candidateTitle": "Growth Hormone-Releasing Hormone Antagonists Increase Radiosensitivity in Non-Sm",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Muscle growth, recovery, sleep, anti-aging",
+          "candidatePmid": "40244089",
+          "candidateTitle": "Growth Hormone-Releasing Hormone Antagonists Increase Radiosensitivity in Non-Sm",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Very safe; mimics physiology. Previously FDA-approved for GH deficiency diagnosis. Well-tolerated.",
+          "candidatePmid": "10334586",
+          "candidateTitle": "Sermorelin for idiopathic GH deficiency in children (FDA study)",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Sermorelin is a GHRH analog previously FDA-approved for diagnosing GH deficiency in children, studied for restoring natural growth hormone s",
+          "candidatePmid": "18031173",
+          "candidateTitle": "Sermorelin: a review of its use in the diagnosis and treatment of children with ",
+          "score": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved sleep depth; GH pulse enhancement during sleep",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Increased energy and recovery; some users report improved skin quality",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Body composition improvements; IGF-1 elevation on bloodwork",
+          "candidatePmid": "9141536",
+          "candidateTitle": "Sermorelin increases lean mass in older adults",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained GH axis support with physiologic (non-suppressive) mechanism",
+          "candidatePmid": "10334586",
+          "candidateTitle": "Sermorelin for idiopathic GH deficiency in children (FDA study)",
+          "score": 20,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "SS-31",
+      "slug": "ss-31",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Mitochondrial protection. Selectively concentrates in the inner mitochondrial membrane where it stabilizes cardiolipin for efficient electro",
+          "candidatePmid": "32102697",
+          "candidateTitle": "Elamipretide stabilizes cardiolipin and cristae structure",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Energy, recovery, neuroprotection",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Well-tolerated in multiple Phase 2/3 trials. Granted Fast Track and Orphan Drug designations by FDA.",
+          "candidatePmid": "30430350",
+          "candidateTitle": "SS-31 (Elamipretide) clinical trials overview",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "SS-31 (Elamipretide) is a mitochondria-targeting peptide studied for protecting heart and muscle cells from energy failure, currently in FDA",
+          "candidatePmid": "30430350",
+          "candidateTitle": "SS-31 (Elamipretide) clinical trials overview",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 4 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Improved mitochondrial efficiency; reduced exercise-induced oxidative stress",
+          "candidatePmid": "31089179",
+          "candidateTitle": "Elamipretide improves mitochondrial dysfunction and memory impairment",
+          "score": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved exercise capacity and recovery; reduced fatigue",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Cardioprotective adaptations; improved VO2 markers in clinical trials",
+          "candidatePmid": "30430350",
+          "candidateTitle": "SS-31 (Elamipretide) clinical trials overview",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained mitochondrial protection; FDA Fast Track designation for cardiac indications",
+          "candidatePmid": "31637556",
+          "candidateTitle": "Elamipretide attenuates age-related cardiac protein modifications",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "TB-500",
+      "slug": "tb-500",
+      "studyCount": 15,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Upregulates actin for cell migration and wound healing. Reduces inflammation, encourages new blood vessel growth, and supports stem cell mat",
+          "candidatePmid": "14657002",
+          "candidateTitle": "Thymosin Beta-4 wound healing and inflammation",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Muscle/tissue repair, flexibility, injury recovery",
+          "candidatePmid": "17379810",
+          "candidateTitle": "Thymosin β4 activates cardiac progenitor cells for myocardial repair",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Research-only; well-tolerated in Phase I/II trials. Not FDA-approved for systemic use.",
+          "candidatePmid": "20552046",
+          "candidateTitle": "Thymosin β4 Phase I safety study in healthy volunteers",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "TB-500 is a synthetic fragment of Thymosin Beta-4 studied for accelerating muscle and tissue repair, reducing inflammation, and improving fl",
+          "candidatePmid": "14657002",
+          "candidateTitle": "Thymosin Beta-4 wound healing and inflammation",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Systemic anti-inflammatory effect; improved muscle pliability and reduced stiffness",
+          "candidatePmid": "17379810",
+          "candidateTitle": "Thymosin β4 activates cardiac progenitor cells for myocardial repair",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved range of motion; reduced recovery time after training",
+          "candidatePmid": "17379810",
+          "candidateTitle": "Thymosin β4 activates cardiac progenitor cells for myocardial repair",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Enhanced tissue repair; measurable improvement in chronic injury sites",
+          "candidatePmid": "14657002",
+          "candidateTitle": "Thymosin Beta-4 wound healing and inflammation",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Improved recovery baseline; potential stem cell mobilization benefits",
+          "candidatePmid": "22962027",
+          "candidateTitle": "Synthesis and characterization of the N-terminal acetylated 17-23 fragment of th",
+          "score": 17,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "Tesamorelin",
+      "slug": "tesamorelin",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Stimulates GH for fat metabolism. Binds to GHRH receptors on the pituitary gland to stimulate natural growth hormone production, specificall",
+          "candidatePmid": "20554713",
+          "candidateTitle": "Tesamorelin visceral fat reduction (FDA trial)",
+          "score": 19,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Visceral fat reduction, body recomposition",
+          "candidatePmid": "20554713",
+          "candidateTitle": "Tesamorelin visceral fat reduction (FDA trial)",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "FDA-approved for lipodystrophy; GI side effects possible. Contraindicated in active malignancy.",
+          "candidatePmid": "22050344",
+          "candidateTitle": "Spotlight on tesamorelin in HIV-associated lipodystrophy.",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Tesamorelin is the only FDA-approved growth-hormone-releasing peptide (Egrifta) indicated specifically for reducing visceral abdominal fat i",
+          "candidatePmid": "20554713",
+          "candidateTitle": "Tesamorelin visceral fat reduction (FDA trial)",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.43 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Early GH-related effects; initial fluid retention possible",
+          "candidatePmid": "16670169",
+          "candidateTitle": "Tesamorelin improves executive function in older adults",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable visceral fat reduction (avg 15% in FDA trial at this point)",
+          "candidatePmid": "20554713",
+          "candidateTitle": "Tesamorelin visceral fat reduction (FDA trial)",
+          "score": 60,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Sustained visceral fat reduction and metabolic improvement; IGF-1 normalization",
+          "candidatePmid": "21367932",
+          "candidateTitle": "Tesamorelin 52-week extension study   sustained VAT reduction",
+          "score": 43,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Thymosin Alpha-1",
+      "slug": "thymosin-alpha-1",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Enhances T-cell function, boosts dendritic cell activity, and modulates cytokine production. Shifts immune response toward effective pathoge",
+          "candidatePmid": "18274638",
+          "candidateTitle": "Thymosin Alpha-1 in immune-compromised patients",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Immune support, antiviral, recovery",
+          "candidatePmid": "32145828",
+          "candidateTitle": "Thymosin Alpha-1 in sepsis and critical care",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Approved in 35+ countries for hep B/C. One of the most extensively studied peptides. Not FDA-approved in US.",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Thymosin Alpha-1 is an immune-modulating peptide approved in over 35 countries for treating hepatitis B and C, studied for enhancing T-cell ",
+          "candidatePmid": "18274638",
+          "candidateTitle": "Thymosin Alpha-1 in immune-compromised patients",
+          "score": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "NK cell and T-cell activation begins; improved energy if immune-suppressed",
+          "candidatePmid": "18274638",
+          "candidateTitle": "Thymosin Alpha-1 in immune-compromised patients",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Enhanced immune response to pathogens; reduced frequency of illness",
+          "candidatePmid": "18274638",
+          "candidateTitle": "Thymosin Alpha-1 in immune-compromised patients",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained immune modulation; improved recovery from illness",
+          "candidatePmid": "18274638",
+          "candidateTitle": "Thymosin Alpha-1 in immune-compromised patients",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "Long-term immune resilience; approved use in 35+ countries for hepatitis therapy",
+          "candidatePmid": "17936025",
+          "candidateTitle": "Thymosin Alpha-1 as cancer immunotherapy adjuvant",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Tirzepatide",
+      "slug": "tirzepatide",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Dual receptor agonism at GLP-1 and GIP receptors for synergistic appetite suppression, improved insulin sensitivity, and enhanced metabolic ",
+          "candidatePmid": "34186022",
+          "candidateTitle": "Efficacy and safety of a novel dual GIP and GLP-1 receptor agonist tirzepatide i",
+          "score": 15,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Weight loss, body recomposition, glycemic control",
+          "candidatePmid": "35133415",
+          "candidateTitle": "Effect of Subcutaneous Tirzepatide vs Placebo Added to Titrated Insulin Glargine",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "FDA-approved for type 2 diabetes (Mounjaro) and obesity (Zepbound). GI side effects common but manageable. Well-studied long-term safety.",
+          "candidatePmid": "34186022",
+          "candidateTitle": "Efficacy and safety of a novel dual GIP and GLP-1 receptor agonist tirzepatide i",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Tirzepatide is an FDA-approved dual GLP-1/GIP agonist sold as Mounjaro for type 2 diabetes and Zepbound for obesity, achieving up to 22.5% b",
+          "candidatePmid": "34170647",
+          "candidateTitle": "SURPASS program: tirzepatide in type 2 diabetes (Phase 3)",
+          "score": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 120 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "GI adjustment period; appetite suppression begins",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "5-8% weight reduction at therapeutic dose",
+          "candidatePmid": null,
+          "candidateTitle": "Tirzepatide Phase 3 SURMOUNT-1: up to 22.5% weight loss",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "15-20% body weight reduction at 15mg",
+          "candidatePmid": null,
+          "candidateTitle": "Tirzepatide Phase 3 SURMOUNT-1: up to 22.5% weight loss",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_long_term",
+          "claim": "22.5% weight loss at 72 weeks (SURMOUNT-1); superior to semaglutide in head-to-head",
+          "candidatePmid": "34170647",
+          "candidateTitle": "SURPASS program: tirzepatide in type 2 diabetes (Phase 3)",
+          "score": 67,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Tesofensine",
+      "slug": "tesofensine",
+      "studyCount": 20,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Triple monoamine reuptake inhibitor (inhibits reuptake of serotonin, noradrenaline, and dopamine). Originates as an Alzheimer's/Parkinson's ",
+          "candidatePmid": "41392177",
+          "candidateTitle": "Structural basis for pharmacotherapeutic action of triple reuptake inhibitors.",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Extreme fat loss and appetite suppression without GLP-1 side effects",
+          "candidatePmid": "23932919",
+          "candidateTitle": "Tesofensine induces appetite suppression and weight loss with reversal of low fo",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Research-only. Potent CNS stimulant. Can cause insomnia, elevated heart rate, and dry mouth. Half-life is extremely long, leading to accumul",
+          "candidatePmid": "19548858",
+          "candidateTitle": "Tesofensine--a novel potent weight loss medicine. Evaluation of: Astrup A, Breum",
+          "score": 8,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Tesofensine is an investigational triple monoamine reuptake inhibitor originally developed for Alzheimer's disease, studied for powerful app",
+          "candidatePmid": "17112503",
+          "candidateTitle": "Expression of brain derived neurotrophic factor, activity-regulated cytoskeleton",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 216 hours",
+          "candidatePmid": "19705923",
+          "candidateTitle": "A quantitative enterohepatic circulation model: development and evaluation with ",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Complete abolition of hunger cravings, massive energy",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "10%+ body weight loss",
+          "candidatePmid": "18950803",
+          "candidateTitle": "Tesofensine induces profound weight loss",
+          "score": 100,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Argireline",
+      "slug": "argireline",
+      "studyCount": 1,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Competes with SNAP-25 (synaptosomal-associated protein 25) for binding at the SNARE complex, partially inhibiting acetylcholine release at t",
+          "candidatePmid": "11697020",
+          "candidateTitle": "Evaluation of the efficacy and tolerance of a cosmetic formulation with Argireli",
+          "score": 4,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Topical wrinkle reduction, SNAP-25 inhibition, muscle relaxation (neurocosmetic)",
+          "candidatePmid": "11697020",
+          "candidateTitle": "Evaluation of the efficacy and tolerance of a cosmetic formulation with Argireli",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Considered very safe for topical use. No systemic absorption. Not approved for injection. Not an FDA-classified drug — classified as a cosme",
+          "candidatePmid": "11697020",
+          "candidateTitle": "Evaluation of the efficacy and tolerance of a cosmetic formulation with Argireli",
+          "score": 10,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Argireline is a synthetic hexapeptide used in cosmetic skincare that works like a topical Botox by temporarily relaxing facial muscles to re",
+          "candidatePmid": "11697020",
+          "candidateTitle": "Evaluation of the efficacy and tolerance of a cosmetic formulation with Argireli",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "5-Amino-1MQ",
+      "slug": "5-amino-1mq",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Selectively inhibits nicotinamide N-methyltransferase (NNMT), an enzyme that consumes SAM and depletes NAD+ pools while promoting fat storag",
+          "candidatePmid": "29382845",
+          "candidateTitle": "NNMT inhibition induces browning of white adipose tissue and reduces fat mass",
+          "score": 7,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Fat loss, NAD+ preservation, metabolic optimization, muscle protection",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. All efficacy and safety data derived from rodent models. Do not extrapolate",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "5-Amino-1MQ is a small-molecule NNMT inhibitor studied in rodent models for its ability to reduce fat mass and raise NAD+ levels without die",
+          "candidatePmid": "29382845",
+          "candidateTitle": "NNMT inhibition induces browning of white adipose tissue and reduces fat mass",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Rodent models show measurable fat mass reduction and NAD+ elevation at 4 weeks",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained fat mass reduction observed in diet-induced obesity models",
+          "candidatePmid": "25662115",
+          "candidateTitle": "NNMT inhibition protects against diet-induced obesity",
+          "score": 33,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "ARA-290",
+      "slug": "ara-290",
+      "studyCount": 3,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Selectively activates the innate repair receptor (IRR), a heterodimer of the erythropoietin receptor (EPOR) and CD131 (βc receptor). Unlike ",
+          "candidatePmid": "24510175",
+          "candidateTitle": "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber ne",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Neuropathic pain relief, small fiber neuropathy, anti-inflammation, tissue protection",
+          "candidatePmid": "24510175",
+          "candidateTitle": "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber ne",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Has completed Phase 2 human trials. Very short plasma half-life (~2 minutes) but prolonged pharmacodynamic effect. No erythropoietic activit",
+          "candidatePmid": "24510175",
+          "candidateTitle": "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber ne",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "ARA-290 is a peptide modeled on erythropoietin that activates the body's tissue-repair pathway without the blood-thickening effects of EPO, ",
+          "candidatePmid": "25662851",
+          "candidateTitle": "ARA-290 reduces corneal nerve fiber density loss in painful diabetic neuropathy",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.033 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Neuropathic pain scores begin improving; corneal nerve fiber stabilization",
+          "candidatePmid": "24510175",
+          "candidateTitle": "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber ne",
+          "score": 63,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained reduction in fatigue and pain in sarcoidosis neuropathy models",
+          "candidatePmid": "24510175",
+          "candidateTitle": "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber ne",
+          "score": 50,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Gonadorelin",
+      "slug": "gonadorelin",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic decapeptide identical to endogenous gonadotropin-releasing hormone (GnRH). Binds GnRH receptors in the anterior pituitary, stimula",
+          "candidatePmid": "23211033",
+          "candidateTitle": "Gonadorelin preserves intratesticular testosterone and spermatogenesis during te",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "LH/FSH stimulation, testosterone preservation, HPG axis support during TRT, fertility support",
+          "candidatePmid": "23211033",
+          "candidateTitle": "Gonadorelin preserves intratesticular testosterone and spermatogenesis during te",
+          "score": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "FDA-approved as Factrel (historical, for diagnostic testing of HPG axis). Compounded gonadorelin used as TRT adjunct is not itself FDA-appro",
+          "candidatePmid": "3510431",
+          "candidateTitle": "Pulsatile GnRH treatment restores gonadotropin secretion and fertility",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Gonadorelin is a synthetic copy of the body's own GnRH hormone, used to keep the testes active and maintain natural testosterone production ",
+          "candidatePmid": "23211033",
+          "candidateTitle": "Gonadorelin preserves intratesticular testosterone and spermatogenesis during te",
+          "score": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.05 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "LH/FSH pulse restoration within hours of first dose",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Testicular volume maintenance; intratesticular testosterone preservation",
+          "candidatePmid": "23211033",
+          "candidateTitle": "Gonadorelin preserves intratesticular testosterone and spermatogenesis during te",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Spermatogenesis maintained if used consistently alongside TRT",
+          "candidatePmid": "23211033",
+          "candidateTitle": "Gonadorelin preserves intratesticular testosterone and spermatogenesis during te",
+          "score": 25,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Larazotide",
+      "slug": "larazotide",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic octapeptide that acts as a zonulin antagonist. Zonulin is the body's primary regulator of intestinal tight junction permeability; ",
+          "candidatePmid": "18824503",
+          "candidateTitle": "Larazotide acetate regulates epithelial tight junctions via a zonulin-independen",
+          "score": 41,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Gut barrier repair, tight junction integrity, celiac disease symptom reduction, leaky gut",
+          "candidatePmid": "26055953",
+          "candidateTitle": "Larazotide acetate in persistent symptoms of celiac disease: Phase 2b trial",
+          "score": 30,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Has completed Phase 2b and Phase 3 human trials with excellent safety profile. Minimal systemic absorption (acts locally in gut lumen). Not ",
+          "candidatePmid": "26055953",
+          "candidateTitle": "Larazotide acetate in persistent symptoms of celiac disease: Phase 2b trial",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Larazotide is a gut-barrier peptide that blocks the body's 'leaky gut' signaling molecule (zonulin), keeping intestinal tight junctions clos",
+          "candidatePmid": "18824503",
+          "candidateTitle": "Larazotide acetate regulates epithelial tight junctions via a zonulin-independen",
+          "score": 26,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 1.5 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Reduction in gut permeability markers (zonulin)",
+          "candidatePmid": "18824503",
+          "candidateTitle": "Larazotide acetate regulates epithelial tight junctions via a zonulin-independen",
+          "score": 50,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Symptom improvement in celiac/IBD research populations",
+          "candidatePmid": "26055953",
+          "candidateTitle": "Larazotide acetate in persistent symptoms of celiac disease: Phase 2b trial",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained tight junction integrity and reduced inflammatory markers",
+          "candidatePmid": "18824503",
+          "candidateTitle": "Larazotide acetate regulates epithelial tight junctions via a zonulin-independen",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "VIP",
+      "slug": "vip",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "28-amino acid neuropeptide that binds VPAC1 and VPAC2 receptors, activating cAMP pathways to produce broad anti-inflammatory effects. Inhibi",
+          "candidatePmid": "12370357",
+          "candidateTitle": "Vasoactive intestinal peptide inhibits TLR4-induced inflammatory signaling in ma",
+          "score": 16,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Systemic anti-inflammation, CIRS/mold illness treatment, pulmonary vasodilation, immune modulation",
+          "candidatePmid": "23209310",
+          "candidateTitle": "VIP is an autocrine growth factor for normal lung epithelium and as a growth fac",
+          "score": 11,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Not FDA-approved for general use. Used in the Shoemaker CIRS protocol under practitioner supervision. Very short plasma half-life (~2 min). ",
+          "candidatePmid": "23209310",
+          "candidateTitle": "VIP is an autocrine growth factor for normal lung epithelium and as a growth fac",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "VIP is a naturally occurring neuropeptide that powerfully suppresses systemic inflammation, dilates blood vessels, and is the cornerstone tr",
+          "candidatePmid": "23209310",
+          "candidateTitle": "VIP is an autocrine growth factor for normal lung epithelium and as a growth fac",
+          "score": 6,
+          "confidence": "NONE"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.033 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Flushing adaptation; early TGF-beta 1 reduction",
+          "candidatePmid": "23209310",
+          "candidateTitle": "VIP is an autocrine growth factor for normal lung epithelium and as a growth fac",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Pulmonary arterial pressure improvement; reduced fatigue",
+          "candidatePmid": "23209310",
+          "candidateTitle": "VIP is an autocrine growth factor for normal lung epithelium and as a growth fac",
+          "score": 67,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Normalization of inflammatory markers; cognitive improvement in CIRS",
+          "candidatePmid": "23209310",
+          "candidateTitle": "VIP is an autocrine growth factor for normal lung epithelium and as a growth fac",
+          "score": 60,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Oxytocin",
+      "slug": "oxytocin",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Nonapeptide produced in the hypothalamus and released by the posterior pituitary. Binds oxytocin receptors (OXTR) broadly expressed in brain",
+          "candidatePmid": "18498743",
+          "candidateTitle": "Intranasal oxytocin reduces cortisol and enhances social cognition",
+          "score": 16,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Social bonding, anxiety reduction, gut motility, anti-inflammation, libido, trust and empathy",
+          "candidatePmid": "18498743",
+          "candidateTitle": "Intranasal oxytocin reduces cortisol and enhances social cognition",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "IV/IM oxytocin (Pitocin/Syntocinon) is FDA-approved for obstetric indications only. Intranasal oxytocin as a research compound is NOT FDA-ap",
+          "candidatePmid": "30218869",
+          "candidateTitle": "Oxytocin improves gastrointestinal motility in functional dyspepsia",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Oxytocin is the 'bonding hormone' — a natural neuropeptide that reduces anxiety, promotes trust and social connection, and has documented gu",
+          "candidatePmid": "18498743",
+          "candidateTitle": "Intranasal oxytocin reduces cortisol and enhances social cognition",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.083 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Acute anxiolytic and prosocial effects within 30 minutes of dosing",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Chronic reduction in stress reactivity with consistent use",
+          "candidatePmid": "18498743",
+          "candidateTitle": "Intranasal oxytocin reduces cortisol and enhances social cognition",
+          "score": 20,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Thymalin",
+      "slug": "thymalin",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Polypeptide extract from animal thymus gland containing a mixture of thymic hormones including thymulin, thymosin, and thymopoietin. Restore",
+          "candidatePmid": "9226264",
+          "candidateTitle": "Thymic peptides in aging and immune restoration",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Immune restoration, longevity, thymic function support, T-cell maturation",
+          "candidatePmid": "9226264",
+          "candidateTitle": "Thymic peptides in aging and immune restoration",
+          "score": 63,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Based primarily on Russian clinical cohort studies (Khavinson et al.). Limited Western RCT validation. Generally well tolerated in published",
+          "candidatePmid": "9226264",
+          "candidateTitle": "Thymic peptides in aging and immune restoration",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Thymalin is a polypeptide extract from the thymus gland studied in Russian research for restoring immune function and extending healthspan, ",
+          "candidatePmid": "9226264",
+          "candidateTitle": "Thymic peptides in aging and immune restoration",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "T-cell count normalization; improved immune markers in Russian cohort studies",
+          "candidatePmid": "9226264",
+          "candidateTitle": "Thymic peptides in aging and immune restoration",
+          "score": 44,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained immune function improvement over 6-month follow-up",
+          "candidatePmid": "12930627",
+          "candidateTitle": "Thymalin reduces mortality and extends lifespan in elderly patients: 6-year foll",
+          "score": 50,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Humanin",
+      "slug": "humanin",
+      "studyCount": 3,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "21-amino acid mitochondrial-derived peptide (MOTS-c sibling peptide) encoded in the 16S rRNA gene of mitochondrial DNA. Binds formyl peptide",
+          "candidatePmid": "11606396",
+          "candidateTitle": "Humanin: a neuroprotective peptide against Alzheimer's disease",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Neuroprotection, anti-apoptosis, insulin sensitization, longevity, Alzheimer's protection",
+          "candidatePmid": "25380166",
+          "candidateTitle": "Humanin declines with age and is associated with age-related diseases",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ PRECLINICAL RESEARCH ONLY for therapeutic use. No completed human clinical trials for exogenous administration. Endogenous peptide with we",
+          "candidatePmid": "22912423",
+          "candidateTitle": "Exogenous Humanin improves insulin sensitivity and reduces inflammation",
+          "score": 19,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Humanin is a tiny peptide made by your mitochondria that protects cells from dying, shields the brain from Alzheimer's plaques, and improves",
+          "candidatePmid": "22912423",
+          "candidateTitle": "Exogenous Humanin improves insulin sensitivity and reduces inflammation",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 0.5 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Rodent models show neuroprotection and metabolic improvement within 4 weeks",
+          "candidatePmid": "22912423",
+          "candidateTitle": "Exogenous Humanin improves insulin sensitivity and reduces inflammation",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "PE-22-28",
+      "slug": "pe-22-28",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic hexapeptide fragment derived from the propeptide of sortilin, an endogenous regulator of the TREK-1 potassium channel. PE-22-28 co",
+          "candidatePmid": "20142043",
+          "candidateTitle": "Spadin, a sortilin-derived peptide, targeting rodent TREK-1 channels: a new conc",
+          "score": 25,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Antidepressant, neuroplasticity, TREK-1 channel blockade, fast-acting mood elevation",
+          "candidatePmid": "20142043",
+          "candidateTitle": "Spadin, a sortilin-derived peptide, targeting rodent TREK-1 channels: a new conc",
+          "score": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ PRECLINICAL RESEARCH ONLY. No human clinical trials completed. All efficacy data from rodent models. No validated human dosing, pharmacoki",
+          "candidatePmid": "20142043",
+          "candidateTitle": "Spadin, a sortilin-derived peptide, targeting rodent TREK-1 channels: a new conc",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "PE-22-28 is a spadin-derived peptide that blocks the TREK-1 potassium channel — a key culprit in depression — producing fast-acting antidepr",
+          "candidatePmid": "27317793",
+          "candidateTitle": "PE-22-28 antidepressant effects and neuroplasticity",
+          "score": 39,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 1 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Rapid antidepressant effects within 1 week in rodent models (vs 4+ weeks for SSRIs)",
+          "candidatePmid": "20142043",
+          "candidateTitle": "Spadin, a sortilin-derived peptide, targeting rodent TREK-1 channels: a new conc",
+          "score": 50,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Pinealon",
+      "slug": "pinealon",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic tripeptide (Glu-Asp-Arg) bioregulatory peptide developed by Khavinson's St. Petersburg Institute. Acts as a penetrating peptide th",
+          "candidatePmid": "22070069",
+          "candidateTitle": "Pinealon increases resistance of neuronal cells to hypoxia",
+          "score": 21,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Neuroprotection, cognitive enhancement, antioxidant, circadian rhythm support",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Based on Russian bioregulatory research. Limited Western RCT validation. Generally considered safe in published use. Not FDA-approved. Resea",
+          "candidatePmid": "22070069",
+          "candidateTitle": "Pinealon increases resistance of neuronal cells to hypoxia",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Pinealon is a tiny tripeptide from Russian bioregulatory research that crosses into brain cells and modulates their gene expression, studied",
+          "candidatePmid": "22070069",
+          "candidateTitle": "Pinealon increases resistance of neuronal cells to hypoxia",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Neuroprotection markers in preclinical models",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Cognitive and circadian rhythm support in published cohort studies",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "Cortagen",
+      "slug": "cortagen",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic tetrapeptide (Ala-Glu-Asp-Pro) Khavinson bioregulatory peptide with tissue-specific regulatory activity in cortical and peripheral",
+          "candidatePmid": "19830544",
+          "candidateTitle": "Cortagen: cellular and molecular mechanisms of neuroprotection",
+          "score": 23,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Neuroregeneration, peripheral nerve repair, cardiac protection, anti-aging",
+          "candidatePmid": "19830544",
+          "candidateTitle": "Cortagen: cellular and molecular mechanisms of neuroprotection",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ PRECLINICAL RESEARCH ONLY. Based entirely on Khavinson group publications. No Western clinical trials. Not FDA-approved. Research only. Li",
+          "candidatePmid": "19830544",
+          "candidateTitle": "Cortagen: cellular and molecular mechanisms of neuroprotection",
+          "score": 6,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Cortagen is a Russian-developed tetrapeptide that enters nerve cell nuclei to regulate gene expression, studied for neuroregeneration after ",
+          "candidatePmid": "19830544",
+          "candidateTitle": "Cortagen: cellular and molecular mechanisms of neuroprotection",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Neuroprotective marker changes in preclinical models",
+          "candidatePmid": "21877140",
+          "candidateTitle": "Short peptide regulation of cardiac gene expression",
+          "score": 40,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Dihexa",
+      "slug": "dihexa",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Angiotensin IV analog developed at Washington State University. Binds hepatocyte growth factor (HGF) and potentiates its binding to the c-Me",
+          "candidatePmid": "22940599",
+          "candidateTitle": "Dihexa promotes synaptogenesis and cognitive function in rodents",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Synaptogenesis, memory enhancement, cognitive repair, angiotensin IV activity",
+          "candidatePmid": "19427331",
+          "candidateTitle": "Angiotensin IV analogs and HGF/c-Met signaling in memory",
+          "score": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. No established human safety profile. Extreme potency suggests very low effe",
+          "candidatePmid": "19427331",
+          "candidateTitle": "Angiotensin IV analogs and HGF/c-Met signaling in memory",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Dihexa is a brain-penetrating peptide from Washington State University research that triggers new synapse formation at extremely low doses —",
+          "candidatePmid": "22940599",
+          "candidateTitle": "Dihexa promotes synaptogenesis and cognitive function in rodents",
+          "score": 16,
+          "confidence": "NONE"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 48 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Memory and learning improvements in rodent models",
+          "candidatePmid": "22940599",
+          "candidateTitle": "Dihexa promotes synaptogenesis and cognitive function in rodents",
+          "score": 80,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "FOXO4-DRI",
+      "slug": "foxo4-dri",
+      "studyCount": 1,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "D-retro-inverso peptide that disrupts the interaction between FOXO4 and p53 in senescent cells. In normal cells, FOXO4 retains p53 in the nu",
+          "candidatePmid": "28479325",
+          "candidateTitle": "Targeted apoptosis of senescent cells restores tissue homeostasis during chemoto",
+          "score": 37,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Senescent cell elimination (senolytics), longevity, tissue rejuvenation, SASP reduction",
+          "candidatePmid": "28479325",
+          "candidateTitle": "Targeted apoptosis of senescent cells restores tissue homeostasis during chemoto",
+          "score": 29,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ EXPERIMENTAL COMPOUND. NO HUMAN CLINICAL TRIALS. Mechanism is potent and irreversible (apoptosis induction). Selective for senescent cells",
+          "candidatePmid": "28479325",
+          "candidateTitle": "Targeted apoptosis of senescent cells restores tissue homeostasis during chemoto",
+          "score": 22,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "FOXO4-DRI is a senolytic peptide that forces senescent ('zombie') cells to undergo programmed death by breaking the survival signal that kee",
+          "candidatePmid": "28479325",
+          "candidateTitle": "Targeted apoptosis of senescent cells restores tissue homeostasis during chemoto",
+          "score": 19,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 2 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Senescent cell clearance begins; possible SASP-driven inflammatory response",
+          "candidatePmid": "28479325",
+          "candidateTitle": "Targeted apoptosis of senescent cells restores tissue homeostasis during chemoto",
+          "score": 14,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Tissue rejuvenation markers in mouse models (fur density, fitness scores)",
+          "candidatePmid": "28479325",
+          "candidateTitle": "Targeted apoptosis of senescent cells restores tissue homeostasis during chemoto",
+          "score": 38,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "Klotho",
+      "slug": "klotho",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Klotho is a type-I transmembrane aging-suppressor protein expressed primarily in kidney tubular cells and brain choroid plexus. Cleaved extr",
+          "candidatePmid": "35594855",
+          "candidateTitle": "Soluble Klotho reverses cognitive and synaptic aging",
+          "score": 23,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Cognitive aging reversal, kidney protection, cardiovascular protection, longevity, FGF23 regulation",
+          "candidatePmid": "35594855",
+          "candidateTitle": "Soluble Klotho reverses cognitive and synaptic aging",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ EARLY-STAGE EXPERIMENTAL. Recombinant Klotho protein administration has not entered human clinical trials for anti-aging or cognitive enha",
+          "candidatePmid": "35594855",
+          "candidateTitle": "Soluble Klotho reverses cognitive and synaptic aging",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Klotho is a longevity protein that declines with age — mice injected with it show dramatically reversed cognitive aging within days. It regu",
+          "candidatePmid": "35594855",
+          "candidateTitle": "Soluble Klotho reverses cognitive and synaptic aging",
+          "score": 26,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "half_life",
+          "claim": "Half-life: 8 hours",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Cognitive improvement observed within 2 weeks in NHP models",
+          "candidatePmid": "35594855",
+          "candidateTitle": "Soluble Klotho reverses cognitive and synaptic aging",
+          "score": 17,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Sustained cognitive and synaptic plasticity improvements in animal models",
+          "candidatePmid": "35594855",
+          "candidateTitle": "Soluble Klotho reverses cognitive and synaptic aging",
+          "score": 43,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    {
+      "name": "OS-01",
+      "slug": "os-01",
+      "studyCount": 1,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Proprietary 8-amino acid peptide developed by OneSkin Technologies. Activates p53-mediated clearance of senescent skin cells in the epidermi",
+          "candidatePmid": "36380323",
+          "candidateTitle": "OS-01 reduces senescence markers and reverses skin biological aging",
+          "score": 20,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Skin cellular age reversal, senescent skin cell clearance, photoaging repair, epidermal renewal",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "TOPICAL USE ONLY. Not for injection. This is a cosmetic/skincare peptide in a topical formulation — not a research injectable. No reconstitu",
+          "candidatePmid": "36380323",
+          "candidateTitle": "OS-01 reduces senescence markers and reverses skin biological aging",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "OS-01 is a topical cosmetic peptide by OneSkin that targets and clears senescent 'zombie' skin cells, reducing biological skin age as measur",
+          "candidatePmid": "36380323",
+          "candidateTitle": "OS-01 reduces senescence markers and reverses skin biological aging",
+          "score": 28,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Improved skin texture and hydration reported",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_month_2_3",
+          "claim": "Measurable reduction in biological skin age markers at 12 weeks in published study",
+          "candidatePmid": "36380323",
+          "candidateTitle": "OS-01 reduces senescence markers and reverses skin biological aging",
+          "score": 29,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "Synapsin",
+      "slug": "synapsin",
+      "studyCount": 1,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Compounded intranasal formulation (not a single peptide) combining Rg3 (ginsenoside), NAD+, and additional neuroprotective compounds. Rg3 mo",
+          "candidatePmid": "30249052",
+          "candidateTitle": "Ginsenoside Rg3 neuroprotective and anti-neuroinflammatory effects",
+          "score": 11,
+          "confidence": "NONE"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Cognitive enhancement, neuroprotection, mitochondrial function, synaptic plasticity",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "Research only. Compounded intranasal formulation — individual components (Rg3, NAD+) have some published safety data but the specific compou",
+          "candidatePmid": "30249052",
+          "candidateTitle": "Ginsenoside Rg3 neuroprotective and anti-neuroinflammatory effects",
+          "score": 5,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "Synapsin is a compounded intranasal cognitive blend (Rg3 + NAD+) used by functional medicine practitioners for brain fog, TBI recovery, and ",
+          "candidatePmid": null,
+          "candidateTitle": null,
+          "score": 0,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_1",
+          "claim": "Acute cognitive effects reported; improved focus and mental clarity",
+          "candidatePmid": "30249052",
+          "candidateTitle": "Ginsenoside Rg3 neuroprotective and anti-neuroinflammatory effects",
+          "score": 13,
+          "confidence": "NONE"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Neuroinflammation reduction in clinical observations",
+          "candidatePmid": "30249052",
+          "candidateTitle": "Ginsenoside Rg3 neuroprotective and anti-neuroinflammatory effects",
+          "score": 25,
+          "confidence": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "name": "FGL Loop",
+      "slug": "fgl-loop",
+      "studyCount": 2,
+      "claims": [
+        {
+          "type": "mechanism",
+          "claim": "Synthetic peptide derived from the fibronectin type III (F3) module of Neural Cell Adhesion Molecule (NCAM). Mimics the homophilic binding o",
+          "candidatePmid": "15917452",
+          "candidateTitle": "FGL peptide promotes synaptogenesis and memory via NCAM/FGFR signaling",
+          "score": 27,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "primary_benefits",
+          "claim": "Synaptogenesis, memory enhancement, NCAM-mediated neuroprotection",
+          "candidatePmid": "20398623",
+          "candidateTitle": "NCAM mimetics as neuroprotective agents in aging and neurodegeneration",
+          "score": 60,
+          "confidence": "HIGH"
+        },
+        {
+          "type": "safety_notes",
+          "claim": "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. All data from rodent models. No established human pharmacokinetics, dosing ",
+          "candidatePmid": "15917452",
+          "candidateTitle": "FGL peptide promotes synaptogenesis and memory via NCAM/FGFR signaling",
+          "score": 6,
+          "confidence": "NONE"
+        },
+        {
+          "type": "laypersonSummary",
+          "claim": "FGL is a peptide that mimics NCAM — the brain's cell-to-cell communication molecule — to trigger synapse formation and improve memory in rod",
+          "candidatePmid": "15917452",
+          "candidateTitle": "FGL peptide promotes synaptogenesis and memory via NCAM/FGFR signaling",
+          "score": 24,
+          "confidence": "MEDIUM"
+        },
+        {
+          "type": "outcome_week_2_4",
+          "claim": "Synaptic density and memory improvements in rodent models",
+          "candidatePmid": "15917452",
+          "candidateTitle": "FGL peptide promotes synaptogenesis and memory via NCAM/FGFR signaling",
+          "score": 33,
+          "confidence": "HIGH"
+        }
+      ]
+    }
+  ]
+}

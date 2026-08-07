@@ -1,3 +1,4 @@
+export { elyriaBioReview } from './elyria-bio';
 export { aminoClubReview } from './amino-club';
 export { bioLongevityLabsReview } from './bio-longevity-labs';
 export { limitlessLifeReview } from './limitless-life';
@@ -5,6 +6,7 @@ export { ascensionPeptidesReview } from './ascension-peptides';
 export { pantheonPeptidesReview } from './pantheon-peptides';
 export { lvlupHealthReview } from './lvlup-health';
 
+import { elyriaBioReview } from './elyria-bio';
 import { aminoClubReview } from './amino-club';
 import { bioLongevityLabsReview } from './bio-longevity-labs';
 import { limitlessLifeReview } from './limitless-life';
@@ -14,6 +16,7 @@ import { lvlupHealthReview } from './lvlup-health';
 import type { VendorReviewData } from '../vendor-review-types';
 
 export const allVendorReviews: VendorReviewData[] = [
+  elyriaBioReview,
   aminoClubReview,
   bioLongevityLabsReview,
   limitlessLifeReview,

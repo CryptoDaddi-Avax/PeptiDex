@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Where can I source high-purity tirzepatide for research?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For laboratory in-vitro research, high-purity tirzepatide and semaglutide can be sourced from verified chemical suppliers. We recommend vendors that provide independent HPLC and Mass Spectrometry testing, such as Amino Club."
+          "text": "For laboratory in-vitro research, high-purity tirzepatide and semaglutide can be sourced from verified chemical suppliers. We recommend vendors that provide independent HPLC and Mass Spectrometry testing, such as Elyria Bio."
         }
       }
     ]
@@ -135,9 +135,9 @@ For independent researchers running in-vitro models or utilizing animal subjects
 
 As we covered in our guide on [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally), you must source these compounds from vendors who provide batch-specific, independent HPLC and Mass Spectrometry testing. 
 
-If you are setting up a laboratory study requiring unbranded, high-purity analytical standards of either semaglutide or tirzepatide, <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">see our full Amino Club review</a>. They consistently supply ≥99% pure lyophilized peptides for research purposes and provide full third-party laboratory documentation for every batch. 
+If you are setting up a laboratory study requiring unbranded, high-purity analytical standards of either semaglutide or tirzepatide, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. They consistently supply ≥99% pure lyophilized peptides for research purposes and provide full third-party laboratory documentation for every batch. 
 
-By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 20% off wholesale pricing while guaranteeing the integrity of your experimental data.
+By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your lab can secure 20% off wholesale pricing while guaranteeing the integrity of your experimental data.
 
 ## Switching from Semaglutide to Tirzepatide
 

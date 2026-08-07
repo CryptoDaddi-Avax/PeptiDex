@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Vendor Cart Configuration â€” Single Source of Truth
  * ===================================================
  * Defines per-vendor cart-building capabilities based on browser-verified
@@ -42,6 +42,22 @@ export interface VendorCartConfig {
 }
 
 export const vendorCartConfigs: Record<string, VendorCartConfig> = {
+  "elyria-bio": {
+    vendorSlug: "elyria-bio",
+    tier: 2,
+    phase: "1A",
+    platform: "unknown",
+    autoAppliesDiscount: false,
+    discountDisplay: "Use code PEPTIDEX for 10% off",
+    discountPercent: 10,
+    cartUrlPattern: null,
+    productUrlPattern: null,
+    affiliateRootUrl: "https://elyriabio.com?ref=PEPTIDEX",
+    utmParams: { utm_source: "peptidex", utm_medium: "cart_builder" },
+    hasVariableProducts: false,
+    notes: "New #1 vendor — cart integration pending. Deep links to homepage only until product URL pattern is confirmed.",
+  },
+
   "ascension-peptides": {
     vendorSlug: "ascension-peptides",
     tier: 1,

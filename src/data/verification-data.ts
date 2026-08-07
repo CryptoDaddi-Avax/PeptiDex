@@ -75,6 +75,15 @@ const FINNRICK_ATTRIBUTION = "Source: Finnrick Independent Testing Database. Pep
 
 export const vendorVerifications: VendorVerification[] = [
   {
+    vendorSlug: "elyria-bio", vendorName: "Elyria Bio", tier: "gold",
+    vendorCOAs: [
+      { id: "eb-bpc157-2608", peptide: "BPC-157", batchId: "2608-EB-BPC", testDate: "2026-08-01", purity: 99.3, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec", "Endotoxin"], source: "vendor", sourceDetail: "Elyria Bio", annotation: "MW confirmed at 1419.5 Da. HPLC purity ≥99.3%. Endotoxin below 1.0 EU/mg.", annotationReady: true, passed: true },
+    ],
+    communitySubmissions: [],
+    independentTests: [],
+    stats: { totalDocuments: 1, totalIndependentTests: 0, overallPassRate: 100, averagePurity: 99.3, lastUpdated: "2026-08-07" },
+  },
+  {
     vendorSlug: "amino-club", vendorName: "Amino Club", tier: "gold",
     vendorCOAs: [
       { id: "ac-bpc157-2604", peptide: "BPC-157", batchId: "2604-AC-BPC", testDate: "2026-04-10", purity: 99.4, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec", "Endotoxin"], source: "vendor", sourceDetail: "Amino Club", documentUrl: "https://aminoclub.com/coa/bpc-157-latest.pdf", annotation: "MW confirmed at 1419.5 Da. HPLC purity ≥99.4%. Endotoxin below 1.0 EU/mg. No anomalous peaks in 1350–1500 Da range.", annotationReady: true, passed: true },

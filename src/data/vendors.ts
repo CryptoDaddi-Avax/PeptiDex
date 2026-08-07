@@ -18,15 +18,16 @@
  * This file centralizes ALL vendor metadata. The old files are preserved
  * as re-export shims for backward compatibility and will be removed later.
  * 
- * VENDOR LINEUP (as of 2026-04-30):
+ * VENDOR LINEUP (as of 2026-08-07):
  *   Injectable:
- *     1. Amino Club          â€” Editor's Choice, 40+ compounds
- *     2. Bio Longevity Labs  â€” Triple-Tested Premium, 80+ compounds
- *     3. Limitless Life      â€” USA Made, 90+ compounds
- *     4. Ascension Peptides  — COA Verified, 60+ compounds [DEACTIVATED 2026-05-24]
- *     5. Pantheon Peptides   â€” COA Verified, 50+ compounds
+ *     1. Elyria Bio          — Editor's Choice, 50+ compounds
+ *     2. Amino Club          — COA Verified, 40+ compounds
+ *     3. Bio Longevity Labs  — Triple-Tested Premium, 80+ compounds
+ *     4. Limitless Life      — USA Made, 90+ compounds
+ *     5. Ascension Peptides  — COA Verified, 60+ compounds [DEACTIVATED 2026-05-24]
+ *     6. Pantheon Peptides   — COA Verified, 50+ compounds
  *   Oral:
- *     6. LVLUP Health        â€” Oral specialist, 20+ compounds
+ *     7. LVLUP Health        — Oral specialist, 20+ compounds
  */
 
 // â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -105,28 +106,59 @@ export interface Vendor {
   isActive?: boolean;
 }
 
-// â”€â”€ Vendor Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Vendor Data ──────────────────────────────────────────────────────────────
 
 export const vendors: Vendor[] = [
-  // â”€â”€ #1: Amino Club â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── #1: Elyria Bio ──────────────────────────────────────────────────────────
+  {
+    slug: "elyria-bio",
+    name: "Elyria Bio",
+    tagline: "Premium research peptides — COA-verified with rigorous batch testing",
+    badge: "Editor's Choice",
+    badgeStyle: "gold",
+    sortOrder: 1,
+    category: "injectable",
+    affiliateUrl: "https://elyriabio.com?ref=PEPTIDEX",
+    discountCode: "PEPTIDEX",
+    discountPercent: 10,
+    discountStackable: false,
+    rating: 4.9,
+    ratingCount: "200+",
+    purity: "99%+",
+    coaStatus: "Batch-specific COA",
+    testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
+    shippingSpeed: "2–4 business days (US)",
+    shippingCost: "Free over $100",
+    shipsTo: ["USA", "International"],
+    catalogSize: "50+ compounds",
+    paymentMethods: ["Credit Card", "Crypto"],
+    returnPolicy: "30-day money-back guarantee",
+    lastTestedDate: "2026-08-01",
+    gaKey: "elyria_bio",
+    domainMatch: "elyriabio.com",
+    finnrickSlug: "elyria-bio",
+    verificationTier: "gold",
+  },
+
+  // ── #2: Amino Club ──────────────────────────────────────────────────────────
   {
     slug: "amino-club",
     name: "Amino Club",
     tagline: "COA-verified research peptides with batch-specific testing",
-    badge: "Editor's Choice",
-    badgeStyle: "gold",
-    sortOrder: 1,
+    badge: "COA Verified",
+    badgeStyle: "green",
+    sortOrder: 2,
     category: "injectable",
     affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
     discountCode: "PEPTIDEX",
     discountPercent: 20,
     discountStackable: false,
-    rating: 4.9,
+    rating: 4.7,
     ratingCount: "400+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
-    shippingSpeed: "2â€“4 business days (US)",
+    shippingSpeed: "2–4 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA", "International"],
     catalogSize: "40+ compounds",
@@ -140,31 +172,31 @@ export const vendors: Vendor[] = [
     verificationTier: "gold",
   },
 
-  // â”€â”€ #2: Bio Longevity Labs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── #3: Bio Longevity Labs ────────────────────────────────────────────────
   {
     slug: "bio-longevity-labs",
     name: "Bio Longevity Labs",
     tagline: "Triple-tested premium peptides with stackable PEPTIDEX discount",
     badge: "Triple-Tested",
     badgeStyle: "premium",
-    sortOrder: 2,
+    sortOrder: 3,
     category: "injectable",
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
     discountCode: "PEPTIDEX",
     discountPercent: 15,
     discountStackable: true,
-    rating: 4.8,
+    rating: 4.6,
     ratingCount: "350+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "2â€“5 business days (US)",
+    shippingSpeed: "2–5 business days (US)",
     shippingCost: "Free over $150",
     shipsTo: ["USA", "International"],
     catalogSize: "80+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "30-day money-back guarantee",
-    editorialNote: "Use code PEPTIDEX for 15% off â€” stacks with any active sale for up to 40%+ savings",
+    editorialNote: "Use code PEPTIDEX for 15% off – stacks with any active sale for up to 40%+ savings",
     lastTestedDate: "2026-04-20",
     gaKey: "bio_longevity_labs",
     domainMatch: "biolongevitylabs.com",
@@ -172,25 +204,25 @@ export const vendors: Vendor[] = [
     verificationTier: "gold",
   },
 
-  // â”€â”€ #3: Limitless Life â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── #4: Limitless Life ────────────────────────────────────────────────────
   {
     slug: "limitless-life",
     name: "Limitless Life",
     tagline: "USA-manufactured research peptides with extensive catalog",
     badge: "USA Made",
     badgeStyle: "gold",
-    sortOrder: 3,
+    sortOrder: 4,
     category: "injectable",
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     discountCode: "PEPTIDEX",
     discountPercent: 15,
     discountStackable: false,
-    rating: 4.8,
+    rating: 4.6,
     ratingCount: "300+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA"],
     catalogSize: "90+ compounds",
@@ -203,7 +235,7 @@ export const vendors: Vendor[] = [
     verificationTier: "silver",
   },
 
-  // — #4: Ascension Peptides —————————————————————————————————————————————————————
+  // — #5: Ascension Peptides —————————————————————————————————————————————————————
   {
     // DEACTIVATED 2026-05-24: 10% commission on post-discount basis with 50% customer
     // discount = ~$5 per $100 order. Reactivate only if commission rate is renegotiated.
@@ -213,13 +245,13 @@ export const vendors: Vendor[] = [
     tagline: "60+ COA-verified compounds — use code PEPTIDEX for 50% off",
     badge: "COA Verified",
     badgeStyle: "green",
-    sortOrder: 4,
+    sortOrder: 5,
     category: "injectable",
     affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
     discountCode: "PEPTIDEX",
     discountPercent: 50,
     discountStackable: false,
-    rating: 4.7,
+    rating: 4.5,
     ratingCount: "250+",
     purity: "98%+",
     coaStatus: "COA available",
@@ -238,14 +270,14 @@ export const vendors: Vendor[] = [
     verificationTier: "silver",
   },
 
-  // â”€â”€ #5: Pantheon Peptides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── #6: Pantheon Peptides ─────────────────────────────────────────────────
   {
     slug: "pantheon-peptides",
     name: "Pantheon Peptides",
     tagline: "Emerging vendor with competitive pricing and COA verification",
     badge: "COA Verified",
     badgeStyle: "green",
-    sortOrder: 5,
+    sortOrder: 6,
     category: "injectable",
     affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
     discountCode: "PEPTIDEX",

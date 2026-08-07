@@ -8,6 +8,9 @@ import type { Vendor } from '@/data/vendors';
 import { useSavedStacks } from '@/hooks/useSavedStacks';
 import { SHORT_DISCLAIMER } from '@/data/constants';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
+import { InlineCitation, InlineCitationGroup } from '@/components/citations/InlineCitation';
+import { ReferenceList, type ReferenceEntry } from '@/components/citations/ReferenceList';
+import type { FieldCitations, FieldQualifiers } from '@/data/citation-map';
 import { legalData, legalStatusColors, legalStatusLabels } from '@/data/legal-status';
 import { comparisons } from '@/data/comparisons';
 import {
@@ -65,11 +68,21 @@ export function PeptideDetailRedesign({
   relatedStacks,
   pricingEntry,
   allVendors,
+  citationIndex,
+  fieldCitations,
+  fieldQualifiers,
+  references,
+  lastReviewedDate,
 }: {
   peptide: Peptide;
   relatedStacks: Stack[];
   pricingEntry: PeptideVendorPricing | undefined;
   allVendors: Vendor[];
+  citationIndex?: Map<string, number>;
+  fieldCitations?: FieldCitations;
+  fieldQualifiers?: FieldQualifiers;
+  references?: ReferenceEntry[];
+  lastReviewedDate?: string;
 }) {
   const { saveStack, removeStack, isStackSaved } = useSavedStacks();
   const benefits = peptide.primary_benefits.split(',').map((b) => b.trim());
@@ -129,7 +142,10 @@ export function PeptideDetailRedesign({
             surface="buy_box"
           />
 
-          <p className="pd-subtitle">{peptide.mechanism.slice(0, 200)}</p>
+          <p className="pd-subtitle">
+            {peptide.mechanism.slice(0, 200)}
+            <FieldCite field="mechanism" citationIndex={citationIndex} fieldCitations={fieldCitations} fieldQualifiers={fieldQualifiers} />
+          </p>
 
           <div className="pd-page-meta">
             <div className="pd-meta-item">
@@ -168,7 +184,10 @@ export function PeptideDetailRedesign({
 
             {/* Mechanism */}
             <Section icon={<Info />} label="§ Mechanism of Action" title="How It Works">
-              <p className="pd-mechanism">{peptide.mechanism}</p>
+              <p className="pd-mechanism">
+                {peptide.mechanism}
+                <FieldCite field="mechanism" citationIndex={citationIndex} fieldCitations={fieldCitations} fieldQualifiers={fieldQualifiers} />
+              </p>
             </Section>
 
             {/* Benefits */}
@@ -181,6 +200,7 @@ export function PeptideDetailRedesign({
                   </li>
                 ))}
               </ol>
+              <FieldCite field="primary_benefits" citationIndex={citationIndex} fieldCitations={fieldCitations} fieldQualifiers={fieldQualifiers} />
             </Section>
 
             {/* Key Studies */}
@@ -220,7 +240,10 @@ export function PeptideDetailRedesign({
             {/* Safety */}
             <Section icon={<ShieldAlert />} label="§ Safety Profile" title="Safety Notes">
               <div className="pd-safety-box">
-                <p>{peptide.safety_notes}</p>
+                <p>
+                  {peptide.safety_notes}
+                  <FieldCite field="safety_notes" citationIndex={citationIndex} fieldCitations={fieldCitations} fieldQualifiers={fieldQualifiers} />
+                </p>
               </div>
               <p style={{ fontSize: 11, color: 'var(--ink-mute)', marginTop: 8 }}>
                 See our <a href="/about/methodology#evidence-grading" style={{ color: 'var(--gold)' }}>evidence grading methodology</a> for how we evaluate and grade peptide safety data.
@@ -452,6 +475,11 @@ export function PeptideDetailRedesign({
               url={`https://peptidex.app/library/${peptide.slug}`}
             />
 
+            {/* ── REFERENCES SECTION ── */}
+            {references && references.length > 0 && (
+              <ReferenceList references={references} lastReviewed={lastReviewedDate} />
+            )}
+
             {/* Trust + Affiliate Disclosure Block */}
             <TrustBlock />
 
@@ -520,6 +548,7 @@ export function PeptideDetailRedesign({
                   {peptide.half_life_hours && <li><a href="#halflife">Half-Life</a></li>}
                   {peptide.outcomes_timeline && <li><a href="#timeline">Timeline</a></li>}
                   {peptide.side_effects?.length && <li><a href="#sideeffects">Side Effects</a></li>}
+                  {references && references.length > 0 && <li><a href="#references">References</a></li>}
                 </ul>
               </div>
             </div>
@@ -644,3 +673,40 @@ function SideEffectsTable({
  * - EntityCard (entity-cards.ts) → structured fact extraction
  * This function is no longer rendered and will be removed in a future cleanup.
  */
+
+/* ── FieldCite: Inline citation helper ── */
+function FieldCite({
+  field,
+  citationIndex,
+  fieldCitations,
+  fieldQualifiers,
+}: {
+  field: keyof FieldCitations;
+  citationIndex?: Map<string, number>;
+  fieldCitations?: FieldCitations;
+  fieldQualifiers?: FieldQualifiers;
+}) {
+  if (!citationIndex || !fieldCitations) return null;
+
+  const pmids = fieldCitations[field];
+  if (pmids && pmids.length > 0) {
+    const citations = pmids
+      .map((pmid) => {
+        const n = citationIndex.get(pmid);
+        return n ? { n, pmid } : null;
+      })
+      .filter(Boolean) as { n: number; pmid: string }[];
+
+    if (citations.length > 0) {
+      return <InlineCitationGroup citations={citations} />;
+    }
+  }
+
+  // Check for qualifier text
+  const qualifier = fieldQualifiers?.[field as keyof FieldQualifiers];
+  if (qualifier) {
+    return <span className="cite-qualifier">({qualifier})</span>;
+  }
+
+  return null;
+}

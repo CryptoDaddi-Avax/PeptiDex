@@ -51,6 +51,17 @@ export interface CommissionRate {
 }
 
 export const commissionRates: Record<string, CommissionRate> = {
+  'elyria-bio': {
+    ratePercent: 10,
+    basis: 'unconfirmed',
+    confirmedDate: '2026-08-07',
+    notes: [
+      'BASIS UNCONFIRMED: verify whether commission applies before or after the 10% customer discount.',
+      'New #1 vendor as of 2026-08-07. Affiliate system pending confirmation.',
+      'Placeholder 10% rate — update when affiliate agreement is finalized.',
+    ].join(' '),
+  },
+
   'amino-club': {
     // Split rate confirmed by Amino Club affiliate manager (2026-05-24):
     //   20% commission on a customer's FIRST order

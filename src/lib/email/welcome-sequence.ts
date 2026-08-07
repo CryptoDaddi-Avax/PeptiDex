@@ -144,11 +144,12 @@ export function email3_vendors(firstName = "there") {
     ${h1(`The 5 vendors in the PeptiDex index — and how we ranked them`)}
     ${p(`We review vendors on five criteria: testing methodology, COA transparency, purity specification, shipping reliability, and community sentiment. Here's the current lineup:`)}
     ${ul([
-      `<strong>#1 Amino Club</strong> — Editor's Choice. Triple-tested (HPLC + LC-MS + Endotoxin). 60-day MBG. Ships internationally. Code <strong>PEPTIDEX</strong> = 20% off.`,
-      `<strong>#2 Bio Longevity Labs</strong> — Triple-tested. 80+ compounds. PEPTIDEX discount stacks with their sales — up to 40%+ combined. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#3 Limitless Life</strong> — USA-manufactured. 90+ compounds. Largest catalog in the index. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#4 Pantheon Peptides</strong> — Competitive pricing, solid COA. 50+ compounds. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#5 LVLUP Health</strong> — Oral peptide specialist. Capsules + sublingual formats. Code <strong>PEPTIDEX</strong> = 15% off.`,
+      `<strong>#1 Elyria Bio</strong> — Editor's Choice. COA-verified with batch-specific testing (HPLC + Mass Spec + Endotoxin). Ships internationally. Code <strong>PEPTIDEX</strong> = 10% off.`,
+      `<strong>#2 Amino Club</strong> — Triple-tested (HPLC + LC-MS + Endotoxin). 60-day MBG. Ships internationally. Code <strong>PEPTIDEX</strong> = 20% off.`,
+      `<strong>#3 Bio Longevity Labs</strong> — Triple-tested. 80+ compounds. PEPTIDEX discount stacks with their sales — up to 40%+ combined. Code <strong>PEPTIDEX</strong> = 15% off.`,
+      `<strong>#4 Limitless Life</strong> — USA-manufactured. 90+ compounds. Largest catalog in the index. Code <strong>PEPTIDEX</strong> = 15% off.`,
+      `<strong>#5 Pantheon Peptides</strong> — Competitive pricing, solid COA. 50+ compounds. Code <strong>PEPTIDEX</strong> = 15% off.`,
+      `<strong>#6 LVLUP Health</strong> — Oral peptide specialist. Capsules + sublingual formats. Code <strong>PEPTIDEX</strong> = 15% off.`,
     ])}
     ${p(`We update the rankings quarterly based on new COA data, Finnrick community reports, and our own verification testing.`)}
     ${cta("Read the full vendor comparison", "https://peptidex.app/vendors")}
@@ -201,7 +202,7 @@ export function email5_vendorPicker(firstName = "there") {
     ${p(`It cross-references our vendor index, catalog data, and current pricing to give you a ranked list — not a generic "all are good" answer.`)}
     ${cta("Take the 4-question picker", "https://peptidex.app/tools/vendor-picker")}
     ${divider()}
-    ${p(`Quick note: if you're outside the US, your options are limited. Amino Club and Bio Longevity Labs are the only two vendors in our index that ship internationally.`)}
+    ${p(`Quick note: if you're outside the US, your options are limited. Elyria Bio, Amino Club, and Bio Longevity Labs are the only vendors in our index that ship internationally.`)}
     ${p(`If your priority is value, Bio Longevity Labs lets you stack code <strong>PEPTIDEX</strong> (15% off) with their site-wide sales — the only vendor in our index where the code stacks with existing promotions. Total savings can exceed 30% during sales.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
@@ -226,7 +227,7 @@ export function email6_deal(firstName = "there") {
     ${p(`What makes BLL unique in the index: their PEPTIDEX code stacks with sitewide sales. Every other vendor treats the code as a standalone discount. At BLL, during a sale you can combine both — routinely hitting 30%+ total off.`)}
     ${cta("Shop Bio Longevity Labs (code: PEPTIDEX)", "https://biolongevitylabs.com/ref/PeptiDex/")}
     ${divider()}
-    ${p(`Their triple-tested standard (HPLC + LC-MS + Endotoxin) is the same tier as Amino Club — which is why it's our #2 ranked vendor. Largest catalog among the triple-tested tier at 80+ compounds.`)}
+    ${p(`Their triple-tested standard (HPLC + LC-MS + Endotoxin) is the same tier as Elyria Bio and Amino Club — which is why it's our #3 ranked vendor. Largest catalog among the triple-tested tier at 80+ compounds.`)}
     ${p(`Affiliate disclosure: PeptiDex earns a commission on Bio Longevity Labs purchases through our link. This deal is featured because of the stackable discount mechanic — it's the only vendor in the index where you can combine the PEPTIDEX code with sale pricing.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);

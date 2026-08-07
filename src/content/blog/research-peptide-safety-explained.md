@@ -102,9 +102,9 @@ As detailed in our guide on [How to Read a Peptide COA](/blog/how-to-read-peptid
 
 ### Sourcing High-Purity Reagents
 
-If you are setting up a laboratory study requiring unbranded, analytical-grade peptides, you must use vendors who publicly post batch-specific testing from recognized labs like MZ Biolabs. <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">See our full Amino Club review</a> for an example of a vendor that executes flawless quality control.
+If you are setting up a laboratory study requiring unbranded, analytical-grade peptides, you must use vendors who publicly post batch-specific testing from recognized labs like MZ Biolabs. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a> for an example of a vendor that executes flawless quality control.
 
-Amino Club consistently supplies ≥99% pure lyophilized peptides for research purposes and provides full third-party laboratory documentation for every batch, confirming both HPLC purity and Mass Spectrometry identity. By utilizing <a href="/vendors/amino-club-review" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 20% off wholesale pricing while entirely eliminating the safety risks associated with contaminated raw materials.
+Elyria Bio consistently supplies ≥99% pure lyophilized peptides for research purposes and provides full third-party laboratory documentation for every batch, confirming both HPLC purity and Mass Spectrometry identity. By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 10% off wholesale pricing while entirely eliminating the safety risks associated with contaminated raw materials.
 
 ## 3. Inherent Risks of Specific Peptide Classes
 
