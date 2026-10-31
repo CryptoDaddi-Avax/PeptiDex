@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Best Peptide Stacks 2026",
-  description: "Explore curated, research-backed peptide stacks for fat loss, muscle growth, & recovery. Learn the synergistic protocols used by the community.",
+  description: "Explore curated, research-backed peptide stacks for body recomposition, muscle growth, & recovery. Learn the synergistic protocols used by the community.",
   alternates: {
     canonical: "https://peptidex.app/stacks",
     languages: {

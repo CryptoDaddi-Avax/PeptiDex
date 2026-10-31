@@ -28,7 +28,6 @@ function getDosing(peptideName: string) {
 
 const goalLabels: Record<string, string> = {
     "Body Recomposition Stack": "Body Recomposition",
-    "Fat Loss Focus Stack": "Fat Loss",
     "Injury Recovery Stack": "Injury Recovery",
     "Mental Clarity & Cognitive Stack": "Cognition & Focus",
     "Muscle Growth Stack": "Muscle Growth",
@@ -37,7 +36,6 @@ const goalLabels: Record<string, string> = {
     "Longevity & Anti-Aging Stack": "Longevity",
     "Skin & Aesthetic Rejuvenation Stack": "Skin & Aesthetics",
     "Gut Health & Recovery Stack": "Gut Health",
-    "Metabolic & Insulin Sensitivity Stack": "Metabolic Health",
     "Hormonal Optimization Stack (Male)": "Male Hormonal Optimization",
 };
 

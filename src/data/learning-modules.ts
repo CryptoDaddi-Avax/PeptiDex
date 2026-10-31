@@ -38,11 +38,11 @@ export const learningModules: LearningModule[] = [
             },
             {
                 title: "How Peptides Work",
-                content: "Most therapeutic peptides work by mimicking natural signaling molecules. They bind to specific receptors on cell surfaces, triggering a biological response. For example:\n\n• **CJC-1295** mimics your body's Growth Hormone Releasing Hormone (GHRH), telling the pituitary gland to release more GH.\n• **BPC-157** is derived from a stomach-protective protein, accelerating healing by upregulating growth factors and promoting blood vessel formation.\n• **Semaglutide** mimics the gut hormone GLP-1, reducing appetite and improving insulin sensitivity.\n\nBecause they mimic natural molecules, peptides generally have fewer side effects than traditional pharmaceuticals."
+                content: "Most therapeutic peptides work by mimicking natural signaling molecules. They bind to specific receptors on cell surfaces, triggering a biological response. For example:\n\n• **CJC-1295** mimics your body's Growth Hormone Releasing Hormone (GHRH), telling the pituitary gland to release more GH.\n• **BPC-157** is derived from a stomach-protective protein, accelerating healing by upregulating growth factors and promoting blood vessel formation.\n• **PT-141** mimics alpha-MSH, activating melanocortin receptors in the brain involved in sexual arousal.\n\nBecause they mimic natural molecules, peptides generally have fewer side effects than traditional pharmaceuticals."
             },
             {
                 title: "Why Peptides Are Gaining Attention",
-                content: "Several converging factors have driven peptide interest:\n\n1. **Precision**   Peptides target specific receptors with high selectivity\n2. **Safety Profile**   Generally well-tolerated since they mimic natural compounds\n3. **Research Volume**   Thousands of published studies on PubMed\n4. **FDA Approvals**   Semaglutide (Ozempic/Wegovy), PT-141 (Vyleesi), and Tirzepatide (Mounjaro) are FDA-approved peptides\n5. **Personalization**   Different peptides for different goals: healing, cognition, fat loss, muscle growth, longevity"
+                content: "Several converging factors have driven peptide interest:\n\n1. **Precision**   Peptides target specific receptors with high selectivity\n2. **Safety Profile**   Generally well-tolerated since they mimic natural compounds\n3. **Research Volume**   Thousands of published studies on PubMed\n4. **FDA Approvals**   Tesamorelin (Egrifta) and PT-141 (Vyleesi) are FDA-approved peptides\n5. **Personalization**   Different peptides for different goals: healing, cognition, fat loss, muscle growth, longevity"
             }
         ],
         quiz: [
@@ -60,7 +60,7 @@ export const learningModules: LearningModule[] = [
         sections: [
             {
                 title: "Receptor Binding",
-                content: "Every cell in your body has receptors   protein molecules on its surface that act like locks. Peptides are the keys. When a peptide binds to its target receptor, it triggers a cascade of intracellular signaling that produces a specific biological effect.\n\nThis 'lock and key' mechanism is why peptides are so specific: BPC-157 can accelerate healing without affecting appetite, while Semaglutide can reduce appetite without affecting healing. Each peptide has its own receptor targets."
+                content: "Every cell in your body has receptors   protein molecules on its surface that act like locks. Peptides are the keys. When a peptide binds to its target receptor, it triggers a cascade of intracellular signaling that produces a specific biological effect.\n\nThis 'lock and key' mechanism is why peptides are so specific: BPC-157 can accelerate healing without affecting appetite, while Semax can support focus without affecting healing. Each peptide has its own receptor targets."
             },
             {
                 title: "The Growth Hormone Axis",
@@ -68,17 +68,17 @@ export const learningModules: LearningModule[] = [
             },
             {
                 title: "Half-Life and Dosing",
-                content: "Half-life is how long it takes for half of the peptide to be cleared from your body. This determines dosing frequency:\n\n• **Very short** (minutes): Sermorelin (12 min), DSIP (8 min)   need daily dosing\n• **Short** (hours): BPC-157 (4h), Semax (1h)   daily dosing\n• **Medium** (days): CJC-1295 with DAC (8 days)   2x/week dosing\n• **Long** (1 week): Semaglutide (7 days), Tirzepatide (5 days)   weekly dosing\n\nLonger isn't always better   some peptides work best in pulsatile patterns that mimic natural hormone release."
+                content: "Half-life is how long it takes for half of the peptide to be cleared from your body. This determines dosing frequency:\n\n• **Very short** (minutes): Sermorelin (12 min), DSIP (8 min)   need daily dosing\n• **Short** (hours): BPC-157 (4h), Semax (1h)   daily dosing\n• **Long** (days): CJC-1295 with DAC (6-8 days)   1-2x/week dosing\n\nLonger isn't always better   some peptides work best in pulsatile patterns that mimic natural hormone release."
             },
             {
                 title: "Synergies and Stacking",
-                content: "Certain peptides amplify each other's effects when used together:\n\n• **CJC-1295 + Ipamorelin**: The most popular GH stack. CJC provides a sustained GHRH signal while Ipamorelin provides a clean GH pulse   together they produce 3-5x more GH than either alone.\n• **BPC-157 + TB-500**: Combined tissue repair   BPC works locally on blood vessels and growth factors, TB-500 works systemically on inflammation and cell migration.\n• **Semaglutide + AOD-9604**: GLP-1 appetite reduction + targeted fat metabolism.\n\nHowever, some combinations should be avoided (e.g., don't stack multiple GLP-1 agonists, or combine Melanotan II with PT-141)."
+                content: "Certain peptides amplify each other's effects when used together:\n\n• **CJC-1295 + Ipamorelin**: The most popular GH stack. CJC provides a sustained GHRH signal while Ipamorelin provides a clean GH pulse   together they produce 3-5x more GH than either alone.\n• **BPC-157 + TB-500**: Combined tissue repair   BPC works locally on blood vessels and growth factors, TB-500 works systemically on inflammation and cell migration.\n\nHowever, some combinations should be avoided (e.g., don't stack two GHRPs like Ipamorelin + GHRP-6, or combine Melanotan II with PT-141)."
             }
         ],
         quiz: [
             { question: "What is the 'lock and key' model in peptide pharmacology?", options: ["Peptides unlock cell walls", "Peptides bind to specific receptors", "Peptides are stored under lock", "Peptides require two doses"], correctIndex: 1, explanation: "Peptides bind to specific receptors on cells (the 'lock'), triggering biological responses. This specificity is why different peptides have different effects." },
-            { question: "Which combination is a popular GH stack?", options: ["BPC-157 + Semaglutide", "CJC-1295 + Ipamorelin", "Melanotan II + PT-141", "DSIP + AOD-9604"], correctIndex: 1, explanation: "CJC-1295 (GHRH analog) + Ipamorelin (GHRP) is the gold standard GH stack, producing synergistic growth hormone release." },
-            { question: "A peptide with a 7-day half-life would be dosed:", options: ["Multiple times daily", "Daily", "Weekly", "Monthly"], correctIndex: 2, explanation: "A 7-day half-life means the peptide stays active for about a week, so weekly dosing maintains therapeutic levels. Semaglutide is a real example." }
+            { question: "Which combination is a popular GH stack?", options: ["BPC-157 + Semax", "CJC-1295 + Ipamorelin", "Melanotan II + PT-141", "DSIP + AOD-9604"], correctIndex: 1, explanation: "CJC-1295 (GHRH analog) + Ipamorelin (GHRP) is the gold standard GH stack, producing synergistic growth hormone release." },
+            { question: "A peptide with a 7-day half-life would be dosed:", options: ["Multiple times daily", "Daily", "Weekly", "Monthly"], correctIndex: 2, explanation: "A 7-day half-life means the peptide stays active for about a week, so weekly dosing maintains therapeutic levels. CJC-1295 with DAC (6-8 day half-life) is a real example." }
         ]
     },
     {
@@ -90,7 +90,7 @@ export const learningModules: LearningModule[] = [
         sections: [
             {
                 title: "The Safety Spectrum",
-                content: "Not all peptides carry the same risk level:\n\n**FDA-Approved** (Lowest Risk): Semaglutide, Tirzepatide, PT-141   extensive human trial data, known side effects, prescribed by doctors.\n\n**Well-Studied** (Lower Risk): BPC-157, TB-500, CJC-1295, Ipamorelin   extensive preclinical data, long track record of human use, but NOT FDA-approved.\n\n**Emerging Research** (Higher Risk): MOTS-c, SS-31, Dihexa   promising preclinical data but limited human studies. More unknowns.\n\n**Research-Only** (Highest Risk): Follistatin-344, IGF-1 LR3   potent compounds with limited safety data and higher risk of adverse effects."
+                content: "Not all peptides carry the same risk level:\n\n**FDA-Approved** (Lowest Risk): Tesamorelin, PT-141   extensive human trial data, known side effects, prescribed by doctors.\n\n**Well-Studied** (Lower Risk): BPC-157, TB-500, CJC-1295, Ipamorelin   extensive preclinical data, long track record of human use, but NOT FDA-approved.\n\n**Emerging Research** (Higher Risk): MOTS-c, SS-31, Dihexa   promising preclinical data but limited human studies. More unknowns.\n\n**Research-Only** (Highest Risk): Follistatin-344, IGF-1 LR3   potent compounds with limited safety data and higher risk of adverse effects."
             },
             {
                 title: "Sourcing Quality",
@@ -98,7 +98,7 @@ export const learningModules: LearningModule[] = [
             },
             {
                 title: "Side Effects and Red Flags",
-                content: "Common manageable side effects:\n• Injection site redness/irritation (SubQ)\n• Nausea (GLP-1 agonists   Semaglutide, Tirzepatide)\n• Fatigue or water retention (GH peptides)\n• Flushing (Melanotan II)\n\n**Stop immediately if you experience:**\n• Severe allergic reaction (hives, swelling, difficulty breathing)\n• Chest pain or heart palpitations\n• Vision changes\n• Unexplained lumps or rapid changes in moles\n\n**Never:**\n• Use peptides during pregnancy/breastfeeding\n• Use GH secretagogues with active/suspected cancer\n• Mix multiple injectable vials in one syringe (unless specifically directed)"
+                content: "Common manageable side effects:\n• Injection site redness/irritation (SubQ)\n• Nausea (PT-141, Melanotan II)\n• Fatigue or water retention (GH peptides)\n• Flushing (Melanotan II)\n\n**Stop immediately if you experience:**\n• Severe allergic reaction (hives, swelling, difficulty breathing)\n• Chest pain or heart palpitations\n• Vision changes\n• Unexplained lumps or rapid changes in moles\n\n**Never:**\n• Use peptides during pregnancy/breastfeeding\n• Use GH secretagogues with active/suspected cancer\n• Mix multiple injectable vials in one syringe (unless specifically directed)"
             },
             {
                 title: "Working With a Doctor",
@@ -107,7 +107,7 @@ export const learningModules: LearningModule[] = [
         ],
         quiz: [
             { question: "What does a COA verify?", options: ["Peptide taste", "Peptide purity and identity", "Peptide legality", "Peptide dosing schedule"], correctIndex: 1, explanation: "A Certificate of Analysis (COA) is third-party lab testing that verifies peptide identity and purity. Look for =98% purity confirmed by HPLC and mass spectrometry." },
-            { question: "Which peptides are FDA-approved?", options: ["BPC-157 and TB-500", "Semaglutide, Tirzepatide, and PT-141", "All GH peptides", "None"], correctIndex: 1, explanation: "Semaglutide (Ozempic/Wegovy), Tirzepatide (Mounjaro/Zepbound), and PT-141 (Vyleesi) are FDA-approved peptides with extensive clinical trial data." },
+            { question: "Which peptides are FDA-approved?", options: ["BPC-157 and TB-500", "Tesamorelin and PT-141", "All GH peptides", "None"], correctIndex: 1, explanation: "Tesamorelin (Egrifta) and PT-141 (Vyleesi) are FDA-approved peptides with extensive clinical trial data." },
             { question: "When should you STOP using a peptide immediately?", options: ["Mild injection site redness", "Slight nausea", "Severe allergic reaction or chest pain", "Temporary fatigue"], correctIndex: 2, explanation: "Severe allergic reactions, chest pain, or breathing difficulty require immediate discontinuation and medical attention. Mild side effects like injection site redness are usually normal." }
         ]
     },
@@ -120,11 +120,11 @@ export const learningModules: LearningModule[] = [
         sections: [
             {
                 title: "Choosing by Goal",
-                content: "Different goals call for different peptides. Here are the most common starting points:\n\n**Recovery & Healing**: BPC-157 (250-500mcg/day SubQ)   The most popular 'starter' peptide. Well-studied, excellent safety profile, works locally on injuries.\n\n**Sleep & Recovery**: CJC-1295 + Ipamorelin (100-300mcg each, before bed)   Enhances natural GH pulse during deep sleep. Improves recovery, skin quality, and body composition.\n\n**Fat Loss**: Semaglutide (prescription)   FDA-approved, well-studied, dramatic results. Start low and titrate up with medical supervision.\n\n**Cognitive Enhancement**: Semax (200-600mcg intranasal)   BDNF boost, neuroprotection, improved focus. Very safe with decades of use in Russia."
+                content: "Different goals call for different peptides. Here are the most common starting points:\n\n**Recovery & Healing**: BPC-157 (250-500mcg/day SubQ)   The most popular 'starter' peptide. Well-studied, excellent safety profile, works locally on injuries.\n\n**Sleep & Recovery**: CJC-1295 + Ipamorelin (100-300mcg each, before bed)   Enhances natural GH pulse during deep sleep. Improves recovery, skin quality, and body composition.\n\n**Cognitive Enhancement**: Semax (200-600mcg intranasal)   BDNF boost, neuroprotection, improved focus. Very safe with decades of use in Russia."
             },
             {
                 title: "The Reconstitution Process",
-                content: "Most peptides arrive as freeze-dried powder that you reconstitute:\n\n1. **Gather supplies**: Peptide vial, BAC water, graduated pipette, alcohol swabs\n2. **Clean both vial tops** with alcohol swabs\n3. **Draw BAC water** — typically 1-2ml per vial (this determines your concentration)\n4. **Add BAC water into peptide vial** — aim the stream at the glass wall, NOT directly on powder\n5. **Gently swirl** — never shake! Let it dissolve naturally (1-5 minutes)\n6. **Store reconstituted peptide** in the refrigerator (36-46°F / 2-8°C)\n7. **Use within 28 days** of reconstitution\n"
+                content: "Most peptides arrive as freeze-dried powder that you reconstitute:\n\n1. **Gather supplies**: Peptide vial, sterile diluent, graduated pipette, alcohol swabs\n2. **Clean both vial tops** with alcohol swabs\n3. **Measure the diluent** — typically 1-2ml per vial (this determines your concentration)\n4. **Add the diluent into the peptide vial** — aim the stream at the glass wall, NOT directly on powder\n5. **Gently swirl** — never shake! Let it dissolve naturally (1-5 minutes)\n6. **Store reconstituted peptide** in the refrigerator (36-46°F / 2-8°C)\n7. **Use within 28 days** of reconstitution\n"
             },
             {
                 title: "Injection Technique (SubQ)",
@@ -132,12 +132,12 @@ export const learningModules: LearningModule[] = [
             },
             {
                 title: "Cycling and Duration",
-                content: "Most peptides benefit from cycling   periods of use followed by periods of rest:\n\n**Why cycle?**\n• Prevents receptor desensitization (your body stops responding)\n• Maintains the peptide's effectiveness long-term\n• Allows the body to re-establish baseline function\n\n**Typical cycles:**\n• BPC-157: 4-6 weeks on, 2-4 weeks off\n• CJC-1295 + Ipamorelin: 8-12 weeks on, 4 weeks off\n• GH peptides: 3-6 months on, 1-2 months off\n• Semaglutide: Continuous (per doctor's guidance)\n\n**Important**: Track your start date, note any side effects, and get blood work before and after each cycle."
+                content: "Most peptides benefit from cycling   periods of use followed by periods of rest:\n\n**Why cycle?**\n• Prevents receptor desensitization (your body stops responding)\n• Maintains the peptide's effectiveness long-term\n• Allows the body to re-establish baseline function\n\n**Typical cycles:**\n• BPC-157: 4-6 weeks on, 2-4 weeks off\n• CJC-1295 + Ipamorelin: 8-12 weeks on, 4 weeks off\n• GH peptides: 3-6 months on, 1-2 months off\n\n**Important**: Track your start date, note any side effects, and get blood work before and after each cycle."
             }
         ],
         quiz: [
-            { question: "What is the most common 'starter' peptide for healing?", options: ["Semaglutide", "IGF-1 LR3", "BPC-157", "Follistatin-344"], correctIndex: 2, explanation: "BPC-157 is widely considered the best 'starter' peptide   excellent safety profile, well-studied, effective for a wide range of healing applications." },
-            { question: "When reconstituting, you should:", options: ["Shake the vial vigorously", "Aim BAC water directly at the powder", "Gently swirl and let dissolve naturally", "Microwave to speed dissolving"], correctIndex: 2, explanation: "Gentle swirling is critical   shaking can denature (break) the peptide bonds, reducing effectiveness. Let the powder dissolve naturally." },
+            { question: "What is the most common 'starter' peptide for healing?", options: ["Melanotan II", "IGF-1 LR3", "BPC-157", "Follistatin-344"], correctIndex: 2, explanation: "BPC-157 is widely considered the best 'starter' peptide   excellent safety profile, well-studied, effective for a wide range of healing applications." },
+            { question: "When reconstituting, you should:", options: ["Shake the vial vigorously", "Aim the diluent directly at the powder", "Gently swirl and let dissolve naturally", "Microwave to speed dissolving"], correctIndex: 2, explanation: "Gentle swirling is critical   shaking can denature (break) the peptide bonds, reducing effectiveness. Let the powder dissolve naturally." },
             { question: "Why do most peptides require cycling?", options: ["They expire after a few weeks", "To prevent receptor desensitization", "Legal requirements", "To save money"], correctIndex: 1, explanation: "Cycling prevents receptor desensitization   your body can become less responsive to a peptide with continuous use. Rest periods allow receptors to 'reset'." }
         ]
     },
@@ -167,7 +167,7 @@ export const learningModules: LearningModule[] = [
         ],
         quiz: [
             { question: "Why should GH peptides be taken pre-bed?", options: ["They cause drowsiness", "GH is naturally highest during deep sleep", "They need to be taken with food", "Injection is easier lying down"], correctIndex: 1, explanation: "Growth hormone has its largest natural release during deep sleep (Stage 3/4 NREM). Taking GH peptides pre-bed amplifies this natural pulse." },
-            { question: "What does it mean if a GH peptide is causing water retention?", options: ["It's working perfectly", "The dose may be too high", "You need more BAC water", "You should switch peptides"], correctIndex: 1, explanation: "Water retention is a common sign of excessive GH stimulation. The first step is to reduce the dose, not stop entirely." },
+            { question: "What does it mean if a GH peptide is causing water retention?", options: ["It's working perfectly", "The dose may be too high", "You need more diluent", "You should switch peptides"], correctIndex: 1, explanation: "Water retention is a common sign of excessive GH stimulation. The first step is to reduce the dose, not stop entirely." },
             { question: "Why should you avoid eating near GH peptide injections?", options: ["Food reduces absorption", "Insulin inhibits GH release", "Peptides taste bad", "It causes nausea"], correctIndex: 1, explanation: "Insulin (released in response to eating) directly inhibits growth hormone release. A 30-60 minute fasting window around GH peptide injections maximizes effectiveness." }
         ]
     },

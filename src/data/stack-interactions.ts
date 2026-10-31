@@ -88,17 +88,6 @@ export const stackInteractions: StackInteraction[] = [
   },
 
   {
-    peptideA: "Semaglutide",
-    peptideB: "BPC-157",
-    severity: "SAFE",
-    headline: "Complementary — GLP-1 axis + gastroprotective",
-    detail: "Semaglutide acts on GLP-1 receptors to suppress appetite and regulate glucose. BPC-157 has documented gastroprotective effects in the same gut tissue. Some researchers use BPC-157 to manage the GI side effects (nausea, gastroparesis) reported with semaglutide. No pharmacological antagonism identified.",
-    citations: [
-      { type: "editorial", label: "Editorial: Theoretically complementary; no adverse pair data available" },
-    ],
-  },
-
-  {
     peptideA: "Epithalon",
     peptideB: "GHK-Cu",
     severity: "SAFE",
@@ -158,30 +147,6 @@ export const stackInteractions: StackInteraction[] = [
   },
 
   {
-    peptideA: "Semaglutide",
-    peptideB: "Tirzepatide",
-    severity: "CAUTION",
-    headline: "Overlapping GLP-1 agonism — additive GI side effects, no clinical rationale",
-    detail: "Semaglutide (GLP-1 agonist) and Tirzepatide (dual GIP/GLP-1 agonist) share the GLP-1 receptor. Co-administration has no established research rationale, significantly increases nausea/vomiting risk, and could cause excessive appetite suppression or hypoglycemia in predisposed individuals. Choose one GLP-1 pathway agent.",
-    citations: [
-      { type: "pubmed", label: "Frías et al., 2021 — NEJM (Tirzepatide vs Semaglutide)", url: "https://pubmed.ncbi.nlm.nih.gov/34170647/" },
-      { type: "editorial", label: "Editorial: Overlapping receptor; clinical rationale for co-use not established" },
-    ],
-    alternatives: ["Retatrutide"],
-  },
-
-  {
-    peptideA: "PT-141",
-    peptideB: "Semaglutide",
-    severity: "CAUTION",
-    headline: "Blood pressure interaction possible — monitor cardiovascular parameters",
-    detail: "PT-141 (Bremelanotide) transiently increases blood pressure via MC4R activation. Semaglutide can cause mild cardiovascular effects including heart rate changes. The combination is not formally contraindicated but warrants blood pressure monitoring, particularly in individuals with pre-existing hypertension.",
-    citations: [
-      { type: "editorial", label: "Editorial: Cardiovascular monitoring recommended; no documented severe adverse pair events" },
-    ],
-  },
-
-  {
     peptideA: "BPC-157",
     peptideB: "Insulin",
     severity: "CAUTION",
@@ -231,19 +196,6 @@ export const stackInteractions: StackInteraction[] = [
   // ══════════ WARNING — Documented adverse effects ══════════════════════════
 
   {
-    peptideA: "Melanotan II",
-    peptideB: "Semaglutide",
-    severity: "WARNING",
-    headline: "Compounding nausea and GI distress — high adverse event probability",
-    detail: "Both Melanotan II and GLP-1 agonists like Semaglutide independently cause significant nausea, vomiting, and loss of appetite. Co-administration substantially elevates the likelihood of severe GI distress, dehydration, and electrolyte imbalance. This combination should be avoided unless nausea is carefully managed and doses are significantly reduced.",
-    citations: [
-      { type: "pubmed", label: "Dorr et al., 1996 — Life Sci (Melanotan II nausea)", url: "https://pubmed.ncbi.nlm.nih.gov/8637402/" },
-      { type: "pubmed", label: "Wilding et al., 2021 — NEJM (Semaglutide GI profile)", url: "https://pubmed.ncbi.nlm.nih.gov/33567185/" },
-    ],
-    alternatives: ["PT-141 (more selective, less nausea)", "Retatrutide alone"],
-  },
-
-  {
     peptideA: "PT-141",
     peptideB: "Nitrates",
     severity: "WARNING",
@@ -264,46 +216,6 @@ export const stackInteractions: StackInteraction[] = [
     citations: [
     ],
     alternatives: ["Use IGF-1 LR3 alone with glucose monitoring; do not combine with insulin"],
-  },
-
-  // ══════════ DO NOT STACK — Clear contraindications ═══════════════════════
-
-  {
-    peptideA: "Semaglutide",
-    peptideB: "Retatrutide",
-    severity: "DO_NOT_STACK",
-    headline: "Redundant GLP-1 agonism with additive toxicity — no clinical rationale",
-    detail: "Retatrutide is a triple agonist (GIP, GLP-1, glucagon) that fully covers the GLP-1 receptor. Adding Semaglutide creates pure receptor competition and dose-stacking with no therapeutic benefit. The combination dramatically increases the risk of severe nausea, vomiting, tachycardia, and potential pancreatitis. There is no research rationale for this combination.",
-    citations: [
-      { type: "pubmed", label: "Jastreboff et al., 2023 — NEJM (Retatrutide Phase 2)", url: "https://pubmed.ncbi.nlm.nih.gov/37366315/" },
-      { type: "editorial", label: "Editorial: Full GLP-1 receptor overlap; combination has no therapeutic justification" },
-    ],
-    alternatives: ["Use Retatrutide alone — it already includes full GLP-1 pathway coverage"],
-  },
-
-  {
-    peptideA: "Tirzepatide",
-    peptideB: "Retatrutide",
-    severity: "DO_NOT_STACK",
-    headline: "Dual GIP/GLP-1 overlap — compounding toxicity, no benefit",
-    detail: "Retatrutide is a superset of Tirzepatide — it covers GIP, GLP-1, and glucagon. Co-administering Tirzepatide adds nothing to the GIP and GLP-1 pathways already covered by Retatrutide, while stacking GI, cardiovascular, and metabolic adverse effects. This combination has no scientific rationale.",
-    citations: [
-      { type: "editorial", label: "Editorial: Retatrutide fully covers Tirzepatide's mechanism; combination contraindicated by redundancy" },
-    ],
-    alternatives: ["Use Retatrutide alone"],
-  },
-
-  {
-    peptideA: "Melanotan II",
-    peptideB: "Tirzepatide",
-    severity: "DO_NOT_STACK",
-    headline: "Compounding GI toxicity — high risk of severe adverse events",
-    detail: "Tirzepatide already causes significant nausea and vomiting in a substantial portion of users. Melanotan II independently causes intense nausea, facial flushing, and emesis. The combination produces severe compounding GI toxicity, risk of dangerous dehydration, and electrolyte imbalance. Avoid entirely.",
-    citations: [
-      { type: "pubmed", label: "Dorr et al., 1996 — Life Sci (MT-II nausea)", url: "https://pubmed.ncbi.nlm.nih.gov/8637402/" },
-      { type: "pubmed", label: "Frías et al., 2021 — NEJM (Tirzepatide GI events)", url: "https://pubmed.ncbi.nlm.nih.gov/34170647/" },
-    ],
-    alternatives: ["PT-141 (more selective melanocortin)", "Semaglutide with anti-nausea management"],
   },
 
   // ══════════ BATCH 2: Nootropics ═══════════════════════════════════════════
@@ -544,20 +456,7 @@ export const stackInteractions: StackInteraction[] = [
     ],
   },
 
-  // ══════════ BATCH 2: AOD-9604 / weight loss ═══════════════════════════════
-
-  {
-    peptideA: "AOD-9604",
-    peptideB: "Semaglutide",
-    severity: "CAUTION",
-    headline: "Stacked weight loss mechanisms — monitor for excessive caloric deficit",
-    detail: "AOD-9604 is a modified GH fragment (176–191) that promotes lipolysis via beta-3 adrenergic-like activity without affecting blood glucose. Semaglutide suppresses appetite through GLP-1 receptor activation. The combination can produce an aggressive energy deficit — particularly useful in research contexts but requires careful dietary monitoring to avoid excessive muscle catabolism and nutritional deficiency.",
-    citations: [
-      { type: "pubmed", label: "Heffernan et al., 2001 — J Endocrinol (AOD-9604 lipolysis)", url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" },
-      { type: "editorial", label: "Editorial: Additive negative energy balance; dietary monitoring essential" },
-    ],
-    alternatives: ["AOD-9604 alone", "Semaglutide alone with dietary support"],
-  },
+  // ══════════ BATCH 2: AOD-9604 / body composition ═════════════════════════
 
   {
     peptideA: "AOD-9604",
@@ -569,18 +468,6 @@ export const stackInteractions: StackInteraction[] = [
       { type: "pubmed", label: "Heffernan et al., 2001 — J Endocrinol (AOD-9604)", url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" },
       { type: "editorial", label: "Editorial: Non-overlapping mechanisms; a rational body composition stack" },
     ],
-  },
-
-  {
-    peptideA: "AOD-9604",
-    peptideB: "Tirzepatide",
-    severity: "CAUTION",
-    headline: "Stacked weight loss — aggressive energy deficit, monitor lean mass",
-    detail: "Tirzepatide suppresses appetite via dual GIP/GLP-1 agonism. AOD-9604 directly stimulates lipolysis. Together the energy deficit created can be substantial, risking lean mass loss if protein intake is insufficient. Not a pharmacological contraindication, but nutritional management is essential.",
-    citations: [
-      { type: "editorial", label: "Editorial: Additive weight loss mechanisms; protein intake and lean mass monitoring required" },
-    ],
-    alternatives: ["AOD-9604 alone", "Tirzepatide with high-protein diet"],
   },
 
   // ══════════ BATCH 2: Additional CAUTION pairs ═════════════════════════════
@@ -633,19 +520,6 @@ export const stackInteractions: StackInteraction[] = [
       { type: "editorial", label: "Editorial: Identical GHSR target; additive cortisol/prolactin with no GH benefit" },
     ],
     alternatives: ["Ipamorelin + CJC-1295", "GHRP-6 or GHRP-2 with a GHRH analog"],
-  },
-
-  {
-    peptideA: "Melanotan II",
-    peptideB: "Retatrutide",
-    severity: "DO_NOT_STACK",
-    headline: "Triple compounding GI toxicity — severe adverse event risk",
-    detail: "Retatrutide (GIP/GLP-1/glucagon triple agonist) produces significant nausea/vomiting at therapeutic doses. Melanotan II adds intense independent nausea via melanocortin pathways. Together the GI adverse event burden is extremely high with near-certain severe emesis, dehydration risk, and electrolyte imbalance. No research rationale exists for this combination.",
-    citations: [
-      { type: "pubmed", label: "Jastreboff et al., 2023 — NEJM (Retatrutide)", url: "https://pubmed.ncbi.nlm.nih.gov/37366315/" },
-      { type: "pubmed", label: "Dorr et al., 1996 — Life Sci (MT-II nausea)", url: "https://pubmed.ncbi.nlm.nih.gov/8637402/" },
-    ],
-    alternatives: ["PT-141 instead of MT-II", "Retatrutide alone"],
   },
 
 ];

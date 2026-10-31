@@ -30,7 +30,7 @@ const suppliers: Supplier[] = [
         coaAvailable: true,
         testingMethod: ["HPLC", "Mass Spec", "Endotoxin"],
         shipsTo: ["USA", "International"],
-        specialties: ["BPC-157", "TB-500", "GHK-Cu", "CJC-1295/Ipamorelin", "AOD-9604", "Tesamorelin", "Retatrutide", "KPV", "MOTS-c", "Semax", "Selank", "DSIP", "NAD+", "Glutathione", "Cagrilintide"],
+        specialties: ["BPC-157", "TB-500", "GHK-Cu", "CJC-1295/Ipamorelin", "AOD-9604", "Tesamorelin", "KPV", "MOTS-c", "Semax", "Selank", "DSIP", "NAD+", "Glutathione"],
         minPurity: "99%+",
         notes: "Premium vendor with 99%+ purity guaranteed on every product. COA included with every batch. 60-day money-back guarantee and free shipment protection. Active research community on Discord. One of the most competitive prices in the market.",
         badge: "Editor's Pick",

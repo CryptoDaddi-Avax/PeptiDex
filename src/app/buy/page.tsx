@@ -12,7 +12,7 @@ const limitlessLife = vendors.find((v) => v.slug === 'limitless-life')!;
 
 export const metadata: Metadata = {
   title: 'Where to Buy Peptides Online (2026): COA-Verified Vendors',
-  description: 'Find verified research peptide vendors. Compare pricing, purity, and shipping for BPC-157, TB-500, GLP-1s, and more. Exclusive PEPTIDEX discount codes.',
+  description: 'Find verified research peptide vendors. Compare pricing, purity, and shipping for BPC-157, TB-500, GHK-Cu, and more. Exclusive PEPTIDEX discount codes.',
   alternates: { canonical: 'https://peptidex.app/buy' },
 };
 
@@ -20,9 +20,6 @@ const TARGET_PEPTIDES = [
   { slug: 'bpc-157', name: 'BPC-157', desc: 'Healing & Recovery' },
   { slug: 'tb-500', name: 'TB-500', desc: 'Tissue Repair' },
   { slug: 'ghk-cu', name: 'GHK-Cu', desc: 'Skin & Healing' },
-  { slug: 'semaglutide', name: 'Semaglutide', desc: 'GLP-1 Weight Loss' },
-  { slug: 'tirzepatide', name: 'Tirzepatide', desc: 'GLP-1/GIP Weight Loss' },
-  { slug: 'retatrutide', name: 'Retatrutide', desc: 'Tri-Agonist Weight Loss' },
   { slug: 'cjc-1295', name: 'CJC-1295', desc: 'Growth Hormone Secretagogue' },
   { slug: 'ipamorelin', name: 'Ipamorelin', desc: 'GHRP' },
   { slug: 'mk-677', name: 'MK-677', desc: 'Oral GH Secretagogue' },
@@ -40,7 +37,7 @@ export default function BuyIndexPage() {
   const faqSchema = buildFAQPageSchema([
     { q: 'How do I know if a peptide vendor is legit?', a: 'Legitimate vendors will provide batch-specific Certificates of Analysis (COAs) from independent third-party laboratories verifying both purity (via HPLC) and identity (via Mass Spectrometry).' },
     { q: 'What is the best peptide vendor in 2026?', a: 'PeptiDex rates Amino Club and Bio Longevity Labs as top-tier vendors due to their strict testing standards, transparency, and shipping reliability.' },
-    { q: 'Is it legal to buy peptides online?', a: 'In the US, most peptides are sold legally strictly as "research chemicals" and are not approved for human consumption or therapeutic use. Some, like semaglutide, are FDA-approved but require a prescription for medical use.' },
+    { q: 'Is it legal to buy peptides online?', a: 'In the US, most peptides are sold for laboratory research use only and are not approved for human consumption or therapeutic use. Some, like tesamorelin, are FDA-approved but require a prescription for medical use.' },
     { q: 'What is the PeptiDex discount code?', a: `You can use code PEPTIDEX at checkout for ${aminoClub.discountPercent}% off at Amino Club, and ${bioLongevity.discountPercent}% off at Bio Longevity Labs, Limitless Life, and Pantheon Peptides.` },
   ]);
 
@@ -56,7 +53,7 @@ export default function BuyIndexPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 mt-12">
         <h2 className="text-2xl font-bold text-white mb-6">Popular Compounds</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-16">
           {TARGET_PEPTIDES.map(p => (
             <Link 
               key={p.slug} 
@@ -75,7 +72,7 @@ export default function BuyIndexPage() {
         <article className="prose prose-invert prose-violet max-w-none">
           <h2>How to Spot a Legitimate Peptide Vendor</h2>
           <p>
-            The research peptide market is highly unregulated. Without FDA oversight on "research chemicals," 
+            The research peptide market is highly unregulated. Without FDA oversight on research-use-only products,
             the responsibility of verifying safety and purity falls entirely on the researcher. Here is what we 
             look for when verifying vendors for the PeptiDex directory:
           </p>
@@ -132,7 +129,7 @@ export default function BuyIndexPage() {
 
           <h2>Payment Safety and Shipping</h2>
           <p>
-            Due to the high-risk classification of research chemicals by major payment processors, 
+            Due to the high-risk classification of research-use-only products by major payment processors, 
             many legitimate vendors struggle to maintain traditional credit card processing. It is 
             common and often necessary to use alternative payment methods like eCheck, Zelle, or Crypto.
           </p>

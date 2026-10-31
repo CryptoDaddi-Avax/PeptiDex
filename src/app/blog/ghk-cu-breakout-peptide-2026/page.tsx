@@ -123,7 +123,7 @@ export default function GHKCuArticle() {
         </p>
 
         <p>
-          According to a comprehensive analysis of over 7,200 peptide-related keywords published by <em>The Peptide Effect</em> in February 2026, GHK-Cu saw a staggering <strong>1,016% year-over-year increase</strong> in U.S. search volume, making it the single fastest-growing peptide compound in public interest — outpacing even the red-hot GLP-1 receptor agonists that continue to dominate headlines.¹
+          According to a comprehensive analysis of over 7,200 peptide-related keywords published by <em>The Peptide Effect</em> in February 2026, GHK-Cu saw a staggering <strong>1,016% year-over-year increase</strong> in U.S. search volume, making it the single fastest-growing peptide compound in public interest.¹
         </p>
 
         <p>So what&apos;s behind the surge, and why should you care? Let&apos;s break it down.</p>
@@ -197,7 +197,7 @@ export default function GHKCuArticle() {
         <div className="section-label mt-12 mb-2">§ 05</div>
           <h2>What Sets GHK-Cu Apart?</h2>
         <p>
-          In a peptide landscape increasingly dominated by the GLP-1 class — compounds like semaglutide and tirzepatide that target metabolic pathways — GHK-Cu occupies a distinct niche. It&apos;s not a weight-loss peptide. It&apos;s a <em>repair and regeneration</em> peptide with a uniquely broad mechanism of action.
+          In a peptide landscape increasingly dominated by compounds that target metabolic pathways, GHK-Cu occupies a distinct niche. It&apos;s not a weight-loss peptide. It&apos;s a <em>repair and regeneration</em> peptide with a uniquely broad mechanism of action.
         </p>
         <p>
           Where BPC-157 is often favored for musculoskeletal injuries and TB-500 for systemic tissue repair, GHK-Cu brings unmatched depth in skin biology, anti-aging, and gene expression modulation. The compounds are not mutually exclusive — in fact, many researchers and practitioners are exploring combination approaches that pair GHK-Cu with BPC-157 and TB-500 for complementary recovery and regeneration protocols.¹⁴

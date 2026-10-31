@@ -1,7 +1,7 @@
 /**
  * pSEO Schema.org JSON-LD Generator
  * ===================================
- * Generates Product + Offer + AggregateRating structured data for
+ * Generates Product + AggregateRating structured data (no offers) for
  * programmatic SEO pages at /peptides/[slug]/at/[vendor].
  *
  * Rating logic:
@@ -20,16 +20,14 @@ interface PseoSchemaOptions {
   logCount?: number;
   /** Average efficacy score from community logs (1-10) */
   avgEfficacy?: number;
-  /** Discounted price after applying vendor discount */
-  discountedPrice: number;
 }
 
 /**
- * Generates Product + Offer JSON-LD for a pSEO page.
+ * Generates Product JSON-LD (no offers) for a pSEO page.
  * Returns a serializable object ready for <script type="application/ld+json">.
  */
 export function generatePseoSchema(opts: PseoSchemaOptions): Record<string, unknown> {
-  const { pair, logCount, avgEfficacy, discountedPrice } = opts;
+  const { pair, logCount, avgEfficacy } = opts;
   const { peptide, vendor, pricing } = pair;
 
   // ── Rating source determination (deterministic switch) ────────────────
@@ -61,29 +59,6 @@ export function generatePseoSchema(opts: PseoSchemaOptions): Record<string, unkn
     },
     "category": "Research Peptides",
     "sku": `${vendor.slug}-${peptide.slug}-${pricing.vial_mg}mg`,
-    "offers": {
-      "@type": "Offer",
-      "url": pricing.affiliateUrl || vendor.affiliateUrl,
-      "priceCurrency": "USD",
-      "price": pricing.price_usd.toFixed(2),
-      "availability": pricing.inStock
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      "seller": {
-        "@type": "Organization",
-        "name": vendor.name,
-        "url": vendor.affiliateUrl,
-      },
-      ...(discountedPrice < pricing.price_usd ? {
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "price": discountedPrice.toFixed(2),
-          "priceCurrency": "USD",
-          "valueAddedTaxIncluded": false,
-          "description": `After ${vendor.discountPercent ?? 0}% discount with code ${vendor.discountCode ?? 'PEPTIDEX'}`,
-        },
-      } : {}),
-    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": ratingValue,

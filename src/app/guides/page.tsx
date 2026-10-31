@@ -3,16 +3,28 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Research Guides — PeptiDex',
-  description: 'In-depth peptide research guides: GLP-1 alternatives and more.',
+  description: 'In-depth peptide research guides: the education track, COA verification, and the peptide glossary.',
   alternates: { canonical: 'https://peptidex.app/guides' },
 };
 
 const guides = [
   {
-    slug: 'glp1-alternatives',
-    title: 'GLP-1 Alternatives Guide',
-    description: 'Research compounds beyond Semaglutide and Tirzepatide: Tesofensine, AOD-9604, and other non-incretin approaches.',
-    emoji: '💊',
+    href: '/learn',
+    title: 'Peptide Education Track',
+    description: 'A step-by-step course covering peptide basics, research literature, and safety considerations.',
+    emoji: '🎓',
+  },
+  {
+    href: '/tools/coa',
+    title: 'COA Verification Guide',
+    description: 'Check molecular weight and purity on a Certificate of Analysis against reference values.',
+    emoji: '🔬',
+  },
+  {
+    href: '/glossary',
+    title: 'Peptide Glossary',
+    description: 'Pharmacology, chemistry, and research terms explained in plain English.',
+    emoji: '📖',
   },
 ];
 
@@ -27,7 +39,7 @@ export default function GuidesIndexPage() {
       </p>
       <div style={{ display: 'grid', gap: 16 }}>
         {guides.map(g => (
-          <Link key={g.slug} href={`/guides/${g.slug}`} style={{
+          <Link key={g.href} href={g.href} style={{
             display: 'block', padding: '24px', borderRadius: 12,
             background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
             textDecoration: 'none', transition: 'all 0.2s',

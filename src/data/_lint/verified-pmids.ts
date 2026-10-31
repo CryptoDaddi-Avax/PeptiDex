@@ -10,7 +10,6 @@ export const verifiedPmids: Record<string, {
 "9360512": { authors: "Khorram O et al.", title: "Effects of [norleucine27]growth hormone-releasing hormone (GHRH)(1-29)-NH2 administration on the immune system of aging men and women", journal: "Journal of Clinical Endocrinology and Metabolism", year: 1997, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "32107480": { authors: "Mookherjee N et al.", title: "Antimicrobial host defence peptides: functions and clinical potential", journal: "Nature Reviews Drug Discovery", year: 2020, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "11227856": { authors: "Khavinson VKh et al.", title: "Effect of pineal peptide on parameters of the biological age and life span in mice", journal: "Rossiiskii Fiziologicheskii Zhurnal Imeni I.M. Sechenova", year: 2001, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
-    "38367045": { authors: "Mao X et al.", title: "A review of an investigational drug retatrutide, a novel triple agonist agent for the treatment of obesity and type 2 diabetes mellitus", journal: "European Journal of Clinical Pharmacology", year: 2024, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "20387390": { authors: "Inozemtseva LS et al.", title: "Influence of Semax on the emotional state of white rats in the norm and against the background of morphine withdrawal", journal: "Izvestiia Akademii Nauk Seriia Biologicheskaia", year: 2010, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "17703734": { authors: "Yun YH et al.", title: "The effect of tripeptide-copper complex on human hair growth in vitro", journal: "Archives of Pharmacal Research", year: 2007, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
     "6895513": { authors: "Schneider-Helmert D et al.", title: "Acute and delayed effects of DSIP (delta sleep-inducing peptide) on human sleep behavior", journal: "International Journal of Clinical Pharmacology, Therapy and Toxicology", year: 1981, verified_date: "2026-05-22", verified_by: "Antigravity/NLM-API" },
@@ -337,30 +336,6 @@ export const verifiedPmids: Record<string, {
         verified_date: "2026-05-14",
         verified_by: "Antigravity/Operator"
     },
-    "34170647": {
-        authors: "Frías JP, Davies MJ, Rosenstock J, et al.",
-        title: "Tirzepatide versus Semaglutide Once Weekly in Patients with Type 2 Diabetes (SURPASS-2)",
-        journal: "N Engl J Med",
-        year: 2021,
-        verified_date: "2026-05-14",
-        verified_by: "Antigravity/Operator"
-    },
-    "33567185": {
-        authors: "Wilding JPH, Batterham RL, Calanna S, et al.",
-        title: "Once-Weekly Semaglutide in Adults with Overweight or Obesity (STEP 1)",
-        journal: "N Engl J Med",
-        year: 2021,
-        verified_date: "2026-05-14",
-        verified_by: "Antigravity/Operator"
-    },
-    "37366315": {
-        authors: "Jastreboff AM, Kaplan LM, Frías JP, et al.",
-        title: "Triple-Hormone-Receptor Agonist Retatrutide for Obesity — A Phase 2 Trial",
-        journal: "N Engl J Med",
-        year: 2023,
-        verified_date: "2026-05-14",
-        verified_by: "Antigravity/Operator"
-    },
     "9849822": {
         authors: "Raun K, Hansen BS, Johansen NL, et al.",
         title: "Ipamorelin, the first selective growth hormone secretagogue",
@@ -408,15 +383,6 @@ export const verifiedPmids: Record<string, {
         year: 2015,
         verified_date: "2026-05-17",
         verified_by: "Antigravity/Operator"
-    },
-    "35658024": {
-
-        authors: "Jastreboff AM, Aronne LJ, Ahmad NN, et al.",
-        title: "Tirzepatide Once Weekly for the Treatment of Obesity (SURMOUNT-1)",
-        journal: "N Engl J Med",
-        year: 2022,
-        verified_date: "2026-05-18",
-        verified_by: "Antigravity/NLM-API"
     },
     "20554713": {
         authors: "Falutz J, Potvin D, Mamputu JC, et al.",
@@ -495,22 +461,6 @@ export const verifiedPmids: Record<string, {
         title: "MOTS-c is an exercise-induced mitochondrial-encoded regulator of age-dependent physical decline and muscle homeostasis",
         journal: "Nat Commun",
         year: 2021,
-        verified_date: "2026-05-20",
-        verified_by: "Antigravity/NLM-API"
-    },
-    "38858523": {
-        authors: "Sanyal AJ, Shankar SS, Umpierrez G, et al.",
-        title: "Triple hormone receptor agonist retatrutide for metabolic dysfunction-associated steatotic liver disease",
-        journal: "Nat Med",
-        year: 2024,
-        verified_date: "2026-05-20",
-        verified_by: "Antigravity/NLM-API"
-    },
-    "30293770": {
-        authors: "Frias JP, Nauck MA, Van J, et al.",
-        title: "Efficacy and safety of LY3298176, a novel dual GIP and GLP-1 receptor agonist, in patients with type 2 diabetes",
-        journal: "Lancet",
-        year: 2018,
         verified_date: "2026-05-20",
         verified_by: "Antigravity/NLM-API"
     },

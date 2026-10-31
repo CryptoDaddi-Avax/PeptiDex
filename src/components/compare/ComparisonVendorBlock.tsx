@@ -9,8 +9,7 @@ interface ComparisonVendorBlockProps {
 }
 
 const BUY_SLUGS = new Set([
-  'bpc-157','tb-500','ghk-cu','semaglutide','tirzepatide',
-  'retatrutide','cjc-1295','ipamorelin','mk-677','sermorelin',
+  'bpc-157','tb-500','ghk-cu','cjc-1295','ipamorelin','mk-677','sermorelin',
   'tesamorelin','mots-c',
 ]);
 

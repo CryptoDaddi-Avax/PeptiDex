@@ -117,7 +117,7 @@ function buildSchema(ranked: RankedPeptide[]) {
         "dateCreated": "2024-01-01",
         "keywords": [
             "peptide research", "clinical evidence ranking", "BPC-157",
-            "semaglutide", "tirzepatide", "retatrutide", "GLP-1",
+            "TB-500", "tesamorelin", "PT-141",
             "evidence-based medicine", "peptide trials", "FDA approved peptides",
         ],
         "distribution": {

@@ -111,7 +111,7 @@ const faqSchema = {
       name: 'What is the most popular peptide in 2026?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'By search volume, tirzepatide leads with approximately 1 million monthly searches. Among non-weight-loss peptides, BPC-157 is the most popular at around 165,000 monthly searches, while GHK-Cu is the fastest-growing with over 1,000% year-over-year search growth.',
+        text: 'By search volume, BPC-157 is among the most popular research peptides at around 165,000 monthly searches, while GHK-Cu is the fastest-growing with over 1,000% year-over-year search growth.',
       },
     },
   ],
@@ -353,10 +353,10 @@ export default function FDAReclassificationArticle() {
         <div className="section-label mt-12 mb-2">§ 07</div>
           <h2 id="broader-landscape">What This Means for the Broader Peptide Landscape</h2>
         <p>
-          The reclassification doesn&apos;t exist in isolation. It arrives at a moment when FDA-approved peptide drugs like semaglutide and tirzepatide have already transformed public perception of what peptides can do. Over 80 peptide-based drugs now carry FDA approval, and the success of GLP-1 receptor agonists has normalized the idea of injectable peptide therapies for millions of Americans.
+          The reclassification doesn&apos;t exist in isolation. It arrives at a moment when FDA-approved peptide drugs have already transformed public perception of what peptides can do. Over 80 peptide-based drugs now carry FDA approval, normalizing the idea of peptide therapies for millions of Americans.
         </p>
         <p>
-          At the same time, the research pipeline is expanding. Triple-receptor agonists like retatrutide are in Phase 3 trials. AI-driven drug discovery is accelerating the identification of novel peptide candidates. Cell-penetrating peptide technology is opening doors to applications in neuroprotection and even gene editing delivery. The 2026 landscape is fundamentally different from even two years ago.
+          At the same time, the research pipeline is expanding. AI-driven drug discovery is accelerating the identification of novel peptide candidates. Cell-penetrating peptide technology is opening doors to applications in neuroprotection and even gene editing delivery. The 2026 landscape is fundamentally different from even two years ago.
         </p>
         <p>
           For patients, the key takeaway is this: peptide therapy is entering a more accessible &mdash; but not a less complex &mdash; era. The science is promising. The regulatory environment is evolving. And the difference between a good outcome and a risky one comes down to the quality of your provider, your pharmacy, and your willingness to stay informed.

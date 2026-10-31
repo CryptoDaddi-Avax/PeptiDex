@@ -300,7 +300,7 @@ function CompareClientInner() {
                         <div className="cmp-presets-title">Popular Comparisons</div>
                         <div className="cmp-presets-list">
                             {[
-                                ["bpc-157", "tb-500"], ["semaglutide", "tirzepatide"],
+                                ["bpc-157", "tb-500"], ["semax", "selank"],
                                 ["cjc-1295", "ipamorelin"], ["ghk-cu", "bpc-157"],
                                 ["bpc-157", "tb-500", "ghk-cu"],
                             ].map((combo) => {

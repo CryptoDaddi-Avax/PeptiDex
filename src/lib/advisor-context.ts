@@ -66,7 +66,6 @@ export function generateSystemContext(): string {
     context += "\n=== DANGEROUS INTERACTIONS TO AVOID ===\n";
     const allNames = peptides.map(p => p.name);
     // Since checkInteractions needs 2+ names, we'll manually summarize hardcoded warnings from the DB
-    context += "Avoid combining multiple GLP-1s (e.g., Semaglutide + Tirzepatide) due to extreme hypoglycemia risk.\n";
     context += "Avoid combining multiple secretagogues of the same class (e.g. two GHRPs like Ipamorelin + GHRP-6).\n";
     
     return context;

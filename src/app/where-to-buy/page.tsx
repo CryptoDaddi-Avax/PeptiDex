@@ -6,7 +6,7 @@ import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard
 import '@/app/vendors/vendors-redesign.css';
 
 const TARGET_SLUGS = [
-  'bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 
+  'bpc-157', 'tb-500',
   'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'
 ];
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Where to Buy Peptides Online — Sourcing Guides 2026',
-    description: 'Independent COA-verified vendor guides for BPC-157, TB-500, Retatrutide & more. Compare prices and purity standards.',
+    description: 'Independent COA-verified vendor guides for BPC-157, TB-500, GHK-Cu & more. Compare prices and purity standards.',
     url: 'https://peptidex.app/where-to-buy',
     type: 'website',
     images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630, alt: 'PeptiDex Peptide Sourcing Guides' }],

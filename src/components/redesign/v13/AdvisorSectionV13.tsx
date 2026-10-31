@@ -1,16 +1,18 @@
 'use client';
 
 import Link from 'next/link';
+import { SITE_STATS } from '@/data/site-stats';
 import '../Sections.css';
 import './AdvisorSectionV13.css';
 
 /**
- * AdvisorSectionV13 — v13 AI Advisor showcase (§09).
+ * AdvisorSectionV13 — v13 AI Advisor showcase (§07).
  * Static visual mockup of the PeptiDex Advisor chat, matching the
  * reference at /_design-reference/v13/index.html §09.
  *
  * This is a display-only component. It does NOT call /api/chat.
- * All chat bubbles are hardcoded from the reference verbatim.
+ * All chat bubbles are hardcoded, educational examples only (no dosing,
+ * sourcing, or pricing content).
  */
 export default function AdvisorSectionV13() {
   return (
@@ -19,7 +21,7 @@ export default function AdvisorSectionV13() {
         <header className="sec-head">
           <div className="section-rule fade-up" aria-hidden="true">
             <span className="rule-line" />
-            <span className="rule-mark">§<span className="num">09</span></span>
+            <span className="rule-mark">§<span className="num">07</span></span>
             <span className="rule-line" />
           </div>
           <p className="sec-eyebrow fade-up" style={{ '--delay': '60ms' } as React.CSSProperties}>INTELLIGENCE</p>
@@ -27,7 +29,7 @@ export default function AdvisorSectionV13() {
             Ask the <span className="em">PeptiDex</span> Advisor.
           </h2>
           <p className="sec-sub fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>
-            AI-powered research summaries grounded in published literature and verified vendor data.
+            AI-powered research summaries grounded in published, peer-reviewed literature.
           </p>
         </header>
 
@@ -40,8 +42,8 @@ export default function AdvisorSectionV13() {
                 <span>Build <strong>personalized stacks</strong> based on your goals</span>
               </li>
               <li>
-                <span className="ico">💊</span>
-                <span>Get <strong>dosing protocols</strong> from clinical literature</span>
+                <span className="ico">🧬</span>
+                <span>Understand <strong>mechanisms of action</strong> from the literature</span>
               </li>
               <li>
                 <span className="ico">🔍</span>
@@ -63,19 +65,19 @@ export default function AdvisorSectionV13() {
             <div className="chat-head">
               <span className="dot" aria-hidden="true" />
               PeptiDex Advisor
-              <span className="chat-sub">GROUNDED IN 668+ STUDIES</span>
+              <span className="chat-sub">GROUNDED IN {SITE_STATS.studies.count}+ STUDIES</span>
             </div>
             <div className="chat-body stagger-children">
               {/* User message 1 */}
               <div className="chat-msg user">
-                <div className="chat-bubble">Which peptides are most studied for cutting?</div>
+                <div className="chat-bubble">What does the research say about BPC-157 and tissue repair?</div>
               </div>
 
               {/* Bot reply 1 */}
               <div className="chat-msg bot">
                 <div className="chat-bubble">
-                  In the Phase 2 NEJM trial, subjects receiving Retatrutide at 12mg weekly achieved 24.2% body weight loss at 48 weeks. The literature documents combinations pairing it with AOD-9604. Researchers sourcing Retatrutide for laboratory use can verify vendor pricing at{' '}
-                  <span className="code-chip">/tools/pricing</span>.
+                  BPC-157 has been studied mainly in rodent models of tendon, ligament, and gut injury, where it was associated with faster healing and increased angiogenesis. Human clinical data remain limited, so findings should be read as preclinical. Full citations are on the{' '}
+                  <span className="code-chip">/library/bpc-157</span> profile.
                 </div>
                 <span className="chat-time">10:42 AM</span>
               </div>

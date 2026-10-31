@@ -86,25 +86,16 @@ export function Bpc157Pillar() {
         </div>
       </section>
 
-      {/* Reconstitution & Storage */}
+      {/* Administration Route & Storage */}
       <section className="mb-12">
         <div className="flex items-center gap-3 mb-6">
           <Syringe className="w-6 h-6 text-blue-400" />
-          <h3 className="text-xl font-bold text-zinc-100">Reconstitution & Storage: Lab-Grade Handling</h3>
+          <h3 className="text-xl font-bold text-zinc-100">Administration Route & Storage</h3>
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            BPC-157 is highly stable compared to larger peptides (like GH or Tesamorelin), making it very user-friendly for reconstitution and transport.
+            BPC-157 is highly stable compared to larger peptides (like GH or Tesamorelin), making it straightforward to store and transport.
           </p>
-          <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-xl my-6">
-            <h4 className="text-lg font-bold text-zinc-100 mb-4">Standard 5mg Vial Reconstitution (for 250mcg doses)</h4>
-            <ul className="list-disc pl-6 space-y-2 text-zinc-300">
-              <li><strong>Peptide Mass:</strong> 5mg BPC-157</li>
-              <li><strong>Diluent Volume:</strong> 2.0 mL Bacteriostatic Water</li>
-              <li><strong>Resulting Concentration:</strong> 2.5mg per 1mL (or 250mcg per 0.1mL)</li>
-              <li><strong>Syringe Draw (for 250mcg dose):</strong> 10 units (0.1mL) on a standard U-100 insulin syringe.</li>
-            </ul>
-          </div>
           <p>
             <strong>Systemic vs. Local Administration:</strong> A long-standing debate exists regarding administration sites. Current consensus suggests BPC-157 works systemically; a subcutaneous injection in the abdomen will upregulate VEGF across the entire body, reaching the injury. However, many researchers anecdotally report superior, faster localized results when administering via subcutaneous or intra-muscular injection as close to the injury site as safely possible (e.g., near the patellar tendon for knee issues).
           </p>

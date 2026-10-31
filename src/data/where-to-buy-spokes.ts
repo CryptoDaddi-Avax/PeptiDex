@@ -1,5 +1,5 @@
 export interface WhereToBuyArticle {
-    slug: string; // e.g. 'retatrutide'
+    slug: string; // e.g. 'bpc-157'
     peptide: string;
     title: string;
     metaDescription: string;

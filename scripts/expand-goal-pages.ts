@@ -54,7 +54,7 @@ IMPORTANT: Make it extremely detailed. The combined word count should exceed 120
 
 async function main() {
   const isDryRun = process.argv.includes('--dry-run');
-  const targetGoal = isDryRun ? "fat-loss" : null;
+  const targetGoal = isDryRun ? "muscle-growth" : null;
 
   console.log("Loading ts-morph project...");
   const project = new Project();

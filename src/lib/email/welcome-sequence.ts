@@ -94,8 +94,8 @@ export function email1_welcome(firstName = "there") {
       "<strong>Ipamorelin</strong> — GH pulse trigger, 200–300 mcg/dose, clean profile",
       "<strong>CJC-1295 no DAC</strong> — GHRH analog, stacks with Ipamorelin",
       "<strong>GHK-Cu</strong> — skin/wound healing, topical or injectable",
-      "<strong>Semaglutide</strong> — GLP-1, weight + metabolic research",
-      "<strong>Tirzepatide</strong> — dual GIP/GLP-1, newer generation",
+      "<strong>MOTS-c</strong> — mitochondrial peptide, metabolic research",
+      "<strong>Semax</strong> — intranasal nootropic, cognitive research",
       "<strong>Epitalon</strong> — telomere + pineal research, 5–10 mg/cycle",
     ])}
     ${p(`The full reference page for each is on PeptiDex — with sourced half-life tables, evidence grades, and COA data from verified vendors.`)}

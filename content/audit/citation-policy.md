@@ -91,7 +91,7 @@ When a citation is pending verification, content must use honest passive attribu
 
 **Not acceptable:**
 - `(PMID: XXXXXX)` for any unverified paper
-- Specific trial names (STEP 1, SURMOUNT-1) without the correct PMID citation
+- Specific trial names (e.g. a named Phase 3 program) without the correct PMID citation
 - Journal names ("published in NEJM") without verified PMID
 
 ### Rule 5 — No Citation for Regulatory Facts That Don't Need One
@@ -109,7 +109,7 @@ Over-citing these with incorrect PMIDs creates more risk than under-citing. Use 
 | Source Type | Registry File | Examples | Framing |
 |------------|:---:|---------|---------|
 | PubMed-indexed academic paper | `verified-pmids.ts` | NEJM, JAMA, Cell Metab | `(PMID: XXXXXX)` inline |
-| FDA prescribing information / label | `verified-sources.ts` | Egrifta, Ozempic labels | "Per FDA prescribing information" |
+| FDA prescribing information / label | `verified-sources.ts` | Egrifta, Vyleesi labels | "Per FDA prescribing information" |
 | EMA filing | `verified-sources.ts` | EMA assessment reports | "Per EMA assessment" |
 | Russian institutional publication | `verified-sources.ts` | Institute of Bioregulation | "Published by [institution]" |
 | Clinical trial registry entry | `verified-sources.ts` | ClinicalTrials.gov NCT# | "Registered Phase [X] trial (NCT#)" |

@@ -71,42 +71,25 @@ export function MotscPillar() {
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            Due to its unique mechanism targeting mitochondrial function and AMPK activation, MOTS-c stacks exceptionally well with peptides that drive lipolysis or require high cellular energy turnover.
+            Due to its unique mechanism targeting mitochondrial function and AMPK activation, MOTS-c is most often studied alongside peptides that support cellular repair and energy metabolism.
           </p>
           
-          <h4 className="text-lg font-bold text-zinc-200 mt-4">1. The Extreme Metabolic Stack: MOTS-c + Retatrutide</h4>
-          <p>
-            When utilizing potent incretins like <Link href="/library/retatrutide" className="text-gold hover:underline">Retatrutide</Link>, the body is forced into profound lipolysis, flooding the bloodstream with free fatty acids. MOTS-c acts as the perfect downstream counterpart. By upregulating mitochondrial density and activating AMPK, MOTS-c ensures that the mitochondria have the capacity to actually <em>burn</em> (oxidize) these liberated fatty acids for energy, preventing them from recirculating or causing cellular stress.
-          </p>
-
-          <h4 className="text-lg font-bold text-zinc-200 mt-4">2. The Longevity & Repair Stack: MOTS-c + BPC-157 + NAD+</h4>
+          <h4 className="text-lg font-bold text-zinc-200 mt-4">The Longevity & Repair Stack: MOTS-c + BPC-157 + NAD+</h4>
           <p>
             For protocols focused on cellular rejuvenation and mitochondrial repair, MOTS-c is frequently stacked with systemic <Link href="/library/bpc-157" className="text-gold hover:underline">BPC-157</Link> and NAD+ precursors. BPC-157 manages systemic inflammation and vascular repair, while MOTS-c and NAD+ synergistically restore mitochondrial respiratory capacity, reversing age-related mitochondrial dysfunction.
           </p>
         </div>
       </section>
 
-      {/* Reconstitution & Storage */}
+      {/* Storage & Handling */}
       <section className="mb-12">
         <div className="flex items-center gap-3 mb-6">
           <Syringe className="w-6 h-6 text-blue-400" />
-          <h3 className="text-xl font-bold text-zinc-100">Reconstitution & Storage: Lab-Grade Handling</h3>
+          <h3 className="text-xl font-bold text-zinc-100">Storage & Handling</h3>
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            MOTS-c is a 16-amino acid peptide that typically requires higher milligram dosing compared to signaling peptides, meaning vials run out quickly and reconstitution must account for larger fluid volumes.
-          </p>
-          <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-xl my-6">
-            <h4 className="text-lg font-bold text-zinc-100 mb-4">Standard 10mg Vial Reconstitution (for 5mg protocol doses)</h4>
-            <ul className="list-disc pl-6 space-y-2 text-zinc-300">
-              <li><strong>Peptide Mass:</strong> 10mg MOTS-c</li>
-              <li><strong>Diluent Volume:</strong> 2.0 mL Bacteriostatic Water</li>
-              <li><strong>Resulting Concentration:</strong> 5mg per 1mL</li>
-              <li><strong>Syringe Draw (for 5mg dose):</strong> 100 units (1.0mL) on a standard U-100 insulin syringe.</li>
-            </ul>
-          </div>
-          <p>
-            Because the typical dose of MOTS-c is between 5mg to 10mg administered acutely before exercise, researchers often inject a full 1mL or 2mL volume. It is highly recommended to split this volume into two separate subcutaneous injection sites (e.g., left and right abdomen) to prevent tissue distension and pooling.
+            MOTS-c is a 16-amino acid mitochondrial-derived peptide supplied as a lyophilized powder. Like most research peptides, it is sensitive to heat and should be kept cold.
           </p>
           <p>
             <strong>Storage Protocols:</strong> Lyophilized MOTS-c should be stored at -20°C. Once reconstituted, store at 2°C to 8°C and use within 14 to 20 days.

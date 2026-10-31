@@ -4,7 +4,7 @@
 **Finding:** 24 unregistered PMIDs found. 21 are clearly wrong (verified via NLM API). 3 are legitimate papers that need to be added to the registry.
 
 > [!CAUTION]
-> This is a **second wave** of fabricated citations beyond the 7 fixed on 2026-05-18. These exist in goal pages not yet deep-audited (longevity, immune-support, hormonal-optimization, metabolic-health, gut-health, sleep-recovery, skin-aesthetic, mental-clarity). The scope of the original problem was larger than the body-recomposition audit captured.
+> This is a **second wave** of fabricated citations beyond the 7 fixed on 2026-05-18. These exist in goal pages not yet deep-audited (longevity, immune-support, hormonal-optimization, gut-health, sleep-recovery, skin-aesthetic, mental-clarity). The scope of the original problem was larger than the body-recomposition audit captured.
 
 ---
 
@@ -79,7 +79,6 @@ Based on the PMID patterns, the likely affected goal pages are:
 - `/best/longevity` — Epitalon (12937622), GHK-Cu (multiple)
 - `/best/immune-support` — Multiple unknown
 - `/best/hormonal-optimization` — Sermorelin (removed), possibly others
-- `/best/metabolic-health` — MOTS-c adjacent, Tesamorelin
 - `/best/gut-health` — BPC-157 adjacent
 - `/best/sleep-recovery` — DSIP-related
 - `/best/skin-aesthetic` — GHK-Cu (26195973 already fixed, but others possible)

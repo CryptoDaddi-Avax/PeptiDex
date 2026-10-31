@@ -76,10 +76,8 @@ export default async function PeptideAtVendorPage({
     // ── Schema.org JSON-LD (only for pricing-verified pages) ────────────
     let schemaJsonLd: Record<string, unknown> | null = null;
     if (pair) {
-        const discountedPrice = pair.pricing.price_usd * (1 - (pair.vendor.discountPercent ?? 0) / 100);
         schemaJsonLd = generatePseoSchema({
             pair,
-            discountedPrice,
             // logCount and avgEfficacy will be populated when Supabase
             // build-time queries are available. For now, uses vendor-level
             // rating (per Decision 2: deterministic switch at logCount >= 5).

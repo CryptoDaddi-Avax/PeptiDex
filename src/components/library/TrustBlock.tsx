@@ -9,7 +9,7 @@ export function TrustBlock() {
           <strong>⚠️ Educational only · Not medical advice · For research use only.</strong>{' '}
           Information on this page is compiled from peer-reviewed literature and is intended
           strictly for educational and informational purposes. Peptides discussed may be
-          unapproved research chemicals — consult a licensed healthcare professional before
+          compounds not approved by the FDA for human use — consult a licensed healthcare professional before
           considering any peptide compound.{' '}
           <a href="/disclaimers" className="pd-trust-link">
             Read our full disclaimer <ExternalLink className="w-3 h-3 inline" />

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { SITE_STATS } from '@/data/site-stats';
 import '../Sections.css';
 
 /**
@@ -21,7 +22,7 @@ const ArrowUpRight = () => (
 
 const TOOLS = [
   { name: 'Cycle Planner',           desc: 'Map dosing schedules across a full research cycle.',       href: '/tools/cycle-planner',  index: '01 / 07' },
-  { name: 'Evidence Dashboard',      desc: 'Browse 668+ studies by peptide, goal, and outcome.',       href: '/tools/evidence',       index: '02 / 07' },
+  { name: 'Evidence Dashboard',      desc: `Browse ${SITE_STATS.studies.count}+ studies by peptide, goal, and outcome.`, href: '/tools/evidence',       index: '02 / 07' },
   { name: 'Peptide Comparison',      desc: 'Compare mechanisms, dosing, and evidence side-by-side.',   href: '/tools/compare',        index: '03 / 07' },
   { name: 'Price Comparison',        desc: 'Track vendor pricing per mg across verified sources.',     href: '/tools/pricing',        index: '04 / 07' },
   { name: 'COA Analyzer',            desc: 'Read and validate certificates of analysis.',              href: '/tools/coa',            index: '05 / 07' },

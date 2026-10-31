@@ -47,7 +47,7 @@ export default function StacksClient() {
                         <Link href="/">Home</Link><span className="sep">/</span><span className="current">Stacks</span>
                     </div>
                     <div className="section-label">§ Curated Protocols</div>
-                    <h1 className="page-title">12 expert-curated <em>stacks</em>.</h1>
+                    <h1 className="page-title">{stacks.length} expert-curated <em>stacks</em>.</h1>
                     <p className="page-subtitle">Each protocol is built around a specific outcome, dosed against published literature, and cross-referenced with sourcing data. Pick a goal, get a stack, plan a cycle.</p>
                     <div className="page-meta">
                         <div className="page-meta-item"><strong>{stacks.length}</strong> protocols</div>

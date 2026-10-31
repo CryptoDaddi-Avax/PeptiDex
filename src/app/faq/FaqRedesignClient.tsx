@@ -40,15 +40,15 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Are peptides FDA approved?',
-    answer: 'Some peptides are FDA approved, but many are not. Over 80 peptide-based drugs have received FDA approval, including semaglutide and tirzepatide. However, many widely discussed research peptides — including BPC-157, TB-500, and MOTS-c — have not undergone the FDA approval process.',
+    answer: 'Some peptides are FDA approved, but many are not. Over 80 peptide-based drugs have received FDA approval, including tesamorelin and PT-141 (bremelanotide). However, many widely discussed research peptides — including BPC-157, TB-500, and MOTS-c — have not undergone the FDA approval process.',
   },
   {
     question: 'How are peptides administered?',
-    answer: 'Peptides are most commonly administered via subcutaneous injection. Other routes include intramuscular injection, intranasal spray (e.g. Semax, Selank), topical creams (GHK-Cu), and — increasingly — oral formulations. Oral semaglutide and orforglipron demonstrated viable oral peptide delivery.',
+    answer: 'Peptides are most commonly administered via subcutaneous injection. Other routes include intramuscular injection, intranasal spray (e.g. Semax, Selank), topical creams (GHK-Cu), and a small number of oral formulations.',
   },
   {
     question: 'What are the most popular peptides in 2026?',
-    answer: 'GLP-1 receptor agonists like semaglutide and tirzepatide for weight management, GHK-Cu for anti-aging (1,016% search volume increase YoY), and BPC-157 for tissue healing. Growth hormone secretagogues like CJC-1295 and Ipamorelin remain widely studied.',
+    answer: 'GHK-Cu for anti-aging (1,016% search volume increase YoY) and BPC-157 for tissue healing lead interest. Growth hormone secretagogues like CJC-1295 and Ipamorelin remain widely studied.',
   },
   {
     question: 'Are peptides safe to use?',
@@ -56,11 +56,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Can peptides interact with other medications?',
-    answer: 'Yes. GLP-1 receptor agonists may delay gastric emptying, affecting absorption of other oral medications. Growth hormone secretagogues can influence insulin sensitivity. A qualified healthcare provider should review all current medications before initiating any peptide therapy.',
-  },
-  {
-    question: 'What are GLP-1 peptides?',
-    answer: 'GLP-1 peptides are compounds that mimic or enhance the activity of the natural GLP-1 hormone released by the gut in response to food intake. They stimulate insulin secretion, suppress glucagon release, slow gastric emptying, and reduce appetite. FDA-approved examples include semaglutide and tirzepatide.',
+    answer: 'Yes. Growth hormone secretagogues can influence insulin sensitivity. A qualified healthcare provider should review all current medications before initiating any peptide therapy.',
   },
   {
     question: 'What are growth hormone secretagogue peptides?',

@@ -1,7 +1,7 @@
 /**
  * E-E-A-T Research Notes — First-Person Verification Blocks
  *
- * Per-peptide first-person research notes for the top 15.
+ * Per-peptide first-person research notes for the top peptides.
  * Rendered by ResearchNotesBlock.tsx.
  * 
  * Voice: "I" / "my protocol" / "I tested" — The Crypto Daddi persona
@@ -23,46 +23,11 @@ export interface EEATNote {
 }
 
 export const eeatNotes: Record<string, EEATNote> = {
-  'retatrutide': {
-    paragraphs: [
-      `I've been tracking retatrutide data since the Jastreboff NEJM paper dropped in mid-2023 — that 24.2% weight loss figure at the 12mg dose was a genuine paradigm shift. No other anti-obesity compound has come close in a controlled Phase 2 setting.`,
-      `For sourcing, I pulled the COA for Amino Club batch RT0001 in April 2026. HPLC purity came back at 99.822% via Biogenica Labs, with MW at 4731.4 Da — matching the Eli Lilly reference compound exactly. COA PDFs for batch RT0001 are linked in the verification section below — readers can cross-check the HPLC traces and MW values against the Eli Lilly reference compound themselves.`,
-      `That level of batch-traceable documentation is what separates legitimate vendors from the underdosed gray-market product I've seen floating around peptide forums. If a vendor can't show you a lot-matched, third-party COA with MW confirmation, walk away.`,
-      `The glucagon receptor component is what makes retatrutide mechanistically distinct from tirzepatide. Research literature suggests (Jastreboff et al., NEJM 2023) that the glucagon agonism drives significantly higher resting energy expenditure — subjects didn't just eat less, they burned more at baseline. The NAFLD sub-study (Nature Medicine 2024) showed ~90% steatosis resolution at 48 weeks, which is an extraordinary liver-health signal that tirzepatide hasn't matched.`,
-    ],
-    coaReference: 'RT0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. I earn a commission on purchases made through my links. I still source from Amino Club because the batch-specific COA documentation is the most rigorous I've verified in this space, and the 60-day MBG removes purchase risk entirely.`,
-    lastVerified: 'May 2026',
-    pendingNote: 'Phase 3 TRIUMPH trials are ongoing — I\'ll update this section when topline data releases.',
-  },
-
-  'tirzepatide': {
-    paragraphs: [
-      `Tirzepatide is the compound that made dual agonism a household concept — I tracked the SURMOUNT and SURPASS trials in real time and the consistency of the data across multiple Phase 3 programs is what makes this one stand out from the noise.`,
-      `For injectable sourcing, I pull tirzepatide from Ascension Peptides — they list it as "T-10" (10mg, $75 after PEPTIDEX 50% off) and "T-30" (30mg, $100 after PEPTIDEX 50% off). The T-30 vial works out to $3.33/mg, which is the lowest price-per-mg for tirzepatide in my vendor index. Pantheon Peptides also carries it at $63.75–$106.25 after the 15% PEPTIDEX discount. All peptides from Ascension are third-party lab tested with COAs available on their certificates page.`,
-      `The GIP component is what makes tirzepatide different from semaglutide. Research suggests the GIP agonism provides additional metabolic benefits beyond appetite suppression — the SURPASS trials showed superior HbA1c reduction compared to semaglutide, which matters for metabolic health beyond just weight.`,
-    ],
-    coaReference: 'Ascension-T-30',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code and I earn a commission. I source research-grade tirzepatide from Ascension Peptides because their third-party lab testing is independently verifiable.`,
-    lastVerified: 'May 2026',
-  },
-
-  'semaglutide': {
-    paragraphs: [
-      `Semaglutide has the deepest clinical validation of any peptide in my index — between STEP, SUSTAIN, SELECT, and the Wegovy cardiovascular outcomes trial, there's more Phase 3 human data on this compound than virtually any other GLP-1 agonist.`,
-      `For injectable research-grade semaglutide, I source from Ascension Peptides — they list it as "S-5" (5mg vial, $50 after PEPTIDEX 50% off, normally $99.99). That's $10/mg. MW 4114 g/mol matches the Novo Nordisk characterization. The C18 fatty diacid modification is the key structural feature that gives semaglutide its ~7-day half-life via albumin binding — without it, you've got a different compound. Ascension's lab testing page confirms third-party COAs.`,
-      `For researchers comparing vendors: the key differentiator is whether the COA explicitly confirms the fatty acid modification via mass spec. HPLC purity alone doesn't tell you if the acyl chain is intact — always verify MW via LC-MS.`,
-    ],
-    coaReference: 'Ascension-S-5',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code and I earn a commission. I source research-grade semaglutide from Ascension Peptides because their third-party lab testing documentation is verifiable.`,
-    lastVerified: 'May 2026',
-  },
-
   'tesamorelin': {
     paragraphs: [
       `Tesamorelin is the only FDA-approved GHRH analog I track — it's been on the market since 2010 under the Egrifta brand for HIV-associated lipodystrophy, and the clinical data on visceral fat reduction is genuinely strong: 17.5% reduction in trunk fat in the SEROSTIM trials.`,
       `I verified Amino Club batch TES0001 — HPLC at 99.521% purity via Biogenica Labs, MW at 5135.8 Da. The trans-3-hexenoic acid modification was confirmed by mass spec. This modification is unique to tesamorelin and essential for its extended activity versus native GHRH.`,
-      `The research angle here is visceral adipose tissue specifically — tesamorelin targets truncal fat in a way that standard GLP-1 agonists don't. For researchers interested in body composition beyond just scale weight, the published data on tesamorelin's selectivity for visceral vs. subcutaneous fat is uniquely compelling.`,
+      `The research angle here is visceral adipose tissue specifically — tesamorelin targets truncal fat in a way that general appetite-based approaches don't. For researchers interested in body composition beyond just scale weight, the published data on tesamorelin's selectivity for visceral vs. subcutaneous fat is uniquely compelling.`,
     ],
     coaReference: 'TES0001',
     disclosure: `Full disclosure — PEPTIDEX is my affiliate code. I source tesamorelin from both Amino Club and Bio Longevity Labs depending on availability and current pricing.`,
@@ -135,17 +100,6 @@ export const eeatNotes: Record<string, EEATNote> = {
     lastVerified: 'May 2026',
   },
 
-  'cagrilintide': {
-    paragraphs: [
-      `Cagrilintide is the amylin analog half of Novo Nordisk's CagriSema combination — paired with semaglutide for what's shaping up to be the most potent obesity pharmacotherapy combination in development. The Phase 3 REDEFINE program data is expected in 2026.`,
-      `Amino Club batch CAG0001 verified at 99.604% purity via Biogenica Labs. At $55.99/10mg after the PEPTIDEX code, the COA PDF is linked below for independent verification.`,
-      `The amylin receptor agonism provides a distinct mechanism from GLP-1: amylin slows gastric emptying and reduces glucagon secretion through different receptor pathways. The combination with semaglutide is mechanistically rational because the two receptors don't overlap — it's additive, not redundant.`,
-    ],
-    coaReference: 'CAG0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Cagrilintide is available from both Amino Club ($5.60/mg) and Ascension Peptides.`,
-    lastVerified: 'May 2026',
-  },
-
   'nad': {
     paragraphs: [
       `NAD+ is the coenzyme I've been tracking the longest in the longevity space — Sinclair's lab work on sirtuin activation and the subsequent commercial explosion of NMN/NR precursors put this compound on the map, but injectable NAD+ research represents a different pharmacological approach entirely.`,
@@ -161,7 +115,7 @@ export const eeatNotes: Record<string, EEATNote> = {
     paragraphs: [
       `Epitalon is the longevity peptide I follow primarily because of Khavinson's original work on telomerase activation — the in vitro data showing telomere elongation in human fetal fibroblast cultures was published over two decades ago and remains one of the most cited papers in peptide longevity research.`,
       `Amino Club batch EPI0001 verified at 99.710% purity via Biogenica Labs. At 390.3 Da it's a simple tetrapeptide (Ala-Glu-Asp-Gly). COA PDF linked below.`,
-      `The honest assessment: epitalon has a strong in vitro evidence base and some animal data, but the clinical evidence in humans is thin — Khavinson's own human studies were small-sample observational work, not controlled trials. I track it because the telomerase mechanism is genuinely interesting, but the evidence level is below what I'd cite for compounds like semaglutide or tirzepatide.`,
+      `The honest assessment: epitalon has a strong in vitro evidence base and some animal data, but the clinical evidence in humans is thin — Khavinson's own human studies were small-sample observational work, not controlled trials. I track it because the telomerase mechanism is genuinely interesting, but the evidence level is below what I'd cite for compounds like tesamorelin or PT-141.`,
     ],
     coaReference: 'EPI0001',
     disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Epitalon is available from Amino Club and Bio Longevity Labs.`,
@@ -170,7 +124,7 @@ export const eeatNotes: Record<string, EEATNote> = {
 
   '5-amino-1mq': {
     paragraphs: [
-      `5-Amino-1MQ is the NNMT inhibitor I've been tracking for its novel mechanism — it doesn't work through traditional appetite suppression or GLP-1 pathways. Instead, it targets nicotinamide N-methyltransferase, an enzyme that when inhibited, shifts cellular metabolism toward higher energy expenditure.`,
+      `5-Amino-1MQ is the NNMT inhibitor I've been tracking for its novel mechanism — it doesn't work through traditional appetite suppression pathways. Instead, it targets nicotinamide N-methyltransferase, an enzyme that when inhibited, shifts cellular metabolism toward higher energy expenditure.`,
       `The Neelakantan et al. 2022 study in Biochemical Pharmacology demonstrated significant fat mass reduction in diet-induced obese mice without affecting lean mass or food intake. That selectivity — fat loss without appetite suppression — is what makes the NNMT pathway interesting as a research target.`,
       `Amino Club batch AMQ0001 verified at 99.710% purity via Biogenica Labs. Some vendors sell 5-Amino-1MQ as an oral capsule rather than injectable, which changes the bioavailability calculations. COA PDF for batch AMQ0001 linked below.`,
     ],
@@ -183,7 +137,7 @@ export const eeatNotes: Record<string, EEATNote> = {
     paragraphs: [
       `SLU-PP-332 is the exercise mimetic I've been watching since the Burris lab at Washington University first published on ERRα/ERRγ agonism — the 2023 paper in ACS Chemical Biology showed enhanced endurance capacity in sedentary mice through upregulated mitochondrial biogenesis, without any physical activity.`,
       `For sourcing, Limitless Life Nootropics now carries SLU-PP-332 in capsule form — 250mcg × 60 capsules at $118.99 after the 15% PEPTIDEX discount (normally $139.99), USA-manufactured, third-party tested at ≥99% purity. This is the only verified vendor in my index currently stocking SLU-PP-332. Note: this is a capsule (oral) format, not injectable — the oral bioavailability profile for small-molecule ERR agonists is expected to be reasonable given SLU-PP-332's non-peptide structure.`,
-      `The ERR pathway is mechanistically distinct from AMPK activation (MOTS-c) and from GLP-1 agonism — SLU-PP-332 works by directly upregulating genes involved in oxidative phosphorylation and fatty acid oxidation. The Xu et al. 2023 Circulation paper also demonstrated cardiac benefits through enhanced fatty acid metabolism in heart failure models — this compound has potential well beyond the "exercise mimetic" label.`,
+      `The ERR pathway is mechanistically distinct from AMPK activation (MOTS-c) — SLU-PP-332 works by directly upregulating genes involved in oxidative phosphorylation and fatty acid oxidation. The Xu et al. 2023 Circulation paper also demonstrated cardiac benefits through enhanced fatty acid metabolism in heart failure models — this compound has potential well beyond the "exercise mimetic" label.`,
     ],
     disclosure: `Full disclosure — PEPTIDEX is my affiliate code and I earn a commission on purchases made through my links. Limitless Life Nootropics is the only vendor currently carrying SLU-PP-332 in my index.`,
     lastVerified: 'May 2026',

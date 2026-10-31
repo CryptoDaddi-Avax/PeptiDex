@@ -76,42 +76,25 @@ export function TesamorelinPillar() {
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            Because tesamorelin specifically targets VAT and raises IGF-1 without directly suppressing appetite, it is often utilized as a specialized tool within broader peptide stacks, either to accelerate fat loss or protect muscle mass.
+            Because tesamorelin specifically targets VAT and raises IGF-1 without directly suppressing appetite, it is typically studied alongside a growth hormone secretagogue to amplify the endogenous GH pulse rather than as a standalone weight-loss agent.
           </p>
           
-          <h4 className="text-lg font-bold text-zinc-200 mt-4">1. The Anti-Catabolic GLP-1 Stack: Tesamorelin + Retatrutide/Tirzepatide</h4>
-          <p>
-            The most prevalent use-case for tesamorelin in modern protocols is concurrent administration with high-potency incretin mimetics (like <Link href="/library/retatrutide" className="text-gold hover:underline">Retatrutide</Link> or <Link href="/library/tirzepatide" className="text-gold hover:underline">Tirzepatide</Link>). While incretins drive massive total-body weight loss through caloric deficit, they often result in significant Lean Body Mass (LBM) depletion. Stacking tesamorelin provides elevated IGF-1 levels, acting as a potent anti-catabolic shield to preserve skeletal muscle while simultaneously accelerating the targeted destruction of visceral fat.
-          </p>
-
-          <h4 className="text-lg font-bold text-zinc-200 mt-4">2. The GHRP Synergy Stack: Tesamorelin + Ipamorelin</h4>
+          <h4 className="text-lg font-bold text-zinc-200 mt-4">The GHRP Synergy Stack: Tesamorelin + Ipamorelin</h4>
           <p>
             While tesamorelin is a GHRH analogue, <Link href="/library/ipamorelin" className="text-gold hover:underline">Ipamorelin</Link> is a Growth Hormone Secretagogue Receptor (GHSR) agonist (a GHRP). Stacking a GHRH with a GHRP produces a synergistic, rather than additive, pulse of human growth hormone. The GHRP inhibits somatostatin (which normally blunts GH release) while the GHRH stimulates the release. This combination yields the maximum physiological pulse of endogenous hGH without resorting to exogenous hGH.
           </p>
         </div>
       </section>
 
-      {/* Reconstitution & Storage */}
+      {/* Storage & Handling */}
       <section className="mb-12">
         <div className="flex items-center gap-3 mb-6">
           <Syringe className="w-6 h-6 text-blue-400" />
-          <h3 className="text-xl font-bold text-zinc-100">Reconstitution & Storage: Lab-Grade Handling</h3>
+          <h3 className="text-xl font-bold text-zinc-100">Storage & Handling</h3>
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            Tesamorelin is notorious for being structurally delicate compared to other peptides. It is supplied as a lyophilized powder and requires extremely careful reconstitution. 
-          </p>
-          <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-xl my-6">
-            <h4 className="text-lg font-bold text-zinc-100 mb-4">Standard 2mg Vial Reconstitution (for 1mg daily doses)</h4>
-            <ul className="list-disc pl-6 space-y-2 text-zinc-300">
-              <li><strong>Peptide Mass:</strong> 2mg Tesamorelin</li>
-              <li><strong>Diluent Volume:</strong> 1.0 mL Bacteriostatic Water</li>
-              <li><strong>Resulting Concentration:</strong> 2mg per 1mL</li>
-              <li><strong>Syringe Draw (for 1mg dose):</strong> 50 units (0.5mL) on a standard U-100 insulin syringe.</li>
-            </ul>
-          </div>
-          <p>
-            When injecting the bacteriostatic water, it is critical to aim the stream at the glass wall of the vial, not directly onto the powder, to prevent shearing the peptide bonds. Swirl gently; do not shake. 
+            Tesamorelin is notorious for being structurally delicate compared to other peptides. It is supplied as a lyophilized powder and is sensitive to temperature and agitation.
           </p>
           <p>
             <strong>Storage Protocols:</strong> Lyophilized tesamorelin must be kept in the freezer (-20°C). Once reconstituted, the solution degrades rapidly and must be refrigerated (2°C to 8°C) and utilized within 14 days. If the solution becomes cloudy, it has denatured and must be discarded.

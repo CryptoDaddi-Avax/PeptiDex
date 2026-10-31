@@ -143,30 +143,6 @@ export const peptideBestDeals: PeptideBestDeal[] = [
   // DEACTIVATED 2026-05-24 — BPC-157 and TB-500 were cheapest at Ascension; replace with verified active-vendor data before re-adding
   // { peptideSlug: "bpc-157", vendorSlug: "ascension-peptides", price: 70, discountedPrice: 35 }
   // { peptideSlug: "tb-500",  vendorSlug: "ascension-peptides", price: 65, discountedPrice: 32.5 }
-  {
-    peptideSlug: "semaglutide",
-    peptideName: "Semaglutide",
-    vendorName: "Amino Club",
-    vendorSlug: "amino-club",
-    price: 149.99,
-    vialMg: 5,
-    perMg: 30,
-    code: "PEPTIDEX",
-    discountedPrice: 119.99,
-    affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
-  },
-  {
-    peptideSlug: "tirzepatide",
-    peptideName: "Tirzepatide",
-    vendorName: "Amino Club",
-    vendorSlug: "amino-club",
-    price: 179.99,
-    vialMg: 10,
-    perMg: 18,
-    code: "PEPTIDEX",
-    discountedPrice: 143.99,
-    affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
-  },
   // DEACTIVATED 2026-05-24 — Ipamorelin and CJC-1295 were cheapest at Ascension; replace with verified active-vendor data before re-adding
   // { peptideSlug: "ipamorelin", vendorSlug: "ascension-peptides", price: 55, discountedPrice: 27.5 }
   // { peptideSlug: "cjc-1295",  vendorSlug: "ascension-peptides", price: 55, discountedPrice: 27.5 }
@@ -193,18 +169,6 @@ export const peptideBestDeals: PeptideBestDeal[] = [
     code: "PEPTIDEX",
     discountedPrice: 33.99,
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
-  },
-  {
-    peptideSlug: "retatrutide",
-    peptideName: "Retatrutide",
-    vendorName: "Bio Longevity Labs",
-    vendorSlug: "bio-longevity-labs",
-    price: 249.99,
-    vialMg: 10,
-    perMg: 25,
-    code: "PEPTIDEX",
-    discountedPrice: 212.49,
-    affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
   },
   // DEACTIVATED 2026-05-24 — PT-141 was cheapest at Ascension; replace with verified active-vendor data before re-adding
   // { peptideSlug: "pt-141", vendorSlug: "ascension-peptides", price: 60, discountedPrice: 30 }

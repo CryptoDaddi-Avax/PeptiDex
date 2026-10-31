@@ -19,8 +19,7 @@ const BADGE_STYLES: Record<string, string> = {
 };
 
 const BUY_SLUGS = new Set([
-  'bpc-157','tb-500','ghk-cu','semaglutide','tirzepatide',
-  'retatrutide','cjc-1295','ipamorelin','mk-677','sermorelin',
+  'bpc-157','tb-500','ghk-cu','cjc-1295','ipamorelin','mk-677','sermorelin',
   'tesamorelin','mots-c','kpv','epitalon','semax','selank',
   'aod-9604','hexarelin','ghrp-2','ghrp-6','pt-141','melanotan-ii',
   'mots-c','ll-37','thymosin-alpha-1','nad','dsip',

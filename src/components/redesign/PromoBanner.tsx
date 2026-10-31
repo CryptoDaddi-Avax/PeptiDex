@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { PRIMARY_PROMO } from '@/lib/promos/config';
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from '@/lib/promos/affiliateUrl';
 import {
@@ -26,6 +27,8 @@ const SUPPRESSED_PATHS = ['/admin', '/saved', '/authors', '/about', '/legal', '/
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function isSuppressedPath(path: string): boolean {
+  // Never render on the homepage (exact match — '/' would prefix-match every route)
+  if (path === '/') return true;
   return SUPPRESSED_PATHS.some((p) => path.startsWith(p));
 }
 
@@ -65,26 +68,35 @@ function getIsReturnVisitor(): boolean {
  * same dismiss logic, same analytics. Reskinned from amber/gold to v13 lime/ink.
  */
 export default function PromoBanner() {
+  const pathname = usePathname() ?? '';
+  const onSuppressedPath = isSuppressedPath(pathname);
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const viewFired = useRef(false);
+  const shownFired = useRef(false);
 
   useEffect(() => {
     setMounted(true);
     if (!PRIMARY_PROMO.isActive) return;
-    if (isSuppressedPath(window.location.pathname)) return;
+    if (isSuppressedPath(window.location.pathname)) {
+      setVisible(false);
+      document.documentElement.style.setProperty('--banner-h', '0px');
+      return;
+    }
     if (isDismissed()) return;
 
     setVisible(true);
     // Tell CSS about combined bars height
     document.documentElement.style.setProperty('--banner-h', '40px');
+    if (shownFired.current) return;
+    shownFired.current = true;
     trackBannerShown({
       vendor: PRIMARY_PROMO.gaKey,
       code: PRIMARY_PROMO.code,
       surface: 'sticky_banner',
     });
-  }, []);
+  }, [pathname]);
 
   // Fire promo view event once
   useEffect(() => {
@@ -133,7 +145,7 @@ export default function PromoBanner() {
     sessionStorage.setItem('peptidex_promo_clicked', 'true');
   }
 
-  if (!mounted || !visible) return null;
+  if (!mounted || !visible || onSuppressedPath) return null;
 
   const shopUrl = buildAffiliateUrl(PRIMARY_PROMO, 'sticky_banner');
 

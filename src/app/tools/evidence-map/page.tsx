@@ -45,7 +45,9 @@ export const metadata: Metadata = {
 
 export default function EvidenceMapPage() {
     // Compute counts for schema
-    const fdaCount = peptides.filter((p) => p.is_fda_approved).length;
+    const fdaApproved = peptides.filter((p) => p.is_fda_approved);
+    const fdaCount = fdaApproved.length;
+    const fdaNames = fdaApproved.map((p) => p.name).join(", ");
     const totalStudies = peptides.reduce(
         (sum, p) => sum + p.key_studies.length,
         0
@@ -60,7 +62,7 @@ export default function EvidenceMapPage() {
                 name: "How many peptides have FDA approval?",
                 acceptedAnswer: {
                     "@type": "Answer",
-                    text: `Currently ${fdaCount} peptides in our database have FDA approval: Semaglutide (Ozempic/Wegovy), Tirzepatide (Mounjaro/Zepbound), Tesamorelin (Egrifta), and PT-141/Bremelanotide (Vyleesi). Each is approved for specific clinical indications.`,
+                    text: `Currently ${fdaCount} peptides in our database have FDA approval: ${fdaNames}. Each is approved for specific clinical indications.`,
                 },
             },
             {
@@ -99,7 +101,6 @@ export default function EvidenceMapPage() {
             "peptides",
             "clinical evidence",
             "FDA approved",
-            "research chemicals",
             "pharmacology",
         ],
     };

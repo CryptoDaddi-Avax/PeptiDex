@@ -332,7 +332,7 @@ export default function FDAReclassificationPatientsArticle() {
           <h2 id="future-of-peptide-therapy">Why This Matters for the Future of Peptide Therapy</h2>
 
         <p>
-          The 2026 reclassification reflects a broader shift in how the medical community and regulatory agencies view peptide therapy. Interest in peptides has surged dramatically over the past several years, driven in part by the success of <strong>GLP-1 medications like semaglutide and tirzepatide</strong>. As those compounds brought peptide science into the mainstream conversation, patients and providers began exploring the wider world of peptide-based therapies for recovery, immune support, cognitive function, and longevity.
+          The 2026 reclassification reflects a broader shift in how the medical community and regulatory agencies view peptide therapy. Interest in peptides has surged dramatically over the past several years, driven in part by the success of <strong>FDA-approved peptide medications</strong>. As those compounds brought peptide science into the mainstream conversation, patients and providers began exploring the wider world of peptide-based therapies for recovery, immune support, cognitive function, and longevity.
         </p>
 
         <p>

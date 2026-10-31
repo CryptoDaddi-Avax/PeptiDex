@@ -5,20 +5,19 @@ import '../Sections.css';
 
 /**
  * GoalsGridV13 — v13 research goals grid (§05).
- * 12 glass cards with emojis linking to /best/[slug].
+ * 10 glass cards with emojis linking to /best/[slug].
  *
  * All slugs verified against src/data/goal-pages.ts:
  *  body-recomposition ✅, injury-recovery ✅, mental-clarity ✅,
- *  fat-loss ✅, muscle-growth ✅, immune-support ✅,
+ *  muscle-growth ✅, immune-support ✅,
  *  sleep-recovery ✅, longevity ✅, skin-aesthetic ✅,
- *  gut-health ✅, hormonal-optimization ✅, metabolic-health ✅
+ *  gut-health ✅, hormonal-optimization ✅
  */
 
 const GOALS = [
   { emoji: '🏋️', label: 'Body Recomposition',   slug: 'body-recomposition' },
   { emoji: '🩹', label: 'Injury Recovery',       slug: 'injury-recovery' },
   { emoji: '🧠', label: 'Mental Clarity',        slug: 'mental-clarity' },
-  { emoji: '🔥', label: 'Fat Loss',              slug: 'fat-loss' },
   { emoji: '💪', label: 'Muscle Growth',          slug: 'muscle-growth' },
   { emoji: '🛡️', label: 'Immune Support',        slug: 'immune-support' },
   { emoji: '🌙', label: 'Sleep / Recovery',       slug: 'sleep-recovery' },
@@ -26,7 +25,6 @@ const GOALS = [
   { emoji: '✨', label: 'Skin & Aesthetics',      slug: 'skin-aesthetic' },
   { emoji: '🫁', label: 'Gut Health',             slug: 'gut-health' },
   { emoji: '⚡', label: 'Hormonal',               slug: 'hormonal-optimization' },
-  { emoji: '🔬', label: 'Metabolic Health',       slug: 'metabolic-health' },
 ];
 
 export default function GoalsGridV13() {

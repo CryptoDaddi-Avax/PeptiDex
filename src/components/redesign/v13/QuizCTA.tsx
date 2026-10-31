@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { SITE_STATS } from '@/data/site-stats';
 import '../Sections.css';
 
 /**
@@ -45,15 +46,11 @@ export default function QuizCTA() {
           <div className="quiz-chips">
             <span className="quiz-chip">
               <span className="qc-dot" aria-hidden="true" />
-              Based on <strong>668+ studies</strong>
+              Based on <strong>{SITE_STATS.studies.count}+ studies</strong>
             </span>
             <span className="quiz-chip">
               <span className="qc-dot" aria-hidden="true" />
-              Vendor pricing included
-            </span>
-            <span className="quiz-chip">
-              <span className="qc-dot" aria-hidden="true" />
-              <strong>PEPTIDEX</strong> coupon auto-applied
+              Mechanisms &amp; citations included
             </span>
           </div>
 

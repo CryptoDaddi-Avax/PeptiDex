@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { couponVendorTable, howToSteps, couponFAQs } from '@/data/coupon-page-config';
+import { howToSteps, couponFAQs } from '@/data/coupon-page-config';
 import CouponPageClient from './CouponClient';
 
 // ── Metadata (OG + Twitter Card) ─────────────────────────────────────────────
@@ -18,10 +18,7 @@ export const metadata: Metadata = {
     'Pantheon Peptides coupon',
     'Limitless Life discount',
     'peptide vendor discount',
-    'tirzepatide discount code',
-    'retatrutide coupon code',
     'BPC-157 coupon',
-    'semaglutide discount',
   ],
   openGraph: {
     title: 'PEPTIDEX — Verified 15–20% Off Coupon Code for Research Peptides',
@@ -51,24 +48,6 @@ export const metadata: Metadata = {
 };
 
 // ── JSON-LD Schemas ──────────────────────────────────────────────────────────
-
-function buildProductOfferSchemas() {
-  return couponVendorTable.map((v) => ({
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `Research Peptides from ${v.vendor}`,
-    brand: { '@type': 'Brand', name: v.vendor },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: v.applyUrl,
-      discount: `${v.discountPercent}% off with code ${v.code}`,
-      validFrom: '2026-01-01',
-      seller: { '@type': 'Organization', name: v.vendor },
-    },
-  }));
-}
 
 function buildFAQSchema() {
   return {
@@ -127,7 +106,6 @@ function buildBreadcrumbSchema() {
 // ── Server Component ─────────────────────────────────────────────────────────
 export default function PeptidexCouponPage() {
   const schemas = [
-    ...buildProductOfferSchemas(),
     buildFAQSchema(),
     buildHowToSchema(),
     buildBreadcrumbSchema(),

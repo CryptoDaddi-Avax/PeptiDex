@@ -23,51 +23,6 @@ export interface EntityCardData {
 }
 
 export const entityCardOverrides: Record<string, EntityCardData> = {
-  'retatrutide': {
-    compound: 'Retatrutide',
-    alias: 'LY3437943',
-    className: 'Triple Agonist (GLP-1 / GIP / Glucagon)',
-    developer: 'Eli Lilly',
-    trialStatus: 'Phase 3 (TRIUMPH program)',
-    halfLife: '~6 days (144 hours)',
-    molecularWeight: '4731.4 Da',
-    fdaStatus: 'Not approved',
-    bestPrice: '$5.60/mg (Amino Club + PEPTIDEX)',
-    bestPriceVendor: 'Amino Club',
-    lastVerified: 'May 2026',
-    termCode: 'RETA',
-  },
-
-  'tirzepatide': {
-    compound: 'Tirzepatide',
-    alias: 'Mounjaro / Zepbound',
-    className: 'Dual Agonist (GIP / GLP-1)',
-    developer: 'Eli Lilly',
-    trialStatus: 'FDA-Approved (Mounjaro, Zepbound)',
-    halfLife: '~5 days (120 hours)',
-    molecularWeight: '4813.5 Da',
-    fdaStatus: 'Approved (Type 2 Diabetes, Obesity)',
-    bestPrice: '$3.33/mg (Ascension T-30 + PEPTIDEX 50% off)',
-    bestPriceVendor: 'Ascension Peptides',
-    lastVerified: 'May 2026',
-    termCode: 'TIRZ',
-  },
-
-  'semaglutide': {
-    compound: 'Semaglutide',
-    alias: 'Ozempic / Wegovy / Rybelsus',
-    className: 'GLP-1 Receptor Agonist',
-    developer: 'Novo Nordisk',
-    trialStatus: 'FDA-Approved (multiple indications)',
-    halfLife: '~7 days (168 hours)',
-    molecularWeight: '4114 Da',
-    fdaStatus: 'Approved (Type 2 Diabetes, Obesity)',
-    bestPrice: '$10/mg (Ascension S-5 + PEPTIDEX 50% off)',
-    bestPriceVendor: 'Ascension Peptides',
-    lastVerified: 'May 2026',
-    termCode: 'SEMA',
-  },
-
   'tesamorelin': {
     compound: 'Tesamorelin',
     alias: 'Egrifta',
@@ -159,20 +114,6 @@ export const entityCardOverrides: Record<string, EntityCardData> = {
     bestPriceVendor: 'Amino Club',
     lastVerified: 'May 2026',
     termCode: 'GHK',
-  },
-
-  'cagrilintide': {
-    compound: 'Cagrilintide',
-    alias: 'NN9838 / CagriSema component',
-    className: 'Long-Acting Amylin Analog',
-    developer: 'Novo Nordisk',
-    trialStatus: 'Phase 3 (CagriSema combination)',
-    halfLife: '~7 days',
-    fdaStatus: 'Not approved',
-    bestPrice: '$5.60/mg (Amino Club + PEPTIDEX)',
-    bestPriceVendor: 'Amino Club',
-    lastVerified: 'May 2026',
-    termCode: 'CAG',
   },
 
   'nad': {

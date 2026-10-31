@@ -24,13 +24,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // ── Manifest: current batch IDs from verification-assets.ts ──────────────────
 // We extract these statically to avoid needing tsx/ts-node.
 const CURRENT_MANIFEST = [
-  { slug: 'retatrutide',   batchId: 'RT0001',  sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_GLP-3_RT__10MG_RT0001.pdf',                          productPage: 'https://www.aminoclub.com/products/glp-1-glp-gip-glp-1-gip-glucagon-agonist-retatrutide-ly3437943' },
   { slug: 'bpc-157',       batchId: 'BP0001',  sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_BPC-157_10MG_BP0001.pdf',                              productPage: 'https://www.aminoclub.com/products/bpc-157' },
   { slug: 'tb-500',        batchId: 'TB0001',  sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_TB-500_10MG_TB0001.pdf',                               productPage: 'https://www.aminoclub.com/products/tb-500-thymosin-beta-4' },
   { slug: 'tesamorelin',   batchId: 'TES0001', sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_Tesamorelin_10MG_TES0001.pdf',                         productPage: 'https://www.aminoclub.com/products/tesamorlin-growth-hormone-releasing-hormone-ghrh' },
   { slug: 'cjc-1295',      batchId: 'CIP0001', sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_CJC-1295_Ipamorelin_No_DAC__10MG_CIP0001.pdf',        productPage: 'https://www.aminoclub.com/products/cjc-1295-ipamorelin' },
   { slug: 'ipamorelin',    batchId: 'IPA0001', sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_Ipamorelin_10MG_IPA0001.pdf',                           productPage: 'https://www.aminoclub.com/products/ipamorelin-growth-hormone-secretagogue' },
-  { slug: 'cagrilintide',  batchId: 'CAG0001', sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_Cagrilintide_10MG_CAG0001.pdf',                        productPage: 'https://www.aminoclub.com/products/cagrilintide-cagrisema' },
   { slug: 'mots-c',        batchId: 'MTC0001', sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_MOTS-C_10MG_MTC0001.pdf',                              productPage: 'https://www.aminoclub.com/products/mots-c-mitochondrial-peptide' },
   { slug: 'ghk-cu',        batchId: 'GHK0001', sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_GHK-Cu_50MG_GHK0001.pdf',                              productPage: 'https://www.aminoclub.com/products/ghk-cu-copper-peptide' },
   { slug: 'nad',           batchId: 'ND0001',  sourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_NAD__500MG_NAD0001.pdf',                                productPage: 'https://www.aminoclub.com/products/nad-nicotinamide-adenine-dinucleotide' },

@@ -12,7 +12,7 @@ import { lookupLab, TIER_STYLES, type LabTier } from "@/data/coa-labs";
 import { trackOutboundClick } from "@/lib/ga4-events";
 import { trackClick } from "@/lib/tracking/click";
 
-// Molecular weights and expected mass spec data for all 51 peptides
+// Molecular weights and expected mass spec data for indexed peptides
 // All MW in g/mol (Daltons)
 const peptideMolecularData: Record<string, {
     mw_mono: number;
@@ -37,9 +37,6 @@ const peptideMolecularData: Record<string, {
     "melanotan-ii": { mw_mono: 1024.18, mw_avg: 1024.21, formula: "C50H69N15O9", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "Racemic impurities detected"] },
     "pt-141": { mw_mono: 1024.18, mw_avg: 1024.21, formula: "C50H69N15O9", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "Bremelanotide vs PT-141 confusion"] },
     "dsip": { mw_mono: 848.86, mw_avg: 848.88, formula: "C35H48N10O15", sequence: "Trp-Ala-Gly-Gly-Asp-Ala-Ser-Gly-Glu", acceptable_purity: 95, coa_red_flags: ["Purity < 95%", "Degradation products visible"] },
-    "retatrutide": { mw_mono: 4751.38, mw_avg: 4751.42, formula: "C208H316N58O64", acceptable_purity: 95, coa_red_flags: ["Purity < 95%", "Incorrect GIP/GLP sequence", "Missing fatty acid chain"] },
-    "tirzepatide": { mw_mono: 4813.48, mw_avg: 4813.53, formula: "C225H348N48O68", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "Missing C18 fatty diacid", "Incorrect sequence"] },
-    "semaglutide": { mw_mono: 4113.58, mw_avg: 4113.63, formula: "C187H291N45O59", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "Missing fatty acid modification", "Incorrect GLP-1 analog sequence"] },
     "sermorelin": { mw_mono: 3357.96, mw_avg: 3357.99, formula: "C149H246N44O42S", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "Truncated sequence detected"] },
     "kpv": { mw_mono: 356.39, mw_avg: 356.41, formula: "C16H28N4O6", sequence: "Lys-Pro-Val", acceptable_purity: 98, coa_red_flags: ["Purity < 98%", "Tripeptide contamination"] },
     "ss-31": { mw_mono: 639.76, mw_avg: 639.78, formula: "C28H41N9O7", sequence: "D-Arg-dimethylTyr-Lys-Phe-NH2", acceptable_purity: 95, coa_red_flags: ["Purity < 95%", "Missing D-amino acids", "No dimethylation"] },

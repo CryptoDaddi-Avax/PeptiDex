@@ -16,7 +16,7 @@ export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Are peptides legal to buy?",
-    a: "Research peptides are legal to purchase in the United States and most Western countries when sold explicitly for laboratory and research use only, not for human consumption. Vendors must label products accordingly. The legal landscape varies by country — UK, Canada, and Australia have different regulations. FDA-approved peptides (Semaglutide, Tirzepatide, Tesamorelin, PT-141) require a prescription. Always verify local regulations before ordering. → Read more at peptidex.app/faq",
+    a: "Research peptides are legal to purchase in the United States and most Western countries when sold explicitly for laboratory and research use only, not for human consumption. Vendors must label products accordingly. The legal landscape varies by country — UK, Canada, and Australia have different regulations. FDA-approved peptides (e.g. Tesamorelin, PT-141) require a prescription. Always verify local regulations before ordering. → Read more at peptidex.app/faq",
   },
   {
     q: "How do I verify peptide purity?",
@@ -32,11 +32,11 @@ export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "What is the difference between research peptides and pharmaceutical peptides?",
-    a: "Research peptides and pharmaceutical peptides share identical amino acid sequences but differ in regulatory status, manufacturing standards, and intended use. Pharmaceutical peptides like Semaglutide (Ozempic) undergo FDA approval with GMP-certified manufacturing, human safety trials, and strict dosing controls. Research peptides are synthesized for laboratory study and are not approved for human consumption. Quality varies significantly by vendor — always verify with a batch-specific COA. → Read more at peptidex.app/library",
+    a: "Research peptides and pharmaceutical peptides share identical amino acid sequences but differ in regulatory status, manufacturing standards, and intended use. Pharmaceutical peptides like Tesamorelin (Egrifta) undergo FDA approval with GMP-certified manufacturing, human safety trials, and strict dosing controls. Research peptides are synthesized for laboratory study and are not approved for human consumption. Quality varies significantly by vendor — always verify with a batch-specific COA. → Read more at peptidex.app/library",
   },
   {
     q: "Do peptides require a prescription?",
-    a: "Only FDA-approved peptide drugs require a prescription: Semaglutide (Ozempic, Wegovy), Tirzepatide (Mounjaro, Zepbound), Tesamorelin (Egrifta), and PT-141 (Vyleesi). All other peptides listed in the PeptiDex index are research-only compounds sold for laboratory use and do not require a prescription. Compounded versions of FDA-approved peptides also require a valid prescription from a licensed practitioner. → Read our FAQ at peptidex.app/faq",
+    a: "Only FDA-approved peptide drugs require a prescription — for example, Tesamorelin (Egrifta) and PT-141 (Vyleesi). All other peptides listed in the PeptiDex index are research-only compounds sold for laboratory use and do not require a prescription. Compounded versions of FDA-approved peptides also require a valid prescription from a licensed practitioner. → Read our FAQ at peptidex.app/faq",
   },
   {
     q: "How long does it take to ship research peptides?",

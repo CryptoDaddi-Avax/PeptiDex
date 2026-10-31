@@ -15,7 +15,7 @@ faqSchema: |
         "name": "How long should a peptide cycle be?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cycle lengths vary drastically by compound. Regenerative peptides like BPC-157 are typically cycled for 4 to 6 weeks. Growth hormone secretagogues like CJC-1295 are often cycled for 12 to 16 weeks, while metabolic peptides like Semaglutide are used long-term."
+          "text": "Cycle lengths vary drastically by compound. Regenerative peptides like BPC-157 are typically cycled for 4 to 6 weeks. Growth hormone secretagogues like CJC-1295 are often cycled for 12 to 16 weeks. The appropriate washout period depends on the compound and the length of the cycle."
         }
       },
       {
@@ -41,14 +41,6 @@ faqSchema: |
           "@type": "Answer",
           "text": "As a general rule in peptide research, 'Time Off = Time On.' If a biological model is exposed to a compound for 6 weeks, it should undergo a 6-week washout period to allow the endocrine system and cellular receptors to reset."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "Do GLP-1 agonists need to be cycled?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Unlike growth hormone secretagogues, incretin mimetics like Semaglutide and Tirzepatide are typically not cycled. Clinical trials demonstrate they must be taken continuously to maintain metabolic regulation and weight loss."
-        }
       }
     ]
   }
@@ -61,7 +53,6 @@ faqSchema: |
   <ul className="space-y-2 text-zinc-300 text-sm font-medium m-0 list-disc list-inside">
     <li><strong>Regenerative (BPC-157, TB-500):</strong> 4 to 6 weeks on, 4 to 6 weeks off. Rapid healing response; prolonged use risks excessive angiogenesis.</li>
     <li><strong>Secretagogues (CJC-1295, Ipamorelin):</strong> 12 to 16 weeks on, 4 to 8 weeks off. Slower, sustained physiological shift; prolonged use risks pituitary fatigue and insulin resistance.</li>
-    <li><strong>Metabolic (GLP-1s):</strong> Continuous. Stopping GLP-1 agonists typically results in rapid rebound weight gain as appetite suppression halts.</li>
   </ul>
 </div>
 
@@ -114,21 +105,7 @@ Despite being safer than synthetic exogenous hGH, secretagogues must eventually 
 
 **Cycle Rule:** 12 to 16 weeks ON, followed by 4 to 8 weeks OFF. Some advanced researchers utilize a "5 days ON, 2 days OFF" micro-cycle within the broader 16-week macro-cycle to further delay receptor downregulation.
 
-## 3. Metabolic Peptides (GLP-1 Agonists)
-
-The incretin mimetics—compounds like Semaglutide and [Tirzepatide](/library/tirzepatide)—are the rare exception to the peptide cycling rule.
-
-These peptides were originally developed to treat Type 2 Diabetes by managing blood glucose, and were later approved for chronic obesity management. They work by continuously binding to the GLP-1 (and GIP) receptors to suppress appetite centrally in the brain and delay gastric emptying.
-
-### The Rebound Effect
-
-Clinical trials (such as the STEP 1 extension studies) have definitively proven that GLP-1 agonists must be taken continuously to maintain their effects. When a subject stops taking a GLP-1 agonist, the delayed gastric emptying reverses, and the central nervous system's hunger signals return with a vengeance. 
-
-Within 12 months of stopping the medication, subjects typically regain two-thirds of the total body weight they lost. Because obesity and metabolic dysfunction are treated as chronic conditions, the compounds designed to manage them are administered chronically. They are not "cycled" in the traditional sense, though dosages may be titrated up or down based on tolerability and changing metabolic baselines.
-
-For a deeper dive into the specific differences between these compounds, refer to our [Tirzepatide vs Semaglutide Comparison](/blog/tirzepatide-vs-semaglutide-which-is-better).
-
-## 4. The Importance of Pure Reagents in Long Cycles
+## 3. The Importance of Pure Reagents in Long Cycles
 
 The longer a biological model is exposed to a synthetic compound, the more critical the purity of that compound becomes. 
 

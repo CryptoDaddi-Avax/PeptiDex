@@ -104,7 +104,7 @@ OUTPUT FORMAT (return as plain text, no markdown fences):
 - For each significant loss: WHY did we lose? What competing domain or content change caused it?
 
 ## Recommended Actions
-3-5 specific, concrete next-steps. Examples: "Expand /library/retatrutide with vendor comparison table" or "Monitor couponfollow.com — they're gaining citations on amino club queries."
+3-5 specific, concrete next-steps. Examples: "Expand /library/bpc-157 with a mechanism comparison table" or "Monitor couponfollow.com — they're gaining citations on amino club queries."
 
 ## Cost Report
 API spend summary with per-engine breakdown if notable.`;

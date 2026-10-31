@@ -18,8 +18,6 @@ export const citationQueryBank = [
 
   // Top peptide specific + coupon
   "bpc-157 coupon code",
-  "tirzepatide discount code",
-  "retatrutide coupon",
   "ipamorelin promo code",
   "ghk-cu discount",
 

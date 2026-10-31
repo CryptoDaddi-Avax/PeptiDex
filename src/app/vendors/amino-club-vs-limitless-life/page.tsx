@@ -56,7 +56,7 @@ const breadcrumbSchema = {
 };
 
 const AMINO_STRENGTHS = [
-  { title: 'Price-to-quality ratio', body: 'Amino Club consistently beats Limitless Life on pricing for core peptides (like BPC-157, Tirzepatide, and Tesamorelin) while matching their â‰¥99% purity standards.' },
+  { title: 'Price-to-quality ratio', body: 'Amino Club consistently beats Limitless Life on pricing for core peptides (like BPC-157, TB-500, and Tesamorelin) while matching their â‰¥99% purity standards.' },
   { title: 'Simplified bulk ordering', body: 'Their website makes it exceptionally easy to purchase 5-pack or 10-pack vials of common compounds at a significant discount.' },
   { title: 'Transparent COAs', body: 'While both provide COAs, Amino Club integrates them seamlessly onto every product page, minimizing the effort required to verify the exact lot you are buying.' },
 ];
@@ -229,12 +229,6 @@ export default function AminoClubVsLimitlessLife() {
                   <td className="py-3 px-4 text-emerald-400 font-semibold">Amino Club</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50 bg-zinc-900/30">
-                  <td className="py-3 px-4 text-zinc-300">Tirzepatide (10mg)</td>
-                  <td className="py-3 px-4 text-zinc-300">$120.00</td>
-                  <td className="py-3 px-4 text-zinc-300">$139.99</td>
-                  <td className="py-3 px-4 text-emerald-400 font-semibold">Amino Club</td>
-                </tr>
-                <tr className="border-b border-zinc-800/50">
                   <td className="py-3 px-4 text-zinc-300">Tesamorelin (10mg)</td>
                   <td className="py-3 px-4 text-zinc-300">$95.00</td>
                   <td className="py-3 px-4 text-zinc-300">$124.99</td>

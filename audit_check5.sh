@@ -1,9 +1,14 @@
 #!/bin/bash
 echo "=== LEARN SLUGS (PEPTIDE-BASED) ==="
-for p in /learn/bpc-157 /learn/tb-500 /learn/semaglutide /learn/ipamorelin; do
+for p in /learn/bpc-157 /learn/tb-500 /learn/ipamorelin; do
   code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3005${p})
   echo "${code}  ${p}"
 done
+
+echo ""
+echo "=== REMOVED LEARN SLUG (expect 410, no redirect) ==="
+code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3005/learn/semaglutide)
+echo "${code}  /learn/semaglutide"
 
 echo ""
 echo "=== API/OG CHECK ==="

@@ -133,7 +133,7 @@ export const couponFAQs: FAQItem[] = [
   },
   {
     question: 'Which peptides does PEPTIDEX work on?',
-    answer: 'PEPTIDEX works on all products in each partner vendor\'s catalog â€” injectable peptides, capsules, blends, and supplies. There are no product exclusions. It applies to BPC-157, TB-500, Retatrutide, Tirzepatide, Semaglutide, CJC-1295, Ipamorelin, and every other compound each vendor carries.',
+    answer: 'PEPTIDEX works on all products in each partner vendor\'s catalog â€” injectable peptides, capsules, and blends. There are no product exclusions. It applies to BPC-157, TB-500, GHK-Cu, CJC-1295, Ipamorelin, and every other compound each vendor carries.',
   },
   {
     question: 'What is the refund policy if I use PEPTIDEX?',
