@@ -19,7 +19,7 @@
  *   - dose_mcg from the peptide's dosing data (or a user override)
  *   - price_usd from the listing row (post-normalization, pre-discount)
  *
- * Unit conventions follow the existing calculator (src/lib/calc/reconstitution.ts):
+ * Unit conventions:
  *   - Vial content is stored in mg (total_mg)
  *   - Doses are specified in mcg
  *   - 1 mg = 1000 mcg
@@ -54,7 +54,7 @@ export interface CostPerDoseResult {
  * INVARIANTS:
  * - Uses total_mg (not single-vial mg) so bundles are compared fairly.
  * - Converts total_mg → total_mcg before dividing by dose_mcg.
- *   This matches the unit convention in CalculatorClient.tsx line 377:
+ *   Unit convention:
  *     const totalMcg = parseFloat(vialMg) * 1000;
  *     const dosesPerVial = doseMcg > 0 ? Math.floor(totalMcg / doseMcg) : 0;
  *   and cycle-engine.ts line 123:
@@ -76,7 +76,6 @@ export function costPerDose(input: CostPerDoseInput): CostPerDoseResult | null {
 
     // Convert total_mg to total_mcg (1 mg = 1000 mcg)
     // This is the same conversion used in:
-    //   CalculatorClient.tsx line 377: totalMcg = parseFloat(vialMg) * 1000
     //   cycle-engine.ts line 120:     concentration = (vialMg * 1000) / bacWaterMl
     const total_mcg = total_mg * 1000;
 
@@ -107,7 +106,6 @@ export function costPerDose(input: CostPerDoseInput): CostPerDoseResult | null {
  * This matches the convention used elsewhere in the codebase:
  *   - protocol/page.tsx line 56:  doseMcg: pep?.dosing?.typical_dose_mcg?.[0] ?? 250
  *   - tools/pk/PKClient.tsx line 115: return p?.dosing?.typical_dose_mcg[0] ?? 250
- *   - tools/calculator/CalculatorClient.tsx line 147: setTargetConcentrationMcg(String(p.dosing.typical_dose_mcg[0]))
  *
  * Returns null if the peptide has no dosing data. The UI should allow
  * user override; this just provides a sensible starting value.

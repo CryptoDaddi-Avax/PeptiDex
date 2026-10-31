@@ -328,7 +328,6 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
           <div className="flex flex-wrap gap-3 mt-4">
             <Link href="/tools/coa" className="text-xs text-zinc-500 hover:text-violet-400 transition-colors">COA Analyzer →</Link>
             <Link href="/tools/pricing" className="text-xs text-zinc-500 hover:text-violet-400 transition-colors">Price Comparison →</Link>
-            <Link href="/tools/calculator" className="text-xs text-zinc-500 hover:text-violet-400 transition-colors">Reconstitution Calculator →</Link>
           </div>
         </section>
 

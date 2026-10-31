@@ -58,7 +58,6 @@ const mockTopCitedPages = [
   { path: '/library/retatrutide', citations: 18 },
   { path: '/peptidex-coupon', citations: 14 },
   { path: '/library/bpc-157', citations: 11 },
-  { path: '/tools/reconstitution-calculator', citations: 7 },
   { path: '/library/tirzepatide', citations: 5 },
 ];
 

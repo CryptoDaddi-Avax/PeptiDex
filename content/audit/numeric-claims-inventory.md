@@ -8,7 +8,6 @@
 | **51** peptides | `src/app/tools/pk/layout.tsx` (L5, 9) | PK tool metadata ("51 peptides") | `SITE_STATS.peptides.count` | Mismatch |
 | **51** peptides | `src/app/tools/ToolsClient.tsx` (L42) | Evidence dashboard desc ("All 51 peptides ranked") | `SITE_STATS.peptides.count` | Mismatch |
 | **51** peptides | `src/components/redesign/ToolsSection.tsx` (L22) | Tools section desc ("51 peptides ranked") | `SITE_STATS.peptides.count` | Mismatch |
-| **51** peptides | `src/app/tools/calculator/page.tsx` (L253) | Calculator page ("supports all 51 peptides") | `SITE_STATS.peptides.count` | Mismatch |
 | **51** peptides | `src/data/advisor-engine.ts` (L265) | Advisor prompt ("All 51 peptides") | `SITE_STATS.peptides.count` | Mismatch |
 | **33** peptides | `src/app/library/layout.tsx` (L5, L9) | Library metadata ("Browse 33 Research Peptides") | `SITE_STATS.peptides.count` | Mismatch |
 | **33+** peptides | `src/app/peptides/page.tsx` (L12, 23, 30) | Peptides index metadata ("33+ peptide compounds") | `SITE_STATS.peptides.count` | Mismatch |

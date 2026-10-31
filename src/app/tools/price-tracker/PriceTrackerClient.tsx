@@ -681,9 +681,7 @@ export default function PriceTrackerClient({ listings }: Props) {
             </p>
             <p>
               <strong>Cost/Dose</strong> — Uses the peptide&apos;s lowest typical research dose
-              from published literature (via{" "}
-              <Link href="/tools/calculator">our reconstitution calculator</Link>). Override
-              dose in the calculator for custom protocols.
+              from published literature.
             </p>
             <p>
               Prices are for research peptide acquisition and reflect published vendor

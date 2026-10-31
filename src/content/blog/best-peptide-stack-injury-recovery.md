@@ -90,7 +90,7 @@ When injected systemically, BPC-157 actively upregulates Vascular Endothelial Gr
 
 In simple terms, BPC-157 solves the primary problem of tendon repair: it builds the biological "highways" necessary to transport healing materials to an area that normally lacks blood flow. Furthermore, preclinical studies by Dr. Predrag Sikiric demonstrated that BPC-157 significantly upregulates growth hormone receptors specifically within the damaged tissue, effectively flagging the injury for repair.
 
-If you are researching the optimal dosing parameters for this compound, refer to our comprehensive [BPC-157 Dosage Guide](/blog/bpc-157-dosage-complete-guide).
+Dosing parameters in the published preclinical literature vary widely by model and route, so consult the primary studies directly.
 
 ### TB-500: The Cellular Transporter
 
@@ -173,7 +173,6 @@ Healing velocity depends on the severity of the trauma and the age of the biolog
 ---
 
 ## Related Articles
-- [BPC-157 Dosage Guide: Complete Research Protocols](/blog/bpc-157-dosage-complete-guide)
 - [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Peptide Cycle Length Research Guide](/blog/peptide-cycle-length-research-guide)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)

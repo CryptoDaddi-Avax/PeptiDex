@@ -4,7 +4,6 @@ import type { ShareCardData, CardFormat } from "./card-templates";
 import {
     renderQuizCard,
     renderCompareCard,
-    renderCalculatorCard,
     renderCycleCard,
     renderEvidenceCard,
 } from "./card-templates";
@@ -59,7 +58,6 @@ export function useShareCard(data: ShareCardData | null): UseShareCardReturn {
         switch (data.type) {
             case "quiz": renderQuizCard(ctx, data, format, logo); break;
             case "compare": renderCompareCard(ctx, data, format, logo); break;
-            case "calculator": renderCalculatorCard(ctx, data, format, logo); break;
             case "cycle": renderCycleCard(ctx, data, format, logo); break;
             case "evidence": renderEvidenceCard(ctx, data, format, logo); break;
         }

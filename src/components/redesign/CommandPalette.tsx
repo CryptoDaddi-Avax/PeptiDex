@@ -86,7 +86,7 @@ function buildIndex(): IndexItem[] {
   items.push(
     { type: 'tool', title: 'Cycle Planner', sub: 'Map out your research protocol', meta: 'Tool', tags: 'cycle planner schedule protocol', href: '/tools/cycle-planner' },
     { type: 'tool', title: 'Evidence Dashboard', sub: 'Study count per peptide', meta: 'Tool', tags: 'evidence dashboard studies data', href: '/tools/evidence' },
-    { type: 'tool', title: "Beginner's Guide", sub: 'Reconstitution · Pinning · Supplies', meta: 'Guide', tags: "beginner guide new intro reconstitution", href: '/intro' },
+    { type: 'tool', title: "Beginner's Guide", sub: 'Supplies · Vendors · Getting started', meta: 'Guide', tags: "beginner guide new intro supplies", href: '/intro' },
     { type: 'tool', title: 'Price Comparison', sub: 'Compare vendor pricing side-by-side', meta: 'Tool', tags: 'price comparison vendor cost', href: '/tools/pricing' },
     { type: 'tool', title: 'Peptide Compare', sub: 'Side-by-side peptide comparison', meta: 'Tool', tags: 'compare peptide vs head to head', href: '/tools/compare' },
   );

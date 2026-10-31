@@ -5,10 +5,9 @@ import { SITE_STATS } from "@/data/site-stats";
 
 export const metadata: Metadata = {
     title: "Free Peptide Research Tools — Cycle Planner, Comparison, Pricing",
-    description: `${SITE_STATS.tools.count} free interactive peptide research tools: Cycle Planner, Evidence Dashboard, Peptide Comparison, Price Comparison, Reconstitution Calculator, COA Analyzer, PK Plasma Curves, and more.`,
+    description: `${SITE_STATS.tools.count} free interactive peptide research tools: Cycle Planner, Evidence Dashboard, Peptide Comparison, Price Comparison, COA Analyzer, PK Plasma Curves, and more.`,
     keywords: [
         "peptide research tools",
-        "peptide reconstitution calculator",
         "peptide comparison tool",
         "peptide cycle planner",
         "COA analyzer",
@@ -43,7 +42,6 @@ export default function ToolsPage() {
             { name: "Evidence Dashboard", url: "https://peptidex.app/tools/evidence", desc: `${SITE_STATS.peptides.count} peptides ranked by strength of clinical evidence with study counts.` },
             { name: "Peptide Comparison", url: "https://peptidex.app/tools/compare", desc: "Compare 2-3 peptides side-by-side across mechanisms, dosing, and safety." },
             { name: "Price Comparison", url: "https://peptidex.app/tools/pricing", desc: "Cross-vendor pricing: cost per vial, per dose, and exclusive PEPTIDEX discounts." },
-            { name: "Reconstitution Calculator", url: "https://peptidex.app/tools/calculator", desc: "BAC water volumes, concentration math, and syringe-unit conversions." },
             { name: "COA Analyzer", url: "https://peptidex.app/tools/coa", desc: "Verify any Certificate of Analysis with MW and purity checks against lab reference values." },
             { name: "PK Plasma Curves", url: "https://peptidex.app/tools/pk", desc: "Visualize pharmacokinetic plasma concentration curves and half-life decay." },
             { name: "Interaction Checker", url: "https://peptidex.app/tools/interactions", desc: "Check synergies, cautions, and contraindications between peptide selections." },

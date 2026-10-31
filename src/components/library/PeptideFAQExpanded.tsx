@@ -63,8 +63,8 @@ function buildStandardFAQs(peptide: Peptide): FAQItem[] {
     {
       q: `How is ${peptide.name} reconstituted?`,
       a: peptide.dosing?.reconstitution_ml && peptide.dosing?.typical_vial_mg
-        ? `To reconstitute ${peptide.name}, add ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water (BAC water) to the ${peptide.dosing.typical_vial_mg}mg vial. Swirl gently — do not shake. Store reconstituted solution refrigerated and use within 28–30 days. Use our <a href="/tools/calculator" class="text-violet-400 underline">reconstitution calculator</a> for precise syringe measurements.`
-        : `Reconstitution typically involves adding bacteriostatic water (BAC water) to the lyophilized powder vial. The exact volume depends on your target dose concentration. Use our <a href="/tools/calculator" class="text-violet-400 underline">free reconstitution calculator</a> to calculate the correct measurement for your syringe size.`,
+        ? `To reconstitute ${peptide.name}, add ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water (BAC water) to the ${peptide.dosing.typical_vial_mg}mg vial. Swirl gently — do not shake. Store reconstituted solution refrigerated and use within 28–30 days.`
+        : `Reconstitution typically involves adding bacteriostatic water (BAC water) to the lyophilized powder vial. The exact volume depends on the target concentration and syringe size.`,
     },
     {
       q: `What does ${peptide.name} cost?`,

@@ -94,24 +94,12 @@ export interface StepMeta {
 export const STEPS: StepMeta[] = [
   { number: 1, title: 'Your Supplies Checklist', subtitle: 'Everything you need before your first vial', gaKey: 'supplies' },
   { number: 2, title: 'Trusted Vendor Sources', subtitle: 'COA-verified vendors we independently review', gaKey: 'vendors' },
-  { number: 3, title: 'How to Reconstitute', subtitle: 'Turn powder into injectable solution â€” safely', gaKey: 'reconstitution' },
-  { number: 4, title: 'Dosing & Safe Injection', subtitle: 'SubQ protocol, syringe math, and injection sites', gaKey: 'dosing' },
-  { number: 5, title: 'Explore the Full Toolkit', subtitle: 'Free calculators, comparisons, and planners', gaKey: 'toolkit' },
-];
-
-// â”€â”€ Reconstitution steps (reused from beginners-guide) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-export const RECON_STEPS = [
-  { step: '1', title: 'Sanitize Everything', desc: 'Wipe the rubber stoppers of both the BAC water vial and your peptide vial with an alcohol prep pad. Let air dry completely.' },
-  { step: '2', title: 'Determine Volume', desc: 'Use the Reconstitution Calculator below to compute your target concentration. A common starting point: 2 mL BAC water for a 5 mg vial.' },
-  { step: '3', title: 'Equalize Pressure', desc: 'Pull air into your mixing syringe equal to the BAC water volume you need. Inject this air into the BAC water vial to prevent a vacuum.' },
-  { step: '4', title: 'Draw BAC Water', desc: 'Invert the BAC water vial and carefully draw the exact required volume into the mixing syringe.' },
-  { step: '5', title: 'Inject Down the Glass', desc: 'Insert the needle into the peptide vial at an angle so the water trickles down the glass wall. Slow and steady â€” never force it.' },
-  { step: '6', title: 'Roll, Never Shake', desc: 'Gently roll the vial between your palms for 60â€“90 seconds. The powder should dissolve clear within minutes. If cloudy after 20 minutes, the peptide may be degraded â€” do not use.' },
+  { number: 3, title: 'Dosing & Safe Injection', subtitle: 'SubQ protocol and injection sites', gaKey: 'dosing' },
+  { number: 4, title: 'Explore the Full Toolkit', subtitle: 'Free comparisons, trackers, and planners', gaKey: 'toolkit' },
 ];
 
 // â”€â”€ Toolkit cross-sell items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export const TOOLKIT_ITEMS = [
-  { href: '/tools/calculator', title: 'Reconstitution Calculator', desc: 'Calculate BAC water volumes, solution concentrations, and exact syringe-unit draw marks â€” from vial to needle in one step.', badge: 'ESSENTIAL' },
   { href: '/tools/cycle-planner', title: 'Cycle Planner', desc: 'Map your full research protocol end-to-end â€” vial counts, dosing schedules, total cost, and vendor sourcing on a single timeline.', badge: 'POPULAR' },
   { href: '/tools/interactions', title: 'Interaction Checker', desc: 'Cross-reference any peptide stack against known synergies, cautions, and contraindications before you combine compounds.' },
   { href: '/tools/evidence', title: 'Evidence Dashboard', desc: `Browse ${SITE_STATS.peptides.count} peptides ranked by published clinical evidence â€” filterable by research goal, trial phase, and mechanism of action.` },

@@ -48,7 +48,6 @@ export default function Footer() {
                 <li><a href="/tools/evidence">Evidence Dashboard</a></li>
                 <li><a href="/tools/compare">Peptide Comparison</a></li>
                 <li><a href="/tools/pricing">Price Comparison</a></li>
-                <li><a href="/tools/calculator">Reconstitution Calc</a></li>
                 <li><a href="/tools/coa">COA Analyzer</a></li>
               </ul>
             </div>

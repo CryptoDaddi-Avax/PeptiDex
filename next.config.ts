@@ -73,12 +73,10 @@ const nextConfig: NextConfig = {
       { source: '/blog/semaglutide-vs-tirzepatide', destination: '/compare/semaglutide-vs-tirzepatide', permanent: true },
       { source: '/blog/peptide-safety-beginners-guide', destination: '/blog/research-peptide-safety-explained', permanent: true },
       { source: '/blog/peptide-stacking-guide', destination: '/blog/peptide-stacking-2026-combination-protocols', permanent: true },
-      { source: '/blog/bpc-157-complete-guide', destination: '/blog/bpc-157-dosage-complete-guide', permanent: true },
       { source: '/blog/ghk-cu-skin-rejuvenation', destination: '/blog/ghk-cu-breakout-peptide-2026', permanent: true },
       { source: '/blog/retatrutide-triple-agonist', destination: '/blog/retatrutide-explained', permanent: true },
       { source: '/blog/tesamorelin-growth-hormone', destination: '/blog/tesamorelin-growth-hormone-peptide-comparison', permanent: true },
       { source: '/blog/mk-677-ibutamoren-guide', destination: '/blog/mk-677-vs-ipamorelin', permanent: true },
-      { source: '/blog/peptide-reconstitution-guide', destination: '/guides/reconstitution', permanent: true },
 
       // Authors → Team redirect
       { source: '/authors/:slug', destination: '/team/:slug', permanent: true },

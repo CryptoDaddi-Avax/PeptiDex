@@ -131,7 +131,7 @@ async function run() {
       if (!samplePeptide && relativePath.includes('peptides/') && !relativePath.includes('index.html')) samplePeptide = blocks;
       if (!sampleStack && relativePath.includes('stacks/') && !relativePath.includes('index.html')) sampleStack = blocks;
       if (!sampleBlog && relativePath.includes('blog/') && !relativePath.includes('index.html')) sampleBlog = blocks;
-      if (!sampleTool && relativePath.includes('tools/') && !relativePath.includes('index.html') && relativePath.includes('calculator')) sampleTool = blocks;
+      if (!sampleTool && relativePath.includes('tools/') && !relativePath.includes('index.html') && relativePath.includes('pk')) sampleTool = blocks;
 
       for (const block of blocks) {
         const errors = validateSchema(block, relativePath);

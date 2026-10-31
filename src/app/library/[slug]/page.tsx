@@ -5,7 +5,7 @@ import { vendorPricing } from "@/data/vendor-pricing";
 import { vendors } from "@/data/vendors";
 import type { EvidenceLevel } from "@/data/types";
 import { PeptideDetailRedesign } from "./client";
-import { buildDrugSchema, buildHowToSchema, buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
+import { buildDrugSchema, buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 import { buildLibraryMedicalWebPageSchema, buildLibraryFAQSchema } from "@/lib/seo/schema/library";
 import { buildProductSchema } from "@/lib/seo/schema/product";
 import { SchemaInjector } from "@/components/schema-injector";
@@ -126,8 +126,8 @@ function buildLibraryFAQItems(peptide: ReturnType<typeof getPeptideBySlug>) {
         : `The precise half-life of ${peptide.name} varies by route and individual metabolism.`;
 
     const reconAnswer = peptide.dosing?.reconstitution_ml && peptide.dosing?.typical_vial_mg
-        ? `Add ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water to the ${peptide.dosing.typical_vial_mg}mg vial. Swirl gently. Refrigerate and use within 28-30 days. Use our reconstitution calculator at peptidex.app/tools/calculator for syringe measurements.`
-        : `Add bacteriostatic water to the lyophilized powder. Exact volume depends on target concentration. See our reconstitution calculator at peptidex.app/tools/calculator.`;
+        ? `Add ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water to the ${peptide.dosing.typical_vial_mg}mg vial. Swirl gently. Refrigerate and use within 28-30 days.`
+        : `Add bacteriostatic water to the lyophilized powder. Exact volume depends on target concentration.`;
 
     const standardFAQs = [
         { q: `What is ${peptide.name}?`, a: `${peptide.name} is a ${peptide.category.toLowerCase()} ${peptide.is_fda_approved ? "(FDA-approved)" : "(research compound)"} that ${peptide.mechanism.charAt(0).toLowerCase() + peptide.mechanism.slice(1)}` },
@@ -240,37 +240,6 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         ],
     });
 
-    // ─── JSON-LD: HowTo (dosing protocol) ──────────────────────────────────
-    let howToSchema: Record<string, unknown> | null = null;
-    if (peptide.dosing) {
-        const steps: { name: string; text: string }[] = [];
-        if (peptide.dosing.reconstitution_ml && peptide.dosing.typical_vial_mg) {
-            steps.push({
-                name: "Reconstitution",
-                text: `Reconstitute the ${peptide.dosing.typical_vial_mg}mg vial with ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water (BAC water). Swirl gently — do not shake.`,
-            });
-        }
-        steps.push({
-            name: "Dose selection",
-            text: `Typical research dose range is ${peptide.dosing.typical_dose_mcg[0]}–${peptide.dosing.typical_dose_mcg[1]} mcg, administered via ${peptide.dosing.route}.`,
-        });
-        steps.push({
-            name: "Frequency",
-            text: `Administer ${peptide.dosing.frequency.toLowerCase()}.`,
-        });
-        if (peptide.dosing.timing) {
-            steps.push({ name: "Timing", text: `Optimal administration timing: ${peptide.dosing.timing.toLowerCase()}.` });
-        }
-        if (peptide.dosing.cycle_weeks) {
-            steps.push({ name: "Cycle length", text: `Typical research cycle: ${peptide.dosing.cycle_weeks[0]}–${peptide.dosing.cycle_weeks[1]} weeks.` });
-        }
-        howToSchema = buildHowToSchema({
-            name: `Research dosing protocol for ${peptide.name}`,
-            description: `Standard research dosing reference for ${peptide.name} based on published literature. For educational and research purposes only — not medical advice.`,
-            steps,
-        });
-    }
-
     // ─── JSON-LD: Article ───────────────────────────────────────────────────
     // Build citation references for Article schema
     const citedPmids = getAllCitedPmids(slug);
@@ -342,7 +311,6 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         medicalWebPageSchema,
         articleSchema,
     ];
-    if (howToSchema) allSchemas.push(howToSchema);
     if (faqSchema) allSchemas.push(faqSchema);
 
     // ─── JSON-LD: DefinedTerm (entity card for AI extraction) ──────────────

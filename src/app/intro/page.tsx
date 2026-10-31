@@ -19,14 +19,14 @@ import IntroClient from './IntroClient';
 export const metadata: Metadata = {
   title: 'Peptide 101 — Research Methodology Reference | PeptiDex',
   description:
-    'A structured introduction to peptide research: science, regulation, sourcing, and reconstitution methodology. Three tracks — Beginner, Practical, and Sourcing. No prior knowledge assumed.',
+    'A structured introduction to peptide research: science, regulation, sourcing, and research methodology. Three tracks — Beginner, Practical, and Sourcing. No prior knowledge assumed.',
   alternates: {
     canonical: 'https://peptidex.app/intro',
   },
   openGraph: {
     title: 'Peptide 101 — Research Methodology Reference | PeptiDex',
     description:
-      'Structured introduction to peptide research. Beginner, Practical, and Sourcing tracks — 18 lessons covering science, regulation, COA verification, and reconstitution.',
+      'Structured introduction to peptide research. Beginner, Practical, and Sourcing tracks — 17 lessons covering science, regulation, and COA verification.',
     url: 'https://peptidex.app/intro',
     type: 'website',
     images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Peptide 101 — Research Methodology Reference | PeptiDex',
     description:
-      'Three-track structured introduction: Beginner (5 lessons), Practical (7 lessons), Sourcing (6 lessons).',
+      'Three-track structured introduction: Beginner (5 lessons), Practical (7 lessons), Sourcing (5 lessons).',
   },
 };
 
@@ -52,7 +52,7 @@ const howToSchema = {
   '@type': 'Course',
   name: 'Peptide Research Methodology — Structured Introduction',
   description:
-    'A structured three-track introduction to peptide research methodology: the science, regulatory landscape, sourcing verification, and reconstitution protocols. For educational and research purposes only.',
+    'A structured three-track introduction to peptide research methodology: the science, regulatory landscape, and sourcing verification. For educational and research purposes only.',
   provider: {
     '@type': 'Organization',
     name: 'PeptiDex',
@@ -62,7 +62,7 @@ const howToSchema = {
   hasCourseInstance: [
     { '@type': 'CourseInstance', name: 'Beginner Track', description: 'Peptide fundamentals, terminology, and regulatory landscape. 5 lessons, ~30 minutes.' },
     { '@type': 'CourseInstance', name: 'Practical Track', description: 'Routes of administration, dosing, cycles, stacks, and reading clinical trials. 7 lessons, ~50 minutes.' },
-    { '@type': 'CourseInstance', name: 'Sourcing Track', description: 'COA verification, vendor red flags, reconstitution, and legal context. 6 lessons, ~40 minutes.' },
+    { '@type': 'CourseInstance', name: 'Sourcing Track', description: 'COA verification, vendor red flags, and legal context. 5 lessons, ~35 minutes.' },
   ],
 };
 

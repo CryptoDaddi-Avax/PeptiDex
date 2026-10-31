@@ -30,13 +30,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://peptidex.app"),
   title: {
-    default: "PeptiDex — Peptide Research Index, Stacks & Reconstitution Tools",
+    default: "PeptiDex — Peptide Research Index, Stacks & Cycle Planning Tools",
     template: "%s | PeptiDex",
   },
-  description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.`,
+  description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free cycle-planning, pharmacokinetics and price tools, and COA verification. Not affiliated with any tracker app or vendor.`,
   keywords: [
     "peptide research", "BPC-157", "TB-500", "Semaglutide", "CJC-1295", "Ipamorelin",
-    "peptide reconstitution calculator", "peptide half-life", "research peptides", "peptide COA",
+    "peptide cycle planner", "peptide half-life", "research peptides", "peptide COA",
     "peptide stack", "GHK-Cu", "Thymosin Alpha-1", "Retatrutide", "Tirzepatide",
     "peptide interactions", "research chemicals", "peptide suppliers", "peptide guide",
     "pharmacokinetics", "HPLC verified peptides",
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "PeptiDex",
     title: "PeptiDex Research-Grade Peptide Reference & Tools",
-    description: `The most comprehensive peptide research platform. Explore ${SITE_STATS.peptides.count} peptides with clinical studies, reconstitution tools, PK plasma graphs, COA verification, and AI recommendations.`,
+    description: `The most comprehensive peptide research platform. Explore ${SITE_STATS.peptides.count} peptides with clinical studies, cycle-planning tools, PK plasma graphs, COA verification, and AI recommendations.`,
     url: "https://peptidex.app",
     images: [{ url: "https://peptidex.app/api/og?type=default", width: 1200, height: 630, alt: "PeptiDex: Evidence-Based Peptide Science" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "PeptiDex Research-Grade Peptide Reference & Tools",
-    description: "The most comprehensive peptide research platform. Clinical studies, reconstitution tools, COA verification, and AI recommendations.",
+    description: "The most comprehensive peptide research platform. Clinical studies, cycle-planning tools, COA verification, and AI recommendations.",
     images: ["https://peptidex.app/api/og?type=default"],
   },
   manifest: "/site.webmanifest",

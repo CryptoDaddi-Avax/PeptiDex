@@ -23,18 +23,18 @@ const tracks = [
   {
     num: '03',
     title: 'The Sourcing Track',
-    desc: "You're ready to source. Learn what to look for in a Certificate of Analysis, how to spot vendor red flags, what reconstitution looks like, and the legal landscape around purchasing research compounds.",
-    lessons: 6,
+    desc: "You're ready to source. Learn what to look for in a Certificate of Analysis, how to spot vendor red flags, and the legal landscape around purchasing research compounds.",
+    lessons: 5,
     time: '40 min',
     anchor: '#advanced',
   },
 ];
 
 const beginnerLessons = [
-  { num: '§ Lesson 01', title: 'What are peptides?', desc: 'Amino acid chains, biology, and what makes a peptide different from a protein.', href: '/beginners-guide' },
+  { num: '§ Lesson 01', title: 'What are peptides?', desc: 'Amino acid chains, biology, and what makes a peptide different from a protein.', href: '/library' },
   { num: '§ Lesson 02', title: 'How peptides work', desc: 'Receptor binding, signaling cascades, and what "selectivity" actually means.', href: '#' },
   { num: '§ Lesson 03', title: 'The regulatory landscape', desc: "FDA-approved vs research-only. Understanding what's legal and what isn't.", href: '#' },
-  { num: '§ Lesson 04', title: 'Key terminology', desc: 'SubQ, IM, reconstitution, BAC water, lyophilized — the vocab you need.', href: '#' },
+  { num: '§ Lesson 04', title: 'Key terminology', desc: 'SubQ, IM, BAC water, lyophilized — the vocab you need.', href: '#' },
   { num: '§ Lesson 05', title: 'Categories of peptides', desc: 'Healing, GH, fat loss, cognitive, immune — the 6 families explained.', href: '/library' },
 ];
 
@@ -51,10 +51,9 @@ const practicalLessons = [
 const sourcingLessons = [
   { num: '§ Lesson 01', title: 'What is a COA?', desc: 'Certificate of Analysis explained — HPLC, Mass Spec, what purity means.', href: '#' },
   { num: '§ Lesson 02', title: 'Vendor red flags', desc: 'Fake COAs, rebranded generics, and the warning signs.', href: '#' },
-  { num: '§ Lesson 03', title: 'Reconstitution guide', desc: 'BAC water, insulin syringes, storage — the practical how-to.', href: '/tools/calculator' },
-  { num: '§ Lesson 04', title: 'Verified vendors', desc: 'Our independently verified vendor index with COA and pricing data.', href: '/vendors' },
-  { num: '§ Lesson 05', title: 'Legal status (US)', desc: 'Research chemicals vs scheduled substances — the regulatory reality.', href: '#' },
-  { num: '§ Lesson 06', title: 'International shipping', desc: 'Customs, import laws, and jurisdiction-specific considerations.', href: '#' },
+  { num: '§ Lesson 03', title: 'Verified vendors', desc: 'Our independently verified vendor index with COA and pricing data.', href: '/vendors' },
+  { num: '§ Lesson 04', title: 'Legal status (US)', desc: 'Research chemicals vs scheduled substances — the regulatory reality.', href: '#' },
+  { num: '§ Lesson 05', title: 'International shipping', desc: 'Customs, import laws, and jurisdiction-specific considerations.', href: '#' },
 ];
 
 export default function IntroClient() {

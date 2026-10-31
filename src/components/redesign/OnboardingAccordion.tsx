@@ -42,7 +42,7 @@ const CheckMark = () => (
  *
  * Replaces the old modal-based OnboardingStepper with an inline <details>
  * accordion. Step 01 expands into a supplies checklist with affiliate links;
- * steps 02, 03, 05 are nav links; step 04 is static (no page yet).
+ * steps 02, 04 are nav links; step 03 is static (no page yet).
  *
  * DATA LAYER:
  *  - BAC water link is built via buildAffiliateUrl(PRIMARY_PROMO, 'onboarding_supplies')
@@ -106,7 +106,7 @@ export default function OnboardingAccordion() {
             Getting started, <span className="em">step by step</span>.
           </h2>
           <p className="sec-sub fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>
-            Five steps from an empty vial to safe, sterile research practice — beginning with everything you need on hand.
+            Four steps from an empty vial to safe, sterile research practice — beginning with everything you need on hand.
           </p>
         </header>
 
@@ -177,36 +177,24 @@ export default function OnboardingAccordion() {
             </Link>
           </li>
 
-          {/* ── STEP 03: Reconstitution (link) ── */}
+          {/* ── STEP 03: Dosing & Safe Injection (static, no page yet) ── */}
           <li className="gs-step">
-            <Link className="gs-row gs-link" href="/tools/calculator">
+            <div className="gs-row gs-static">
               <span className="gs-num">03</span>
               <span className="gs-text">
                 <span className="gs-title">{STEPS[2].title}</span>
                 <span className="gs-desc">{STEPS[2].subtitle}</span>
               </span>
-              <span className="gs-arrow" aria-hidden="true"><ArrowUpRight /></span>
-            </Link>
+            </div>
           </li>
 
-          {/* ── STEP 04: Dosing & Safe Injection (static, no page yet) ── */}
+          {/* ── STEP 04: Explore Toolkit (link) ── */}
           <li className="gs-step">
-            <div className="gs-row gs-static">
+            <Link className="gs-row gs-link" href="/tools">
               <span className="gs-num">04</span>
               <span className="gs-text">
                 <span className="gs-title">{STEPS[3].title}</span>
                 <span className="gs-desc">{STEPS[3].subtitle}</span>
-              </span>
-            </div>
-          </li>
-
-          {/* ── STEP 05: Explore Toolkit (link) ── */}
-          <li className="gs-step">
-            <Link className="gs-row gs-link" href="/tools">
-              <span className="gs-num">05</span>
-              <span className="gs-text">
-                <span className="gs-title">{STEPS[4].title}</span>
-                <span className="gs-desc">{STEPS[4].subtitle}</span>
               </span>
               <span className="gs-arrow" aria-hidden="true"><ArrowUpRight /></span>
             </Link>

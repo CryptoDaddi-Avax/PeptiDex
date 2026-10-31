@@ -4,7 +4,7 @@
  * Proves cost-per-dose math uses total_mg (not single-vial mg)
  * and a real dose_mcg (not conflated per-mg).
  *
- * Known-good reference case from CalculatorClient.tsx:
+ * Known-good reference case:
  *   10mg vial, 250mcg dose → totalMcg = 10000, dosesPerVial = 40
  *   That's the SAME math at line 377-379:
  *     const totalMcg = parseFloat(vialMg) * 1000;       // 10 * 1000 = 10000
@@ -145,14 +145,14 @@ describe('costPerDose', () => {
         expect(costPerDose({ price_usd: 50, total_mg: 10, dose_mcg: 0 })).toBeNull();
     });
 
-    // ── Consistency with calculator known-good case ──────────────────────────
-    // Replicate the EXACT math from CalculatorClient.tsx lines 377-379:
+    // ── Consistency with known-good case ──────────────────────────
+    // Replicate the EXACT per-vial math:
     //   const totalMcg = parseFloat(vialMg) * 1000;
     //   const doseMcg = parseFloat(targetConcentrationMcg);
     //   const dosesPerVial = doseMcg > 0 ? Math.floor(totalMcg / doseMcg) : 0;
 
-    test('matches CalculatorClient dosesPerVial math exactly', () => {
-        // Simulate calculator with vialMg=5, targetConcentrationMcg=200
+    test('matches dosesPerVial math exactly', () => {
+        // Simulate with vialMg=5, targetConcentrationMcg=200
         const vialMg = 5;
         const targetConcentrationMcg = 200;
         const totalMcg = vialMg * 1000;  // 5000

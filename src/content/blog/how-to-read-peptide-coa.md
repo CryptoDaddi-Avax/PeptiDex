@@ -128,7 +128,7 @@ A relatively new but crucial addition to premium COAs is quantitative analysis f
 
 Because lyophilized peptides require binding agents (like mannitol or glycine) to form a stable "puck" in the vial, the physical powder in a 5mg vial usually weighs much more than 5mg. How do you know there is actually 5mg of the active peptide inside that powder?
 
-Unscrupulous vendors frequently "under-dose" vials to save money. A vial labeled as 10mg of [Tirzepatide](/library/tirzepatide) might only contain 4mg of the active compound. If your research protocol dictates a highly specific microgram dose (as outlined in our [BPC-157 Dosage Guide](/blog/bpc-157-dosage-complete-guide)), an under-dosed vial will completely skew your data.
+Unscrupulous vendors frequently "under-dose" vials to save money. A vial labeled as 10mg of [Tirzepatide](/library/tirzepatide) might only contain 4mg of the active compound. If your research protocol dictates a highly specific microgram dose, an under-dosed vial will completely skew your data.
 
 Premium independent testing (often requested by top-tier vendors) will state the **Net Peptide Content** or absolute mass per vial. The COA should explicitly state: "Sample contained 5.12mg of active compound per vial."
 

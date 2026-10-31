@@ -32,13 +32,6 @@ export interface OnboardingTool {
 // ─────────────────────────────────────────────────────────────────────────────
 export const ONBOARDING_TOOLS: OnboardingTool[] = [
   {
-    href: '/tools/calculator',
-    slug: 'reconstitution_calculator',
-    title: 'Reconstitution Calculator',
-    desc: 'Calculate BAC water volumes, solution concentrations, and exact syringe-unit draw marks — from vial to needle in one step.',
-    badge: 'ESSENTIAL',
-  },
-  {
     href: '/tools/cycle-planner',
     slug: 'cycle_planner',
     title: 'Dosage Tracker',

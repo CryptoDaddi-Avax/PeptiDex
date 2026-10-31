@@ -4,10 +4,10 @@ import { SITE_STATS } from "@/data/site-stats";
 
 import Link from "next/link";
 import { 
-  GitCompare, Calculator, ShieldAlert, ArrowRight, GraduationCap, 
+  GitCompare, ShieldAlert, ArrowRight, GraduationCap, 
   BookA, BarChart3, DollarSign, Activity, Calendar, Store, Stethoscope, 
   Sparkles, Users, TrendingDown, ShieldCheck, Timer, ClipboardList, 
-  HelpCircle, FlaskConical, ShoppingCart 
+  HelpCircle, ShoppingCart 
 } from "lucide-react";
 import './tools-redesign.css';
 
@@ -24,12 +24,6 @@ const tools = [
         icon: GitCompare,
         title: "Peptide Comparison",
         description: "Compare 2-3 peptides side-by-side: mechanisms, dosing, evidence, safety, and interactions.",
-    },
-    {
-        href: "/tools/calculator",
-        icon: Calculator,
-        title: "Reconstitution Calculator",
-        description: "Calculate solution concentrations and volumetric measurements for peptide reconstitution protocols.",
     },
     {
         href: "/tools/interactions",
@@ -132,11 +126,6 @@ export default function ToolsClient() {
                             <BookA />
                             <h3 className="tool-small-title">Glossary</h3>
                             <p className="tool-small-desc">82 terms explained</p>
-                        </Link>
-                        <Link href="/guides/reconstitution" className="tool-small-card">
-                            <FlaskConical />
-                            <h3 className="tool-small-title">Reconstitution</h3>
-                            <p className="tool-small-desc">Step-by-step guide</p>
                         </Link>
                     </div>
                 </div>
