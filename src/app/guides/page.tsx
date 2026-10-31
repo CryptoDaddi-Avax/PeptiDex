@@ -3,17 +3,11 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Research Guides — PeptiDex',
-  description: 'In-depth peptide research guides: reconstitution protocols, GLP-1 alternatives, and more.',
+  description: 'In-depth peptide research guides: GLP-1 alternatives and more.',
   alternates: { canonical: 'https://peptidex.app/guides' },
 };
 
 const guides = [
-  {
-    slug: 'reconstitution',
-    title: 'Peptide Reconstitution Guide',
-    description: 'Step-by-step instructions for reconstituting lyophilized research peptides with bacteriostatic water.',
-    emoji: '🧪',
-  },
   {
     slug: 'glp1-alternatives',
     title: 'GLP-1 Alternatives Guide',

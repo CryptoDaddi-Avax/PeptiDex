@@ -8,12 +8,12 @@ import LearnClient from "./LearnClient";
 export const metadata: Metadata = {
     title: "Peptide Education Track — Learn Peptides Step by Step",
     description:
-        "Free 5-module peptide course: amino acid basics, reconstitution, dosing, safety, and sourcing. Quiz-based learning with progress tracking.",
+        "Free 5-module peptide course: amino acid basics, dosing, safety, and sourcing. Quiz-based learning with progress tracking.",
     alternates: { canonical: "https://peptidex.app/learn" },
     openGraph: {
         title: "Peptide Education Track — Learn Peptides Step by Step | PeptiDex",
         description:
-            "Free 5-module peptide course covering amino acid basics, reconstitution, dosing protocols, safety profiles, and vendor sourcing.",
+            "Free 5-module peptide course covering amino acid basics, dosing protocols, safety profiles, and vendor sourcing.",
         url: "https://peptidex.app/learn",
         type: "website",
         images: [{ url: "https://peptidex.app/og-image.png", width: 1200, height: 630 }],
@@ -34,7 +34,7 @@ const courseSchema = {
     "@type": "Course",
     name: "Peptide 101 — Free Peptide Education Track",
     description:
-        "A self-paced, 5-module educational course covering peptide fundamentals: amino acid chemistry, reconstitution math, dosing protocols, safety profiles, and vendor sourcing. Includes quizzes and progress tracking.",
+        "A self-paced, 5-module educational course covering peptide fundamentals: amino acid chemistry, dosing protocols, safety profiles, and vendor sourcing. Includes quizzes and progress tracking.",
     provider: {
         "@type": "Organization",
         name: "PeptiDex",
@@ -94,8 +94,8 @@ export default function LearnPage() {
 
                 <p className="text-[15px] text-zinc-400 leading-relaxed mb-6 max-w-xl">
                     A free, self-paced learning path that takes you from the
-                    fundamentals of amino acid chemistry through reconstitution
-                    math, dosing protocols, safety profiles, and responsible
+                    fundamentals of amino acid chemistry through dosing
+                    protocols, safety profiles, and responsible
                     sourcing. Each of the{" "}
                     <strong className="text-zinc-300">
                         {learningModules.length} modules

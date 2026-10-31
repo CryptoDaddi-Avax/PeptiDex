@@ -3,7 +3,6 @@ import { usePathname } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 
 const TOOL_NAMES: Record<string, string> = {
-  calculator:   'Reconstitution Calculator',
   halflife:     'Half-Life Visualizer',
   pk:           'PK Plasma Curves',
   coa:          'COA Analyzer',
@@ -28,8 +27,8 @@ export function ToolsBreadcrumbs() {
   // Don't render on the /tools index page
   if (pathname === '/tools') return null;
 
-  // Extract the tool slug from pathname: /tools/calculator → 'calculator'
-  const segments = pathname.split('/').filter(Boolean); // ['tools', 'calculator']
+  // Extract the tool slug from pathname: /tools/pk → 'pk'
+  const segments = pathname.split('/').filter(Boolean); // ['tools', 'pk']
   const toolSlug = segments[1];
   if (!toolSlug) return null;
 

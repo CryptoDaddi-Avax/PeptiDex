@@ -36,8 +36,6 @@ echo ""
 echo "=== LEARN SLUGS ==="
 code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:3005/learn/peptide-beginners-guide")
 echo "$code  /learn/peptide-beginners-guide"
-code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:3005/learn/how-to-reconstitute")
-echo "$code  /learn/how-to-reconstitute"
 
 echo ""
 echo "=== LEAD PAGES ==="

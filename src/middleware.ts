@@ -4,8 +4,21 @@
  */
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { isGonePath } from "@/lib/gone-paths";
 
 export async function middleware(request: NextRequest) {
+    // Removed pages: answer 410 Gone before any auth work.
+    if (isGonePath(request.nextUrl.pathname)) {
+        return new NextResponse("410 Gone", {
+            status: 410,
+            headers: {
+                "Content-Type": "text/plain; charset=utf-8",
+                "X-Robots-Tag": "noindex, nofollow",
+                "Cache-Control": "public, max-age=3600",
+            },
+        });
+    }
+
     let supabaseResponse = NextResponse.next({ request });
 
     const supabase = createServerClient(

@@ -176,4 +176,4 @@ Yes, provided the new peptide utilizes an entirely different biological pathway.
 - [Best Peptide Stack for Injury Recovery](/blog/best-peptide-stack-injury-recovery)
 - [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
 - [Best Peptides for Muscle Growth](/blog/best-peptides-for-muscle-growth)
-- [BPC-157 Dosage Guide: Complete Research Protocols](/blog/bpc-157-dosage-complete-guide)
+- [BPC-157 Research Overview](/library/bpc-157)

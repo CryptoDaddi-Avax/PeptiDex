@@ -124,7 +124,7 @@ export const learningModules: LearningModule[] = [
             },
             {
                 title: "The Reconstitution Process",
-                content: "Most peptides arrive as freeze-dried powder that you reconstitute:\n\n1. **Gather supplies**: Peptide vial, BAC water, graduated pipette, alcohol swabs\n2. **Clean both vial tops** with alcohol swabs\n3. **Draw BAC water** — typically 1-2ml per vial (this determines your concentration)\n4. **Add BAC water into peptide vial** — aim the stream at the glass wall, NOT directly on powder\n5. **Gently swirl** — never shake! Let it dissolve naturally (1-5 minutes)\n6. **Store reconstituted peptide** in the refrigerator (36-46°F / 2-8°C)\n7. **Use within 28 days** of reconstitution\n\n**Pro tip**: Use PeptiDex's Reconstitution Calculator to automatically calculate your solution concentration based on vial size and diluent volume."
+                content: "Most peptides arrive as freeze-dried powder that you reconstitute:\n\n1. **Gather supplies**: Peptide vial, BAC water, graduated pipette, alcohol swabs\n2. **Clean both vial tops** with alcohol swabs\n3. **Draw BAC water** — typically 1-2ml per vial (this determines your concentration)\n4. **Add BAC water into peptide vial** — aim the stream at the glass wall, NOT directly on powder\n5. **Gently swirl** — never shake! Let it dissolve naturally (1-5 minutes)\n6. **Store reconstituted peptide** in the refrigerator (36-46°F / 2-8°C)\n7. **Use within 28 days** of reconstitution\n"
             },
             {
                 title: "Injection Technique (SubQ)",

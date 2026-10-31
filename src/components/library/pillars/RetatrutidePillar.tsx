@@ -137,7 +137,7 @@ export function RetatrutidePillar() {
             </ul>
           </div>
           <p>
-            For researchers requiring different concentrations or adjusting for 15mg vials, I highly recommend using our <Link href="/tools/calculator" className="text-gold hover:underline font-bold">PeptiDex Reconstitution Calculator</Link> to ensure exact volumetric measurements. An error in decimal placement can result in a 10x overdose, which, with a tri-agonist, will lead to severe gastrointestinal distress and potential hypoglycemia.
+            For researchers requiring different concentrations or adjusting for 15mg vials, double-check all volumetric measurements. An error in decimal placement can result in a 10x overdose, which, with a tri-agonist, will lead to severe gastrointestinal distress and potential hypoglycemia.
           </p>
           <p>
             <strong>Storage Protocols:</strong> Unreconstituted lyophilized vials should be stored in the freezer (-20°C) away from light, where they remain stable for up to 24 months. Once reconstituted with bacteriostatic water, the peptide structure becomes far more fragile. The liquid solution must be stored in the refrigerator (2°C to 8°C) and should be used within 30 days. Discard any reconstituted solution that becomes cloudy or contains particulate matter, as this indicates peptide degradation or contamination.

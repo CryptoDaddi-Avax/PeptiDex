@@ -28,7 +28,6 @@ export type AffiliateSource =
   | "footer"           // footer / sidebar mentions
   | "newsletter"       // email-driven clicks via UTM
   | "stack_price"      // stack price aggregator (inline on stack pages)
-  | "calculator"       // dosage calculator sourcing CTA
   | "sticky_bar"       // sticky quick-compare bar on detail pages
   | "coa_modal"        // COA badge modal external link
   | "buy_box"          // <BuyBox /> on library pages

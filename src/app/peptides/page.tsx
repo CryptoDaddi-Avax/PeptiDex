@@ -364,9 +364,6 @@ export default function PeptideLibraryPage() {
           <Link href="/tools/cycle-planner" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm transition-all shadow-lg hover:shadow-violet-500/20">
             Cycle Planner <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link href="/beginners-guide" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-bold text-sm transition-colors border border-zinc-700">
-            Beginner&apos;s Guide <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </section>
 

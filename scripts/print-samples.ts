@@ -79,12 +79,12 @@ console.log("\n");
 
 // 4. Tool Page
 const toolSchema = buildSoftwareApplicationSchema({
-    name: "PeptiDex Reconstitution Calculator",
-    description: "Calculate solution concentrations and volumetric measurements for peptide reconstitution.",
-    url: "https://peptidex.app/tools/calculator",
+    name: "PeptiDex Pharmacokinetics Simulator",
+    description: "Model peptide concentration over time from half-life and dosing inputs.",
+    url: "https://peptidex.app/tools/pk",
     applicationCategory: "UtilityApplication"
 });
 
-console.log("=== TOOL PAGE SCHEMA (Calculator) ===");
+console.log("=== TOOL PAGE SCHEMA (PK) ===");
 console.log(JSON.stringify(toolSchema, null, 2));
 console.log("\n");

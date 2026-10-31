@@ -21,17 +21,6 @@ export interface CompareCardData {
     synergies: string[];
 }
 
-export interface CalculatorCardData {
-    type: "calculator";
-    peptideName: string;
-    vialMg: number;
-    bacWaterMl: number;
-    doseMcg: number;
-    syringeUnits: number;
-    concentration: number;
-    dosesPerVial: number;
-}
-
 export interface CycleCardData {
     type: "cycle";
     stackName: string;
@@ -48,7 +37,7 @@ export interface EvidenceCardData {
     totalPeptides: number;
 }
 
-export type ShareCardData = QuizCardData | CompareCardData | CalculatorCardData | CycleCardData | EvidenceCardData;
+export type ShareCardData = QuizCardData | CompareCardData | CycleCardData | EvidenceCardData;
 
 // ── Color Palette ──────────────────────────────────────────────────────
 const COLORS = {
@@ -360,78 +349,6 @@ export function renderCompareCard(ctx: CanvasRenderingContext2D, data: CompareCa
         ctx.textAlign = "center";
         ctx.fillText(`\u2728 Synergy: ${data.synergies.join(", ")}`, w / 2, sy);
     }
-}
-
-// ── Template: Calculator ───────────────────────────────────────────────
-export function renderCalculatorCard(ctx: CanvasRenderingContext2D, data: CalculatorCardData, format: CardFormat, logo: HTMLImageElement | null) {
-    const [w, h] = getDimensions(format);
-    drawBackground(ctx, w, h);
-    drawLogo(ctx, logo);
-    drawFooter(ctx, w, h);
-
-    const centerX = w / 2;
-    const startY = format === "story" ? 280 : 160;
-
-    // Title
-    ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.emerald400;
-    ctx.textAlign = "center";
-    ctx.fillText("MY PROTOCOL", centerX, startY);
-
-    // Peptide Name
-    ctx.font = "bold 52px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.white;
-    ctx.fillText(data.peptideName, centerX, startY + 65);
-
-    // Main stats grid
-    const gridY = startY + 110;
-    const statW = (w - 140) / 2;
-    const statH = 120;
-    const stats = [
-        { label: "VIAL SIZE", value: `${data.vialMg} mg`, color: COLORS.violet400 },
-        { label: "BAC WATER", value: `${data.bacWaterMl} ml`, color: COLORS.blue400 },
-        { label: "DOSE", value: `${data.doseMcg} mcg`, color: COLORS.emerald400 },
-        { label: "SYRINGE", value: `${data.syringeUnits} units`, color: COLORS.orange400 },
-    ];
-
-    stats.forEach((stat, i) => {
-        const col = i % 2;
-        const row = Math.floor(i / 2);
-        const sx = 50 + col * (statW + 20);
-        const sy = gridY + row * (statH + 16);
-
-        drawCard(ctx, sx, sy, statW, statH, "rgba(63, 63, 70, 0.5)");
-
-        ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-        ctx.fillStyle = COLORS.zinc500;
-        ctx.textAlign = "center";
-        ctx.fillText(stat.label, sx + statW / 2, sy + 35);
-
-        ctx.font = "bold 36px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-        ctx.fillStyle = stat.color;
-        ctx.fillText(stat.value, sx + statW / 2, sy + 82);
-    });
-
-    // Concentration & doses
-    const bottomY = gridY + 2 * (statH + 16) + 30;
-    const fullW = w - 100;
-    drawCard(ctx, 50, bottomY, fullW, 110, "rgba(16, 185, 129, 0.2)");
-
-    ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.zinc500;
-    ctx.textAlign = "left";
-    ctx.fillText("CONCENTRATION", 80, bottomY + 35);
-    ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.emerald400;
-    ctx.fillText(`${Math.round(data.concentration).toLocaleString()} mcg/ml`, 80, bottomY + 72);
-
-    ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.zinc500;
-    ctx.textAlign = "right";
-    ctx.fillText("DOSES PER VIAL", w - 80, bottomY + 35);
-    ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.emerald400;
-    ctx.fillText(`${data.dosesPerVial}`, w - 80, bottomY + 72);
 }
 
 // ── Template: Cycle Planner ────────────────────────────────────────────

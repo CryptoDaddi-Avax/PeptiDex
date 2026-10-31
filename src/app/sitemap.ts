@@ -77,22 +77,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/beginners-guide`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/tools/cycle-planner`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/tools/calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/tools/halflife`,
@@ -340,23 +328,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  // Reconstitution Calculator Compound Pages
-  const reconstitutionSlugs = ['bpc-157'];
-  const reconstitutionUrls = [
-    {
-      url: `${baseUrl}/tools/reconstitution-calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    ...reconstitutionSlugs.map((slug) => ({
-      url: `${baseUrl}/tools/reconstitution-calculator/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.85,
-    }))
-  ];
-
   // Author / Team Pages
   const authorSlugs = getAllAuthorSlugs();
   const teamUrls = authorSlugs.map((slug) => ({
@@ -440,7 +411,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     ...whereToBuyUrls,
-    ...reconstitutionUrls,
     // /buy and /buy/* entries removed — 301 to /where-to-buy
     {
       url: `${baseUrl}/guides/glp1-alternatives`,

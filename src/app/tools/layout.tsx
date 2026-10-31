@@ -3,12 +3,12 @@ import '@/components/redesign/redesign.css';
 import { ToolsBreadcrumbs } from '@/components/tools/ToolsBreadcrumbs';
 
 export const metadata: Metadata = {
-    title: "Peptide Research Tools — Reconstitution Calculator, COA Analyzer, PK Graphs & More",
-    description: "Professional-grade peptide research tools: Reconstitution & Concentration Calculator, PK Plasma Graphs, COA Certificate Analyzer, Interaction Checker, Evidence Dashboard, and AI Peptide Advisor.",
-    keywords: ["peptide reconstitution calculator", "COA analyzer", "peptide PK graph", "peptide interaction checker", "peptide tools", "peptide half-life calculator", "concentration calculator"],
+    title: "Peptide Research Tools — COA Analyzer, PK Graphs & More",
+    description: "Professional-grade peptide research tools: PK Plasma Graphs, COA Certificate Analyzer, Interaction Checker, Evidence Dashboard, and AI Peptide Advisor.",
+    keywords: ["COA analyzer", "peptide PK graph", "peptide interaction checker", "peptide tools", "peptide half-life calculator"],
     openGraph: {
-        title: "Peptide Research Tools — Reconstitution Calculator, COA Analyzer & More | PeptiDex",
-        description: "Research-grade peptide tools: reconstitution calculator, COA verification, PK plasma curves, evidence dashboard, and AI advisor.",
+        title: "Peptide Research Tools — COA Analyzer & More | PeptiDex",
+        description: "Research-grade peptide tools: COA verification, PK plasma curves, evidence dashboard, and AI advisor.",
         type: "website",
     },
 };

@@ -5,7 +5,7 @@ export function buildOrganizationSchema() {
     "name": "PEPTIDEX",
     "alternateName": ["peptidex.app", "PEPTIDEX Research Hub"],
     "url": "https://peptidex.app",
-    "description": "PeptiDex is the independent peptide research index — peptide profiles, evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification.",
+    "description": "PeptiDex is the independent peptide research index — peptide profiles, evidence-based stacks, free cycle-planning, pharmacokinetics and price tools, and COA verification.",
     "logo": {
       "@type": "ImageObject",
       "url": "https://peptidex.app/logo.png",
@@ -25,7 +25,6 @@ export function buildOrganizationSchema() {
     "knowsAbout": [
       "Peptide Research",
       "Pharmacokinetics",
-      "Reconstitution Mathematics",
       "BPC-157",
       "TB-500",
       "Semaglutide",

@@ -1,7 +1,7 @@
 import { notFound, permanentRedirect } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign, Activity, FlaskConical, Calculator, ShieldAlert } from 'lucide-react';
+import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign, Activity, FlaskConical, Wrench, ShieldAlert } from 'lucide-react';
 import { comparisons } from '@/data/comparisons';
 import { getPeptideBySlug } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
@@ -400,7 +400,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       {/* ── RESEARCH TOOLS ── */}
       <div className="pt-8 border-t border-zinc-800/50">
         <h3 className="text-lg font-bold text-zinc-100 mb-4 flex items-center gap-2">
-          <Calculator className="w-5 h-5 text-zinc-400" />
+          <Wrench className="w-5 h-5 text-zinc-400" />
           Research Tools
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -410,13 +410,6 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               <span className="text-sm font-bold text-zinc-200 group-hover:text-zinc-100">PK Plasma Curves</span>
             </div>
             <p className="text-xs text-zinc-500">Visualize {nameA} {!isSamePeptide ? `& ${nameB} ` : ''}plasma concentration over time</p>
-          </Link>
-          <Link href="/tools/reconstitution-calculator" className="group p-4 rounded-xl border border-zinc-800 bg-zinc-900/30 hover:border-violet-500/30 hover:bg-violet-500/5 transition-all">
-            <div className="flex items-center gap-2 mb-1">
-              <FlaskConical className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-bold text-zinc-200 group-hover:text-zinc-100">Reconstitution Calculator</span>
-            </div>
-            <p className="text-xs text-zinc-500">Calculate precise dilution volumes and concentrations</p>
           </Link>
         </div>
       </div>

@@ -38,7 +38,7 @@ for (const peptide of peptides) {
   const isStr = peptide.category.toLowerCase();
   const researchStr = peptide.primary_benefits ? peptide.primary_benefits.toLowerCase() : 'therapeutic applications';
   
-  const angle = "Use our free reconstitution calculator, check half-life data, and compare COA-verified vendors.";
+  const angle = "Review half-life data and compare COA-verified vendors.";
   
   let desc = `${name} is a ${isStr} researched for ${researchStr}. ${angle}`;
   
@@ -46,7 +46,7 @@ for (const peptide of peptides) {
     desc = `${name} is a ${isStr} primarily researched for ${researchStr}. ${angle} For educational reference.`;
   } else if (desc.length > 155) {
     // try shorter angle
-    const shortAngle = "Use our free reconstitution calculator & compare verified vendors.";
+    const shortAngle = "Review half-life data & compare verified vendors.";
     desc = `${name} is a ${isStr} researched for ${researchStr}. ${shortAngle}`;
     if (desc.length > 155) {
         desc = truncate(desc, 155);
@@ -70,9 +70,9 @@ for (const peptide of peptides) {
   // Q3
   let a3 = '';
   if (peptide.dosing && peptide.dosing.reconstitution_ml && peptide.dosing.typical_vial_mg) {
-    a3 = `Standard research protocol involves reconstituting the ${peptide.dosing.typical_vial_mg}mg vial with ${peptide.dosing.reconstitution_ml}ml of bacteriostatic water. Refer to our reconstitution calculator for precise syringe measurements.`;
+    a3 = `Standard research protocol involves reconstituting the ${peptide.dosing.typical_vial_mg}mg vial with ${peptide.dosing.reconstitution_ml}ml of bacteriostatic water.`;
   } else {
-    a3 = `Reconstitution volume depends on the vial size and desired concentration. Bacteriostatic water is standard. Use our reconstitution calculator to determine exact syringe measurements.`;
+    a3 = `Reconstitution volume depends on the vial size and desired concentration. Bacteriostatic water is standard.`;
     flagReason += 'Missing specific reconstitution data for Q3. ';
   }
 

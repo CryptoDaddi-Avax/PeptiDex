@@ -4,7 +4,7 @@ import { SITE_STATS } from '@/data/site-stats';
 
 export const metadata: Metadata = {
   title: 'PeptiDex – Peptide Research Index, Stacks & Vendor Data Hub',
-  description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free reconstitution & cycle-planning tools, and COA verification. Not affiliated with any tracker app or vendor.`,
+  description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free cycle-planning, pharmacokinetics and price tools, and COA verification. Not affiliated with any tracker app or vendor.`,
   alternates: {
     canonical: 'https://peptidex.app',
   },
