@@ -11,6 +11,7 @@ import { buildProductSchema } from "@/lib/seo/schema/product";
 import { SchemaInjector } from "@/components/schema-injector";
 import { legalData, legalStatusLabels } from "@/data/legal-status";
 import { peptideFAQOverrides } from "@/data/peptide-faqs";
+import { filterDosingFaqs } from "@/lib/library-faq-filter";
 import { entityCardOverrides } from "@/data/entity-cards";
 import { buildEntityCardSchema } from "@/components/library/EntityCard";
 import { citationMap, qualifiers, buildCitationIndex, getAllCitedPmids } from "@/data/citation-map";
@@ -31,7 +32,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
         const year = new Date().getFullYear();
         // Commercial-intent title pattern
-        const title = `${peptide.name}: Dosage, Half-Life, Benefits & Where to Buy (${year}) | PeptiDex`;
+        const title = `${peptide.name}: Half-Life, Benefits & Where to Buy (${year}) | PeptiDex`;
 
         // Description: ≤155 chars, includes dosage, where to buy, vendor signal
         const doseStr = peptide.dosing
@@ -112,10 +113,6 @@ function buildLibraryFAQItems(peptide: ReturnType<typeof getPeptideBySlug>) {
         ? `In the US, ${peptide.name} is considered ${legalStatusLabels[usStatus]}. It is ${peptide.is_fda_approved ? "FDA-approved for specific indications" : "not FDA-approved for human therapeutic use and sold strictly for research purposes"}. Always verify current status in your jurisdiction.`
         : `${peptide.name} is ${peptide.is_fda_approved ? "FDA-approved for specific indications" : "not FDA-approved for human use and generally classified as a research compound"}. Always verify local regulations.`;
 
-    const dosingAnswer = peptide.dosing
-        ? `Research protocols typically use ${peptide.dosing.typical_dose_mcg[0]}–${peptide.dosing.typical_dose_mcg[1]} mcg via ${peptide.dosing.route.toLowerCase()}, ${peptide.dosing.frequency.toLowerCase()}.${peptide.dosing.notes ? ` ${peptide.dosing.notes}` : ""} For educational reference only.`
-        : `Dosing for ${peptide.name} varies by protocol. Consult published literature. Not medical advice.`;
-
     const sideEffectsAnswer =
         peptide.side_effects && peptide.side_effects.length > 0
             ? `Reported side effects include ${peptide.side_effects.map((s) => s.name.toLowerCase()).join(", ")}. Most are classified as ${peptide.side_effects[0].severity}. ${peptide.safety_notes}`
@@ -125,24 +122,19 @@ function buildLibraryFAQItems(peptide: ReturnType<typeof getPeptideBySlug>) {
         ? `${peptide.name} has a half-life of approximately ${peptide.half_life_hours < 24 ? `${peptide.half_life_hours} hours` : `${(peptide.half_life_hours / 24).toFixed(1)} days`}.`
         : `The precise half-life of ${peptide.name} varies by route and individual metabolism.`;
 
-    const reconAnswer = peptide.dosing?.reconstitution_ml && peptide.dosing?.typical_vial_mg
-        ? `Add ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water to the ${peptide.dosing.typical_vial_mg}mg vial. Swirl gently. Refrigerate and use within 28-30 days.`
-        : `Add bacteriostatic water to the lyophilized powder. Exact volume depends on target concentration.`;
-
     const standardFAQs = [
         { q: `What is ${peptide.name}?`, a: `${peptide.name} is a ${peptide.category.toLowerCase()} ${peptide.is_fda_approved ? "(FDA-approved)" : "(research compound)"} that ${peptide.mechanism.charAt(0).toLowerCase() + peptide.mechanism.slice(1)}` },
-        { q: `What is the typical ${peptide.name} dosage?`, a: dosingAnswer },
         { q: `What is ${peptide.name}'s half-life?`, a: halfLifeAnswer },
         { q: `What are ${peptide.name} side effects?`, a: sideEffectsAnswer },
         { q: `Where can I buy ${peptide.name} online?`, a: `${peptide.name} is available from COA-verified vendors including Amino Club (use PEPTIDEX for ${_aminoClub.discountPercent}% off) and Bio Longevity Labs (use PEPTIDEX for ${_bioLongevity.discountPercent}% off). Compare current pricing at peptidex.app/tools/pricing.` },
         { q: `Is ${peptide.name} legal?`, a: legalAnswer },
-        { q: `How is ${peptide.name} reconstituted?`, a: reconAnswer },
         { q: `What does ${peptide.name} cost?`, a: `Research pricing for ${peptide.name} varies by vendor and vial size. Use code PEPTIDEX at Amino Club for ${_aminoClub.discountPercent}% off or Bio Longevity Labs for ${_bioLongevity.discountPercent}% off. Compare prices at peptidex.app/tools/pricing.` },
     ];
 
     const customFAQs = (peptideFAQOverrides[peptide.slug] ?? []).filter((f) => f.q && f.a);
 
-    return [...standardFAQs, ...customFAQs];
+    // Compliance: no dosing / reconstitution / injection / cycle-length Q&As in FAQPage schema
+    return filterDosingFaqs([...standardFAQs, ...customFAQs]);
 }
 
 export default async function PeptideDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -224,7 +216,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     // ─── JSON-LD: MedicalWebPage ────────────────────────────────────────────
     const dateModified = peptide.reviewedDate ?? new Date().toISOString().slice(0, 10);
     const medicalWebPageSchema = buildLibraryMedicalWebPageSchema({
-        name: `${peptide.name}: Dosage, Half-Life, Benefits & Where to Buy`,
+        name: `${peptide.name}: Half-Life, Benefits & Where to Buy`,
         description: peptide.laypersonSummary ?? peptide.mechanism.slice(0, 200),
         url: `https://peptidex.app/library/${slug}`,
         dateModified,
@@ -253,7 +245,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
 
     const articleSchema = {
         ...buildArticleSchema({
-            headline: `${peptide.name}: Dosage, Half-Life, Benefits & Where to Buy`,
+            headline: `${peptide.name}: Half-Life, Benefits & Where to Buy`,
             description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
             datePublished: "2026-01-15",
             dateModified,

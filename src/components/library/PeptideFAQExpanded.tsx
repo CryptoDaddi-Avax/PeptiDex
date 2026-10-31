@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import type { Peptide } from '@/data/types';
 import { legalData, legalStatusLabels } from '@/data/legal-status';
 import { peptideFAQOverrides } from '@/data/peptide-faqs';
+import { filterDosingFaqs } from '@/lib/library-faq-filter';
 
 interface FAQItem {
   q: string;
@@ -20,17 +21,13 @@ function buildStandardFAQs(peptide: Peptide): FAQItem[] {
     ? `In the US, ${peptide.name} is considered ${legalStatusLabels[usStatus]}. It is ${peptide.is_fda_approved ? 'FDA-approved for specific indications' : 'not FDA-approved for human therapeutic use and is sold strictly for research purposes'}. Laws vary by country — always verify current status in your jurisdiction.`
     : `${peptide.name} is ${peptide.is_fda_approved ? 'FDA-approved for specific indications' : 'not FDA-approved for human use and is generally classified as a research compound'}. Always check local regulations, as peptide laws change frequently.`;
 
-  const dosingAnswer = peptide.dosing
-    ? `In research protocols, ${peptide.name} is typically administered at ${peptide.dosing.typical_dose_mcg[0]}–${peptide.dosing.typical_dose_mcg[1]} mcg via ${peptide.dosing.route.toLowerCase()}, ${peptide.dosing.frequency.toLowerCase()}.${peptide.dosing.timing ? ` Optimal timing: ${peptide.dosing.timing.toLowerCase()}.` : ''}${peptide.dosing.notes ? ` Notes: ${peptide.dosing.notes}` : ''} This is for educational reference only — not medical advice.`
-    : `Research dosing for ${peptide.name} varies significantly by protocol. Consult published clinical literature for specific ranges. This is not medical advice.`;
-
   const sideEffectsAnswer =
     peptide.side_effects && peptide.side_effects.length > 0
       ? `Reported side effects in published literature include ${peptide.side_effects.map((s) => s.name.toLowerCase()).join(', ')}. Most are classified as ${peptide.side_effects[0].severity} in severity. ${peptide.safety_notes}`
       : `A complete adverse effect profile for ${peptide.name} is not yet fully established in clinical literature. General safety notes: ${peptide.safety_notes}`;
 
   const halfLifeAnswer = peptide.half_life_hours
-    ? `${peptide.name} has a documented biological half-life of approximately ${peptide.half_life_hours < 24 ? `${peptide.half_life_hours} hours` : `${(peptide.half_life_hours / 24).toFixed(1)} days`}. This influences dosing frequency in research protocols.`
+    ? `${peptide.name} has a documented biological half-life of approximately ${peptide.half_life_hours < 24 ? `${peptide.half_life_hours} hours` : `${(peptide.half_life_hours / 24).toFixed(1)} days`}.`
     : `The precise half-life of ${peptide.name} varies by route of administration and individual metabolism. Published pharmacokinetic data for this compound is still emerging.`;
 
   const costAnswer = `Current research pricing for ${peptide.name} varies by vendor and vial size. Use the PEPTIDEX discount code at verified vendors for up to 20% off list price. Compare current prices at our <a href="/tools/pricing" class="text-violet-400 underline">price comparison tool</a>.`;
@@ -39,10 +36,6 @@ function buildStandardFAQs(peptide: Peptide): FAQItem[] {
     {
       q: `What is ${peptide.name}?`,
       a: `${peptide.name} is a ${peptide.category.toLowerCase()} ${peptide.is_fda_approved ? '(FDA-approved)' : '(research compound)'} that ${peptide.mechanism.charAt(0).toLowerCase() + peptide.mechanism.slice(1)} ${peptide.laypersonSummary ? `In plain terms: ${peptide.laypersonSummary}` : ''}`,
-    },
-    {
-      q: `What is the typical ${peptide.name} dosage?`,
-      a: dosingAnswer,
     },
     {
       q: `What is ${peptide.name}'s half-life?`,
@@ -59,12 +52,6 @@ function buildStandardFAQs(peptide: Peptide): FAQItem[] {
     {
       q: `Is ${peptide.name} legal?`,
       a: legalAnswer,
-    },
-    {
-      q: `How is ${peptide.name} reconstituted?`,
-      a: peptide.dosing?.reconstitution_ml && peptide.dosing?.typical_vial_mg
-        ? `To reconstitute ${peptide.name}, add ${peptide.dosing.reconstitution_ml} ml of bacteriostatic water (BAC water) to the ${peptide.dosing.typical_vial_mg}mg vial. Swirl gently — do not shake. Store reconstituted solution refrigerated and use within 28–30 days.`
-        : `Reconstitution typically involves adding bacteriostatic water (BAC water) to the lyophilized powder vial. The exact volume depends on the target concentration and syringe size.`,
     },
     {
       q: `What does ${peptide.name} cost?`,
@@ -84,7 +71,8 @@ export function PeptideFAQExpanded({ peptide, injectJsonLd = false }: PeptideFAQ
   const customFAQs = (peptideFAQOverrides[peptide.slug] ?? []).filter(
     (faq) => faq.q && faq.a // filter out stub entries
   );
-  const allFAQs = [...standardFAQs, ...customFAQs];
+  // Compliance: no dosing / reconstitution / injection / cycle-length Q&As
+  const allFAQs = filterDosingFaqs([...standardFAQs, ...customFAQs]);
 
   return (
     <div className="pd-faq-expanded mb-6">
