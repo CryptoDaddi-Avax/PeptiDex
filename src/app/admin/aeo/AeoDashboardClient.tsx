@@ -32,9 +32,9 @@ const mockHeatmapData = [
   { query: 'PEPTIDEX coupon', perplexity: true, brave: true, anthropic: false, openai: true },
   { query: 'amino club discount code', perplexity: true, brave: false, anthropic: true, openai: true },
   { query: 'best research peptide vendor 2026', perplexity: false, brave: true, anthropic: true, openai: false },
-  { query: 'retatrutide coupon code', perplexity: true, brave: true, anthropic: true, openai: true },
+  { query: 'tb-500 coupon code', perplexity: true, brave: true, anthropic: true, openai: true },
   { query: 'bpc-157 coupon code', perplexity: false, brave: false, anthropic: true, openai: false },
-  { query: 'tirzepatide discount code', perplexity: true, brave: false, anthropic: false, openai: true },
+  { query: 'ipamorelin discount code', perplexity: true, brave: false, anthropic: false, openai: true },
   { query: 'PEPTIDEX legit', perplexity: true, brave: true, anthropic: true, openai: true },
   { query: 'amino club vs peptide sciences', perplexity: false, brave: false, anthropic: true, openai: null },
 ];
@@ -55,14 +55,14 @@ const mockTopDomains = [
 ];
 
 const mockTopCitedPages = [
-  { path: '/library/retatrutide', citations: 18 },
+  { path: '/library/tb-500', citations: 18 },
   { path: '/peptidex-coupon', citations: 14 },
   { path: '/library/bpc-157', citations: 11 },
-  { path: '/library/tirzepatide', citations: 5 },
+  { path: '/library/ipamorelin', citations: 5 },
 ];
 
 const mockEvents = [
-  { type: 'gained_mention', query: 'retatrutide coupon code', engine: 'Perplexity', time: '2h ago' },
+  { type: 'gained_mention', query: 'tb-500 coupon code', engine: 'Perplexity', time: '2h ago' },
   { type: 'lost_mention', query: 'bpc-157 coupon code', engine: 'Brave', time: '6h ago' },
   { type: 'gained_citation', query: 'PEPTIDEX coupon', engine: 'Anthropic', time: '1d ago' },
   { type: 'new_competitor', query: 'amino club discount', engine: 'OpenAI', time: '1d ago', detail: 'RESEARCH20' },

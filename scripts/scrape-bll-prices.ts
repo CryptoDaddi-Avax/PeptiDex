@@ -63,16 +63,12 @@ const TARGETS: TargetPeptide[] = [
   { ourSlug: "nad-plus", matchPatterns: ["nad+", "nad "], expectedSizes: [100, 500] },
   { ourSlug: "ll-37", matchPatterns: ["ll-37"], expectedSizes: [5] },
   { ourSlug: "sermorelin", matchPatterns: ["sermorelin"], expectedSizes: [5, 10] },
-  { ourSlug: "semaglutide", matchPatterns: ["semaglutide"], expectedSizes: [5, 10] },
-  { ourSlug: "tirzepatide", matchPatterns: ["tirzepatide"], expectedSizes: [5, 10, 30, 60] },
-  { ourSlug: "retatrutide", matchPatterns: ["retatrutide"], expectedSizes: [5, 10] },
   { ourSlug: "igf-1-lr3", matchPatterns: ["igf-1", "igf 1"], expectedSizes: [1] },
   { ourSlug: "aod-9604", matchPatterns: ["aod-9604", "aod 9604"], expectedSizes: [5] },
   { ourSlug: "ss-31", matchPatterns: ["ss-31"], expectedSizes: [10] },
   { ourSlug: "oxytocin", matchPatterns: ["oxytocin"], expectedSizes: [10] },
   { ourSlug: "peg-mgf", matchPatterns: ["peg-mgf"], expectedSizes: [5] },
   { ourSlug: "foxo4-dri", matchPatterns: ["foxo4"], expectedSizes: [10] },
-  { ourSlug: "cagrilintide", matchPatterns: ["cagrilintide"], expectedSizes: [5] },
   { ourSlug: "vip", matchPatterns: ["vip", "vasoactive intestinal"], expectedSizes: [5] },
   { ourSlug: "kisspeptin", matchPatterns: ["kisspeptin"], expectedSizes: [10] },
   { ourSlug: "ara-290", matchPatterns: ["ara-290"], expectedSizes: [15] },
@@ -157,7 +153,7 @@ function parseShopPage(html: string): ScrapedProduct[] {
     if (isNaN(originalPrice) || originalPrice === 0) continue;
     
     // Skip non-peptide items
-    if (name.toLowerCase().includes("reconstitution") || name.toLowerCase().includes("bac water")) continue;
+    if (/reconstitution|\bbac\b|bacterio|diluent/i.test(name)) continue;
     
     // Determine current site price from HTML
     let currentPrice = originalPrice;

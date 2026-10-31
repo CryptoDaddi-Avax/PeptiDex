@@ -196,11 +196,11 @@
 
 /* =============================================================
    GOALS GRID (§05)
-   4×3 grid of small glass cards with emojis
+   5×2 grid of small glass cards with emojis
    ============================================================= */
 .goals-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
 }
 .goal-card {
@@ -313,7 +313,7 @@
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1080px) {
   .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .goals-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .goals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
   .sec { padding: 80px 18px 100px; }

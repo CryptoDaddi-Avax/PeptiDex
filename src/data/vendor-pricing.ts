@@ -468,60 +468,6 @@ export const vendorPricing: PeptideVendorPricing[] =
         ]
     },
     {
-        "slug": "retatrutide",
-        "name": "Retatrutide",
-        "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 69.99,
-                "vial_mg": 10,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
-            }
-        ]
-    },
-    {
-        "slug": "tirzepatide",
-        "name": "Tirzepatide",
-        "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 69.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 80,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
-        ]
-    },
-    {
-        "slug": "semaglutide",
-        "name": "Semaglutide",
-        "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 47.99,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
-            },
-            {
-                "vendor": "Limitless Life",
-                "price_usd": 58,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://www.kb6dp3dq.com/PEPTIDEX/"
-            }
-        ]
-    },
-    {
         "slug": "sermorelin",
         "name": "Sermorelin",
         "vendors": [
@@ -663,28 +609,6 @@ export const vendorPricing: PeptideVendorPricing[] =
         ]
     },
     {
-        "slug": "cagrilintide",
-        "name": "Cagrilintide",
-        "vendors": [
-            {
-                "vendor": "Amino Club",
-                "price_usd": 69.99,
-                "vial_mg": 10,
-                "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
-            },
-            {
-                "vendor": "Bio Longevity Labs",
-                "price_usd": 170,
-                "vial_mg": 5,
-                "inStock": true,
-                "affiliateUrl": "https://biolongevitylabs.com/product/cagrilintide-amylin-analog/",
-                "badge": "Triple-Tested"
-            }
-        ]
-    },
-    {
         "slug": "ghrp-2",
         "name": "GHRP-2",
         "vendors": [
@@ -782,13 +706,6 @@ export const vendorPricing: PeptideVendorPricing[] =
         ]
     },
     // NAD+ (slug "nad") is a duplicate â€” see "nad-" entry above for the real pricing
-    {
-        "slug": "tesofensine",
-        "name": "Tesofensine",
-        "vendors": [
-            // Prices pending verification â€” do not display until confirmed
-        ]
-    },
     {
         "slug": "argireline",
         "name": "Argireline",

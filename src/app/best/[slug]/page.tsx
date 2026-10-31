@@ -24,7 +24,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 /* ── MedicalCondition metadata per goal ── */
 const GOAL_CONDITIONS: Record<string, { condition: string; signs: string[] }> = {
-    "fat-loss": { condition: "Obesity and Excess Adiposity", signs: ["Excess body fat", "Elevated BMI", "Insulin resistance", "Metabolic syndrome"] },
     "muscle-growth": { condition: "Muscle Atrophy and Hypogonadism", signs: ["Decreased muscle mass", "Reduced strength", "Low growth hormone levels", "Impaired recovery"] },
     "immune-support": { condition: "Immunodeficiency and Immune Dysregulation", signs: ["Frequent infections", "Slow wound healing", "Chronic fatigue", "Impaired immune cell function"] },
     "sleep-recovery": { condition: "Sleep Disorders and Impaired Recovery", signs: ["Insomnia", "Poor sleep quality", "Elevated cortisol", "Delayed recovery from exercise"] },
@@ -32,7 +31,6 @@ const GOAL_CONDITIONS: Record<string, { condition: string; signs: string[] }> = 
     "skin-aesthetic": { condition: "Dermal Aging and Collagen Loss", signs: ["Wrinkles and fine lines", "Loss of skin elasticity", "Reduced collagen synthesis", "Impaired wound healing"] },
     "gut-health": { condition: "Gastrointestinal Mucosal Injury", signs: ["Intestinal inflammation", "Leaky gut syndrome", "Impaired mucosal barrier", "Gastric ulceration"] },
     "hormonal-optimization": { condition: "Hormonal Imbalance and Hypogonadism", signs: ["Low testosterone", "Reduced growth hormone", "Impaired HPG axis function", "Metabolic slowdown"] },
-    "metabolic-health": { condition: "Metabolic Syndrome and Insulin Resistance", signs: ["Elevated fasting glucose", "Insulin resistance", "Dyslipidemia", "Visceral adiposity"] },
     "body-recomposition": { condition: "Unfavorable Body Composition", signs: ["High body fat percentage", "Low lean mass", "Impaired metabolic rate", "Suboptimal fat oxidation"] },
     "injury-recovery": { condition: "Musculoskeletal Injury and Tissue Damage", signs: ["Tendon or ligament injury", "Chronic inflammation", "Impaired tissue regeneration", "Post-surgical recovery needs"] },
     "mental-clarity": { condition: "Cognitive Decline and Neurodegenerative Risk", signs: ["Brain fog", "Reduced focus", "Anxiety", "Impaired neuroplasticity"] },
@@ -73,7 +71,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             url: `https://peptidex.app/library/${p!.slug}`,
             description: p!.laypersonSummary || p!.mechanism.slice(0, 150),
             drugClass: p!.category,
-            legalStatus: p!.is_fda_approved ? "https://schema.org/PrescriptionOnly" : "Research Compound (Not FDA Approved)",
+            ...(p!.is_fda_approved ? {} : { legalStatus: "Research Compound (Not FDA Approved)" }),
         })),
     } : null;
 

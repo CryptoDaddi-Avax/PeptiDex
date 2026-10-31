@@ -299,9 +299,9 @@ export default function BlogPostTemplate() {
          <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-6">Related Posts</h2>
          <div className="flex flex-col md:flex-row gap-4">
-            <Link href="/blog/best-peptides-for-fat-loss" className="flex-1 p-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800 transition-colors">
-               <h3 className="font-bold text-zinc-200 mb-2">Best Peptides for Fat Loss</h3>
-               <p className="text-sm text-zinc-500">Comparing literature on fat oxidation.</p>
+            <Link href="/blog/best-peptides-for-muscle-growth" className="flex-1 p-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800 transition-colors">
+               <h3 className="font-bold text-zinc-200 mb-2">Best Peptides for Muscle Growth</h3>
+               <p className="text-sm text-zinc-500">Comparing GH secretagogue research for hypertrophy.</p>
             </Link>
          </div>
       </section>

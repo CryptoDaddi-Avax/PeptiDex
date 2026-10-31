@@ -359,33 +359,6 @@ export const pricingData: PeptidePricing[] = [
         ]
     },
     {
-        "name": "Retatrutide",
-        "slug": "retatrutide",
-        "typical_vial_mg": 10,
-        "avg_price_usd": 90,
-        "price_range_usd": [
-            69.99,
-            110
-        ],
-        "cost_per_dose_usd": 18,
-        "doses_per_vial": 5,
-        "notes": "Amino lists GLP-3 RT.",
-        "vendors": [
-            {
-                "vendor": "Ascension Peptides",
-                "price_usd": 110,
-                "in_stock": true,
-                "link": "https://ascensionpeptides.com/ref/PeptiDex/"
-            },
-            {
-                "vendor": "Amino Club",
-                "price_usd": 69.99,
-                "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
-            }
-        ]
-    },
-    {
         "name": "SS-31",
         "slug": "ss-31",
         "typical_vial_mg": 10,
@@ -434,32 +407,6 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 29.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
-            }
-        ]
-    },
-    {
-        "name": "Semaglutide",
-        "slug": "semaglutide",
-        "typical_vial_mg": 5,
-        "avg_price_usd": 0,
-        "price_range_usd": [
-            0,
-            0
-        ],
-        "cost_per_dose_usd": 0,
-        "doses_per_vial": 5,
-        "vendors": [
-            {
-                "vendor": "Ascension Peptides",
-                "price_usd": 0,
-                "in_stock": false,
-                "link": "https://ascensionpeptides.com/ref/PeptiDex/"
-            },
-            {
-                "vendor": "Amino Club",
-                "price_usd": 0,
-                "in_stock": false,
                 "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
@@ -591,32 +538,6 @@ export const pricingData: PeptidePricing[] = [
                 "vendor": "Amino Club",
                 "price_usd": 39.99,
                 "in_stock": true,
-                "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
-            }
-        ]
-    },
-    {
-        "name": "Tirzepatide",
-        "slug": "tirzepatide",
-        "typical_vial_mg": 10,
-        "avg_price_usd": 0,
-        "price_range_usd": [
-            0,
-            0
-        ],
-        "cost_per_dose_usd": 0,
-        "doses_per_vial": 4,
-        "vendors": [
-            {
-                "vendor": "Ascension Peptides",
-                "price_usd": 0,
-                "in_stock": false,
-                "link": "https://ascensionpeptides.com/ref/PeptiDex/"
-            },
-            {
-                "vendor": "Amino Club",
-                "price_usd": 0,
-                "in_stock": false,
                 "link": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]

@@ -79,9 +79,6 @@ const GOAL_FILTERS: { id: GoalFilter; label: string; icon: React.ReactNode }[] =
 
 // map each peptide slug to its applicable goals
 const PEPTIDE_GOALS: Record<string, GoalFilter[]> = {
-    "semaglutide": ["fat-loss", "metabolic"],
-    "tirzepatide": ["fat-loss", "metabolic"],
-    "retatrutide": ["fat-loss", "metabolic"],
     "aod-9604": ["fat-loss"],
     "tesamorelin": ["fat-loss", "muscle-growth"],
     "mots-c": ["fat-loss", "longevity", "metabolic"],
@@ -110,8 +107,6 @@ const PEPTIDE_GOALS: Record<string, GoalFilter[]> = {
     "melanotan-ii": ["skin"],
     "nad": ["longevity", "metabolic"],
     "glutathione": ["longevity", "immune"],
-    "cagrilintide": ["fat-loss", "metabolic"],
-    "tesofensine": ["fat-loss"],
 };
 
 // ── Component ────────────────────────────────────────────────────────

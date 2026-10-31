@@ -86,7 +86,7 @@ export default function TB500ReferencePage() {
                         <h2 className="text-xl font-bold text-zinc-100">How It&apos;s Typically Used in Research</h2>
                     </div>
                     <p className="text-zinc-300 leading-relaxed text-[15px]">
-                        In preclinical and early clinical studies, researchers have primarily used subcutaneous (SubQ) or intramuscular (IM) injection routes to administer TB-500. Subcutaneous injection is the most commonly documented method, as the peptide&apos;s systemic nature means it does not strictly need to be administered adjacent to the site of injury to be structurally effective. Because TB-500 possesses a longer active half-life relative to other regenerative compounds, research protocols often utilize a heavier loading phase with frequent administration, followed by an extended maintenance phase. In these laboratory settings, lyophilized TB-500 powder is always reconstituted using bacteriostatic water to carefully preserve the peptide chains prior to injection.
+                        In preclinical and early clinical studies, researchers have primarily used subcutaneous (SubQ) or intramuscular (IM) injection routes to administer TB-500. Subcutaneous injection is the most commonly documented method, as the peptide&apos;s systemic nature means it does not strictly need to be administered adjacent to the site of injury to be structurally effective. Because TB-500 possesses a longer active half-life relative to other regenerative compounds, research protocols often utilize a heavier loading phase with frequent administration, followed by an extended maintenance phase.
                     </p>
                 </section>
 

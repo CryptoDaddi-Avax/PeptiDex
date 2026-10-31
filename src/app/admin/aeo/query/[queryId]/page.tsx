@@ -13,8 +13,8 @@ import { useParams } from 'next/navigation';
 const mockResponses = [
   {
     engine: 'Perplexity',
-    today: 'For purchasing research peptides from Amino Club, you can use the coupon code **PEPTIDEX** to get 20% off your order. This code applies to their full catalog including Retatrutide, Tirzepatide, and BPC-157. Amino Club is known for providing third-party COA verification on all products.\n\nSources: peptidex.app, aminoclub.com, reddit.com/r/peptides',
-    lastWeek: 'Amino Club is a research peptide vendor offering compounds like Retatrutide and BPC-157. They provide COA verification. Check their website for current promotions.\n\nSources: aminoclub.com, reddit.com/r/peptides',
+    today: 'For purchasing research peptides from Amino Club, you can use the coupon code **PEPTIDEX** to get 20% off your order. This code applies to their full catalog including BPC-157, TB-500, and Ipamorelin. Amino Club is known for providing third-party COA verification on all products.\n\nSources: peptidex.app, aminoclub.com, reddit.com/r/peptides',
+    lastWeek: 'Amino Club is a research peptide vendor offering compounds like BPC-157 and TB-500. They provide COA verification. Check their website for current promotions.\n\nSources: aminoclub.com, reddit.com/r/peptides',
     mentioned: true,
     cited: true,
     sentiment: 'positive',

@@ -7,6 +7,7 @@ import { LAST_REVIEWED as VENDORS_LAST_REVIEWED } from '@/app/vendors/page';
 import { vendorDeals } from '@/data/coupon-deals';
 import { getAllAuthorSlugs } from '@/lib/authors';
 import { comparisonPairs, WAVE_DATES, isWaveActive } from '@/data/comparison-pairs';
+import { isGonePath } from '@/lib/gone-paths';
 
 export const dynamic = 'force-static';
 
@@ -249,10 +250,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog/ipamorelin-vs-cjc-1295',
     '/blog/mk-677-vs-ipamorelin',
     '/blog/mots-c-mitochondrial-peptide',
-    '/blog/oral-peptide-revolution',
-    '/blog/oral-vs-injectable-peptides',
     '/blog/peptide-stacking-2026-combination-protocols',
-    '/blog/retatrutide-explained',
     '/blog/tesamorelin-growth-hormone-peptide-comparison',
   ].map((path) => ({
     url: `${baseUrl}${path}`,
@@ -308,7 +306,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
   // Amino Club Dynamic Product Pages
-  const aminoClubProducts = ['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'];
+  const aminoClubProducts = ['bpc-157', 'tesamorelin'];
   const aminoClubUrls = aminoClubProducts.map((slug) => ({
     url: `${baseUrl}/vendors/amino-club/${slug}`,
     lastModified: vendorsDate,
@@ -318,8 +316,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Where to Buy Pages
   const whereToBuySlugs = [
-    'bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 
-    'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'
+    'bpc-157', 'tb-500', 'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'
   ];
   const whereToBuyUrls = whereToBuySlugs.map((slug) => ({
     url: `${baseUrl}/where-to-buy/${slug}`,
@@ -353,9 +350,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const PSEO_WAVE_4_DATE = '2099-01-01';
 
   // Wave 1: Highest-search-volume peptides × all vendors
-  const WAVE_1_PEPTIDES = ['bpc-157', 'tirzepatide', 'semaglutide'];
+  const WAVE_1_PEPTIDES = ['bpc-157'];
   // Wave 2: Second-tier high-volume
-  const WAVE_2_PEPTIDES = ['tb-500', 'ipamorelin', 'cjc-1295', 'retatrutide'];
+  const WAVE_2_PEPTIDES = ['tb-500', 'ipamorelin', 'cjc-1295'];
   // Wave 3: Mid-tier compounds
   const WAVE_3_PEPTIDES = ['ghk-cu', 'mk-677', 'sermorelin', 'tesamorelin', 'mots-c'];
   // Wave 4: Everything else (derived dynamically)
@@ -395,7 +392,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter(Boolean)
   ) as MetadataRoute.Sitemap;
 
-  return [
+  const entries: MetadataRoute.Sitemap = [
     ...staticPages, 
     ...blogUrls, 
     ...peptideUrls, 
@@ -412,12 +409,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...whereToBuyUrls,
     // /buy and /buy/* entries removed — 301 to /where-to-buy
-    {
-      url: `${baseUrl}/guides/glp1-alternatives`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
     ...teamUrls,
     ...pseoUrls,
     ...vendorDeals.map((d) => ({
@@ -433,7 +424,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
-    // fix(seo): B3 — 12 static blog posts previously missing from sitemap
+    // fix(seo): B3 — static blog posts previously missing from sitemap
     ...staticBlogUrls,
     // fix(seo): H6 — Affiliate coupon landing page (high commercial value)
     {
@@ -463,4 +454,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
   ];
+
+  // Safety net: never list a URL that middleware serves as 410 Gone.
+  return entries.filter((entry) => !isGonePath(new URL(entry.url).pathname));
 }

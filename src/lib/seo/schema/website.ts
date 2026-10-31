@@ -4,7 +4,7 @@ export function buildWebSiteSchema() {
     "@type": "WebSite",
     "name": "PEPTIDEX",
     "url": "https://peptidex.app/",
-    "description": "Independent peptide research index — profiles, evidence-based stacks, cycle-planning and pharmacokinetics tools, and COA-verified vendor sourcing.",
+    "description": "Independent peptide research index — profiles, evidence-based stacks, cycle-planning and pharmacokinetics tools, and COA verification.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {

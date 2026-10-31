@@ -69,7 +69,7 @@ faqSchema: |
 
 The landscape of peptide therapeutics has undergone seismic shifts over the last three years. Following the FDA's aggressive categorization of bulk drug substances in late 2023 and subsequent enforcement actions through 2025, the market for regenerative and metabolic peptides splintered. Understanding exactly where to buy research peptides legally in 2026 requires understanding the nuanced and often contradictory regulatory framework governing these powerful amino acid sequences.
 
-For decades, the peptide market operated in a gray area, primarily utilized by academic researchers, biohackers, and elite athletes. However, the explosion of mainstream interest in GLP-1 receptor agonists (such as semaglutide and tirzepatide) for weight loss, combined with the rising popularity of regenerative compounds like BPC-157, forced regulatory agencies to take a definitive stance.
+For decades, the peptide market operated in a gray area, primarily utilized by academic researchers, biohackers, and elite athletes. However, the explosion of mainstream interest in peptide therapies, driven by the rising popularity of regenerative compounds like BPC-157, forced regulatory agencies to take a definitive stance.
 
 ### The FDA's Stance on Compounded Peptides
 
@@ -143,7 +143,7 @@ If you visit a vendor's website and see them:
 - Selling "stacks for bodybuilding"
 - Using images of muscular athletes or fitness models
 
-...they are actively violating FDA marketing regulations for research chemicals. Such vendors run a high risk of being shut down by regulatory agencies at any moment. This indicates a fundamentally unstable business model and almost always correlates with poor quality control, as they prioritize fast profits over scientific integrity. Legitimate vendors sell unbranded vials, use chemical names, and explicitly state the products are not for human use.
+...they are actively violating FDA marketing regulations for research-use-only compounds. Such vendors run a high risk of being shut down by regulatory agencies at any moment. This indicates a fundamentally unstable business model and almost always correlates with poor quality control, as they prioritize fast profits over scientific integrity. Legitimate vendors sell unbranded vials, use chemical names, and explicitly state the products are not for human use.
 
 ### 4. Understand the Payment Processing Challenges
 
@@ -171,7 +171,7 @@ The most critical factor in our evaluation is transparency. We only recommend ve
 
 For a complete breakdown of our top-rated suppliers and a comparison of their shipping speeds, purity standards, and pricing, explore our curated list of <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a> to ensure you are sourcing the highest quality materials while securing the best pricing for your lab.
 
-For specific compounds like [BPC-157](/library/bpc-157) or the GLP-1 receptor agonist [Tirzepatide](/library/tirzepatide), sourcing verified, high-purity reagents is the absolute only way to ensure reproducible, scientifically valid experimental data.
+For specific compounds like [BPC-157](/library/bpc-157) or [TB-500](/library/tb-500), sourcing verified, high-purity reagents is the absolute only way to ensure reproducible, scientifically valid experimental data.
 
 ## Frequently Asked Questions
 
@@ -179,7 +179,7 @@ For specific compounds like [BPC-157](/library/bpc-157) or the GLP-1 receptor ag
 Yes, it is legal to purchase research peptides online in the United States, provided they are sold and purchased explicitly for laboratory research, in-vitro studies, or permitted animal research, and are emphatically not intended for human consumption.
 
 **Can my doctor prescribe research peptides?**
-No. Doctors can only prescribe medications that are FDA-approved or compounded by a licensed pharmacy from FDA-approved bulk substances. They cannot legally prescribe "research chemicals." If a doctor is offering peptides, they should be sourcing them through a licensed 503A or 503B compounding pharmacy, not a research chemical website.
+No. Doctors can only prescribe medications that are FDA-approved or compounded by a licensed pharmacy from FDA-approved bulk substances. They cannot legally prescribe research-use-only compounds. If a doctor is offering peptides, they should be sourcing them through a licensed 503A or 503B compounding pharmacy, not a research chemical website.
 
 **Why do peptide websites say "Not for human consumption"?**
 This disclaimer is a strict legal necessity. Because these compounds have not gone through the rigorous, multi-year FDA approval process for human therapeutic use (clinical trials demonstrating safety and efficacy), selling them for human consumption would violate federal law regarding the distribution of unapproved new drugs.

@@ -15,7 +15,7 @@ import {
 
 const DISCOUNT_PERCENT = '15%';
 const POST_TITLE = `Amino Club Discount Code: PEPTIDEX (Saves ${DISCOUNT_PERCENT} in 2026)`;
-const POST_DESC = `Use our verified Amino Club discount code PEPTIDEX at checkout to save ${DISCOUNT_PERCENT} on your entire order. Learn how to apply the promo code to BPC-157, Tirzepatide, and more.`;
+const POST_DESC = `Use our verified Amino Club discount code PEPTIDEX at checkout to save ${DISCOUNT_PERCENT} on your entire order. Learn how to apply the promo code to BPC-157, Tesamorelin, and more.`;
 const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-30';
 const DATE_MOD = '2026-04-30';
@@ -52,7 +52,7 @@ const breadcrumbSchema = {
 };
 
 const HOW_TO_STEPS = [
-  { num: '01', title: 'Add to cart', body: 'Add your selected research peptides (BPC-157, Tirzepatide, Tesamorelin, etc.) to your cart.' },
+  { num: '01', title: 'Add to cart', body: 'Add your selected research peptides (BPC-157, TB-500, Tesamorelin, etc.) to your cart.' },
   { num: '02', title: 'Proceed to checkout', body: 'Click through to the Amino Club checkout page.' },
   { num: '03', title: 'Find the code field', body: 'Locate the "Discount code or gift card" input on the right (desktop) or top (mobile) of checkout.' },
   { num: '04', title: 'Enter PEPTIDEX', body: 'Type PEPTIDEX and click Apply. The 15% discount will be immediately deducted from your order total.' },
@@ -60,7 +60,6 @@ const HOW_TO_STEPS = [
 
 const ELIGIBLE = [
   { label: 'All individual research peptides', detail: 'BPC-157, TB-500, GHK-Cu, and more' },
-  { label: 'All GLP-1 analogs', detail: 'Tirzepatide, Semaglutide, Retatrutide' },
   { label: 'Growth Hormone Secretagogues', detail: 'Ipamorelin, CJC-1295' },
   { label: 'Bulk & wholesale orders', detail: 'Stacks on top of bulk pricing tiers' },
 ];
@@ -210,14 +209,14 @@ export default function AminoClubDiscountCode() {
                   <td className="py-3 px-4 text-emerald-300 font-semibold">$38.25</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50 bg-zinc-900/30">
-                  <td className="py-3 px-4 text-zinc-300">Tirzepatide (10mg)</td>
-                  <td className="py-3 px-4 text-zinc-400"><span className="line-through">$120.00</span></td>
-                  <td className="py-3 px-4 text-emerald-300 font-semibold">$102.00</td>
+                  <td className="py-3 px-4 text-zinc-300">Ipamorelin (10mg)</td>
+                  <td className="py-3 px-4 text-zinc-400"><span className="line-through">$59.99</span></td>
+                  <td className="py-3 px-4 text-emerald-300 font-semibold">$50.99</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 text-zinc-300">Retatrutide (10mg)</td>
-                  <td className="py-3 px-4 text-zinc-400"><span className="line-through">$180.00</span></td>
-                  <td className="py-3 px-4 text-emerald-300 font-semibold">$153.00</td>
+                  <td className="py-3 px-4 text-zinc-300">Tesamorelin (10mg)</td>
+                  <td className="py-3 px-4 text-zinc-400"><span className="line-through">$69.99</span></td>
+                  <td className="py-3 px-4 text-emerald-300 font-semibold">$59.49</td>
                 </tr>
               </tbody>
             </table>

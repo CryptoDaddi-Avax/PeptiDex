@@ -40,22 +40,6 @@ export const verificationAssets: VerificationAsset[] = [
   // All PDFs hosted locally at /coa/[slug]-[batch].pdf
   // ═══════════════════════════════════════════════════════════════════════════════
   {
-    peptideSlug: 'retatrutide',
-    peptideName: 'Retatrutide',
-    vendor: 'Amino Club',
-    vendorSlug: 'amino-club',
-    batchId: 'RT0001',
-    coaPdfPath: '/coa/retatrutide-RT0001.pdf',
-    coaPdfSourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_GLP-3_RT__10MG_RT0001.pdf',
-    coaVerifiedDate: '2026-04-12',
-    lab: 'Biogenica Labs',
-    purity: 99.822,
-    molecularWeight: '4731.4 Da',
-    methods: ['HPLC', 'Mass Spec'],
-    referenceMW: 'Eli Lilly Phase 2 data',
-    passed: true,
-  },
-  {
     peptideSlug: 'bpc-157',
     peptideName: 'BPC-157',
     vendor: 'Amino Club',
@@ -132,21 +116,6 @@ export const verificationAssets: VerificationAsset[] = [
     passed: true,
   },
   {
-    peptideSlug: 'cagrilintide',
-    peptideName: 'Cagrilintide',
-    vendor: 'Amino Club',
-    vendorSlug: 'amino-club',
-    batchId: 'CAG0001',
-    coaPdfPath: '/coa/cagrilintide-CAG0001.pdf',
-    coaPdfSourceUrl: 'https://www.aminoclub.com/coa/Biogenica_CoA_Cagrilintide_10MG_CAG0001.pdf',
-    coaVerifiedDate: '2026-04-12',
-    lab: 'Biogenica Labs',
-    purity: 99.604,
-    molecularWeight: '3951.5 Da',
-    methods: ['HPLC', 'Mass Spec'],
-    passed: true,
-  },
-  {
     peptideSlug: 'mots-c',
     peptideName: 'MOTS-c',
     vendor: 'Amino Club',
@@ -219,48 +188,6 @@ export const verificationAssets: VerificationAsset[] = [
     purity: 99.710,
     molecularWeight: '390.3 Da',
     methods: ['HPLC', 'Mass Spec'],
-    passed: true,
-  },
-
-  // ═══════════════════════════════════════════════════════════════════════════════
-  // TIRZEPATIDE — Ascension Peptides (T-10 / T-30) + Pantheon Peptides
-  // COAs available via Ascension certificates page (vendor-disclosed, not hosted)
-  // ═══════════════════════════════════════════════════════════════════════════════
-  {
-    peptideSlug: 'tirzepatide',
-    peptideName: 'Tirzepatide',
-    vendor: 'Ascension Peptides',
-    vendorSlug: 'ascension-peptides',
-    batchId: 'Ascension-T-30',
-    coaPdfPath: null,     // COAs on Ascension certificates page — not hosted locally
-    coaPdfSourceUrl: 'https://ascensionpeptides.com/certificates-of-analysis/',
-    coaVerifiedDate: '2026-05-14',
-    lab: 'Third-party (vendor-disclosed)',
-    purity: 99.0,
-    molecularWeight: '4813.5 Da',
-    methods: ['HPLC', 'LC-MS'],
-    referenceMW: 'Eli Lilly Mounjaro characterization',
-    passed: true,
-  },
-
-  // ═══════════════════════════════════════════════════════════════════════════════
-  // SEMAGLUTIDE — Ascension Peptides (S-5)
-  // COAs available via Ascension certificates page (vendor-disclosed, not hosted)
-  // ═══════════════════════════════════════════════════════════════════════════════
-  {
-    peptideSlug: 'semaglutide',
-    peptideName: 'Semaglutide',
-    vendor: 'Ascension Peptides',
-    vendorSlug: 'ascension-peptides',
-    batchId: 'Ascension-S-5',
-    coaPdfPath: null,     // COAs on Ascension certificates page — not hosted locally
-    coaPdfSourceUrl: 'https://ascensionpeptides.com/certificates-of-analysis/',
-    coaVerifiedDate: '2026-05-14',
-    lab: 'Third-party (vendor-disclosed)',
-    purity: 99.0,
-    molecularWeight: '4114 Da',
-    methods: ['HPLC', 'LC-MS'],
-    referenceMW: 'Novo Nordisk characterization',
     passed: true,
   },
 

@@ -26,9 +26,9 @@ for (const peptide of peptides) {
   let flagReason = '';
 
   // 1. Title
-  let title = `${name}: Research Profile, Dosage & Studies | PeptiDex`;
+  let title = `${name}: Research Profile, Mechanism & Studies | PeptiDex`;
   if (title.length > 60) {
-    title = `${name}: Research Profile & Dosage | PeptiDex`;
+    title = `${name}: Research Profile & Studies | PeptiDex`;
   }
   if (title.length > 60) {
     title = `${name}: Research Profile | PeptiDex`;
@@ -38,7 +38,7 @@ for (const peptide of peptides) {
   const isStr = peptide.category.toLowerCase();
   const researchStr = peptide.primary_benefits ? peptide.primary_benefits.toLowerCase() : 'therapeutic applications';
   
-  const angle = "Review half-life data and compare COA-verified vendors.";
+  const angle = "Review mechanism, half-life data and published studies.";
   
   let desc = `${name} is a ${isStr} researched for ${researchStr}. ${angle}`;
   
@@ -46,7 +46,7 @@ for (const peptide of peptides) {
     desc = `${name} is a ${isStr} primarily researched for ${researchStr}. ${angle} For educational reference.`;
   } else if (desc.length > 155) {
     // try shorter angle
-    const shortAngle = "Review half-life data & compare verified vendors.";
+    const shortAngle = "Review mechanism, half-life & studies.";
     desc = `${name} is a ${isStr} researched for ${researchStr}. ${shortAngle}`;
     if (desc.length > 155) {
         desc = truncate(desc, 155);
@@ -68,26 +68,16 @@ for (const peptide of peptides) {
   }
 
   // Q3
-  let a3 = '';
-  if (peptide.dosing && peptide.dosing.reconstitution_ml && peptide.dosing.typical_vial_mg) {
-    a3 = `Standard research protocol involves reconstituting the ${peptide.dosing.typical_vial_mg}mg vial with ${peptide.dosing.reconstitution_ml}ml of bacteriostatic water.`;
-  } else {
-    a3 = `Reconstitution volume depends on the vial size and desired concentration. Bacteriostatic water is standard.`;
-    flagReason += 'Missing specific reconstitution data for Q3. ';
-  }
-
-  // Q4
   let a4 = '';
   if (peptide.is_fda_approved) {
-    a4 = `Yes, ${name} is FDA-approved for specific clinical indications. However, research-grade variants available from peptide vendors are sold strictly for laboratory use and are not approved for human medical use.`;
+    a4 = `Yes, ${name} is FDA-approved for specific clinical indications. Research-grade material is intended strictly for laboratory use and is not approved for human medical use.`;
   } else {
-    a4 = `No, ${name} is not FDA-approved. It is classified exclusively as a research chemical and is legally available solely for in-vitro and laboratory experimentation, not for human or animal consumption.`;
+    a4 = `No, ${name} is not FDA-approved. It is classified exclusively as a research compound and is legally available solely for in-vitro and laboratory experimentation, not for human or animal consumption.`;
   }
 
   const faq = [
     { q: `What is ${name}?`, a: a1 },
     { q: `What is ${name} researched for?`, a: a2 },
-    { q: `How is ${name} reconstituted?`, a: a3 },
     { q: `Is ${name} FDA-approved?`, a: a4 }
   ];
 

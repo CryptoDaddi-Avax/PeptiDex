@@ -17,7 +17,7 @@ export const bioLongevityLabsReview: VendorReviewData = {
   valueScore: '8.5/10',
   supportScore: '9.0/10',
   verdictHeadline: 'Is Bio Longevity Labs Legit?',
-  verdictBody: 'Yes. Bio Longevity Labs is a legitimate US-based research peptide supplier. Per their publicly available COAs, they conduct triple-method testing (HPLC, LC-MS, and Endotoxin/LAL) on each batch, with published purity results of 99%+. Their PEPTIDEX discount code stacks with sitewide sales, making them one of the best value options in the market. For research use only.',
+  verdictBody: 'Yes. Bio Longevity Labs is a legitimate US-based research peptide vendor. Per their publicly available COAs, they conduct triple-method testing (HPLC, LC-MS, and Endotoxin/LAL) on each batch, with published purity results of 99%+. Their PEPTIDEX discount code stacks with sitewide sales, making them one of the best value options in the market. For research use only.',
   purity: '99%+',
   coaType: 'Batch-specific',
   testingMethods: ['HPLC', 'LC-MS', 'Endotoxin/LAL'],
@@ -63,7 +63,7 @@ export const bioLongevityLabsReview: VendorReviewData = {
     { name: 'Limitless Life', slug: 'limitless-life', rating: 4.8, bestFor: 'USA-manufactured, 90+ compounds', href: '/vendors/limitless-life' },
   ],
   faqs: [
-    { q: 'Is Bio Longevity Labs legit?', a: 'Yes. Bio Longevity Labs is a US-based research peptide supplier that provides batch-specific COAs verified by HPLC, LC-MS, and Endotoxin/LAL testing (per vendor disclosure). They have 350+ reviews on Trustpilot averaging 4.8/5. All compounds are sold for research use only.' },
+    { q: 'Is Bio Longevity Labs legit?', a: 'Yes. Bio Longevity Labs is a US-based research peptide vendor that provides batch-specific COAs verified by HPLC, LC-MS, and Endotoxin/LAL testing (per vendor disclosure). They have 350+ reviews on Trustpilot averaging 4.8/5. All compounds are sold for research use only.' },
     { q: 'Does Bio Longevity Labs provide COAs?', a: 'Yes. Per their website, Bio Longevity Labs provides batch-specific Certificates of Analysis for every product. Testing includes HPLC purity, LC-MS molecular confirmation, and Endotoxin/LAL screening. Customers should request the COA corresponding to their specific lot number.' },
     { q: 'What discount codes work at Bio Longevity Labs?', a: 'The code PEPTIDEX provides 15% off and stacks with active sitewide sales — potentially reaching 30–40%+ total savings. Apply at checkout on biolongevitylabs.com.' },
     { q: 'How long does Bio Longevity Labs take to ship?', a: 'Per vendor disclosure, estimated shipping time is 2–5 business days for US orders. Based on customer reviews, most domestic orders arrive in 3–4 business days.' },

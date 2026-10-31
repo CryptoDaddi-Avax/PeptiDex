@@ -1,10 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { stacks } from '@/data/stacks';
+import { SITE_STATS } from '@/data/site-stats';
 import './Bento.css';
 
-const STACK_COUNT = stacks.length;
+const PEPTIDE_COUNT = SITE_STATS.peptides.count;
+const STACK_COUNT = SITE_STATS.stacks.count;
+const STUDY_COUNT = SITE_STATS.studies.count;
 
 /**
  * Bento — v13 asymmetric grid section ("The Index").
@@ -46,7 +48,7 @@ export default function Bento() {
             Researched like a library, <span className="em">verified</span> like a lab.
           </h2>
           <p className="bento-sub fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>
-            Every profile traces back to a mechanism, the published studies behind it, and a COA-verified vendor. Nothing here is taken on trust.
+            Every profile traces back to a mechanism and the published studies behind it. Nothing here is taken on trust.
           </p>
         </header>
 
@@ -71,14 +73,14 @@ export default function Bento() {
               <div className="card-inner">
                 <header className="card-meta">
                   <span className="pill-btn pill-glass tiny">
-                    <span className="dot" aria-hidden="true" /> 51 PROFILES
+                    <span className="dot" aria-hidden="true" /> {PEPTIDE_COUNT} PROFILES
                   </span>
                   <span className="card-id">A · 01</span>
                 </header>
                 <footer className="card-foot">
                   <h3 className="card-title">Peptide <span className="em">Library</span></h3>
-                  <p className="card-desc">51 profiles — mechanism, dosing, half-life, and the published studies behind each one. Search by what you mean, not what you remember.</p>
-                  <p className="card-stat">51 PROFILES · MECHANISM TO DOSING</p>
+                  <p className="card-desc">{PEPTIDE_COUNT} profiles — mechanism, half-life, and the published studies behind each one. Search by what you mean, not what you remember.</p>
+                  <p className="card-stat">{PEPTIDE_COUNT} PROFILES · MECHANISM TO EVIDENCE</p>
                 </footer>
               </div>
               <Link className="card-link" href="/library">Open the Peptide Library</Link>
@@ -149,7 +151,7 @@ export default function Bento() {
                   <header className="card-meta" style={{ marginBottom: 12 }}>
                     <span className="card-id">C · 03</span>
                   </header>
-                  <h3 className="card-title">12 Evidence-Based <span className="em">Stacks</span></h3>
+                  <h3 className="card-title">{STACK_COUNT} Evidence-Based <span className="em">Stacks</span></h3>
                   <p className="card-desc" style={{ marginTop: 8 }}>Synergies grounded in published research — indexed by goal, with full citation trails.</p>
                 </div>
                 <div className="card-side">
@@ -171,7 +173,7 @@ export default function Bento() {
                   <span className="card-id">D · 04</span>
                 </header>
                 <div className="card-body card-body-center">
-                  <div className="big-num">668<span className="em">+</span></div>
+                  <div className="big-num">{STUDY_COUNT}<span className="em">+</span></div>
                   <p className="card-desc">peer-reviewed studies grounding the Advisor</p>
                 </div>
                 <footer className="card-foot">
@@ -206,7 +208,7 @@ export default function Bento() {
                 </header>
                 <div className="card-body">
                   <h3 className="card-title">The Peptide Brief</h3>
-                  <p className="card-desc">Bi-weekly research updates, vendor pricing, and protocol analyses.</p>
+                  <p className="card-desc">Bi-weekly research updates and new study analyses.</p>
                 </div>
               </div>
               {/* Newsletter signup page — NewsletterGlobalProvider

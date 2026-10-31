@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_STATS } from '@/data/site-stats';
 import { ChevronRight, Beaker, ArrowRight, Flame, Heart, Sparkles, Dna, Syringe, Brain, ShieldCheck, Microscope } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Peptide Library — Evidence-Based Compound Profiles | PeptiDex',
-  description: 'Browse the PeptiDex peptide library: detailed, research-backed profiles of 33+ peptide compounds organized by therapeutic category. Includes mechanism of action, clinical data, safety profiles, and cited sources.',
+  description: `Browse the PeptiDex peptide library: detailed, research-backed profiles of ${SITE_STATS.peptides.count} peptide compounds organized by therapeutic category. Includes mechanism of action, clinical data, safety profiles, and cited sources.`,
   alternates: {
     canonical: 'https://peptidex.app/peptides',
   },
   openGraph: {
     title: 'The PeptiDex Peptide Library — Evidence-Based Compound Profiles',
-    description: 'Detailed, research-backed profiles of 33+ peptide compounds organized by therapeutic category. Mechanism of action, clinical data, safety profiles, and cited sources.',
+    description: `Detailed, research-backed profiles of ${SITE_STATS.peptides.count} peptide compounds organized by therapeutic category. Mechanism of action, clinical data, safety profiles, and cited sources.`,
     url: 'https://peptidex.app/peptides',
     type: 'website',
     images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'PeptiDex Peptide Library',
-    description: '33+ research-backed peptide compound profiles organized by therapeutic category.',
+    description: `${SITE_STATS.peptides.count} research-backed peptide compound profiles organized by therapeutic category.`,
     images: ['https://peptidex.app/og-image.png'],
   },
 };
@@ -38,20 +39,17 @@ interface CategoryCard {
 
 const CATEGORIES: CategoryCard[] = [
   {
-    name: 'Weight Loss & Metabolic Peptides',
-    description: 'GLP-1 receptor agonists, dual/triple agonists, and small-molecule metabolic modulators driving the most active area of clinical peptide research.',
+    name: 'Metabolic & Body Composition Peptides',
+    description: 'Peptides investigated for lipid metabolism, visceral fat reduction, and mitochondrial energy regulation in preclinical and clinical research.',
     icon: Flame,
     iconColor: 'text-orange-400',
     bgGradient: 'from-orange-500/5 to-transparent',
     borderColor: 'border-orange-500/20 hover:border-orange-500/40',
     accentDot: 'bg-orange-500',
     compounds: [
-      { name: 'Semaglutide', slug: 'semaglutide' },
-      { name: 'Tirzepatide', slug: 'tirzepatide' },
-      { name: 'Retatrutide', slug: 'retatrutide' },
-      { name: 'Tesofensine', slug: 'tesofensine' },
       { name: 'AOD-9604', slug: 'aod-9604' },
-      { name: 'Cagrilintide', slug: 'cagrilintide' },
+      { name: 'Tesamorelin', slug: 'tesamorelin' },
+      { name: 'MOTS-c', slug: 'mots-c' },
     ],
   },
   {
@@ -159,7 +157,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Are peptides safe?',
-    answer: 'Safety varies significantly by compound, dosage, and route of administration. FDA-approved peptide drugs like semaglutide and tirzepatide have undergone rigorous clinical trials. Many other peptides are still in research phases. Always consult a healthcare provider before using any peptide therapy.',
+    answer: 'Safety varies significantly by compound, dosage, and route of administration. FDA-approved peptide drugs like tesamorelin and PT-141 have undergone rigorous clinical trials. Many other peptides are still in research phases. Always consult a healthcare provider before using any peptide therapy.',
   },
   {
     question: 'What is the difference between a peptide and a protein?',
@@ -167,7 +165,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Do peptides require a prescription?',
-    answer: 'It depends on the peptide. FDA-approved peptide medications like semaglutide (Ozempic, Wegovy) and tirzepatide (Mounjaro, Zepbound) require a prescription. Many other peptides are available through compounding pharmacies with a prescription, while some are sold for research use only and are not approved for human consumption.',
+    answer: 'It depends on the peptide. FDA-approved peptide medications like tesamorelin (Egrifta) and PT-141 (Vyleesi) require a prescription. Many other peptides are available through compounding pharmacies with a prescription, while some are sold for research use only and are not approved for human consumption.',
   },
 ];
 
@@ -200,7 +198,7 @@ export default function PeptideLibraryPage() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'The PeptiDex Peptide Library',
-    description: 'Evidence-based compound profiles of 33+ peptide compounds organized by therapeutic category.',
+    description: `Evidence-based compound profiles of ${SITE_STATS.peptides.count} peptide compounds organized by therapeutic category.`,
     url: 'https://peptidex.app/peptides',
     publisher: {
       '@type': 'Organization',

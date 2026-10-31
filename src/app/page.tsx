@@ -3,7 +3,7 @@ import NewHomeClient from './new-home-client';
 import { SITE_STATS } from '@/data/site-stats';
 
 export const metadata: Metadata = {
-  title: 'PeptiDex – Peptide Research Index, Stacks & Vendor Data Hub',
+  title: 'PeptiDex – Peptide Research Index, Stacks & Research Tools',
   description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free cycle-planning, pharmacokinetics and price tools, and COA verification. Not affiliated with any tracker app or vendor.`,
   alternates: {
     canonical: 'https://peptidex.app',
@@ -13,16 +13,16 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'PeptiDex, The #1 Peptide Research & Sourcing Hub',
-    description: 'Research-backed peptide education. Compare stacks, explore studies, and find the best peptide vendors for your goals.',
+    title: 'PeptiDex – Independent Peptide Research Index',
+    description: 'Research-backed peptide education. Compare stacks, explore published studies, and review peptide mechanisms by research goal.',
     url: 'https://peptidex.app',
     type: 'website',
     images: [{ url: 'https://peptidex.app/api/og?type=default', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PeptiDex, The #1 Peptide Research & Sourcing Hub',
-    description: 'Research-backed peptide education. Compare stacks, explore studies, and find the best peptide vendors for your goals.',
+    title: 'PeptiDex – Independent Peptide Research Index',
+    description: 'Research-backed peptide education. Compare stacks, explore published studies, and review peptide mechanisms by research goal.',
     images: ['https://peptidex.app/api/og?type=default'],
   },
 };
@@ -44,20 +44,12 @@ export default async function Page({
       a: "Research peptides are synthetic sequences of amino acids utilized exclusively in laboratory and non-human experimental settings to study physiological mechanisms like cellular repair, healing, and metabolic signaling."
     },
     {
-      q: "Are peptides legal to buy?",
-      a: "Yes, research peptides are legally available to purchase in many jurisdictions for authorized laboratory, educational, and research purposes, provided they are strictly not intended for human consumption."
-    },
-    {
-      q: "What is the best peptide for fat loss?",
-      a: "In preclinical research settings, GLP-1 agonists like Semaglutide and Tirzepatide are frequently studied for their significant impact on metabolic regulation, appetite suppression, and accelerated fat loss."
-    },
-    {
       q: "What is the best peptide for injury recovery?",
       a: "BPC-157 and TB-500 are the most prominently researched peptides for tissue repair. BPC-157 research highlights profound localized healing, while TB-500 demonstrates whole-body, systemic recovery mechanisms."
     },
     {
-      q: "Where can I find trusted peptide vendors?",
-      a: "You can find trusted peptide vendors by consulting our curated review guide, which highlights suppliers offering rigorous independent, third-party batch testing and verified Certificates of Analysis (COAs) for scientific safety."
+      q: "What is PeptiDex?",
+      a: `PeptiDex is an independent, educational peptide research index covering ${peptides.length} peptide profiles and ${stacks.length} research stacks, with mechanisms of action, half-life data, and citations to published studies. PeptiDex does not sell peptides.`
     }
   ]);
 
@@ -65,7 +57,7 @@ export default async function Page({
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "PeptiDex Peptide Library",
-    "description": `Browse ${peptides.length} research peptide profiles — dosage guides, half-life data, study summaries, and COA-verified vendor sourcing.`,
+    "description": `Browse ${peptides.length} research peptide profiles — mechanisms of action, half-life data, and published study summaries.`,
     "url": "https://peptidex.app/library",
     "hasPart": peptides.map((p) => ({
       "@type": "WebPage",

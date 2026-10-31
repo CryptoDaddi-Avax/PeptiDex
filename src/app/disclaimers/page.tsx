@@ -85,7 +85,7 @@ export default function DisclaimerPage() {
         <ul>
           <li>Peptides such as BPC-157, TB-500, CJC-1295, Ipamorelin, and others are research compounds — not approved drugs.</li>
           <li>Vendors selling these compounds market them solely for authorized laboratory and educational use.</li>
-          <li>FDA-approved exceptions include Semaglutide, Tirzepatide, Tesamorelin, and PT-141 — all of which require a valid prescription for human use.</li>
+          <li>FDA-approved exceptions include Tesamorelin and PT-141 — all of which require a valid prescription for human use.</li>
         </ul>
 
         <h2>Vendor <em>relationships</em>.</h2>

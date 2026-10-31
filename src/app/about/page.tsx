@@ -61,7 +61,7 @@ export default function AboutPage() {
         name: 'Is PeptiDex a peptide vendor?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'No, we are strictly an independent research index and educational hub. We do not manufacture, sell, or distribute any peptides or research chemicals. We provide unbiased vendor reviews and COA verification data to help researchers find trusted sources.'
+          text: 'No, we are strictly an independent research index and educational hub. We do not manufacture, sell, or distribute any peptides or other compounds. We provide unbiased vendor reviews and COA verification data to help researchers find trusted sources.'
         }
       },
       {
@@ -188,7 +188,7 @@ export default function AboutPage() {
           </div>
           <div className="faq-item">
             <h3>Is PeptiDex a peptide vendor?</h3>
-            <p>No, we are strictly an independent research index and educational hub. We do not manufacture, sell, or distribute any peptides or research chemicals. We provide unbiased vendor reviews and COA verification data to help researchers find trusted sources.</p>
+            <p>No, we are strictly an independent research index and educational hub. We do not manufacture, sell, or distribute any peptides or other compounds. We provide unbiased vendor reviews and COA verification data to help researchers find trusted sources.</p>
           </div>
           <div className="faq-item">
             <h3>Who runs PeptiDex?</h3>

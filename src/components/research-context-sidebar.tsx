@@ -10,8 +10,8 @@ import { peptides } from '@/data/peptides';
 
 // Top peptides to feature — the most popular compounds
 const FEATURED_SLUGS = [
-  'bpc-157', 'tb-500', 'ipamorelin', 'semaglutide', 'tirzepatide',
-  'ghk-cu', 'pt-141', 'cjc-1295', 'retatrutide', 'tesamorelin',
+  'bpc-157', 'tb-500', 'ipamorelin', 'semax', 'epitalon',
+  'ghk-cu', 'pt-141', 'cjc-1295', 'nad', 'tesamorelin',
   'mots-c', 'mk-677',
 ];
 

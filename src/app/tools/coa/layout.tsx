@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { SITE_STATS } from "@/data/site-stats";
 
 export const metadata: Metadata = {
-    title: "COA Analyzer   Verify Peptide Certificate of Analysis",
-    description: `Verify your research peptide supplier's Certificate of Analysis (COA). Enter the reported molecular weight and purity %   get an instant Pass/Fail verdict against lab reference values for ${SITE_STATS.peptides.count} peptides.`,
-    keywords: ["peptide COA", "certificate of analysis", "verify peptide purity", "HPLC purity check", "peptide mass spec", "fake peptide check", "research chemical verification", "peptide quality check"],
+    title: "COA Analyzer — Verify Peptide Certificate of Analysis",
+    description: `Verify a research peptide Certificate of Analysis (COA). Enter the reported molecular weight and purity % to get an instant Pass/Fail verdict against lab reference values for ${SITE_STATS.peptides.count} peptides.`,
+    keywords: ["peptide COA", "certificate of analysis", "verify peptide purity", "HPLC purity check", "peptide mass spec", "fake peptide check", "peptide quality check"],
     openGraph: {
-        title: "COA Analyzer   Verify Your Peptide's Purity & Authenticity | PeptiDex",
+        title: "COA Analyzer — Verify Your Peptide's Purity & Authenticity | PeptiDex",
         description: `Does your supplier's COA check out? Enter the reported MW and purity % for an instant Pass/Fail verdict against reference values for ${SITE_STATS.peptides.count} peptides.`,
         type: "website",
     },

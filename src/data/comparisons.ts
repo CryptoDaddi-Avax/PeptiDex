@@ -5,28 +5,6 @@ export interface ComparisonFAQItem {
   a: string;
 }
 
-export interface TrialWeightLossData {
-  compoundA: {
-    percentage: string;
-    trial: string;
-    duration: string;
-    n: number;
-    phase: string;
-    estimandNote?: string;
-    pmid: string;
-  };
-  compoundB: {
-    percentage: string;
-    trial: string;
-    duration: string;
-    n: number;
-    phase: string;
-    estimandNote?: string;
-    pmid: string;
-  };
-  crossTrialCaveat: string;
-}
-
 export interface Comparison {
   slug: string;
   peptideA: string;
@@ -45,7 +23,6 @@ export interface Comparison {
   stackCompatible?: boolean;
   faqs?: ComparisonFAQItem[];
   editorNote?: string;
-  trialWeightLoss?: TrialWeightLossData;
 }
 
 export const comparisons: Comparison[] = [
@@ -70,94 +47,6 @@ export const comparisons: Comparison[] = [
       { q: 'How long should I run BPC-157 vs TB-500?', a: 'Typical BPC-157 cycles run 4–12 weeks at 250–500mcg/day. TB-500 is commonly run with a loading phase of 2–4mg 2x/week for 4–6 weeks, then 2mg monthly for maintenance.' },
       { q: 'Which heals gut issues better?', a: 'BPC-157 overwhelmingly. It was originally derived from a gastric protein and has the most extensive preclinical evidence for healing gastric ulcers, leaky gut, and IBD. TB-500 has minimal gut-specific evidence.' },
     ],
-  },
-  {
-    slug: 'semaglutide-vs-tirzepatide',
-    peptideA: 'semaglutide',
-    peptideB: 'tirzepatide',
-    title: 'Semaglutide vs Tirzepatide',
-    seoTitle: 'Semaglutide vs Tirzepatide: 14.9% vs 20.9% Weight Loss Compared | PeptiDex',
-    subtitle: 'Weight Loss & GLP-1',
-    seoDescription: 'Clinical research comparison of Semaglutide vs Tirzepatide: STEP 1 & SURMOUNT-1 trial data, half-life, mechanisms, and side effects.',
-    recommendation: `**Data Context & Limitations:** The clinical figures cited below are drawn from separate clinical trials—the STEP 1 trial (68 weeks) and SURMOUNT-1 trial (72 weeks). There are no direct, head-to-head trials comparing these specific compounds. Weight loss percentages are therefore not perfectly comparable due to differing trial durations, populations, and designs.\n\n**The Verdict:**\nTirzepatide (Zepbound/Mounjaro) has demonstrated a higher ceiling for weight reduction in its clinical trials compared to semaglutide (Wegovy/Ozempic), driven by its dual agonism of both GLP-1 and GIP receptors. In the 72-week SURMOUNT-1 trial, tirzepatide reached up to a ~20.9% average body weight reduction (treatment-regimen estimand; note some sources cite the 22.5% efficacy estimand), while semaglutide achieved ~14.9% over 68 weeks in the STEP 1 trial.\n\nHowever, semaglutide has the longest track record and broadest regulatory approval. For research purposes, semaglutide is often a reliable starting point due to its extensive long-term data. Tirzepatide is typically investigated when maximizing metabolic response or total weight loss is the primary objective. *This information is provided for research and educational purposes only and does not constitute medical or prescribing advice.*`,
-    tags: ['Weight Loss', 'Research'],
-    color: 'emerald',
-    quickVerdict: 'Tirzepatide achieved ~20.9% weight loss (SURMOUNT-1, 72wk) via dual GLP-1/GIP mechanisms. Semaglutide achieved ~14.9% (STEP 1, 68wk) but offers a longer real-world safety track record.',
-    personaA: 'Choose Semaglutide if you:\n• Are new to GLP-1 agonists and want the most proven starting point\n• Have cardiovascular disease concerns (SELECT trial: 20% CV event reduction)\n• Want a more affordable research option with longer safety data\n• Are researching T2DM or pre-diabetic metabolic states',
-    personaB: 'Choose Tirzepatide if you:\n• Want maximum weight loss efficacy in a single agent\n• Have experienced intolerable nausea on Semaglutide (Tirzepatide is often better tolerated)\n• Have plateaued on a GLP-1 and need a mechanistic upgrade\n• Are researching insulin resistance alongside obesity',
-    stackNote: 'Do NOT stack Semaglutide and Tirzepatide — they share the GLP-1 receptor. Additive GLP-1 stimulation creates severe nausea, hypoglycemia risk, and potential cardiovascular complications. They are competing agents, not complements.',
-    stackCompatible: false,
-    faqs: [
-      { q: 'Which causes more weight loss — Semaglutide or Tirzepatide?', a: 'Tirzepatide consistently produces greater weight loss (~21% body weight at maximum dose) vs Semaglutide (~15%) in clinical trials. The SURMOUNT vs STEP trial data confirms this difference.' },
-      { q: 'Can I switch from Semaglutide to Tirzepatide?', a: 'Yes. A washout period is not required. Most protocols transition directly. Start Tirzepatide at 2.5mg weekly and titrate up. Monitor for additive GI effects during the transition week.' },
-      { q: 'Is Semaglutide or Tirzepatide safer for the heart?', a: 'Semaglutide has the stronger cardiovascular safety data — the SELECT trial showed a 20% reduction in major cardiac events in non-diabetic obese patients. Tirzepatide\'s SURPASS-CVOT data is emerging but not yet as complete.' },
-      { q: 'Which has fewer side effects?', a: 'Tirzepatide tends to have slightly lower nausea rates than Semaglutide in head-to-head data, attributed to the GIP component partially buffering GLP-1 GI effects. Both cause nausea, constipation, and injection site reactions.' },
-    ],
-    editorNote: 'These weight-loss percentages come from SEPARATE trials of different durations (STEP 1: 68 weeks vs SURMOUNT-1: 72 weeks) and populations. No head-to-head randomized trial has directly compared these specific weight-loss figures. Tirzepatide’s ~20.9% is the treatment-regimen estimand; the efficacy estimand (which excludes dropouts) reports ~22.5% at the 15mg dose.',
-    trialWeightLoss: {
-      compoundA: {
-        percentage: '~14.9%',
-        trial: 'STEP 1',
-        duration: '68 weeks',
-        n: 1961,
-        phase: 'Phase 3',
-        pmid: '33567185',
-      },
-      compoundB: {
-        percentage: '~20.9%',
-        trial: 'SURMOUNT-1',
-        duration: '72 weeks',
-        n: 2539,
-        phase: 'Phase 3',
-        estimandNote: 'Treatment-regimen estimand; efficacy estimand reports ~22.5% at 15mg',
-        pmid: '35658024',
-      },
-      crossTrialCaveat: 'These percentages are from separate trials with different durations, populations, and designs. No head-to-head trial has directly compared these compounds for weight loss.',
-    },
-  },
-  {
-    slug: 'tirzepatide-vs-retatrutide',
-    peptideA: 'tirzepatide',
-    peptideB: 'retatrutide',
-    title: 'Tirzepatide vs Retatrutide',
-    seoTitle: 'Retatrutide vs Tirzepatide: 24.2% vs 20.9% Weight Loss Compared | PeptiDex',
-    subtitle: 'Advanced Weight Loss',
-    seoDescription: 'Clinical research comparison of Tirzepatide vs Retatrutide: SURMOUNT-1 Phase 3 vs Phase 2 trial data, mechanisms, and half-life.',
-    recommendation: `**Data Context & Limitations:** The clinical figures cited below are drawn from separate clinical trials—the SURMOUNT-1 trial (72 weeks) and Jastreboff et al. Phase 2 trial (48 weeks). There are no direct, head-to-head trials comparing these specific compounds. Weight loss percentages are therefore not perfectly comparable. Furthermore, while tirzepatide figures stem from large Phase 3 registration trials supporting FDA approval, retatrutide data is currently limited to Phase 2 investigational data (338 participants) and is not FDA-approved.\n\n**The Verdict:**\nRetatrutide represents the next investigational frontier in metabolic therapies. By adding glucagon receptor agonism to the GLP-1 and GIP activity seen in tirzepatide, retatrutide achieved a striking ~24.2% average weight loss in 48 weeks during Phase 2 trials—a higher figure than the ~20.9% (treatment-regimen estimand) seen with tirzepatide in its separate 72-week trial.\n\nCrucially, tirzepatide is a thoroughly evaluated medication backed by massive Phase 3 data (SURMOUNT trials). Retatrutide remains an experimental, unapproved compound currently undergoing Phase 3 trials (TRIUMPH). While its initial Phase 2 efficacy ceiling appears higher, its full safety profile and long-term tolerability remain unestablished compared to tirzepatide. For researchers, retatrutide offers a novel mechanism to study tri-agonist pharmacology, whereas tirzepatide is a highly validated dual-agonist. *This information is provided for research and educational purposes only and does not constitute medical or prescribing advice.*`,
-    tags: ['Advanced', 'Research'],
-    color: 'emerald',
-    quickVerdict: 'Tirzepatide achieved ~20.9% weight loss in Phase 3 trials (72wk). Retatrutide Phase 2 data showed ~24.2% (48wk) via tri-agonist mechanisms. Tirzepatide is established; Retatrutide is highly experimental.',
-    personaA: 'Choose Tirzepatide if you:\n• Want a fully FDA-approved, well-characterized agent\n• Need comorbid T2DM glycemic control alongside weight loss\n• Prefer extensive Phase 3 and real-world safety data\n• Are a first-time GLP-1 researcher needing a reliable benchmark',
-    personaB: 'Choose Retatrutide if you:\n• Are researching extreme obesity (BMI >40) where dual agonism has plateaued\n• Want to study glucagon receptor-mediated thermogenesis and lipolysis\n• Are comfortable with Phase 2 data and research-phase compounds\n• Need to target MASLD (metabolic-associated steatotic liver disease)',
-    stackNote: 'Do NOT stack Tirzepatide and Retatrutide — both share GLP-1 and GIP receptors. Concurrent use creates additive receptor saturation risk with compounded nausea and hypoglycemia. Use only one GLP-1-class agent at a time.',
-    stackCompatible: false,
-    faqs: [
-      { q: 'Is Retatrutide better than Tirzepatide?', a: 'Phase 2 data shows Retatrutide achieving ~24% weight loss vs Tirzepatide\'s ~21% (Phase 3). But Tirzepatide is FDA-approved with extensive safety data. Retatrutide is still in Phase 3 trials with no approval timeline confirmed.' },
-      { q: 'What is the glucagon component of Retatrutide?', a: 'Retatrutide\'s glucagon receptor agonism directly increases basal metabolic rate and promotes fat oxidation in the liver, independently of appetite suppression. This is the key mechanistic differentiator from dual GLP-1/GIP agents.' },
-      { q: 'When will Retatrutide be available?', a: 'Eli Lilly\'s Phase 3 trials for Retatrutide are ongoing. Earliest projected FDA submission is 2026–2027. Research-grade Retatrutide is available from compounders for in-vitro and preclinical use.' },
-    ],
-    editorNote: 'IMPORTANT: These weight-loss figures come from SEPARATE trials of different durations (SURMOUNT-1: 72 weeks vs Jastreboff Phase 2: 48 weeks) and are not directly comparable. Furthermore, retatrutide data is Phase 2 (338 participants, investigational, not FDA-approved), while tirzepatide data is from Phase 3 registration trials for an approved drug. Phase 2 results should not be treated as equivalent-strength evidence to Phase 3.',
-    trialWeightLoss: {
-      compoundA: {
-        percentage: '~20.9%',
-        trial: 'SURMOUNT-1',
-        duration: '72 weeks',
-        n: 2539,
-        phase: 'Phase 3',
-        estimandNote: 'Treatment-regimen estimand; efficacy estimand reports ~22.5% at 15mg',
-        pmid: '35658024',
-      },
-      compoundB: {
-        percentage: '~24.2%',
-        trial: 'Jastreboff et al. Phase 2',
-        duration: '48 weeks',
-        n: 338,
-        phase: 'Phase 2',
-        estimandNote: 'Phase 2 investigational data — not FDA-approved; Phase 3 TRIUMPH trials ongoing',
-        pmid: '37351564',
-      },
-      crossTrialCaveat: 'These percentages are from separate trials of different durations (72wk vs 48wk), sample sizes (2,539 vs 338), and evidence maturity (Phase 3 vs Phase 2). No head-to-head trial exists. Phase 2 results should not be treated as equivalent evidence to Phase 3 registration data.',
-    },
   },
   {
     slug: 'cjc-1295-vs-sermorelin',
@@ -286,48 +175,6 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: 'semaglutide-vs-retatrutide',
-    peptideA: 'semaglutide',
-    peptideB: 'retatrutide',
-    title: 'Semaglutide vs Retatrutide',
-    subtitle: 'Weight Loss Progression',
-    seoDescription: 'Side-by-side research comparison of Semaglutide and Retatrutide: dosing, half-life, side effects, and mechanism of action.',
-    recommendation: `Retatrutide is better for maximizing total weight loss and resolving fatty liver, while Semaglutide is a proven, gentler starting point. Semaglutide is a single-agonist (GLP-1) that works primarily by delaying gastric emptying and signaling fullness to the brain. Retatrutide is a triple-agonist (GLP-1, GIP, Glucagon) that adds direct fat-burning via increased energy expenditure (thermogenesis). Choose Semaglutide if you are new to GLP-1s and want the most established safety profile. Choose Retatrutide if you have severe obesity, need to lose >20% of body weight, or want to avoid the extreme fatigue sometimes associated with Semaglutide. Tirzepatide is often the best middle ground between the two.`,
-    tags: ['Progression', 'Research'],
-    color: 'emerald',
-    quickVerdict: 'Retatrutide for maximum weight loss in advanced obesity (≥24% body weight in Phase 2). Semaglutide for a proven, globally available, cardiovascular-safe starting point. Tirzepatide sits between them as the current FDA-approved sweet spot.',
-    personaA: 'Choose Semaglutide if you:\n• Are starting a GLP-1 protocol for the first time and want maximum safety data\n• Have established cardiovascular disease (SELECT trial evidence)\n• Cost or insurance coverage is a limiting factor\n• Need a globally available, prescription-accessible option',
-    personaB: 'Choose Retatrutide if you:\n• Have severe obesity (BMI >40) that has not responded to dual agonists\n• Want to study glucagon-driven thermogenesis in combination with GLP-1/GIP\n• Are comfortable with Phase 2 research-stage compounds without Phase 3 approval\n• Are targeting MASLD (metabolic liver disease) alongside weight loss',
-    stackNote: 'Do NOT stack Semaglutide and Retatrutide — they share the GLP-1 receptor. Concurrent use creates dangerous additive stimulation with compounded GI toxicity and hypoglycemia risk. Use one GLP-1-class agent at a time.',
-    stackCompatible: false,
-    faqs: [
-      { q: 'How does Retatrutide compare to Semaglutide for weight loss?', a: 'Phase 2 Retatrutide data shows ~24% body weight loss at 24 weeks vs Semaglutide\'s ~15% at max dose (STEP 1, 68 weeks). Retatrutide is not yet Phase 3 approved; Semaglutide is FDA-approved and widely available.' },
-      { q: 'What is the glucagon mechanism in Retatrutide?', a: 'Retatrutide\'s glucagon receptor agonism increases hepatic glucose output and thermogenesis, directly burning fat stores independently of appetite suppression. This third mechanism is the key advantage over semaglutide\'s single-agonist approach.' },
-      { q: 'Is Tirzepatide better than both Semaglutide and Retatrutide?', a: 'Tirzepatide outperforms Semaglutide in efficacy (~21% vs ~15% weight loss) and is FDA-approved. Retatrutide may surpass Tirzepatide in extreme cases, but lacks Phase 3 data. Tirzepatide is the current best-validated sweet spot.' },
-    ],
-  },
-  {
-    slug: 'tirzepatide-vs-semaglutide',
-    peptideA: 'tirzepatide',
-    peptideB: 'semaglutide',
-    title: 'Tirzepatide vs Semaglutide',
-    subtitle: 'GLP-1 vs Dual Agonist',
-    seoDescription: 'Side-by-side research comparison of Tirzepatide and Semaglutide: dosing, half-life, side effects, and mechanism of action.',
-    recommendation: `Tirzepatide is generally superior for both total weight loss and tolerability, while Semaglutide is often more accessible and highly proven. Tirzepatide’s addition of GIP receptor agonism acts synergistically with GLP-1, buffering the nausea often caused by GLP-1 alone while enhancing insulin sensitivity. Semaglutide relies solely on the GLP-1 pathway. Choose Semaglutide for a cost-effective, highly studied intervention for moderate weight loss. Choose Tirzepatide for superior fat loss, better energy levels, and fewer GI side effects. In modern research protocols, Tirzepatide is increasingly considered the preferred default over Semaglutide.`,
-    tags: ['GLP-1', 'Research'],
-    color: 'emerald',
-    quickVerdict: 'Tirzepatide is the mechanistically superior agent (~21% vs ~15% weight loss) due to dual GLP-1/GIP agonism. Semaglutide offers longer real-world safety data and stronger cardiovascular evidence. In clinical practice, Tirzepatide is rapidly becoming the preferred first-line choice.',
-    personaA: 'Choose Tirzepatide if you:\n• Want maximum weight loss efficacy from a single, FDA-approved agent\n• Have experienced nausea or intolerable GI effects on Semaglutide\n• Have comorbid T2DM requiring concurrent glycemic control\n• Are comfortable with a newer agent that has strong Phase 3 data',
-    personaB: 'Choose Semaglutide if you:\n• Want the agent with the longest real-world safety track record (6+ years)\n• Have established cardiovascular disease (SELECT trial: 20% MACE reduction)\n• Cost, insurance coverage, or geographic availability is a priority\n• Are starting a GLP-1 protocol for the first time and want the most proven agent',
-    stackNote: 'Do NOT combine Tirzepatide and Semaglutide — they share the GLP-1 receptor. Concurrent use creates severe additive GLP-1 stimulation risk: pronounced nausea, vomiting, hypoglycemia, and cardiovascular burden. Choose one or the other.',
-    stackCompatible: false,
-    faqs: [
-      { q: 'Is Tirzepatide replacing Semaglutide?', a: 'In many clinical practices, yes — Tirzepatide\'s superior efficacy (~21% vs ~15% weight loss) and often better GI tolerability are causing clinicians to prefer it as a first-line option. Semaglutide retains its position for cardiovascular disease patients (SELECT trial data).' },
-      { q: 'What is the key difference between Tirzepatide and Semaglutide?', a: 'Semaglutide targets only the GLP-1 receptor. Tirzepatide targets both GLP-1 and GIP receptors simultaneously. The addition of GIP agonism provides synergistic appetite suppression, enhanced insulin sensitivity, and partially buffers GLP-1\'s nausea effects.' },
-      { q: 'Which is cheaper: Tirzepatide or Semaglutide?', a: 'Branded Wegovy (Semaglutide) lists at ~$1,350/month; branded Zepbound (Tirzepatide) at ~$1,060/month. Compounded research versions of both are available at a fraction of the cost depending on current FDA shortage designation.' },
-    ],
-  },
-  {
     slug: 'selank-vs-semax',
     peptideA: 'selank',
     peptideB: 'semax',
@@ -345,7 +192,7 @@ export const comparisons: Comparison[] = [
     faqs: [
       { q: 'Is Selank or Semax better for ADHD?', a: 'Selank is more commonly researched for ADHD-like attention issues because it modulates GABA and enkephalin pathways that relate to stress-induced inattention. Semax is used more for general cognitive enhancement and energy, though it also shows attention benefits via BDNF.' },
       { q: 'Do Selank and Semax need to be refrigerated?', a: 'Yes. Both are nasal spray peptides that require refrigeration (2-8°C). Exposure to heat or sunlight can degrade the active peptide. Most vendors ship with ice packs.' },
-      { q: 'Are Selank and Semax legal?', a: 'Both are legal as research chemicals in the United States. They are prescription drugs in Russia where they were developed. Neither is FDA-approved in the US. Legal status varies by country.' },
+      { q: 'Are Selank and Semax legal?', a: 'Neither is a controlled substance in the United States. They are prescription drugs in Russia where they were developed. Neither is FDA-approved in the US. Legal status varies by country.' },
     ],
   },
   {
@@ -616,12 +463,11 @@ export const comparisons: Comparison[] = [
     stackCompatible: true,
     faqs: [
       { q: 'Does AOD-9604 raise IGF-1?', a: 'No — this is AOD-9604\'s key advantage. It does not bind the GH receptor and does not raise IGF-1 or affect blood sugar, unlike full-length GH or GHRH analogs like Tesamorelin.' },
-      { q: 'How much weight loss does Tesamorelin cause?', a: 'In the LIPO-010 trial, Tesamorelin 2mg daily reduced visceral fat by ~18% after 26 weeks vs placebo. Individual results depend heavily on diet and baseline adiposity.' },
+      { q: 'How much visceral fat reduction does Tesamorelin produce?', a: 'In the LIPO-010 trial, Tesamorelin 2mg daily reduced visceral fat by ~18% after 26 weeks vs placebo. Individual results depend heavily on diet and baseline adiposity.' },
       { q: 'What is AOD-9604 used for?', a: 'AOD-9604 was developed and Phase 2/3 trialed as an anti-obesity agent. It was granted FDA Orphan Drug status. It is now primarily used as a research chemical for its selective lipolytic properties.' },
       { q: 'What is the dose of AOD-9604?', a: 'Research protocols typically use 250-500 mcg subcutaneously once daily, often in a fasted state before morning exercise. For research use only.' },
       { q: 'Does AOD-9604 cause hunger?', a: 'AOD-9604 does not stimulate ghrelin or appetite pathways. It may actually have mild appetite-suppressing properties. In contrast, GH released by Tesamorelin can transiently increase appetite.' },
       { q: 'Is Tesamorelin available as a research chemical?', a: 'Yes, Tesamorelin is available from research chemical vendors as a lyophilized peptide, though its FDA-approved form (Egrifta) requires a prescription. For research use only.' },
-      { q: 'Can AOD-9604 be used with semaglutide?', a: 'Preclinical evidence supports combining GLP-1 agonists with lipolytic peptides like AOD-9604 for additive fat loss via complementary mechanisms. This combination is being studied informally in research communities.' },
       { q: 'Which is better for stubborn belly fat?', a: 'Tesamorelin is clinically superior for visceral (belly) fat specifically, given its FDA-approved trial data. AOD-9604 targets general lipolysis but may have some visceral fat preference via beta-3 receptor distribution.' },
     ],
   },
@@ -649,59 +495,6 @@ export const comparisons: Comparison[] = [
       { q: 'Can Epitalon improve sleep?', a: 'Yes — Epitalon\'s regulation of the pineal gland restores melatonin synthesis, which commonly declines with age. Multiple Russian studies in elderly subjects showed improved sleep quality with Epitalon protocols.' },
       { q: 'Does NAD+ help with brain fog?', a: 'NAD+ precursors are widely reported to improve cognitive clarity and reduce fatigue. Mechanistically, NAD+ powers the mitochondria that fuel neurons and activates neuroprotective sirtuins like SIRT1.' },
       { q: 'Is Epitalon safe?', a: 'Epitalon has an excellent preclinical and observational safety profile. No serious adverse effects have been documented in the published literature. Long-term human RCT safety data is limited.' },
-    ],
-  },
-  {
-    slug: 'tesofensine-vs-tirzepatide',
-    peptideA: 'tesofensine',
-    peptideB: 'tirzepatide',
-    title: 'Tesofensine vs Tirzepatide',
-    subtitle: 'SNDRI vs GLP-1/GIP Dual Agonist',
-    seoDescription: 'Tesofensine vs Tirzepatide: comparing the triple monoamine reuptake inhibitor against the GLP-1/GIP dual agonist for weight loss, mechanism, and side effects.',
-    recommendation: 'Tirzepatide is the more established, better-characterized weight loss agent with superior clinical data; Tesofensine offers a completely different mechanism (CNS stimulation vs. gut hormone modulation) that may work where GLP-1s plateau. Tirzepatide reduces appetite via gut hormone mimicry. Tesofensine reduces appetite centrally via dopamine/norepinephrine/serotonin, while also increasing basal metabolic rate through thermogenesis. Choose Tirzepatide for proven, guideline-supported metabolic intervention. Choose Tesofensine if GLP-1s have failed or caused unacceptable side effects.',
-    tags: ['Weight Loss', 'Research'],
-    color: 'emerald',
-    editorNote: 'Tesofensine data is limited to Phase 2 trials (2008-2012). No Phase 3 RCT has been completed. Long-term safety data is insufficient. This comparison reflects available preclinical and Phase 2 evidence only.',
-    quickVerdict: 'Tirzepatide is the evidence-backed, FDA-approved standard for weight loss. Tesofensine offers an alternative CNS mechanism for GLP-1 non-responders — but lacks Phase 3 data. Research context: these should not be stacked due to cardiovascular risk.',
-    personaA: 'Choose Tesofensine (research context) if:\n• GLP-1 agonists have failed or caused intolerable GI side effects\n• You are researching CNS-mediated appetite suppression\n• Subject has preserved renal/cardiac function (SNDRI safety prerequisite)\n• Researching thermogenic mechanisms alongside appetite suppression',
-    personaB: 'Choose Tirzepatide if:\n• You want the most evidence-supported weight loss intervention\n• Subject has comorbid T2DM or insulin resistance\n• GI side effects of semaglutide have been an issue (Tirzepatide is often better tolerated)\n• Long-term cardiac safety profile is a priority',
-    stackNote: 'Do NOT stack Tesofensine + Tirzepatide. Tesofensine raises blood pressure and heart rate via norepinephrine/dopamine mechanisms. Combined with GLP-1-mediated heart rate changes, the cardiovascular risk is unacceptable in research settings.',
-    stackCompatible: false,
-    faqs: [
-      { q: 'Is Tesofensine FDA approved?', a: 'No. Tesofensine completed Phase 2 trials showing ~10% weight loss at 24 weeks (PMID: 18950803). Phase 3 development was not pursued due to cardiovascular safety signals (elevated heart rate and blood pressure).' },
-      { q: 'How much weight loss does Tesofensine cause?', a: 'In the Phase 2 TIPO-1 trial, Tesofensine 0.5mg daily produced 10.6% weight loss at 24 weeks vs 2.2% placebo. The 1.0mg dose caused 12.8% loss but with more side effects.' },
-      { q: 'What are Tesofensine\'s side effects?', a: 'Dry mouth (~40%), nausea (~30%), constipation, insomnia, elevated heart rate (+5 bpm), and elevated systolic blood pressure (+2-3 mmHg. The cardiovascular effects halted Phase 3 development.' },
-      { q: 'Is Tesofensine the same as an amphetamine?', a: 'No, but mechanistically similar in CNS action. Tesofensine inhibits reuptake of dopamine, noradrenaline, and serotonin (triple reuptake inhibitor). It is not a releasing agent like amphetamine and has lower abuse potential in preclinical models.' },
-      { q: 'Does Tirzepatide cause heart rate elevation?', a: 'Yes — Tirzepatide (like all GLP-1 agonists) increases resting heart rate by an average of 4-5 bpm. This is a class effect of GLP-1 receptor agonism, separate from Tesofensine\'s norepinephrine-mediated elevation.' },
-      { q: 'Can Tesofensine be used with SSRIs?', a: 'No. Tesofensine inhibits serotonin reuptake; combining it with SSRIs or SNRIs creates significant serotonin syndrome risk. This is a firm contraindication.' },
-      { q: 'Which causes more muscle loss — Tesofensine or Tirzepatide?', a: 'Both cause muscle loss as part of rapid weight loss. Tirzepatide has more data — preserving ~70% lean mass per kg lost in SURMOUNT trials when combined with adequate protein intake. Tesofensine muscle data is limited.' },
-      { q: 'Is Tesofensine available to buy?', a: 'Tesofensine is available from some research chemical vendors as an oral formulation. Legal status varies by jurisdiction. It is not approved for human use in any country.' },
-    ],
-  },
-  {
-    slug: 'tirzepatide-vs-wegovy',
-    peptideA: 'tirzepatide',
-    peptideB: 'semaglutide',
-    title: 'Tirzepatide (Zepbound) vs Wegovy (Semaglutide)',
-    subtitle: 'Brand Drug vs Research Chemical',
-    seoDescription: 'Tirzepatide (Zepbound/Mounjaro) vs Wegovy (Semaglutide): comparing the FDA-approved branded drugs for weight loss — mechanisms, efficacy, cost, and availability.',
-    recommendation: 'Tirzepatide (Zepbound) produces greater weight loss (~20% vs ~15% for Wegovy) due to its dual GLP-1/GIP agonism. Wegovy remains a highly effective, slightly more affordable alternative with a longer safety track record. Both require a prescription in branded form. For research use, compounded semaglutide and compounded tirzepatide are available from licensed compounders. Choose Wegovy/semaglutide as an established starting point. Choose Zepbound/tirzepatide to maximize efficacy or if Wegovy side effects are limiting.',
-    tags: ['GLP-1', 'Weight Loss'],
-    color: 'emerald',
-    quickVerdict: 'Zepbound (Tirzepatide) outperforms Wegovy (Semaglutide) on weight loss (~20% vs ~15% body weight) due to dual GLP-1/GIP mechanism. Both are FDA-approved. Tirzepatide is often better tolerated. Choose Wegovy first for established safety profile; upgrade to Zepbound for maximum efficacy.',
-    personaA: 'Choose Tirzepatide (Zepbound/Mounjaro) if:\n• Maximum weight loss efficacy is the priority\n• You\'ve plateaued on semaglutide\n• GI side effects of Wegovy have been intolerable (Tirzepatide often gentler)\n• You have comorbid T2DM (Mounjaro is approved for glycemic control)',
-    personaB: 'Choose Semaglutide (Wegovy/Ozempic) if:\n• You want the most established long-term safety data (SUSTAIN, STEP trials)\n• Cost is a major consideration (Wegovy may have more insurance coverage)\n• You are starting a GLP-1 protocol for the first time\n• Once-weekly injection is the primary convenience driver',
-    stackNote: 'Never stack Tirzepatide and Semaglutide — they share the GLP-1 receptor. Stacking creates dangerous additive GLP-1 stimulation risk: severe nausea, hypoglycemia, and cardiovascular complications. They are mechanistic competitors, not complements.',
-    stackCompatible: false,
-    faqs: [
-      { q: 'Is Zepbound or Wegovy better?', a: 'The SURMOUNT-1 trial showed Tirzepatide (Zepbound) achieved ~20% body weight loss vs Wegovy\'s ~15% in the STEP 1 trial. Head-to-head trials (SURPASS-CVOT) confirm Tirzepatide\'s superior efficacy.' },
-      { q: 'Is Tirzepatide the same as semaglutide?', a: 'No. Semaglutide is a GLP-1 receptor agonist only. Tirzepatide is a dual GLP-1/GIP receptor agonist. The addition of GIP agonism is responsible for Tirzepatide\'s superior efficacy and tolerability.' },
-      { q: 'What is the difference between Mounjaro and Zepbound?', a: 'Mounjaro and Zepbound are both tirzepatide — same molecule, same doses. Mounjaro is FDA-approved for T2DM; Zepbound is FDA-approved for chronic weight management. The commercial formulations are identical.' },
-      { q: 'What is the difference between Ozempic and Wegovy?', a: 'Both are semaglutide. Ozempic is FDA-approved for T2DM at doses up to 2mg weekly. Wegovy is FDA-approved for chronic weight management at 2.4mg weekly — a higher maximum dose.' },
-      { q: 'Can I switch from Wegovy to Zepbound?', a: 'Yes, switching is common in clinical practice. A washout period is not required. Titration should start at Zepbound 2.5mg and increase gradually. Consult a licensed prescriber.' },
-      { q: 'How much does Tirzepatide cost vs semaglutide?', a: 'List price: Zepbound ~$1,060/month, Wegovy ~$1,350/month. With insurance or manufacturer coupons, costs vary significantly. Compounded alternatives are substantially cheaper for research.' },
-      { q: 'Is compounded tirzepatide or semaglutide legal?', a: 'During active FDA drug shortages, licensed compounding pharmacies may produce compounded versions legally under Section 503A/503B of the FDCA. Legal status depends on current shortage designation.' },
-      { q: 'Do Wegovy and Zepbound cause the same side effects?', a: 'Both cause nausea, vomiting, diarrhea, and constipation — class GLP-1 effects. Tirzepatide tends to have lower nausea rates due to GIP\'s protective effect on the GI tract. Both can cause rare thyroid C-cell tumors (black box warning).' },
     ],
   },
 ];

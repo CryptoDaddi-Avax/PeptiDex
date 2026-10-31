@@ -55,23 +55,21 @@ We identified **zero** Class-1 (fabricated/completely unrelated) errors in the c
 
 ## Verified Matches (Confirmed Clean)
 
-The remaining 15 citations are authoritative and in perfect alignment with their claims:
+The remaining citations are authoritative and in perfect alignment with their claims. (Two matched citations for compounds that have since been removed from the site, along with the stacks that used them, are omitted from this list; the totals above reflect the original audit.)
 
 1. **PMID 20554713**: *Tesamorelin visceral fat reduction* (Falutz J, 2010) — **MATCH**
 2. **PMID 25738459** (4 occurrences): *MOTS-c prevents age-dependent/HFD insulin resistance* (Lee C, 2015) — **MATCH**
 3. **PMID 16352683** (3 occurrences): *CJC-1295 sustained GH/IGF-1 elevations in healthy adults* (Teichman SL, 2006) — **MATCH**
-4. **PMID 38367045**: *Retatrutide Phase 2 randomized trial in obesity* (Jastreboff AM, 2023) — **MATCH**
-5. **PMID 11713213**: *AOD9604 lipolysis effects in obese models* (Heffernan MA, 2001) — **MATCH**
-6. **PMID 21030672** (3 occurrences): *BPC-157 tendon healing cell survival* (Chang CH, 2011) — **MATCH**
-7. **PMID 20387390**: *Semax emotional/cognitive state modulation* (Levitskaia NG, 2010) — **MATCH**
-8. **PMID 18454096**: *Selank anxiolytic efficacy and mechanisms* (Zozulia AA, 2008) — **MATCH**
-9. **PMID 9849822** (2 occurrences): *Ipamorelin selective growth hormone secretagogue* (Raun K, 1998) — **MATCH**
-10. **PMID 32982998**: *LL-37 in innate and adaptive immunity* (Mookherjee N, 2020) — **MATCH**
-11. **PMID 6895513**: *DSIP delta sleep human study* (Schneider-Helmert D, 1981) — **MATCH**
-12. **PMID 9349662**: *MK-677 improves sleep quality* (Copinschi G, 1997) — **MATCH**
-13. **PMID 12937682** (2 occurrences): *Epitalon telomerase activity stimulation* (Khavinson VKh, 2003) — **MATCH**
-14. **PMID 16174713**: *Kisspeptin-54 HPG axis stimulation* (Dhillo WS, 2005) — **MATCH**
-15. **NEJM DOI (NEJMoa2206038)**: *Tirzepatide Phase 3 weight loss outcomes* (SURMOUNT-1, 2022) — **MATCH**
+4. **PMID 11713213**: *AOD9604 lipolysis effects in obese models* (Heffernan MA, 2001) — **MATCH**
+5. **PMID 21030672** (3 occurrences): *BPC-157 tendon healing cell survival* (Chang CH, 2011) — **MATCH**
+6. **PMID 20387390**: *Semax emotional/cognitive state modulation* (Levitskaia NG, 2010) — **MATCH**
+7. **PMID 18454096**: *Selank anxiolytic efficacy and mechanisms* (Zozulia AA, 2008) — **MATCH**
+8. **PMID 9849822** (2 occurrences): *Ipamorelin selective growth hormone secretagogue* (Raun K, 1998) — **MATCH**
+9. **PMID 32982998**: *LL-37 in innate and adaptive immunity* (Mookherjee N, 2020) — **MATCH**
+10. **PMID 6895513**: *DSIP delta sleep human study* (Schneider-Helmert D, 1981) — **MATCH**
+11. **PMID 9349662**: *MK-677 improves sleep quality* (Copinschi G, 1997) — **MATCH**
+12. **PMID 12937682** (2 occurrences): *Epitalon telomerase activity stimulation* (Khavinson VKh, 2003) — **MATCH**
+13. **PMID 16174713**: *Kisspeptin-54 HPG axis stimulation* (Dhillo WS, 2005) — **MATCH**
 
 ---
 

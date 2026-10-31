@@ -15,26 +15,11 @@ const rawStacks: Omit<Stack, "slug">[] = [
             { name: "MOTS-c", role_in_stack: "AMPK activator that acts as an 'exercise mimetic' — supercharges cellular energy and fatty acid oxidation" },
             { name: "CJC-1295", role_in_stack: "Stimulates pulsatile GH release to preserve and build lean muscle mass during aggressive caloric deficits" },
         ],
-        synergy_rationale: "Tesamorelin directly attacks stubborn visceral fat. MOTS-c acts at the mitochondrial level to boost energy and fatty acid oxidation (an exercise mimetic). CJC-1295 ensures a continuous GH elevation to protect and build muscle tissue while in a caloric deficit. Together, these 3 hit all the required pathways for true body recomposition without relying on GLP-1 agonists.",
+        synergy_rationale: "Tesamorelin directly attacks stubborn visceral fat. MOTS-c acts at the mitochondrial level to boost energy and fatty acid oxidation (an exercise mimetic). CJC-1295 ensures a continuous GH elevation to protect and build muscle tissue while in a caloric deficit. Together, these 3 hit all the required pathways for true body recomposition.",
         supporting_studies: [
             { description: "Tesamorelin visceral fat reduction", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20554713/" },
             { description: "MOTS-c improves metabolic homeostasis via AMPK", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
             { description: "CJC-1295 sustained GH/IGF-1 elevations in healthy adults", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
-        ],
-    },
-    {
-        stack_name: "Fat Loss Focus Stack",
-        goal: "Maximum fat loss through targeted metabolic optimization and direct adipose tissue mobilization",
-        peptides: [
-            { name: "Retatrutide", role_in_stack: "Triple agonist for superior appetite suppression and fat oxidation — the most potent fat-loss peptide currently in trials" },
-            { name: "AOD-9604", role_in_stack: "Directly stimulates lipolysis via the GH fat-burning domain without affecting blood glucose or overall growth factors" },
-            { name: "MOTS-c", role_in_stack: "Supercharges cellular energy and acts as an 'exercise mimetic' to accelerate fatty acid oxidation" },
-        ],
-        synergy_rationale: "Retatrutide provides the overwhelming metabolic 'push' via GLP-1/GIP/Glucagon agonism. AOD-9604 directly targets and mobilizes adipose tissue. MOTS-c ensures the mitochondria are primed to burn that mobilized fat for energy. A highly targeted 3-pronged attack on adipose tissue.",
-        supporting_studies: [
-            { description: "Retatrutide Phase 2: ~24% weight loss at 48 weeks", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/38367045/" },
-            { description: "AOD-9604 stimulates lipolysis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" },
-            { description: "MOTS-c improves metabolic homeostasis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
         ],
     },
     {
@@ -143,19 +128,6 @@ const rawStacks: Omit<Stack, "slug">[] = [
         supporting_studies: [
             { description: "BPC-157 profound gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
             { description: "KPV anti-inflammatory activity in IBD models", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18061177/" },
-        ],
-    },
-    {
-        stack_name: "Metabolic & Insulin Sensitivity Stack",
-        goal: "Reverse insulin resistance, lower blood glucose, and restore metabolic flexibility",
-        peptides: [
-            { name: "Tirzepatide", role_in_stack: "The FDA-approved gold standard for enforcing glycemic control and reversing insulin resistance centrally" },
-            { name: "MOTS-c", role_in_stack: "Activates AMPK directly in the muscle tissue to force cellular glucose uptake independent of insulin" },
-        ],
-        synergy_rationale: "Tirzepatide fixes the metabolic hormones from the top down (pancreas/brain). MOTS-c fixes the metabolism from the bottom up (forcing muscle cells to absorb and burn glucose directly). Combining them attacks insulin resistance from every possible cellular angle.",
-        supporting_studies: [
-            { description: "Tirzepatide Phase 3 metabolic outcomes", pubmed_url: "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" },
-            { description: "MOTS-c insulin sensitizing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/" },
         ],
     },
     {

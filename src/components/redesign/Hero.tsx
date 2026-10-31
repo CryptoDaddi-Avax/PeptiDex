@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import Link from 'next/link';
+import { SITE_STATS } from '@/data/site-stats';
 import './Hero.css';
 
 /**
@@ -183,11 +184,11 @@ export default function Hero() {
               </Link>
             </span>
 
-            <span className="line line-3 fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>sourced &amp; verified.</span>
+            <span className="line line-3 fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>cited &amp; explained.</span>
           </h1>
 
           <p className="hero-sub fade-up" style={{ '--delay': '400ms' } as React.CSSProperties}>
-            The independent peptide research index — 51 profiles, 12 evidence-based stacks, and free tools. Affiliate-funded, never paid placement.
+            The independent peptide research index — {SITE_STATS.peptides.count} profiles, {SITE_STATS.stacks.count} evidence-based stacks, and free tools. Affiliate-funded, never paid placement.
           </p>
 
           {/* CTAs */}
@@ -220,9 +221,9 @@ export default function Hero() {
               {/* Status pill */}
               <div className="status-pill">
                 <span className="dot" aria-hidden="true" />
-                <span className="num">51</span> peptides
+                <span className="num">{SITE_STATS.peptides.count}</span> peptides
                 <span className="sep">·</span>
-                <span className="num">668+</span> studies
+                <span className="num">{SITE_STATS.studies.count}+</span> studies
                 <span className="sep">·</span>
                 <span className="live">INDEXED</span>
               </div>
@@ -242,15 +243,15 @@ export default function Hero() {
               <div className="readouts" role="list">
                 <div className="readout" role="listitem">
                   <span className="readout-label">PROFILES</span>
-                  <span className="readout-value">51</span>
+                  <span className="readout-value">{SITE_STATS.peptides.count}</span>
                 </div>
                 <div className="readout" role="listitem">
                   <span className="readout-label">STACKS</span>
-                  <span className="readout-value">12</span>
+                  <span className="readout-value">{SITE_STATS.stacks.count}</span>
                 </div>
                 <div className="readout" role="listitem">
                   <span className="readout-label">COA PURITY</span>
-                  <span className="readout-value">99<span className="em">%</span></span>
+                  <span className="readout-value">{SITE_STATS.purityThreshold.value}<span className="em">%</span></span>
                 </div>
               </div>
 

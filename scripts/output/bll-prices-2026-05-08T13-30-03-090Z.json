@@ -87,17 +87,6 @@
       "product_url": "https://biolongevitylabs.com/product/vip-5mg/"
     },
     {
-      "name": "Cagrilintide (Amylin Analog) (5mg)",
-      "slug": "cagrilintide",
-      "size_mg": 5,
-      "original_price": 170,
-      "current_site_price": 170,
-      "peptidex_final_price": 144.5,
-      "savings_vs_original_pct": 15,
-      "in_stock": true,
-      "product_url": "https://biolongevitylabs.com/product/cagrilintide-amylin-analog/"
-    },
-    {
       "name": "GLOW Blend (GHK-Cu, BPC-157, TB-500) 70mg",
       "slug": "bpc-157",
       "size_mg": 0,
@@ -364,9 +353,6 @@
   ],
   "not_carried": [
     "sermorelin",
-    "semaglutide",
-    "tirzepatide",
-    "retatrutide",
     "igf-1-lr3",
     "aod-9604",
     "ss-31"

@@ -5,7 +5,7 @@ import { ResearchContextSidebar } from '@/components/research-context-sidebar';
 
 export const metadata: Metadata = {
   title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptiDex',
-  description: 'Evidence-based peptide comparisons: GHK-Cu vs BPC-157, semaglutide vs tirzepatide, oral vs injectable peptides, and more. Side-by-side research analysis with cited sources.',
+  description: 'Evidence-based peptide comparisons: GHK-Cu vs BPC-157, BPC-157 vs TB-500, CJC-1295 vs Ipamorelin, and more. Side-by-side research analysis with cited sources.',
   alternates: { canonical: 'https://peptidex.app/compare' },
   openGraph: {
     title: 'Peptide Comparisons — Head-to-Head Compound Analysis | PeptiDex',
@@ -100,6 +100,7 @@ export default function CompareIndexPage() {
       </div>
 
       {/* Vendor Comparisons */}
+      {VENDOR_COMPARISONS.length > 0 && (
       <div className="space-y-4">
         <div className="flex items-center gap-3">
           <Store className="w-5 h-5 text-teal-400" />
@@ -132,6 +133,7 @@ export default function CompareIndexPage() {
           })}
         </div>
       </div>
+      )}
 
       {/* ═══════ RESEARCH CONTEXT SIDEBAR ═══════ */}
       <ResearchContextSidebar />

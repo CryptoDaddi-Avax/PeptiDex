@@ -19,7 +19,7 @@ const EVIDENCE_GRADES = [
     grade: 'Very Strong',
     color: 'emerald',
     criteria: 'Multiple Phase 2/3 randomized controlled trials (RCTs) with large sample sizes, FDA approval, and extensive peer-reviewed replication.',
-    examples: 'Semaglutide (Wegovy), Tirzepatide (Zepbound)',
+    examples: 'PT-141 / Bremelanotide (Vyleesi, FDA-approved)',
   },
   {
     grade: 'Strong',

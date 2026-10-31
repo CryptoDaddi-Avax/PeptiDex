@@ -106,9 +106,9 @@ describe('costPerDose', () => {
         expect(result!.costPerDose).toBeCloseTo(50 / 33, 4);
     });
 
-    // ── GLP-1 large dose (semaglutide: 2400mcg = 2.4mg per dose) ────────────
+    // ── Large dose (2400mcg = 2.4mg per dose) ─────────────────────────────────
 
-    test('semaglutide-like: 3mg vial at 2400mcg dose → 1 dose', () => {
+    test('large-dose: 3mg vial at 2400mcg dose → 1 dose', () => {
         const result = costPerDose({
             price_usd: 114.29,
             total_mg: 3,        // 3000 mcg total
@@ -190,7 +190,7 @@ describe('getDefaultDoseMcg', () => {
         expect(getDefaultDoseMcg({ typical_dose_mcg: [0, 500] })).toBeNull();
     });
 
-    test('handles high-dose peptides (tirzepatide: 2500-15000 mcg)', () => {
+    test('handles high-dose peptides (2500-15000 mcg)', () => {
         expect(getDefaultDoseMcg({ typical_dose_mcg: [2500, 15000] })).toBe(2500);
     });
 });

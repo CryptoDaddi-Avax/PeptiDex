@@ -7,14 +7,12 @@ import { VendorRankCard } from '@/components/vendors/VendorRankCard';
 import { PriceComparisonTable } from '@/components/wheretobuy/PriceComparisonTable';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
 import { buildBreadcrumbSchema, buildFAQPageSchema } from '@/lib/seo/schema';
-import { buildProductSchema } from '@/lib/seo/schema/product';
 import { SchemaInjector } from '@/components/schema-injector';
 import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
-import { vendorPricing } from '@/data/vendor-pricing';
 import '@/app/vendors/vendors-redesign.css';
 
 const TARGET_SLUGS = [
-  'bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 
+  'bpc-157', 'tb-500',
   'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'
 ];
 
@@ -114,37 +112,9 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
 
   const faqSchema = buildFAQPageSchema(faqs);
 
-  const pricingEntry = vendorPricing.find((p) => p.slug === slug);
-  const inStockVendors = pricingEntry?.vendors.filter(v => v.inStock) ?? [];
-  const productOffers = inStockVendors.map(v => {
-    const vendorData = vendorsSorted.find(vd => vd.name === v.vendor);
-    return {
-        vendor: v.vendor,
-        vendorUrl: vendorData ? `https://${vendorData.domainMatch}` : "https://peptidex.app/vendors",
-        affiliateUrl: v.affiliateUrl,
-        price_usd: v.price_usd,
-        vial_mg: v.vial_mg,
-        inStock: v.inStock,
-        hasCoupon: !!vendorData?.discountCode,
-        couponCode: vendorData?.discountCode,
-        discountPct: vendorData?.discountPercent,
-    };
-  });
-
-  const productSchema = buildProductSchema({
-    id: `https://peptidex.app/where-to-buy/${slug}#product`,
-    name: peptide.name,
-    description: `Ranking of COA-verified research peptide vendors that carry ${peptide.name}.`,
-    offers: productOffers,
-    dateModified: new Date().toISOString().split('T')[0],
-  });
-
   const allSchemas: Record<string, unknown>[] = [breadcrumbSchema];
   if (faqSchema) {
       allSchemas.push(faqSchema);
-  }
-  if (productOffers.length > 0) {
-    allSchemas.push(productSchema);
   }
 
   return (

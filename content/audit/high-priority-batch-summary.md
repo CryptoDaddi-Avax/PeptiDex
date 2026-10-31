@@ -84,8 +84,6 @@ Hero → StatsStrip → QuizPromoCard → GoalsGrid → ToolsSection → VendorS
 ### Verified Q&A Copy (Static Preview)
 | Q | Source Anchoring |
 |---|-----------------|
-| "Best peptide stack for cutting?" | Phase 2 NEJM trial, 24.2% body weight at 48 weeks (PMID 37366315) |
-| "Is BPC-157 safe with Tirzepatide?" | Mechanism distinction (PMID 14554208), "injection site responses" |
 | "What's the half-life of Tesamorelin?" | ~26 min under repeated dosing (FDA Egrifta label, corrected from Falutz 2010 which is efficacy not PK) |
 
 ### Analytics Events Added

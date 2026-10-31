@@ -1,7 +1,7 @@
 import { notFound, permanentRedirect } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign, Activity, FlaskConical, Wrench, ShieldAlert } from 'lucide-react';
+import { GitCompare, ArrowRight, Zap, AlertTriangle, DollarSign, Activity, Wrench, ShieldAlert } from 'lucide-react';
 import { comparisons } from '@/data/comparisons';
 import { getPeptideBySlug } from '@/data/peptides';
 import { vendorPricing } from '@/data/vendor-pricing';
@@ -282,23 +282,6 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
                 <td className="px-4 py-4 text-zinc-300">{peptideA.key_studies.length}+ indexed</td>
                 <td className="px-4 py-4 text-zinc-300">{peptideB.key_studies.length}+ indexed</td>
               </tr>
-              {comp.trialWeightLoss && (
-              <tr className="bg-violet-500/5">
-                <td className="px-4 py-4 text-zinc-400 font-medium flex items-center gap-1.5"><FlaskConical className="w-3.5 h-3.5 text-violet-400" />Weight Loss (Trial)</td>
-                <td className="px-4 py-4">
-                  <div className="text-violet-300 font-bold text-base">{comp.trialWeightLoss.compoundA.percentage}</div>
-                  <div className="text-xs text-zinc-500 mt-0.5">{comp.trialWeightLoss.compoundA.trial} · {comp.trialWeightLoss.compoundA.duration} · n={comp.trialWeightLoss.compoundA.n.toLocaleString()}</div>
-                  <div className="text-xs text-zinc-600 mt-0.5">{comp.trialWeightLoss.compoundA.phase} · <a href={`https://pubmed.ncbi.nlm.nih.gov/${comp.trialWeightLoss.compoundA.pmid}/`} target="_blank" rel="noopener noreferrer" className="text-violet-500 hover:text-violet-400">PMID {comp.trialWeightLoss.compoundA.pmid}</a></div>
-                  {comp.trialWeightLoss.compoundA.estimandNote && <div className="text-[10px] text-zinc-600 mt-1 italic">{comp.trialWeightLoss.compoundA.estimandNote}</div>}
-                </td>
-                <td className="px-4 py-4">
-                  <div className="text-violet-300 font-bold text-base">{comp.trialWeightLoss.compoundB.percentage}</div>
-                  <div className="text-xs text-zinc-500 mt-0.5">{comp.trialWeightLoss.compoundB.trial} · {comp.trialWeightLoss.compoundB.duration} · n={comp.trialWeightLoss.compoundB.n.toLocaleString()}</div>
-                  <div className="text-xs text-zinc-600 mt-0.5">{comp.trialWeightLoss.compoundB.phase} · <a href={`https://pubmed.ncbi.nlm.nih.gov/${comp.trialWeightLoss.compoundB.pmid}/`} target="_blank" rel="noopener noreferrer" className="text-violet-500 hover:text-violet-400">PMID {comp.trialWeightLoss.compoundB.pmid}</a></div>
-                  {comp.trialWeightLoss.compoundB.estimandNote && <div className="text-[10px] text-zinc-600 mt-1 italic">{comp.trialWeightLoss.compoundB.estimandNote}</div>}
-                </td>
-              </tr>
-              )}
               <tr className="bg-emerald-500/5">
                 <td className="px-4 py-4 text-zinc-400 font-medium flex items-center gap-1.5"><DollarSign className="w-3.5 h-3.5 text-emerald-400" />Lowest Price</td>
                 <td className="px-4 py-4">

@@ -17,7 +17,6 @@
 | `src/data/peptides.ts` | 623 unique | ⚠️ **NOT AUDITED** | ❌ No — gate does not scan peptides.ts |
 | `src/data/blends.ts` | 18 unique | ⚠️ **NOT AUDITED** | ❌ No — gate does not scan blends.ts |
 | `src/components/library/pillars/TesamorelinPillar.tsx` | 2 unique | ⚠️ **NOT AUDITED** | ❌ No — gate does not scan component files |
-| `src/components/library/pillars/TirzepatidePillar.tsx` | 1 unique | ✅ PMID 35658024 is in registry | ❌ Gate does not scan, but PMID is valid |
 | `content/` markdown files | audit docs only | ✅ Not live content | N/A |
 
 **Total unique PMIDs in src/ codebase:** 666  
@@ -28,17 +27,15 @@
 
 ## CRITICAL: Known-Bad PMIDs Remain in matchups.ts
 
-The four PMIDs removed from the registry during the 2026-05-18 audit **are still present in `src/data/matchups.ts`** as active citation links. These were removed from `verified-pmids.ts` and `goal-pages.ts` but matchups.ts was not part of the cleanup scope.
+Three of the PMIDs removed from the registry during the 2026-05-18 audit **are still present in `src/data/matchups.ts`** as active citation links. These were removed from `verified-pmids.ts` and `goal-pages.ts` but matchups.ts was not part of the cleanup scope.
 
 | PMID | Lines | Matchup Claim | NLM Actual Paper |
 |------|-------|---------------|-----------------|
-| `35653733` | 109, 121, 345, 351 | SURMOUNT-1 Tirzepatide obesity trial | Psychology paper — Han DE et al. (unrelated) |
 | `18056898` | 204, 210 | Tesamorelin NEJM 2007 metabolic effects | JAMA brief — Hampton T (unrelated) |
 | `9400262` | 254, 260 | Semax ACTH 4-10 nootropic study | German patient transport logistics (unrelated) |
 | `8345041` | 438, 444 | Sermorelin BioDrugs 1999 review | Thyroxine/transthyretin — Rosen HN 1993 (unrelated) |
 
 **Corrected replacements available:**
-- `35653733` → replace with `35658024` (correct SURMOUNT-1 PMID, already in registry)
 - `18056898` → replace with `20554713` (Falutz 2010 Phase 3 pooled analysis, already in registry)
 - `9400262` → passive attribution per Russian Literature Policy (Semax)
 - `8345041` → operator to verify correct Prakash & Goa BioDrugs PMID (pending PubMed search)
@@ -98,7 +95,7 @@ Neither is gate-scanned. Labels like `"Khavinson et al., 2002 - Bull Exp Biol Me
 ## Recommendations
 
 ### Immediate (Before Next Deploy)
-- [ ] Fix 4 known-bad PMIDs in `matchups.ts` (see table above)
+- [ ] Fix 3 known-bad PMIDs in `matchups.ts` (see table above)
 - [ ] Verify `TesamorelinPillar.tsx` PMIDs `20682528` and `31607674` via NLM API
 
 ### Short-Term

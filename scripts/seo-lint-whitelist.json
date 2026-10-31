@@ -30,11 +30,9 @@
     "\\b50%\\s+off\\b",
     "\\btop\\s+5\\s+peptides\\b",
     "\\b60-day\\b",
-    "\\bGLP-1\\s+peptides?\\b",
     "\\b80\\s+peptide-based\\s+drugs\\b",
     "\\b80\\s+peptide\\b",
     "\\b2\\s+peptides\\b",
-    "\\bGLP-1\\s+Stack\\b",
     "\\b1\\.\\s+The\\s+Anti-Catabolic\\b"
   ]
 }

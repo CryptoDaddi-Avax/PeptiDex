@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ShieldAlert } from 'lucide-react';
 
 export const MEDICAL_DISCLAIMER_TEXT =
-  'PeptiDex content is for research and educational purposes only. Peptides discussed are research chemicals not approved by the FDA for human use. Information here is not medical advice. Consult a licensed physician before any decision involving peptides.';
+  'PeptiDex content is for research and educational purposes only. Many peptides discussed are not approved by the FDA for human use. Information here is not medical advice. Consult a licensed physician before any decision involving peptides.';
 
 interface Props {
   variant?: 'callout' | 'compact';

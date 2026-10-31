@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 
-const BUY_SUPPORTED_SLUGS = ['bpc-157', 'tirzepatide', 'retatrutide', 'semaglutide', 'tesamorelin', 'cjc-1295', 'ipamorelin', 'tb-500', 'ghk-cu', 'mk-677', 'mots-c', 'cagrilintide'];
+const BUY_SUPPORTED_SLUGS = ['bpc-157', 'tesamorelin', 'cjc-1295', 'ipamorelin', 'tb-500', 'ghk-cu', 'mk-677', 'mots-c'];
 
 interface WhereToBuySectionProps {
   peptideName: string;

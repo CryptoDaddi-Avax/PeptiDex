@@ -110,9 +110,8 @@ function computeMissingBestDeals(
 // Ordered list of peptides to show in the "Cheapest Price Per Peptide" section.
 // Static entries take priority; computed entries fill any gaps.
 const BEST_DEAL_SLUGS = [
-  "bpc-157", "tb-500", "semaglutide", "tirzepatide",
-  "ipamorelin", "cjc-1295", "ghk-cu", "epitalon",
-  "retatrutide", "pt-141",
+  "bpc-157", "tb-500", "ipamorelin", "cjc-1295",
+  "ghk-cu", "epitalon", "pt-141",
 ];
 
 export default function CouponCodesPage() {

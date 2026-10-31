@@ -6,8 +6,6 @@ import Interstitial from '@/components/redesign/Interstitial';
 import ToolsGridV13 from '@/components/redesign/v13/ToolsGridV13';
 import GoalsGridV13 from '@/components/redesign/v13/GoalsGridV13';
 import QuizCTA from '@/components/redesign/v13/QuizCTA';
-import OnboardingAccordion from '@/components/redesign/OnboardingAccordion';
-import VendorsGridV13 from '@/components/redesign/v13/VendorsGridV13';
 import AdvisorSectionV13 from '@/components/redesign/v13/AdvisorSectionV13';
 
 // Dynamic import Hero — video + static SVG, client-only
@@ -23,7 +21,7 @@ export default function NewHomeClient({
 }) {
   return (
     <>
-      {/* ── v13 sections (matches v13 index.html order) ── */}
+      {/* ── v13 sections (vendor grid and onboarding supplies removed) ── */}
       {!skipHero && <Hero />}
       <StatBar />
       <Bento />
@@ -31,8 +29,6 @@ export default function NewHomeClient({
       <ToolsGridV13 />
       <GoalsGridV13 />
       <QuizCTA />
-      <OnboardingAccordion />
-      <VendorsGridV13 />
       <AdvisorSectionV13 />
     </>
   );

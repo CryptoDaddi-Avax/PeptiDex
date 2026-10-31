@@ -18,7 +18,7 @@ export function Footer() {
             <div>
               <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">Research Disclaimer</p>
               <p className="text-xs text-amber-400/70 leading-relaxed">
-                All information on PeptiDex is for educational and research purposes only. None of the compounds discussed are FDA-approved for human consumption unless explicitly noted (e.g., Semaglutide under prescription). Always consult a qualified medical professional before considering any peptide protocol. The vendors listed operate as raw chemical and laboratory supply companies. Their products are intended solely for authorized laboratory, educational, and research purposes. PeptiDex does not sell, distribute, or endorse any compound for human or animal use.
+                All information on PeptiDex is for educational and research purposes only. None of the compounds discussed are FDA-approved for human consumption unless explicitly noted (e.g., Tesamorelin under prescription). Always consult a qualified medical professional before considering any peptide protocol. The vendors listed operate as raw chemical and laboratory supply companies. Their products are intended solely for authorized laboratory, educational, and research purposes. PeptiDex does not sell, distribute, or endorse any compound for human or animal use.
               </p>
               {/* Affiliate disclosure — immediately below research disclaimer */}
               <p className="text-[10px] text-amber-400/40 leading-relaxed mt-2 border-t border-amber-500/10 pt-2">

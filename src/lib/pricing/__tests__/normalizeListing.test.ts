@@ -78,29 +78,29 @@ const seedData: RawListingInput[] = [
         third_party_tested: true,
     },
 
-    // 3. Semaglutide, UK vendor, GBP → tests currency conversion
+    // 3. NAD+, UK vendor, GBP → tests currency conversion
     {
         vendor_name: 'UK Peptides Ltd',
         vendor_slug: 'uk-peptides',
-        peptide_name: 'Semaglutide',
-        peptide_slug: 'semaglutide',
+        peptide_name: 'NAD+',
+        peptide_slug: 'nad',
         route: 'Injection',
         vial_size_mg: 3,
         quantity: 1,
         price_raw: 89.99,
         currency_raw: 'GBP',
         in_stock: true,
-        affiliate_url: 'https://ukpeptides.co.uk/semaglutide',
+        affiliate_url: 'https://ukpeptides.co.uk/nad',
         source_type: 'scrape',
         last_checked_at: '2026-05-22T11:30:00Z',
     },
 
-    // 4. Tirzepatide, EU vendor, EUR, 5-vial bundle → tests EUR + multi-quantity
+    // 4. MOTS-c, EU vendor, EUR, 5-vial bundle → tests EUR + multi-quantity
     {
         vendor_name: 'PeptideEU',
         vendor_slug: 'peptide-eu',
-        peptide_name: 'Tirzepatide',
-        peptide_slug: 'tirzepatide',
+        peptide_name: 'MOTS-c',
+        peptide_slug: 'mots-c',
         route: 'Injection',
         vial_size_mg: 5,
         quantity: 5,
@@ -109,7 +109,7 @@ const seedData: RawListingInput[] = [
         discount_code: 'PDEX10',
         discount_percent: 10,
         in_stock: true,
-        affiliate_url: 'https://peptideeu.com/tirzepatide',
+        affiliate_url: 'https://peptideeu.com/mots-c',
         source_type: 'api',
         last_checked_at: '2026-05-26T08:00:00Z',
     },
@@ -209,19 +209,19 @@ const seedData: RawListingInput[] = [
         third_party_tested: true,
     },
 
-    // 10. Retatrutide, GBP, high-value single vial → tests expensive item + GBP
+    // 10. Tesamorelin, GBP, high-value single vial → tests expensive item + GBP
     {
         vendor_name: 'UK Peptides Ltd',
         vendor_slug: 'uk-peptides',
-        peptide_name: 'Retatrutide',
-        peptide_slug: 'retatrutide',
+        peptide_name: 'Tesamorelin',
+        peptide_slug: 'tesamorelin',
         route: 'Injection',
         vial_size_mg: 4,
         quantity: 1,
         price_raw: 199.00,
         currency_raw: 'GBP',
         in_stock: true,
-        affiliate_url: 'https://ukpeptides.co.uk/retatrutide',
+        affiliate_url: 'https://ukpeptides.co.uk/tesamorelin',
         source_type: 'scrape',
         last_checked_at: '2026-05-22T11:30:00Z',
     },

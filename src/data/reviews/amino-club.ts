@@ -17,7 +17,7 @@ export const aminoClubReview: VendorReviewData = {
   valueScore: '9.0/10',
   supportScore: '9.0/10',
   verdictHeadline: 'Is Amino Club Legit?',
-  verdictBody: 'Yes. Amino Club is a legitimate US-based research peptide supplier and PeptiDex\'s #2 rated vendor for 2026. Per their publicly available COAs, they conduct batch-specific HPLC + Mass Spectrometry + Endotoxin testing, with published purity results consistently exceeding 99%. Their 60-day money-back guarantee is the longest in the industry, and code PEPTIDEX takes 20% off every order. For research use only.',
+  verdictBody: 'Yes. Amino Club is a legitimate US-based research peptide vendor and PeptiDex\'s #2 rated vendor for 2026. Per their publicly available COAs, they conduct batch-specific HPLC + Mass Spectrometry + Endotoxin testing, with published purity results consistently exceeding 99%. Their 60-day money-back guarantee is the longest in the industry, and code PEPTIDEX takes 20% off every order. For research use only.',
   purity: '99%+',
   coaType: 'Batch-specific',
   testingMethods: ['HPLC', 'Mass Spec', 'Endotoxin'],
@@ -47,10 +47,9 @@ export const aminoClubReview: VendorReviewData = {
     { peptide: 'TB-500', slug: 'tb-500', listPrice: '$39.99', withCode: '~$31.99', vial: '10mg' },
     { peptide: 'Ipamorelin', slug: 'ipamorelin', listPrice: '$59.99', withCode: '~$47.99', vial: '10mg' },
     { peptide: 'Tesamorelin', slug: 'tesamorelin', listPrice: '$69.99', withCode: '~$55.99', vial: '10mg' },
-    { peptide: 'Retatrutide', slug: 'retatrutide', listPrice: '$69.99', withCode: '~$55.99', vial: '10mg' },
   ],
   sentiment: [
-    { platform: 'Trustpilot', rating: '4.9', count: '400+', summary: 'Overwhelmingly positive. Researchers consistently praise batch-specific COA documentation, fast shipping, and responsive customer service. The 60-day MBG is frequently cited as a trust differentiator.', positives: ['Batch-specific COAs praised as best-in-class', 'Shipping speed (2â€“4 days) consistently mentioned', 'Customer service responsiveness'], negatives: ['Smaller catalog than some competitors', 'Some mention higher prices on GLP-1 analogs'], url: 'https://www.trustpilot.com/review/aminoclub.com' },
+    { platform: 'Trustpilot', rating: '4.9', count: '400+', summary: 'Overwhelmingly positive. Researchers consistently praise batch-specific COA documentation, fast shipping, and responsive customer service. The 60-day MBG is frequently cited as a trust differentiator.', positives: ['Batch-specific COAs praised as best-in-class', 'Shipping speed (2â€“4 days) consistently mentioned', 'Customer service responsiveness'], negatives: ['Smaller catalog than some competitors', 'Some mention higher prices on specialty compounds'], url: 'https://www.trustpilot.com/review/aminoclub.com' },
     { platform: 'Reddit r/Peptides', rating: 'Very Positive', count: 'Multiple threads', summary: 'Based on public Reddit discussions (r/Peptides), Amino Club is one of the most frequently recommended vendors. The MZ Biolabs/Janoshik COA verification and 20% discount code are recurring positive mentions.', positives: ['MZ Biolabs + Janoshik labs build trust', 'PEPTIDEX code frequently shared', 'BPC-157 and TB-500 pricing praised'], negatives: ['Catalog breadth compared to Limitless Life'], url: 'https://reddit.com/r/Peptides' },
   ],
   shippingDetail: 'Per vendor disclosure, Amino Club processes most orders within 24 hours (excluding weekends) from US-based domestic facilities. Domestic shipping via USPS typically arrives in 2â€“4 business days with full tracking. Free shipping applies to orders over $100.\n\nInternational shipping is available â€” a genuine differentiator in the research peptide market where most verified vendors restrict to US-only delivery. International transit times vary by destination. Payment options include major credit cards through encrypted gateways, cryptocurrency, and Zelle â€” the broadest payment flexibility in this index.',
@@ -61,7 +60,7 @@ export const aminoClubReview: VendorReviewData = {
     { name: 'Limitless Life', slug: 'limitless-life', rating: 4.6, bestFor: 'Largest catalog (90+ compounds)', href: '/vendors/limitless-life' },
   ],
   faqs: [
-    { q: 'Is Amino Club legit?', a: 'Yes. Amino Club is a US-based research peptide supplier that provides batch-specific COAs verified by MZ Biolabs and Janoshik using HPLC, Mass Spectrometry, and Endotoxin testing. They have 400+ reviews on Trustpilot averaging 4.9/5 and offer a 60-day money-back guarantee. All compounds are sold for research use only.' },
+    { q: 'Is Amino Club legit?', a: 'Yes. Amino Club is a US-based research peptide vendor that provides batch-specific COAs verified by MZ Biolabs and Janoshik using HPLC, Mass Spectrometry, and Endotoxin testing. They have 400+ reviews on Trustpilot averaging 4.9/5 and offer a 60-day money-back guarantee. All compounds are sold for research use only.' },
     { q: 'Does Amino Club provide COAs?', a: 'Yes. Every batch ships with a lot-matched Certificate of Analysis showing HPLC purity (â‰¥99% baseline), Mass Spec molecular identity confirmation, and Endotoxin screening results. COAs are generated by independent third-party laboratories â€” not in-house testing.' },
     { q: 'What discount codes work at Amino Club?', a: 'The code PEPTIDEX provides 20% off every order at aminoclub.com. This is the largest single discount code available for a gold-tier vendor in the PeptiDex index. The code does not stack with sitewide sales but at 20% it rarely needs to.' },
     { q: 'How long does Amino Club take to ship?', a: 'Per vendor disclosure, most orders are processed within 24 hours and ship via USPS from US-based facilities. Domestic delivery typically arrives in 2â€“4 business days with full tracking. International shipping is also available.' },
@@ -88,7 +87,6 @@ export const aminoClubReview: VendorReviewData = {
     { name: 'TB-500', slug: 'tb-500' },
     { name: 'Ipamorelin', slug: 'ipamorelin' },
     { name: 'Tesamorelin', slug: 'tesamorelin' },
-    { name: 'Retatrutide', slug: 'retatrutide' },
   ],
   subPages: [
     { type: 'faq', slug: 'amino-club-faq', label: 'Amino Club FAQ â€” Common Questions Answered' },

@@ -8,7 +8,6 @@ import { VendorMiniCards } from '@/components/buy/VendorMiniCards';
 import { QuickReference } from '@/components/buy/QuickReference';
 import { TrustBlock } from '@/components/library/TrustBlock';
 import { buildBreadcrumbSchema, buildFAQPageSchema } from '@/lib/seo/schema';
-import { buildProductSchema } from '@/lib/seo/schema/product';
 import { SchemaInjector } from '@/components/schema-injector';
 import { ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
@@ -19,9 +18,8 @@ const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
 const _limitless    = vendors.find((v) => v.slug === 'limitless-life')!;
 
 const TARGET_SLUGS = [
-  'bpc-157', 'tb-500', 'ghk-cu', 'semaglutide', 'tirzepatide', 
-  'retatrutide', 'cjc-1295', 'ipamorelin', 'mk-677', 'sermorelin', 
-  'tesamorelin', 'mots-c'
+  'bpc-157', 'tb-500', 'ghk-cu', 'cjc-1295', 'ipamorelin',
+  'mk-677', 'sermorelin', 'tesamorelin', 'mots-c'
 ];
 
 export function generateStaticParams() {
@@ -81,37 +79,9 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
     { q: `Can I buy ${peptide.name} with a credit card?`, a: `Yes, select verified vendors on our list offer traditional credit card processing for ${peptide.name} purchases.` }
   ]);
 
-  // Generate Product schema with Offers
-  const inStockVendors = pricingEntry?.vendors.filter(v => v.inStock) ?? [];
-  const productOffers = inStockVendors.map(v => {
-    const vendorData = vendors.find(vd => vd.name === v.vendor);
-    return {
-        vendor: v.vendor,
-        vendorUrl: vendorData ? `https://${vendorData.domainMatch}` : "https://peptidex.app/vendors",
-        affiliateUrl: v.affiliateUrl,
-        price_usd: v.price_usd,
-        vial_mg: v.vial_mg,
-        inStock: v.inStock,
-        hasCoupon: !!vendorData?.discountCode,
-        couponCode: vendorData?.discountCode,
-        discountPct: vendorData?.discountPercent,
-    };
-  });
-
-  const productSchema = buildProductSchema({
-    id: `https://peptidex.app/buy/${slug}#product`,
-    name: peptide.name,
-    description: `Where to buy ${peptide.name}. Compare verified vendors, pricing, and active discount codes.`,
-    offers: productOffers,
-    dateModified: new Date().toISOString().split('T')[0],
-  });
-
   const allSchemas: Record<string, unknown>[] = [breadcrumbSchema];
   if (faqSchema) {
       allSchemas.push(faqSchema);
-  }
-  if (productOffers.length > 0) {
-    allSchemas.push(productSchema);
   }
 
   return (

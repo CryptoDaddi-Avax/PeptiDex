@@ -87,9 +87,9 @@ export default function HomePage() {
           Research-Grade Peptide Education, Stacks &amp; Trusted Vendor Sourcing
         </h1>
         <p className="text-[13px] md:text-[15px] text-zinc-400 max-w-2xl mx-auto leading-relaxed px-2 md:px-0">
-          PeptiDex is your independent research hub for peptide education. Explore 33{" "}
-          <strong className="text-zinc-300 font-medium">research peptides</strong>, 12 expert-curated{" "}
-          <strong className="text-zinc-300 font-medium">peptide stacks</strong>, and 140+ peer-reviewed studies.
+          PeptiDex is your independent research hub for peptide education. Explore {peptides.length}{" "}
+          <strong className="text-zinc-300 font-medium">research peptides</strong>, {stacks.length} expert-curated{" "}
+          <strong className="text-zinc-300 font-medium">peptide stacks</strong>, and {totalStudies}+ peer-reviewed studies.
         </p>
       </motion.div>
 
@@ -182,9 +182,9 @@ export default function HomePage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-2.5 md:gap-4 pb-4 md:pb-0 fi5">
         {[
-          { value: "33", label: "Peptides" },
-          { value: "12", label: "Stacks" },
-          { value: "140+", label: "Studies" },
+          { value: String(peptides.length), label: "Peptides" },
+          { value: String(stacks.length), label: "Stacks" },
+          { value: `${totalStudies}+`, label: "Studies" },
         ].map((stat) => (
           <div key={stat.label} className="text-center p-2.5 md:p-3 rounded-xl md:rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
             <p className="text-xl md:text-2xl font-bold text-violet-400">{stat.value}</p>
@@ -270,7 +270,7 @@ export default function HomePage() {
             Quality control remains the most critical variable in any experimental setup. Our vendor sourcing database strictly catalogs suppliers who provide transparent, third-party Certificates of Analysis (COAs), ensuring researchers have access to compounds exceeding 99% purity thresholds.
           </p>
           <p className="text-xs text-zinc-500 italic mt-4 pt-4 border-t border-zinc-800/50">
-            Please note: The information indexed on PeptiDex is strictly for educational and referencing purposes. Peptides listed are strictly research chemicals and are not approved by the FDA for human consumption, diagnostic, or therapeutic use.
+            Please note: The information indexed on PeptiDex is strictly for educational and referencing purposes. Peptides listed are for laboratory research use only and are not approved by the FDA for human consumption, diagnostic, or therapeutic use.
           </p>
         </div>
       </div>

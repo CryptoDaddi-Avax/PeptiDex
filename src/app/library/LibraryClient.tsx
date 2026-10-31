@@ -10,7 +10,7 @@ import './library-redesign.css';
 
 /* ── Constants ── */
 const categories = [...new Set(peptides.map((p) => p.category))];
-const FEATURED_SLUGS = ['mots-c', 'pt-141', 'retatrutide', 'ss-31', 'tesofensine'];
+const FEATURED_SLUGS = ['mots-c', 'pt-141', 'ghk-cu', 'ss-31', 'epitalon'];
 const EVIDENCE_LEVELS = ['very-strong', 'strong', 'moderate', 'preclinical'] as const;
 
 const EVIDENCE_RANK: Record<string, number> = {
@@ -154,7 +154,7 @@ export default function LibraryClient() {
             <input
               type="text"
               id="libSearch"
-              placeholder="Search by name or category — e.g. BPC-157, GHRH, fat loss…"
+              placeholder="Search by name or category — e.g. BPC-157, GHRH, recovery…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />

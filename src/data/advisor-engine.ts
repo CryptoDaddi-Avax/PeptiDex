@@ -31,7 +31,7 @@ interface ParsedQuery {
 
 const goalKeywordMap: Record<string, string[]> = {
     healing: ["heal", "injury", "recover", "repair", "tendon", "ligament", "joint", "muscle tear", "wound", "surgery", "broken"],
-    fat_loss: ["fat", "weight", "lose", "slim", "lean", "obesity", "appetite", "ozempic", "wegovy", "diet"],
+    fat_loss: ["fat", "weight", "lose", "slim", "lean", "obesity", "appetite", "diet"],
     muscle: ["muscle", "gain", "bulk", "strength", "hypertrophy", "anabolic", "grow"],
     cognitive: ["brain", "cognitive", "focus", "memory", "mental", "concentration", "study", "nootropic", "smart", "think"],
     sleep: ["sleep", "insomnia", "rest", "circadian", "deep sleep"],
@@ -47,7 +47,7 @@ const goalKeywordMap: Record<string, string[]> = {
 
 const goalToPeptides: Record<string, string[]> = {
     healing: ["BPC-157", "TB-500", "GHK-Cu"],
-    fat_loss: ["Semaglutide", "Tirzepatide", "AOD-9604", "Retatrutide", "MOTS-c"],
+    fat_loss: ["AOD-9604", "MOTS-c", "5-Amino-1MQ"],
     muscle: ["IGF-1 LR3", "Follistatin-344", "CJC-1295", "Ipamorelin"],
     cognitive: ["Semax", "Selank"],
     sleep: ["DSIP", "CJC-1295", "Ipamorelin", "Epitalon"],
@@ -127,7 +127,7 @@ export function generateResponse(query: ParsedQuery): string {
             return "Hey! ?? I'm the PeptiDex Advisor. I can help you with:\n\n• **Finding the right peptide** for your goals (healing, fat loss, cognition, etc.)\n• **Dosing information** for any peptide\n• **Stacking advice** and interaction checks\n• **Comparing** peptides side-by-side\n• **Legal status** and pricing info\n\nJust tell me what you're looking for!";
 
         case "beginner":
-            return "Welcome to the peptide world! ?? Here's where most beginners start:\n\n**?? Best First Peptide: BPC-157**\nExcellent safety profile, well-studied, versatile for healing and gut health. 250-500mcg/day SubQ.\n\n**?? Runner-Up: CJC-1295 + Ipamorelin**\nThe classic GH stack for better sleep, recovery, and body composition. Take before bed.\n\n**?? For Fat Loss: Semaglutide**\nFDA-approved, proven results. Requires a prescription.\n\n**?? Pro Tips for Beginners:**\n1. Start with ONE peptide to see how your body responds\n2. Get baseline blood work first\n3. Always buy from tested sources with COAs\n4. Check out our **Peptide 101** course in the Learn section!\n\nWhat's your main goal? I can give you a more specific recommendation.";
+            return "Welcome to the peptide world! ?? Here's where most beginners start:\n\n**?? Best First Peptide: BPC-157**\nExcellent safety profile, well-studied, versatile for healing and gut health. 250-500mcg/day SubQ.\n\n**?? Runner-Up: CJC-1295 + Ipamorelin**\nThe classic GH stack for better sleep, recovery, and body composition. Take before bed.\n\n**?? Pro Tips for Beginners:**\n1. Start with ONE peptide to see how your body responds\n2. Get baseline blood work first\n3. Always buy from tested sources with COAs\n4. Check out our **Peptide 101** course in the Learn section!\n\nWhat's your main goal? I can give you a more specific recommendation.";
 
         case "goal_recommendation": {
             const allRecs = new Set<string>();
@@ -140,7 +140,7 @@ export function generateResponse(query: ParsedQuery): string {
 
         case "peptide_info": {
             const pepData = peptides.filter((p) => peptideNames.includes(p.name));
-            if (pepData.length === 0) return "I couldn't find that peptide. Try searching by common name (e.g., BPC-157, Semaglutide, Semax).";
+            if (pepData.length === 0) return "I couldn't find that peptide. Try searching by common name (e.g., BPC-157, Ipamorelin, Semax).";
             const cards = pepData.map((p) => {
                 const lines = [formatPeptideCard(p)];
                 lines.push(`\n**Mechanism:** ${p.mechanism}`);
@@ -168,7 +168,7 @@ export function generateResponse(query: ParsedQuery): string {
                     lines.push(`Frequency: ${p.dosing.frequency}`);
                     if (p.dosing.timing) lines.push(`Timing: ${p.dosing.timing}`);
                     if (p.dosing.cycle_weeks) lines.push(`Cycle: ${p.dosing.cycle_weeks[0]}-${p.dosing.cycle_weeks[1]} weeks`);
-                    if (p.dosing.reconstitution_ml && p.dosing.typical_vial_mg) lines.push(`Reconstitution: ${p.dosing.reconstitution_ml}ml BAC water for ${p.dosing.typical_vial_mg}mg vial`);
+                    if (p.dosing.reconstitution_ml && p.dosing.typical_vial_mg) lines.push(`Reconstitution: ${p.dosing.reconstitution_ml}ml per ${p.dosing.typical_vial_mg}mg vial`);
                     if (p.dosing.notes) lines.push(`?? ${p.dosing.notes}`);
                 } else {
                     lines.push("Detailed dosing data not yet available for this peptide.");
@@ -181,7 +181,7 @@ export function generateResponse(query: ParsedQuery): string {
 
         case "stack_advice": {
             if (peptideNames.length === 0) {
-                return "**Popular Peptide Stacks:**\n\n**??? Recovery Stack**\nBPC-157 + TB-500\n? Local healing + systemic repair\n\n**?? GH / Sleep Stack**\nCJC-1295 + Ipamorelin (pre-bed)\n? 3-5x GH pulse, better sleep and recovery\n\n**?? Cognitive Stack**\nSemax (AM) + Selank (PM)\n? BDNF boost + calm focus\n\n**? Weight Loss Stack**\nSemaglutide + AOD-9604\n? Appetite reduction + targeted fat metabolism\n\n**?? Longevity Stack**\nEpitalon + MOTS-c + SS-31\n? Telomeres + mitochondria optimization\n\nTell me your goals and I can suggest a custom stack!";
+                return "**Popular Peptide Stacks:**\n\n**??? Recovery Stack**\nBPC-157 + TB-500\n? Local healing + systemic repair\n\n**?? GH / Sleep Stack**\nCJC-1295 + Ipamorelin (pre-bed)\n? 3-5x GH pulse, better sleep and recovery\n\n**?? Cognitive Stack**\nSemax (AM) + Selank (PM)\n? BDNF boost + calm focus\n\n**?? Longevity Stack**\nEpitalon + MOTS-c + SS-31\n? Telomeres + mitochondria optimization\n\nTell me your goals and I can suggest a custom stack!";
             }
             const mentioned = peptides.filter((p) => peptideNames.includes(p.name));
             if (mentioned.length >= 2) {
@@ -292,6 +292,6 @@ export function generateResponse(query: ParsedQuery): string {
 
         case "unknown":
         default:
-            return "I'm not sure I understood that. I can help with:\n\n• **\"What's good for healing?\"**   Goal-based recommendations\n• **\"Tell me about BPC-157\"**   Peptide deep-dives\n• **\"BPC-157 dosing\"**   Dosing protocols\n• **\"Compare BPC-157 vs TB-500\"**   Side-by-side comparison\n• **\"Can I stack Semax and Selank?\"**   Interaction checks\n• **\"Is Semaglutide legal?\"**   Legal status by country\n• **\"What's the cheapest peptide?\"**   Pricing info\n\nTry asking about a specific peptide or goal!";
+            return "I'm not sure I understood that. I can help with:\n\n• **\"What's good for healing?\"**   Goal-based recommendations\n• **\"Tell me about BPC-157\"**   Peptide deep-dives\n• **\"BPC-157 dosing\"**   Dosing protocols\n• **\"Compare BPC-157 vs TB-500\"**   Side-by-side comparison\n• **\"Can I stack Semax and Selank?\"**   Interaction checks\n• **\"Is BPC-157 legal?\"**   Legal status by country\n• **\"What's the cheapest peptide?\"**   Pricing info\n\nTry asking about a specific peptide or goal!";
     }
 }

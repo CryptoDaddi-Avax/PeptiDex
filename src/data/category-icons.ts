@@ -18,9 +18,6 @@ const CATEGORY_ICONS: Record<string, string> = {
     "Immune Peptide": "\u{1F6E1}\uFE0F",               // 🛡️
     "Melanocortin Agonist": "\u{1F3A8}",                // 🎨
     "Sleep Peptide": "\u{1F4A4}",                       // 💤
-    "Triple Agonist (GLP-1/GIP/Glucagon)": "\u{1F525}", // 🔥
-    "Dual Agonist (GLP-1/GIP)": "\u{1F525}",            // 🔥
-    "GLP-1 Agonist": "\u{1F525}",                       // 🔥
     "Growth Factor": "\u{1F489}",                        // 💉
     "Anti-Inflammatory": "\u{1FA79}",                    // 🩹
     "Longevity": "\u{26A1}",                             // ⚡

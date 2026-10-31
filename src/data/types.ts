@@ -13,7 +13,7 @@ export interface DosingProtocol {
     frequency: string;                  // "Daily" | "2x/week" | "5 on 2 off" etc
     cycle_weeks?: [number, number];     // cycle length range
     timing?: string;                    // "Morning" | "Pre-bed" | "Pre-workout"
-    reconstitution_ml?: number;         // BAC water per standard vial (ml)
+    reconstitution_ml?: number;         // diluent volume per standard vial (ml)
     typical_vial_mg?: number;           // standard vial size (mg)
     notes?: string;
 }

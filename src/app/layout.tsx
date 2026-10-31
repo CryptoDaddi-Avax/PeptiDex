@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   },
   description: `PeptiDex (peptidex.app) is the independent peptide research index — ${SITE_STATS.peptides.count} peptide profiles, ${SITE_STATS.stacks.count} evidence-based stacks, free cycle-planning, pharmacokinetics and price tools, and COA verification. Not affiliated with any tracker app or vendor.`,
   keywords: [
-    "peptide research", "BPC-157", "TB-500", "Semaglutide", "CJC-1295", "Ipamorelin",
+    "peptide research", "BPC-157", "TB-500", "CJC-1295", "Ipamorelin",
     "peptide cycle planner", "peptide half-life", "research peptides", "peptide COA",
-    "peptide stack", "GHK-Cu", "Thymosin Alpha-1", "Retatrutide", "Tirzepatide",
-    "peptide interactions", "research chemicals", "peptide suppliers", "peptide guide",
+    "peptide stack", "GHK-Cu", "Thymosin Alpha-1",
+    "peptide interactions", "peptide guide",
     "pharmacokinetics", "HPLC verified peptides",
   ],
   authors: [{ name: "PeptiDex" }],

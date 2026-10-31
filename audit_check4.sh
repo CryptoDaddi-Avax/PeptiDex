@@ -1,8 +1,18 @@
 #!/bin/bash
 echo "=== LEARN SLUGS (PEPTIDE-BASED) ==="
-for p in /learn/bpc-157 /learn/tb-500 /learn/semaglutide /learn/ipamorelin /learn/ghk-cu /learn/tirzepatide; do
+for p in /learn/bpc-157 /learn/tb-500 /learn/ipamorelin /learn/ghk-cu; do
   code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3005$p)
   echo "$code  $p"
+done
+
+echo ""
+echo "=== REMOVED LEARN SLUGS (expect 410, no redirect) ==="
+for p in \
+  /learn/semaglutide \
+  /learn/tirzepatide; do
+  code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3005$p)
+  if [ "$code" = "410" ]; then s=OK; else s=FAIL; fi
+  echo "$code  $s  $p"
 done
 
 echo ""

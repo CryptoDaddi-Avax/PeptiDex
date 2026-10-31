@@ -67,22 +67,19 @@ We identified **one highly critical Class-1 (fabricated/wrong paper) mismatch** 
 
 ## Verified Matches (Confirmed Clean)
 
-The remaining 14 unique PMIDs are authoritative and in perfect alignment with their claims:
+The remaining unique PMIDs are authoritative and in perfect alignment with their claims. (Three matched PMIDs for compounds that have since been removed from the site are omitted from this list; the totals above reflect the original audit.)
 
 1. **PMID 27138887**: *Brain-gut axis BPC-157* (Sikiric P, 2016, Curr Neuropharmacol) — **MATCH**
 2. **PMID 9849822**: *Ipamorelin selective GH secretagogue* (Raun K, 1998, Eur J Endocrinol) — **MATCH**
 3. **PMID 16352683**: *CJC-1295 sustained GH/IGF-1 elevations* (Teichman SL, 2006, J Clin Endocrinol Metab) — **MATCH**
-4. **PMID 34170647**: *Tirzepatide vs Semaglutide Phase 3* (Frías JP, 2021, NEJM) — **MATCH**
-5. **PMID 11023702**: *Melanocortin receptor function* (Wikberg JE, 2000, Pharmacol Res) — **MATCH**
-6. **PMID 8637402**: *Melanotan II Phase I clinical study* (Dorr RT, 1996, Life Sci) — **MATCH**
-7. **PMID 33567185**: *Once-weekly Semaglutide in obesity* (Wilding JPH, 2021, NEJM) — **MATCH**
-8. **PMID 37366315**: *Retatrutide Phase 2 obesity trial* (Jastreboff AM, 2023, NEJM) — **MATCH**
-9. **PMID 32107480**: *Antimicrobial host defense peptides* (Mookherjee N, 2020, Nat Rev Drug Discov) — **MATCH**
-10. **PMID 862769**: *Delta sleep inducing peptide* (Schoenenberger GA, 1977, PNAS / Experientia) — **MATCH**
-11. **PMID 7962301**: *Peptidomimetic GHRP* (Bowers CY, 1994, J Clin Endocrinol Metab) — **MATCH**
-12. **PMID 16174713**: *Kisspeptin-54 HPG axis males* (Dhillo WS, 2005, J Clin Endocrinol Metab) — **MATCH**
-13. **PMID 14523363**: *Geroprotective effect of epitalon* (Khavinson VKh, 2003, Adv Gerontol) — **MATCH**
-14. **PMID 29217757**: *SS-31 elamipretide randomized heart failure trial* (Daubert MA, 2017, Circ Heart Fail) — **MATCH**
+4. **PMID 11023702**: *Melanocortin receptor function* (Wikberg JE, 2000, Pharmacol Res) — **MATCH**
+5. **PMID 8637402**: *Melanotan II Phase I clinical study* (Dorr RT, 1996, Life Sci) — **MATCH**
+6. **PMID 32107480**: *Antimicrobial host defense peptides* (Mookherjee N, 2020, Nat Rev Drug Discov) — **MATCH**
+7. **PMID 862769**: *Delta sleep inducing peptide* (Schoenenberger GA, 1977, PNAS / Experientia) — **MATCH**
+8. **PMID 7962301**: *Peptidomimetic GHRP* (Bowers CY, 1994, J Clin Endocrinol Metab) — **MATCH**
+9. **PMID 16174713**: *Kisspeptin-54 HPG axis males* (Dhillo WS, 2005, J Clin Endocrinol Metab) — **MATCH**
+10. **PMID 14523363**: *Geroprotective effect of epitalon* (Khavinson VKh, 2003, Adv Gerontol) — **MATCH**
+11. **PMID 29217757**: *SS-31 elamipretide randomized heart failure trial* (Daubert MA, 2017, Circ Heart Fail) — **MATCH**
 
 ---
 

@@ -36,11 +36,9 @@ import { BuyBox } from '@/components/affiliate/BuyBox';
 import { EntityCard } from '@/components/library/EntityCard';
 import { ResearchNotesBlock } from '@/components/library/ResearchNotesBlock';
 import { entityCardOverrides } from '@/data/entity-cards';
-import { RetatrutidePillar } from '@/components/library/pillars/RetatrutidePillar';
 import { TesamorelinPillar } from '@/components/library/pillars/TesamorelinPillar';
 import { MotscPillar } from '@/components/library/pillars/MotscPillar';
 import { Bpc157Pillar } from '@/components/library/pillars/Bpc157Pillar';
-import { TirzepatidePillar } from '@/components/library/pillars/TirzepatidePillar';
 import './detail-redesign.css';
 
 /* ── Evidence helpers ── */
@@ -283,14 +281,6 @@ export function PeptideDetailRedesign({
                       </span>
                     </div>
                   )}
-                  {peptide.dosing.reconstitution_ml && (
-                    <div className="pd-dosing-cell">
-                      <span className="pd-dosing-label">BAC Water</span>
-                      <span className="pd-dosing-value">
-                        {peptide.dosing.reconstitution_ml} ml / {peptide.dosing.typical_vial_mg}mg vial
-                      </span>
-                    </div>
-                  )}
                 </div>
                 {peptide.dosing.notes && (
                   <p className="pd-dosing-notes">{peptide.dosing.notes}</p>
@@ -354,7 +344,7 @@ export function PeptideDetailRedesign({
             )}
 
             {/* Amino Club Deep Dive Link */}
-            {['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'].includes(peptide.slug) && (
+            {['bpc-157', 'tesamorelin'].includes(peptide.slug) && (
               <div className="my-8 p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-900/20 to-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
@@ -386,7 +376,7 @@ export function PeptideDetailRedesign({
                   <span className="pd-tool-cta-desc">Save 20% on {peptide.name} at Amino Club & verified vendors →</span>
                 </div>
               </Link>
-              {['bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'].includes(peptide.slug) && (
+              {['bpc-157', 'tb-500', 'ipamorelin', 'cjc-1295', 'ghk-cu', 'mots-c', 'epitalon'].includes(peptide.slug) && (
                 <Link href={`/where-to-buy/${peptide.slug}`} className="pd-tool-cta" style={{ background: 'var(--bg-card)', borderColor: 'var(--gold)' }}>
                   <div className="pd-tool-cta-icon" style={{ color: 'var(--gold)' }}><BadgeCheck /></div>
                   <div className="pd-tool-cta-text">
@@ -408,11 +398,9 @@ export function PeptideDetailRedesign({
             <ResearchNotesBlock peptideSlug={peptide.slug} peptideName={peptide.name} />
 
             {/* ─── PILLAR EXPANSIONS (Phase A Content) ─── */}
-            {peptide.slug === 'retatrutide' && <RetatrutidePillar />}
             {peptide.slug === 'tesamorelin' && <TesamorelinPillar />}
             {peptide.slug === 'mots-c' && <MotscPillar />}
             {peptide.slug === 'bpc-157' && <Bpc157Pillar />}
-            {peptide.slug === 'tirzepatide' && <TirzepatidePillar />}
 
             {/* FAQ — expanded 8+ Qs; JSON-LD injected server-side in page.tsx */}
             <PeptideFAQExpanded peptide={peptide} injectJsonLd={false} />

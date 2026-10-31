@@ -63,16 +63,12 @@ function pair(
  */
 export const EXISTING_COMPARISON_SLUGS = new Set([
   'bpc-157-vs-tb-500',
-  'semaglutide-vs-tirzepatide',
-  'tirzepatide-vs-retatrutide',
   'cjc-1295-vs-sermorelin',
   'cjc-1295-vs-ipamorelin',
   'ipamorelin-vs-ghrp-2',
   'ipamorelin-vs-ghrp-6',
   'ghrp-2-vs-ghrp-6',
   'tesamorelin-vs-cjc-1295',
-  'semaglutide-vs-retatrutide',
-  'tirzepatide-vs-semaglutide',
   'selank-vs-semax',
   'bpc-157-vs-kpv',
   'ghk-cu-vs-bpc-157',
@@ -87,8 +83,6 @@ export const EXISTING_COMPARISON_SLUGS = new Set([
   'ghk-cu-vs-argireline',
   'aod-9604-vs-tesamorelin',
   'epitalon-vs-nad',
-  'tesofensine-vs-tirzepatide',
-  'tirzepatide-vs-wegovy',
 ]);
 
 export const comparisonPairs: ComparisonPair[] = [
@@ -103,10 +97,6 @@ export const comparisonPairs: ComparisonPair[] = [
     { verdictOverride: 'BPC-157 excels at deep tissue repair — tendons, ligaments, and gut lining — via angiogenesis and VEGF upregulation. GHK-Cu is a copper peptide that promotes surface-level wound healing, collagen remodeling, and skin rejuvenation. For structural injuries, BPC-157 is the clear default; for skin and cosmetic goals, GHK-Cu leads.' }),
 
   pair('bpc-157', 'll-37', 'search-volume', ['injury-recovery', 'immune-support'], 1),
-
-  pair('cagrilintide', 'semaglutide', 'search-volume', ['fat-loss'], 1),
-
-  pair('cagrilintide', 'tirzepatide', 'search-volume', ['fat-loss'], 1),
 
   pair('tb-500', 'ghk-cu', 'search-volume', ['injury-recovery'], 1),
 
@@ -129,33 +119,15 @@ export const comparisonPairs: ComparisonPair[] = [
 
   pair('mots-c', 'ss-31', 'search-volume', ['longevity'], 1),
 
-  pair('semaglutide', 'tesofensine', 'search-volume', ['fat-loss'], 1),
-
   pair('thymosin-alpha-1', 'll-37', 'search-volume', ['immune-support'], 1),
 
-  pair('5-amino-1mq', 'aod-9604', 'search-volume', ['fat-loss'], 1),
+  pair('5-amino-1mq', 'aod-9604', 'search-volume', ['body-recomposition'], 1),
 
-  pair('cagrilintide', 'retatrutide', 'search-volume', ['fat-loss'], 1),
-
-  pair('ipamorelin', 'tesamorelin', 'search-volume', ['fat-loss', 'hormonal-optimization'], 1),
+  pair('ipamorelin', 'tesamorelin', 'search-volume', ['body-recomposition', 'hormonal-optimization'], 1),
 
   // ═══════════════════════════════════════════════════════
   // TIER 2: SHARED GOAL CLUSTER — Wave 2
   // ═══════════════════════════════════════════════════════
-
-  // Fat Loss cluster
-  pair('aod-9604', 'semaglutide', 'shared-goal', ['fat-loss'], 2),
-  pair('aod-9604', 'tirzepatide', 'shared-goal', ['fat-loss'], 2),
-  pair('aod-9604', 'retatrutide', 'shared-goal', ['fat-loss'], 2),
-  pair('mots-c', 'semaglutide', 'shared-goal', ['fat-loss', 'metabolic-health'], 2),
-  pair('mots-c', 'tirzepatide', 'shared-goal', ['fat-loss'], 2),
-  pair('mots-c', 'retatrutide', 'shared-goal', ['fat-loss'], 2),
-  pair('retatrutide', 'tesamorelin', 'shared-goal', ['fat-loss'], 2),
-  pair('semaglutide', 'tesamorelin', 'shared-goal', ['fat-loss', 'metabolic-health'], 2),
-  pair('tesamorelin', 'tirzepatide', 'shared-goal', ['fat-loss'], 2),
-  pair('aod-9604', 'cagrilintide', 'shared-goal', ['fat-loss'], 2),
-  pair('cagrilintide', 'mots-c', 'shared-goal', ['fat-loss'], 2),
-  pair('cagrilintide', 'tesamorelin', 'shared-goal', ['fat-loss'], 2),
 
   // Muscle Growth cluster
   pair('ipamorelin', 'sermorelin', 'shared-goal', ['muscle-growth', 'hormonal-optimization'], 2),
@@ -176,7 +148,7 @@ export const comparisonPairs: ComparisonPair[] = [
   pair('epitalon', 'ss-31', 'shared-goal', ['longevity'], 2),
   pair('nad', 'ss-31', 'shared-goal', ['longevity'], 2),
   pair('epitalon', 'mots-c', 'shared-goal', ['longevity'], 2),
-  pair('mots-c', 'nad', 'shared-goal', ['longevity', 'metabolic-health'], 2),
+  pair('mots-c', 'nad', 'shared-goal', ['longevity'], 2),
 
   // ═══════════════════════════════════════════════════════
   // TIER 2B: SAME-CLASS COMPARISONS — Wave 3
@@ -184,7 +156,7 @@ export const comparisonPairs: ComparisonPair[] = [
 
   // GH cluster (same mechanism class)
   pair('mk-677', 'sermorelin', 'same-class', ['muscle-growth', 'hormonal-optimization'], 3),
-  pair('mk-677', 'tesamorelin', 'same-class', ['fat-loss'], 3),
+  pair('mk-677', 'tesamorelin', 'same-class', ['body-recomposition'], 3),
   pair('ghrp-2', 'mk-677', 'same-class', ['muscle-growth'], 3),
   pair('ghrp-6', 'mk-677', 'same-class', ['muscle-growth'], 3),
   pair('ghrp-2', 'hexarelin', 'same-class', ['muscle-growth'], 3),

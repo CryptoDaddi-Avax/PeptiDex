@@ -7,14 +7,14 @@ const count = peptides.length;
 export const metadata: Metadata = {
   title: `Peptide Library — ${count} Research Compounds Indexed`,
   description:
-    `Explore ${count} research peptides with evidence-graded profiles, pharmacokinetic data, dosing protocols, and peer-cited clinical studies. BPC-157, Semaglutide, CJC-1295, and more.`,
+    `Explore ${count} research peptides with evidence-graded profiles, pharmacokinetic data, and peer-cited clinical studies. BPC-157, GHK-Cu, CJC-1295, and more.`,
   alternates: {
     canonical: 'https://peptidex.app/library',
   },
   openGraph: {
     title: 'Peptide Library — Research Compound Index | PeptiDex',
     description:
-      'Evidence-graded peptide profiles with clinical studies, dosing, half-life data, and interaction maps. The most comprehensive peptide research index.',
+      'Evidence-graded peptide profiles with clinical studies, half-life data, and interaction maps. The most comprehensive peptide research index.',
     url: 'https://peptidex.app/library',
     type: 'website',
     images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `Peptide Library — ${count} Research Compounds`,
     description:
-      'Evidence-graded peptide profiles with clinical studies, dosing, and pharmacokinetic data.',
+      'Evidence-graded peptide profiles with clinical studies and pharmacokinetic data.',
     images: ['https://peptidex.app/og-image.png'],
   },
 };

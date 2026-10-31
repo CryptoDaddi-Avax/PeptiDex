@@ -69,24 +69,6 @@ export const legalData: PeptideLegalInfo[] = [
         ]
     },
     {
-        peptide_name: "Semaglutide", last_updated: "2026-01", countries: [
-            { country: "USA", flag: "🇺🇸", status: "approved", notes: "FDA-approved as Ozempic (diabetes) and Wegovy (obesity). Prescription required." },
-            { country: "Canada", flag: "🇨🇦", status: "approved", notes: "Health Canada approved." },
-            { country: "UK", flag: "🇬🇧", status: "approved", notes: "MHRA approved. Available as Wegovy." },
-            { country: "EU", flag: "🇪🇺", status: "approved", notes: "EMA approved." },
-            { country: "Australia", flag: "🇦🇺", status: "approved", notes: "TGA approved." },
-        ]
-    },
-    {
-        peptide_name: "Tirzepatide", last_updated: "2026-01", countries: [
-            { country: "USA", flag: "🇺🇸", status: "approved", notes: "FDA-approved as Mounjaro (diabetes) and Zepbound (obesity)." },
-            { country: "Canada", flag: "🇨🇦", status: "approved" },
-            { country: "UK", flag: "🇬🇧", status: "approved", notes: "MHRA approved as Mounjaro." },
-            { country: "EU", flag: "🇪🇺", status: "approved", notes: "EMA approved." },
-            { country: "Australia", flag: "🇦🇺", status: "approved", notes: "TGA approved." },
-        ]
-    },
-    {
         peptide_name: "PT-141", last_updated: "2026-01", countries: [
             { country: "USA", flag: "🇺🇸", status: "approved", notes: "FDA-approved as Vyleesi for HSDD in premenopausal women." },
             { country: "Canada", flag: "🇨🇦", status: "research-only" },
@@ -120,15 +102,6 @@ export const legalData: PeptideLegalInfo[] = [
             { country: "UK", flag: "🇬🇧", status: "banned", notes: "MHRA warns against use." },
             { country: "EU", flag: "🇪🇺", status: "banned", notes: "Multiple EU agencies warn against use." },
             { country: "Australia", flag: "🇦🇺", status: "banned", notes: "TGA has actively warned against Melanotan II." },
-        ]
-    },
-    {
-        peptide_name: "Retatrutide", last_updated: "2026-01", countries: [
-            { country: "USA", flag: "🇺🇸", status: "investigational", notes: "Phase 3 TRIUMPH trials in progress." },
-            { country: "Canada", flag: "🇨🇦", status: "investigational" },
-            { country: "UK", flag: "🇬🇧", status: "investigational" },
-            { country: "EU", flag: "🇪🇺", status: "investigational" },
-            { country: "Australia", flag: "🇦🇺", status: "investigational" },
         ]
     },
     {

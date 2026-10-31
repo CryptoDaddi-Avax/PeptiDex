@@ -17,10 +17,6 @@ import { buildEntityCardSchema } from "@/components/library/EntityCard";
 import { citationMap, qualifiers, buildCitationIndex, getAllCitedPmids } from "@/data/citation-map";
 import type { ReferenceEntry } from "@/components/citations/ReferenceList";
 
-// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
-const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
-const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
-
 export function generateStaticParams() {
     return peptides.map((p) => ({ slug: p.slug }));
 }
@@ -31,15 +27,10 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
         if (!peptide) return { title: "Not Found" };
 
         const year = new Date().getFullYear();
-        // Commercial-intent title pattern
-        const title = `${peptide.name}: Half-Life, Benefits & Where to Buy (${year}) | PeptiDex`;
+        const title = `${peptide.name}: Half-Life, Mechanism & Research (${year}) | PeptiDex`;
 
-        // Description: ≤155 chars, includes dosage, where to buy, vendor signal
-        const doseStr = peptide.dosing
-            ? `${peptide.dosing.typical_dose_mcg[0]}–${peptide.dosing.typical_dose_mcg[1]}mcg`
-            : "varies";
-        const rawDesc = `${peptide.name} dosage: ${doseStr}. Where to buy ${peptide.name} from COA-verified vendors. ${peptide.laypersonSummary?.slice(0, 80) ?? peptide.mechanism.slice(0, 80)}.`;
-        const description = rawDesc.substring(0, 155);
+        // Description: ≤155 chars, factual research overview (no dosing, no purchasing)
+        const description = `${peptide.name}: research overview, mechanism, half-life and published studies.`.substring(0, 155);
 
         const url = `https://peptidex.app/library/${slug}`;
 
@@ -49,14 +40,10 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
             keywords: [
                 peptide.name,
                 ...(peptide.aliases ?? []),
-                `${peptide.name} dosage`,
                 `${peptide.name} half-life`,
-                `${peptide.name} benefits`,
+                `${peptide.name} mechanism`,
+                `${peptide.name} research`,
                 `${peptide.name} side effects`,
-                `where to buy ${peptide.name}`,
-                `${peptide.name} for sale`,
-                `${peptide.name} price`,
-                `buy ${peptide.name} online`,
                 "research peptides",
                 peptide.category,
             ],
@@ -80,12 +67,10 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 }
 
 /* ── FDA-approved peptide slugs ── */
-const FDA_APPROVED_SLUGS = new Set(["semaglutide", "tirzepatide", "tesamorelin", "pt-141"]);
+const FDA_APPROVED_SLUGS = new Set(["tesamorelin", "pt-141"]);
 
-/* ── FDA indication map for PrescriptionDrug enrichment ── */
+/* ── FDA indication map for Drug enrichment ── */
 const FDA_INDICATIONS: Record<string, string> = {
-    semaglutide: "Type 2 diabetes mellitus; Chronic weight management in adults with obesity or overweight",
-    tirzepatide: "Type 2 diabetes mellitus; Chronic weight management in adults with obesity or overweight",
     tesamorelin: "Reduction of excess abdominal fat in HIV-infected patients with lipodystrophy",
     "pt-141": "Treatment of hypoactive sexual desire disorder (HSDD) in premenopausal women",
 };
@@ -126,14 +111,12 @@ function buildLibraryFAQItems(peptide: ReturnType<typeof getPeptideBySlug>) {
         { q: `What is ${peptide.name}?`, a: `${peptide.name} is a ${peptide.category.toLowerCase()} ${peptide.is_fda_approved ? "(FDA-approved)" : "(research compound)"} that ${peptide.mechanism.charAt(0).toLowerCase() + peptide.mechanism.slice(1)}` },
         { q: `What is ${peptide.name}'s half-life?`, a: halfLifeAnswer },
         { q: `What are ${peptide.name} side effects?`, a: sideEffectsAnswer },
-        { q: `Where can I buy ${peptide.name} online?`, a: `${peptide.name} is available from COA-verified vendors including Amino Club (use PEPTIDEX for ${_aminoClub.discountPercent}% off) and Bio Longevity Labs (use PEPTIDEX for ${_bioLongevity.discountPercent}% off). Compare current pricing at peptidex.app/tools/pricing.` },
         { q: `Is ${peptide.name} legal?`, a: legalAnswer },
-        { q: `What does ${peptide.name} cost?`, a: `Research pricing for ${peptide.name} varies by vendor and vial size. Use code PEPTIDEX at Amino Club for ${_aminoClub.discountPercent}% off or Bio Longevity Labs for ${_bioLongevity.discountPercent}% off. Compare prices at peptidex.app/tools/pricing.` },
     ];
 
     const customFAQs = (peptideFAQOverrides[peptide.slug] ?? []).filter((f) => f.q && f.a);
 
-    // Compliance: no dosing / reconstitution / injection / cycle-length Q&As in FAQPage schema
+    // Compliance: no dosing / reconstitution / injection / cycle-length / purchasing Q&As in FAQPage schema
     return filterDosingFaqs([...standardFAQs, ...customFAQs]);
 }
 
@@ -156,7 +139,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         { name: peptide.name, url: `https://peptidex.app/library/${slug}` }
     ]);
 
-    // ─── JSON-LD: Drug / PrescriptionDrug ──────────────────────────────────
+    // ─── JSON-LD: Drug ──────────────────────────────────────────────────────
     const isFDA = FDA_APPROVED_SLUGS.has(slug);
     const topEvidenceLevel = peptide.key_studies.reduce<EvidenceLevel | null>((best, s) => {
         if (!best) return s.evidence_level;
@@ -164,27 +147,6 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     }, null);
     const ratingValue = topEvidenceLevel ? EVIDENCE_RATING[topEvidenceLevel] : 3.0;
     const ratingCount = Math.max(peptide.key_studies.length, 1);
-
-
-
-    const inStockVendors = pricingEntry?.vendors.filter((v) => v.inStock) ?? [];
-    const prices = inStockVendors.map((v) => v.price_usd);
-    const aggregateOffer = inStockVendors.length > 0 ? {
-        "@type": "AggregateOffer",
-        lowPrice: Math.min(...prices).toFixed(2),
-        highPrice: Math.max(...prices).toFixed(2),
-        priceCurrency: "USD",
-        offerCount: inStockVendors.length,
-        offers: inStockVendors.map((v) => ({
-            "@type": "Offer",
-            price: v.price_usd.toFixed(2),
-            priceCurrency: "USD",
-            availability: "https://schema.org/InStock",
-            url: v.affiliateUrl,
-            seller: { "@type": "Organization", name: v.vendor },
-            description: `${v.vial_mg}mg vial`,
-        })),
-    } : null;
 
     const drugSchemaObj = buildDrugSchema({
         name: peptide.name,
@@ -199,12 +161,10 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         drugClass: peptide.category,
         warning: peptide.safety_notes,
         url: `https://peptidex.app/library/${slug}`,
-        ...(aggregateOffer ? { offers: aggregateOffer } : {}),
     };
 
     if (isFDA) {
-        drugSchema.legalStatus = "https://schema.org/PrescriptionOnly";
-        drugSchema.prescriptionStatus = "https://schema.org/PrescriptionOnly";
+        drugSchema.legalStatus = "FDA-approved for specific indications";
         if (FDA_INDICATIONS[slug]) {
             drugSchema.recognizedBy = { "@type": "Organization", name: "U.S. Food and Drug Administration (FDA)" };
             drugSchema.indication = FDA_INDICATIONS[slug];
@@ -216,7 +176,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     // ─── JSON-LD: MedicalWebPage ────────────────────────────────────────────
     const dateModified = peptide.reviewedDate ?? new Date().toISOString().slice(0, 10);
     const medicalWebPageSchema = buildLibraryMedicalWebPageSchema({
-        name: `${peptide.name}: Half-Life, Benefits & Where to Buy`,
+        name: `${peptide.name}: Half-Life, Mechanism & Research`,
         description: peptide.laypersonSummary ?? peptide.mechanism.slice(0, 200),
         url: `https://peptidex.app/library/${slug}`,
         dateModified,
@@ -225,8 +185,8 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         about: drugSchema,
         keywords: [
             peptide.name,
-            `${peptide.name} dosage`,
-            `where to buy ${peptide.name}`,
+            `${peptide.name} half-life`,
+            `${peptide.name} mechanism`,
             peptide.category,
             "research peptide",
         ],
@@ -245,7 +205,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
 
     const articleSchema = {
         ...buildArticleSchema({
-            headline: `${peptide.name}: Half-Life, Benefits & Where to Buy`,
+            headline: `${peptide.name}: Half-Life, Mechanism & Research`,
             description: peptide.laypersonSummary || peptide.mechanism.slice(0, 200),
             datePublished: "2026-01-15",
             dateModified,
@@ -259,22 +219,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
     const faqItems = buildLibraryFAQItems(peptide);
     const faqSchema = buildLibraryFAQSchema(faqItems);
 
-    // ─── JSON-LD: Product + Offer ──────────────────────────────────────────
-    const productOffers = inStockVendors.map(v => {
-        const vendorData = vendors.find(vd => vd.name === v.vendor);
-        return {
-            vendor: v.vendor,
-            vendorUrl: vendorData ? `https://${vendorData.domainMatch}` : "https://peptidex.app/vendors",
-            affiliateUrl: v.affiliateUrl,
-            price_usd: v.price_usd,
-            vial_mg: v.vial_mg,
-            inStock: v.inStock,
-            hasCoupon: !!vendorData?.discountCode,
-            couponCode: vendorData?.discountCode,
-            discountPct: vendorData?.discountPercent,
-        };
-    });
-
+    // ─── JSON-LD: Product (no offers) ──────────────────────────────────────
     const productSchema = buildProductSchema({
         id: `https://peptidex.app/library/${slug}#product`,
         name: peptide.name,
@@ -283,8 +228,6 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         // Uses /api/og?title=NAME&type=profile which returns 200 image/png (confirmed live).
         image: `https://peptidex.app/api/og?title=${encodeURIComponent(peptide.name)}&type=profile`,
         brand: "PEPTIDEX Reviewed",
-        offers: productOffers,
-        dateModified,
         aggregateRating: topEvidenceLevel ? {
             ratingValue: ratingValue.toFixed(1),
             ratingCount: ratingCount

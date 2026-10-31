@@ -17,7 +17,7 @@ export const ascensionPeptidesReview: VendorReviewData = {
   valueScore: '8.0/10',
   supportScore: '8.5/10',
   verdictHeadline: 'Is Ascension Peptides Legit?',
-  verdictBody: 'Yes. Ascension Peptides is a legitimate US-based research peptide supplier. Per their website, COAs are available for their catalog using HPLC and Mass Spectrometry testing, with 98%+ purity. Their broad compound selection — including harder-to-source items like PT-141, Selank, and SS-31 — makes them a strong option for specialized research. Note: purity floor is 98%+ vs. competitors\' 99%+. For research use only.',
+  verdictBody: 'Yes. Ascension Peptides is a legitimate US-based research peptide vendor. Per their website, COAs are available for their catalog using HPLC and Mass Spectrometry testing, with 98%+ purity. Their broad compound selection — including harder-to-source items like PT-141, Selank, and SS-31 — makes them a strong option for specialized research. Note: purity floor is 98%+ vs. competitors\' 99%+. For research use only.',
   purity: '98%+',
   coaType: 'COA available',
   testingMethods: ['HPLC', 'Mass Spec'],

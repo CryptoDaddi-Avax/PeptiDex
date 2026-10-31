@@ -20,16 +20,25 @@ for p in \
   /blog/ghk-cu-breakout-peptide-2026 \
   /blog/how-to-read-a-peptide-coa \
   /blog/mk-677-vs-ipamorelin \
-  /blog/oral-peptide-revolution \
   /blog/peptide-stacking-guide \
   /blog/mots-c-mitochondrial-peptide \
-  /blog/oral-vs-injectable-peptides \
   /blog/tesamorelin-growth-hormone-peptide-comparison \
   /blog/peptide-stacking-2026-combination-protocols \
   /blog/cjc-1295-vs-sermorelin \
   /blog/fda-peptide-reclassification-patients-providers; do
   code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3005$p)
   echo "$code  $p"
+done
+
+echo ""
+echo "=== REMOVED PAGES (expect 410, no redirect) ==="
+for p in \
+  /blog/oral-peptide-revolution \
+  /blog/oral-vs-injectable-peptides \
+  /vs/semaglutide-vs-tirzepatide; do
+  code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3005$p)
+  if [ "$code" = "410" ]; then s=OK; else s=FAIL; fi
+  echo "$code  $s  $p"
 done
 
 echo ""
@@ -48,8 +57,6 @@ echo ""
 echo "=== VS SLUGS ==="
 code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:3005/vs/bpc-157-vs-tb-500")
 echo "$code  /vs/bpc-157-vs-tb-500"
-code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:3005/vs/semaglutide-vs-tirzepatide")
-echo "$code  /vs/semaglutide-vs-tirzepatide"
 
 echo ""
 echo "=== LIBRARY BLENDS SLUGS ==="

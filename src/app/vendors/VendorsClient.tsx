@@ -183,7 +183,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
             Looking for a specific compound? Check out our dedicated sourcing guides comparing vendor pricing and availability for the most popular research peptides:
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
-            {['bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide'].map((slug) => (
+            {['bpc-157', 'tb-500', 'ghk-cu', 'ipamorelin', 'cjc-1295'].map((slug) => (
               <Link
                 key={slug}
                 href={`/where-to-buy/${slug}`}
@@ -414,7 +414,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
                 therapeutic application.
               </p>
               <p>
-                FDA-approved peptides (Semaglutide, Tirzepatide, Tesamorelin, PT-141)
+                FDA-approved peptides (e.g. Tesamorelin, PT-141)
                 require a valid prescription and must be obtained from a licensed pharmacy.
                 See{' '}
                 <Link href="/library" className="vbg-link">our library</Link>{' '}

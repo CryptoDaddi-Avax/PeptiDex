@@ -187,4 +187,3 @@ No. Unlike older generation GHRPs like GHRP-2 or GHRP-6, which cause significant
 - [Are Peptides Safe?](/blog/research-peptide-safety-explained)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
 - [How to Read a Peptide COA](/blog/how-to-read-peptide-coa)
-- [Best Peptides for Fat Loss](/blog/best-peptides-for-fat-loss)

@@ -17,7 +17,7 @@ import './redesign.css';
  * Provides (top-to-bottom visual order):
  *  1. Entrance Loader (sessionStorage-gated, adds body.loaded)
  *  2. Disclaimer Bar (fixed top, z-1600, "Research Use Only")
- *  3. Promo Banner (fixed below disclaimer, z-1500, Amino Club discount)
+ *  3. Promo Banner (fixed below disclaimer, z-1500; never rendered on '/')
  *  4. Scroll Progress bar (lime gradient at bottom of stack)
  *  5. Custom Cursor (fine-pointer only dot + ring)
  *  6. Redesign Navigation (sticky, shrink-on-scroll, mobile slide-down)

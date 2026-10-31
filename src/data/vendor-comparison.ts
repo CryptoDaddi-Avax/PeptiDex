@@ -43,7 +43,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     shippingSpeed: "Ships within 24 hours",
     shippingCost: "Free over $150 · Free express over $250",
     shipsTo: ["USA"],
-    catalogSize: "29 peptides + bac water",
+    catalogSize: "29 peptides",
     paymentMethods: ["Credit Card"],
     returnPolicy: "Replacement or refund for nonconforming product",
     badge: "Editor's Choice",

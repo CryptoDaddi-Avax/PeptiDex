@@ -45,7 +45,6 @@ function fmtDose(d: Peptide['dosing']): string {
 /* ── Goal → peptide map for the planner sidebar ── */
 const GOAL_PROTOCOLS: Record<string, { name: string; peptides: string[]; duration: number }> = {
   'recovery':  { name: 'Injury Recovery',       peptides: ['BPC-157', 'TB-500'],                         duration: 6  },
-  'fat-loss':  { name: 'Fat Loss',              peptides: ['Semaglutide', 'CJC-1295', 'Ipamorelin'],     duration: 12 },
   'muscle':    { name: 'Muscle Growth',          peptides: ['CJC-1295', 'Ipamorelin', 'BPC-157'],         duration: 12 },
   'recomp':    { name: 'Body Recomposition',     peptides: ['Tesamorelin', 'BPC-157', 'Ipamorelin'],      duration: 12 },
   'longevity': { name: 'Longevity',             peptides: ['Epitalon', 'NAD+', 'MOTS-c'],                duration: 6  },

@@ -22,7 +22,7 @@ import {
   FlaskConical, CheckCircle2, Shield, FileText, ArrowUpRight, ShieldAlert
 } from 'lucide-react';
 
-const SUPPORTED_SLUGS = ['bpc-157', 'tirzepatide', 'retatrutide', 'tesamorelin', 'semaglutide'];
+const SUPPORTED_SLUGS = ['bpc-157', 'tesamorelin'];
 
 export function generateStaticParams() {
   return SUPPORTED_SLUGS.map((slug) => ({ peptide: slug }));
@@ -43,21 +43,9 @@ export async function generateMetadata({ params }: { params: Promise<{ peptide: 
       title = 'Buy BPC-157 Online: Amino Club Pricing & COA Verification (2026)';
       description = `Looking to buy BPC-157? We verified Amino Club's 10mg vials for >99% purity via independent HPLC testing. Use code PEPTIDEX to save ${AC_PCT}% on your order.`;
       break;
-    case 'tirzepatide':
-      title = 'Buy Tirzepatide Online: Amino Club Pricing & COA Verification (2026)';
-      description = `Where to buy Tirzepatide online: Amino Club provides batch-specific mass spectrometry testing for their Tirzepatide vials. Save ${AC_PCT}% with discount code PEPTIDEX.`;
-      break;
-    case 'retatrutide':
-      title = 'Buy Retatrutide: Amino Club Pricing & Independent Testing (2026)';
-      description = `Sourcing Retatrutide for research? Amino Club offers verifiable 99%+ pure Retatrutide shipped from the US. Apply promo code PEPTIDEX at checkout for ${AC_PCT}% off.`;
-      break;
     case 'tesamorelin':
       title = 'Buy Tesamorelin: Amino Club Pricing & COA Verification (2026)';
       description = `Buy highly purified Tesamorelin online. We audit Amino Club's third-party HPLC testing standards for this GHRH analog. Use code PEPTIDEX to save ${AC_PCT}%.`;
-      break;
-    case 'semaglutide':
-      title = 'Buy Semaglutide Online: Amino Club Pricing & COA Verification (2026)';
-      description = `Looking for research-grade Semaglutide? Amino Club provides batch-tested vials with US-based shipping. Get ${AC_PCT}% off your entire order with code PEPTIDEX.`;
       break;
     default:
       title = `Buy ${name}: Amino Club Pricing & COA Verification`;
@@ -95,13 +83,6 @@ export default async function AminoClubProductPage({ params }: { params: Promise
     name: `${name} (Research Grade)`,
     description: `Highly purified ${name} intended for in-vitro laboratory research. Third-party tested for identity and purity.`,
     brand: { '@type': 'Organization', name: 'Amino Club' },
-    offers: aminoClubPricing ? {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      price: aminoClubPricing.price_usd.toString(),
-      availability: aminoClubPricing.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      url: aminoClubPricing.affiliateUrl,
-    } : undefined,
   };
 
   const breadcrumbSchema = {

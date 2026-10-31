@@ -2,7 +2,7 @@
 **Auditor:** Antigravity AI  
 **Method:** NLM eSummary API (eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi)  
 **Scope:** Full `verified-pmids.ts` registry + all PMID references in `goal-pages.ts`  
-**Trigger:** Routine verification of body-recomposition citations before fat-loss build
+**Trigger:** Routine verification of body-recomposition citations before the next goal-page build
 
 ---
 
@@ -33,14 +33,7 @@ Rate limit: 3 requests/second per NLM policy; 500ms delay applied between calls.
 
 ## 3. Errors Found — 7 Critical Errors
 
-### ERROR 1 — `35653733` (Registry label: "SURMOUNT-1 Tirzepatide NEJM 2022")
-| Field | Expected | API Actual |
-|-------|----------|------------|
-| Authors | Jastreboff AM et al. | Han DE et al. |
-| Title | Tirzepatide Once Weekly for the Treatment of Obesity | Beautiful seems good, but perhaps not in every way: Linking attractiveness to moral evaluation through perceived vanity |
-| Journal | N Engl J Med | J Pers Soc Psychol |
-| Occurrences | 1 (registry) | — |
-| **Severity** | 🚨 CRITICAL | SURMOUNT-1 is the primary Tirzepatide evidence claim |
+> **Redaction note:** One of the seven errors (and its replacement PMID) concerned a compound that has since been removed from the site. It is omitted from the tables below; the counts in this report reflect the original audit.
 
 ### ERROR 2 — `18056898` (Registry label: "Falutz NEJM 2007 — Tesamorelin metabolic effects in HIV")
 | Field | Expected | API Actual |
@@ -104,16 +97,14 @@ Rate limit: 3 requests/second per NLM policy; 500ms delay applied between calls.
 
 | Wrong PMID | Correct PMID | Action | Verification |
 |-----------|-------------|--------|--------------|
-| `35653733` | `35658024` | Removed wrong, added correct SURMOUNT-1 (Jastreboff 2022 NEJM) | ✅ NLM API confirmed |
 | `18056898` | `20554713` | Removed wrong, added correct Phase 3 Tesamorelin (Falutz 2010 JCEM) | ✅ NLM API confirmed |
 | `8345041` | *Pending* | Removed — correct PMID not found via automated search | ⚠️ See pending-pmid-verification.md |
 | `9400262` | *Pending* | Removed — Semax paper likely in non-PubMed-indexed Russian literature | ⚠️ See pending-pmid-verification.md |
 
-**5 new PMIDs added to registry (all NLM API verified):**
+**5 new PMIDs added to registry (all NLM API verified; 4 shown, 1 redacted per the note in section 3):**
 
 | PMID | Authors | Title | Journal | Relevance |
 |------|---------|-------|---------|-----------|
-| `35658024` | Jastreboff AM (2022) | Tirzepatide Once Weekly for the Treatment of Obesity (SURMOUNT-1) | N Engl J Med | SURMOUNT-1 primary endpoint |
 | `20554713` | Falutz J (2010) | Effects of tesamorelin in HIV-infected patients — pooled Phase 3 | J Clin Endocrinol Metab | Primary Tesamorelin VAT efficacy trial |
 | `21030672` | Chang CH (2011) | BPC 157 on tendon healing — outgrowth, cell survival, cell migration | J Appl Physiol | BPC-157 tendon mechanism |
 | `25738459` | Lee C (2015) | MOTS-c promotes metabolic homeostasis and reduces obesity | Cell Metab | MOTS-c fat loss mechanism |

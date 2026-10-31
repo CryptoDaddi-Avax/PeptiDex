@@ -37,18 +37,15 @@ const biomarkers: Biomarker[] = [
     {
         id: "glucose", name: "Fasting Glucose", unit: "mg/dL", optimalRange: [70, 99], description: "Blood sugar after fasting. High = prediabetes risk. Peptides targeting glucose metabolism may help.",
         relatedPeptides: [
-            { name: "Semaglutide", slug: "semaglutide", reason: "GLP-1 agonist   FDA-approved for diabetes, improves insulin sensitivity" },
-            { name: "Tirzepatide", slug: "tirzepatide", reason: "Dual GIP/GLP-1 agonist   superior glucose control in trials" },
             { name: "MOTS-c", slug: "mots-c", reason: "Mitochondrial peptide   activates AMPK, enhances glucose uptake" },
-            { name: "Retatrutide", slug: "retatrutide", reason: "Triple agonist   GLP-1/GIP/glucagon   investigational but promising" },
+            { name: "5-Amino-1MQ", slug: "5-amino-1mq", reason: "NNMT inhibitor   improved glucose tolerance in preclinical models" },
         ]
     },
     {
         id: "hba1c", name: "HbA1c", unit: "%", optimalRange: [4.0, 5.6], description: "3-month average blood sugar. Above 5.7% = prediabetes. Above 6.5% = diabetes.",
         relatedPeptides: [
-            { name: "Semaglutide", slug: "semaglutide", reason: "Reduces HbA1c by 1-2% in clinical trials" },
-            { name: "Tirzepatide", slug: "tirzepatide", reason: "Superior HbA1c reduction vs. semaglutide in SURPASS trials" },
             { name: "MOTS-c", slug: "mots-c", reason: "Improves metabolic flexibility and glucose handling" },
+            { name: "Humanin", slug: "humanin", reason: "Mitochondrial peptide   improves insulin sensitivity in preclinical models" },
         ]
     },
     {

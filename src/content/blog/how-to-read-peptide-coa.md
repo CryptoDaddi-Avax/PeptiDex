@@ -128,7 +128,7 @@ A relatively new but crucial addition to premium COAs is quantitative analysis f
 
 Because lyophilized peptides require binding agents (like mannitol or glycine) to form a stable "puck" in the vial, the physical powder in a 5mg vial usually weighs much more than 5mg. How do you know there is actually 5mg of the active peptide inside that powder?
 
-Unscrupulous vendors frequently "under-dose" vials to save money. A vial labeled as 10mg of [Tirzepatide](/library/tirzepatide) might only contain 4mg of the active compound. If your research protocol dictates a highly specific microgram dose, an under-dosed vial will completely skew your data.
+Unscrupulous vendors frequently "under-dose" vials to save money. A vial labeled as 10mg of [BPC-157](/library/bpc-157) might only contain 4mg of the active compound. If your research protocol dictates a highly specific microgram dose, an under-dosed vial will completely skew your data.
 
 Premium independent testing (often requested by top-tier vendors) will state the **Net Peptide Content** or absolute mass per vial. The COA should explicitly state: "Sample contained 5.12mg of active compound per vial."
 
@@ -172,7 +172,7 @@ No. Verifying the purity and identity of a peptide requires highly specialized, 
 During the lyophilization (freeze-drying) process, the peptide is mixed with a stabilizing agent (typically mannitol). When the moisture is removed in a vacuum, the substance forms a solid, porous "puck" at the bottom of the vial. This is a sign of standard manufacturing, not a defect.
 
 **If the COA says 99% pure, why did the peptide arrive cloudy?**
-A peptide should reconstitute completely clear. If a 99% pure peptide turns cloudy or milky when mixed with BAC water, it means the peptide has degraded due to heat exposure during shipping, the BAC water is contaminated, or the pH balance of the solution is incorrect. Do not use cloudy solutions.
+A peptide should reconstitute completely clear. If a 99% pure peptide turns cloudy or milky when reconstituted, it means the peptide has degraded due to heat exposure during shipping, the diluent is contaminated, or the pH balance of the solution is incorrect. Do not use cloudy solutions.
 
 **How do I contact MZ Biolabs to verify a COA?**
 MZ Biolabs provides a unique verification code or document number on every COA they issue. You can visit their official website and email their support team with the document number, and they will confirm if the document is authentic and unaltered.
@@ -186,4 +186,3 @@ Generally, no. A 5% impurity margin in a synthetic chemical means a massive volu
 - [Research Peptide Safety Explained](/blog/research-peptide-safety-explained)
 - [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally)
 - [Best Peptide Vendors 2026](/blog/best-peptide-vendor-2026)
-- [Tirzepatide vs Semaglutide: Which is Better?](/blog/tirzepatide-vs-semaglutide-which-is-better)

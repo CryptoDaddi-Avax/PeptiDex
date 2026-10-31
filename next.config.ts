@@ -10,6 +10,12 @@ const gitDate = (() => {
   }
 })();
 
+// Slugs for removed compounds are excluded so they hit the middleware 410
+// directly (no 301 hop). Keep in sync with REMOVED_COMPOUND_PATTERN in src/lib/gone-paths.ts.
+const KEEP_SLUG = '(?!.*(?:retatrutide|tirzepatide|semaglutide|cagrilintide|cagrisema|tesofensine|glp-?1|wegovy|ozempic|mounjaro|zepbound|rybelsus|saxenda|liraglutide|orforglipron))[^/]+';
+// Removed goal pages, also excluded from the /goals → /best redirect.
+const KEEP_GOAL = '(?!(?:fat-loss|metabolic-health)$)[^/]+';
+
 const nextConfig: NextConfig = {
   output: process.env.BUILD_MOBILE === 'true' ? 'export' : undefined,
 
@@ -29,18 +35,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/peptides', destination: '/library', permanent: true },
-      { source: '/peptides/:slug', destination: '/library/:slug', permanent: true },
-      { source: '/goals/:slug', destination: '/best/:slug', permanent: true },
+      { source: `/peptides/:slug(${KEEP_SLUG})`, destination: '/library/:slug', permanent: true },
+      { source: `/goals/:slug(${KEEP_GOAL})`, destination: '/best/:slug', permanent: true },
       // IA Consolidation (added June 2026)
       { source: '/buy', destination: '/where-to-buy', permanent: true },
-      { source: '/buy/:slug', destination: '/where-to-buy/:slug', permanent: true },
+      { source: `/buy/:slug(${KEEP_SLUG})`, destination: '/where-to-buy/:slug', permanent: true },
       { source: '/vs', destination: '/compare', permanent: true },
       { source: '/vs/bpc-157-vs-tb-500', destination: '/compare/bpc-157-vs-tb-500', permanent: true },
-      { source: '/vs/semaglutide-vs-tirzepatide', destination: '/compare/semaglutide-vs-tirzepatide', permanent: true },
       { source: '/vs/cjc-1295-vs-ipamorelin', destination: '/compare/cjc-1295-vs-ipamorelin', permanent: true },
       { source: '/vs/ghk-cu-vs-bpc-157', destination: '/compare/ghk-cu-vs-bpc-157', permanent: true },
       { source: '/vs/semax-vs-selank', destination: '/compare/selank-vs-semax', permanent: true },
-      { source: '/vs/retatrutide-vs-tirzepatide', destination: '/compare/tirzepatide-vs-retatrutide', permanent: true },
       { source: '/vs/tesamorelin-vs-ipamorelin', destination: '/compare', permanent: true },
       { source: '/vs/epitalon-vs-ghk-cu', destination: '/compare', permanent: true },
       { source: '/vs/sermorelin-vs-ipamorelin', destination: '/compare', permanent: true },
@@ -70,11 +74,9 @@ const nextConfig: NextConfig = {
       // Blog slug variants — 301 redirects
       { source: '/blog/how-to-read-a-peptide-coa', destination: '/blog/how-to-read-peptide-coa', permanent: true },
       { source: '/blog/best-peptide-vendors-2026', destination: '/blog/best-peptide-vendor-2026', permanent: true },
-      { source: '/blog/semaglutide-vs-tirzepatide', destination: '/compare/semaglutide-vs-tirzepatide', permanent: true },
       { source: '/blog/peptide-safety-beginners-guide', destination: '/blog/research-peptide-safety-explained', permanent: true },
       { source: '/blog/peptide-stacking-guide', destination: '/blog/peptide-stacking-2026-combination-protocols', permanent: true },
       { source: '/blog/ghk-cu-skin-rejuvenation', destination: '/blog/ghk-cu-breakout-peptide-2026', permanent: true },
-      { source: '/blog/retatrutide-triple-agonist', destination: '/blog/retatrutide-explained', permanent: true },
       { source: '/blog/tesamorelin-growth-hormone', destination: '/blog/tesamorelin-growth-hormone-peptide-comparison', permanent: true },
       { source: '/blog/mk-677-ibutamoren-guide', destination: '/blog/mk-677-vs-ipamorelin', permanent: true },
 
@@ -87,10 +89,7 @@ const nextConfig: NextConfig = {
       { source: '/contact', destination: '/about', permanent: true },
 
       // COA PDF old naming → new naming
-      { source: '/coa/retatrutide-amino-club-batch-2604.pdf', destination: '/coa/retatrutide-RT0001.pdf', permanent: true },
       { source: '/coa/tesamorelin-bll-batch-2603.pdf', destination: '/coa/tesamorelin-TES0001.pdf', permanent: true },
-      { source: '/coa/semaglutide-limitless-batch-2603.pdf', destination: '/coa', permanent: true },
-      { source: '/coa/tirzepatide-bll-batch-2603.pdf', destination: '/coa', permanent: true },
 
       // Deactivated vendor coupon page (2026-05-24)
       { source: '/coupon-codes/ascension-peptides', destination: '/coupon-codes', permanent: true },

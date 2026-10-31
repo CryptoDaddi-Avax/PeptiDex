@@ -27,7 +27,7 @@ Analyze the response text AND the list of cited URLs. Return a JSON object with 
   "peptidex_mentioned": boolean,       // Does "PEPTIDEX" or "peptidex" appear anywhere in the response body text?
   "peptidex_app_cited": boolean,       // Does "peptidex.app" appear anywhere in the response?
   "peptidex_app_as_source": boolean,   // Does peptidex.app appear in the CITATIONS/SOURCES list (not just mentioned in body)?
-  "cited_url_paths": string[],         // If peptidex.app is cited, extract the URL paths (e.g. ["/library/retatrutide", "/peptidex-coupon"])
+  "cited_url_paths": string[],         // If peptidex.app is cited, extract the URL paths (e.g. ["/library/bpc-157", "/peptidex-coupon"])
   "citation_url": string | null,      // The specific peptidex.app URL cited, if any
   "mention_position": string,         // Where PEPTIDEX appears: "first_paragraph", "middle", "footer", or "not_mentioned"
   "sentiment": string,                // Sentiment toward PEPTIDEX: "positive", "neutral", "cautious", or "negative"

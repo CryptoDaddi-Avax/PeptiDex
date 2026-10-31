@@ -18,7 +18,7 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'bpc-157': [
     {
       q: 'Does BPC-157 need to be refrigerated?',
-      a: 'Lyophilized (dry powder) BPC-157 should be stored in a cool, dry place away from light — refrigeration is recommended. Once reconstituted with bacteriostatic water, it should be refrigerated and used within 28–30 days. Avoid freezing the reconstituted solution.',
+      a: 'Lyophilized (dry powder) BPC-157 should be stored in a cool, dry place away from light — refrigeration is recommended. Once reconstituted, it should be refrigerated and used within 28–30 days. Avoid freezing the reconstituted solution.',
     },
     {
       q: 'Can BPC-157 be taken orally?',
@@ -38,59 +38,6 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
     {
       q: 'Can TB-500 and BPC-157 be combined?',
       a: 'Yes — stacking TB-500 with BPC-157 is one of the most common research protocols for injury recovery. BPC-157 targets angiogenesis and growth factor pathways, while TB-500 focuses on actin regulation and cell migration. The mechanisms are complementary and the combination is widely studied.',
-    },
-  ],
-
-  'tirzepatide': [
-    {
-      q: 'What is the difference between tirzepatide and semaglutide?',
-      a: 'Tirzepatide is a dual GIP/GLP-1 receptor agonist, meaning it activates both incretin pathways simultaneously. Semaglutide only activates the GLP-1 receptor. In the SURMOUNT-5 trial, tirzepatide produced significantly greater weight loss (47% vs 25% achieving ≥25% weight reduction) compared to semaglutide. Tirzepatide is FDA-approved under the brand names Mounjaro (diabetes) and Zepbound (weight management).',
-    },
-    {
-      q: 'How long does it take for tirzepatide to work?',
-      a: 'Most clinical trial participants report appetite reduction within the first 1–4 weeks. Meaningful weight loss (5%+) typically occurs within 4–8 weeks at therapeutic doses. Maximum efficacy is generally observed at 36+ weeks of sustained treatment at the target maintenance dose.',
-    },
-    {
-      q: 'Is tirzepatide a peptide?',
-      a: 'Yes. Tirzepatide is a synthetic 39-amino acid polypeptide. It is a dual glucose-dependent insulinotropic polypeptide (GIP) and glucagon-like peptide-1 (GLP-1) receptor agonist, FDA-approved for type 2 diabetes and chronic weight management.',
-    },
-  ],
-
-  'semaglutide': [
-    {
-      q: 'What is the difference between semaglutide and Ozempic, Wegovy, and Rybelsus?',
-      a: 'All three are brand names for semaglutide. Ozempic (injectable, weekly) is FDA-approved for type 2 diabetes. Wegovy (injectable, weekly, higher dose) is FDA-approved for chronic weight management. Rybelsus is the oral form, approved for type 2 diabetes. The active molecule is the same in all three.',
-    },
-    {
-      q: 'Is compounded semaglutide the same as Ozempic?',
-      a: 'Compounded semaglutide is produced by licensed compounding pharmacies and contains the same active molecule but is not manufactured under the same FDA oversight as branded products. Compounding was allowed during the FDA-declared Ozempic/Wegovy shortage (2022–2025) but faced new restrictions in 2025. Always verify regulatory status before sourcing.',
-    },
-  ],
-
-  'retatrutide': [
-    {
-      q: 'What is retatrutide?',
-      a: 'Retatrutide (LY3437943) is an investigational triple agonist peptide (GLP-1/GIP/glucagon receptor) currently in Phase 3 clinical trials (TRIUMPH program) by Eli Lilly. It is not yet FDA-approved. Phase 2 data showed mean weight loss of up to 24.2% body weight at 48 weeks at the 12mg dose — the highest reported for any anti-obesity candidate in a controlled trial. It is a research compound only.',
-    },
-    {
-      q: 'How does retatrutide compare to tirzepatide?',
-      a: 'Retatrutide adds glucagon receptor agonism to the dual GIP/GLP-1 mechanism of tirzepatide. The glucagon component drives higher resting energy expenditure — subjects in the Phase 2 trial didn\'t just eat less, they burned more at baseline. The NAFLD sub-study (Nature Medicine 2024) showed ~90% steatosis resolution at 48 weeks, which tirzepatide hasn\'t matched. Head-to-head trials have not yet been completed.',
-    },
-    {
-      q: 'What is the research dosing protocol for retatrutide?',
-      a: 'In the Phase 2 trial, subjects received escalating weekly subcutaneous injections starting at 0.5mg and titrating up to 12mg over several weeks. The reconstitution protocol for research-grade vials typically uses 2.5ml bacteriostatic water per 10mg vial. This is not medical advice — all dosing information is from published clinical trial protocols for educational reference only. Source: Jastreboff et al., NEJM 2023, PMID 37351564.',
-    },
-    {
-      q: 'What is the best coupon code for retatrutide?',
-      a: 'The code PEPTIDEX provides 20% off retatrutide at Amino Club ($69.99 → $55.99 per 10mg vial, or $5.60/mg). At Ascension Peptides, PEPTIDEX gives 50% off list price. Other codes circulating (THANKYOU, AMINOS, CLUB40) typically provide 10–15% off and don\'t stack with sales — PEPTIDEX is the only code I\'ve verified at 20% flat at Amino Club with consistent availability. Full disclosure — PEPTIDEX is my affiliate code and I earn a commission. I use these vendors because they provide batch-specific third-party COA documentation that I can independently verify.',
-    },
-    {
-      q: 'How long does retatrutide take to work?',
-      a: 'Based on the Phase 2 trial timeline, subjects typically experienced appetite reduction within the first 1–2 weeks. Measurable weight loss was observed by weeks 2–4, with the trajectory accelerating through the dose-escalation phase. By months 2–3, subjects at therapeutic doses had achieved 10–15% body weight reduction. Maximum efficacy (24.2% mean body weight loss) was observed at 48 weeks at the 12mg dose level. Source: Jastreboff et al., NEJM 2023.',
-    },
-    {
-      q: 'Can I trust the COAs from research peptide vendors?',
-      a: 'COAs are only trustworthy when they\'re batch-specific, recent, and from a reputable third-party lab. I cross-reference every vendor COA against three criteria: (1) batch ID matches the vial received, (2) testing lab is independent — MZ Biolabs, Janoshik, Anresco, not in-house — and (3) molecular weight matches the reference compound. For retatrutide, the reference MW is 4731.4 Da. Vendors offering only generic "purity certificates" without batch IDs are not verified sources — I exclude them from my index regardless of pricing.',
     },
   ],
 
@@ -151,7 +98,7 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'semax': [
     {
       q: 'Is semax available in the United States?',
-      a: 'Semax is not FDA-approved or commercially available in the US. It is an approved pharmaceutical in Russia (for stroke recovery and cognitive enhancement). In the US, it is available only as a research chemical from peptide research vendors and is not legal for human use. Always verify local regulatory status.',
+      a: 'Semax is not FDA-approved or commercially available in the US. It is an approved pharmaceutical in Russia (for stroke recovery and cognitive enhancement). In the US, it is sold only as a research compound labeled for laboratory use and is not approved for human use. Always verify local regulatory status.',
     },
   ],
 
@@ -159,16 +106,6 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
 
   'aod-9604': [
     // TODO: Add custom FAQs for AOD-9604 (e.g., "Is AOD-9604 legal?", "Does AOD-9604 raise insulin?")
-  ],
-  'cagrilintide': [
-    {
-      q: 'What is cagrilintide and how does CagriSema work?',
-      a: 'Cagrilintide (NN9838) is a long-acting amylin analog developed by Novo Nordisk. CagriSema is the investigational combination of cagrilintide + semaglutide, targeting both amylin and GLP-1 receptors simultaneously. Early data suggests CagriSema achieves greater weight loss than semaglutide alone because amylin and GLP-1 work through distinct, non-overlapping mechanisms — amylin slows gastric emptying and reduces glucagon, while GLP-1 suppresses appetite centrally.',
-    },
-    {
-      q: 'Where can I buy cagrilintide for research?',
-      a: 'Cagrilintide is available from Amino Club at $69.99/10mg (use code PEPTIDEX for 20% off → $55.99, or $5.60/mg) and Ascension Peptides at $115/10mg on sale. It is a research compound only — not FDA-approved. CagriSema Phase 3 (REDEFINE program) data is expected in 2026.',
-    },
   ],
   'dsip': [
     // TODO: Add custom FAQs for DSIP
