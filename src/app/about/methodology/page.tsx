@@ -189,7 +189,7 @@ export default function MethodologyPage() {
               {
                 stage: '4',
                 label: 'Fact-Check',
-                body: 'A final fact-check verifies all cited statistics, dosing numbers, FDA approval statuses, and mechanism descriptions against primary sources. A "Last fact-checked" date is applied on publish.',
+                body: 'A final fact-check verifies all cited statistics, study details, FDA approval statuses, and mechanism descriptions against primary sources. A "Last fact-checked" date is applied on publish.',
               },
               {
                 stage: '5',

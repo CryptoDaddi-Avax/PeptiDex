@@ -29,7 +29,8 @@ export default function LearnClient() {
     useEffect(() => { setProgress(getProgress()); }, []);
 
     const module = learningModules.find((m) => m.id === activeModule);
-    const completedCount = Object.values(progress).filter(Boolean).length;
+    // Count only modules that still exist (stored progress may include retired module ids).
+    const completedCount = learningModules.filter((m) => progress[m.id]).length;
 
     const completeModule = (id: string) => {
         const next = { ...progress, [id]: true };
@@ -72,7 +73,7 @@ export default function LearnClient() {
                         <BookOpen className="w-5 h-5 text-violet-400" />
                         <h2 className="text-xl md:text-2xl font-bold text-zinc-100">Peptide 101</h2>
                     </div>
-                    <p className="text-xs md:text-sm text-zinc-400">5 modules · {learningModules.reduce((a, m) => a + m.estimatedMinutes, 0)} min total · {completedCount}/{learningModules.length} completed</p>
+                    <p className="text-xs md:text-sm text-zinc-400">{learningModules.length} modules · {learningModules.reduce((a, m) => a + m.estimatedMinutes, 0)} min total · {completedCount}/{learningModules.length} completed</p>
                 </motion.div>
 
                 <DisclaimerCard variant="educational" className="mb-6" />

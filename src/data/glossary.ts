@@ -7,18 +7,14 @@ export interface GlossaryTerm {
 
 export const glossary: GlossaryTerm[] = [
     // â”€â”€â”€ ADMINISTRATION â”€â”€â”€
-    { term: "SubQ", definition: "Subcutaneous injection   injecting into the fatty tissue layer just beneath the skin, typically in the abdomen or thigh. The most common route for peptide administration.", category: "administration" },
-    { term: "IM", definition: "Intramuscular injection   injecting directly into muscle tissue (deltoid, glute, quad). Provides faster absorption than SubQ but is less common for peptides.", category: "administration" },
+    { term: "SubQ", definition: "Subcutaneous: administration into the tissue layer beneath the skin; a common route in peptide studies.", category: "administration" },
+    { term: "IM", definition: "Intramuscular: administration directly into muscle tissue. Used in some peptide studies, less often than the subcutaneous route.", category: "administration" },
     { term: "IV", definition: "Intravenous injection   injecting directly into a vein for immediate systemic delivery. Primarily used in clinical/hospital settings.", category: "administration" },
     { term: "Intranasal", definition: "Administration through the nasal mucosa via a spray. Used for peptides that need to reach the brain quickly (e.g., Semax, Selank).", category: "administration", related_peptides: ["Semax", "Selank"] },
     { term: "Sublingual", definition: "Placing a substance under the tongue for absorption through the oral mucosa, bypassing first-pass liver metabolism.", category: "administration" },
     { term: "Topical", definition: "Application directly to the skin surface. Some peptides like GHK-Cu are formulated as creams or serums for localized skin benefits.", category: "administration", related_peptides: ["GHK-Cu"] },
     { term: "Reconstitution", definition: "The process of dissolving a lyophilized (freeze-dried) peptide powder in a sterile diluent to create a liquid solution.", category: "administration" },
-    { term: "Lyophilized", definition: "Freeze-dried. Many peptides are supplied as lyophilized powder in vials   a stable form that must be reconstituted before use.", category: "administration" },
-    { term: "Loading Dose", definition: "A higher initial dose used at the start of a protocol to quickly reach therapeutic levels before transitioning to a lower maintenance dose.", category: "administration" },
-    { term: "Maintenance Dose", definition: "The ongoing dose used after a loading phase to sustain therapeutic peptide levels in the body.", category: "administration" },
-    { term: "Cycling", definition: "Alternating periods of peptide use (on-cycle) and rest (off-cycle) to prevent tolerance, maintain receptor sensitivity, and allow the body to reset.", category: "administration" },
-    { term: "Titration", definition: "Gradually increasing the dose of a peptide over days or weeks to assess tolerance and minimize side effects.", category: "administration" },
+    { term: "Lyophilized", definition: "Freeze-dried. Many peptides are supplied as lyophilized powder in vials, a stable form for storage and shipping.", category: "administration" },
 
     // â”€â”€â”€ BIOLOGY â”€â”€â”€
     { term: "Growth Hormone (GH)", definition: "A 191-amino acid protein hormone produced by the anterior pituitary gland. Regulates growth, body composition, metabolism, and repair. Many peptides work by stimulating natural GH release.", category: "biology" },
@@ -40,15 +36,15 @@ export const glossary: GlossaryTerm[] = [
     { term: "Pineal Gland", definition: "A brain structure that produces melatonin and regulates sleep-wake cycles. Epitalon acts on the pineal gland.", category: "biology", related_peptides: ["Epitalon"] },
 
     // â”€â”€â”€ PHARMACOLOGY â”€â”€â”€
-    { term: "Half-Life", definition: "The time required for the concentration of a peptide in the body to decrease by 50%. Determines dosing frequency   shorter half-life = more frequent dosing.", category: "pharmacology" },
+    { term: "Half-Life", definition: "The time required for the concentration of a peptide in the body to decrease by 50%. A core pharmacokinetic property reported in published studies; half-lives range from minutes to days.", category: "pharmacology" },
     { term: "Bioavailability", definition: "The percentage of an administered peptide that reaches systemic circulation. SubQ injection has high bioavailability; oral peptides have low bioavailability.", category: "pharmacology" },
     { term: "Receptor Agonist", definition: "A substance that binds to a receptor and activates it, producing a biological response. PT-141 is a melanocortin receptor agonist.", category: "pharmacology", related_peptides: ["PT-141", "Melanotan II"] },
     { term: "Receptor Antagonist", definition: "A substance that binds to a receptor and blocks its activation, preventing a biological response.", category: "pharmacology" },
     { term: "IC50", definition: "The concentration of a drug needed to inhibit a biological process by 50%. Lower IC50 = more potent compound.", category: "pharmacology" },
     { term: "Dose-Response", definition: "The relationship between the amount of a compound administered and the magnitude of the biological effect produced.", category: "pharmacology" },
-    { term: "Tachyphylaxis", definition: "Rapid decrease in response to a drug after repeated administration. Some peptides require cycling to prevent tachyphylaxis.", category: "pharmacology" },
-    { term: "Desensitization", definition: "Reduced receptor sensitivity after prolonged exposure to an agonist. Why cycling protocols are important for many peptides.", category: "pharmacology" },
-    { term: "First-Pass Metabolism", definition: "The liver's processing of a drug before it reaches systemic circulation. Oral peptides are largely destroyed by first-pass metabolism, which is why most are injected.", category: "pharmacology" },
+    { term: "Tachyphylaxis", definition: "Rapid decrease in response to a drug after repeated administration. It has been reported with repeated exposure to some receptor agonists.", category: "pharmacology" },
+    { term: "Desensitization", definition: "Reduced receptor sensitivity after prolonged exposure to an agonist. Researchers study it when evaluating repeated or continuous exposure to a compound.", category: "pharmacology" },
+    { term: "First-Pass Metabolism", definition: "The liver's processing of a drug before it reaches systemic circulation. Orally taken peptides are largely broken down before reaching circulation, which is why many are studied by injection.", category: "pharmacology" },
     { term: "DAC", definition: "Drug Affinity Complex   a modification (like in CJC-1295 with DAC) that extends half-life by binding to albumin in the blood.", category: "pharmacology", related_peptides: ["CJC-1295"] },
     { term: "Analog", definition: "A synthetic compound structurally similar to a natural molecule but modified for improved properties (stability, potency, half-life). Sermorelin is a GHRH analog.", category: "pharmacology", related_peptides: ["Sermorelin", "CJC-1295"] },
 
@@ -78,10 +74,8 @@ export const glossary: GlossaryTerm[] = [
     { term: "Contraindication", definition: "A condition or factor that makes a particular treatment inadvisable. E.g., GH secretagogues are contraindicated with active cancer.", category: "clinical" },
 
     // â”€â”€â”€ GENERAL â”€â”€â”€
-    { term: "Stack", definition: "A combination of two or more peptides used together for synergistic effects. E.g., CJC-1295 + Ipamorelin is a popular GH stack.", category: "general", related_peptides: ["CJC-1295", "Ipamorelin"] },
-    { term: "Protocol", definition: "A specific regimen including peptide selection, dosing, timing, frequency, and cycle length.", category: "general" },
-    { term: "Cycle", definition: "A defined period of peptide use followed by a rest period. E.g., '8 weeks on, 4 weeks off'. Prevents tolerance and maintains effectiveness.", category: "general" },
-    { term: "PCT", definition: "Post-Cycle Therapy   a protocol used after a cycle to help the body restore natural hormone production.", category: "general" },
+    { term: "Stack", definition: "A combination of two or more peptides. Some combinations, such as CJC-1295 with Ipamorelin, have been studied because they act on complementary mechanisms.", category: "general", related_peptides: ["CJC-1295", "Ipamorelin"] },
+    { term: "Protocol", definition: "In research, the written plan for a study, describing its methods, endpoints, and the regimen being tested.", category: "general" },
     { term: "Research Chemical", definition: "A compound sold 'for research purposes only' and not approved for human consumption. Most non-FDA-approved peptides are legally sold this way.", category: "general" },
     { term: "Compounding Pharmacy", definition: "A pharmacy that custom-prepares medications, including peptides, per a doctor's prescription. A legal and regulated way to obtain peptides.", category: "general" },
     { term: "COA", definition: "Certificate of Analysis   a document from a third-party lab verifying the identity, purity, and potency of a peptide product.", category: "general" },

@@ -77,7 +77,7 @@ IGF-1 is the primary driver of tissue growth in the human body. By utilizing spe
 
 ## 1. The Growth Hormone Secretagogues: The Synergistic Stack
 
-For sustained, long-term muscle growth modeling with the lowest risk of adverse side effects, researchers almost exclusively utilize Growth Hormone Secretagogues. Rather than injecting synthetic hGH directly into the subject (which shuts down the body's natural production), secretagogues simply signal the pituitary gland to produce more of its own hGH.
+For sustained, long-term muscle growth modeling with the lowest risk of adverse side effects, researchers almost exclusively utilize Growth Hormone Secretagogues. Rather than supplying exogenous synthetic hGH directly (which shuts down the body's natural production), secretagogues simply signal the pituitary gland to produce more of its own hGH.
 
 This natural signaling pathway preserves the body's negative feedback loop. The pituitary will only produce hGH up to a physiological limit, drastically reducing the risk of severe side effects like acromegaly, organomegaly, and severe insulin resistance associated with synthetic hGH abuse.
 
@@ -91,7 +91,7 @@ There are two primary versions utilized in research:
 1. **CJC-1295 without DAC (often called Mod GRF 1-29):** This version has a short half-life (roughly 30 minutes). It mimics the natural pulsatile release of hGH, causing a massive, immediate spike in growth hormone that clears the system quickly.
 2. **CJC-1295 with DAC (Drug Affinity Complex):** The addition of DAC extends the half-life to approximately 8 days. This causes a constant, sustained "bleed" of hGH rather than a pulsatile spike. 
 
-For optimal muscle growth without causing pituitary fatigue, **CJC-1295 without DAC** is universally preferred. The human body is designed to release growth hormone in waves (pulses), typically at night. Sustained "bleeds" (with DAC) disrupt natural physiology and lead to rapid receptor downregulation.
+In the research literature, **CJC-1295 without DAC** is often favored for modeling physiological GH release. The human body is designed to release growth hormone in waves (pulses), typically at night. Sustained "bleeds" (with DAC) disrupt natural physiology and lead to rapid receptor downregulation.
 
 ### Ipamorelin (The GHRP)
 
@@ -107,7 +107,7 @@ When CJC-1295 (without DAC) and Ipamorelin are administered together, the result
 
 [MK-677](/blog/mk-677-vs-ipamorelin) (Ibutamoren) is technically a non-peptide spiropiperidine, but it functions identically to a GHRP by agonizing the ghrelin receptor. 
 
-Unlike the injectable peptides CJC-1295 and Ipamorelin, MK-677 is orally bioavailable. It boasts a 24-hour half-life, meaning a single oral dose sustains elevated IGF-1 and hGH levels throughout the entire day.
+Unlike the injectable peptides CJC-1295 and Ipamorelin, MK-677 is orally bioavailable. It has a long half-life (roughly 24 hours), so its effect on IGF-1 and hGH levels persists far longer than that of short-acting injectable peptides.
 
 ### The Mechanism of Hyperphagia
 
@@ -115,11 +115,11 @@ MK-677 is highly favored in research models targeting absolute mass accumulation
 
 In order to build new muscle tissue, a biological organism must be in a state of caloric surplus (consuming more energy than it expends). The hunger induced by MK-677 ensures the subject remains in a massive caloric surplus, while the continuously elevated IGF-1 partitions those calories toward muscle protein synthesis rather than fat storage.
 
-**The Drawbacks:** Because MK-677 elevates hGH continuously rather than in natural pulses, it can rapidly decrease insulin sensitivity and cause significant water retention (edema) in the extremities. It is generally not suited for long-term cycles exceeding 8 to 12 weeks.
+**The Drawbacks:** Because MK-677 elevates hGH continuously rather than in natural pulses, it can rapidly decrease insulin sensitivity and cause significant water retention (edema) in the extremities. Long-term safety data beyond the durations of published clinical trials are limited.
 
 ## Sourcing Verified Analytical Standards
 
-When conducting an in-vitro assay or animal study utilizing secretagogues, verifying the molecular weight of the compound is critical. Because CJC-1295 and Ipamorelin are often injected simultaneously, many low-quality vendors attempt to sell "blended vials" without providing proper High-Performance Liquid Chromatography (HPLC) separation data.
+When conducting an in-vitro assay or animal study utilizing secretagogues, verifying the molecular weight of the compound is critical. Because CJC-1295 and Ipamorelin are often studied in combination, many low-quality vendors attempt to sell "blended vials" without providing proper High-Performance Liquid Chromatography (HPLC) separation data.
 
 As we covered in our guide on [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally), researchers must demand batch-specific testing from independent third-party laboratories.
 
@@ -149,18 +149,7 @@ Mechano Growth Factor (MGF) is a splice variant of the IGF-1 gene. In a natural 
 
 Like native IGF-1, native MGF degrades in minutes. Researchers attach a polyethylene glycol (PEG) molecule to the peptide to protect it from enzymatic breakdown, extending its half-life from minutes to several days.
 
-PEG-MGF is strictly administered via localized subcutaneous or intramuscular injection immediately following mechanical trauma (exercise) to hyper-accelerate the localized satellite cell response.
-
-## Protocol Design: Managing the Somatotropic Axis
-
-When designing a research protocol for muscle growth, timing and cycle duration are critical variables. The somatotropic axis is highly sensitive to negative feedback.
-
-A standard investigational protocol utilizing the CJC-1295 / Ipamorelin stack typically involves:
-- **Dosage:** 100mcg of CJC-1295 and 100mcg of Ipamorelin (often drawn into the same syringe).
-- **Timing:** Administered subcutaneously 1 to 2 times daily. The most critical administration window is immediately prior to sleep, as this mimics and amplifies the body's largest natural nocturnal hGH pulse.
-- **Fasting Requirement:** GHRPs like Ipamorelin are blunted by the presence of insulin. Therefore, administrations must occur on a completely empty stomach (at least 2 hours post-meal) and no carbohydrates should be consumed for 30 minutes post-injection.
-
-For a comprehensive breakdown of how to cycle these compounds and manage receptor saturation to prevent pituitary fatigue, review our [Peptide Cycle Length Research Guide](/blog/peptide-cycle-length-research-guide).
+Most PEG-MGF data come from preclinical models examining the localized satellite cell response after mechanical damage. Doses and routes studied in published research varied by model; see the primary studies directly.
 
 ---
 
@@ -169,17 +158,17 @@ For a comprehensive breakdown of how to cycle these compounds and manage recepto
 **Are muscle growth peptides steroids?**
 No. Anabolic-Androgenic Steroids (AAS) are synthetic derivatives of testosterone that bind directly to the androgen receptor to force muscle growth. Peptides are simply chains of amino acids that signal the pituitary gland to release growth hormone, or directly introduce growth factors. They do not suppress natural testosterone production.
 
-**Will I lose the muscle if I stop taking the peptides?**
+**Is muscle gained in peptide research models retained after discontinuation?**
 Unlike steroids, which often result in massive "post-cycle" muscle loss due to endocrine shutdown and water retention, the muscle tissue built via peptide-induced hyperplasia (new muscle cells) is generally permanent, provided the subject maintains a sufficient caloric intake and resistance training stimulus.
 
 **What is the difference between CJC-1295 with DAC and without DAC?**
-CJC-1295 *with* DAC has a half-life of 8 days and causes a continuous "bleed" of growth hormone, which is unnatural and causes rapid receptor downregulation. CJC-1295 *without* DAC (Mod GRF 1-29) has a 30-minute half-life, creating a massive, natural pulse of growth hormone that is far safer and more sustainable for long-term cycles.
+CJC-1295 *with* DAC has a half-life of 8 days and causes a continuous "bleed" of growth hormone, which is unnatural and causes rapid receptor downregulation. CJC-1295 *without* DAC (Mod GRF 1-29) has a 30-minute half-life, creating a pulsatile release of growth hormone that more closely mirrors natural physiology.
 
 **Are these peptides legal for athletes?**
 Absolutely not. The World Anti-Doping Agency (WADA) explicitly bans all growth hormone secretagogues (CJC-1295, Ipamorelin, MK-677) and growth factors (IGF-1 LR3, PEG-MGF) under Section S2 of the Prohibited List. 
 
 **Does Ipamorelin increase cortisol?**
-No. Unlike older generation GHRPs like GHRP-2 or GHRP-6, which cause significant and undesirable spikes in both cortisol (the stress hormone) and prolactin, Ipamorelin is highly selective and does not elevate these hormones at standard investigational doses.
+No. Unlike older generation GHRPs like GHRP-2 or GHRP-6, which cause significant and undesirable spikes in both cortisol (the stress hormone) and prolactin, Ipamorelin is highly selective and did not elevate these hormones at the doses studied.
 
 ---
 

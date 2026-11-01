@@ -33,14 +33,14 @@ export default function QuizCTA() {
             Get your custom peptide stack in <span className="em">60 seconds</span>.
           </h2>
           <p className="sec-sub fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>
-            5 quick questions → personalized peptide recommendations backed by published research.
+            3 quick questions → personalized peptide recommendations backed by published research.
           </p>
         </header>
 
         <div className="quiz-card glass fade-up" style={{ '--delay': '320ms' } as React.CSSProperties}>
           <span className="quiz-badge">
             <span className="dot" aria-hidden="true" />
-            5 QUESTIONS · NO ACCOUNT
+            3 QUESTIONS · NO ACCOUNT
           </span>
 
           <div className="quiz-chips">

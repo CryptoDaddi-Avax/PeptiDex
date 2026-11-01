@@ -144,7 +144,7 @@ export default function ToolsClient() {
                         <Link href="/quiz" className="tool-small-card">
                             <HelpCircle />
                             <h3 className="tool-small-title">Find Your Stack</h3>
-                            <p className="tool-small-desc">5-question quiz</p>
+                            <p className="tool-small-desc">3-question quiz</p>
                         </Link>
                     </div>
                 </div>

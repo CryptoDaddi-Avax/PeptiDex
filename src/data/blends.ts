@@ -113,7 +113,7 @@ export const peptideBlends: PeptideBlend[] = [
             { title: "Semax cognitive improvement in humans", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20387390/", summary: "Human trial showing cognitive improvement including enhanced attention and memory.", evidence_level: "moderate" },
             { title: "Selank anxiolytic effects comparable to benzodiazepines", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/19487070/", summary: "Significant anti-anxiety effects without sedation or dependence.", evidence_level: "moderate" },
         ],
-        safety_notes: "Both approved in Russia. Excellent safety profiles. Non-addictive. Nasal spray administration.",
+        safety_notes: "Both approved in Russia. Excellent safety profiles. Non-addictive. Studied mainly as intranasal formulations.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
         outcomes_timeline: {
             week_1: "Rapid cognitive enhancement from Semax; anxiety relief from Selank within days",
@@ -136,7 +136,7 @@ export const peptideBlends: PeptideBlend[] = [
             { title: "CJC-1295 preserves pulsatile GH secretion", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16595882/", summary: "7.5-fold increase in basal GH while preserving natural pulsatile pattern.", evidence_level: "moderate" },
             { title: "Ipamorelin PK/PD in healthy volunteers", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16796559/", summary: "Dose-escalation study showing single-episode GH release.", evidence_level: "moderate" },
         ],
-        safety_notes: "More aggressive than CJC/Ipa alone. GHRP-6 increases appetite and may raise cortisol slightly. Monitor blood glucose. Not FDA-approved.",
+        safety_notes: "More aggressive than CJC/Ipa alone. GHRP-6 increases appetite and may raise cortisol slightly. Changes in blood glucose have been reported with GH secretagogues. Not FDA-approved.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
         outcomes_timeline: {
             week_1: "Pronounced GH flush; increased appetite from GHRP-6; deeper sleep",
@@ -245,7 +245,7 @@ export const peptideBlends: PeptideBlend[] = [
         category_icon: "\u{1F4A4}",
         primary_benefits: "Optimized sleep-phase GH release, deep sleep induction, recovery amplification",
         why_blend: "DSIP promotes deep delta-wave sleep, the phase when GH is naturally released. Ipamorelin amplifies that GH pulse. Together, they maximize the body's most important recovery window.",
-        mechanism: "DSIP modulates the sleep-wake cycle to promote delta-wave (deep) sleep via GABA and serotonin pathways. Ipamorelin triggers selective GH release during this deep sleep phase, amplifying the body's natural nocturnal GH pulse.",
+        mechanism: "DSIP modulates the sleep-wake cycle to promote delta-wave (deep) sleep via GABA and serotonin pathways. Ipamorelin triggers selective GH release via the GHS receptor; the pairing is studied in the context of the body's natural nocturnal GH pulse during deep sleep.",
         key_studies: [
             { title: "DSIP promotes delta sleep in insomniacs", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/6895513/", summary: "DSIP decreased nocturnal awakenings and increased total NREM sleep.", evidence_level: "moderate" },
             { title: "Ipamorelin selective GH release", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9849822/", summary: "Potent, selective GH release without cortisol or prolactin elevation.", evidence_level: "moderate" },

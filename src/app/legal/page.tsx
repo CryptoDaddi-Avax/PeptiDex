@@ -124,8 +124,8 @@ export default function LegalPage() {
                     <p>
                         Most peptides discussed on this platform are <strong>research-only
                         compounds</strong> and are not FDA-approved for human use unless explicitly stated otherwise.
-                        Dosages, protocols, and outcomes described are based on published research and community reports,
-                        not clinical recommendations.
+                        Study designs and outcomes described are based on published research and community reports,
+                        not clinical recommendations. PeptiDex does not provide dosing guidance.
                     </p>
 
                     <h3>No Guarantee of Accuracy</h3>

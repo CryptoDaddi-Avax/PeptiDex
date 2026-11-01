@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { stacks } from "@/data/stacks";
 import {
-    Target, Zap, Syringe, Clock, DollarSign,
+    Target, Zap, DollarSign,
     ChevronRight, ChevronLeft, RotateCcw,
     FlaskConical, ArrowRight, Sparkles, CheckCircle2
 } from "lucide-react";
@@ -54,29 +54,7 @@ const questions: QuizQuestion[] = [
         options: [
             { label: "Complete Beginner", emoji: "🌱", tags: ["beginner"] },
             { label: "Some Research Done", emoji: "📚", tags: ["intermediate"] },
-            { label: "Experienced User", emoji: "🔬", tags: ["advanced"] },
-        ],
-    },
-    {
-        id: "comfort",
-        question: "Injection comfort level?",
-        subtitle: "Some peptides are available as nasal sprays or oral",
-        icon: <Syringe className="w-5 h-5" />,
-        options: [
-            { label: "No injections please", emoji: "🚫", tags: ["oral-nasal"] },
-            { label: "Fine with subcutaneous", emoji: "👌", tags: ["subq"] },
-            { label: "I'll do whatever works best", emoji: "💉", tags: ["any-route"] },
-        ],
-    },
-    {
-        id: "timeline",
-        question: "How soon do you need results?",
-        subtitle: "Realistic timelines help set expectations",
-        icon: <Clock className="w-5 h-5" />,
-        options: [
-            { label: "Next 2-4 weeks", emoji: "⚡", tags: ["fast"] },
-            { label: "1-3 months", emoji: "📈", tags: ["medium"] },
-            { label: "Long-term optimization", emoji: "♾️", tags: ["long-term"] },
+            { label: "Experienced Researcher", emoji: "🔬", tags: ["advanced"] },
         ],
     },
     {
@@ -275,14 +253,14 @@ export default function QuizPage() {
                     >
                         <div className="text-center mb-8">
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-3">
-                                <Sparkles className="w-3.5 h-3.5" /> Your Personalized Results
+                                <Sparkles className="w-3.5 h-3.5" /> Your Quiz Results
                             </div>
                             <h1 className="text-2xl font-bold text-zinc-100 mb-2">
-                                {results.length > 0 ? "We Found Your Ideal Stack" : "No Perfect Match"}
+                                {results.length > 0 ? "Research Stacks Matching Your Interests" : "No Perfect Match"}
                             </h1>
                             <p className="text-sm text-zinc-400">
                                 {results.length > 0
-                                    ? `Based on your answers, here ${results.length === 1 ? "is" : "are"} your top ${Math.min(results.length, 3)} recommendation${results.length > 1 ? "s" : ""}`
+                                    ? `Based on your answers, here ${results.length === 1 ? "is" : "are"} the top ${Math.min(results.length, 3)} matching research stack${results.length > 1 ? "s" : ""}`
                                     : "Try adjusting your goals for more specific results"
                                 }
                             </p>
@@ -356,10 +334,10 @@ export default function QuizPage() {
                                 </div>
                                 
                                 <h2 className="text-2xl font-bold text-zinc-100 mb-2 relative z-10 text-center">
-                                    Get started with your {results[0].stack.stack_name.replace('Stack', '').trim()} stack
+                                    Where to source the {results[0].stack.stack_name.replace('Stack', '').trim()} research stack
                                 </h2>
                                 <p className="text-[15px] text-zinc-400 max-w-lg mx-auto mb-8 relative z-10 text-center leading-relaxed">
-                                    Sourcing is everything. Here are the exact products we recommend to confidently run your personalized protocol.
+                                    Vendors carrying the compounds in this research stack.
                                 </p>
                                 
                                 <div className="space-y-3 mb-8 relative z-10">
@@ -392,6 +370,9 @@ export default function QuizPage() {
                                 </div>
                                 
                                 <div className="relative z-10 space-y-4 pt-4 border-t border-zinc-800/50">
+                                    <p className="text-xs text-zinc-400 text-center font-medium">
+                                        Sold for laboratory research use only — not for human consumption.
+                                    </p>
                                     <AffiliateLink
                                         href={buildAffiliateUrl(PRIMARY_PROMO, "quiz_full_stack_cta")}
                                         vendor="amino_club"

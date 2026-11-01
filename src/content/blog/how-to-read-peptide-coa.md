@@ -122,13 +122,13 @@ When you look at the mass spectrometry graph for a batch of BPC-157, the primary
 
 If a vendor provides an HPLC graph but refuses to provide Mass Spectrometry data, do not purchase from them. 
 
-## 4. Net Content Verification (Dosing Accuracy)
+## 4. Net Content Verification (Label Accuracy)
 
 A relatively new but crucial addition to premium COAs is quantitative analysis for absolute mass. 
 
 Because lyophilized peptides require binding agents (like mannitol or glycine) to form a stable "puck" in the vial, the physical powder in a 5mg vial usually weighs much more than 5mg. How do you know there is actually 5mg of the active peptide inside that powder?
 
-Unscrupulous vendors frequently "under-dose" vials to save money. A vial labeled as 10mg of [BPC-157](/library/bpc-157) might only contain 4mg of the active compound. If your research protocol dictates a highly specific microgram dose, an under-dosed vial will completely skew your data.
+Unscrupulous vendors frequently "under-dose" vials to save money. A vial labeled as 10mg of [BPC-157](/library/bpc-157) might only contain 4mg of the active compound. Any research that depends on a known quantity of compound will be skewed by an under-filled vial.
 
 Premium independent testing (often requested by top-tier vendors) will state the **Net Peptide Content** or absolute mass per vial. The COA should explicitly state: "Sample contained 5.12mg of active compound per vial."
 
@@ -137,10 +137,10 @@ Premium independent testing (often requested by top-tier vendors) will state the
 For advanced research involving biological models, standard purity and identity testing may not be sufficient. Researchers often require two additional tests:
 
 ### TFA (Trifluoroacetic Acid) Testing
-TFA is a highly corrosive acid used to cleave the peptide from the resin bead during synthesis. If the laboratory does not perform a proper salt exchange (converting the TFA salt to a safer acetate salt) or wash the peptide thoroughly, residual TFA remains in the vial. Injecting high levels of TFA causes acute cellular toxicity and severe localized tissue necrosis. Premium COAs will indicate TFA levels are below an acceptable threshold (typically <1%).
+TFA is a highly corrosive acid used to cleave the peptide from the resin bead during synthesis. If the laboratory does not perform a proper salt exchange (converting the TFA salt to a safer acetate salt) or wash the peptide thoroughly, residual TFA remains in the vial. High residual TFA has been associated with acute cellular toxicity and severe localized tissue necrosis. Premium COAs will indicate TFA levels are below an acceptable threshold (typically <1%).
 
 ### Endotoxin Testing
-Endotoxins are toxic components of bacterial cell walls. If a peptide is synthesized in a non-sterile environment or reconstituted with contaminated water, endotoxins will proliferate. Injecting endotoxins causes a massive, dangerous immune response (pyrogenic shock). Endotoxin testing (often via the LAL assay) ensures the lyophilized powder is sterile. 
+Endotoxins are toxic components of bacterial cell walls. If a peptide is synthesized or handled in a non-sterile environment, endotoxin contamination can occur. Endotoxin exposure can trigger a massive, dangerous immune response (pyrogenic shock). Endotoxin testing (often via the LAL assay) ensures the lyophilized powder is sterile. 
 
 ## Spotting Forged Documents: The Red Flags
 
@@ -171,8 +171,8 @@ No. Verifying the purity and identity of a peptide requires highly specialized, 
 **Why does my peptide look like a solid puck instead of powder?**
 During the lyophilization (freeze-drying) process, the peptide is mixed with a stabilizing agent (typically mannitol). When the moisture is removed in a vacuum, the substance forms a solid, porous "puck" at the bottom of the vial. This is a sign of standard manufacturing, not a defect.
 
-**If the COA says 99% pure, why did the peptide arrive cloudy?**
-A peptide should reconstitute completely clear. If a 99% pure peptide turns cloudy or milky when reconstituted, it means the peptide has degraded due to heat exposure during shipping, the diluent is contaminated, or the pH balance of the solution is incorrect. Do not use cloudy solutions.
+**If the COA says 99% pure, why might the material look degraded?**
+A COA reflects the batch at the time it was tested, not its condition after transit. Discoloration or cloudiness can indicate that the peptide has degraded (for example, from heat exposure during shipping), has been contaminated, or has a pH problem. This is one reason recent, batch-specific testing and proper cold-chain shipping matter.
 
 **How do I contact MZ Biolabs to verify a COA?**
 MZ Biolabs provides a unique verification code or document number on every COA they issue. You can visit their official website and email their support team with the document number, and they will confirm if the document is authentic and unaltered.

@@ -84,7 +84,7 @@ export const citationMap: Record<string, FieldCitations> = {
     // → PMID 20225319: "BPC-157 and neuroprotection" — functional recovery in stroke/spinal models
     outcome_month_2_3: ['20225319'],
 
-    // "Maintenance doses for chronic conditions; long-term safety profile clean..."
+    // outcomes_timeline.long_term (long-term safety context)
     outcome_long_term: ['41476424'],
   },
 

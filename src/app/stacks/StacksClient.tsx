@@ -46,11 +46,11 @@ export default function StacksClient() {
                     <div className="breadcrumb">
                         <Link href="/">Home</Link><span className="sep">/</span><span className="current">Stacks</span>
                     </div>
-                    <div className="section-label">§ Curated Protocols</div>
+                    <div className="section-label">§ Curated Stacks</div>
                     <h1 className="page-title">{stacks.length} expert-curated <em>stacks</em>.</h1>
-                    <p className="page-subtitle">Each protocol is built around a specific outcome, dosed against published literature, and cross-referenced with sourcing data. Pick a goal, get a stack, plan a cycle.</p>
+                    <p className="page-subtitle">Each stack groups compounds studied for a shared research area, cross-referenced with published literature and sourcing data.</p>
                     <div className="page-meta">
-                        <div className="page-meta-item"><strong>{stacks.length}</strong> protocols</div>
+                        <div className="page-meta-item"><strong>{stacks.length}</strong> stacks</div>
                         <div className="page-meta-item"><strong>{stacks.length}</strong> goal categories</div>
                         <div className="page-meta-item"><strong>Updated</strong> for 2026</div>
                     </div>
@@ -176,7 +176,7 @@ export default function StacksClient() {
                         Try the <em className="text-gold italic">Stack Quiz</em>.
                     </h3>
                     <p style={{ color: 'var(--ink-dim)', fontSize: '16px', lineHeight: 1.6, maxWidth: '680px', marginBottom: '24px' }}>
-                        Answer five quick questions about your research interests and see which stacks the published literature covers. Free and instant.
+                        Answer three quick questions about your research interests and see which stacks the published literature covers. Free and instant.
                     </p>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                         <Link href="/quiz" className="btn-primary">

@@ -123,7 +123,7 @@ export default function EditorialPolicyPage() {
           <ul className="space-y-2 ml-4">
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 flex-shrink-0" />
-              <span><strong className="text-zinc-100">Quarterly Reviews:</strong> All peptide profiles are reviewed every 90 days for new publications, updated dosing data, and regulatory changes.</span>
+              <span><strong className="text-zinc-100">Quarterly Reviews:</strong> All peptide profiles are reviewed every 90 days for new publications, updated study data, and regulatory changes.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 flex-shrink-0" />

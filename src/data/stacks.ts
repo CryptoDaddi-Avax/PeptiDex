@@ -29,7 +29,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
             { name: "BPC-157", role_in_stack: "Primary tissue repair driver — promotes massive angiogenesis, collagen deposition, and cellular migration at injury sites" },
             { name: "TB-500", role_in_stack: "Complements BPC-157 by upregulating actin to rapidly increase cellular motility and reduce fibrotic scar tissue formation" },
         ],
-        synergy_rationale: "The undisputed 'Wolverine Stack.' BPC-157 acts systemically to build new blood vessel networks (angiogenesis) to feed injured tissues, while TB-500 hyper-accelerates the movement of repair cells to the site. Taking these two together is the gold standard for musculoskeletal repair.",
+        synergy_rationale: "The undisputed 'Wolverine Stack.' BPC-157 acts systemically to build new blood vessel networks (angiogenesis) to feed injured tissues, while TB-500 hyper-accelerates the movement of repair cells to the site. The two are frequently discussed together because their mechanisms are complementary in preclinical repair models.",
         supporting_studies: [
             { description: "BPC-157 tendon, ligament, and gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
             { description: "TB-500 stimulates cell migration and angiogenesis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9194528/" },
@@ -56,7 +56,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
             { name: "Ipamorelin", role_in_stack: "Creates massive, selective GH pulses to spike anabolic signaling without simultaneously increasing cortisol or prolactin" },
             { name: "IGF-1 LR3", role_in_stack: "Drives direct muscle cell hyperplasia (creation of entirely new muscle fibers) beyond normal hypertrophy" },
         ],
-        synergy_rationale: "Combining a GHRH (CJC-1295) with a GHRP (Ipamorelin) creates a synergistic 10x multiplier on natural GH release compared to taking either alone. Adding IGF-1 LR3 takes advantage of that GH environment by forcing the body to multiply muscle cells, removing the genetic ceiling on muscle size.",
+        synergy_rationale: "Combining a GHRH (CJC-1295) with a GHRP (Ipamorelin) creates a synergistic 10x multiplier on natural GH release compared to either alone. Adding IGF-1 LR3 takes advantage of that GH environment by forcing the body to multiply muscle cells, removing the genetic ceiling on muscle size.",
         supporting_studies: [
             { description: "Synergistic GH release from GHRH + GHRP combos", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
             { description: "Ipamorelin highly selective GH pulse", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
@@ -124,7 +124,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
             { name: "BPC-157", role_in_stack: "Originally discovered in gastric juice — uniquely adapted to rapidly repair ulcers, fistulas, and intestinal mucosal damage" },
             { name: "KPV", role_in_stack: "An ultra-potent local anti-inflammatory that specifically suppresses the NF-κB pathways driving inflammatory bowel conditions" },
         ],
-        synergy_rationale: "BPC-157 handles the physical, structural repair of the tight junctions in the gut lining (stopping 'leaky gut'). KPV acts as the fire extinguisher, shutting down the chronic localized inflammation (like Crohn's or colitis) that caused the damage in the first place.",
+        synergy_rationale: "BPC-157 handles the physical, structural repair of the tight junctions in the gut lining (stopping 'leaky gut'). KPV acts as the fire extinguisher, shutting down the chronic localized inflammation that caused the damage in the first place.",
         supporting_studies: [
             { description: "BPC-157 profound gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030672/" },
             { description: "KPV anti-inflammatory activity in IBD models", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18061177/" },
@@ -138,7 +138,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
             { name: "CJC-1295", role_in_stack: "Provides the sustained Growth Hormone elevation required to complement testosterone's anabolic effects" },
             { name: "Ipamorelin", role_in_stack: "Triggers GH release without raising cortisol (which would otherwise suppress natural testosterone production)" },
         ],
-        synergy_rationale: "Kisspeptin-10 directly turns the body's natural testosterone factory back on (unlike TRT, which shuts it down). CJC and Ipamorelin run in the background to elevate GH/IGF-1 — because testosterone and GH act synergistically to drive male vitality and body composition. Ipamorelin is specifically chosen because it does not spike cortisol.",
+        synergy_rationale: "Kisspeptin-10 directly turns the body's natural testosterone factory back on (unlike TRT, which shuts it down). CJC-1295 and Ipamorelin elevate GH/IGF-1 — because testosterone and GH act synergistically to drive male vitality and body composition. Ipamorelin is specifically chosen because it does not spike cortisol.",
         supporting_studies: [
             { description: "Kisspeptin-10 stimulates LH and testosterone", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16174713/" },
             { description: "Synergistic GH release effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },

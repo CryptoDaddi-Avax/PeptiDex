@@ -80,7 +80,7 @@ function generateMechanismProse(a: Peptide, b: Peptide): { htmlA: string; htmlB:
 function generateFAQs(a: Peptide, b: Peptide, pair: ComparisonPair): { q: string; a: string }[] {
   const faqs: { q: string; a: string }[] = [];
 
-  // FAQ 1: Can they be combined?
+  // FAQ 1: Interaction-database status for the pair
   const aInteractions = a.interactions;
   const bInteractions = b.interactions;
   let interactionAnswer: string;
@@ -96,17 +96,17 @@ function generateFAQs(a: Peptide, b: Peptide, pair: ComparisonPair): { q: string
   const aNameLower = a.name.toLowerCase();
 
   if (aContra.includes(bNameLower) || bContra.includes(aNameLower)) {
-    interactionAnswer = `No — ${a.name} and ${b.name} are flagged as contraindicated in interaction databases. They should not be combined due to overlapping receptor activity or safety concerns.`;
+    interactionAnswer = `${a.name} and ${b.name} are flagged as contraindicated in interaction databases due to overlapping receptor activity or safety concerns. See the published research on each compound.`;
   } else if (aCautions.includes(bNameLower) || bCautions.includes(aNameLower)) {
-    interactionAnswer = `Use caution. ${a.name} and ${b.name} have overlapping mechanisms that interaction databases flag for caution when combined. Review the published research on each compound before combining.`;
+    interactionAnswer = `${a.name} and ${b.name} have overlapping mechanisms that interaction databases flag for caution. See the published research on each compound.`;
   } else if (aSynergies.includes(bNameLower) || bSynergies.includes(aNameLower)) {
-    interactionAnswer = `Yes — ${a.name} and ${b.name} are identified as synergistic in interaction databases. They operate through complementary mechanisms and are commonly studied together.`;
+    interactionAnswer = `${a.name} and ${b.name} are listed as complementary (synergistic) in interaction databases based on their mechanisms. See the published research on each compound.`;
   } else {
-    interactionAnswer = `No direct interaction data is available for this specific pair. They target different receptor systems, suggesting they could potentially be combined, but no published study validates this combination.`;
+    interactionAnswer = `No direct interaction data is available for this specific pair, and no published study evaluating the two together is indexed here.`;
   }
 
   faqs.push({
-    q: `Can ${a.name} and ${b.name} be combined?`,
+    q: `What does interaction data show for ${a.name} and ${b.name}?`,
     a: interactionAnswer,
   });
 

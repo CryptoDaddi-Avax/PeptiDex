@@ -138,7 +138,7 @@ Purchasing from a domestic vendor who has already successfully imported the raw 
 Legitimate research vendors understand the laws governing their industry, and their website presentation reflects this understanding. They will strictly use research-oriented language. 
 
 If you visit a vendor's website and see them:
-- Providing human dosing protocols (e.g., "Take 250mcg twice daily")
+- Providing human dosing instructions
 - Promising "miracle weight loss" or "rapid muscle growth"
 - Selling "stacks for bodybuilding"
 - Using images of muscular athletes or fitness models

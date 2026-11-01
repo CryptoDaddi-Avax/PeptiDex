@@ -58,7 +58,7 @@ export const eeatNotes: Record<string, EEATNote> = {
 
   'cjc-1295': {
     paragraphs: [
-      `CJC-1295 is the GHRH analog I recommend for sustained GH release protocols — the DAC (Drug Affinity Complex) version binds to albumin and extends the half-life to 6-8 days, which means once-weekly dosing actually produces stable GH elevation.`,
+      `CJC-1295 is the GHRH analog I track for sustained GH release research — the DAC (Drug Affinity Complex) version binds to albumin and extends the half-life to 6-8 days, and once-weekly administration in the cited trial produced stable GH elevation.`,
       `Amino Club batch CIP0001 verified at 99.940% purity via Biogenica Labs — the highest purity in my entire COA dataset across all peptides. At $47.99/10mg after the PEPTIDEX code ($4.80/mg), it's reasonably priced for a modified peptide of this complexity. COA PDF linked below.`,
       `The Ipamorelin + CJC-1295 combination is the most commonly discussed GH-axis stack in the research community — CJC-1295 provides the sustained GHRH signal while ipamorelin delivers pulsatile GH secretagogue activity. Different mechanisms, complementary pharmacology.`,
     ],
@@ -69,7 +69,7 @@ export const eeatNotes: Record<string, EEATNote> = {
 
   'ipamorelin': {
     paragraphs: [
-      `Ipamorelin is the GH secretagogue I recommend over GHRP-2 and GHRP-6 for a simple reason: it's selective. Ipamorelin triggers pulsatile GH release without the cortisol and prolactin spikes that make the GHRP family problematic for extended protocols.`,
+      `Ipamorelin is the GH secretagogue I recommend over GHRP-2 and GHRP-6 for a simple reason: it's selective. Ipamorelin triggers pulsatile GH release without the cortisol and prolactin spikes that make the GHRP family problematic in longer-duration studies.`,
       `Amino Club batch IPA0001 verified at 99.810% HPLC purity via Biogenica Labs with MW at 711.9 Da. At a molecular weight of only 711.9 Da, ipamorelin is a pentapeptide that's straightforward to synthesize at high purity, which is why I expect consistent quality across reputable vendors. COA PDF linked below.`,
       `The clinical data from Andersen et al. showed dose-dependent GH release in human subjects without significant effects on cortisol, ACTH, prolactin, or insulin. That selectivity profile is what makes it the default GH secretagogue for research stacks.`,
     ],
@@ -126,7 +126,7 @@ export const eeatNotes: Record<string, EEATNote> = {
     paragraphs: [
       `5-Amino-1MQ is the NNMT inhibitor I've been tracking for its novel mechanism — it doesn't work through traditional appetite suppression pathways. Instead, it targets nicotinamide N-methyltransferase, an enzyme that when inhibited, shifts cellular metabolism toward higher energy expenditure.`,
       `The Neelakantan et al. 2022 study in Biochemical Pharmacology demonstrated significant fat mass reduction in diet-induced obese mice without affecting lean mass or food intake. That selectivity — fat loss without appetite suppression — is what makes the NNMT pathway interesting as a research target.`,
-      `Amino Club batch AMQ0001 verified at 99.710% purity via Biogenica Labs. Some vendors sell 5-Amino-1MQ as an oral capsule rather than injectable, which changes the bioavailability calculations. COA PDF for batch AMQ0001 linked below.`,
+      `Amino Club batch AMQ0001 verified at 99.710% purity via Biogenica Labs. Some vendors sell 5-Amino-1MQ as an oral capsule rather than injectable, which changes the bioavailability profile. COA PDF for batch AMQ0001 linked below.`,
     ],
     coaReference: 'AMQ0001',
     disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Amino Club and Bio Longevity Labs both carry 5-Amino-1MQ.`,

@@ -14,7 +14,7 @@ import { getAuthorSlug } from '@/data/authors';
 import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Peptide Stacking in 2026: Why Combination Protocols Are Redefining Results';
-const POST_DESC = 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and how to combine compounds effectively.';
+const POST_DESC = 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and what published research says about combining compounds.';
 const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-13';
 const DATE_MOD = '2026-04-13';
@@ -91,7 +91,7 @@ const faqSchema = {
       name: 'Can you stack two growth hormone-releasing hormone (GHRH) peptides together?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'It is typically not recommended. Stacking two peptides that act on the same pathway (like pairing Tesamorelin with CJC-1295) can result in competitive binding for the same receptor sites, potentially reducing the overall GH secretion effectiveness compared to single-agent dosing or cross-pathway stacks.',
+        text: 'It is typically not recommended. Stacking two peptides that act on the same pathway (like pairing Tesamorelin with CJC-1295) can result in competitive binding for the same receptor sites, potentially reducing the overall GH secretion effectiveness compared to single-agent use or cross-pathway stacks.',
       },
     },
     {
@@ -104,7 +104,7 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'Why should I stack Semax and Selank together?',
+      name: 'Why are Semax and Selank studied together?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'This cognitive stack addresses both focus and emotional regulation. Semax aims to enhance BDNF and cognitive performance, while Selank provides anxiolytic properties—helping manage the stress or anxiety that can otherwise diminish cognitive output.',
@@ -147,7 +147,7 @@ const STACKS = [
 
 const GUIDING_PRINCIPLES = [
   { title: 'Pathway Differentiation', desc: 'Peptides that work through the same receptor can compete with each other, reducing effectiveness. Always activate complementary pathways.' },
-  { title: 'Timing & Sequencing', desc: 'Administering a GHRP 15-20 minutes before a GHRH analog primes the pituitary. Simply injecting everything at once isn\'t always optimal.' },
+  { title: 'Timing & Sequencing', desc: 'Study designs have examined sequencing of GHRP and GHRH administration.' },
   { title: 'Less Can Be More', desc: 'Adding a third or fourth peptide introduces complexity without guaranteed benefit. The most effective protocols often pair two well-matched compounds.' },
   { title: 'Data is Non-Negotiable', desc: 'Stacking should be guided by lab work: baseline and follow-up panels for IGF-1, inflammatory markers, and hormonal profiles.' }
 ];
@@ -178,7 +178,7 @@ export default function PeptideStackingArticle() {
             Peptide Stacking in 2026:<br /><em>Why Combination Protocols Are Redefining Results</em>.
           </h1>
           <p className="page-subtitle">
-            A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and how to combine compounds effectively.
+            A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and what published research says about combining compounds.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">

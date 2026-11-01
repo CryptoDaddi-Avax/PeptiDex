@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Peptide 101   Beginner's Learning Path",
-    description: "Learn everything about peptides from scratch. 5 structured modules, 20 lessons, and 15 quizzes covering safety, mechanisms, dosing, stacking, and legal status. Track your progress as you go.",
-    keywords: ["peptide beginner guide", "how to use peptides", "peptide 101", "learn about peptides", "peptide education", "peptide stacking guide"],
+    description: "Learn the basics of peptides from scratch. 3 structured modules, 12 lessons, and 9 quiz questions covering peptide chemistry, mechanisms, safety, and sourcing. Track your progress as you go.",
+    keywords: ["peptide beginner guide", "peptide basics", "peptide 101", "learn about peptides", "peptide education", "peptide research guide"],
     openGraph: {
         title: "Peptide 101   Complete Beginner's Learning Path | PeptiDex",
-        description: "5 structured modules, 20 lessons and 15 quizzes covering everything you need to know about research peptides   from safety basics to advanced stacking.",
+        description: "3 structured modules, 12 lessons and 9 quiz questions covering the fundamentals of research peptides, from amino acid basics to safety and sourcing.",
         type: "website",
     },
 };

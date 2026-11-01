@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Peptide 101 — Research Methodology Reference | PeptiDex',
     description:
-      'Structured introduction to peptide research. Beginner, Practical, and Sourcing tracks — 17 lessons covering science, regulation, and COA verification.',
+      'Structured introduction to peptide research. Beginner, Practical, and Sourcing tracks — 14 lessons covering science, regulation, and COA verification.',
     url: 'https://peptidex.app/intro',
     type: 'website',
     images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Peptide 101 — Research Methodology Reference | PeptiDex',
     description:
-      'Three-track structured introduction: Beginner (5 lessons), Practical (7 lessons), Sourcing (5 lessons).',
+      'Three-track structured introduction: Beginner (5 lessons), Practical (4 lessons), Sourcing (5 lessons).',
   },
 };
 
@@ -61,8 +61,8 @@ const howToSchema = {
   url: 'https://peptidex.app/intro',
   hasCourseInstance: [
     { '@type': 'CourseInstance', name: 'Beginner Track', description: 'Peptide fundamentals, terminology, and regulatory landscape. 5 lessons, ~30 minutes.' },
-    { '@type': 'CourseInstance', name: 'Practical Track', description: 'Routes of administration, dosing, cycles, stacks, and reading clinical trials. 7 lessons, ~50 minutes.' },
-    { '@type': 'CourseInstance', name: 'Sourcing Track', description: 'COA verification, vendor red flags, and legal context. 5 lessons, ~35 minutes.' },
+    { '@type': 'CourseInstance', name: 'Practical Track', description: 'How compounds are studied in published research: combinations examined in studies, reading clinical trials, biomarkers, and risk profiles. 4 lessons, ~30 minutes.' },
+    { '@type': 'CourseInstance', name: 'Sourcing Track', description: 'COA verification, vendor red flags, and legal context. 5 lessons, ~40 minutes.' },
   ],
 };
 

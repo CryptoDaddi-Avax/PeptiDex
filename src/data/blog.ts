@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: 'Peptide Stacking in 2026: Why Combination Protocols Are Redefining Results',
     slug: 'peptide-stacking-2026-combination-protocols',
-    excerpt: 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and how to combine compounds effectively.',
+    excerpt: 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and what published research says about combining compounds.',
     category: 'Science Explainers',
     datePublished: '2026-04-13',
     dateModified: '2026-04-13',
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: 'CJC-1295 vs Sermorelin: GHRH Analog Comparison',
     slug: 'cjc-1295-vs-sermorelin',
-    excerpt: 'A research-backed comparison of CJC-1295 and Sermorelin — two GHRH analogs for growth hormone optimization. DAC vs no-DAC, dosing, and clinical outcomes.',
+    excerpt: 'A research-backed comparison of CJC-1295 and Sermorelin — two GHRH analogs for growth hormone optimization. DAC vs no-DAC, half-life, and clinical outcomes.',
     category: 'Science Explainers',
     datePublished: '2026-04-12',
     dateModified: '2026-04-12',
@@ -148,20 +148,6 @@ export const blogPosts: BlogPost[] = [
     image: '/images/blog/cjc_vs_sermorelin.png',
     imageAlt: 'Pituitary gland receiving different growth hormone releasing signals demonstrating CJC-1295 vs Sermorelin mechanisms',
     tags: ['cjc-1295', 'sermorelin', 'ghrh', 'growth hormone', 'comparison', 'dac', 'anti-aging'],
-  },
-  {
-    title: 'Peptide Cycle Length: A Complete Research Guide for 2026',
-    slug: 'peptide-cycle-length-research-guide',
-    excerpt: 'A comprehensive scientific guide to peptide cycle lengths. We explain receptor downregulation, angiogenic risks, and how to safely cycle BPC-157, TB-500, and secretagogues.',
-    category: 'Science Explainers',
-    datePublished: '2026-04-30',
-    dateModified: '2026-04-30',
-    lastFactChecked: '2026-04-30',
-    author: 'PeptiDex Editorial',
-    readingTime: '16 Min Read',
-    image: '/images/blog/peptide_stacking_guide.png',
-    imageAlt: 'Glowing molecular test tubes visualizing a peptide stacking protocol for safe combination research',
-    tags: ['peptide cycle length research guide', 'cycle length', 'bpc-157', 'receptor downregulation', 'cjc-1295', 'protocols'],
   },
   {
     title: 'MOTS-c: The Mitochondrial Peptide for Energy & Metabolism',

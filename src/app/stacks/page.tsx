@@ -3,7 +3,7 @@ import StacksClient from "./StacksClient";
 
 export const metadata: Metadata = {
   title: "Best Peptide Stacks 2026",
-  description: "Explore curated, research-backed peptide stacks for body recomposition, muscle growth, & recovery. Learn the synergistic protocols used by the community.",
+  description: "Explore curated, research-backed peptide stacks for body recomposition, muscle growth, & recovery, with compound roles and cited studies.",
   alternates: {
     canonical: "https://peptidex.app/stacks",
     languages: {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Best Peptide Stacks 2026 — Research-Backed Protocols",
+    title: "Best Peptide Stacks 2026 — Research-Backed Combinations",
     description: "Curated, research-backed peptide stacks for body recomposition, muscle growth & recovery. Synergistic combinations with compound roles and evidence levels.",
     url: "https://peptidex.app/stacks",
     type: "website",

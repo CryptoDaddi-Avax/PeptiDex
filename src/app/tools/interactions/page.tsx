@@ -43,7 +43,7 @@ const schemaJsonLd = {
         "PubMed-cited evidence for each interaction pair",
         "Alternative compound suggestions on conflicts",
         "One-click vendor price comparison for the selected stack",
-        "52+ interaction pairs in database",
+        "35+ interaction pairs in database",
       ],
     },
     {

@@ -95,7 +95,7 @@ Despite maintaining the highest testing standards in the industry, Elyria Bio re
 
 Shipping biological and chemical compounds requires speed and temperature stability. Elyria Bio operates their fulfillment out of the United States, meaning domestic researchers avoid the weeks-long delays and potential seizure risks associated with ordering from overseas wholesalers. Typical delivery times are 2-4 business days, and they utilize discrete, temperature-stable packaging for fragile compounds.
 
-For researchers studying delicate sequences like [BPC-157](/library/bpc-157) or [TB-500](/library/tb-500), this domestic supply chain is critical to preserving compound integrity before reconstitution.
+For researchers studying delicate sequences like [BPC-157](/library/bpc-157) or [TB-500](/library/tb-500), this domestic supply chain is critical to preserving compound integrity in transit.
 
 ## #2 Amino Club
 
@@ -140,7 +140,7 @@ Not every vendor that looks professional is trustworthy. The proliferation of Sh
 - **Suspiciously low prices:** If a compound is 50%+ cheaper than every major competitor, the purity is compromised. Quality synthesis and independent testing are expensive.
 - **Round purity numbers:** Real analytical testing produces decimal values (e.g., 99.4%). COAs showing exactly "99.00%" are often forged.
 - **No batch/lot numbers:** If a certificate lacks a lot number, traceability is impossible.
-- **Medical Marketing:** Vendors selling "stacks for bodybuilding" or providing human dosing protocols are actively violating FDA marketing regulations for research-use-only compounds, indicating a fundamentally unstable business model.
+- **Medical Marketing:** Vendors selling "stacks for bodybuilding" or providing human dosing instructions are actively violating FDA marketing regulations for research-use-only compounds, indicating a fundamentally unstable business model.
 
 ## Securing the Best Value for Your Lab
 

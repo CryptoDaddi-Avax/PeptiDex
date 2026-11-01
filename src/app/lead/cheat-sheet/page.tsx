@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: '2026 Peptide Stack Cheat Sheet',
     description: `${stacks.length} research peptide stacks organized by goal, with each compound's role, evidence level, and links to cited research. Your free printable reference guide.`,
     alternates: { canonical: 'https://peptidex.app/lead/cheat-sheet' },
+    robots: { index: false, follow: true },
 };
 
 function getEvidence(peptideName: string) {

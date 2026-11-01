@@ -185,13 +185,13 @@ export default function GHKCuArticle() {
         </p>
 
         <div className="section-label mt-12 mb-2">§ 04</div>
-          <h2>How Is GHK-Cu Used?</h2>
+          <h2>How Is GHK-Cu Formulated?</h2>
         <p>GHK-Cu is available in two primary forms.</p>
         <p>
           <strong>Topical</strong> formulations — serums and creams — are the most accessible option. Look for products listing &quot;Copper Tripeptide-1&quot; in their ingredient panel, which is the INCI name for GHK-Cu. Topical delivery is best suited for skin-focused goals like improving elasticity, reducing fine lines, and supporting overall complexion quality. Concentrations in the range of 2–4% are common in the consumer market.
         </p>
         <p>
-          <strong>Injectable</strong> formulations are used in clinical and research contexts. Subcutaneous administration allows the peptide to enter systemic circulation, which is relevant for its broader regenerative and anti-inflammatory effects beyond the skin. This route is typically overseen by medical professionals within the context of peptide therapy protocols.
+          <strong>Injectable</strong> formulations have been examined in clinical and research contexts. Studies using subcutaneous administration looked at the peptide in systemic circulation, which is relevant to its broader regenerative and anti-inflammatory effects beyond the skin. Doses studied in published research varied by model and route; see the cited studies.
         </p>
 
         <div className="section-label mt-12 mb-2">§ 05</div>

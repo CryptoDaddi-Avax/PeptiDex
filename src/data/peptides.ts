@@ -1020,7 +1020,7 @@ export const peptides: Peptide[] = [
       cautions: [],
       contraindicated: [],
       notes:
-        "Follistatin + IGF-1 LR3 for maximum growth (hyperplasia + myostatin block). Advanced only.",
+        "Follistatin + IGF-1 LR3 has been discussed for combined myostatin blockade and IGF-1 signaling (hyperplasia).",
     },
     outcomes_timeline: {
       week_2_4: "Initial myostatin inhibition; muscle fullness and pumps",
@@ -1367,7 +1367,7 @@ export const peptides: Peptide[] = [
       cautions: ["GHRP-6", "Hexarelin"],
       contraindicated: [],
       notes:
-        "GHRP-2 + CJC-1295 is a top-tier GH stack. Do not combine with other GHRPs (receptor saturation). Choose GHRP-2 over GHRP-6 if appetite stimulation is unwanted.",
+        "GHRP-2 + CJC-1295 is a top-tier GH stack. Do not combine with other GHRPs (receptor saturation). GHRP-2 produces less appetite stimulation than GHRP-6.",
     },
     outcomes_timeline: {
       week_1:
@@ -1523,7 +1523,7 @@ export const peptides: Peptide[] = [
         {
                 title: "Subchronic safety assessment of CIGB-500 in beagle dog after repeated daily dose administration over 28 days.",
                 pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/40024561/",
-                summary: "A 2025 study found that daily intravenous administration of CIGB-500, or GHRP-6, was well-tolerated in beagle dogs over 28 days. Researchers demonstrated that doses up to 2000 μg/kg/day produced only transient, non-adverse effects, establishing this as the no observable adverse effect level.",
+                summary: "A 2025 study found that repeated intravenous administration of CIGB-500, or GHRP-6, was well-tolerated in beagle dogs over 28 days. Researchers reported only transient, non-adverse effects even at high doses in this dog toxicology study, establishing a no observable adverse effect level.",
                 evidence_level: "preclinical"
             },
         {
@@ -1555,7 +1555,7 @@ export const peptides: Peptide[] = [
       cautions: ["Ipamorelin"],
       contraindicated: [],
       notes:
-        "GHRP-6 + CJC-1295 produces synergistic GH release. Generally not stacked with Ipamorelin (redundant GHRP receptor occupancy). Choose one GHRP per protocol.",
+        "GHRP-6 + CJC-1295 produces synergistic GH release. Generally not stacked with Ipamorelin (redundant GHRP receptor occupancy).",
     },
     outcomes_timeline: {
       week_1:
@@ -1733,7 +1733,7 @@ export const peptides: Peptide[] = [
             }
     ],
     safety_notes:
-      "Excellent safety profile. Used clinically for decades. IV and SubQ routes well-tolerated. Rare allergic reactions possible. May reduce effectiveness of some chemotherapy drugs — avoid during cancer treatment without oncologist approval.",
+      "Excellent safety profile. Used clinically for decades. IV and SubQ routes well-tolerated in published studies. Rare allergic reactions possible. May reduce the effectiveness of some chemotherapy drugs, a recognized interaction concern in cancer treatment.",
     half_life_hours: 2,
     route_studied: "SubQ",
     interactions: {
@@ -1813,7 +1813,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "Most potent but least selective GHRP. Significant cortisol and prolactin elevation limits chronic use. Develops tachyphylaxis within 4-8 weeks requiring mandatory cycling. Cardioprotective properties make it uniquely valuable for cardiac research. Not FDA-approved.",
+      "Most potent but least selective GHRP. Significant cortisol and prolactin elevation limits chronic use. Tachyphylaxis (desensitization) has been reported with continuous administration in published studies. Cardioprotective properties make it uniquely valuable for cardiac research. Not FDA-approved.",
     half_life_hours: 0.9,
     is_fda_approved: false,
     route_studied: "SubQ",
@@ -1822,7 +1822,7 @@ export const peptides: Peptide[] = [
       cautions: ["GHRP-6", "GHRP-2", "Ipamorelin"],
       contraindicated: [],
       notes:
-        "Do not stack with other GHRPs. Best used for short burst cycles when maximum GH output is desired. CJC-1295 + Hexarelin is the most powerful GH combo in research.",
+        "Do not stack with other GHRPs. CJC-1295 + Hexarelin is the most powerful GH combo in research.",
     },
     outcomes_timeline: {
       week_1:
@@ -1999,7 +1999,7 @@ export const peptides: Peptide[] = [
             }
     ],
     safety_notes:
-      "Potent; use caution. Risk of hypoglycemia. Theoretical cancer promotion concern well-documented in literature. Research-only.",
+      "Potent. Risk of hypoglycemia. Theoretical cancer promotion concern well-documented in literature. Research-only.",
     half_life_hours: 20,
     route_studied: "SubQ",
     interactions: {
@@ -2007,7 +2007,7 @@ export const peptides: Peptide[] = [
       cautions: ["Tesamorelin"],
       contraindicated: [],
       notes:
-        "Monitor IGF-1 levels closely. Do not combine with multiple GH secretagogues.",
+        "Combining with GH secretagogues raises concern for additive IGF-1 elevation. Do not combine with multiple GH secretagogues.",
     },
     outcomes_timeline: {
       week_1: "Enhanced nutrient partitioning; increased post-workout pumps",
@@ -2178,7 +2178,7 @@ export const peptides: Peptide[] = [
       cautions: [],
       contraindicated: [],
       notes:
-        "Ipamorelin + CJC-1295 is the #1 GH peptide combo. Add DSIP for sleep-optimized GH release.",
+        "Ipamorelin + CJC-1295 is the #1 GH peptide combo. DSIP has also been researched alongside ipamorelin for sleep-phase GH release.",
     },
     outcomes_timeline: {
       week_1: "Improved sleep quality; transient increase in hunger",
@@ -2345,7 +2345,7 @@ export const peptides: Peptide[] = [
             }
     ],
     safety_notes:
-      "Endogenous human neuropeptide with growing clinical trial data. Tachyphylaxis (desensitization) occurs with continuous dosing; pulsatile/intermittent protocols required. Being investigated as a safer IVF trigger (vs. hCG). Not FDA-approved for therapeutic use. Research-only.",
+      "Endogenous human neuropeptide with growing clinical trial data. Tachyphylaxis (desensitization) has been reported with continuous administration in published studies. Being investigated as a safer IVF trigger (vs. hCG). Not FDA-approved for therapeutic use. Research-only.",
     half_life_hours: 0.5,
     is_fda_approved: false,
     route_studied: "SubQ",
@@ -2358,7 +2358,7 @@ export const peptides: Peptide[] = [
       cautions: [],
       contraindicated: [],
       notes:
-        "Kisspeptin-10 addresses the HPG axis while CJC/Ipamorelin addresses the GH axis. Together they form a comprehensive hormonal optimization protocol.",
+        "Kisspeptin-10 addresses the HPG axis while CJC/Ipamorelin addresses the GH axis.",
     },
     outcomes_timeline: {
       week_1:
@@ -2918,7 +2918,7 @@ export const peptides: Peptide[] = [
     primary_benefits:
       "Sustained GH/IGF-1 elevation, muscle growth, improved sleep, bone density, oral dosing convenience",
     mechanism:
-      "Non-peptide ghrelin receptor (GHSR1a) agonist that stimulates prolonged, pulsatile growth hormone release from the pituitary gland. Unlike injectable GH peptides, MK-677 is orally bioavailable with a ~24-hour half-life, enabling once-daily dosing. Increases IGF-1 levels for up to 12 months without desensitization of the GH axis. Does not suppress natural GH secretion patterns or affect cortisol levels at standard doses.",
+      "Non-peptide ghrelin receptor (GHSR1a) agonist that stimulates prolonged, pulsatile growth hormone release from the pituitary gland. Unlike injectable GH peptides, MK-677 is orally bioavailable with a ~24-hour half-life. Increases IGF-1 levels for up to 12 months without desensitization of the GH axis. Did not suppress natural GH secretion patterns or affect cortisol levels at the doses studied.",
     laypersonSummary:
       "MK-677 (Ibutamoren) is an orally bioavailable growth hormone secretagogue studied for sustainably elevating GH and IGF-1 levels over 24 hours with a single daily pill.",
     key_studies: [
@@ -3052,7 +3052,7 @@ export const peptides: Peptide[] = [
         evidence_level: "preclinical"
       }],
     safety_notes:
-      "Oral GH secretagogue with extensive clinical data (2+ year RCTs). Key concern: impairs insulin sensitivity and raises fasting glucose, especially in elderly/obese populations. One hip fracture trial in elderly was stopped early due to CHF signals. WADA prohibited. Not FDA-approved. Use caution in pre-diabetic or insulin-resistant individuals.",
+      "Oral GH secretagogue with extensive clinical data (2+ year RCTs). Key concern: impairs insulin sensitivity and raises fasting glucose, especially in elderly/obese populations. One hip fracture trial in elderly was stopped early due to CHF signals. WADA prohibited. Not FDA-approved. Glucose effects are a particular concern for pre-diabetic or insulin-resistant individuals.",
     half_life_hours: 24,
     is_fda_approved: false,
     route_studied: "Oral",
@@ -3061,7 +3061,7 @@ export const peptides: Peptide[] = [
       cautions: [],
       contraindicated: [],
       notes:
-        "MK-677 replaces injectable GH peptides for oral convenience. Do not combine with exogenous HGH (excessive IGF-1). DSIP synergizes well for sleep-optimized GH protocols.",
+        "MK-677 is an orally active alternative to injectable GH secretagogues. Do not combine with exogenous HGH (excessive IGF-1). DSIP has been discussed alongside MK-677 in sleep-related GH research.",
     },
     outcomes_timeline: {
       week_1:
@@ -3422,7 +3422,7 @@ export const peptides: Peptide[] = [
         evidence_level: "preclinical"
       }],
     safety_notes:
-      "Generally well-tolerated. IV NAD+ infusions may cause chest tightness, nausea, and cramping during administration. Subcutaneous injection is better tolerated. Oral precursors (NMN, NR) have good safety profiles in clinical trials.",
+      "Generally well-tolerated. IV NAD+ infusions may cause chest tightness, nausea, and cramping during administration; reported tolerability varies by route. Oral precursors (NMN, NR) have good safety profiles in clinical trials.",
     half_life_hours: 4,
     route_studied: "SubQ",
     interactions: {
@@ -3939,7 +3939,7 @@ export const peptides: Peptide[] = [
         evidence_level: "preclinical"
       }],
     safety_notes:
-      "Nasal spray common; well-tolerated. Approved in Russia/Ukraine. Not FDA-approved in the US.",
+      "Studied mainly as an intranasal formulation; well-tolerated in published research. Approved in Russia/Ukraine. Not FDA-approved in the US.",
     half_life_hours: 0.33,
     route_studied: "Nasal",
     interactions: {
@@ -4011,7 +4011,7 @@ export const peptides: Peptide[] = [
         title: "Sermorelin gender-specific anabolic responses",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9324408/",
         summary:
-          "Study examining sermorelin's ability to stimulate GH/IGF-1 secretion in men and women, identifying gender-specific anabolic benefits and dosing considerations.",
+          "Study examining sermorelin's ability to stimulate GH/IGF-1 secretion in men and women, identifying gender-specific anabolic responses.",
         evidence_level: "moderate",
       },
     
@@ -4120,7 +4120,7 @@ export const peptides: Peptide[] = [
       cautions: [],
       contraindicated: [],
       notes:
-        "Sermorelin + Ipamorelin is a clean GH stack. Add DSIP for sleep optimization.",
+        "Sermorelin + Ipamorelin pairs a GHRH analog with a selective GHRP. DSIP is sometimes discussed alongside them in sleep research.",
     },
     outcomes_timeline: {
       week_1: "Improved sleep depth; GH pulse enhancement during sleep",
@@ -4613,7 +4613,7 @@ export const peptides: Peptide[] = [
       cautions: ["IGF-1 LR3"],
       contraindicated: [],
       notes:
-        "Can be combined with other GH secretagogues but monitor IGF-1 levels.",
+        "Combining with other GH secretagogues may raise IGF-1 additively.",
     },
     outcomes_timeline: {
       week_2_4: "Early GH-related effects; initial fluid retention possible",
@@ -4970,7 +4970,7 @@ export const peptides: Peptide[] = [
     category_icon: "⚙️",
     primary_benefits: "LH/FSH stimulation, testosterone preservation, HPG axis support during TRT, fertility support",
     mechanism:
-      "Synthetic decapeptide identical to endogenous gonadotropin-releasing hormone (GnRH). Binds GnRH receptors in the anterior pituitary, stimulating pulsatile release of luteinizing hormone (LH) and follicle-stimulating hormone (FSH). Used in compounding to maintain testicular function, prevent atrophy, and preserve fertility during exogenous testosterone therapy. Pulsatile dosing is critical — continuous administration causes downregulation.",
+      "Synthetic decapeptide identical to endogenous gonadotropin-releasing hormone (GnRH). Binds GnRH receptors in the anterior pituitary, stimulating pulsatile release of luteinizing hormone (LH) and follicle-stimulating hormone (FSH). Used in compounding to maintain testicular function, prevent atrophy, and preserve fertility during exogenous testosterone therapy. Physiologic GnRH signaling is pulsatile — continuous exposure causes receptor downregulation.",
     laypersonSummary:
       "Gonadorelin is a synthetic copy of the body's own GnRH hormone, used to keep the testes active and maintain natural testosterone production and fertility when someone is on testosterone replacement therapy.",
     key_studies: [
@@ -4978,7 +4978,7 @@ export const peptides: Peptide[] = [
         title: "Pulsatile GnRH treatment restores gonadotropin secretion and fertility",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/3510431/",
         summary:
-          "Leyendecker et al.: Pulsatile GnRH administration effectively restores LH/FSH pulsatility and fertility in hypogonadotropic hypogonadism patients, establishing the pulsatile dosing principle.",
+          "Leyendecker et al.: Pulsatile GnRH administration effectively restores LH/FSH pulsatility and fertility in hypogonadotropic hypogonadism patients, establishing the importance of pulsatile administration in that study population.",
         evidence_level: "strong",
       },
       {
@@ -4990,7 +4990,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "FDA-approved as Factrel (historical, for diagnostic testing of HPG axis). Compounded gonadorelin used as TRT adjunct is not itself FDA-approved for this indication. Very short half-life. Continuous infusion causes pituitary desensitization and is counterproductive.",
+      "FDA-approved as Factrel (historical, for diagnostic testing of HPG axis). Compounded gonadorelin used as TRT adjunct is not itself FDA-approved for this indication. Very short half-life. Continuous infusion causes pituitary desensitization.",
     is_fda_approved: true,
     half_life_hours: 0.05,
     route_studied: "SubQ",
@@ -5091,7 +5091,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "Not FDA-approved for general use. Used in the Shoemaker CIRS protocol under practitioner supervision. Very short plasma half-life (~2 min). Should only be used after completing prior CIRS treatment steps. May cause facial flushing and hypotension at higher doses.",
+      "Not FDA-approved for general use. Used in the Shoemaker CIRS protocol under practitioner supervision. Very short plasma half-life (~2 min). In the published protocol, VIP follows earlier CIRS treatment steps. May cause facial flushing and hypotension at higher doses.",
     is_fda_approved: false,
     half_life_hours: 0.033,
     route_studied: "Nasal",
@@ -5426,7 +5426,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. No established human safety profile. Extreme potency suggests very low effective doses but also potential for off-target effects. Do not use without full understanding of preclinical literature.",
+      "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. No established human safety profile. Its reported preclinical potency also raises concern for off-target effects.",
     is_fda_approved: false,
     half_life_hours: 48,
     route_studied: "Oral",
@@ -5463,7 +5463,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "⚠ EXPERIMENTAL COMPOUND. NO HUMAN CLINICAL TRIALS. Mechanism is potent and irreversible (apoptosis induction). Selective for senescent cells in mouse models but human selectivity profiles are unknown. Aggressive Herxheimer-like inflammatory response from SASP release possible during senescent cell clearance. DO NOT USE without comprehensive medical supervision.",
+      "⚠ EXPERIMENTAL COMPOUND. NO HUMAN CLINICAL TRIALS. Mechanism is potent and irreversible (apoptosis induction). Selective for senescent cells in mouse models but human selectivity profiles are unknown. Aggressive Herxheimer-like inflammatory response from SASP release possible during senescent cell clearance. Human safety has not been established.",
     is_fda_approved: false,
     half_life_hours: 2,
     route_studied: "SubQ",
@@ -5471,7 +5471,7 @@ export const peptides: Peptide[] = [
       synergies: ["Epitalon", "NAD+"],
       cautions: [],
       contraindicated: [],
-      notes: "SASP release during senescent cell clearance may transiently increase inflammation — monitor carefully.",
+      notes: "SASP release during senescent cell clearance may transiently increase inflammation.",
     },
     outcomes_timeline: {
       week_1: "Senescent cell clearance begins; possible SASP-driven inflammatory response",
@@ -5510,7 +5510,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "⚠ EARLY-STAGE EXPERIMENTAL. Recombinant Klotho protein administration has not entered human clinical trials for anti-aging or cognitive enhancement. Klotho is a large protein (~130 kDa), not a classical peptide — reconstitution, stability, and route of administration for research use are complex. Research only.",
+      "⚠ EARLY-STAGE EXPERIMENTAL. Recombinant Klotho protein administration has not entered human clinical trials for anti-aging or cognitive enhancement. Klotho is a large protein (~130 kDa), not a classical peptide — its formulation, stability, and route of administration are complex. Research only.",
     is_fda_approved: false,
     half_life_hours: 8,
     route_studied: "IV",
@@ -5548,7 +5548,7 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "TOPICAL USE ONLY. Not for injection. This is a cosmetic/skincare peptide in a topical formulation — not a research injectable. No reconstitution required. Available commercially via OneSkin (oneskin.co). Excellent topical safety profile. Not FDA-approved as a drug.",
+      "TOPICAL USE ONLY. Not for injection. This is a cosmetic/skincare peptide in a topical formulation — not a research injectable. Available commercially via OneSkin (oneskin.co). Excellent topical safety profile. Not FDA-approved as a drug.",
     is_fda_approved: false,
     half_life_hours: undefined,
     route_studied: "Topical",

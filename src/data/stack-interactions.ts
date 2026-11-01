@@ -56,7 +56,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Ipamorelin",
     peptideB: "CJC-1295",
     severity: "SAFE",
-    headline: "Complementary GH secretagogue stack — standard protocol",
+    headline: "Complementary GH secretagogue pair — dual-axis mechanism",
     detail: "Ipamorelin is a GH secretagogue receptor (GHSR) agonist that triggers a GH pulse. CJC-1295 (without DAC) is a GHRH analog that amplifies the pituitary response. Together they target different steps in the same axis, producing a stronger and more physiological GH pulse than either alone. This combination is the most widely studied GH peptide stack.",
     citations: [
       { type: "pubmed", label: "Raun et al., 1998 — Eur J Endocrinol (Ipamorelin)", url: "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
@@ -116,7 +116,7 @@ export const stackInteractions: StackInteraction[] = [
     headline: "GHRH + GHSR dual-axis GH stimulation — well characterized",
     detail: "Sermorelin is a GHRH analog; Ipamorelin is a GHSR agonist. Like CJC-1295 + Ipamorelin, this combination targets two steps in GH release for a synergistic effect. Sermorelin has a shorter half-life than CJC-1295 but the mechanism of co-administration is well understood.",
     citations: [
-      { type: "editorial", label: "Editorial: Same dual-axis rationale as CJC-1295 + Ipamorelin; established protocol" },
+      { type: "editorial", label: "Editorial: Same dual-axis rationale as CJC-1295 + Ipamorelin; mechanism well characterized" },
     ],
   },
 
@@ -139,7 +139,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "Sermorelin",
     severity: "CAUTION",
     headline: "Redundant GHRH agonism — no additive benefit expected",
-    detail: "Both CJC-1295 and Sermorelin are GHRH analogs acting on the same pituitary receptor. Co-administration provides no established additive benefit and wastes dose. Choose one GHRH analog and pair with a GHSR agonist (Ipamorelin or MK-677) for a rational dual-axis stack.",
+    detail: "Both CJC-1295 and Sermorelin are GHRH analogs acting on the same pituitary receptor. Co-administration provides no established additive benefit. A GHRH analog paired with a GHSR agonist (Ipamorelin or MK-677) is the mechanistically complementary dual-axis combination.",
     citations: [
       { type: "editorial", label: "Editorial: Identical receptor target; redundancy confirmed by mechanism" },
     ],
@@ -150,8 +150,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "BPC-157",
     peptideB: "Insulin",
     severity: "CAUTION",
-    headline: "BPC-157 modulates insulin sensitivity — monitor blood glucose",
-    detail: "Animal studies show BPC-157 can influence insulin secretion and peripheral glucose uptake. Co-administration with exogenous insulin may unpredictably alter glycemic response. Not formally contraindicated, but blood glucose monitoring is recommended, especially at higher BPC-157 doses.",
+    headline: "BPC-157 modulates insulin sensitivity — possible glycemic interaction",
+    detail: "Animal studies show BPC-157 can influence insulin secretion and peripheral glucose uptake. Co-administration with exogenous insulin may unpredictably alter glycemic response. Not formally contraindicated; an additive glycemic effect is mechanistically plausible but has not been studied in humans.",
     citations: [
       { type: "editorial", label: "Editorial: Animal data only; human insulin interaction not formally studied" },
     ],
@@ -162,22 +162,22 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "PT-141",
     severity: "CAUTION",
     headline: "Same melanocortin receptor family — additive side effects",
-    detail: "Melanotan II (MT-II) and PT-141 both activate melanocortin receptors (MT-II broadly, PT-141 selectively MC4R). Co-administration may produce additive nausea, facial flushing, blood pressure elevation, and prolonged erections. Not contraindicated, but dose reduction is advisable if combining.",
+    detail: "Melanotan II (MT-II) and PT-141 both activate melanocortin receptors (MT-II broadly, PT-141 selectively MC4R). Co-administration may produce additive nausea, facial flushing, blood pressure elevation, and prolonged erections. Not formally contraindicated; additive effects are mechanistically plausible (see cited study).",
     citations: [
       { type: "pubmed", label: "Wikberg et al., 2000 — Pharmacol Res (Melanocortin receptors)", url: "https://pubmed.ncbi.nlm.nih.gov/11023702/" },
       { type: "editorial", label: "Editorial: Receptor overlap confirmed; additive side effect profile expected" },
     ],
-    alternatives: ["PT-141 alone at appropriate dose"],
+    alternatives: ["PT-141 alone"],
   },
 
   {
     peptideA: "Epithalon",
     peptideB: "Melatonin",
     severity: "CAUTION",
-    headline: "Epitalon stimulates endogenous melatonin — avoid exogenous melatonin overlap",
-    detail: "Epitalon upregulates pineal melatonin secretion. Co-administering exogenous melatonin may push total melatonin levels higher than intended, causing excessive sedation or circadian disruption. Not dangerous, but time your cycles carefully.",
+    headline: "Epitalon stimulates endogenous melatonin — overlaps with exogenous melatonin",
+    detail: "Epitalon upregulates pineal melatonin secretion. Co-administering exogenous melatonin may push total melatonin levels higher than intended, causing excessive sedation or circadian disruption. Additive effects are mechanistically plausible; no pair study is available.",
     citations: [
-      { type: "editorial", label: "Editorial: Mechanism-based redundancy; not a safety concern at typical doses" },
+      { type: "editorial", label: "Editorial: Mechanism-based redundancy; additive effect plausible" },
     ],
   },
 
@@ -185,10 +185,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "IGF-1 LR3",
     peptideB: "Ipamorelin",
     severity: "CAUTION",
-    headline: "Downstream IGF-1 elevation overlap — monitor for hypoglycemia",
-    detail: "Ipamorelin stimulates GH release which triggers liver IGF-1 production. IGF-1 LR3 directly provides exogenous IGF-1. Combined use may produce supraphysiological IGF-1 signaling, increasing hypoglycemia risk and theoretically promoting abnormal cell proliferation with chronic use. Use with awareness and monitor blood glucose.",
+    headline: "Downstream IGF-1 elevation overlap — additive hypoglycemia risk",
+    detail: "Ipamorelin stimulates GH release which triggers liver IGF-1 production. IGF-1 LR3 directly provides exogenous IGF-1. Combined use may produce supraphysiological IGF-1 signaling, increasing hypoglycemia risk and theoretically promoting abnormal cell proliferation with chronic exposure.",
     citations: [
-      { type: "editorial", label: "Editorial: Synergistic IGF-1 pathway elevation; hypoglycemia monitoring essential" },
+      { type: "editorial", label: "Editorial: Synergistic IGF-1 pathway elevation; hypoglycemia is the primary concern" },
     ],
     alternatives: ["BPC-157", "TB-500"],
   },
@@ -204,18 +204,16 @@ export const stackInteractions: StackInteraction[] = [
     citations: [
       { type: "editorial", label: "Editorial: Mechanism analogous to PDE5i + nitrate contraindication" },
     ],
-    alternatives: ["Discontinue nitrate use before PT-141 administration"],
   },
 
   {
     peptideA: "IGF-1 LR3",
     peptideB: "Insulin",
     severity: "WARNING",
-    headline: "Significant hypoglycemia risk — requires careful glucose management",
-    detail: "Both IGF-1 LR3 and insulin lower blood glucose through related but distinct pathways. IGF-1 LR3 binds insulin receptors in addition to IGF-1R. Co-administration substantially increases hypoglycemia risk. This combination requires strict glucose monitoring, carbohydrate availability, and experienced judgment. Not recommended for unsupervised use.",
+    headline: "Significant hypoglycemia risk — additive glucose-lowering effects",
+    detail: "Both IGF-1 LR3 and insulin lower blood glucose through related but distinct pathways. IGF-1 LR3 binds insulin receptors in addition to IGF-1R. Co-administration substantially increases hypoglycemia risk, and this pairing is flagged as a significant safety concern.",
     citations: [
     ],
-    alternatives: ["Use IGF-1 LR3 alone with glucose monitoring; do not combine with insulin"],
   },
 
   // ══════════ BATCH 2: Nootropics ═══════════════════════════════════════════
@@ -296,8 +294,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "LL-37",
     peptideB: "BPC-157",
     severity: "CAUTION",
-    headline: "Both modulate inflammatory signaling — monitor for immune overstimulation",
-    detail: "LL-37 directly activates inflammatory pathways (TLR4, formyl peptide receptors) as part of its antimicrobial role. BPC-157 simultaneously suppresses some of those same inflammatory cascades. The opposing actions on inflammation could theoretically blunt efficacy of one or both compounds, or produce unpredictable immune signaling in acute infection settings. Monitor closely; avoid during active severe infections.",
+    headline: "Both modulate inflammatory signaling — possible opposing immune effects",
+    detail: "LL-37 directly activates inflammatory pathways (TLR4, formyl peptide receptors) as part of its antimicrobial role. BPC-157 simultaneously suppresses some of those same inflammatory cascades. The opposing actions on inflammation could theoretically blunt efficacy of one or both compounds, or produce unpredictable immune signaling in acute infection settings. Opposing effects on inflammation are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Mookherjee et al., 2020 — Nat Rev Drug Discov (LL-37)", url: "https://pubmed.ncbi.nlm.nih.gov/32107480/" },
       { type: "editorial", label: "Editorial: Opposing pro/anti-inflammatory signals; interaction theoretical but plausible" },
@@ -310,11 +308,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "DSIP",
     peptideB: "Ipamorelin",
     severity: "SAFE",
-    headline: "Sleep-wake cycle + GH pulse — timing-dependent synergy",
-    detail: "DSIP (Delta Sleep-Inducing Peptide) promotes slow-wave sleep and may enhance the natural nocturnal GH surge. Ipamorelin also stimulates GH release. Timing both pre-sleep may produce a complementary effect on overnight GH secretion and recovery. No documented adverse pharmacological interaction; the main consideration is timing (both ideally administered pre-sleep).",
+    headline: "Sleep-wake cycle + GH pulse — complementary mechanisms",
+    detail: "DSIP (Delta Sleep-Inducing Peptide) promotes slow-wave sleep and may enhance the natural nocturnal GH surge. Ipamorelin also stimulates GH release. A complementary effect on overnight GH secretion is mechanistically plausible. No documented adverse pharmacological interaction.",
     citations: [
       { type: "pubmed", label: "Monnier et al., 1977 — Experientia (DSIP sleep)", url: "https://pubmed.ncbi.nlm.nih.gov/862769/" },
-      { type: "editorial", label: "Editorial: Timing synergy plausible; no adverse interaction documented" },
+      { type: "editorial", label: "Editorial: Complementary effect plausible; no adverse interaction documented" },
     ],
   },
 
@@ -333,11 +331,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "DSIP",
     peptideB: "Melatonin",
     severity: "CAUTION",
-    headline: "Additive sedation possible — stagger timing or reduce doses",
-    detail: "Both DSIP and melatonin promote sleep onset and slow-wave activity through overlapping but distinct mechanisms. Co-administration at full doses of both may produce stronger sedation than intended, causing difficulty waking or daytime grogginess. If combining, reduce melatonin to ≤0.5 mg and administer DSIP 30–60 minutes before sleep separately.",
+    headline: "Additive sedation possible — overlapping sleep mechanisms",
+    detail: "Both DSIP and melatonin promote sleep onset and slow-wave activity through overlapping but distinct mechanisms. Co-administration may produce stronger sedation than intended, causing difficulty waking or daytime grogginess. Additive effects are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Schoenenberger & Monnier, 1977 — Proc Natl Acad Sci (DSIP)", url: "https://pubmed.ncbi.nlm.nih.gov/265572/" },
-      { type: "editorial", label: "Editorial: Additive sedation risk at full doses; dose reduction recommended if combining" },
+      { type: "editorial", label: "Editorial: Additive sedation risk; no pair study available" },
     ],
   },
 
@@ -362,7 +360,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "Ipamorelin",
     severity: "CAUTION",
     headline: "Redundant GHSR agonism — GHRP-2 cortisol elevation stacks unfavorably",
-    detail: "GHRP-2 and Ipamorelin both activate GHSR. GHRP-2 additionally raises cortisol and prolactin more than Ipamorelin. Combining them provides redundant GHSR signaling with additive cortisol/prolactin effects but no proven additional GH release benefit over a GHRH + GHSR dual-axis stack. Choose one GHSR agonist and pair with a GHRH analog.",
+    detail: "GHRP-2 and Ipamorelin both activate GHSR. GHRP-2 additionally raises cortisol and prolactin more than Ipamorelin. Combining them provides redundant GHSR signaling with additive cortisol/prolactin effects but no proven additional GH release benefit over a GHRH + GHSR dual-axis stack, which is the mechanistically complementary alternative.",
     citations: [
       { type: "editorial", label: "Editorial: Additive cortisol/prolactin with no clear GH advantage; redundant mechanism" },
     ],
@@ -411,11 +409,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Kisspeptin-10",
     peptideB: "Melanotan II",
     severity: "CAUTION",
-    headline: "HPG axis + melanocortin — monitor for LH surge and cardiovascular effects",
-    detail: "Kisspeptin-10 drives a strong LH/FSH pulse and can produce transient hormonal surges. Melanotan II causes melanocortin-mediated sexual arousal, skin tanning, and nausea. Together, the combined hormonal activation and peripheral melanocortin effects may amplify cardiovascular stress (elevated BP, heart rate) and hormonal overshoot in some individuals. Monitor cardiovascular parameters.",
+    headline: "HPG axis + melanocortin — possible LH surge and cardiovascular effects",
+    detail: "Kisspeptin-10 drives a strong LH/FSH pulse and can produce transient hormonal surges. Melanotan II causes melanocortin-mediated sexual arousal, skin tanning, and nausea. Together, the combined hormonal activation and peripheral melanocortin effects may amplify cardiovascular stress (elevated BP, heart rate) and hormonal overshoot in some individuals. Additive effects are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Dhillo et al., 2005 — JCEM (Kisspeptin LH surge)", url: "https://pubmed.ncbi.nlm.nih.gov/16174713/" },
-      { type: "editorial", label: "Editorial: Additive cardiovascular and hormonal stimulation; monitoring advised" },
+      { type: "editorial", label: "Editorial: Additive cardiovascular and hormonal stimulation plausible" },
     ],
   },
 
@@ -477,9 +475,9 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "CJC-1295",
     severity: "CAUTION",
     headline: "Upstream GH stimulation + downstream IGF-1 elevation — supraphysiological IGF-1 risk",
-    detail: "CJC-1295 stimulates GH release, which drives hepatic IGF-1 production. IGF-1 LR3 additionally provides direct, highly bioavailable exogenous IGF-1. The combined effect may push IGF-1 levels significantly above physiological range, increasing hypoglycemia risk and long-term cell proliferation concerns. If combining, use reduced doses of each and monitor IGF-1 blood levels.",
+    detail: "CJC-1295 stimulates GH release, which drives hepatic IGF-1 production. IGF-1 LR3 additionally provides direct, highly bioavailable exogenous IGF-1. The combined effect may push IGF-1 levels significantly above physiological range, increasing hypoglycemia risk and long-term cell proliferation concerns. Additive effects are mechanistically plausible; no pair study is available.",
     citations: [
-      { type: "editorial", label: "Editorial: Additive IGF-1 pathway; blood level monitoring strongly recommended" },
+      { type: "editorial", label: "Editorial: Additive IGF-1 pathway; no pair study available" },
     ],
     alternatives: ["CJC-1295 + Ipamorelin without exogenous IGF-1", "IGF-1 LR3 alone"],
   },
@@ -488,11 +486,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "MK-677",
     peptideB: "CJC-1295",
     severity: "CAUTION",
-    headline: "Dual GH elevation pathways — monitor IGF-1, glucose, and cortisol",
-    detail: "MK-677 (Ibutamoren) is an oral GHSR agonist providing sustained 24-hour GH elevation. CJC-1295 is a GHRH analog that amplifies pituitary GH output. Together they produce continuous strong GH stimulation, which substantially raises IGF-1, may impair insulin sensitivity, and can elevate cortisol and prolactin with chronic use. Cycle length and bloodwork monitoring are essential.",
+    headline: "Dual GH elevation pathways — additive IGF-1, glucose, and cortisol effects",
+    detail: "MK-677 (Ibutamoren) is an oral GHSR agonist providing sustained 24-hour GH elevation. CJC-1295 is a GHRH analog that amplifies pituitary GH output. Together they produce continuous strong GH stimulation, which substantially raises IGF-1, may impair insulin sensitivity, and can elevate cortisol and prolactin with chronic exposure. Additive effects are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Teichman et al., 2006 — JCEM (CJC-1295)", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
-      { type: "editorial", label: "Editorial: Additive GH/IGF-1 elevation; bloodwork strongly recommended with chronic use" },
+      { type: "editorial", label: "Editorial: Additive GH/IGF-1 elevation with chronic exposure" },
     ],
   },
 
@@ -501,7 +499,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "LL-37",
     severity: "CAUTION",
     headline: "Dual immune activation — theoretical inflammatory overshoot in autoimmune contexts",
-    detail: "In healthy individuals, combining Thymosin Alpha-1 and LL-37 is complementary (adaptive + innate immunity). However, in individuals with autoimmune conditions, simultaneously activating both immune axes may amplify inflammatory responses. Those with autoimmune diagnoses should proceed with significant caution and ideally medical supervision.",
+    detail: "In healthy individuals, combining Thymosin Alpha-1 and LL-37 is complementary (adaptive + innate immunity). However, in individuals with autoimmune conditions, simultaneously activating both immune axes may amplify inflammatory responses. This concern is theoretical; no pair study is available.",
     citations: [
       { type: "editorial", label: "Editorial: Autoimmune population-specific concern; healthy individuals at low risk" },
     ],
