@@ -30,8 +30,8 @@ type QuizQuestion = {
 const questions: QuizQuestion[] = [
     {
         id: "goal",
-        question: "What's your primary goal?",
-        subtitle: "Pick the one that matters most right now",
+        question: "Which research area interests you most?",
+        subtitle: "Pick the research area you want to read about first",
         icon: <Target className="w-5 h-5" />,
         options: [
             { label: "Fat Loss / Body Recomp", emoji: "🔥", tags: ["fat-loss", "body-recomp", "metabolic"] },
@@ -83,20 +83,20 @@ function scoreStacks(answers: Record<string, string[]>): StackScore[] {
         const sn = stack.stack_name.toLowerCase();
 
         // Goal matching (primary driver)
-        if (goalTags.includes("fat-loss") && (sn.includes("fat") || sn.includes("recomp") || sn.includes("metabolic"))) { score += 10; reasons.push("Matches your fat loss goal"); }
-        if (goalTags.includes("body-recomp") && sn.includes("recomp")) { score += 8; reasons.push("Ideal for body recomposition"); }
-        if (goalTags.includes("healing") && (sn.includes("injury") || sn.includes("recovery") || sn.includes("gut"))) { score += 10; reasons.push("Optimized for healing & recovery"); }
-        if (goalTags.includes("muscle") && sn.includes("muscle")) { score += 10; reasons.push("Designed for muscle growth"); }
-        if (goalTags.includes("cognitive") && (sn.includes("mental") || sn.includes("cognit"))) { score += 10; reasons.push("Targets cognitive enhancement"); }
-        if (goalTags.includes("sleep") && sn.includes("sleep")) { score += 10; reasons.push("Optimized for deep sleep & recovery"); }
-        if (goalTags.includes("longevity") && (sn.includes("longevity") || sn.includes("anti-aging"))) { score += 10; reasons.push("Targets aging mechanisms"); }
-        if (goalTags.includes("immune") && sn.includes("immune")) { score += 10; reasons.push("Strengthens immune function"); }
-        if (goalTags.includes("skin") && (sn.includes("skin") || sn.includes("aesthet"))) { score += 10; reasons.push("Targets skin rejuvenation"); }
-        if (goalTags.includes("gut") && sn.includes("gut")) { score += 10; reasons.push("Designed for gut healing"); }
-        if (goalTags.includes("hormonal") && sn.includes("hormonal")) { score += 10; reasons.push("Supports hormonal balance"); }
-        if (goalTags.includes("metabolic") && sn.includes("metabolic")) { score += 8; reasons.push("Improves metabolic health"); }
-        if (goalTags.includes("growth-hormone") && (sn.includes("muscle") || sn.includes("hormonal"))) { score += 5; reasons.push("Includes GH optimization"); }
-        if (goalTags.includes("recovery") && (sn.includes("recovery") || sn.includes("sleep"))) { score += 5; reasons.push("Enhances recovery"); }
+        if (goalTags.includes("fat-loss") && (sn.includes("fat") || sn.includes("recomp") || sn.includes("metabolic"))) { score += 10; reasons.push("Matches research area: fat metabolism"); }
+        if (goalTags.includes("body-recomp") && sn.includes("recomp")) { score += 8; reasons.push("Matches research area: body composition"); }
+        if (goalTags.includes("healing") && (sn.includes("injury") || sn.includes("recovery") || sn.includes("gut"))) { score += 10; reasons.push("Matches research area: tissue repair"); }
+        if (goalTags.includes("muscle") && sn.includes("muscle")) { score += 10; reasons.push("Matches research area: GH/IGF-1 and lean mass"); }
+        if (goalTags.includes("cognitive") && (sn.includes("mental") || sn.includes("cognit"))) { score += 10; reasons.push("Matches research area: cognition"); }
+        if (goalTags.includes("sleep") && sn.includes("sleep")) { score += 10; reasons.push("Matches research area: sleep"); }
+        if (goalTags.includes("longevity") && (sn.includes("longevity") || sn.includes("anti-aging"))) { score += 10; reasons.push("Matches research area: aging mechanisms"); }
+        if (goalTags.includes("immune") && sn.includes("immune")) { score += 10; reasons.push("Matches research area: immune modulation"); }
+        if (goalTags.includes("skin") && (sn.includes("skin") || sn.includes("aesthet"))) { score += 10; reasons.push("Matches research area: skin and collagen"); }
+        if (goalTags.includes("gut") && sn.includes("gut")) { score += 10; reasons.push("Matches research area: GI models"); }
+        if (goalTags.includes("hormonal") && sn.includes("hormonal")) { score += 10; reasons.push("Matches research area: hormonal axes"); }
+        if (goalTags.includes("metabolic") && sn.includes("metabolic")) { score += 8; reasons.push("Matches research area: metabolic signaling"); }
+        if (goalTags.includes("growth-hormone") && (sn.includes("muscle") || sn.includes("hormonal"))) { score += 5; reasons.push("Includes GH-axis compounds"); }
+        if (goalTags.includes("recovery") && (sn.includes("recovery") || sn.includes("sleep"))) { score += 5; reasons.push("Matches research area: recovery"); }
 
         // Budget matching
         const budgetTags = answers.budget || [];

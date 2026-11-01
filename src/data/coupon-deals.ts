@@ -5,7 +5,7 @@
  * Update weekly: change dealOfTheWeek slug + refresh expiresLabel.
  */
 
-// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 export interface VendorDeal {
   vendorSlug: string;           // matches vendors.ts slug
@@ -18,7 +18,7 @@ export interface VendorDeal {
   exclusions?: string[];
   /** Can be combined with active site sales? */
   stackable: boolean;
-  stackNote?: string;           // e.g. "Stacks with 25% Summer Sale â†’ 40%+ total"
+  stackNote?: string;           // e.g. "Stacks with 25% Summer Sale → 40%+ total"
   /** ISO date or human label */
   expiresLabel: string;         // "No expiry", "May 31 2026", etc.
   /** Affiliate link with code pre-applied */
@@ -46,7 +46,7 @@ export interface PeptideBestDeal {
   affiliateUrl: string;
 }
 
-// â”€â”€ Deal of the Week â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Deal of the Week ──────────────────────────────────────────────────────────
 // Change `dealOfTheWeekSlug` each Monday to rotate the highlighted vendor.
 
 export const dealOfTheWeekSlug = "bio-longevity-labs"; // reassigned 2026-05-24 (was ascension-peptides, deactivated due to economics)
@@ -63,12 +63,12 @@ export const vendorDeals: VendorDeal[] = [
     code: "PEPTIDEX",
     discountPercent: 20,
     discountType: "percent",
-    headline: "20% off â€” Editor's Choice with 60-day guarantee",
+    headline: "20% off — Editor's Choice with 60-day guarantee",
     exclusions: [],
     stackable: false,
-    expiresLabel: "No expiry â€” verified May 2026",
+    expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
-    proTip: "Amino Club is our #1 pick for quality/price balance. PEPTIDEX gives 20% off all orders. Backed by a 60-day money-back guarantee â€” the longest in the industry.",
+    proTip: "Amino Club is our #1 pick for quality/price balance. PEPTIDEX gives 20% off all orders. Backed by a 60-day money-back guarantee — the longest in the industry.",
     freeShippingThreshold: 100,
     rating: 4.9,
   },
@@ -78,13 +78,13 @@ export const vendorDeals: VendorDeal[] = [
     code: "PEPTIDEX",
     discountPercent: 15,
     discountType: "percent",
-    headline: "15% off â€” stacks with active sales for 40%+ total",
+    headline: "15% off — stacks with active sales for 40%+ total",
     exclusions: [],
     stackable: true,
-    stackNote: "Stacks with their frequent 25â€“30% sitewide sales â†’ up to 40â€“45% combined",
-    expiresLabel: "No expiry â€” verified May 2026",
+    stackNote: "Stacks with their frequent 25–30% sitewide sales → up to 40–45% combined",
+    expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
-    proTip: "Bio Longevity Labs regularly runs 25â€“30% sitewide sales. Because PEPTIDEX stacks on top, you can hit 40%+ total savings during a sale â€” check their homepage before ordering.",
+    proTip: "Bio Longevity Labs regularly runs 25–30% sitewide sales. Because PEPTIDEX stacks on top, you can hit 40%+ total savings during a sale — check their homepage before ordering.",
     freeShippingThreshold: 150,
     rating: 4.8,
   },
@@ -94,10 +94,10 @@ export const vendorDeals: VendorDeal[] = [
     code: "PEPTIDEX",
     discountPercent: 15,
     discountType: "percent",
-    headline: "15% off â€” largest catalog (90+ compounds), USA made",
+    headline: "15% off — largest catalog (90+ compounds), USA made",
     exclusions: [],
     stackable: false,
-    expiresLabel: "No expiry â€” verified May 2026",
+    expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     proTip: "Limitless Life has the widest catalog of any vendor we list (90+ compounds). Best choice when you need harder-to-find peptides.",
     freeShippingThreshold: 100,
@@ -109,10 +109,10 @@ export const vendorDeals: VendorDeal[] = [
     code: "PEPTIDEX",
     discountPercent: 15,
     discountType: "percent",
-    headline: "15% off â€” competitive pricing, COA verified",
+    headline: "15% off — competitive pricing, COA verified",
     exclusions: [],
     stackable: false,
-    expiresLabel: "No expiry â€” verified May 2026",
+    expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
     proTip: "Pantheon Peptides offers competitive per-mg pricing, especially on GH peptides. Good alternative when Amino Club is out of stock on specific compounds.",
     freeShippingThreshold: 100,
@@ -124,19 +124,19 @@ export const vendorDeals: VendorDeal[] = [
     code: "PEPTIDEX",
     discountPercent: 15,
     discountType: "percent",
-    headline: "15% off oral peptides â€” no injection required",
+    headline: "15% off — oral & nasal formulation specialist",
     exclusions: ["Injectable formulations"],
     stackable: false,
-    expiresLabel: "No expiry â€” verified May 2026",
+    expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
-    proTip: "LVLUP is the only oral peptide specialist on our list. If you want BPC-157, Semax, or Selank without needles, this is the vendor. Code applies to all oral capsule products.",
+    proTip: "LVLUP is the only oral & nasal formulation specialist on our list, carrying non-injectable formats of research compounds such as BPC-157, Semax, and Selank. Code applies to all oral capsule products.",
     freeShippingThreshold: 75,
     rating: 4.5,
   },
 ];
 
-// â”€â”€ Per-peptide best deals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// Manually curated â€” update when vendor pricing changes.
+// ── Per-peptide best deals ────────────────────────────────────────────────────
+// Manually curated — update when vendor pricing changes.
 // discountedPrice = price * (1 - discountPercent/100)
 
 export const peptideBestDeals: PeptideBestDeal[] = [
@@ -174,13 +174,13 @@ export const peptideBestDeals: PeptideBestDeal[] = [
   // { peptideSlug: "pt-141", vendorSlug: "ascension-peptides", price: 60, discountedPrice: 30 }
 ];
 
-// â”€â”€ Schema.org helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Schema.org helpers ────────────────────────────────────────────────────────
 
 export function buildCouponSchema(deal: VendorDeal) {
   return {
     "@context": "https://schema.org",
     "@type": "Offer",
-    "name": `${deal.vendorName} Discount Code â€” ${deal.discountPercent}% Off`,
+    "name": `${deal.vendorName} Discount Code — ${deal.discountPercent}% Off`,
     "description": deal.headline,
     "url": deal.affiliateUrl,
     "priceSpecification": {
@@ -218,7 +218,7 @@ export function buildFaqSchema(deals: VendorDeal[]) {
         "name": `Does ${d.vendorName} have a discount code?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Yes â€” use code ${d.code} at ${d.vendorName} for ${d.discountPercent}% off. ${d.stackNote ?? ""} ${d.expiresLabel}.`,
+          "text": `Yes — use code ${d.code} at ${d.vendorName} for ${d.discountPercent}% off. ${d.stackNote ?? ""} ${d.expiresLabel}.`,
         },
       })),
     ],

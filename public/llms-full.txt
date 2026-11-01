@@ -16,7 +16,7 @@ This file contains the full textual representation of PeptiDex's core editorial 
 ## Medical & Legal Disclaimer
 The information provided on PeptiDex is intended solely for laboratory, educational, and research purposes. The compounds discussed are strictly experimental research compounds. They have not been approved by the United States Food and Drug Administration (FDA) for human consumption, diagnosis, treatment, or cure of any disease. 
 
-Any dosages or protocols referenced on this site are extracted from preclinical studies, animal models, or community research literature and are not medical guidelines. Handling of these compounds must be performed by qualified professionals in a controlled laboratory environment. PeptiDex assumes no liability for the misuse of the compounds or the misapplication of the educational data provided.
+PeptiDex does not provide dosing protocols; study parameters referenced come from the cited publications. Compounds referenced are sold by third parties for laboratory research use only and are not for human consumption. Handling of these compounds must be performed by qualified professionals in a controlled laboratory environment. PeptiDex assumes no liability for the misuse of the compounds or the misapplication of the educational data provided.
 
 ## Contact & Team
 - **Editorial Contact:** hello@peptidex.app

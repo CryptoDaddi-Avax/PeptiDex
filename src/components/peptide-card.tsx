@@ -64,7 +64,7 @@ export function PeptideCard({ peptide, index = 0, animate = true }: { peptide: P
                     <div className="space-y-1.5 mb-4">
                         {benefits.map((b, i) => (
                             <div key={i} className="flex items-start gap-2">
-                                <span className="text-violet-400 mt-0.5 text-xs">◆</span>
+                                <span className="text-violet-400 mt-0.5 text-xs">◆</span>
                                 <span className="text-sm text-zinc-400 leading-tight">{b}</span>
                             </div>
                         ))}

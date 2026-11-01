@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: 'Tesamorelin: What Sets It Apart from Every Other Growth Hormone Peptide',
     slug: 'tesamorelin-growth-hormone-peptide-comparison',
-    excerpt: 'A deep-dive comparison of Tesamorelin vs Sermorelin, CJC-1295, Ipamorelin, and MK-677. Covers FDA approval, visceral fat specificity, clinical evidence, and who Tesamorelin is actually best suited for.',
+    excerpt: 'A deep-dive comparison of Tesamorelin vs Sermorelin, CJC-1295, Ipamorelin, and MK-677. Covers FDA approval, visceral fat specificity, clinical evidence, and the populations in which Tesamorelin has been studied.',
     category: 'GH Peptide Analysis',
     datePublished: '2026-04-13',
     dateModified: '2026-04-13',
@@ -63,12 +63,12 @@ export const blogPosts: BlogPost[] = [
     readingTime: '15 min read',
     image: '/images/blog/tesamorelin_growth_hormone_comparison.png',
     imageAlt: 'A single glowing amber peptide vial on a dark obsidian surface with GHRH molecular chain diagrams etched around it',
-    tags: ['tesamorelin', 'tesamorelin vs sermorelin', 'tesamorelin vs cjc-1295', 'tesamorelin vs ipamorelin', 'growth hormone peptides 2026', 'visceral fat reduction', 'gh peptide comparison', 'ghrh analogs', 'peptide therapy for fat loss', 'tesamorelin anti-aging'],
+    tags: ['tesamorelin', 'tesamorelin vs sermorelin', 'tesamorelin vs cjc-1295', 'tesamorelin vs ipamorelin', 'growth hormone peptides 2026', 'visceral fat reduction', 'gh peptide comparison', 'ghrh analogs', 'tesamorelin research', 'egrifta'],
   },
   {
-    title: 'Peptide Stacking in 2026: Why Combination Protocols Are Redefining Results',
+    title: 'Peptide Stacking in 2026: What the Research Says About Combinations',
     slug: 'peptide-stacking-2026-combination-protocols',
-    excerpt: 'A deep dive into peptide stacking protocols — the Wolverine stack (BPC-157 & TB-500), growth hormone synergy (CJC-1295 & Ipamorelin), longevity and cognitive stacks, and what published research says about combining compounds.',
+    excerpt: 'A research overview of commonly discussed peptide combinations — BPC-157 & TB-500, CJC-1295 & Ipamorelin, and longevity and cognitive pairings — and how little of it has been tested directly.',
     category: 'Science Explainers',
     datePublished: '2026-04-13',
     dateModified: '2026-04-13',
@@ -110,7 +110,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: 'Best Peptides for Muscle Growth: Research-Backed Guide for 2026',
     slug: 'best-peptides-for-muscle-growth',
-    excerpt: 'A research-backed comparison of the best peptides for muscle growth, including CJC-1295, Ipamorelin, MK-677, and IGF-1 LR3, based on clinical mechanism and safety.',
+    excerpt: 'A research-focused comparison of peptides studied in relation to muscle growth, including CJC-1295, Ipamorelin, MK-677, and IGF-1 LR3: mechanisms, evidence quality, and safety data.',
     category: 'Research News',
     datePublished: '2026-04-30',
     dateModified: '2026-04-30',
@@ -193,7 +193,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: 'Best Peptide Stack for Injury Recovery in 2026: A Research Guide',
     slug: 'best-peptide-stack-injury-recovery',
-    excerpt: 'A deep dive into the best peptide stacks for injury recovery. We analyze the synergistic effects of BPC-157, TB-500, and growth hormone secretagogues for tissue repair.',
+    excerpt: 'A research review of the peptides most discussed for injury recovery: the preclinical evidence on BPC-157, TB-500, and growth hormone secretagogues in tissue-repair models, and what has not been tested.',
     category: 'Research News',
     datePublished: '2026-04-30',
     dateModified: '2026-04-30',

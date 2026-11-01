@@ -83,7 +83,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                             : `No community data yet for ${peptideName} from ${vendorName}`}
                     </p>
                     <p className="mt-2" style={{ fontFamily: "var(--sans)", fontSize: 14, color: "var(--ink-dim)" }}>
-                        Purchased {peptideName} from {vendorName}? Be the first to log your protocol.
+                        Have batch test data for {peptideName} from {vendorName}? Submit a report.
                     </p>
                     <div className="flex gap-4 justify-center mt-8 flex-wrap">
                         <Link
@@ -91,7 +91,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                             className="px-6 py-3 rounded-lg font-semibold transition-all hover:scale-[1.02]"
                             style={{ background: "linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%)", color: "#0a0a0b", fontFamily: "var(--sans)", fontSize: 14 }}
                         >
-                            Log This Cycle →
+                            Submit batch report →
                         </Link>
                         {affiliateUrl && (
                             <a
@@ -161,7 +161,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                                 className="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02]"
                                 style={{ background: "linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%)", color: "#0a0a0b", fontFamily: "var(--sans)" }}
                             >
-                                + Log This Cycle
+                                + Submit batch report
                             </Link>
                         </div>
                     </div>

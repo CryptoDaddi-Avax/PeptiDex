@@ -33,7 +33,11 @@ export function QuickAnswerBlock({ peptide }: { peptide: Peptide }) {
   const fdaStatus = peptide.is_fda_approved
     ? 'FDA-approved'
     : 'research compound (not FDA-approved for human use)';
-  const primaryBenefit = peptide.primary_benefits.split(',')[0].trim().toLowerCase();
+  const firstBenefit = peptide.primary_benefits.split(',')[0].trim();
+  // Lowercase only a leading capitalised word; acronyms (GH, IGF-1, RCT) keep their case
+  const primaryBenefit = /^[A-Z][a-z]/.test(firstBenefit)
+    ? firstBenefit.charAt(0).toLowerCase() + firstBenefit.slice(1)
+    : firstBenefit;
 
   const summary =
     `${peptide.name} is a ${peptide.category.toLowerCase()} ${fdaStatus} studied for ${primaryBenefit}. ` +

@@ -24,17 +24,17 @@ export const learningModules: LearningModule[] = [
     {
         id: "what-are-peptides",
         title: "What Are Peptides?",
-        subtitle: "The building blocks of life   and modern biohacking",
+        subtitle: "The building blocks of life — and modern biohacking",
         icon: "??",
         estimatedMinutes: 8,
         sections: [
             {
                 title: "Peptides 101",
-                content: "Peptides are short chains of amino acids   the same building blocks that make up proteins. While proteins can be thousands of amino acids long, peptides are typically 2-50 amino acids. Think of them as 'mini-proteins' with very specific biological functions.\n\nYour body naturally produces thousands of peptides. Insulin, oxytocin, and endorphins are all peptides. Therapeutic peptides are lab-synthesized versions of these natural compounds, or slight modifications designed for specific effects."
+                content: "Peptides are short chains of amino acids — the same building blocks that make up proteins. While proteins can be thousands of amino acids long, peptides are typically 2-50 amino acids. Think of them as 'mini-proteins' with very specific biological functions.\n\nYour body naturally produces thousands of peptides. Insulin, oxytocin, and endorphins are all peptides. Therapeutic peptides are lab-synthesized versions of these natural compounds, or slight modifications designed for specific effects."
             },
             {
                 title: "Peptides vs. Proteins vs. Amino Acids",
-                content: "**Amino Acids** are single molecules   the individual letters.\n**Peptides** are short chains (2-50 amino acids)   like words.\n**Proteins** are long chains (50+ amino acids)   full sentences.\n\nSize matters: smaller peptides can cross membranes more easily, have higher bioavailability, and often target very specific receptors   making them ideal as signaling molecules."
+                content: "**Amino Acids** are single molecules — the individual letters.\n**Peptides** are short chains (2-50 amino acids) — like words.\n**Proteins** are long chains (50+ amino acids) — full sentences.\n\nSize matters: smaller peptides can cross membranes more easily, have higher bioavailability, and often target very specific receptors — making them ideal as signaling molecules."
             },
             {
                 title: "How Peptides Work",
@@ -42,7 +42,7 @@ export const learningModules: LearningModule[] = [
             },
             {
                 title: "Why Peptides Are Gaining Attention",
-                content: "Several converging factors have driven peptide interest:\n\n1. **Precision**   Peptides target specific receptors with high selectivity\n2. **Safety Profile**   Generally well-tolerated since they mimic natural compounds\n3. **Research Volume**   Thousands of published studies on PubMed\n4. **FDA Approvals**   Tesamorelin (Egrifta) and PT-141 (Vyleesi) are FDA-approved peptides\n5. **Personalization**   Different peptides for different goals: healing, cognition, fat loss, muscle growth, longevity"
+                content: "Several converging factors have driven peptide interest:\n\n1. **Precision** — Peptides target specific receptors with high selectivity\n2. **Safety Profile** — Generally well-tolerated since they mimic natural compounds\n3. **Research Volume** — Thousands of published studies on PubMed\n4. **FDA Approvals** — Tesamorelin (Egrifta) and PT-141 (Vyleesi) are FDA-approved peptides\n5. **Personalization** — Different peptides for different goals: healing, cognition, fat loss, muscle growth, longevity"
             }
         ],
         quiz: [
@@ -60,7 +60,7 @@ export const learningModules: LearningModule[] = [
         sections: [
             {
                 title: "Receptor Binding",
-                content: "Every cell in your body has receptors   protein molecules on its surface that act like locks. Peptides are the keys. When a peptide binds to its target receptor, it triggers a cascade of intracellular signaling that produces a specific biological effect.\n\nThis 'lock and key' mechanism is why peptides are so specific: BPC-157 can accelerate healing without affecting appetite, while Semax can support focus without affecting healing. Each peptide has its own receptor targets."
+                content: "Every cell in your body has receptors — protein molecules on its surface that act like locks. Peptides are the keys. When a peptide binds to its target receptor, it triggers a cascade of intracellular signaling that produces a specific biological effect.\n\nThis 'lock and key' mechanism is why peptides are so specific: BPC-157 can accelerate healing without affecting appetite, while Semax can support focus without affecting healing. Each peptide has its own receptor targets."
             },
             {
                 title: "The Growth Hormone Axis",
@@ -90,23 +90,23 @@ export const learningModules: LearningModule[] = [
         sections: [
             {
                 title: "The Safety Spectrum",
-                content: "Not all peptides carry the same risk level:\n\n**FDA-Approved** (Lowest Risk): Tesamorelin, PT-141   extensive human trial data, known side effects, prescribed by doctors.\n\n**Well-Studied** (Lower Risk): BPC-157, TB-500, CJC-1295, Ipamorelin   extensive preclinical data, long track record of human use, but NOT FDA-approved.\n\n**Emerging Research** (Higher Risk): MOTS-c, SS-31, Dihexa   promising preclinical data but limited human studies. More unknowns.\n\n**Research-Only** (Highest Risk): Follistatin-344, IGF-1 LR3   potent compounds with limited safety data and higher risk of adverse effects."
+                content: "Not all peptides carry the same risk level:\n\n**FDA-Approved** (Lowest Risk): Tesamorelin, PT-141 — extensive human trial data, known side effects, prescribed by doctors.\n\n**Well-Studied** (Lower Risk): BPC-157, TB-500, CJC-1295, Ipamorelin — extensive preclinical data, long track record of human use, but NOT FDA-approved.\n\n**Emerging Research** (Higher Risk): MOTS-c, SS-31, Dihexa — promising preclinical data but limited human studies. More unknowns.\n\n**Research-Only** (Highest Risk): Follistatin-344, IGF-1 LR3 — potent compounds with limited safety data and higher risk of adverse effects."
             },
             {
                 title: "Sourcing Quality",
-                content: "If obtaining peptides legally (through a doctor or compounding pharmacy), quality is assured. For research-use peptides, evaluate:\n\n1. **Certificate of Analysis (COA)**   Third-party lab testing confirming identity and purity. Demand =98% purity.\n2. **HPLC + Mass Spectrometry**   The gold standard testing methods. Both should appear on the COA.\n3. **Batch matching**   The COA should match the specific batch/lot number on your vial.\n4. **Reputation**   Established vendors with transparent testing, not anonymous sellers.\n5. **Storage and Shipping**   Lyophilized peptides shipped at room temp are fine; reconstituted solutions should be cold-shipped."
+                content: "Prescription products dispensed by licensed pharmacies are subject to pharmacy quality standards. Research-use peptides are not approved for human use; when evaluating a research supplier, check:\n\n1. **Certificate of Analysis (COA)** — Third-party lab testing confirming identity and purity (≥98% is a common benchmark).\n2. **HPLC + Mass Spectrometry** — The gold standard testing methods. Both should appear on the COA.\n3. **Batch matching** — The COA should match the specific batch/lot number of the product.\n4. **Reputation** — Established vendors with transparent testing, not anonymous sellers.\n5. **Storage and Shipping** — Lyophilized peptides are typically stable at room temperature in transit; reconstituted solutions require cold storage."
             },
             {
                 title: "Side Effects and Red Flags",
-                content: "Common manageable side effects:\n• Injection site redness/irritation (SubQ)\n• Nausea (PT-141, Melanotan II)\n• Fatigue or water retention (GH peptides)\n• Flushing (Melanotan II)\n\n**Stop immediately if you experience:**\n• Severe allergic reaction (hives, swelling, difficulty breathing)\n• Chest pain or heart palpitations\n• Vision changes\n• Unexplained lumps or rapid changes in moles\n\n**Never:**\n• Use peptides during pregnancy/breastfeeding\n• Use GH secretagogues with active/suspected cancer"
+                content: "Adverse effects reported in published studies and case reports include:\n• Injection-site redness/irritation (subcutaneous administration)\n• Nausea (PT-141, Melanotan II)\n• Fatigue or water retention (GH-axis peptides)\n• Flushing (Melanotan II)\n\n**Serious reactions described in the literature** include severe allergic reactions, cardiovascular symptoms, vision changes, and changes in moles (Melanotan II case reports). Symptoms like these warrant prompt medical care.\n\n**Excluded populations:** pregnancy and breastfeeding are excluded from nearly all peptide studies, and active or suspected cancer is a standard contraindication for approved GH-axis drugs."
             },
             {
                 title: "Working With a Doctor",
-                content: "The safest approach to peptide therapy:\n\n1. **Find a peptide-knowledgeable provider**   Anti-aging clinics, integrative medicine, functional medicine, or sports medicine doctors often have peptide experience.\n2. **Get baseline blood work**   IGF-1, CMP, CBC, hormones, CRP, HbA1c before starting.\n3. **Get a prescription**   Many peptides can be legally prescribed and obtained from compounding pharmacies.\n4. **Monitor**   Regular blood work during use to track biomarkers.\n5. **Report side effects**   Track everything and communicate with your provider."
+                content: "The safest approach to peptide therapy:\n\n1. **Find a peptide-knowledgeable provider** — Anti-aging clinics, integrative medicine, functional medicine, or sports medicine doctors often have peptide experience.\n2. **Get baseline blood work** — IGF-1, CMP, CBC, hormones, CRP, HbA1c before starting.\n3. **Get a prescription** — Many peptides can be legally prescribed and obtained from compounding pharmacies.\n4. **Monitor** — Regular blood work during use to track biomarkers.\n5. **Report side effects** — Track everything and communicate with your provider."
             }
         ],
         quiz: [
-            { question: "What does a COA verify?", options: ["Peptide taste", "Peptide purity and identity", "Peptide legality", "Peptide shipping date"], correctIndex: 1, explanation: "A Certificate of Analysis (COA) is third-party lab testing that verifies peptide identity and purity. Look for =98% purity confirmed by HPLC and mass spectrometry." },
+            { question: "What does a COA verify?", options: ["Peptide taste", "Peptide purity and identity", "Peptide legality", "Peptide shipping date"], correctIndex: 1, explanation: "A Certificate of Analysis (COA) is third-party lab testing that verifies peptide identity and purity. Look for ≥98% purity confirmed by HPLC and mass spectrometry." },
             { question: "Which peptides are FDA-approved?", options: ["BPC-157 and TB-500", "Tesamorelin and PT-141", "All GH peptides", "None"], correctIndex: 1, explanation: "Tesamorelin (Egrifta) and PT-141 (Vyleesi) are FDA-approved peptides with extensive clinical trial data." },
             { question: "Which of these is a red-flag reaction that needs urgent medical attention?", options: ["Mild injection site redness", "Slight nausea", "Severe allergic reaction or chest pain", "Temporary fatigue"], correctIndex: 2, explanation: "Severe allergic reactions, chest pain, or difficulty breathing are medical emergencies. Mild injection site redness is a commonly reported minor reaction in published studies." }
         ]

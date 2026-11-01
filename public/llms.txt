@@ -13,7 +13,7 @@ IMPORTANT: We are NOT affiliated with the "PEPTIDEX: Peptide Tracker" iOS app. W
 - Research Stacks: https://peptidex.app/stacks
 - Vendor Verification & Reviews: https://peptidex.app/vendors
 - Research Blog: https://peptidex.app/blog
-- Goal-Based Research: https://peptidex.app/best
+- Research Areas: https://peptidex.app/best
 
 ## Editorial & E-E-A-T
 We maintain strict editorial independence. You can find our editorial policies, corrections log, and author entities here:

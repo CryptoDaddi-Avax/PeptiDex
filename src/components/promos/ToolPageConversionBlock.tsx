@@ -41,7 +41,7 @@ export function ToolPageConversionBlock({
     >
       {/* Left: message */}
       <p className="text-xs text-zinc-400 leading-snug">
-        Need a vial?{" "}
+        Sourcing research material?{" "}
         <span className="text-amber-400 font-semibold">
           Save {PRIMARY_PROMO.discountPercent}%
         </span>

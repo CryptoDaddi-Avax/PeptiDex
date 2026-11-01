@@ -21,6 +21,7 @@ import type { CompareCardData } from "@/components/share-card/card-templates";
 import type { Peptide } from "@/data/types";
 import './compare-redesign.css';
 import { AffiliateLink } from "@/components/affiliate-link";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
 
@@ -405,6 +406,8 @@ function CompareClientInner() {
                                 <ShoppingBag style={{width: 24, height: 24, color: '#34d399'}} />
                                 <h2 className="cmp-cta-title">Source These Peptides</h2>
                             </div>
+                            {/* Research-use-only notice — rendered with the sourcing CTAs */}
+                            <DisclaimerCard variant="vendor" className="!mt-0" />
                             <div className="cmp-cta-grid" style={{ "--cols": compared.length } as React.CSSProperties}>
                                 {compared.map((p, i) => {
                                     const baseUrl = aminoClubProductMapping[p.slug] || PRIMARY_PROMO.shopUrl;
@@ -447,7 +450,7 @@ function CompareClientInner() {
 
 export default function CompareClient() {
     return (
-        <Suspense fallback={<div className="cmp-empty">Loading...</div>}>
+        <Suspense fallback={<div className="cmp-empty"><DisclaimerCard variant="vendor" className="!mt-0" />Loading...</div>}>
             <CompareClientInner />
         </Suspense>
     );

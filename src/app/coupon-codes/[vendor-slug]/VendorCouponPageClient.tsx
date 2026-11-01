@@ -10,6 +10,7 @@ import {
 import type { VendorDeal, PeptideBestDeal } from "@/data/coupon-deals";
 import type { Vendor } from "@/data/vendors";
 import { AffiliateLink } from "@/components/affiliate-link";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 function CopyButton({ code, large }: { code: string; large?: boolean }) {
   const [copied, setCopied] = useState(false);
@@ -55,6 +56,9 @@ export function VendorCouponPageClient({
         <span className="text-zinc-700">/</span>
         <span className="text-zinc-300 font-medium">{deal.vendorName}</span>
       </nav>
+
+      {/* Research-use-only notice — above the code and shop CTAs */}
+      <DisclaimerCard variant="vendor" className="!my-0" />
 
       {/* Hero banner */}
       <motion.div

@@ -21,7 +21,7 @@ export default function Footer() {
 
       {/* Legal / disclaimer band (between newsletter and footer) */}
       <div className="legal-band">
-        <p>PeptiDex is an independent research reference. We are not a pharmacy, clinic, or medical provider. We do not sell, ship, or handle controlled substances. We provide educational reference material for researchers studying peptide pharmacology. All efficacy claims attributed to published peer-reviewed sources.</p>
+        <p>PeptiDex is an independent research reference. We are not a pharmacy, clinic, or medical provider. We do not sell, ship, or handle controlled substances. We provide educational reference material for researchers studying peptide pharmacology. All efficacy claims attributed to published peer-reviewed sources. Compounds referenced are sold by third parties for laboratory research use only and are not for human consumption.</p>
       </div>
 
       <footer className="site-footer">

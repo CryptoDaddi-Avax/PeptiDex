@@ -54,7 +54,7 @@ faqSchema: |
   }
 ---
 
-**Are research peptides safe?** The safety of any peptide protocol depends entirely on three distinct variables: the inherent biological mechanism of the specific amino acid sequence, the exposure levels and durations examined in published research, and crucially, the chemical purity of the synthesized compound. While many peptides possess excellent preclinical safety profiles, administering degraded or contaminated research compounds introduces severe immunological and toxicological risks.
+**Are research peptides safe?** The safety of any peptide depends on three distinct variables: the inherent biological mechanism of the specific amino acid sequence, the exposure levels and durations examined in published research, and crucially, the chemical purity of the synthesized compound. Some peptides have favorable preclinical safety data, but most have little or no long-term human safety data, and degraded or contaminated material introduces additional immunological and toxicological risks.
 
 <div className="bg-gradient-to-r from-violet-900/20 to-zinc-900/40 border-l-4 border-l-violet-500 border-y border-r border-zinc-800 rounded-lg p-6 my-8 shadow-xl">
   <h2 className="text-xl font-bold text-zinc-100 mb-3 mt-0 border-none pb-0">TL;DR: Peptide Safety Principles</h2>
@@ -102,9 +102,9 @@ As detailed in our guide on [How to Read a Peptide COA](/blog/how-to-read-peptid
 
 ### Sourcing High-Purity Reagents
 
-If you are setting up a laboratory study requiring unbranded, analytical-grade peptides, you must use vendors who publicly post batch-specific testing from recognized labs like MZ Biolabs. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a> for an example of a vendor that executes flawless quality control.
+If you are setting up a laboratory study requiring unbranded, analytical-grade peptides, you must use vendors who publicly post batch-specific testing from recognized labs like MZ Biolabs. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a> for an example of a vendor that publishes batch-level third-party testing.
 
-Elyria Bio consistently supplies ≥99% pure lyophilized peptides for research purposes and provides full third-party laboratory documentation for every batch, confirming both HPLC purity and Mass Spectrometry identity. By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 10% off wholesale pricing while entirely eliminating the safety risks associated with contaminated raw materials.
+Elyria Bio supplies lyophilized peptides for research purposes and provides third-party laboratory documentation for every batch, confirming both HPLC purity and Mass Spectrometry identity. Through <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, code PEPTIDEX gives 10% off research-grade, COA-verified compounds. Independent testing reduces, but does not eliminate, the risks of contaminated raw materials, and these products are sold for research use only, not for human consumption.
 
 ## 3. Inherent Risks of Specific Peptide Classes
 
@@ -121,9 +121,9 @@ In published research, sustained high exposure to growth hormone secretagogues h
 
 ### Regenerative Peptides (BPC-157, TB-500)
 
-Peptides utilized for tissue repair, such as [BPC-157](/library/bpc-157), operate by upregulating growth factors and promoting angiogenesis (the creation of new blood vessels) to heal damaged tendons and ligaments.
+Peptides utilized for tissue repair, such as [BPC-157](/library/bpc-157), have been studied in animal models of tendon and ligament injury, where they were associated with growth-factor upregulation and angiogenesis (the creation of new blood vessels).
 
-The primary safety concern with regenerative peptides is the theoretical risk of *runaway angiogenesis*. While creating new blood vessels is vital for healing a torn rotator cuff, tumors also require new blood vessels to grow. While there is zero clinical evidence that BPC-157 *causes* cancer, researchers theorize that chronic, prolonged exposure could potentially accelerate the growth of a pre-existing, undiagnosed tumor by supplying it with enhanced vascularization. 
+The primary safety concern with regenerative peptides is the theoretical risk of *runaway angiogenesis*. New blood vessel formation is part of normal tissue repair, but tumors also require new blood vessels to grow. While there is zero clinical evidence that BPC-157 *causes* cancer, researchers theorize that chronic, prolonged exposure could potentially accelerate the growth of a pre-existing, undiagnosed tumor by supplying it with enhanced vascularization. 
 
 ## 4. The FDA Reclassification and Regulatory Safety
 
@@ -157,7 +157,7 @@ There is no direct evidence that standard research peptides cause cancer. Howeve
 Degraded or heavily contaminated peptide material has been associated with severe localized tissue necrosis, systemic inflammation, and dangerous immune responses, including the potential development of cross-reactive antibodies that attack endogenous hormones.
 
 **What are the risks of combining multiple peptides?**
-Stacking peptides is common in research protocols (such as combining CJC-1295 and Ipamorelin) because their mechanisms are synergistic. However, randomly stacking unresearched compounds dramatically increases the risk of adverse reactions and unpredictable physiological responses. 
+Combinations such as CJC-1295 and Ipamorelin are widely discussed because their mechanisms are complementary, but the combinations themselves have generally not been tested in controlled human trials. However, randomly stacking unresearched compounds dramatically increases the risk of adverse reactions and unpredictable physiological responses. 
 
 **What does high residual TFA indicate?**
 High residual TFA (trifluoroacetic acid) salt content indicates incomplete purification during synthesis. Residual TFA makes the material more acidic and has been associated with local tissue irritation, which is one reason to verify purity with independent, batch-specific COAs.

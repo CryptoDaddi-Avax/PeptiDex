@@ -184,7 +184,7 @@ export default function MK677VsIpamorelinPage() {
           <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="clinical-data">Clinical Data</h2>
           <p>
-            MK-677 has the stronger clinical evidence base for long-term use. The 2-year Nass et al. trial demonstrated sustained IGF-1 elevation, increased fat-free mass (+1.6 kg), and improved body composition in elderly adults without exercise intervention.¹ However, it also showed increased fasting glucose and worsened insulin sensitivity.
+            MK-677 has the stronger clinical evidence base for long-term use. The 2-year Nass et al. trial demonstrated sustained IGF-1 elevation, and increased fat-free mass in healthy older adults without exercise intervention.¹ However, it also showed increased fasting glucose and worsened insulin sensitivity.
           </p>
           <p>
             Ipamorelin has Phase 2 clinical trial data in post-surgical ileus (gut recovery after abdominal surgery) demonstrating safety and GH-releasing efficacy.² Its clinical use as a GH secretagogue for body composition is primarily documented through clinical practice and compounding pharmacy data rather than large registrational trials.
@@ -193,10 +193,10 @@ export default function MK677VsIpamorelinPage() {
           <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="stacking">Optimal Stacking Protocols</h2>
           <p>
-            <strong>MK-677</strong> is typically used as a standalone due to its 24-hour duration. It pairs well with compounds from different pathways — such as BPC-157 for recovery or GHK-Cu for anti-aging — but stacking with additional GH secretagogues adds risk without proportional benefit.
+            <strong>MK-677</strong> is typically used as a standalone due to its 24-hour duration. It is sometimes discussed alongside compounds that act through different pathways, but those combinations have not been studied, and stacking with additional GH secretagogues adds risk without demonstrated benefit.
           </p>
           <p>
-            <strong>Ipamorelin</strong> is optimally stacked with <Link href="/library/cjc-1295">CJC-1295</Link> (a GHRH analog). This combination leverages complementary mechanisms: CJC-1295 primes the pituitary to produce GH, while ipamorelin triggers a clean release pulse. The synergistic effect produces 3-6x greater GH output than either compound alone.³ This is widely regarded as the gold standard GH peptide stack in clinical and research settings.
+            <strong>Ipamorelin</strong> is most often discussed alongside <Link href="/library/cjc-1295">CJC-1295</Link> (a GHRH analog). The rationale is complementary mechanisms: CJC-1295 acts on the GHRH receptor, while ipamorelin triggers a release pulse via the ghrelin receptor. GHRH + GHRP co-administration has been reported to amplify GH output beyond either agent alone,³ but this specific pairing has not been tested in controlled human trials.
           </p>
 
           <div className="section-label mt-12 mb-2">§ 05</div>

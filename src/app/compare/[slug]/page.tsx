@@ -35,7 +35,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
       const nameA = peptideA.name;
       const nameB = comp.peptideA === comp.peptideB ? `${peptideB.name} (Variant)` : peptideB.name;
-      const defaultTitle = `${nameA} vs ${nameB}: Mechanism, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
+      const defaultTitle = `${nameA} vs ${nameB}: Mechanism, Half-Life, Side Effects + How the Research Differs (2026) | PeptiDex`;
       const title = comp.seoTitle || defaultTitle;
       const url = `https://peptidex.app/compare/${slug}`;
       const description = comp.seoDescription.length > 155 ? comp.seoDescription.slice(0, 152) + '...' : comp.seoDescription;
@@ -113,7 +113,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   const nameA = peptideA.name;
   const nameB = isSamePeptide ? `${peptideB.name} (Without DAC)` : peptideB.name;
 
-  const TITLE = `${nameA} vs ${nameB}: Mechanism, Half-Life, Side Effects + Which to Choose (2026)`;
+  const TITLE = `${nameA} vs ${nameB}: Mechanism, Half-Life, Side Effects + How the Research Differs (2026)`;
   const DATE_MOD = '2026-05-07';
 
   const breadcrumbSchema = {
@@ -211,7 +211,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         <div className="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-6">
           <div className="flex items-center gap-2 mb-2">
             <Zap className="w-5 h-5 text-violet-400" />
-            <h2 className="font-bold text-violet-300 text-sm uppercase tracking-widest">Quick Verdict</h2>
+            <h2 className="font-bold text-violet-300 text-sm uppercase tracking-widest">Research Summary</h2>
           </div>
           <p className="text-zinc-200 leading-relaxed">{comp.quickVerdict}</p>
         </div>
@@ -255,8 +255,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               </tr>
               <tr>
                 <td className="px-4 py-4 text-zinc-400 font-medium">FDA Status</td>
-                <td className="px-4 py-4">{peptideA.safety_notes.includes('FDA-approved') || peptideA.is_fda_approved ? <span className="text-emerald-400 font-semibold">Approved</span> : <span className="text-amber-400">Research Only</span>}</td>
-                <td className="px-4 py-4">{peptideB.safety_notes.includes('FDA-approved') || peptideB.is_fda_approved ? <span className="text-emerald-400 font-semibold">Approved</span> : <span className="text-amber-400">Research Only</span>}</td>
+                <td className="px-4 py-4">{peptideA.is_fda_approved ? <span className="text-emerald-400 font-semibold">Approved</span> : <span className="text-amber-400">Research Only</span>}</td>
+                <td className="px-4 py-4">{peptideB.is_fda_approved ? <span className="text-emerald-400 font-semibold">Approved</span> : <span className="text-amber-400">Research Only</span>}</td>
               </tr>
               <tr>
                 <td className="px-4 py-4 text-zinc-400 font-medium">Evidence Grade</td>
@@ -296,7 +296,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
 
       {/* ── RECOMMENDATION ── */}
       <section className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-8 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-100 mb-2">Which one should you choose?</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 mb-2">How the research differs</h2>
         <div className="prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed">
           {comp.recommendation}
         </div>
@@ -305,8 +305,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       {/* ── PERSONA BLOCKS ── */}
       {(comp.personaA || comp.personaB) && (
         <section className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {comp.personaA && <PersonaBlock name={`Who Should Choose ${nameA}?`} description={comp.personaA} colorClass="emerald" />}
-          {comp.personaB && <PersonaBlock name={`Who Should Choose ${isSamePeptide ? nameA + ' (With DAC)' : nameB}?`} description={comp.personaB} colorClass="blue" />}
+          {comp.personaA && <PersonaBlock name={`Research focus of ${nameA}`} description={comp.personaA} colorClass="emerald" />}
+          {comp.personaB && <PersonaBlock name={`Research focus of ${isSamePeptide ? nameA + ' (With DAC)' : nameB}`} description={comp.personaB} colorClass="blue" />}
         </section>
       )}
 

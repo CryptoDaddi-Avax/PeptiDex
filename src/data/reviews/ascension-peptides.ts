@@ -72,7 +72,7 @@ export const ascensionPeptidesReview: VendorReviewData = {
     },
   ],
   shippingDetail: 'Per vendor disclosure, Ascension Peptides ships within the United States with an estimated 3–5 business day window. Based on customer reviews, the majority of orders arrive on schedule. The 30-day return policy provides a clear resolution pathway for damaged or incorrect shipments.\n\nAscension does not offer international shipping. US-based researchers can expect standard domestic fulfillment timelines consistent with other vendors in this index.',
-  bestFor: ['Researchers needing specialty compounds (PT-141, Selank, SS-31, Melanotan II)', 'US-based researchers seeking a vendor with consistent positive sentiment', 'Protocols requiring Sermorelin or DSIP'],
+  bestFor: ['Researchers needing specialty compounds (PT-141, Selank, SS-31, Melanotan II)', 'US-based researchers seeking a vendor with consistent positive sentiment', 'Studies requiring Sermorelin or DSIP'],
   alternatives: [
     { name: 'Amino Club', slug: 'amino-club', rating: 4.9, bestFor: 'Best overall with 99%+ purity guarantee', href: '/vendors/amino-club' },
     { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', rating: 4.8, bestFor: 'Triple-tested COAs + international shipping', href: '/vendors/bio-longevity-labs' },

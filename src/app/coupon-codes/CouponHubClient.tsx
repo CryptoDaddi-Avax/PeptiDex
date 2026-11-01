@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type { VendorDeal, PeptideBestDeal } from "@/data/coupon-deals";
 import { AffiliateLink } from "@/components/affiliate-link";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 // ── Copy button ────────────────────────────────────────────────────────────────
 function CopyButton({ code }: { code: string }) {
@@ -357,6 +358,9 @@ export function CouponHubClient({
           Up to 40%+ off when stacked. No hidden minimums.
         </p>
       </div>
+
+      {/* Research-use-only notice — above all codes and shop CTAs */}
+      <DisclaimerCard variant="vendor" className="!my-0" />
 
       {/* Deal of the Week banner */}
       <motion.div

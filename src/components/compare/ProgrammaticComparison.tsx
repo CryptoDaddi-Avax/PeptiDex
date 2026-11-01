@@ -30,17 +30,17 @@ function generateVerdict(a: Peptide, b: Peptide, pair: ComparisonPair): string {
   const moreStudied = a.key_studies.length >= b.key_studies.length ? a : b;
   const lessStudied = a.key_studies.length >= b.key_studies.length ? b : a;
 
-  let verdict = `${a.name} is a ${a.category.toLowerCase()} primarily researched for ${a.primary_benefits.toLowerCase()}, while ${b.name} is a ${b.category.toLowerCase()} studied for ${b.primary_benefits.toLowerCase()}.`;
+  let verdict = `${a.name} is a ${a.category.toLowerCase()} studied for ${a.primary_benefits}, while ${b.name} is a ${b.category.toLowerCase()} studied for ${b.primary_benefits}.`;
 
   if (studyDiff > 3) {
     verdict += ` ${moreStudied.name} has substantially more indexed research (${moreStudied.key_studies.length} studies) compared to ${lessStudied.name} (${lessStudied.key_studies.length} studies).`;
   }
 
-  const aFDA = a.is_fda_approved || a.safety_notes.includes('FDA-approved');
-  const bFDA = b.is_fda_approved || b.safety_notes.includes('FDA-approved');
+  const aFDA = a.is_fda_approved;
+  const bFDA = b.is_fda_approved;
   if (aFDA !== bFDA) {
     const approved = aFDA ? a : b;
-    verdict += ` A key distinction: ${approved.name} has FDA approval status.`;
+    verdict += ` A key distinction: ${approved.name} has an FDA-approved indication.`;
   }
 
   return verdict;
@@ -145,20 +145,20 @@ function generateFAQs(a: Peptide, b: Peptide, pair: ComparisonPair): { q: string
   if (pair.sharedGoals.length > 0) {
     const goalLabel = pair.sharedGoals[0].replace(/-/g, ' ');
     faqs.push({
-      q: `Which is better for ${goalLabel} — ${a.name} or ${b.name}?`,
-      a: `Both are researched for ${goalLabel}. ${a.name} addresses this via ${a.primary_benefits.toLowerCase()}. ${b.name} approaches it through ${b.primary_benefits.toLowerCase()}. The better fit depends on which mechanism aligns with your research objectives.`,
+      q: `How does ${goalLabel} research differ for ${a.name} and ${b.name}?`,
+      a: `Both have been studied in relation to ${goalLabel}. ${a.name} research covers: ${a.primary_benefits}. ${b.name} research covers: ${b.primary_benefits}. Neither comparison establishes a treatment effect in people; see the cited studies on each profile.`,
     });
   }
 
   // FAQ 5: FDA status (if different)
-  const aFDA = a.is_fda_approved || a.safety_notes.includes('FDA-approved');
-  const bFDA = b.is_fda_approved || b.safety_notes.includes('FDA-approved');
+  const aFDA = a.is_fda_approved;
+  const bFDA = b.is_fda_approved;
   if (aFDA !== bFDA) {
     const approved = aFDA ? a : b;
     const unapproved = aFDA ? b : a;
     faqs.push({
       q: `Is ${a.name} or ${b.name} FDA-approved?`,
-      a: `${approved.name} has FDA approval (or is derived from an FDA-approved compound). ${unapproved.name} is a research compound without FDA approval for human use. FDA status reflects regulatory evaluation — not necessarily superiority for all research applications.`,
+      a: `${approved.name} has an FDA-approved indication; see its profile for the specific approved use. ${unapproved.name} is a research compound without FDA approval for human use.`,
     });
   }
 
@@ -388,12 +388,12 @@ export function ProgrammaticComparisonPage({ pair, peptideA, peptideB }: Program
                 <tr>
                   <td className="px-4 py-4 text-zinc-400 font-medium">FDA Status</td>
                   <td className="px-4 py-4">
-                    {peptideA.is_fda_approved || peptideA.safety_notes.includes('FDA-approved')
+                    {peptideA.is_fda_approved
                       ? <span className="text-emerald-400 font-semibold">Approved</span>
                       : <span className="text-amber-400">Research Only</span>}
                   </td>
                   <td className="px-4 py-4">
-                    {peptideB.is_fda_approved || peptideB.safety_notes.includes('FDA-approved')
+                    {peptideB.is_fda_approved
                       ? <span className="text-emerald-400 font-semibold">Approved</span>
                       : <span className="text-amber-400">Research Only</span>}
                   </td>

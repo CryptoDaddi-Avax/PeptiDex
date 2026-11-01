@@ -1,7 +1,7 @@
 /**
  * Coupon Landing Page Configuration
  * ==================================
- * Central config for /peptidex-coupon â€” all data is hand-verified.
+ * Central config for /peptidex-coupon — all data is hand-verified.
  * Update weekly when running vendor price checks.
  * 
  * Last updated: 2026-05-14
@@ -77,7 +77,7 @@ export const couponVendorTable: CouponVendorRow[] = [
   },
 ];
 
-// â”€â”€ HowTo Steps â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── HowTo Steps ────────────────────────────────────────────────────────────
 export interface HowToStep {
   position: number;
   name: string;
@@ -95,7 +95,7 @@ export const howToSteps: HowToStep[] = [
   {
     position: 2,
     name: 'Proceed to checkout',
-    text: 'Click the cart icon and proceed to the checkout page. Create an account or check out as a guest â€” both work with PEPTIDEX.',
+    text: 'Click the cart icon and proceed to the checkout page. Create an account or check out as a guest — both work with PEPTIDEX.',
     imageSlot: '/images/howto/step-2-checkout.png',
   },
   {
@@ -107,12 +107,12 @@ export const howToSteps: HowToStep[] = [
   {
     position: 4,
     name: 'Verify discount and complete purchase',
-    text: 'Confirm the discount is reflected in your order total. The percentage off varies by vendor (15%â€“50%). Complete your purchase â€” the discount applies instantly.',
+    text: 'Confirm the discount is reflected in your order total. The percentage off varies by vendor (15%–50%). Complete your purchase — the discount applies instantly.',
     imageSlot: '/images/howto/step-4-verify.png',
   },
 ];
 
-// â”€â”€ FAQ Items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── FAQ Items ──────────────────────────────────────────────────────────────
 export interface FAQItem {
   question: string;
   answer: string;
@@ -133,7 +133,7 @@ export const couponFAQs: FAQItem[] = [
   },
   {
     question: 'Which peptides does PEPTIDEX work on?',
-    answer: 'PEPTIDEX works on all products in each partner vendor\'s catalog â€” injectable peptides, capsules, and blends. There are no product exclusions. It applies to BPC-157, TB-500, GHK-Cu, CJC-1295, Ipamorelin, and every other compound each vendor carries.',
+    answer: 'PEPTIDEX works on all products in each partner vendor\'s catalog — injectable peptides, capsules, and blends. There are no product exclusions. It applies to BPC-157, TB-500, GHK-Cu, CJC-1295, Ipamorelin, and every other compound each vendor carries.',
   },
   {
     question: 'What is the refund policy if I use PEPTIDEX?',
@@ -161,7 +161,7 @@ export const couponFAQs: FAQItem[] = [
   },
   {
     question: 'Is PEPTIDEX an affiliate code? Do you earn a commission?',
-    answer: 'Yes â€” full transparency. PEPTIDEX is an affiliate code. I (The Crypto Daddi) earn a commission on purchases made through PEPTIDEX links. This is how PeptiDex funds ongoing research, COA verification, and free tools. The discount you receive is real and identical whether you use my link or enter the code directly.',
+    answer: 'Yes — full transparency. PEPTIDEX is an affiliate code. I (The Crypto Daddi) earn a commission on purchases made through PEPTIDEX links. This is how PeptiDex funds ongoing research, COA verification, and free tools. The discount you receive is real and identical whether you use my link or enter the code directly.',
   },
   {
     question: 'Why is PEPTIDEX better than codes like THANKYOU, AMINOS, or CLUB40?',

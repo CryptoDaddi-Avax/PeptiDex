@@ -110,7 +110,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                             {peptides.length} peptides, <em>complementary</em> roles.
                         </h3>
                         <p className="goal-protocol-block-desc">
-                            Each peptide plays a specific role. Removing any one breaks the synergy.
+                            Each peptide has been studied through a different mechanism; no controlled human trial has tested these compounds as a combination.
                         </p>
 
                         {/* ── PeptideStackCard grid ── */}
@@ -134,20 +134,20 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                         </div>
                     </div>
 
-                    {/* Expected outcomes */}
-                    <div className="goal-section-label goal-outcomes-label">§ Expected Outcomes</div>
-                    <h3 className="goal-outcomes-title">Based on published <em>trial data</em>.</h3>
+                    {/* Research overview */}
+                    <div className="goal-section-label goal-outcomes-label">§ Research Overview</div>
+                    <h3 className="goal-outcomes-title">Outcomes reported in <em>published studies</em>.</h3>
 
                     <div className="goal-expected-results">
                         <div className="goal-result-card">
-                            <div className="goal-result-label">Primary target</div>
+                            <div className="goal-result-label">Research area</div>
                             <div className="goal-result-value">{titleText}</div>
-                            <div className="goal-result-desc">Optimized through peptide synergy</div>
+                            <div className="goal-result-desc">Mostly preclinical or small human studies; see citations below</div>
                         </div>
                         <div className="goal-result-card">
                             <div className="goal-result-label">Compounds</div>
                             <div className="goal-result-value">{peptides.length} active</div>
-                            <div className="goal-result-desc">Covering {peptides.length} complementary pathways</div>
+                            <div className="goal-result-desc">Studied via {peptides.length} distinct mechanisms</div>
                         </div>
                         <div className="goal-result-card">
                             <div className="goal-result-label">Stacks</div>
@@ -265,7 +265,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
 
             {/* ═══ DISCLAIMER ═══ */}
             <div className="goal-disclaimer">
-                ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+                ⚠ Educational only · Not medical advice · Most peptides discussed here are not FDA-approved and are sold for research use only, not for human consumption
             </div>
             </>
     );

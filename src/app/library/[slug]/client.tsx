@@ -189,7 +189,7 @@ export function PeptideDetailRedesign({
             </Section>
 
             {/* Benefits */}
-            <Section icon={<Beaker />} label="§ Primary Benefits" title="Benefits">
+            <Section icon={<Beaker />} label="§ Areas of Research" title="Benefits">
               <ol className="pd-benefits-list">
                 {benefits.map((b, i) => (
                   <li key={i} className="pd-benefit-item">
@@ -302,9 +302,9 @@ export function PeptideDetailRedesign({
               );
             })()}
 
-            {/* Expected Timeline */}
-            {peptide.outcomes_timeline && (
-              <Section icon={<TrendingUp />} label="§ Expected Outcomes" title="Timeline">
+            {/* Time course in published studies (title kept as "Timeline" so the #timeline anchor stays stable) */}
+            {peptide.outcomes_timeline && Object.values(peptide.outcomes_timeline).some(Boolean) && (
+              <Section icon={<TrendingUp />} label="§ Time course in published studies" title="Timeline">
                 <TimelineBlock timeline={peptide.outcomes_timeline} />
               </Section>
             )}
@@ -487,11 +487,11 @@ export function PeptideDetailRedesign({
                 <h4 className="pd-toc-title">§ On This Page</h4>
                 <ul className="pd-toc-list">
                   <li><a href="#mechanism">How It Works</a></li>
-                  <li><a href="#benefits">Benefits</a></li>
+                  <li><a href="#benefits">Areas of Research</a></li>
                   <li><a href="#studies">Key Studies</a></li>
                   <li><a href="#safety">Safety Notes</a></li>
                   {peptide.half_life_hours && <li><a href="#halflife">Half-Life</a></li>}
-                  {peptide.outcomes_timeline && <li><a href="#timeline">Timeline</a></li>}
+                  {peptide.outcomes_timeline && <li><a href="#timeline">Time course in published studies</a></li>}
                   {peptide.side_effects?.length && <li><a href="#sideeffects">Side Effects</a></li>}
                   {references && references.length > 0 && <li><a href="#references">References</a></li>}
                 </ul>
@@ -604,8 +604,7 @@ function SideEffectsTable({
         </tbody>
       </table>
       <p className="pd-se-footer">
-        Incidence rates sourced from published clinical trial data where available;
-        otherwise based on community research observations.
+        Incidence labels are qualitative unless a cited study reports a figure.
       </p>
     </div>
   );

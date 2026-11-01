@@ -10,7 +10,7 @@
  * Schedule:
  *   Email 1  — Day 0:  Welcome + Cheat Sheet
  *   Email 2  — Day 2:  How to Read a COA
- *   Email 3  — Day 4:  The 5 Vendors We Trust
+ *   Email 3  — Day 4:  The 6 Vendors We Trust
  *   Email 4  — Day 7:  How to Verify a Vendor Before You Order (key "first_cycle")
  *   Email 5  — Day 10: Smart Vendor Picker Quiz
  *   Email 6  — Day 14: Deal of the Week
@@ -134,20 +134,20 @@ export function email2_coa(firstName = "there") {
     ${cta("Open the COA Analyzer", "https://peptidex.app/tools/coa")}
     ${divider()}
     ${p(`Quick tip: if a vendor doesn't have a publicly linked COA for the specific product you're buying, ask for one before ordering. Legitimate vendors have them ready.`)}
-    ${p(`Next email: the 5 vendors we've vetted and why we ranked them the way we did.`)}
+    ${p(`Next email: the 6 vendors we've vetted and why we ranked them the way we did.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/coa") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// EMAIL 3 — Day 4: The 5 Vendors We Trust
+// EMAIL 3 — Day 4: The 6 Vendors We Trust
 // ══════════════════════════════════════════════════════════════════════════════
 
 export function email3_vendors(firstName = "there") {
-  const subject = "The 5 peptide vendors we actually trust (and why)";
+  const subject = "The 6 peptide vendors we actually trust (and why)";
   const html = wrap(`
-    ${h1(`The 5 vendors in the PeptiDex index — and how we ranked them`)}
+    ${h1(`The 6 vendors in the PeptiDex index — and how we ranked them`)}
     ${p(`We review vendors on five criteria: testing methodology, COA transparency, purity specification, shipping reliability, and community sentiment. Here's the current lineup:`)}
     ${ul([
       `<strong>#1 Elyria Bio</strong> — Editor's Choice. ≥99% HPLC purity floor, third-party US lab COAs, lot-traceable. 24h dispatch. US only. Code <strong>PEPTIDEX</strong> = 10% off.`,
@@ -295,7 +295,7 @@ function textFallback(subject: string, ctaUrl: string): string {
 export const WELCOME_SEQUENCE = [
   { delayDays: 0,  key: "welcome",       fn: email1_welcome,     subject: "Your peptide cheat sheet is here 🧬" },
   { delayDays: 2,  key: "coa",           fn: email2_coa,         subject: "How to read a peptide COA" },
-  { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 5 vendors we actually trust" },
+  { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 6 vendors we actually trust" },
   { delayDays: 7,  key: "first_cycle",   fn: email4_verifyVendor, subject: EMAIL4_SUBJECT },
   { delayDays: 10, key: "vendor_picker", fn: email5_vendorPicker, subject: "4 questions → the right vendor" },
   { delayDays: 14, key: "deal",          fn: email6_deal,        subject: "Deal of the week" },

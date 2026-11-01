@@ -4,7 +4,9 @@
  * Per-peptide first-person research notes for the top peptides.
  * Rendered by ResearchNotesBlock.tsx.
  * 
- * Voice: "I" / "my protocol" / "I tested" — The Crypto Daddi persona
+ * Voice: first-person research/verification notes (COA review, literature tracking).
+ * Rule: No personal-use logs, no outcome promises; describe studies by model + PMID.
+ * Rule: Sourcing is described as PeptiDex index data, not personal procurement.
  * Rule: Each note references only COA batches that exist in verification-assets.ts
  * Rule: Each note ends with affiliate disclosure + timestamp
  */
@@ -25,53 +27,53 @@ export interface EEATNote {
 export const eeatNotes: Record<string, EEATNote> = {
   'tesamorelin': {
     paragraphs: [
-      `Tesamorelin is the only FDA-approved GHRH analog I track — it's been on the market since 2010 under the Egrifta brand for HIV-associated lipodystrophy, and the clinical data on visceral fat reduction is genuinely strong: 17.5% reduction in trunk fat in the SEROSTIM trials.`,
+      `Tesamorelin is the only FDA-approved GHRH analog I track — it's been FDA-approved since 2010 under the Egrifta brand for HIV-associated lipodystrophy, and its visceral fat data come from controlled trials: in a pooled analysis of two Phase 3 trials, visceral adipose tissue decreased significantly with tesamorelin versus placebo, while abdominal subcutaneous fat was preserved (PMID: 20554713).`,
       `I verified Amino Club batch TES0001 — HPLC at 99.521% purity via Biogenica Labs, MW at 5135.8 Da. The trans-3-hexenoic acid modification was confirmed by mass spec. This modification is unique to tesamorelin and essential for its extended activity versus native GHRH.`,
-      `The research angle here is visceral adipose tissue specifically — tesamorelin targets truncal fat in a way that general appetite-based approaches don't. For researchers interested in body composition beyond just scale weight, the published data on tesamorelin's selectivity for visceral vs. subcutaneous fat is uniquely compelling.`,
+      `The research angle here is visceral adipose tissue specifically. In the clinical trials, tesamorelin's effect was concentrated in visceral fat rather than subcutaneous fat or overall body weight, so the published data are most relevant to body-composition research, and the approved indication is limited to HIV-associated lipodystrophy.`,
     ],
     coaReference: 'TES0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. I source tesamorelin from both Amino Club and Bio Longevity Labs depending on availability and current pricing.`,
+    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. The PeptiDex index lists tesamorelin at both Amino Club and Bio Longevity Labs; availability and current pricing vary.`,
     lastVerified: 'May 2026',
   },
 
   'bpc-157': {
     paragraphs: [
-      `BPC-157 is the compound I get asked about more than any other — and for good reason. Over 100 preclinical studies cover its effects on angiogenesis, tendon healing, GI protection, and nitric oxide modulation. The breadth of the preclinical evidence base is unmatched in the peptide space.`,
+      `BPC-157 is the compound I get asked about more than any other. Its preclinical literature covers angiogenesis, tendon healing models, GI lesion models, and nitric oxide signaling; a 2026 clinical primer notes a significant lack of human clinical evidence (PMID: 41476424). The evidence base is broad, but almost entirely animal data.`,
       `I've verified the COA from Amino Club batch BP0001 — 99.876% purity via Biogenica Labs, MW at 1419.5 Da. That's the highest BPC-157 purity in my current dataset. The hosted COA PDF is linked in the verification section below for independent review.`,
       `The important caveat with BPC-157 is the Phase 1 human trial gap — as of May 2026, there is no published Phase 1 safety data in humans. The preclinical evidence is extensive but all animal-model based. I've flagged this on every BPC-157 page and researchers should weight it accordingly.`,
     ],
     coaReference: 'BP0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Amino Club provides the best price-per-mg ($3.20/mg after code) but Bio Longevity Labs has the highest verified purity (99.6%). Both are recommended sources.`,
+    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Amino Club provides the best price-per-mg ($3.20/mg after code) but Bio Longevity Labs has the highest verified purity (99.6%). Both have verified COAs in the PeptiDex index.`,
     lastVerified: 'May 2026',
   },
 
   'tb-500': {
     paragraphs: [
-      `TB-500 is the regenerative peptide I pair with BPC-157 in most tissue-repair research stacks — they work through complementary mechanisms. TB-500 promotes cell migration via actin polymerization while BPC-157 drives angiogenesis and nitric oxide release.`,
+      `TB-500 is the peptide most often discussed alongside BPC-157 in tissue-repair research. The two are studied for different mechanisms: TB-500 for cell migration via actin regulation, BPC-157 for angiogenesis and nitric oxide signaling in preclinical models.`,
       `I verified Amino Club batch TB0001 at 99.924% purity via Biogenica Labs — MW at 4963.4 Da. At $31.99/10mg after the PEPTIDEX code, Amino Club has the best price-per-mg in my index for this compound. The COA PDF is linked below.`,
-      `The equine research on thymosin beta-4 (the parent compound) is actually the most extensive dataset — TB-500 has been used in veterinary contexts for decades. The human research is more limited but the mechanistic rationale from the actin-sequestration data is solid.`,
+      `The equine research on thymosin beta-4 (the parent compound) is actually the most extensive dataset — TB-500 has been used in veterinary contexts for decades. Human research is limited; most of the mechanistic data come from cell and animal studies of actin sequestration.`,
     ],
     coaReference: 'TB0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. I source TB-500 from Amino Club for the best pricing and from Limitless Life when I want their specific batch documentation.`,
+    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. The PeptiDex index lists TB-500 at Amino Club (lowest indexed price) and Limitless Life (batch-specific documentation).`,
     lastVerified: 'May 2026',
   },
 
   'cjc-1295': {
     paragraphs: [
-      `CJC-1295 is the GHRH analog I track for sustained GH release research — the DAC (Drug Affinity Complex) version binds to albumin and extends the half-life to 6-8 days, and once-weekly administration in the cited trial produced stable GH elevation.`,
+      `CJC-1295 is the GHRH analog I track for sustained GH release research — the DAC (Drug Affinity Complex) version binds to albumin and extends the half-life to 6-8 days.`,
       `Amino Club batch CIP0001 verified at 99.940% purity via Biogenica Labs — the highest purity in my entire COA dataset across all peptides. At $47.99/10mg after the PEPTIDEX code ($4.80/mg), it's reasonably priced for a modified peptide of this complexity. COA PDF linked below.`,
-      `The Ipamorelin + CJC-1295 combination is the most commonly discussed GH-axis stack in the research community — CJC-1295 provides the sustained GHRH signal while ipamorelin delivers pulsatile GH secretagogue activity. Different mechanisms, complementary pharmacology.`,
+      `The Ipamorelin + CJC-1295 combination is the most commonly discussed GH-axis stack in the research community — CJC-1295 acts on the GHRH receptor while ipamorelin acts on the ghrelin (GHS) receptor. Different mechanisms; published data on the combination itself are limited.`,
     ],
     coaReference: 'CIP0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. I source CJC-1295 from Amino Club — they're the only gold-tier option I've verified for this compound currently.`,
+    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Amino Club is currently the only gold-tier vendor stocking CJC-1295 in the PeptiDex index.`,
     lastVerified: 'May 2026',
   },
 
   'ipamorelin': {
     paragraphs: [
-      `Ipamorelin is the GH secretagogue I recommend over GHRP-2 and GHRP-6 for a simple reason: it's selective. Ipamorelin triggers pulsatile GH release without the cortisol and prolactin spikes that make the GHRP family problematic in longer-duration studies.`,
+      `Ipamorelin is the GH secretagogue most often compared with GHRP-2 and GHRP-6, for a simple reason: it's selective. In published studies it stimulated pulsatile GH release without the cortisol and prolactin increases reported with the older GHRP compounds.`,
       `Amino Club batch IPA0001 verified at 99.810% HPLC purity via Biogenica Labs with MW at 711.9 Da. At a molecular weight of only 711.9 Da, ipamorelin is a pentapeptide that's straightforward to synthesize at high purity, which is why I expect consistent quality across reputable vendors. COA PDF linked below.`,
-      `The clinical data from Andersen et al. showed dose-dependent GH release in human subjects without significant effects on cortisol, ACTH, prolactin, or insulin. That selectivity profile is what makes it the default GH secretagogue for research stacks.`,
+      `The clinical data from Andersen et al. showed dose-dependent GH release in human subjects without significant effects on cortisol, ACTH, prolactin, or insulin. That selectivity profile is the main reason it is so widely discussed in GH-axis research.`,
     ],
     coaReference: 'IPA0001',
     disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Amino Club's ipamorelin batch holds the highest purity score in my dataset (99.5%) — that's verifiable from the COA documentation.`,
@@ -85,7 +87,7 @@ export const eeatNotes: Record<string, EEATNote> = {
       `The key published study is Lee et al. 2015 in Cell Metabolism, which demonstrated MOTS-c's role in regulating metabolic homeostasis through AMPK activation. The endogenous nature of MOTS-c (it's encoded in mitochondrial DNA) is part of what makes the mechanism interesting — it's not a synthetic pharmaceutical analog, it's a naturally occurring signaling peptide.`,
     ],
     coaReference: 'MTC0001',
-    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. I source MOTS-c from Amino Club based on price-per-mg comparisons.`,
+    disclosure: `Full disclosure — PEPTIDEX is my affiliate code. Amino Club has the lowest price-per-mg for MOTS-c in the PeptiDex index.`,
     lastVerified: 'May 2026',
   },
 
@@ -125,7 +127,7 @@ export const eeatNotes: Record<string, EEATNote> = {
   '5-amino-1mq': {
     paragraphs: [
       `5-Amino-1MQ is the NNMT inhibitor I've been tracking for its novel mechanism — it doesn't work through traditional appetite suppression pathways. Instead, it targets nicotinamide N-methyltransferase, an enzyme that when inhibited, shifts cellular metabolism toward higher energy expenditure.`,
-      `The Neelakantan et al. 2022 study in Biochemical Pharmacology demonstrated significant fat mass reduction in diet-induced obese mice without affecting lean mass or food intake. That selectivity — fat loss without appetite suppression — is what makes the NNMT pathway interesting as a research target.`,
+      `The Neelakantan et al. 2022 study in Biochemical Pharmacology reported reduced fat mass in diet-induced obese mice without affecting lean mass or food intake. That pattern in mice, with no change in food intake, is what makes the NNMT pathway interesting as a research target; human data are limited.`,
       `Amino Club batch AMQ0001 verified at 99.710% purity via Biogenica Labs. Some vendors sell 5-Amino-1MQ as an oral capsule rather than injectable, which changes the bioavailability profile. COA PDF for batch AMQ0001 linked below.`,
     ],
     coaReference: 'AMQ0001',
@@ -137,7 +139,7 @@ export const eeatNotes: Record<string, EEATNote> = {
     paragraphs: [
       `SLU-PP-332 is the exercise mimetic I've been watching since the Burris lab at Washington University first published on ERRα/ERRγ agonism — the 2023 paper in ACS Chemical Biology showed enhanced endurance capacity in sedentary mice through upregulated mitochondrial biogenesis, without any physical activity.`,
       `For sourcing, Limitless Life Nootropics now carries SLU-PP-332 in capsule form — 250mcg × 60 capsules at $118.99 after the 15% PEPTIDEX discount (normally $139.99), USA-manufactured, third-party tested at ≥99% purity. This is the only verified vendor in my index currently stocking SLU-PP-332. Note: this is a capsule (oral) format, not injectable — the oral bioavailability profile for small-molecule ERR agonists is expected to be reasonable given SLU-PP-332's non-peptide structure.`,
-      `The ERR pathway is mechanistically distinct from AMPK activation (MOTS-c) — SLU-PP-332 works by directly upregulating genes involved in oxidative phosphorylation and fatty acid oxidation. The Xu et al. 2023 Circulation paper also demonstrated cardiac benefits through enhanced fatty acid metabolism in heart failure models — this compound has potential well beyond the "exercise mimetic" label.`,
+      `The ERR pathway is mechanistically distinct from AMPK activation (MOTS-c) — SLU-PP-332 works by directly upregulating genes involved in oxidative phosphorylation and fatty acid oxidation. The Xu et al. 2023 Circulation paper also reported enhanced cardiac fatty acid metabolism in mouse heart failure models; like the endurance data, this remains preclinical.`,
     ],
     disclosure: `Full disclosure — PEPTIDEX is my affiliate code and I earn a commission on purchases made through my links. Limitless Life Nootropics is the only vendor currently carrying SLU-PP-332 in my index.`,
     lastVerified: 'May 2026',

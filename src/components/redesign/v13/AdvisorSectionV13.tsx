@@ -39,7 +39,7 @@ export default function AdvisorSectionV13() {
             <ul className="advisor-bullets fade-up">
               <li>
                 <span className="ico">📋</span>
-                <span>Build <strong>personalized stacks</strong> based on your goals</span>
+                <span>Explore compounds <strong>by research area</strong></span>
               </li>
               <li>
                 <span className="ico">🧬</span>

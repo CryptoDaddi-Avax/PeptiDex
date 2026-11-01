@@ -166,11 +166,11 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'tesamorelin': [
     {
       q: 'Is tesamorelin FDA-approved?',
-      a: 'Yes — tesamorelin is the only FDA-approved GHRH analog, marketed as Egrifta by Theratechnologies. It is approved specifically for reduction of excess abdominal fat in HIV-infected patients with lipodystrophy. Research-grade tesamorelin is also available from peptide research vendors for off-label investigation.',
+      a: 'Yes — tesamorelin is the only FDA-approved GHRH analog, marketed as Egrifta by Theratechnologies. It is approved specifically for reduction of excess abdominal fat in HIV-infected patients with lipodystrophy. Research-grade tesamorelin sold by peptide vendors is labeled for laboratory research use only.',
     },
     {
-      q: 'How does tesamorelin reduce visceral fat specifically?',
-      a: 'Tesamorelin stimulates pulsatile growth hormone release from the pituitary, which preferentially targets visceral adipose tissue (VAT) over subcutaneous fat. The Phase 3 SEROSTIM trials showed a 17.5% reduction in trunk fat. This selectivity for visceral vs. subcutaneous fat is unique among GH-axis compounds and is the primary reason tesamorelin is studied for body composition beyond just scale weight.',
+      q: 'What did the tesamorelin visceral fat trials find?',
+      a: 'Tesamorelin stimulates pulsatile growth hormone release from the pituitary. In a pooled analysis of two Phase 3 trials in HIV-associated lipodystrophy, visceral adipose tissue decreased significantly with tesamorelin versus placebo, while abdominal subcutaneous fat was preserved (PMID: 20554713). That trial supports its FDA-approved indication (Egrifta); effects on visceral fat outside that population are investigational.',
     },
     {
       q: 'Where can I buy tesamorelin for research?',

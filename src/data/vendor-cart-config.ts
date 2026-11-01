@@ -1,12 +1,12 @@
 /**
- * Vendor Cart Configuration â€” Single Source of Truth
+ * Vendor Cart Configuration — Single Source of Truth
  * ===================================================
  * Defines per-vendor cart-building capabilities based on browser-verified
  * affiliate attribution tests (2026-05-10).
  *
- * Tier 1: Cart Pre-fill â€” ?add-to-cart= URL opens vendor site with item in cart
- * Tier 2: Deep Link â€” Opens product page; user manually adds to cart
- * Tier 3: Affiliate Root â€” Opens vendor homepage only
+ * Tier 1: Cart Pre-fill — ?add-to-cart= URL opens vendor site with item in cart
+ * Tier 2: Deep Link — Opens product page; user manually adds to cart
+ * Tier 3: Affiliate Root — Opens vendor homepage only
  */
 
 export type CartTier = 1 | 2 | 3;
@@ -87,7 +87,7 @@ export const vendorCartConfigs: Record<string, VendorCartConfig> = {
     affiliateRootUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
     utmParams: { utm_source: "peptidex", utm_medium: "cart_builder" },
     hasVariableProducts: false,
-    notes: "SPA â€” no cart-add URL. Deep links work. Affiliate tracking is session-based via URL params.",
+    notes: "SPA — no cart-add URL. Deep links work. Affiliate tracking is session-based via URL params.",
   },
 
   "bio-longevity-labs": {
@@ -103,7 +103,7 @@ export const vendorCartConfigs: Record<string, VendorCartConfig> = {
     affiliateRootUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
     utmParams: { utm_source: "peptidex", utm_medium: "cart_builder" },
     hasVariableProducts: true,
-    notes: "Two-step flow required: HasOffers redirect â†’ then cart-add. Variable products fall back to Tier 2.",
+    notes: "Two-step flow required: HasOffers redirect → then cart-add. Variable products fall back to Tier 2.",
   },
 
   "limitless-life": {
@@ -119,7 +119,7 @@ export const vendorCartConfigs: Record<string, VendorCartConfig> = {
     affiliateRootUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     utmParams: { utm_source: "peptidex", utm_medium: "cart_builder" },
     hasVariableProducts: true,
-    notes: "Simple products: cart-add works. BPC-157 (ID:217) requires weight/grade selection â€” Tier 2 fallback.",
+    notes: "Simple products: cart-add works. BPC-157 (ID:217) requires weight/grade selection — Tier 2 fallback.",
   },
 
   "pantheon-peptides": {
@@ -151,11 +151,11 @@ export const vendorCartConfigs: Record<string, VendorCartConfig> = {
     affiliateRootUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
     utmParams: { utm_source: "peptidex", utm_medium: "cart_builder" },
     hasVariableProducts: false,
-    notes: "Excluded from procurement bridge â€” oral formulations only.",
+    notes: "Excluded from procurement bridge — oral formulations only.",
   },
 };
 
-// â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Helpers ──────────────────────────────────────────────────────────────
 
 /** Get cart config for a vendor */
 export function getVendorCartConfig(vendorSlug: string): VendorCartConfig | undefined {

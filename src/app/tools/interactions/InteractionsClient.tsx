@@ -304,7 +304,7 @@ export default function InteractionsPage() {
                 { key: "doNotStack", label: "DO NOT STACK", count: summary.doNotStack, cfg: SEVERITY_CONFIG.DO_NOT_STACK },
                 { key: "warnings",   label: "WARNING",      count: summary.warnings,   cfg: SEVERITY_CONFIG.WARNING      },
                 { key: "cautions",   label: "CAUTION",      count: summary.cautions,   cfg: SEVERITY_CONFIG.CAUTION      },
-                { key: "safe",       label: "SAFE",         count: summary.safe,        cfg: SEVERITY_CONFIG.SAFE         },
+                { key: "safe",       label: SEVERITY_CONFIG.SAFE.label, count: summary.safe,        cfg: SEVERITY_CONFIG.SAFE         },
               ].map(({ key, label, count, cfg }) => (
                 <div key={key} className={`rounded-lg p-2 text-center ${cfg.bg} border ${cfg.border}`}>
                   <p className={`text-lg font-bold ${cfg.text}`}>{count}</p>
@@ -375,7 +375,7 @@ export default function InteractionsPage() {
           {safe.length > 0 && (
             <div className="space-y-3">
               <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400">
-                ✅ Known Safe Combinations ({safe.length})
+                No Known Conflict ({safe.length})
               </h2>
               {safe.map((i, idx) => <InteractionCard key={idx} interaction={i} />)}
             </div>

@@ -3,7 +3,8 @@
  * Server component. No client-side JS. Pure data merge.
  *
  * Editorial promise: research lives in /library/, sourcing lives here.
- * Side effects + timeline are truncated to 100-150 words with link to /library/.
+ * No outcome/timeline claims here: research is summarized as a cited-study count
+ * linking to /library/. RUO DisclaimerCard renders at the top of the content.
  *
  * Created: 2026-05-11 — pSEO route architecture
  */
@@ -15,6 +16,7 @@ import { vendorVerifications } from "@/data/verification-data";
 import { vendorEditorial } from "@/data/vendorEditorial";
 import { comparisons } from "@/data/comparisons";
 import { vendorCartConfigs } from "@/data/vendor-cart-config";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -106,6 +108,9 @@ export function PeptideVendorContent({ pair }: Props) {
 
   return (
     <div className="about-content" style={{ maxWidth: 900 }}>
+
+      {/* ── Research-use-only notice (above pricing) ── */}
+      <DisclaimerCard variant="vendor" />
 
       {/* ── Section 1: Product Overview ── */}
       <section style={sectionStyle} id="product-overview">
@@ -212,22 +217,18 @@ export function PeptideVendorContent({ pair }: Props) {
         )}
       </section>
 
-      {/* ── Section 4: Research Summary (truncated) ── */}
-      {peptide.outcomes_timeline && (
+      {/* ── Section 4: Research pointer (no outcome claims on sourcing pages) ── */}
+      {peptide.key_studies?.length > 0 && (
         <section style={sectionStyle} id="research-summary">
           <h2 style={h2Style}>
-            What to Expect on {peptide.name}
+            Published research on {peptide.name}: {peptide.key_studies.length} cited studies
           </h2>
-          <div style={{ display: "grid", gap: 8 }}>
-            {peptide.outcomes_timeline.week_1 && (
-              <p style={valueStyle}><strong>Week 1:</strong> {peptide.outcomes_timeline.week_1}</p>
-            )}
-            {peptide.outcomes_timeline.week_2_4 && (
-              <p style={valueStyle}><strong>Weeks 2–4:</strong> {peptide.outcomes_timeline.week_2_4}</p>
-            )}
-          </div>
+          <p style={valueStyle}>
+            Study models, endpoints, and evidence levels for {peptide.name} are summarized on its research profile.
+            This page covers sourcing only.
+          </p>
           <Link href={`/library/${peptide.slug}`} style={{ ...linkStyle, display: "inline-block", marginTop: 12, fontSize: 13 }}>
-            Full {peptide.name} research profile — outcomes, side effects, studies →
+            {peptide.name} research profile — {peptide.key_studies.length} cited studies →
           </Link>
         </section>
       )}

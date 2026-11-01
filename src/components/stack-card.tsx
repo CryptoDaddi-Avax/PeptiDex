@@ -86,7 +86,7 @@ export function StackCard({ stack, index = 0, isSaved, onSave, onRemove }: Stack
                             </div>
 
                             <div>
-                                <h4 className="text-sm font-semibold text-zinc-200 mb-2">ðŸ”¬ Peptide Roles</h4>
+                                <h4 className="text-sm font-semibold text-zinc-200 mb-2">🔬 Peptide Roles</h4>
                                 <div className="space-y-2">
                                     {stack.peptides.map((p) => (
                                         <div key={p.name} className="bg-zinc-800/40 rounded-xl p-3">
@@ -98,7 +98,7 @@ export function StackCard({ stack, index = 0, isSaved, onSave, onRemove }: Stack
                             </div>
 
                             <div>
-                                <h4 className="text-sm font-semibold text-zinc-200 mb-2">ðŸ“š Supporting Studies</h4>
+                                <h4 className="text-sm font-semibold text-zinc-200 mb-2">📚 Supporting Studies</h4>
                                 <div className="space-y-2">
                                     {stack.supporting_studies.map((s, i) => (
                                         <a

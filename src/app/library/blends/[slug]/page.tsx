@@ -233,11 +233,12 @@ export default async function BlendDetailPage({
                 </div>
             )}
 
-            {/* Outcomes Timeline */}
+            {/* Published study time course (hidden when no entries) */}
+            {Object.values(blend.outcomes_timeline).filter(Boolean).length > 0 && (
             <div className="mb-4">
                 <h2 className="text-sm font-semibold text-zinc-200 mb-3 flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-violet-400" />
-                    Expected Timeline
+                    Published study time course (individual components)
                 </h2>
                 <div className="space-y-2">
                     {timelineSteps.map(({ key, label, color, bg }) => {
@@ -252,6 +253,7 @@ export default async function BlendDetailPage({
                     })}
                 </div>
             </div>
+            )}
 
             {/* Studies */}
             <div className="mb-4 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">

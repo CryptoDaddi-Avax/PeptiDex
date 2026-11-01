@@ -28,7 +28,7 @@ export interface OutcomesTimeline {
 
 export interface SideEffect {
     name: string;
-    incidence: string;       // e.g. "~5% of users" | "rare (<2%)"
+    incidence: string;       // qualitative label, e.g. "Reported in clinical trials" | "Rare reports" | "Frequency not established"; use "reported in N% of study participants (pubmed X)" only when a key_studies entry for that peptide reports the figure
     severity: "mild" | "moderate" | "uncommon" | "rare";
     note?: string;
 }

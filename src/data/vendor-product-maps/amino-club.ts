@@ -1,5 +1,5 @@
 ﻿/**
- * Amino Club â€” Product Map
+ * Amino Club — Product Map
  * Tier: 2 (Deep Links) | Platform: Custom SPA
  * Product URL: aminoclub.com/us/products/{slug}
  * Affiliate: ?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX

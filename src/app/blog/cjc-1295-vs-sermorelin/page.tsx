@@ -58,7 +58,7 @@ export default function CJCVsSermorelin() {
       { '@type': 'Question', name: 'What is CJC-1295 with DAC vs without DAC?', acceptedAnswer: { '@type': 'Answer', text: 'DAC stands for Drug Affinity Complex — a modification that allows CJC-1295 to bind to serum albumin, dramatically extending its half-life from ~30 minutes (without DAC, also called Modified GRF 1-29) to 6-8 days (with DAC). CJC-1295 with DAC provides sustained GH elevation, while CJC-1295 without DAC (Mod GRF 1-29) provides shorter GH pulses more similar to Sermorelin.' } },
       { '@type': 'Question', name: 'Is Sermorelin FDA-approved?', acceptedAnswer: { '@type': 'Answer', text: 'Sermorelin was FDA-approved in 1997 under the brand name Geref for diagnosing and treating growth hormone deficiency in children. While the branded product was discontinued in 2008 for commercial reasons, sermorelin remains available through compounding pharmacies for off-label clinical use and is one of the most well-characterized GHRH analogs in clinical practice.' } },
       { '@type': 'Question', name: 'Can you combine CJC-1295 and Sermorelin?', acceptedAnswer: { '@type': 'Answer', text: 'This combination is generally not recommended as both compounds target the same GHRH receptor on the pituitary. Using both simultaneously would provide redundant stimulation without meaningful synergistic benefit. Instead, either compound is typically paired with a GHRP (like Ipamorelin) for complementary GH release through the ghrelin pathway.' } },
-      { '@type': 'Question', name: 'Which is better for anti-aging: CJC-1295 or Sermorelin?', acceptedAnswer: { '@type': 'Answer', text: 'For anti-aging and longevity protocols, Sermorelin is often preferred by clinicians due to its more physiological GH release pattern (mimicking natural pulsatility) and its longer clinical safety track record. CJC-1295 with DAC produces more sustained IGF-1 elevation because of its multi-day half-life. Both have been shown to raise IGF-1 in clinical studies.' } },
+      { '@type': 'Question', name: 'How do CJC-1295 and Sermorelin differ in GH release pattern?', acceptedAnswer: { '@type': 'Answer', text: 'Sermorelin produces a more physiological GH release pattern (mimicking natural pulsatility) and has a longer clinical track record, including a former FDA approval for pediatric GH deficiency. Neither has been shown in controlled trials to slow aging. CJC-1295 with DAC produces more sustained IGF-1 elevation because of its multi-day half-life. Both have been shown to raise IGF-1 in clinical studies.' } },
     ],
   };
 
@@ -134,7 +134,7 @@ export default function CJCVsSermorelin() {
           <p className="lead text-xl text-zinc-300 font-medium" id="intro">
             <strong>CJC-1295</strong> and <strong>Sermorelin</strong> are both synthetic analogs of growth hormone-releasing hormone (GHRH), the hypothalamic hormone that tells the pituitary gland to produce and release GH. But they differ dramatically in half-life, duration of action, and the nature of the GH release they produce.
           </p>
-          <p>Understanding these differences is essential for researchers and clinicians selecting the appropriate GHRH analog for specific protocols — whether the goal is anti-aging optimization, body composition improvement, or recovery support.</p>
+          <p>Understanding these differences is essential for researchers and clinicians comparing GHRH analogs, because the half-life of each compound determines the GH and IGF-1 pattern it produces.</p>
           <p className="p-4 bg-violet-900/10 border border-violet-500/20 rounded-xl my-6 text-zinc-300">
             For researchers sourcing these compounds, <a href="https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=blog_body&code=PEPTIDEX" target="_blank" rel="nofollow noopener sponsored" className="font-semibold text-violet-400 hover:underline">Amino Club provides COA-verified peptides with documented purity testing. Browse peptides &rarr;</a>
           </p>
@@ -201,7 +201,7 @@ export default function CJCVsSermorelin() {
             Both sermorelin and CJC-1295 are optimally paired with <Link href="/library/ipamorelin">Ipamorelin</Link> — a selective GHRP that triggers GH release via the complementary ghrelin pathway. This GHRH + GHRP combination produces synergistic GH amplification (3-6x greater pulses) through a dual-pathway mechanism.³
           </p>
           <p>
-            <strong>Sermorelin + Ipamorelin:</strong> Best for physiological pulsatile GH release, anti-aging protocols, and long-term use where natural GH patterns are prioritized.
+            <strong>Sermorelin + Ipamorelin:</strong> Discussed for physiological pulsatile GH release, where preserving natural GH patterns is the research priority. The combination has not been tested in controlled trials.
           </p>
           <p>
             <strong>CJC-1295 (w/DAC) + Ipamorelin:</strong> Best for sustained IGF-1 elevation, body composition goals, and research where sustained exposure is the variable of interest.
@@ -210,7 +210,7 @@ export default function CJCVsSermorelin() {
           <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="verdict">Research Verdict</h2>
           <p>
-            <strong>For anti-aging and longevity:</strong> Sermorelin&apos;s shorter half-life and physiological pulsatile release pattern more closely mimic natural GH secretion, which many clinicians prefer for long-term health optimization.
+            <strong>For research on physiological GH patterns:</strong> Sermorelin&apos;s shorter half-life and pulsatile release pattern more closely mimic natural GH secretion. No GHRH analog has been shown to slow aging in controlled trials.
           </p>
           <p>
             <strong>For body composition and performance:</strong> CJC-1295 with DAC provides stronger, more sustained GH/IGF-1 elevation owing to its multi-day half-life.

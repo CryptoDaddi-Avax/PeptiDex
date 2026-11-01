@@ -14,6 +14,8 @@ export interface PeptideBlend {
     key_studies: Study[];
     safety_notes: string;
     popular_vendors: string[];
+    // Time course reported in published studies of the individual components (each entry cites a key_studies PMID).
+    // No study has evaluated these combinations; leave empty when no component study reports a time course.
     outcomes_timeline: {
         week_1?: string;
         week_2_4?: string;
@@ -30,234 +32,189 @@ export const peptideBlends: PeptideBlend[] = [
     {
         name: "BPC-157 / TB-500",
         slug: slug("BPC-157-TB-500"),
-        nickname: "The Wolverine Stack",
+        nickname: "Tissue-repair research pairing",
         components: ["BPC-157", "TB-500"],
         category: "Healing & Recovery",
         category_icon: "\u{1FA79}",
-        primary_benefits: "Accelerated injury healing, tissue repair, reduced inflammation, enhanced recovery",
-        why_blend: "BPC-157 targets local tissue repair via angiogenesis and growth factors, while TB-500 provides systemic anti-inflammatory and cell migration support. Together they deliver complementary healing pathways — BPC works at the injury site, TB-500 works system-wide.",
-        mechanism: "BPC-157 promotes angiogenesis and collagen deposition at injury sites via FAK-paxillin signaling. TB-500 upregulates actin for cell migration and wound healing systemically. The combination creates a dual-pathway healing response significantly more effective than either peptide alone.",
+        primary_benefits: "Tendon, ligament and GI lesion healing (BPC-157, rodent models), dermal wound healing and angiogenesis (thymosin beta-4, animal models), combination not studied",
+        why_blend: "BPC-157 has been studied mainly for local tissue repair via angiogenesis and growth-factor signaling in rodent models, while thymosin beta-4 (the parent protein of TB-500) has been studied for cell migration and wound healing in animal models. They are paired because their proposed mechanisms differ; no published study has evaluated the combination.",
+        mechanism: "BPC-157 has been reported to promote angiogenesis and collagen deposition at injury sites in rodent models. Thymosin beta-4 binds actin and promotes cell migration and wound healing in animal models. Whether the two act additively has not been tested.",
         vial_composition: "Vial: BPC-157 10mg + TB-500 10mg",
         key_studies: [
-            { title: "BPC-157 tendon and gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030658/", summary: "Comprehensive review of BPC-157's tissue healing across multiple preclinical models.", evidence_level: "preclinical" },
-            { title: "Thymosin Beta-4 wound healing and inflammation", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14657002/", summary: "Tβ4 promotes wound healing via enhanced reepithelialization and angiogenesis.", evidence_level: "preclinical" },
+            { title: "BPC-157 tendon and gut healing effects", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21030658/", summary: "Review of BPC-157 tissue-healing findings across multiple preclinical models.", evidence_level: "preclinical" },
+            { title: "Thymosin Beta-4 wound healing and inflammation", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14657002/", summary: "Tβ4 promoted wound healing via enhanced reepithelialization and angiogenesis in animal models.", evidence_level: "preclinical" },
         ],
-        safety_notes: "Both peptides have excellent safety profiles individually. The combination is the most widely used peptide stack. Not FDA-approved. Research-only.",
+        safety_notes: "Human safety data are limited for both components (BPC-157 is largely preclinical; thymosin beta-4 has early-phase trial data). The combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Reduced inflammation and pain at injury site; improved mobility",
-            week_2_4: "Significant tissue repair; noticeable reduction in swelling and stiffness",
-            month_2_3: "Substantial healing of tendons, ligaments, and soft tissue injuries",
-            long_term: "Complete functional recovery for most acute/subacute injuries"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "CJC-1295 / Ipamorelin",
         slug: slug("CJC-1295-Ipamorelin"),
-        nickname: "The GH Stack",
+        nickname: "GHRH + GHRP research pairing",
         components: ["CJC-1295", "Ipamorelin"],
         category: "Growth Hormone",
         category_icon: "\u{1F489}",
-        primary_benefits: "Optimized GH release, lean muscle growth, fat loss, improved sleep and recovery",
-        why_blend: "CJC-1295 provides sustained GHRH signaling (extended GH elevation), while Ipamorelin triggers acute, clean GH pulses without raising cortisol or prolactin. Together, they amplify the GH response beyond what either achieves alone.",
-        mechanism: "CJC-1295 mimics GHRH to maintain elevated baseline GH via the GHRH receptor, with a 7-day half-life (DAC version). Ipamorelin mimics ghrelin at the GHS receptor for acute, selective GH release. Dual-receptor activation produces a synergistic GH pulse.",
+        primary_benefits: "GH and IGF-1 secretion (CJC-1295, healthy-adult study), selective GH release without cortisol or prolactin rise (Ipamorelin, animal and human studies), combination not studied",
+        why_blend: "CJC-1295 acts at the GHRH receptor and produced sustained GH elevation in a study of healthy adults, while Ipamorelin acts at the ghrelin (GHS) receptor and produced selective GH release in animal studies. The pairing is discussed because GHRH and GHS receptor agonists act through different receptors; the combination has not been evaluated in published trials.",
+        mechanism: "CJC-1295 is a GHRH analog; the DAC version has an extended half-life. Ipamorelin is a ghrelin mimetic that acts at the GHS receptor. Co-activation of GHRH and GHS receptors has been proposed to increase GH release, but this specific pairing has not been studied.",
         vial_composition: "Vial: CJC-1295 (no DAC) 5mg + Ipamorelin 5mg",
         key_studies: [
             { title: "CJC-1295 sustained GH/IGF-1 elevation", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/", summary: "Single injection increases GH 2-10x for 6+ days and IGF-1 1.5-3x.", evidence_level: "moderate" },
             { title: "Ipamorelin selective GH release", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9849822/", summary: "Releases GH potently and selectively without raising cortisol or prolactin.", evidence_level: "moderate" },
         ],
-        safety_notes: "One of the safest GH peptide combinations. No significant cortisol or prolactin elevation. Not FDA-approved.",
+        safety_notes: "Ipamorelin did not raise cortisol or prolactin in the cited animal study. Changes in blood glucose have been reported with GH secretagogues. The combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
         outcomes_timeline: {
-            week_1: "Improved sleep depth; GH flush sensation; increased appetite",
-            week_2_4: "Enhanced recovery and energy; early body composition changes",
-            month_2_3: "Measurable lean mass gain; visible fat loss; elevated IGF-1 on bloodwork",
-            long_term: "Sustained anti-aging benefits; improved body composition; better bone density"
+            week_1: "CJC-1295 alone, healthy adults: GH elevated for 6+ days after a single administration (pubmed 16352683)"
         }
     },
     {
         name: "BPC-157 / TB-500 / GHK-Cu",
         slug: slug("BPC-157-TB-500-GHK-Cu"),
-        nickname: "The Ultimate Healing Trifecta",
+        nickname: "Tissue-repair research trio",
         components: ["BPC-157", "TB-500", "GHK-Cu"],
         category: "Healing & Recovery",
         category_icon: "\u{2728}",
-        primary_benefits: "Maximum tissue repair, anti-aging, scar reduction, collagen synthesis",
-        why_blend: "Adds GHK-Cu's collagen/elastin synthesis and gene expression modulation to the proven BPC-157/TB-500 healing combo. Three distinct repair mechanisms working simultaneously.",
-        mechanism: "BPC-157 drives local angiogenesis, TB-500 enables systemic cell migration, and GHK-Cu delivers copper for collagen/elastin production while modulating 4,000+ genes toward a healthier expression pattern.",
+        primary_benefits: "Musculoskeletal healing (BPC-157, preclinical systematic review), collagen and gene-expression effects (GHK-Cu, cell studies), combination not studied",
+        why_blend: "Adds GHK-Cu, studied for collagen and elastin synthesis and gene-expression effects, to the BPC-157 / TB-500 pairing. Each component acts through a different proposed mechanism; no published study has evaluated the three together.",
+        mechanism: "BPC-157 has been associated with angiogenesis in rodent models, thymosin beta-4 with cell migration in animal models, and GHK-Cu with collagen and elastin synthesis and changes in the expression of 4,000+ genes in cell studies.",
         vial_composition: "Vial: GHK-Cu 50mg + BPC-157 10mg + TB-500 10mg",
         key_studies: [
             { title: "BPC-157 systematic review: musculoskeletal healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/39754825/", summary: "Systematic review of 35 preclinical studies showing BPC-157 promotes healing.", evidence_level: "preclinical" },
             { title: "GHK-Cu gene expression regulation", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/24687255/", summary: "GHK-Cu regulates 4,000+ human genes, shifting patterns to healthy states.", evidence_level: "preclinical" },
         ],
-        safety_notes: "All three peptides have excellent individual safety profiles. Triple combination is popular among advanced users. Not FDA-approved.",
+        safety_notes: "Human safety data are limited for all three components, and the triple combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Rapid reduction in inflammation; improved wound healing",
-            week_2_4: "Visible tissue repair; improved skin quality from GHK-Cu",
-            month_2_3: "Substantial healing; collagen remodeling; reduced scarring",
-            long_term: "Full tissue recovery; anti-aging skin benefits; sustained repair"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "Semax / Selank",
         slug: slug("Semax-Selank"),
-        nickname: "The Nootropic Duo",
+        nickname: "Cognitive research pairing",
         components: ["Semax", "Selank"],
         category: "Cognitive Enhancement",
         category_icon: "\u{1F9E0}",
-        primary_benefits: "Enhanced focus, anxiety reduction, neuroprotection, mental clarity",
-        why_blend: "Semax provides potent cognitive enhancement and BDNF upregulation, while Selank delivers anxiolytic effects comparable to benzodiazepines without sedation. Together, they create calm focus — enhanced cognition without overstimulation.",
-        mechanism: "Semax upregulates BDNF and neurotrophin expression for cognitive enhancement. Selank modulates GABA/serotonin for anxiety reduction and stabilizes enkephalin levels. Complementary pathways: nootropic + anxiolytic.",
+        primary_benefits: "Attention and memory measures (Semax, human trial), anxiolytic effects (Selank, Russian clinical studies), BDNF expression (Semax, preclinical), combination not studied",
+        why_blend: "Semax has been studied for cognitive effects and BDNF upregulation, while Selank has been studied for anxiolytic effects without sedation. They are paired because of these different research profiles; the combination has not been evaluated in published trials.",
+        mechanism: "Semax has been reported to upregulate BDNF and neurotrophin expression. Selank has been reported to modulate GABAergic and serotonergic signaling and enkephalin levels. The two act through different proposed pathways.",
         key_studies: [
             { title: "Semax cognitive improvement in humans", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/20387390/", summary: "Human trial showing cognitive improvement including enhanced attention and memory.", evidence_level: "moderate" },
-            { title: "Selank anxiolytic effects comparable to benzodiazepines", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/19487070/", summary: "Significant anti-anxiety effects without sedation or dependence.", evidence_level: "moderate" },
+            { title: "Selank anxiolytic effects in a clinical study", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/19487070/", summary: "Anxiolytic effects reported without sedation in the studied patients.", evidence_level: "moderate" },
         ],
-        safety_notes: "Both approved in Russia. Excellent safety profiles. Non-addictive. Studied mainly as intranasal formulations.",
+        safety_notes: "Both are approved in Russia; neither is FDA-approved. Studied mainly as intranasal formulations. The combination has not been studied. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Rapid cognitive enhancement from Semax; anxiety relief from Selank within days",
-            week_2_4: "Stable nootropic effects; improved stress resilience; better sleep onset",
-            month_2_3: "BDNF-mediated memory improvements; sustained anxiolytic effects",
-            long_term: "Neuroprotective benefits; improved baseline cognition and mood stability"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "CJC-1295 / Ipamorelin / GHRP-6",
         slug: slug("CJC-1295-Ipamorelin-GHRP-6"),
-        nickname: "The Triple GH Amplifier",
+        nickname: "Three-secretagogue GH research combination",
         components: ["CJC-1295", "Ipamorelin", "GHRP-6"],
         category: "Growth Hormone",
         category_icon: "\u{1F4AA}",
-        primary_benefits: "Maximum GH output, muscle hypertrophy, accelerated fat loss, appetite stimulation",
-        why_blend: "Combines three GH pathways: CJC-1295 for sustained GHRH, Ipamorelin for clean GH pulses, and GHRP-6 for powerful ghrelin-mimetic action with appetite stimulation — ideal for those seeking maximum growth.",
-        mechanism: "Triple-axis GH stimulation via GHRH receptor (CJC-1295), GHS receptor selective (Ipamorelin), and GHS receptor with ghrelin-like appetite effects (GHRP-6). Creates the most potent non-HGH growth hormone response.",
+        primary_benefits: "Basal and pulsatile GH secretion (CJC-1295, human studies), single-episode GH release (Ipamorelin, healthy volunteers), ghrelin-like appetite effects (GHRP-6), combination not studied",
+        why_blend: "Combines three GH secretagogues: CJC-1295 (GHRH receptor), Ipamorelin (selective GHS receptor agonist), and GHRP-6 (GHS receptor agonist with ghrelin-like appetite effects). The three-way combination has not been evaluated in published studies.",
+        mechanism: "Stimulation of GH release via the GHRH receptor (CJC-1295) and the GHS receptor (Ipamorelin, GHRP-6). GHRP-6 also has ghrelin-like effects on appetite.",
         key_studies: [
             { title: "CJC-1295 preserves pulsatile GH secretion", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16595882/", summary: "7.5-fold increase in basal GH while preserving natural pulsatile pattern.", evidence_level: "moderate" },
             { title: "Ipamorelin PK/PD in healthy volunteers", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16796559/", summary: "Dose-escalation study showing single-episode GH release.", evidence_level: "moderate" },
         ],
-        safety_notes: "More aggressive than CJC/Ipa alone. GHRP-6 increases appetite and may raise cortisol slightly. Changes in blood glucose have been reported with GH secretagogues. Not FDA-approved.",
+        safety_notes: "GHRP-6 increases appetite and may raise cortisol slightly. Changes in blood glucose have been reported with GH secretagogues. The combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
         outcomes_timeline: {
-            week_1: "Pronounced GH flush; increased appetite from GHRP-6; deeper sleep",
-            week_2_4: "Rapid recovery; early lean mass gains; noticeable hunger increase",
-            month_2_3: "Significant body recomposition; elevated IGF-1; muscle fullness",
-            long_term: "Maximum non-HGH body composition optimization; monitor bloodwork"
+            week_1: "Ipamorelin alone, healthy volunteers: a single GH release episode peaking at about 0.67 hours"
         }
     },
     {
         name: "BPC-157 / KPV",
         slug: slug("BPC-157-KPV"),
-        nickname: "The Gut Healer",
+        nickname: "GI research pairing",
         components: ["BPC-157", "KPV"],
         category: "Gut Health",
-        category_icon: "\u{1F6E1}\uFE0F",
-        primary_benefits: "Gut healing, IBD relief, reduced intestinal inflammation, mucosal repair",
-        why_blend: "BPC-157's tissue repair meets KPV's potent NF-κB suppression. BPC-157 heals the physical damage while KPV turns off the inflammatory signaling causing it. The ultimate gut restoration protocol.",
-        mechanism: "BPC-157 promotes GI mucosal healing via cytoprotective pathways and angiogenesis. KPV (alpha-MSH fragment) powerfully suppresses NF-κB inflammatory signaling and reduces pro-inflammatory cytokines (IL-1β, IL-6, TNF-α) in intestinal epithelium.",
+        category_icon: "\u{1F6E1}️",
+        primary_benefits: "GI lesion healing (BPC-157, rat models), intestinal inflammation in colitis models (KPV, mouse models), NF-kB signaling, combination not studied",
+        why_blend: "BPC-157 has been studied for GI mucosal healing in rat models, while KPV has been studied for NF-κB suppression in mouse colitis models. They are paired because of these different preclinical findings; no published study has evaluated the combination.",
+        mechanism: "BPC-157 has been reported to promote GI mucosal healing via cytoprotective pathways and angiogenesis in rodent models. KPV (an alpha-MSH fragment) suppressed NF-κB signaling and reduced pro-inflammatory cytokines (IL-1β, IL-6, TNF-α) in intestinal epithelium in preclinical studies.",
         key_studies: [
-            { title: "BPC-157 GI tract healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22300085/", summary: "BPC-157 heals GI ulcers, fistulas, and inflammatory bowel lesions.", evidence_level: "preclinical" },
+            { title: "BPC-157 GI tract healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22300085/", summary: "BPC-157 promoted healing of GI ulcers, fistulas, and inflammatory bowel lesions in rat models.", evidence_level: "preclinical" },
             { title: "KPV anti-inflammatory effects in colitis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/17095019/", summary: "KPV suppresses NF-κB and MAPK pathways in inflammatory bowel disease models.", evidence_level: "preclinical" },
         ],
-        safety_notes: "Both peptides have excellent safety profiles. KPV has been studied orally for gut-specific effects. Not FDA-approved.",
+        safety_notes: "Both components are supported mainly by preclinical data; human safety data are limited. KPV has been studied orally in animal models of colitis. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Rapid reduction in gut inflammation; improved GI comfort",
-            week_2_4: "Mucosal healing; reduced bloating and IBS/IBD symptoms",
-            month_2_3: "Significant GI restoration; normalized bowel function",
-            long_term: "Sustained gut health; potential remission of chronic GI conditions"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "Epitalon / GHK-Cu",
         slug: slug("Epitalon-GHK-Cu"),
-        nickname: "The Age Reversal Stack",
+        nickname: "Aging-biology research pairing",
         components: ["Epitalon", "GHK-Cu"],
         category: "Anti-Aging & Longevity",
         category_icon: "\u{1F9EC}",
-        primary_benefits: "Telomere support, anti-aging, skin rejuvenation, circadian rhythm optimization",
-        why_blend: "Epitalon activates telomerase to protect DNA aging markers while GHK-Cu rejuvenates tissue at the cellular level by modulating 4,000+ genes. One protects the clock; the other reverses its effects.",
-        mechanism: "Epitalon activates telomerase (hTERT) for telomere maintenance and regulates melatonin production. GHK-Cu stimulates collagen/elastin synthesis, promotes wound healing, and shifts gene expression from aged to youthful patterns.",
+        primary_benefits: "Telomerase activation in human fibroblasts (Epitalon, cell studies), collagen and elastin synthesis (GHK-Cu, cell and skin studies), combination not studied",
+        why_blend: "Epitalon has been studied for telomerase activation in cultured human cells, while GHK-Cu has been studied for collagen synthesis and gene-expression effects. They are paired because both are studied in aging biology; the combination has not been evaluated.",
+        mechanism: "Epitalon activated telomerase (hTERT) expression in human fibroblasts in cell studies and has been studied for effects on melatonin production. GHK-Cu stimulated collagen, elastin, and glycosaminoglycan synthesis in skin studies and altered gene-expression patterns in cell studies.",
         key_studies: [
-            { title: "Epitalon telomere lengthening in human cells", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14501182/", summary: "Epitalon activates telomerase and extends replicative lifespan in human cells.", evidence_level: "preclinical" },
+            { title: "Epitalon telomerase activation in human cells", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14501182/", summary: "Epitalon activated telomerase and extended replicative lifespan in cultured human cells.", evidence_level: "preclinical" },
             { title: "GHK-Cu skin regeneration and anti-aging", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/17703734/", summary: "GHK-Cu stimulates collagen, elastin, and glycosaminoglycan synthesis.", evidence_level: "moderate" },
         ],
-        safety_notes: "Both well-tolerated in published research. Not FDA-approved.",
+        safety_notes: "Both reported as well tolerated in published research, though human data are limited. The combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_2_4: "Improved sleep quality and circadian rhythm; skin texture improvement",
-            month_2_3: "Visible anti-aging effects; collagen synthesis from GHK-Cu; antioxidant upregulation",
-            long_term: "Telomere maintenance; progressive skin rejuvenation; longevity support"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "Thymosin Alpha-1 / BPC-157",
         slug: slug("Thymosin-Alpha-1-BPC-157"),
-        nickname: "The Immune Fortress",
+        nickname: "Immune and GI research pairing",
         components: ["Thymosin Alpha-1", "BPC-157"],
         category: "Immune Support",
-        category_icon: "\u{1F6E1}\uFE0F",
-        primary_benefits: "Enhanced immunity, faster illness recovery, gut-immune axis support",
-        why_blend: "Thymosin Alpha-1 supercharges immune cell function (T-cells, NK cells, dendritic cells), while BPC-157 heals the gut lining where 70% of the immune system resides. Attacking immune weakness from both sides.",
-        mechanism: "Tα1 enhances T-cell maturation, NK cell activity, and dendritic cell function for improved pathogen response. BPC-157 repairs gut mucosal integrity, supporting the gut-associated lymphoid tissue (GALT) — the body's largest immune organ.",
+        category_icon: "\u{1F6E1}️",
+        primary_benefits: "T-cell and dendritic cell modulation (Thymosin Alpha-1, clinical trials), GI lesion healing (BPC-157, rat models), combination not studied",
+        why_blend: "Thymosin alpha-1 has been studied as an immune modulator (T-cells, NK cells, dendritic cells) in clinical trials, while BPC-157 has been studied for GI mucosal healing in rat models. They are paired because of the proposed link between gut-associated lymphoid tissue and immune function; the combination has not been studied.",
+        mechanism: "Tα1 has been reported to enhance T-cell maturation, NK cell activity, and dendritic cell function. BPC-157 has been reported to support gut mucosal integrity in rodent models; the gut-associated lymphoid tissue (GALT) is a major site of immune tissue.",
         key_studies: [
             { title: "Thymosin Alpha-1 safety and efficacy review", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/31279456/", summary: "Review of 30+ clinical trials with 11,000+ subjects confirming safety and efficacy.", evidence_level: "strong" },
-            { title: "BPC-157 gastrointestinal healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22300085/", summary: "BPC-157 heals GI ulcers and inflammatory bowel lesions.", evidence_level: "preclinical" },
+            { title: "BPC-157 gastrointestinal healing", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/22300085/", summary: "BPC-157 promoted healing of GI ulcers and inflammatory bowel lesions in rat models.", evidence_level: "preclinical" },
         ],
-        safety_notes: "Thymosin Alpha-1 approved in 35+ countries. Both peptides well-tolerated. Excellent safety profiles.",
+        safety_notes: "Thymosin alpha-1 is approved outside the US for viral hepatitis and was reported as well tolerated across 30+ clinical trials. BPC-157 human data are limited. The combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Immune activation; NK cell and T-cell enhancement begins",
-            week_2_4: "Improved immune response; gut healing supports immune function",
-            month_2_3: "Sustained immune modulation; reduced frequency of illness",
-            long_term: "Long-term immune resilience; gut-immune axis restoration"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "MOTS-c / SS-31",
         slug: slug("MOTS-c-SS-31"),
-        nickname: "The Mitochondrial Duo",
+        nickname: "Mitochondrial research pairing",
         components: ["MOTS-c", "SS-31"],
         category: "Energy & Mitochondrial",
         category_icon: "\u{26A1}",
-        primary_benefits: "Cellular energy optimization, exercise performance, metabolic health, anti-aging",
-        why_blend: "MOTS-c activates AMPK for metabolic optimization from the outside in, while SS-31 (Elamipretide) stabilizes the inner mitochondrial membrane from within. Together they attack mitochondrial decline from both directions.",
-        mechanism: "MOTS-c is a mitochondrial-derived peptide that activates AMPK and enhances glucose uptake. SS-31 targets cardiolipin in the inner mitochondrial membrane to stabilize cristae and optimize electron transport chain efficiency.",
+        primary_benefits: "Insulin sensitivity and AMPK signaling (MOTS-c, rodent models), cardiolipin binding and cristae stabilization (SS-31, preclinical), combination not studied",
+        why_blend: "MOTS-c has been studied for AMPK activation and metabolic regulation, while SS-31 (elamipretide) binds cardiolipin in the inner mitochondrial membrane. They are paired because they act on mitochondria through different mechanisms; the combination has not been studied.",
+        mechanism: "MOTS-c is a mitochondrial-derived peptide reported to activate AMPK and regulate insulin sensitivity in rodent models. SS-31 targets cardiolipin in the inner mitochondrial membrane and, in preclinical studies, stabilized cristae and improved oxidative phosphorylation.",
         key_studies: [
-            { title: "MOTS-c regulates metabolic homeostasis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25710270/", summary: "MOTS-c regulates insulin sensitivity and metabolic homeostasis via AMPK.", evidence_level: "emerging" },
+            { title: "MOTS-c regulates metabolic homeostasis", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/25738459/", summary: "MOTS-c regulates insulin sensitivity and metabolic homeostasis via AMPK.", evidence_level: "emerging" },
             { title: "Elamipretide stabilizes cardiolipin", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/32102697/", summary: "SS-31 binds cardiolipin, stabilizes cristae, reduces ROS, improves oxidative phosphorylation.", evidence_level: "preclinical" },
         ],
-        safety_notes: "Both well-tolerated. SS-31 has been through multiple Phase 2/3 trials. MOTS-c has limited human data but is endogenous.",
+        safety_notes: "SS-31 has been evaluated in Phase 2/3 trials. MOTS-c is endogenous but has limited human data. The combination has not been studied. Not FDA-approved for the uses discussed here. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Improved insulin sensitivity; reduced exercise fatigue",
-            week_2_4: "Enhanced exercise capacity; improved endurance and recovery",
-            month_2_3: "Metabolic optimization; improved body composition; better VO2",
-            long_term: "Sustained mitochondrial protection; cellular energy optimization"
-        }
+        outcomes_timeline: {}
     },
     {
         name: "Ipamorelin / DSIP",
         slug: slug("Ipamorelin-DSIP"),
-        nickname: "The Sleep & Recovery Stack",
+        nickname: "Sleep research pairing",
         components: ["Ipamorelin", "DSIP"],
         category: "Sleep & Recovery",
         category_icon: "\u{1F4A4}",
-        primary_benefits: "Optimized sleep-phase GH release, deep sleep induction, recovery amplification",
-        why_blend: "DSIP promotes deep delta-wave sleep, the phase when GH is naturally released. Ipamorelin amplifies that GH pulse. Together, they maximize the body's most important recovery window.",
-        mechanism: "DSIP modulates the sleep-wake cycle to promote delta-wave (deep) sleep via GABA and serotonin pathways. Ipamorelin triggers selective GH release via the GHS receptor; the pairing is studied in the context of the body's natural nocturnal GH pulse during deep sleep.",
+        primary_benefits: "NREM sleep and nocturnal awakenings (DSIP, insomnia study), selective GH release (Ipamorelin, animal studies), combination not studied",
+        why_blend: "DSIP has been studied for effects on deep (delta-wave) sleep, the phase associated with the natural nocturnal GH pulse, and Ipamorelin for selective GH release. They are paired because of this physiological link; the combination has not been studied.",
+        mechanism: "DSIP has been studied for modulation of the sleep-wake cycle and delta-wave (deep) sleep, with proposed GABAergic and serotonergic involvement. Ipamorelin triggers selective GH release via the GHS receptor; the pairing is discussed in the context of the body's natural nocturnal GH pulse during deep sleep.",
         key_studies: [
             { title: "DSIP promotes delta sleep in insomniacs", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/6895513/", summary: "DSIP decreased nocturnal awakenings and increased total NREM sleep.", evidence_level: "moderate" },
             { title: "Ipamorelin selective GH release", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9849822/", summary: "Potent, selective GH release without cortisol or prolactin elevation.", evidence_level: "moderate" },
         ],
-        safety_notes: "Both individually well-tolerated. Not FDA-approved.",
+        safety_notes: "Both reported as well tolerated in the cited studies; human data are limited. The combination has not been studied. Not FDA-approved. Research use only.",
         popular_vendors: ["Elyria Bio", "Bio Longevity Labs"],
-        outcomes_timeline: {
-            week_1: "Improved sleep onset and depth; enhanced GH release during sleep",
-            week_2_4: "Restorative sleep; better recovery; potential pain modulation from DSIP",
-            month_2_3: "Optimized sleep architecture; body composition benefits from enhanced GH",
-            long_term: "Sustained sleep quality improvement; cycle DSIP to maintain effect"
-        }
+        outcomes_timeline: {}
     },
 ];
 

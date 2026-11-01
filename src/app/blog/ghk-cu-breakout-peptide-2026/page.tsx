@@ -188,7 +188,7 @@ export default function GHKCuArticle() {
           <h2>How Is GHK-Cu Formulated?</h2>
         <p>GHK-Cu is available in two primary forms.</p>
         <p>
-          <strong>Topical</strong> formulations — serums and creams — are the most accessible option. Look for products listing &quot;Copper Tripeptide-1&quot; in their ingredient panel, which is the INCI name for GHK-Cu. Topical delivery is best suited for skin-focused goals like improving elasticity, reducing fine lines, and supporting overall complexion quality. Concentrations in the range of 2–4% are common in the consumer market.
+          <strong>Topical</strong> formulations — serums and creams — are the most accessible option. Look for products listing &quot;Copper Tripeptide-1&quot; in their ingredient panel, which is the INCI name for GHK-Cu. Most of the clinical skin research on GHK-Cu used topical formulations, with endpoints such as elasticity, fine lines and skin density. Concentrations in the range of 2–4% are common in the consumer market.
         </p>
         <p>
           <strong>Injectable</strong> formulations have been examined in clinical and research contexts. Studies using subcutaneous administration looked at the peptide in systemic circulation, which is relevant to its broader regenerative and anti-inflammatory effects beyond the skin. Doses studied in published research varied by model and route; see the cited studies.
@@ -200,10 +200,10 @@ export default function GHKCuArticle() {
           In a peptide landscape increasingly dominated by compounds that target metabolic pathways, GHK-Cu occupies a distinct niche. It&apos;s not a weight-loss peptide. It&apos;s a <em>repair and regeneration</em> peptide with a uniquely broad mechanism of action.
         </p>
         <p>
-          Where BPC-157 is often favored for musculoskeletal injuries and TB-500 for systemic tissue repair, GHK-Cu brings unmatched depth in skin biology, anti-aging, and gene expression modulation. The compounds are not mutually exclusive — in fact, many researchers and practitioners are exploring combination approaches that pair GHK-Cu with BPC-157 and TB-500 for complementary recovery and regeneration protocols.¹⁴
+          Where BPC-157 is often favored for musculoskeletal injuries and TB-500 for systemic tissue repair, GHK-Cu brings unmatched depth in skin biology, anti-aging, and gene expression modulation. The compounds are not mutually exclusive — in fact, some researchers are exploring combination approaches that pair GHK-Cu with BPC-157 and TB-500, although no combination has been tested in controlled trials.¹⁴
         </p>
         <p>
-          Another differentiator: GHK-Cu has a strong safety profile. To date, no published research has identified serious safety concerns associated with its use, whether delivered topically or via injection.⁵ Its status as an endogenous compound — something your body already produces — adds an additional layer of biological plausibility to its therapeutic applications.
+          Another differentiator: no published research to date has identified serious safety concerns associated with GHK-Cu, whether delivered topically or via injection,⁵ although long-term data on injected use is limited. It is also an endogenous compound, naturally present in human plasma. Injectable GHK-Cu is not FDA-approved and is sold for research use only.
         </p>
 
         <div className="section-label mt-12 mb-2">§ 06</div>

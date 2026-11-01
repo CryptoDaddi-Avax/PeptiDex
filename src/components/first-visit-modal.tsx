@@ -57,7 +57,7 @@ export function FirstVisitModal() {
                                 onClick={handleAccept}
                                 className="w-full py-3.5 rounded-2xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-sm transition-colors"
                             >
-                                I Understand   Continue
+                                I Understand — Continue
                             </button>
                             <p className="text-center text-[10px] text-zinc-500 uppercase tracking-wider">
                                 For educational & research purposes only

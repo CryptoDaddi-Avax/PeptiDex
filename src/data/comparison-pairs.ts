@@ -91,17 +91,17 @@ export const comparisonPairs: ComparisonPair[] = [
   // ═══════════════════════════════════════════════════════
 
   pair('mk-677', 'ipamorelin', 'search-volume', ['muscle-growth', 'sleep-recovery'], 1,
-    { verdictOverride: 'MK-677 is an oral GH secretagogue offering convenience and 24-hour IGF-1 elevation, while Ipamorelin is an injectable GHRP with a cleaner side-effect profile — no cortisol or prolactin elevation. MK-677 causes significant appetite increase and potential insulin resistance; Ipamorelin does not.' }),
+    { verdictOverride: 'MK-677 is an orally active GH secretagogue studied in human trials for GH and IGF-1 elevation, with increased appetite and reduced insulin sensitivity reported as adverse effects. Ipamorelin is an injectable GHRP that, in animal studies, released GH without the cortisol or prolactin rises reported with other GHRPs. Neither is FDA-approved.' }),
 
   pair('bpc-157', 'ghk-cu', 'search-volume', ['injury-recovery', 'skin-aesthetic'], 1,
-    { verdictOverride: 'BPC-157 excels at deep tissue repair — tendons, ligaments, and gut lining — via angiogenesis and VEGF upregulation. GHK-Cu is a copper peptide that promotes surface-level wound healing, collagen remodeling, and skin rejuvenation. For structural injuries, BPC-157 is the clear default; for skin and cosmetic goals, GHK-Cu leads.' }),
+    { verdictOverride: 'BPC-157 has been studied mainly in rodent models of tendon, ligament, and gastrointestinal injury, with proposed angiogenic mechanisms. GHK-Cu is a copper-binding tripeptide studied in cell, animal, and topical cosmetic studies for wound repair and collagen remodeling. Human evidence for BPC-157 is very limited, and neither is FDA-approved.' }),
 
   pair('bpc-157', 'll-37', 'search-volume', ['injury-recovery', 'immune-support'], 1),
 
   pair('tb-500', 'ghk-cu', 'search-volume', ['injury-recovery'], 1),
 
   pair('melanotan-ii', 'pt-141', 'search-volume', [], 1,
-    { editorNote: 'Both Melanotan II and PT-141 (Bremelanotide) are melanocortin receptor agonists. PT-141 is the FDA-approved derivative specifically targeting sexual function. Melanotan II has broader receptor activity including tanning effects.' }),
+    { editorNote: 'Both Melanotan II and PT-141 (Bremelanotide) are melanocortin receptor agonists. PT-141 (bremelanotide) is FDA-approved for hypoactive sexual desire disorder in premenopausal women. Melanotan II is not approved and has broader receptor activity, including effects on skin pigmentation.' }),
 
   pair('dihexa', 'semax', 'search-volume', ['brain-focus'], 1),
 

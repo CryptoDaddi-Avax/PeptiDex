@@ -159,7 +159,7 @@ If you are looking for vendors that adhere strictly to these analytical transpar
 
 Elyria Bio is our Editor's Choice because they do not hide their data. They provide batch-specific, high-resolution, independent COAs from MZ Biolabs for every compound they sell. You can verify the HPLC purity, the Mass Spectrometry identity, and the exact mass content before you make a purchase. 
 
-Furthermore, by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure a 15% discount on wholesale pricing, making it the most cost-effective way to source analytically verified compounds in 2026.
+Furthermore, by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure a 15% discount on wholesale pricing, making it the most cost-effective way to source analytically verified compounds in 2026. These compounds are sold for laboratory research use only, not for human consumption.
 
 ---
 

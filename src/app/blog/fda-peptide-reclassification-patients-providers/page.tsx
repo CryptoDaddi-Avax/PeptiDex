@@ -125,20 +125,20 @@ const faqSchema = {
 /* ─── PEPTIDE DATA ─────────────────────────────────────────────────── */
 
 const PEPTIDES = [
-  { name: 'BPC-157', desc: 'Tissue repair, gut healing, anti-inflammatory properties', icon: '🧬' },
-  { name: 'TB-500 (Thymosin Beta-4)', desc: 'Cell migration, wound healing, muscle recovery', icon: '🩹' },
-  { name: 'CJC-1295', desc: 'Growth hormone-releasing hormone analog supporting natural GH production', icon: '📈' },
+  { name: 'BPC-157', desc: 'Studied in rodent tissue-repair and GI-lesion models', icon: '🧬' },
+  { name: 'TB-500 (Thymosin Beta-4)', desc: 'Studied for cell migration in wound models', icon: '🩹' },
+  { name: 'CJC-1295', desc: 'Growth hormone-releasing hormone analog that stimulates endogenous GH release', icon: '📈' },
   { name: 'Ipamorelin', desc: 'Selective growth hormone secretagogue with minimal cortisol effects', icon: '🎯' },
   { name: 'AOD-9604', desc: 'Studied for fat metabolism', icon: '🔥' },
-  { name: 'Semax', desc: 'Nootropic peptide associated with cognitive function and BDNF enhancement', icon: '🧠' },
+  { name: 'Semax', desc: 'Neuropeptide studied for cognitive endpoints and BDNF signaling', icon: '🧠' },
   { name: 'Selank', desc: 'Studied for anxiolytic and stress-resilience properties', icon: '🛡\uFE0F' },
   { name: 'GHK-Cu', desc: 'Copper peptide studied for skin repair and collagen stimulation', icon: '✨' },
   { name: 'MOTS-c', desc: 'Mitochondrial-derived peptide linked to metabolic regulation', icon: '⚡' },
   { name: 'KPV', desc: 'Anti-inflammatory peptide fragment', icon: '💊' },
-  { name: 'Epitalon', desc: 'Telomerase-activating tetrapeptide for longevity', icon: '🕰\uFE0F' },
+  { name: 'Epitalon', desc: 'Tetrapeptide studied for telomerase activation in cell models', icon: '🕰\uFE0F' },
   { name: 'DSIP', desc: 'Delta sleep-inducing peptide', icon: '😴' },
   { name: 'GHRP-2 & GHRP-6', desc: 'Growth hormone-releasing peptides', icon: '💪' },
-  { name: 'Kisspeptin-10', desc: 'Hormonal signaling and reproductive health', icon: '🔬' },
+  { name: 'Kisspeptin-10', desc: 'Studied for reproductive hormone signaling', icon: '🔬' },
   { name: 'Melanotan II', desc: 'Melanocortin receptor agonist', icon: '☀\uFE0F' },
   { name: 'PEG-MGF', desc: 'Pegylated mechano growth factor', icon: '🏋\uFE0F' },
 ];
@@ -221,7 +221,7 @@ export default function FDAReclassificationPatientsArticle() {
         </p>
 
         <p>
-          For millions of patients and the clinicians who treat them, this reversal has been a long time coming.
+          For compounding pharmacies and prescribing clinicians, the change restores a regulatory pathway that had been closed since the restrictions took effect.
         </p>
 
         {/* ═══════ CATEGORY EXPLAINER ═══════ */}
@@ -385,7 +385,7 @@ export default function FDAReclassificationPatientsArticle() {
         </div>
 
         <p>
-          The peptide therapy conversation in 2026 is louder than ever. With the right approach, it can also be <strong>safer and more effective than ever</strong>.
+          The peptide therapy conversation in 2026 is louder than ever. With the right approach, it can also be <strong>safer than the unregulated gray market</strong>.
         </p>
 
       </article>
