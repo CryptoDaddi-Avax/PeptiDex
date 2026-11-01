@@ -42,7 +42,7 @@ export const peptides: Peptide[] = [
         title: "AOD-9604 Phase IIb trial   short-term fat reduction",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/15655039/",
         summary:
-          "12-week Phase IIb trial: 1mg/day AOD-9604 produced 2.6 kg weight loss vs 0.8 kg placebo, with reductions in abdominal fat and improved lipid profiles.",
+          "12-week Phase IIb trial: AOD-9604 produced 2.6 kg weight loss vs 0.8 kg placebo, with reductions in abdominal fat and improved lipid profiles.",
         evidence_level: "moderate",
       },
         {
@@ -139,16 +139,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Research-only. Received GRAS status from FDA as food supplement ingredient. Banned by WADA. Phase 3 trial discontinued due to insufficient efficacy.",
     half_life_hours: 1,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [300, 300],
-      frequency: "7x/wk",
-      cycle_weeks: [12, 12],
-      timing: "Morning fasted",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes: "Take on empty stomach. No effect on blood sugar or IGF-1.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["MOTS-c"],
       cautions: [],
@@ -345,17 +336,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Excellent research safety profile; commonly used for recovery. Not FDA-approved. Most evidence from animal models. FDA restricted use in compounded medications in Sept 2023.",
     half_life_hours: 4,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [250, 500],
-      frequency: "7x/wk",
-      cycle_weeks: [4, 8],
-      timing: "Morning or split AM/PM",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Often run 250mcg 2x/day for injuries. Can be injected near injury site.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["TB-500", "GHK-Cu", "KPV"],
       cautions: [],
@@ -404,7 +385,7 @@ export const peptides: Peptide[] = [
         title: "CJC-1295 GH/IGF-1 elevation in humans",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/16352683/",
         summary:
-          "Teichman et al. (J. Clin. Endocrinol. Metab.): Single injection increases GH 2-10x for 6+ days and IGF-1 1.5-3x for 9-11 days in healthy adults. Well-tolerated at 30-60 µg/kg.",
+          "Teichman et al. (J. Clin. Endocrinol. Metab.): Single injection increases GH 2-10x for 6+ days and IGF-1 1.5-3x for 9-11 days in healthy adults, and was well tolerated in the study population.",
         evidence_level: "moderate",
       },
       {
@@ -527,16 +508,10 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Often stacked with Ipamorelin; injection site reactions possible. Not FDA-approved.",
     half_life_hours: 168,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [1000, 1000],
-      frequency: "3x/week",
-      cycle_weeks: [8, 8],
-      timing: "Pre-bed or morning fasted",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes:
-        "CJC-1295 DAC version has 7-day half-life. Mod GRF 1-29 (no DAC) has ~30min half-life.",
+    route_studied: "SubQ",
+    studied_dose_citation: {
+      title: "CJC-1295 GH/IGF-1 elevation in humans",
+      url: "https://pubmed.ncbi.nlm.nih.gov/16352683/",
     },
     interactions: {
       synergies: ["Ipamorelin", "Sermorelin", "Tesamorelin"],
@@ -711,23 +686,13 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Limited modern data. Most studies from the 1980s-90s. Safety profile incompletely defined.",
     half_life_hours: 0.13,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 100],
-      frequency: "7x/wk",
-      cycle_weeks: [4, 4],
-      timing: "30 min before bed",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Very short half-life. Take immediately before sleep. Cycle to avoid tolerance.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Ipamorelin", "Selank", "Epitalon"],
       cautions: [],
       contraindicated: [],
       notes:
-        "DSIP + Ipamorelin taken pre-bed maximizes sleep-phase GH release.",
+        "DSIP + Ipamorelin are researched together for sleep-phase GH release.",
     },
     outcomes_timeline: {
       week_1: "Improved sleep onset and delta-wave sleep depth",
@@ -950,17 +915,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Research-only. Telomerase activation carries theoretical cancer risk. Long-term safety unknown.",
     half_life_hours: 2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [1000, 1000],
-      frequency: "7x/wk",
-      cycle_weeks: [4, 4],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes:
-        "Common protocol: 10mg/day for 20 days. Repeat 2-3x/year. Short cycles only.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["GHK-Cu", "MOTS-c", "SS-31"],
       cautions: [],
@@ -1059,17 +1014,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Research-only. Potent effects   potential for unregulated growth. Limited human safety data. Phase I gene therapy trials show safety.",
     half_life_hours: 6,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 100],
-      frequency: "7x/wk",
-      cycle_weeks: [4, 4],
-      timing: "Post-workout or morning",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 1,
-      notes:
-        "Very short cycles. 100mcg/day common. Acts via myostatin/activin inhibition   effects compound over days.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["IGF-1 LR3", "CJC-1295", "Ipamorelin"],
       cautions: [],
@@ -1244,17 +1189,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Topical or injectable; low risk. Long history of safe topical use in cosmetics.",
     half_life_hours: 0.5,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [2000, 2000],
-      frequency: "7x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 50,
-      notes:
-        "Also available topically in serums/creams. Injectable provides systemic effects. Often injected near wound sites.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["BPC-157", "TB-500", "Epitalon"],
       cautions: [],
@@ -1315,7 +1250,7 @@ export const peptides: Peptide[] = [
         title: "GHRP-2 effects on sleep and nocturnal GH secretion",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9054473/",
         summary:
-          "Frieboes et al.: GHRP-2 enhances slow-wave sleep and amplifies nocturnal GH pulses in healthy young men, supporting pre-bed dosing protocols.",
+          "Frieboes et al.: GHRP-2 enhances slow-wave sleep and amplifies nocturnal GH pulses in healthy young men.",
         evidence_level: "moderate",
       },
       {
@@ -1426,17 +1361,7 @@ export const peptides: Peptide[] = [
       "The most potent standard GHRP. Approved in Japan as a diagnostic tool (Pralmorelin). Raises cortisol and prolactin more than Ipamorelin but less than Hexarelin. Not FDA-approved for therapeutic use.",
     half_life_hours: 1.5,
     is_fda_approved: false,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 300],
-      frequency: "1-3x daily",
-      cycle_weeks: [8, 16],
-      timing: "Pre-bed, morning fasted",
-      reconstitution_ml: 2,
-      typical_vial_mg: 5,
-      notes:
-        "Most common dose: 150-300mcg per injection. Empty stomach required. Often considered the 'goldilocks' GHRP: stronger than Ipamorelin, fewer sides than GHRP-6.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["CJC-1295", "Sermorelin", "DSIP"],
       cautions: ["GHRP-6", "Hexarelin"],
@@ -1499,7 +1424,7 @@ export const peptides: Peptide[] = [
         title: "GHRP-6 dose-dependent GH release in humans",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/8350725/",
         summary:
-          "Bowers et al. (Endocrine Reviews): Comprehensive characterization of GHRP-6 showing dose-dependent GH release in humans with peak response at 1-2mcg/kg IV. Established GHRP-6 as the prototype GH secretagogue.",
+          "Bowers et al. (Endocrine Reviews): Comprehensive characterization of GHRP-6 showing dose-dependent GH release in humans. Established GHRP-6 as the prototype GH secretagogue.",
         evidence_level: "moderate",
       },
       {
@@ -1624,17 +1549,7 @@ export const peptides: Peptide[] = [
       "Well-studied but less selective than Ipamorelin. Raises cortisol (~15-20% transient) and prolactin modestly. Strong appetite stimulation can be a benefit (cachexia) or side effect (body composition goals). Not FDA-approved.",
     half_life_hours: 2.5,
     is_fda_approved: false,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 300],
-      frequency: "1-3x daily",
-      cycle_weeks: [8, 16],
-      timing: "Pre-bed, morning fasted, or pre-meal",
-      reconstitution_ml: 2,
-      typical_vial_mg: 5,
-      notes:
-        "Standard research dose: 100-300mcg per injection. Must be taken on empty stomach (food blunts GH release by ~75%). Appetite surge hits within 20-30 minutes of injection.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["CJC-1295", "Sermorelin", "MK-677"],
       cautions: ["Ipamorelin"],
@@ -1820,17 +1735,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Excellent safety profile. Used clinically for decades. IV and SubQ routes well-tolerated. Rare allergic reactions possible. May reduce effectiveness of some chemotherapy drugs — avoid during cancer treatment without oncologist approval.",
     half_life_hours: 2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [200000, 600000],
-      frequency: "2-3x/week",
-      cycle_weeks: [4, 12],
-      timing: "Morning",
-      reconstitution_ml: 3,
-      typical_vial_mg: 1500,
-      notes:
-        "SubQ: 200-600mg. IV push: 600-2000mg. For skin brightening, consistent dosing over 8-12 weeks is needed. Often combined with Vitamin C for synergistic antioxidant effect.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["NAD+", "GHK-Cu", "Thymosin Alpha-1"],
       cautions: [],
@@ -1903,7 +1808,7 @@ export const peptides: Peptide[] = [
         title: "Hexarelin tachyphylaxis with chronic administration",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9284088/",
         summary:
-          "Arvat et al.: Long-term Hexarelin use shows progressive GH response attenuation after 4-8 weeks of continuous dosing, necessitating cycling protocols for sustained efficacy.",
+          "Arvat et al.: Long-term Hexarelin use shows progressive GH response attenuation with continuous administration, consistent with receptor desensitization.",
         evidence_level: "moderate",
       },
     ],
@@ -1911,17 +1816,7 @@ export const peptides: Peptide[] = [
       "Most potent but least selective GHRP. Significant cortisol and prolactin elevation limits chronic use. Develops tachyphylaxis within 4-8 weeks requiring mandatory cycling. Cardioprotective properties make it uniquely valuable for cardiac research. Not FDA-approved.",
     half_life_hours: 0.9,
     is_fda_approved: false,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 200],
-      frequency: "1-2x daily",
-      cycle_weeks: [4, 8],
-      timing: "Pre-bed or morning fasted",
-      reconstitution_ml: 2,
-      typical_vial_mg: 5,
-      notes:
-        "Shorter cycles than other GHRPs (4-8 weeks max) due to tachyphylaxis. Standard dose: 100-200mcg. Often used in short 'burst' protocols for maximum GH output. Always cycle: 4 weeks on / 4 weeks off minimum.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["CJC-1295", "Sermorelin"],
       cautions: ["GHRP-6", "GHRP-2", "Ipamorelin"],
@@ -2106,17 +2001,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Potent; use caution. Risk of hypoglycemia. Theoretical cancer promotion concern well-documented in literature. Research-only.",
     half_life_hours: 20,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [50, 50],
-      frequency: "5x/wk",
-      cycle_weeks: [4, 4],
-      timing: "Post-workout",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 1,
-      notes:
-        "Very low doses. Inject post-workout for localized muscle effects. Monitor blood sugar closely. Short cycles only.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Follistatin-344", "CJC-1295"],
       cautions: ["Tesamorelin"],
@@ -2287,17 +2172,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "One of the safest GH peptides. Side effects may include transient headache, flushing. Not FDA-approved.",
     half_life_hours: 2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [300, 300],
-      frequency: "7x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Pre-bed, morning fasted, or post-workout",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Most commonly dosed at 200-300mcg per injection. Best taken on empty stomach 2+ hrs after eating.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["CJC-1295", "Sermorelin", "DSIP"],
       cautions: [],
@@ -2306,7 +2181,7 @@ export const peptides: Peptide[] = [
         "Ipamorelin + CJC-1295 is the #1 GH peptide combo. Add DSIP for sleep-optimized GH release.",
     },
     outcomes_timeline: {
-      week_1: "Improved sleep quality; increased hunger around dosing window",
+      week_1: "Improved sleep quality; transient increase in hunger",
       week_2_4: "Improved recovery and energy; early body composition shifts",
       month_2_3:
         "Visible lean mass gains; fat loss (especially combined with CJC-1295)",
@@ -2347,7 +2222,7 @@ export const peptides: Peptide[] = [
           "Kisspeptin potently stimulates LH and testosterone in healthy men",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/21795442/",
         summary:
-          "Dhillo et al. (J. Clin. Endocrinol. Metab.): IV Kisspeptin-10 (1mcg/kg) potently stimulates LH pulse frequency and testosterone secretion in healthy men, establishing its role as a reproductive axis activator.",
+          "Dhillo et al. (J. Clin. Endocrinol. Metab.): IV Kisspeptin-10 potently stimulates LH pulse frequency and testosterone secretion in healthy men, establishing its role as a reproductive axis activator.",
         evidence_level: "moderate",
       },
       {
@@ -2375,7 +2250,7 @@ export const peptides: Peptide[] = [
         title: "Kisspeptin tachyphylaxis with continuous administration",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/24456164/",
         summary:
-          "Ramaswamy et al.: Continuous Kisspeptin-10 infusion leads to desensitization of the HPG axis within 24-48 hours, indicating pulsatile dosing protocols are necessary for sustained efficacy.",
+          "Ramaswamy et al.: Continuous Kisspeptin-10 infusion leads to desensitization of the HPG axis within 24-48 hours, showing the axis responds to pulsatile rather than continuous signaling.",
         evidence_level: "preclinical",
       },
         {
@@ -2473,16 +2348,10 @@ export const peptides: Peptide[] = [
       "Endogenous human neuropeptide with growing clinical trial data. Tachyphylaxis (desensitization) occurs with continuous dosing; pulsatile/intermittent protocols required. Being investigated as a safer IVF trigger (vs. hCG). Not FDA-approved for therapeutic use. Research-only.",
     half_life_hours: 0.5,
     is_fda_approved: false,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 100],
-      frequency: "3x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Morning or split AM/PM",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Pulsatile dosing critical: continuous administration causes desensitization within 24-48 hours. Clinical studies use 1mcg/kg IV or 100-400mcg SubQ. Cycle 5 days on / 2 days off to prevent tachyphylaxis. Monitor LH, FSH, testosterone/estradiol on bloodwork.",
+    route_studied: "SubQ",
+    studied_dose_citation: {
+      title: "Kisspeptin stimulates reproductive hormones in women",
+      url: "https://pubmed.ncbi.nlm.nih.gov/19820030/",
     },
     interactions: {
       synergies: ["CJC-1295", "Ipamorelin"],
@@ -2495,11 +2364,11 @@ export const peptides: Peptide[] = [
       week_1:
         "Acute LH surge within hours; increase in morning testosterone levels; improved libido in hypogonadal individuals",
       week_2_4:
-        "Sustained testosterone elevation with pulsatile dosing; improved energy and mood; fertility markers improving",
+        "Sustained testosterone elevation; improved energy and mood; fertility markers improving",
       month_2_3:
         "Stable HPG axis activation; measurable testosterone/LH improvement on bloodwork; improved reproductive parameters",
       long_term:
-        "Must maintain pulsatile dosing to avoid desensitization; promising IVF trigger data; long-term reproductive axis support",
+        "Desensitization reported with continuous exposure; promising IVF trigger data; long-term reproductive axis support",
     },
     side_effects: [
       {
@@ -2514,10 +2383,10 @@ export const peptides: Peptide[] = [
         severity: "mild",
       },
       {
-        name: "Tachyphylaxis (with continuous dosing)",
+        name: "Tachyphylaxis (with continuous exposure)",
         incidence: "Variable",
         severity: "moderate",
-        note: "Not a side effect per se but a dosing limitation; pulsatile protocols prevent this",
+        note: "Not a side effect per se; HPG-axis desensitization observed with continuous infusion in studies",
       },
     ],
   }),
@@ -2656,17 +2525,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Excellent profile. Research-only compound with limited human data but strong preclinical safety.",
     half_life_hours: 0.5,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [200, 200],
-      frequency: "7x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Often used orally in capsules for gut-specific effects. SubQ for systemic anti-inflammatory.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["BPC-157", "Thymosin Alpha-1"],
       cautions: [],
@@ -2838,17 +2697,7 @@ export const peptides: Peptide[] = [
       "Endogenous human peptide with well-characterized biology. Cytotoxic to eukaryotic cells at high concentrations (>25mcg/mL). Concentration-dependent effects: low doses immunomodulatory, high doses cytotoxic. Growing research interest in CIRS/mold illness protocols. Not FDA-approved as a therapeutic.",
     half_life_hours: 4,
     is_fda_approved: false,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 100],
-      frequency: "7x/wk",
-      cycle_weeks: [6, 6],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 2,
-      notes:
-        "Research doses typically 50-200mcg SubQ. Start low (50mcg) to assess tolerance. Also used topically for wound applications. Practitioners in CIRS protocols often use nebulized delivery for respiratory infections.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Thymosin Alpha-1", "BPC-157", "KPV"],
       cautions: [],
@@ -3024,17 +2873,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Nausea common; research-only. SIGNIFICANT SAFETY CONCERNS: changes to moles, elevated BP. Actively warned against by FDA/TGA.",
     half_life_hours: 1,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [250, 250],
-      frequency: "7x/wk",
-      cycle_weeks: [4, 4],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes:
-        "Loading: 250mcg/day for 7-10 days. Maintenance: as needed for UV exposure. START LOW.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: [],
       cautions: ["PT-141"],
@@ -3088,7 +2927,7 @@ export const peptides: Peptide[] = [
           "MK-677 increases GH and IGF-1 without altering cortisol in healthy elderly",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9467534/",
         summary:
-          "Chapman et al. (J. Clin. Endocrinol. Metab.): 25mg daily MK-677 for 2 weeks in healthy elderly subjects restored IGF-1 and GH profiles to young adult levels without altering cortisol, prolactin, insulin, or thyroid hormones.",
+          "Chapman et al. (J. Clin. Endocrinol. Metab.): two weeks of MK-677 in healthy elderly subjects restored IGF-1 and GH profiles to young adult levels without altering cortisol, prolactin, insulin, or thyroid hormones.",
         evidence_level: "moderate",
       },
       {
@@ -3096,14 +2935,14 @@ export const peptides: Peptide[] = [
           "MK-677 2-year study: sustained IGF-1 elevation and body composition effects",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18981485/",
         summary:
-          "Nass et al. (J. Clin. Endocrinol. Metab.): 2-year RCT in 65 healthy elderly adults. 25mg/day MK-677 increased GH and IGF-1 to young adult levels, increased fat-free mass by ~1.1kg, and did not affect BMD. Notable: fasting glucose increased by ~0.3 mmol/L.",
+          "Nass et al. (J. Clin. Endocrinol. Metab.): 2-year RCT in 65 healthy elderly adults. MK-677 increased GH and IGF-1 to young adult levels, increased fat-free mass by ~1.1kg, and did not affect BMD. Notable: fasting glucose increased by ~0.3 mmol/L.",
         evidence_level: "strong",
       },
       {
         title: "MK-677 increases fat-free mass in healthy obese males",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9467542/",
         summary:
-          "Svensson et al. (J. Clin. Endocrinol. Metab.): 8-week RCT in obese males. 25mg/day MK-677 significantly increased GH secretion, IGF-1, and fat-free mass. Transient increase in appetite and mild insulin resistance noted.",
+          "Svensson et al. (J. Clin. Endocrinol. Metab.): 8-week RCT in obese males. MK-677 significantly increased GH secretion, IGF-1, and fat-free mass. Transient increase in appetite and mild insulin resistance noted.",
         evidence_level: "moderate",
       },
       {
@@ -3124,7 +2963,7 @@ export const peptides: Peptide[] = [
         title: "MK-677 increases bone turnover markers in postmenopausal women",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/10404017/",
         summary:
-          "Murphy et al. (J. Clin. Endocrinol. Metab.): 12-month study in postmenopausal women showing MK-677 (25mg/day) increased osteocalcin and bone-specific alkaline phosphatase, suggesting improved bone formation.",
+          "Murphy et al. (J. Clin. Endocrinol. Metab.): 12-month study in postmenopausal women showing MK-677 increased osteocalcin and bone-specific alkaline phosphatase, suggesting improved bone formation.",
         evidence_level: "moderate",
       },
     
@@ -3216,17 +3055,7 @@ export const peptides: Peptide[] = [
       "Oral GH secretagogue with extensive clinical data (2+ year RCTs). Key concern: impairs insulin sensitivity and raises fasting glucose, especially in elderly/obese populations. One hip fracture trial in elderly was stopped early due to CHF signals. WADA prohibited. Not FDA-approved. Use caution in pre-diabetic or insulin-resistant individuals.",
     half_life_hours: 24,
     is_fda_approved: false,
-    dosing: {
-      route: "Oral",
-      typical_dose_mcg: [12500, 12500],
-      frequency: "7x/wk",
-      cycle_weeks: [12, 12],
-      timing: "Pre-bed (optimizes sleep + GH surge)",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 25,
-      notes:
-        "Standard dose: 10-25mg once daily. Oral capsule or liquid. Start at 10mg to assess appetite increase and glucose response. Pre-bed dosing leverages natural GH pulse. 5-on/2-off cycles used to manage appetite and insulin sensitivity.",
-    },
+    route_studied: "Oral",
     interactions: {
       synergies: ["CJC-1295", "Sermorelin", "DSIP"],
       cautions: [],
@@ -3267,7 +3096,6 @@ export const peptides: Peptide[] = [
         name: "Lethargy / drowsiness",
         incidence: "~15% of users",
         severity: "mild",
-        note: "Mitigated by pre-bed dosing",
       },
       {
         name: "Numbness / tingling (paresthesia)",
@@ -3421,17 +3249,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Promising but limited human data. As an endogenous peptide, theoretical biocompatibility favorable.",
     half_life_hours: 4,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [2000, 2000],
-      frequency: "5x/week",
-      cycle_weeks: [8, 8],
-      timing: "Morning or pre-exercise",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes:
-        "Exercise-mimetic. Often taken pre-workout. Higher doses used in research.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["SS-31", "Epitalon", "AOD-9604"],
       cautions: [],
@@ -3606,17 +3424,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Generally well-tolerated. IV NAD+ infusions may cause chest tightness, nausea, and cramping during administration. Subcutaneous injection is better tolerated. Oral precursors (NMN, NR) have good safety profiles in clinical trials.",
     half_life_hours: 4,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [50000, 200000],
-      frequency: "Daily",
-      cycle_weeks: [4, 12],
-      timing: "Morning",
-      reconstitution_ml: 2,
-      typical_vial_mg: 500,
-      notes:
-        "SubQ: 50-200mg daily. IV: 250-500mg over 2-4 hours. Start low — rapid NAD+ elevation can cause nausea and flushing. Oral precursors (NMN/NR) are an alternative.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Epitalon", "SS-31", "MOTS-c"],
       cautions: [],
@@ -3685,7 +3493,7 @@ export const peptides: Peptide[] = [
         title: "PT-141 induces erection in men with erectile dysfunction",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/18206919/",
         summary:
-          "Diamond et al.: Double-blind, placebo-controlled study showing PT-141 induces significant erectile response at >7mg doses, effective even in PDE5 inhibitor non-responders.",
+          "Diamond et al.: Double-blind, placebo-controlled study showing PT-141 induces significant erectile response, effective even in PDE5 inhibitor non-responders.",
         evidence_level: "strong",
       },
       {
@@ -3787,18 +3595,13 @@ export const peptides: Peptide[] = [
         evidence_level: "preclinical"
       }],
     safety_notes:
-      "Nausea/hypertension possible. FDA-approved (Vyleesi) for HSDD in premenopausal women. Limited to 8 doses/month.",
+      "Nausea/hypertension possible. FDA-approved (Vyleesi) for HSDD in premenopausal women; use limits are set by the label.",
     is_fda_approved: true,
     half_life_hours: 2.7,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [1500, 1500],
-      frequency: "2x/wk",
-      timing: "45 min before activity",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes:
-        "FDA-approved dose: 1.75mg SubQ as needed. Max 1 dose per 24h, 8 doses/month.",
+    route_studied: "SubQ",
+    studied_dose_citation: {
+      title: "Bremelanotide Phase 3 efficacy and safety in HSDD",
+      url: "https://pubmed.ncbi.nlm.nih.gov/31145980/",
     },
     interactions: {
       synergies: [],
@@ -3812,7 +3615,7 @@ export const peptides: Peptide[] = [
       week_2_4: "Consistent improvement in sexual response and desire",
       month_2_3:
         "Psychological effects may plateau; effectiveness maintained with intermittent use",
-      long_term: "FDA-approved for long-term use; limit to 8 doses/month",
+      long_term: "FDA-approved (Vyleesi) for long-term use within label limits",
     },
     side_effects: [
       {
@@ -3970,17 +3773,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Very safe profile. No reported dependence or withdrawal. Approved as anxiolytic in Russia. Not FDA-approved in US.",
     half_life_hours: 0.5,
-    dosing: {
-      route: "Nasal",
-      typical_dose_mcg: [300, 300],
-      frequency: "7x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Morning or as needed",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Nasal spray: 1-2 sprays per nostril. Non-addictive; can be used daily.",
-    },
+    route_studied: "Nasal",
     interactions: {
       synergies: ["Semax", "DSIP"],
       cautions: [],
@@ -4148,16 +3941,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Nasal spray common; well-tolerated. Approved in Russia/Ukraine. Not FDA-approved in the US.",
     half_life_hours: 0.33,
-    dosing: {
-      route: "Nasal",
-      typical_dose_mcg: [300, 300],
-      frequency: "7x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Morning",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes: "Nasal spray: 1-2 sprays per nostril. Can cycle 5 days on/2 off.",
-    },
+    route_studied: "Nasal",
     interactions: {
       synergies: ["Selank"],
       cautions: [],
@@ -4330,17 +4114,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Very safe; mimics physiology. Previously FDA-approved for GH deficiency diagnosis. Well-tolerated.",
     half_life_hours: 0.2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [300, 300],
-      frequency: "7x/wk",
-      cycle_weeks: [12, 12],
-      timing: "Pre-bed",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 2,
-      notes:
-        "Inject before bed for maximum GH pulse during sleep. Very short half-life = frequent dosing.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Ipamorelin", "CJC-1295"],
       cautions: [],
@@ -4512,17 +4286,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Well-tolerated in multiple Phase 2/3 trials. Granted Fast Track and Orphan Drug designations by FDA.",
     half_life_hours: 4,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [4000, 4000],
-      frequency: "7x/wk",
-      cycle_weeks: [4, 4],
-      timing: "Morning",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes:
-        "Clinical trial doses: 4-40mg SubQ daily. Higher doses for cardiac indications.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["MOTS-c", "Epitalon"],
       cautions: [],
@@ -4665,17 +4429,7 @@ export const peptides: Peptide[] = [
     safety_notes:
       "Research-only; well-tolerated in Phase I/II trials. Not FDA-approved for systemic use.",
     half_life_hours: 2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [2500, 2500],
-      frequency: "2x/wk",
-      cycle_weeks: [8, 8],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Loading phase: 5mg 2x/week for 4 weeks. Maintenance: 2.5mg 2x/week.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["BPC-157", "GHK-Cu"],
       cautions: [],
@@ -4849,15 +4603,10 @@ export const peptides: Peptide[] = [
       "FDA-approved for lipodystrophy; GI side effects possible. Contraindicated in active malignancy.",
     is_fda_approved: true,
     half_life_hours: 0.43,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [1000, 1000],
-      frequency: "7x/week",
-      cycle_weeks: [12, 12],
-      timing: "Morning",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 10,
-      notes: "FDA-approved dose: 2mg SubQ daily. Prescription required.",
+    route_studied: "SubQ",
+    studied_dose_citation: {
+      title: "Tesamorelin visceral fat reduction (FDA trial)",
+      url: "https://pubmed.ncbi.nlm.nih.gov/20554713/",
     },
     interactions: {
       synergies: ["CJC-1295", "Ipamorelin"],
@@ -5040,16 +4789,10 @@ export const peptides: Peptide[] = [
       "Approved in 35+ countries for hep B/C. One of the most extensively studied peptides. Not FDA-approved in US.",
     is_fda_approved: false,
     half_life_hours: 2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [1500, 1500],
-      frequency: "2x/wk",
-      cycle_weeks: [12, 12],
-      timing: "Any time",
-      reconstitution_ml: 2.5,
-      typical_vial_mg: 5,
-      notes:
-        "Standard dose: 1.6mg 2x/week. Approved in 35+ countries. Higher doses for active infection.",
+    route_studied: "SubQ",
+    studied_dose_citation: {
+      title: "A Pilot Trial of Thymalfasin (Thymosin-α-1) to Treat Hospitalized Patients With Hypoxemia and Lymphocytopenia Due to Coronavirus Disease 2019 Infection.",
+      url: "https://pubmed.ncbi.nlm.nih.gov/36056913/",
     },
     interactions: {
       synergies: ["BPC-157", "KPV"],
@@ -5096,7 +4839,7 @@ export const peptides: Peptide[] = [
         title: "Evaluation of the efficacy and tolerance of a cosmetic formulation with Argireline",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/11697020/",
         summary:
-          "Blanes-Mira et al.: A 10% Argireline solution applied twice daily for 30 days reduced wrinkle depth by up to 30% in the periorbital region in a controlled study.",
+          "Blanes-Mira et al.: A topical Argireline solution used over 30 days reduced wrinkle depth by up to 30% in the periorbital region in a controlled study.",
         evidence_level: "moderate",
       },
     ],
@@ -5104,12 +4847,7 @@ export const peptides: Peptide[] = [
       "Considered very safe for topical use. No systemic absorption. Not approved for injection. Not an FDA-classified drug — classified as a cosmetic ingredient.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "Topical",
-      typical_dose_mcg: [0, 0],
-      frequency: "2x daily (morning + evening)",
-      notes: "Applied as 5-10% concentration in serum/cream. For research use only.",
-    },
+    route_studied: "Topical",
     interactions: {
       synergies: ["GHK-Cu", "Matrixyl", "Leuphasyl"],
       cautions: [],
@@ -5152,12 +4890,7 @@ export const peptides: Peptide[] = [
       "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. All efficacy and safety data derived from rodent models. Do not extrapolate to human dosing. Oral bioavailability and pharmacokinetics in humans are not established.",
     is_fda_approved: false,
     half_life_hours: 2,
-    dosing: {
-      route: "Oral",
-      typical_dose_mcg: [50000, 100000],
-      frequency: "Daily",
-      notes: "Rodent study doses extrapolated to ~50-100mg human equivalent. No validated human protocol exists. Research use only.",
-    },
+    route_studied: "Oral",
     interactions: {
       synergies: ["NAD+", "MOTS-c", "AOD-9604"],
       cautions: [],
@@ -5210,13 +4943,10 @@ export const peptides: Peptide[] = [
       "Has completed Phase 2 human trials. Very short plasma half-life (~2 minutes) but prolonged pharmacodynamic effect. No erythropoietic activity — does not raise hematocrit. Well tolerated in trials. Not FDA-approved. Research only.",
     is_fda_approved: false,
     half_life_hours: 0.033,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [4000, 4000],
-      frequency: "Daily x 28 days",
-      cycle_weeks: [4, 4],
-      timing: "Morning",
-      notes: "Phase 2 trial dose: 4mg SubQ daily for 28 days. Very short plasma half-life (~2 min) but prolonged downstream signaling.",
+    route_studied: "SubQ",
+    studied_dose_citation: {
+      title: "ARA 290 improves symptoms in patients with sarcoidosis-associated small fiber neuropathy",
+      url: "https://pubmed.ncbi.nlm.nih.gov/24510175/",
     },
     interactions: {
       synergies: ["BPC-157", "TB-500"],
@@ -5260,16 +4990,10 @@ export const peptides: Peptide[] = [
       },
     ],
     safety_notes:
-      "FDA-approved as Factrel (historical, for diagnostic testing of HPG axis). Compounded gonadorelin used as TRT adjunct is not itself FDA-approved for this indication. Very short half-life requires frequent dosing. Continuous infusion causes pituitary desensitization and is counterproductive.",
+      "FDA-approved as Factrel (historical, for diagnostic testing of HPG axis). Compounded gonadorelin used as TRT adjunct is not itself FDA-approved for this indication. Very short half-life. Continuous infusion causes pituitary desensitization and is counterproductive.",
     is_fda_approved: true,
     half_life_hours: 0.05,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [100, 200],
-      frequency: "2x weekly",
-      timing: "Pulsatile — 2–3 times per week",
-      notes: "Compounded TRT adjunct protocol: 100–200mcg SubQ 2–3x/week. Pulsatile dosing is essential. Continuous use causes desensitization. Research/compounding use only.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Kisspeptin-10", "CJC-1295", "Ipamorelin"],
       cautions: [],
@@ -5303,7 +5027,7 @@ export const peptides: Peptide[] = [
         title: "Larazotide acetate in persistent symptoms of celiac disease: Phase 2b trial",
         pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/26055953/",
         summary:
-          "Leffler et al. (JAMA Internal Medicine): Phase 2b RCT — larazotide 0.5mg TID significantly reduced overall celiac disease symptom severity vs placebo in patients on a gluten-free diet, with an excellent safety profile.",
+          "Leffler et al. (JAMA Internal Medicine): Phase 2b RCT — larazotide significantly reduced overall celiac disease symptom severity vs placebo in patients on a gluten-free diet, with an excellent safety profile.",
         evidence_level: "strong",
       },
       {
@@ -5318,13 +5042,10 @@ export const peptides: Peptide[] = [
       "Has completed Phase 2b and Phase 3 human trials with excellent safety profile. Minimal systemic absorption (acts locally in gut lumen). Not FDA-approved. Investigational. Phase 3 results have been mixed; FDA application pending review.",
     is_fda_approved: false,
     half_life_hours: 1.5,
-    dosing: {
-      route: "Oral",
-      typical_dose_mcg: [500, 500],
-      frequency: "3x daily (with meals)",
-      cycle_weeks: [12, 24],
-      timing: "With meals",
-      notes: "Phase 2b/3 dose: 0.5mg (500mcg) TID with meals. Minimal systemic absorption — acts locally in intestinal lumen.",
+    route_studied: "Oral",
+    studied_dose_citation: {
+      title: "Larazotide acetate in persistent symptoms of celiac disease: Phase 2b trial",
+      url: "https://pubmed.ncbi.nlm.nih.gov/26055953/",
     },
     interactions: {
       synergies: ["BPC-157", "KPV"],
@@ -5373,14 +5094,7 @@ export const peptides: Peptide[] = [
       "Not FDA-approved for general use. Used in the Shoemaker CIRS protocol under practitioner supervision. Very short plasma half-life (~2 min). Should only be used after completing prior CIRS treatment steps. May cause facial flushing and hypotension at higher doses.",
     is_fda_approved: false,
     half_life_hours: 0.033,
-    dosing: {
-      route: "Nasal",
-      typical_dose_mcg: [50, 50],
-      frequency: "4x daily",
-      cycle_weeks: [4, 12],
-      timing: "Every 3-6 hours, intranasal",
-      notes: "Shoemaker CIRS protocol: 50mcg intranasal 4x daily. Must complete prior protocol steps (cholestyramine, VCS correction, etc.) before initiating VIP.",
-    },
+    route_studied: "Nasal",
     interactions: {
       synergies: ["Thymosin Alpha-1", "BPC-157"],
       cautions: [],
@@ -5429,12 +5143,10 @@ export const peptides: Peptide[] = [
       "IV/IM oxytocin (Pitocin/Syntocinon) is FDA-approved for obstetric indications only. Intranasal oxytocin as a research compound is NOT FDA-approved. Research use only. Short half-life. May cause water retention at high doses.",
     is_fda_approved: false,
     half_life_hours: 0.083,
-    dosing: {
-      route: "Nasal",
-      typical_dose_mcg: [24, 40],
-      frequency: "As needed or 1-2x daily",
-      timing: "30 min before social interaction or pre-workout for prosocial/anti-stress effects",
-      notes: "Research dose: 24–40 IU intranasal. Half-life ~5 min (IV); central effects persist 30-90 min. Research use only.",
+    route_studied: "Nasal",
+    studied_dose_citation: {
+      title: "Intranasal oxytocin reduces cortisol and enhances social cognition",
+      url: "https://pubmed.ncbi.nlm.nih.gov/18498743/",
     },
     interactions: {
       synergies: ["Selank", "DSIP"],
@@ -5484,13 +5196,7 @@ export const peptides: Peptide[] = [
       "Based primarily on Russian clinical cohort studies (Khavinson et al.). Limited Western RCT validation. Generally well tolerated in published research. Not FDA-approved. Research only. Caution: Russian bioregulatory research base has limited reproducibility in Western trials.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "IM",
-      typical_dose_mcg: [10000, 10000],
-      frequency: "Daily x 10 days",
-      cycle_weeks: [1, 1],
-      notes: "Khavinson protocol: 10mg IM daily for 10 days, repeated 1–2x per year. No validated Western dosing protocol.",
-    },
+    route_studied: "IM",
     interactions: {
       synergies: ["Thymosin Alpha-1", "Epitalon"],
       cautions: [],
@@ -5542,12 +5248,7 @@ export const peptides: Peptide[] = [
       "⚠ PRECLINICAL RESEARCH ONLY for therapeutic use. No completed human clinical trials for exogenous administration. Endogenous peptide with well-established biology; exogenous therapeutic use remains experimental. S14G-Humanin is a more potent synthetic analog.",
     is_fda_approved: false,
     half_life_hours: 0.5,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [50, 200],
-      frequency: "Daily",
-      notes: "No validated human dosing protocol. Rodent studies use 1–5mg/kg doses. Research use only.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["MOTS-c", "SS-31", "Epitalon"],
       cautions: [],
@@ -5592,12 +5293,7 @@ export const peptides: Peptide[] = [
       "⚠ PRECLINICAL RESEARCH ONLY. No human clinical trials completed. All efficacy data from rodent models. No validated human dosing, pharmacokinetics, or safety profile established.",
     is_fda_approved: false,
     half_life_hours: 1,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [500, 1000],
-      frequency: "Daily",
-      notes: "Rodent research doses only. No validated human protocol. Research use only.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Semax", "Selank"],
       cautions: [],
@@ -5641,13 +5337,7 @@ export const peptides: Peptide[] = [
       "Based on Russian bioregulatory research. Limited Western RCT validation. Generally considered safe in published use. Not FDA-approved. Research only. Caution: Khavinson research base has limited independent Western reproducibility.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [5000, 10000],
-      frequency: "Daily x 10 days",
-      cycle_weeks: [1, 1],
-      notes: "Khavinson protocol: 5–10mg per course. Intranasal administration also studied. No validated Western dosing.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Epitalon", "Cortagen", "Semax"],
       cautions: [],
@@ -5692,12 +5382,7 @@ export const peptides: Peptide[] = [
       "⚠ PRECLINICAL RESEARCH ONLY. Based entirely on Khavinson group publications. No Western clinical trials. Not FDA-approved. Research only. Limited reproducibility data outside the originating research group.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [5000, 10000],
-      frequency: "Daily x 10 days",
-      notes: "Khavinson peptide protocol: short-course administration 1–2x per year. No validated Western protocol.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Pinealon", "Epitalon", "Semax"],
       cautions: [],
@@ -5744,12 +5429,7 @@ export const peptides: Peptide[] = [
       "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. No established human safety profile. Extreme potency suggests very low effective doses but also potential for off-target effects. Do not use without full understanding of preclinical literature.",
     is_fda_approved: false,
     half_life_hours: 48,
-    dosing: {
-      route: "Oral",
-      typical_dose_mcg: [5, 20],
-      frequency: "Infrequent (2-3x per week due to long half-life)",
-      notes: "Rodent effective doses in the ng/kg range. Human equivalent extrapolations suggest mcg-level doses. No validated human protocol. Oral bioavailability documented in rodents.",
-    },
+    route_studied: "Oral",
     interactions: {
       synergies: ["Semax", "Selank", "FGL Loop"],
       cautions: [],
@@ -5786,13 +5466,7 @@ export const peptides: Peptide[] = [
       "⚠ EXPERIMENTAL COMPOUND. NO HUMAN CLINICAL TRIALS. Mechanism is potent and irreversible (apoptosis induction). Selective for senescent cells in mouse models but human selectivity profiles are unknown. Aggressive Herxheimer-like inflammatory response from SASP release possible during senescent cell clearance. DO NOT USE without comprehensive medical supervision.",
     is_fda_approved: false,
     half_life_hours: 2,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [5000, 10000],
-      frequency: "Pulsed — 3 days per week, per mouse study protocol",
-      cycle_weeks: [3, 3],
-      notes: "Mouse study: 10mg/kg IP 3x/week. No validated human protocol. Human equivalent dose extrapolation is not clinically validated.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Epitalon", "NAD+"],
       cautions: [],
@@ -5839,12 +5513,7 @@ export const peptides: Peptide[] = [
       "⚠ EARLY-STAGE EXPERIMENTAL. Recombinant Klotho protein administration has not entered human clinical trials for anti-aging or cognitive enhancement. Klotho is a large protein (~130 kDa), not a classical peptide — reconstitution, stability, and route of administration for research use are complex. Research only.",
     is_fda_approved: false,
     half_life_hours: 8,
-    dosing: {
-      route: "IV",
-      typical_dose_mcg: [10, 30],
-      frequency: "Single dose or pulsed quarterly (mouse/NHP study protocol)",
-      notes: "NHP study: single IV injection. No human dosing protocol. Recombinant protein administration requires specialized handling. Research only.",
-    },
+    route_studied: "IV",
     interactions: {
       synergies: ["MOTS-c", "Humanin", "NAD+"],
       cautions: [],
@@ -5882,12 +5551,7 @@ export const peptides: Peptide[] = [
       "TOPICAL USE ONLY. Not for injection. This is a cosmetic/skincare peptide in a topical formulation — not a research injectable. No reconstitution required. Available commercially via OneSkin (oneskin.co). Excellent topical safety profile. Not FDA-approved as a drug.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "Topical",
-      typical_dose_mcg: [0, 0],
-      frequency: "Daily (morning or evening)",
-      notes: "⚠ TOPICAL ONLY. Apply OS-01 BODY or OS-01 FACE as directed by OneSkin product instructions. Not available as an injectable compound. Do not attempt reconstitution.",
-    },
+    route_studied: "Topical",
     interactions: {
       synergies: ["GHK-Cu", "Argireline"],
       cautions: [],
@@ -5926,13 +5590,7 @@ export const peptides: Peptide[] = [
       "Research only. Compounded intranasal formulation — individual components (Rg3, NAD+) have some published safety data but the specific compound blend lacks clinical trial validation. Not FDA-approved. Used in functional medicine under practitioner supervision.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "Nasal",
-      typical_dose_mcg: [100, 200],
-      frequency: "Daily",
-      timing: "Morning",
-      notes: "Compounded intranasal formulation; dosing varies by compounding pharmacy formulation. Rg3 typically 0.5–1mg per dose. Research use only.",
-    },
+    route_studied: "Nasal",
     interactions: {
       synergies: ["Semax", "Selank", "Dihexa", "NAD+"],
       cautions: [],
@@ -5978,12 +5636,7 @@ export const peptides: Peptide[] = [
       "⚠ PRECLINICAL RESEARCH ONLY. No completed human clinical trials. All data from rodent models. No established human pharmacokinetics, dosing protocol, or safety profile. Research use only.",
     is_fda_approved: false,
     half_life_hours: undefined,
-    dosing: {
-      route: "SubQ",
-      typical_dose_mcg: [1000, 5000],
-      frequency: "Daily",
-      notes: "Rodent study doses only. No validated human protocol. Research use only.",
-    },
+    route_studied: "SubQ",
     interactions: {
       synergies: ["Dihexa", "Semax"],
       cautions: [],

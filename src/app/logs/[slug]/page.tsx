@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!pep) return { title: "Not Found | PeptiDex" };
     return {
         title: `${pep.name} Protocol Logs | Community Data`,
-        description: `Browse real-world ${pep.name} protocol outcomes from verified researchers. Dose, efficacy, side effects, and vendor comparisons.`,
+        description: `Browse real-world ${pep.name} protocol outcomes from verified researchers. Efficacy, side effects, and vendor comparisons.`,
     };
 }
 

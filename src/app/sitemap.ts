@@ -78,12 +78,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/tools/cycle-planner`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 1.0,
-    },
-    {
       url: `${baseUrl}/tools/halflife`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
@@ -97,12 +91,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/tools/coa`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/tools/bloodwork`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,

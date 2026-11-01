@@ -17,7 +17,6 @@ export default function robots(): MetadataRoute.Robots {
           '/saved',
           '/log-protocol',
           '/lead/',
-          '/tracker',
           '/logs/entry/',
           '/redesign',
           '/redesign-v2',

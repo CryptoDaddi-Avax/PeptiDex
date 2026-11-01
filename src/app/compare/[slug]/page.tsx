@@ -11,6 +11,7 @@ import { StackCompatibility } from '@/components/compare/StackCompatibility';
 import { ComparisonPricingBox } from '@/components/compare/ComparisonPricingBox';
 import { comparisonPairs, isProgrammaticPair, EXISTING_COMPARISON_SLUGS } from '@/data/comparison-pairs';
 import { ProgrammaticComparisonPage } from '@/components/compare/ProgrammaticComparison';
+import { filterDosingFaqs } from '@/lib/library-faq-filter';
 
 export function generateStaticParams() {
   // Hand-built comparison slugs
@@ -34,7 +35,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
       const nameA = peptideA.name;
       const nameB = comp.peptideA === comp.peptideB ? `${peptideB.name} (Variant)` : peptideB.name;
-      const defaultTitle = `${nameA} vs ${nameB}: Dosing, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
+      const defaultTitle = `${nameA} vs ${nameB}: Mechanism, Half-Life, Side Effects + Which to Choose (2026) | PeptiDex`;
       const title = comp.seoTitle || defaultTitle;
       const url = `https://peptidex.app/compare/${slug}`;
       const description = comp.seoDescription.length > 155 ? comp.seoDescription.slice(0, 152) + '...' : comp.seoDescription;
@@ -56,7 +57,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
       if (!peptideA || !peptideB) return { title: 'Not Found' };
 
       const title = `${peptideA.name} vs ${peptideB.name}: Mechanism, Evidence & Price Comparison | PeptiDex`;
-      const description = `Research comparison of ${peptideA.name} vs ${peptideB.name}: mechanism of action, ${peptideA.key_studies.length}+ vs ${peptideB.key_studies.length}+ studies, dosing, half-life, and per-mg vendor pricing.`;
+      const description = `Research comparison of ${peptideA.name} vs ${peptideB.name}: mechanism of action, ${peptideA.key_studies.length}+ vs ${peptideB.key_studies.length}+ studies, half-life, and per-mg vendor pricing.`;
       const url = `https://peptidex.app/compare/${pair.slug}`;
 
       return {
@@ -112,7 +113,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   const nameA = peptideA.name;
   const nameB = isSamePeptide ? `${peptideB.name} (Without DAC)` : peptideB.name;
 
-  const TITLE = `${nameA} vs ${nameB}: Mechanism, Dosing, Side Effects + Which to Choose (2026)`;
+  const TITLE = `${nameA} vs ${nameB}: Mechanism, Half-Life, Side Effects + Which to Choose (2026)`;
   const DATE_MOD = '2026-05-07';
 
   const breadcrumbSchema = {
@@ -138,10 +139,13 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://peptidex.app/compare/${slug}` },
   };
 
-  const faqSchema = comp.faqs ? {
+  // Drop dose / injection / cycle-length Q&As from both the visible FAQ and the schema.
+  const faqs = filterDosingFaqs(comp.faqs ?? []);
+
+  const faqSchema = faqs.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: comp.faqs.map(f => ({
+    mainEntity: faqs.map(f => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -240,19 +244,9 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
                 <td className="px-4 py-4 text-zinc-300">{peptideB.primary_benefits}</td>
               </tr>
               <tr>
-                <td className="px-4 py-4 text-zinc-400 font-medium">Typical Dose</td>
-                <td className="px-4 py-4 text-zinc-300">{peptideA.dosing ? `${peptideA.dosing.typical_dose_mcg[0]}–${peptideA.dosing.typical_dose_mcg[1]}mcg` : 'Varies'}</td>
-                <td className="px-4 py-4 text-zinc-300">{peptideB.dosing ? `${peptideB.dosing.typical_dose_mcg[0]}–${peptideB.dosing.typical_dose_mcg[1]}mcg` : 'Varies'}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-4 text-zinc-400 font-medium">Route</td>
-                <td className="px-4 py-4 text-zinc-300">{peptideA.dosing?.route || 'Varies'}</td>
-                <td className="px-4 py-4 text-zinc-300">{peptideB.dosing?.route || 'Varies'}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-4 text-zinc-400 font-medium">Frequency</td>
-                <td className="px-4 py-4 text-zinc-300">{peptideA.dosing?.frequency || 'Varies'}</td>
-                <td className="px-4 py-4 text-zinc-300">{peptideB.dosing?.frequency || 'Varies'}</td>
+                <td className="px-4 py-4 text-zinc-400 font-medium">Route Studied</td>
+                <td className="px-4 py-4 text-zinc-300">{peptideA.route_studied || 'Varies'}</td>
+                <td className="px-4 py-4 text-zinc-300">{peptideB.route_studied || 'Varies'}</td>
               </tr>
               <tr>
                 <td className="px-4 py-4 text-zinc-400 font-medium">Half-Life</td>
@@ -336,8 +330,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       />
 
       {/* ── FAQ ── */}
-      {comp.faqs && comp.faqs.length > 0 && (
-        <ComparisonFAQ faqs={comp.faqs} />
+      {faqs.length > 0 && (
+        <ComparisonFAQ faqs={faqs} />
       )}
 
       {/* ── RELATED COMPARISONS ── */}

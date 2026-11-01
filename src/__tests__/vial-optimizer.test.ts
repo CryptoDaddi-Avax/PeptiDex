@@ -1,22 +1,28 @@
 /**
  * vial-optimizer.test.ts
  * ======================
- * Unit tests for the vial optimizer — the load-bearing engine behind the
- * Procurement Bridge. Tests are pinned to real vendor-pricing.ts data so
- * any upstream price/discount change that breaks math will surface here.
+ * Unit tests for the vial optimizer — the engine behind the "Build a vendor
+ * cart" section on /tools/pricing. The user picks a peptide and a total
+ * quantity (mg); the optimizer works out how many vials each vendor needs to
+ * ship and ranks vendors by price after the PEPTIDEX discount.
  *
- * Test IDs match the spec:
+ * Tests are pinned to real vendor-pricing.ts data so any upstream
+ * price/discount change that breaks math will surface here.
+ *
  *   TC-01  Single peptide, single vendor
  *   TC-02  Single peptide, multi-vendor — sort order
- *   TC-03  Multi-peptide stack — independent math + rollup
- *   TC-04  10% safety buffer — rounding boundary
+ *   TC-03  Multi-peptide cart — independent math + rollup
+ *   TC-04  Vial rounding — whole vials only, no hidden overage
  *   TC-05  Vendor missing a peptide — graceful exclusion
  *   TC-06  Per-vendor discount rates (one assertion per vendor)
- *   TC-07  Edge: zero mg target
+ *   TC-07  Edge: zero / negative quantity
  *   TC-08  Edge: peptide carried by exactly 1 vendor
+ *   TC-09  Action URLs — deep links and affiliate roots
+ *   TC-10  Cartable peptide list
  */
 
-import { optimizeVials, optimizeCycleVials } from "@/lib/vial-optimizer";
+import { describe, test, expect } from "vitest";
+import { optimizeVials, optimizeCartVials, getCartablePeptides } from "@/lib/vial-optimizer";
 
 // ─── Shared helper ────────────────────────────────────────────────────────────
 
@@ -25,21 +31,16 @@ const r2 = (n: number) => parseFloat(n.toFixed(2));
 
 // ─── TC-01: Single peptide, single vendor ─────────────────────────────────────
 //
-// BPC-157 from Amino Club only:
-//   dose = 500 mcg/day = 3,500 mcg/week
-//   4 weeks → 14,000 mcg raw = 14 mg
-//   + 10% buffer → 15.4 mg
-//   vial size = 10 mg → ceil(15.4/10) = 2 vials
+// BPC-157 from Amino Club, 20 mg requested:
+//   vial size = 10 mg → ceil(20/10) = 2 vials
 //   subtotal raw = 2 × $39.99 = $79.98
 //   discounted (20%) = $79.98 × 0.80 = $63.984 → $63.98
 
-describe("TC-01 — Single peptide, single vendor (BPC-157 / Amino Club, 4w @ 500mcg/day)", () => {
+describe("TC-01 — Single peptide, single vendor (BPC-157 / Amino Club, 20 mg)", () => {
   const result = optimizeVials({
     peptideSlug: "bpc-157",
     peptideName: "BPC-157",
-    doseMcg: 500,
-    injectionsPerWeek: 7,   // daily = 7/week
-    cycleWeeks: 4,
+    quantityMg: 20,
   });
 
   const aminoPlan = result.vendorPlans.find((p) => p.vendorSlug === "amino-club");
@@ -48,11 +49,11 @@ describe("TC-01 — Single peptide, single vendor (BPC-157 / Amino Club, 4w @ 50
     expect(aminoPlan).toBeDefined();
   });
 
-  test("bufferedMg = (500/1000) × 7 × 4 × 1.10 = 15.40 mg", () => {
-    expect(result.bufferedMg).toBeCloseTo(15.4, 5);
+  test("echoes requested quantityMg", () => {
+    expect(result.quantityMg).toBe(20);
   });
 
-  test("vialsNeeded = ceil(15.4 / 10) = 2", () => {
+  test("vialsNeeded = ceil(20 / 10) = 2", () => {
     expect(aminoPlan!.vialsNeeded).toBe(2);
   });
 
@@ -71,22 +72,19 @@ describe("TC-01 — Single peptide, single vendor (BPC-157 / Amino Club, 4w @ 50
 
 // ─── TC-02: Single peptide, multi-vendor — sort order ─────────────────────────
 //
-// BPC-157 carried by 4 vendors in vendor-pricing.ts.
-// After discount, expected discounted subtotals for 2 vials (15.4mg buffered):
+// BPC-157 carried by several vendors in vendor-pricing.ts.
+// For 20 mg, expected discounted subtotals:
 //   Amino Club:       2 × $39.99 × 0.80 = $63.98  (10mg vials)
-//   Ascension:        2 × $70.00 × 0.85 = $119.00 (10mg vials)
 //   Bio Longevity:    2 × $99.97 × 0.85 = $169.95 (10mg vials)
-//   Limitless Life:   4 × $49.99 × 0.85 = $169.97 (5mg vials → ceil(15.4/5)=4)
+//   Limitless Life:   4 × $49.99 × 0.85 = $169.97 (5mg vials → ceil(20/5)=4)
 //
 // Sort must be strictly ascending by discountedTotal.
 
-describe("TC-02 — Single peptide, multi-vendor — cost-ascending sort (BPC-157, 4w @ 500mcg/day)", () => {
+describe("TC-02 — Single peptide, multi-vendor — cost-ascending sort (BPC-157, 20 mg)", () => {
   const result = optimizeVials({
     peptideSlug: "bpc-157",
     peptideName: "BPC-157",
-    doseMcg: 500,
-    injectionsPerWeek: 7,
-    cycleWeeks: 4,
+    quantityMg: 20,
   });
 
   test("returns at least 2 vendor plans", () => {
@@ -108,49 +106,30 @@ describe("TC-02 — Single peptide, multi-vendor — cost-ascending sort (BPC-15
     const limitless = result.vendorPlans.find((p) => p.vendorSlug === "limitless-life");
     expect(limitless).toBeDefined();
     expect(limitless!.vialSizeMg).toBe(5);
-    expect(limitless!.vialsNeeded).toBe(4); // ceil(15.4 / 5)
+    expect(limitless!.vialsNeeded).toBe(4); // ceil(20 / 5)
   });
 });
 
-// ─── TC-03: Multi-peptide stack — independent math + rollup ──────────────────
+// ─── TC-03: Multi-peptide cart — independent math + rollup ───────────────────
 //
-// BPC-157 (500mcg/day, 7d/wk, 4wk) + TB-500 (2mg twice/wk, 8wk)
-//   TB-500: dose = 2000 mcg, 2/wk, 8wk → raw = 32 mg → buffered = 35.2 mg
-//   Amino Club TB-500: 10mg vials → ceil(35.2/10) = 4 vials
-//   subtotal raw = 4 × $39.99 = $159.96; discounted = $159.96 × 0.80 = $127.97
+// BPC-157 (20 mg) + TB-500 (40 mg)
+//   Amino Club TB-500: 10mg vials → ceil(40/10) = 4 vials
 //
 // Totals should aggregate per-vendor across both peptides, not collapse them.
 
-describe("TC-03 — Multi-peptide stack — independent vial math + vendor rollup", () => {
-  const { results, vendorTotals } = optimizeCycleVials([
-    {
-      peptideSlug: "bpc-157",
-      peptideName: "BPC-157",
-      doseMcg: 500,
-      injectionsPerWeek: 7,
-      cycleWeeks: 4,
-    },
-    {
-      peptideSlug: "tb-500",
-      peptideName: "TB-500",
-      doseMcg: 2000,
-      injectionsPerWeek: 2,
-      cycleWeeks: 8,
-    },
+describe("TC-03 — Multi-peptide cart — independent vial math + vendor rollup", () => {
+  const { results, vendorTotals } = optimizeCartVials([
+    { peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 20 },
+    { peptideSlug: "tb-500", peptideName: "TB-500", quantityMg: 40 },
   ]);
 
   test("returns exactly 2 peptide results", () => {
     expect(results).toHaveLength(2);
   });
 
-  test("BPC-157 bufferedMg ≈ 15.40", () => {
-    const bpc = results.find((r) => r.peptideSlug === "bpc-157")!;
-    expect(bpc.bufferedMg).toBeCloseTo(15.4, 5);
-  });
-
-  test("TB-500 bufferedMg ≈ 35.20", () => {
-    const tb = results.find((r) => r.peptideSlug === "tb-500")!;
-    expect(tb.bufferedMg).toBeCloseTo(35.2, 5);
+  test("each result keeps its own quantityMg", () => {
+    expect(results.find((r) => r.peptideSlug === "bpc-157")!.quantityMg).toBe(20);
+    expect(results.find((r) => r.peptideSlug === "tb-500")!.quantityMg).toBe(40);
   });
 
   test("TB-500 Amino Club: 4 vials at 10mg", () => {
@@ -189,70 +168,42 @@ describe("TC-03 — Multi-peptide stack — independent vial math + vendor rollu
   });
 });
 
-// ─── TC-04: 10% safety buffer — rounding boundary ─────────────────────────────
+// ─── TC-04: Vial rounding ─────────────────────────────────────────────────────
 //
-// The spec example: a 27.5 mg target should produce 4 vials at 10mg, not 3.
-// We reverse-engineer inputs that produce bufferedMg = 27.5:
-//   totalMgRaw = 27.5 / 1.10 = 25 mg exactly
-//   dose=500mcg, inj/wk=5, weeks=10 → (0.5mg × 5 × 10) = 25 mg raw ✓
-//
-// Without buffer: ceil(25/10) = 3 vials. With buffer: ceil(27.5/10) = 3 vials.
-//
-// Spec's actual boundary case: need bufferedMg that forces ceil up by 1.
-// A sharper example: doseMcg=250, 7/wk, 4wk → raw=7mg, buffered=7.7mg
-//   Without buffer: ceil(7/10) = 1 vial. With: ceil(7.7/10) = 1 vial. (same)
-//
-// Best real boundary case using BPC-157 data:
-//   dose=1400mcg, 7/wk, 1wk → raw=9.8mg, buffered=10.78mg
-//   ceil(9.8/10) = 1 vial WITHOUT buffer
-//   ceil(10.78/10) = 2 vials WITH buffer ← this is the IMPORTANT test
-//
-// This is the most critical test: the buffer causes a ceiling jump.
+// The optimizer rounds up to whole vials and adds nothing else:
+//   20 mg at 10mg vials → exactly 2 (no overage)
+//   25 mg at 10mg vials → 3;  at 5mg vials → 5
 
-describe("TC-04 — 10% safety buffer forces vial count up at rounding boundary", () => {
-  // raw = (1400/1000) × 7 × 1 = 9.8 mg — just under one vial
-  // buffered = 9.8 × 1.10 = 10.78 mg — just over one vial → 2 vials needed
-  const result = optimizeVials({
-    peptideSlug: "bpc-157",
-    peptideName: "BPC-157",
-    doseMcg: 1400,
-    injectionsPerWeek: 7,
-    cycleWeeks: 1,
+describe("TC-04 — Vial rounding: whole vials, no hidden overage", () => {
+  test("exact multiple of vial size → no extra vial (20 mg → 2 × 10mg)", () => {
+    const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 20 });
+    const amino = result.vendorPlans.find((p) => p.vendorSlug === "amino-club")!;
+    expect(amino.vialsNeeded).toBe(2);
   });
 
-  const aminoPlan = result.vendorPlans.find((p) => p.vendorSlug === "amino-club")!;
-
-  test("totalMgRaw = 9.8 mg", () => {
-    expect(result.totalMgRaw).toBeCloseTo(9.8, 5);
+  test("partial vial rounds up (25 mg → 3 × 10mg)", () => {
+    const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 25 });
+    const amino = result.vendorPlans.find((p) => p.vendorSlug === "amino-club")!;
+    expect(amino.vialsNeeded).toBe(3);
   });
 
-  test("bufferedMg = 10.78 mg (9.8 × 1.10)", () => {
-    expect(result.bufferedMg).toBeCloseTo(10.78, 5);
+  test("smaller vials scale independently (25 mg → 5 × 5mg at Limitless)", () => {
+    const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 25 });
+    const limitless = result.vendorPlans.find((p) => p.vendorSlug === "limitless-life")!;
+    expect(limitless.vialsNeeded).toBe(5);
   });
 
-  test("vialsNeeded = 2 (not 1 — buffer forced ceiling jump)", () => {
-    expect(aminoPlan.vialsNeeded).toBe(2);
-  });
-
-  test("without buffer it would be 1 vial — confirming buffer is load-bearing", () => {
-    // Math: ceil(9.8 / 10) = 1. The buffer changes this to 2.
-    expect(Math.ceil(9.8 / 10)).toBe(1);
-    expect(Math.ceil(10.78 / 10)).toBe(2);
-  });
-
-  // Spec's exact example: 27.5mg → 4 vials at 10mg
-  test("spec example: ceil(27.5 / 10) = 3 — not 4 (correcting spec)", () => {
-    // NOTE: The spec says "27.5mg → 4 vials at 10mg" but this is incorrect.
-    // ceil(27.5 / 10) = ceil(2.75) = 3. The spec example has an error.
-    // The correct boundary where buffer changes count is: raw=27.28mg (buffered=30.01mg)
-    // Documenting as known spec discrepancy. Actual buffer logic is correct.
-    expect(Math.ceil(27.5 / 10)).toBe(3);
+  test("every plan covers at least the requested quantity", () => {
+    const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 17 });
+    result.vendorPlans.forEach((plan) => {
+      expect(plan.vialsNeeded * plan.vialSizeMg).toBeGreaterThanOrEqual(17);
+      expect((plan.vialsNeeded - 1) * plan.vialSizeMg).toBeLessThan(17);
+    });
   });
 });
 
 // ─── TC-05: Vendor missing a peptide — graceful exclusion ─────────────────────
 //
-// CJC-1295 is only carried by Amino Club in vendor-pricing.ts.
 // Vendors without a pricing entry for a peptide must be excluded silently —
 // no nulls, no zero-cost rows.
 
@@ -260,9 +211,7 @@ describe("TC-05 — Vendor missing a peptide is excluded (CJC-1295 single-vendor
   const result = optimizeVials({
     peptideSlug: "cjc-1295",
     peptideName: "CJC-1295",
-    doseMcg: 300,
-    injectionsPerWeek: 5,
-    cycleWeeks: 8,
+    quantityMg: 10,
   });
 
   test("does not crash", () => {
@@ -284,6 +233,12 @@ describe("TC-05 — Vendor missing a peptide is excluded (CJC-1295 single-vendor
       expect(plan.subtotalAfterDiscount).not.toBeNaN();
     });
   });
+
+  test("unknown peptide → noVendorsAvailable", () => {
+    const unknown = optimizeVials({ peptideSlug: "not-a-peptide", peptideName: "Not A Peptide", quantityMg: 10 });
+    expect(unknown.noVendorsAvailable).toBe(true);
+    expect(unknown.vendorPlans).toHaveLength(0);
+  });
 });
 
 // ─── TC-06: Per-vendor discount rates ─────────────────────────────────────────
@@ -292,14 +247,16 @@ describe("TC-05 — Vendor missing a peptide is excluded (CJC-1295 single-vendor
 // Source of truth: vendor-cart-config.ts
 // Amino Club: 20%, Ascension: 15%, Bio Longevity: 15%, Limitless: 15%, Pantheon: 10%
 // BPC-157 chosen because it has the most vendor coverage.
+//
+// NOTE: "Ascension Peptides: 15% discount" also fails on main — Ascension is
+// deactivated (isActive: false) so its plan is filtered out. Kept unchanged
+// so the behaviour stays visible.
 
 describe("TC-06 — Per-vendor discount rates match vendor-cart-config.ts registry", () => {
   const result = optimizeVials({
     peptideSlug: "bpc-157",
     peptideName: "BPC-157",
-    doseMcg: 500,
-    injectionsPerWeek: 7,
-    cycleWeeks: 4,
+    quantityMg: 20,
   });
 
   const planFor = (slug: string) => result.vendorPlans.find((p) => p.vendorSlug === slug);
@@ -337,37 +294,35 @@ describe("TC-06 — Per-vendor discount rates match vendor-cart-config.ts regist
       expect(plan.subtotalAfterDiscount).toBeCloseTo(expected, 2);
     });
   });
+
+  test("every plan carries a discountDisplay string", () => {
+    result.vendorPlans.forEach((plan) => {
+      expect(plan.discountDisplay.length).toBeGreaterThan(0);
+    });
+  });
 });
 
-// ─── TC-07: Edge case — peptide with 0 injections/week ────────────────────────
-//
-// doseMcg=500, injectionsPerWeek=0 → totalMgRaw = 0 → bufferedMg = 0
-// Should return a result without crashing. vendorPlans may be empty or
-// show 0 vials — either is acceptable as long as no exception is thrown.
+// ─── TC-07: Edge case — zero / negative quantity ──────────────────────────────
 
-describe("TC-07 — Edge: zero injections per week does not crash", () => {
+describe("TC-07 — Edge: zero or negative quantity does not crash", () => {
   test("returns without throwing", () => {
     expect(() =>
-      optimizeVials({
-        peptideSlug: "bpc-157",
-        peptideName: "BPC-157",
-        doseMcg: 500,
-        injectionsPerWeek: 0,
-        cycleWeeks: 4,
-      })
+      optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 0 })
     ).not.toThrow();
   });
 
-  test("totalMgRaw = 0 and bufferedMg = 0", () => {
-    const result = optimizeVials({
-      peptideSlug: "bpc-157",
-      peptideName: "BPC-157",
-      doseMcg: 500,
-      injectionsPerWeek: 0,
-      cycleWeeks: 4,
+  test("zero quantity → 0 vials and $0 at every vendor", () => {
+    const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 0 });
+    expect(result.quantityMg).toBe(0);
+    result.vendorPlans.forEach((plan) => {
+      expect(plan.vialsNeeded).toBe(0);
+      expect(plan.subtotal).toBe(0);
     });
-    expect(result.totalMgRaw).toBe(0);
-    expect(result.bufferedMg).toBe(0);
+  });
+
+  test("negative quantity is clamped to 0", () => {
+    const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: -10 });
+    expect(result.quantityMg).toBe(0);
   });
 });
 
@@ -377,14 +332,8 @@ describe("TC-07 — Edge: zero injections per week does not crash", () => {
 // Sort must not fail, no empty vendorTotals, no crashes.
 
 describe("TC-08 — Edge: peptide carried by exactly 1 vendor — sort does not fail", () => {
-  const { results, vendorTotals, cheapestVendor } = optimizeCycleVials([
-    {
-      peptideSlug: "cjc-1295",
-      peptideName: "CJC-1295",
-      doseMcg: 300,
-      injectionsPerWeek: 5,
-      cycleWeeks: 8,
-    },
+  const { results, vendorTotals, cheapestVendor } = optimizeCartVials([
+    { peptideSlug: "cjc-1295", peptideName: "CJC-1295", quantityMg: 10 },
   ]);
 
   test("returns 1 peptide result", () => {
@@ -406,5 +355,71 @@ describe("TC-08 — Edge: peptide carried by exactly 1 vendor — sort does not 
   test("totalAfterDiscount < total (discount applied)", () => {
     const v = vendorTotals[0];
     expect(v.totalAfterDiscount).toBeLessThan(v.total);
+  });
+
+  test("empty cart → no vendors, cheapestVendor null", () => {
+    const empty = optimizeCartVials([]);
+    expect(empty.results).toHaveLength(0);
+    expect(empty.vendorTotals).toHaveLength(0);
+    expect(empty.cheapestVendor).toBeNull();
+  });
+});
+
+// ─── TC-09: Action URLs — deep links and affiliate roots ─────────────────────
+//
+// Amino Club (Tier 2, mapped product) → product deep link.
+// Phase 1B vendors (Limitless, Bio Longevity) → affiliateRootUrl from
+// vendor-cart-config.ts.
+
+describe("TC-09 — Action URLs for cart / deep-link / affiliate CTAs", () => {
+  const result = optimizeVials({ peptideSlug: "bpc-157", peptideName: "BPC-157", quantityMg: 10 });
+  const planFor = (slug: string) => result.vendorPlans.find((p) => p.vendorSlug === slug);
+
+  test("Amino Club → deeplink to the mapped product page", () => {
+    const amino = planFor("amino-club")!;
+    expect(amino.actionType).toBe("deeplink");
+    expect(amino.actionUrl).toBe("https://www.aminoclub.com/us/products/bpc-157");
+  });
+
+  test("Limitless Life (Phase 1B) → affiliate root URL", () => {
+    const limitless = planFor("limitless-life")!;
+    expect(limitless.actionType).toBe("affiliate");
+    expect(limitless.actionUrl).toBe("https://www.kb6dp3dq.com/PEPTIDEX/");
+  });
+
+  test("Bio Longevity Labs (Phase 1B) → affiliate root URL", () => {
+    const bio = planFor("bio-longevity-labs")!;
+    expect(bio.actionType).toBe("affiliate");
+    expect(bio.actionUrl).toBe("https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443");
+  });
+
+  test("every plan has a non-empty action URL", () => {
+    result.vendorPlans.forEach((plan) => {
+      expect(plan.actionUrl).toBeTruthy();
+    });
+  });
+});
+
+// ─── TC-10: Cartable peptide list ─────────────────────────────────────────────
+
+describe("TC-10 — getCartablePeptides()", () => {
+  const list = getCartablePeptides();
+
+  test("is non-empty and sorted by name", () => {
+    expect(list.length).toBeGreaterThan(0);
+    const names = list.map((p) => p.name);
+    expect([...names].sort((a, b) => a.localeCompare(b))).toEqual(names);
+  });
+
+  test("BPC-157 is listed with its in-stock vial sizes ascending", () => {
+    const bpc = list.find((p) => p.slug === "bpc-157");
+    expect(bpc).toBeDefined();
+    expect(bpc!.vialSizesMg).toEqual(expect.arrayContaining([5, 10]));
+    const sorted = [...bpc!.vialSizesMg].sort((a, b) => a - b);
+    expect(bpc!.vialSizesMg).toEqual(sorted);
+  });
+
+  test("every listed peptide has at least one vial size", () => {
+    list.forEach((p) => expect(p.vialSizesMg.length).toBeGreaterThan(0));
   });
 });

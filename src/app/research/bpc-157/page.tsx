@@ -8,7 +8,7 @@ import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 export const metadata: Metadata = {
     title: "BPC-157: Research Overview, Benefits & Stack Guide",
-    description: "BPC-157 is a research peptide studied for tissue repair, gut healing, and injury recovery. Explore the science, dosing context, and stacks.",
+    description: "BPC-157 is a research peptide studied for tissue repair, gut healing, and injury recovery. Explore the science, research context, and stacks.",
 };
 
 export default function BPC157ReferencePage() {
@@ -85,7 +85,7 @@ export default function BPC157ReferencePage() {
                         <h2 className="text-xl font-bold text-zinc-100">How It&apos;s Typically Used in Research</h2>
                     </div>
                     <p className="text-zinc-300 leading-relaxed text-[15px]">
-                        In preclinical studies, researchers have used varied administration routes for BPC-157, primarily focusing on subcutaneous injection and oral administration. Because the peptide originates from gastric juices, it remains highly stable in acidic environments, making oral dosing a viable area of research—especially for gastrointestinal healing studies. Subcutaneous injections are commonly utilized when targeting specific, localized musculoskeletal injuries. While human dosing protocols do not formally exist, much of the foundational research is extrapolated from animal models. For example, a widely cited oral dosage estimate in rat models is <strong>10 μg/kg</strong>, which translates via allometric scaling to approximately a <strong>1.6 μg/kg human equivalent dose</strong>. These parameters continuously guide <em>in vivo</em> laboratory investigations.
+                        In preclinical studies, researchers have used varied administration routes for BPC-157, primarily focusing on subcutaneous injection and oral administration. Because the peptide originates from gastric juices, it remains highly stable in acidic environments, making oral administration a viable area of research—especially for gastrointestinal healing studies. No human dosing protocol has been established; the foundational research comes from animal models.
                     </p>
                 </section>
 

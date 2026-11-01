@@ -312,9 +312,9 @@ export default async function AminoClubProductPage({ params }: { params: Promise
               Based on the current body of literature, {name} is primarily investigated for its effects related to {pData.primary_benefits.toLowerCase()}. Researchers studying {pData.category.toLowerCase()} pathways often select {name} over alternatives due to its specific mechanism of action.
             </p>
             <p className="text-zinc-400 leading-relaxed">
-              <strong className="text-zinc-200">Dosing & Administration:</strong> If you are planning a research protocol with {name}, you can refer to our comprehensive{' '}
+              <strong className="text-zinc-200">Research Profile:</strong> For the published literature on {name}, see our comprehensive{' '}
               <Link href={`/library/${slug}`} className="text-emerald-400 font-semibold hover:underline">{name} Research Profile</Link>{' '}
-              for aggregated data on clinical half-life ({pData.half_life_hours} hours), receptor affinity, and standard investigational dosing parameters.
+              for aggregated data on clinical half-life ({pData.half_life_hours} hours), receptor affinity, and cited studies.
             </p>
           </AutoLink>
         </section>

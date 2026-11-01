@@ -1,14 +1,13 @@
 /**
  * POST /api/shopping-list/email
  * ─────────────────────────────
- * Sends the procurement bridge shopping list via Resend
+ * Sends the vendor shopping list (built on /tools/pricing) via Resend
  * and subscribes the user to the newsletter (double duty).
  *
  * Body: {
  *   email: string,
  *   vendors: ShoppingListEmailVendor[],
  *   peptides: ShoppingListEmailPeptide[],
- *   cycleDuration: number,
  *   totalPeptides: number,
  * }
  */
@@ -60,14 +59,12 @@ export async function POST(req: NextRequest) {
             email,
             vendors,
             peptides,
-            cycleDuration,
             totalPeptides,
         } = body as {
             email: unknown;
             vendors: ShoppingListEmailVendor[];
             peptides: ShoppingListEmailPeptide[];
-            cycleDuration: number;
-            totalPeptides: number;
+            totalPeptides?: number;
         };
 
         // ── Validate ──────────────────────────────────────────
@@ -92,19 +89,11 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        if (typeof cycleDuration !== "number" || cycleDuration <= 0) {
-            return NextResponse.json(
-                { error: "Invalid cycle duration." },
-                { status: 400 }
-            );
-        }
-
         // ── Build & send email ────────────────────────────────
         const template = shoppingListEmail({
             vendors,
             peptides,
-            cycleDuration,
-            totalPeptides: totalPeptides ?? peptides.length,
+            totalPeptides: typeof totalPeptides === "number" ? totalPeptides : peptides.length,
         });
 
         const sent = await sendEmail(email, template);

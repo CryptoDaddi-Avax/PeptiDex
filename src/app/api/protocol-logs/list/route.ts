@@ -39,8 +39,16 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: error.message }, { status: 500 });
         }
 
+        // Legacy rows may still carry dose/frequency; never expose them.
+        const logs = (data || []).map((row) => {
+            const clean = { ...(row as Record<string, unknown>) };
+            delete clean.dose_mcg;
+            delete clean.frequency;
+            return clean;
+        });
+
         return NextResponse.json({
-            logs: data || [],
+            logs,
             pagination: {
                 page,
                 limit,

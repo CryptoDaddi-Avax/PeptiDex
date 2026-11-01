@@ -2,12 +2,13 @@
 
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, SlidersHorizontal, Trophy, Download } from "lucide-react";
+import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, Trophy, Download } from "lucide-react";
 import { vendorsSorted, type Vendor } from "@/data/vendors";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { peptides as allPeptides } from "@/data/peptides";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
 import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
+import { ShoppingList } from "@/components/shopping-list";
 import './pricing-redesign.css';
 
 type SortMode = "price" | "vendor" | "cpd";
@@ -23,7 +24,7 @@ interface EnrichedVendorRow {
   lastTestedDate?: string;
   discount: DiscountResult;
   dotClass: string;
-  pricePerMg: number; // price_usd / total_mg in USD, 0 if unknown. For real cost-per-dose, use lib/pricing/costPerDose.ts
+  pricePerMg: number; // price_usd / total_mg in USD, 0 if unknown
   isBestPrice?: boolean;
 }
 
@@ -65,7 +66,6 @@ function buildEnrichedData(): EnrichedPeptide[] {
         );
         const discount = applyDiscount(vp.price_usd, discountDescriptor, p.slug);
         // price_per_mg: uses total_mg (vial_mg × quantity). For current data, quantity=1.
-        // For real cost-per-dose (using a dose_mcg), see lib/pricing/costPerDose.ts.
         const quantity = 1; // vendor-pricing.ts rows are single-listing; will come from listings.quantity
         const totalMg = vp.vial_mg * quantity;
         const pricePerMg = totalMg > 0 ? vp.price_usd / totalMg : 0;
@@ -398,7 +398,7 @@ export default function PricingClient() {
     const pricedMatches = enriched.filter(p =>
       !q || p.name.toLowerCase().includes(q)
     );
-    // Pull from allPeptides for unpriced ones (those with dosing data but no vendor pricing yet)
+    // Pull from allPeptides for unpriced ones (indexed compounds with no vendor pricing yet)
     const unpricedMatches = allPeptides
       .filter(p => !pricedSlugs.has(p.slug) && (!q || p.name.toLowerCase().includes(q)))
       .map(p => ({ slug: p.slug, name: p.name, priced: false }));
@@ -731,6 +731,11 @@ export default function PricingClient() {
               </Link>
             </p>
           </div>
+
+          {/* ── Vendor cart builder ─────────────────────────────────────── */}
+          <section aria-label="Build a vendor cart" style={{ marginTop: 16 }}>
+            <ShoppingList defaultPeptideSlug={currentPeptide?.slug} />
+          </section>
         </section>
 
         <InlineDisclaimer type="pricing" className="mb-12" />

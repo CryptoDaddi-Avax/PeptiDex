@@ -124,7 +124,7 @@ export default async function PeptideAtVendorPage({
                                 {" "}· {vendorObj.purity} purity · {vendorObj.coaStatus}
                             </>
                         ) : (
-                            <>Community-verified protocol data for {peptide.name} purchased from {vendorObj.name}.</>
+                            <>Community-reported outcomes for {peptide.name} purchased from {vendorObj.name}.</>
                         )}
                     </p>
                 </div>
@@ -149,7 +149,7 @@ export default async function PeptideAtVendorPage({
                                 color: "var(--ink)",
                                 marginBottom: 16,
                             }}>
-                                Community Protocol Data
+                                Community Reports
                             </h2>
                             <PeptideVendorLogsClient
                                 peptideSlug={slug}

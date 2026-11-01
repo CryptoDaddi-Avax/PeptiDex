@@ -16,8 +16,8 @@ interface PeptideStackCardProps {
   peptideName: string;
   /** Role in the stack: "primary" | "synergist" | "support" */
   role: string;
-  /** Dosing summary (e.g. "250mcg 5x/week") */
-  dosingSummary: string;
+  /** Short neutral label shown top-right (e.g. evidence level or category) */
+  summaryLabel: string;
   /** Brief rationale for inclusion */
   rationale: string;
   surface?: PromoSurface;
@@ -29,7 +29,7 @@ export function PeptideStackCard({
   peptideSlug,
   peptideName,
   role,
-  dosingSummary,
+  summaryLabel,
   rationale,
   surface = "stack_card",
 }: PeptideStackCardProps) {
@@ -56,7 +56,7 @@ export function PeptideStackCard({
           <RoleBadge role={role} />
         </div>
         <span className="text-[10px] font-mono text-zinc-600 whitespace-nowrap shrink-0">
-          {dosingSummary}
+          {summaryLabel}
         </span>
       </div>
 

@@ -11,7 +11,7 @@
  *   Email 1  — Day 0:  Welcome + Cheat Sheet
  *   Email 2  — Day 2:  How to Read a COA
  *   Email 3  — Day 4:  The 5 Vendors We Trust
- *   Email 4  — Day 7:  Your First Cycle Walkthrough
+ *   Email 4  — Day 7:  Compare Vendor Prices (vendor cart)
  *   Email 5  — Day 10: Smart Vendor Picker Quiz
  *   Email 6  — Day 14: Deal of the Week
  *   Email 7  — Day 21: Log Your Protocol
@@ -87,21 +87,21 @@ export function email1_welcome(firstName = "there") {
     ${p(`First things first: here's the cheat sheet you were promised.`)}
     ${divider()}
     <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;color:#6b7280;text-transform:uppercase;margin:0 0 12px;">Your First Peptide Cheat Sheet</p>
-    ${p(`We pulled together the 8 most-researched peptides and summarized the key facts for each — mechanism, typical dose, cycle length, and evidence grade:`)}
+    ${p(`We pulled together the 8 most-researched peptides and summarized the key facts for each — mechanism, research focus, and evidence grade:`)}
     ${ul([
-      "<strong>BPC-157</strong> — gut + tissue repair, 250–500 mcg/day, strong animal data",
-      "<strong>TB-500</strong> — systemic recovery, 2–2.5 mg/week, often stacked with BPC",
-      "<strong>Ipamorelin</strong> — GH pulse trigger, 200–300 mcg/dose, clean profile",
-      "<strong>CJC-1295 no DAC</strong> — GHRH analog, stacks with Ipamorelin",
-      "<strong>GHK-Cu</strong> — skin/wound healing, topical or injectable",
+      "<strong>BPC-157</strong> — gut + tissue repair, strong animal data",
+      "<strong>TB-500</strong> — systemic recovery research, often studied alongside BPC-157",
+      "<strong>Ipamorelin</strong> — GH secretagogue, clean side-effect profile in studies",
+      "<strong>CJC-1295 no DAC</strong> — GHRH analog, often studied with Ipamorelin",
+      "<strong>GHK-Cu</strong> — skin/wound healing research",
       "<strong>MOTS-c</strong> — mitochondrial peptide, metabolic research",
-      "<strong>Semax</strong> — intranasal nootropic, cognitive research",
-      "<strong>Epitalon</strong> — telomere + pineal research, 5–10 mg/cycle",
+      "<strong>Semax</strong> — nootropic, cognitive research",
+      "<strong>Epitalon</strong> — telomere + pineal research",
     ])}
     ${p(`The full reference page for each is on PeptiDex — with sourced half-life tables, evidence grades, and COA data from verified vendors.`)}
     ${cta("Open the full peptide library", "https://peptidex.app/learn")}
     ${divider()}
-    ${p(`Over the next few weeks I'll walk you through how to read a COA, which vendors we actually trust, and how to structure your first cycle. Next email lands in 2 days.`)}
+    ${p(`Over the next few weeks I'll walk you through how to read a COA, which vendors we actually trust, and how to compare prices across them. Next email lands in 2 days.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/learn") };
@@ -155,33 +155,32 @@ export function email3_vendors(firstName = "there") {
     ${cta("Read the full vendor comparison", "https://peptidex.app/vendors")}
     ${divider()}
     ${p(`One thing I want to be transparent about: PeptiDex earns an affiliate commission when you buy through our links. That's how the site stays free. It doesn't change our rankings — vendors are evaluated blind to their affiliate terms.`)}
-    ${p(`Next email in 3 days: how to structure your first peptide cycle.`)}
+    ${p(`Next email in 3 days: how to compare prices across vendors before you buy.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/vendors") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// EMAIL 4 — Day 7: Your First Cycle
+// EMAIL 4 — Day 7: Compare Vendor Prices
 // ══════════════════════════════════════════════════════════════════════════════
 
+// Function name and sequence key ("first_cycle") kept stable for scheduled rows.
 export function email4_firstCycle(firstName = "there") {
-  const subject = "Your first peptide cycle — a walkthrough";
+  const subject = "Compare vendor prices before you buy";
   const html = wrap(`
-    ${h1(`How to structure your first peptide cycle`)}
-    ${p(`If you're starting with peptides for the first time, the most common mistake is doing too much at once. Here's the approach I'd recommend:`)}
-    <p style="font-size:14px;font-weight:700;color:#16a34a;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.05em;">Week 1–2: Foundation</p>
-    ${p(`Start with a single peptide. BPC-157 is the most forgiving starting point — broad tissue repair applications, strong safety profile in animal literature, minimal reported side effects. Dose: 250–500 mcg/day subcutaneous, split AM/PM.`)}
-    <p style="font-size:14px;font-weight:700;color:#16a34a;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.05em;">Week 3–8: Core Cycle</p>
-    ${p(`If week 1–2 goes well, continue for a full 6–8 week cycle. Log how you feel weekly — that data becomes useful for your next cycle. Common addition at week 3: TB-500 2x/week for systemic synergy with BPC.`)}
-    <p style="font-size:14px;font-weight:700;color:#16a34a;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.05em;">Week 9+: Off-cycle & Assessment</p>
-    ${p(`4 weeks off minimum. Review your log. Decide whether to repeat, adjust dose, or switch peptides based on what you observed.`)}
-    ${divider()}
-    ${p(`The Cycle Planner tool on PeptiDex will walk you through this interactively — you input your goal and it outputs a suggested cycle with dose ranges, timing, and reconstitution math.`)}
-    ${cta("Open the Cycle Planner", "https://peptidex.app/tools/cycle-planner")}
+    ${h1(`How to compare peptide prices across vendors`)}
+    ${p(`List prices don't tell the whole story. Vial sizes differ between vendors, discount codes differ, and some vendors stack their code with site-wide sales. Here's how to compare like for like:`)}
+    ${ul([
+      `<strong>Compare per mg, not per vial</strong> — a cheaper 5mg vial can cost more per mg than a 10mg vial.`,
+      `<strong>Apply the discount first</strong> — code <strong>PEPTIDEX</strong> takes 10–20% off depending on the vendor.`,
+      `<strong>Price the whole order</strong> — if you're buying more than one peptide, one vendor may be cheapest overall even if it isn't cheapest for each item.`,
+    ])}
+    ${p(`The PeptiDex price comparison page does this for you: pick your peptides and how many vials you want, and it ranks every vendor by total price with the PEPTIDEX discount applied.`)}
+    ${cta("Build a vendor cart", "https://peptidex.app/tools/pricing")}
     ${p(`— The PeptiDex Research Team`)}
   `);
-  return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/cycle-planner") };
+  return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/pricing") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -245,14 +244,13 @@ export function email7_logProtocol(firstName = "there") {
     ${p(`Three weeks in — if you've started a cycle, you're now sitting on data that other researchers need.`)}
     ${p(`The PeptiDex protocol log is a structured form where you record:`)}
     ${ul([
-      "Which peptide(s) you're running",
-      "Dose and frequency",
+      "Which peptide(s) you're researching",
       "Which vendor and batch",
       "Weekly subjective efficacy and side effect ratings",
-      "Final outcome notes at cycle end",
+      "Final outcome notes",
     ])}
     ${p(`Anonymous logs are aggregated into the PeptiDex community dataset — the efficacy and side effect scores you see on each peptide page come directly from contributor logs like yours.`)}
-    ${p(`You don't have to be an expert. A basic log — "BPC-157, 500 mcg/day, 8 weeks, vendor X, efficacy 7/10" — is more useful than nothing.`)}
+    ${p(`You don't have to be an expert. A basic log — "BPC-157, 8 weeks, vendor X, efficacy 7/10" — is more useful than nothing.`)}
     ${cta("Log my protocol", "https://peptidex.app/log-protocol")}
     ${divider()}
     ${p(`If you haven't started a cycle yet, you can still log a planned protocol and come back to fill in the outcomes. The form saves your progress.`)}
@@ -276,7 +274,7 @@ export const WELCOME_SEQUENCE = [
   { delayDays: 0,  key: "welcome",       fn: email1_welcome,     subject: "Your peptide cheat sheet is here 🧬" },
   { delayDays: 2,  key: "coa",           fn: email2_coa,         subject: "How to read a peptide COA" },
   { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 5 vendors we actually trust" },
-  { delayDays: 7,  key: "first_cycle",   fn: email4_firstCycle,  subject: "Your first peptide cycle" },
+  { delayDays: 7,  key: "first_cycle",   fn: email4_firstCycle,  subject: "Compare vendor prices before you buy" },
   { delayDays: 10, key: "vendor_picker", fn: email5_vendorPicker, subject: "4 questions → the right vendor" },
   { delayDays: 14, key: "deal",          fn: email6_deal,        subject: "Deal of the week" },
   { delayDays: 21, key: "log_protocol",  fn: email7_logProtocol, subject: "Log your protocol" },

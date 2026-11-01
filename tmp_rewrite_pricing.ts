@@ -51,7 +51,6 @@ export function getVendorPricing(slugOrName: string): PeptideVendorPricing | und
         
         let avg_price_usd = 0;
         let price_range_usd: [number, number] = [0, 0];
-        let cost_per_dose_usd = undefined;
 
         if (allowed.length > 0) {
             const sum = allowed.reduce((acc, v) => acc + v.price_usd, 0);
@@ -59,18 +58,13 @@ export function getVendorPricing(slugOrName: string): PeptideVendorPricing | und
             const min = Math.min(...allowed.map(v => v.price_usd));
             const max = Math.max(...allowed.map(v => v.price_usd));
             price_range_usd = [min, max];
-            
-            if (p.doses_per_vial) {
-                cost_per_dose_usd = parseFloat((avg_price_usd / p.doses_per_vial).toFixed(2));
-            }
         }
 
         return {
             ...p,
             vendors: allowed,
             avg_price_usd,
-            price_range_usd,
-            cost_per_dose_usd
+            price_range_usd
         };
     });
 
@@ -87,8 +81,6 @@ export interface PeptidePricing {
     typical_vial_mg: number;
     avg_price_usd: number;
     price_range_usd: [number, number];
-    cost_per_dose_usd?: number;
-    doses_per_vial?: number;
     notes?: string;
     vendors: VendorPrice[];
 }

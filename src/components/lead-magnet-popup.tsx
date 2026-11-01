@@ -5,6 +5,7 @@ import { X, Loader2, CheckCircle, Gift, Zap, ShieldCheck, FlaskConical, ArrowRig
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { SITE_STATS } from "@/data/site-stats";
 
 const BEEHIIV_PUBLICATION_ID = "pub_40e0b818-633b-4705-b254-36237b65b043";
 const STORAGE_KEY = "peptidex_newsletter_dismissed";
@@ -204,7 +205,7 @@ export function LeadMagnetPopup({ source = "welcome_popup" }: Props) {
                                             Join our Newsletter & receive <span className="text-emerald-400">20% off</span> your purchase from Amino Club!
                                         </h2>
                                         <p className="text-sm text-zinc-400 leading-relaxed mb-5">
-                                            Plus, get instant access to our <span className="text-zinc-200 font-semibold">2026 Peptide Stack Cheat Sheet</span> — featuring 12 research-backed stacks with exact dosages and cycle lengths.
+                                            Plus, get instant access to our <span className="text-zinc-200 font-semibold">2026 Peptide Stack Cheat Sheet</span> — featuring {SITE_STATS.stacks.count} research stacks organized by goal, with evidence levels and cited research.
                                         </p>
 
                                         {/* Benefits grid */}

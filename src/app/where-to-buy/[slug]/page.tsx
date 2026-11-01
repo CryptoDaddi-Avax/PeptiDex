@@ -139,7 +139,7 @@ export default async function WhereToBuyPeptidePage({ params }: { params: Promis
           <p className="vn-subtitle" style={{ maxWidth: '800px' }}>
             {peptide.name} {peptide.aliases.length > 0 ? `(${peptide.aliases.join(', ')})` : ''} is a widely researched {peptide.category.toLowerCase()} known primarily for {peptide.primary_benefits.toLowerCase()}. 
             Below is our updated 2026 directory of independent, COA-verified vendors that carry {peptide.name}.
-            Read the full <Link href={`/library/${slug}`} className="text-amber-500 hover:underline">research profile and dosage guide for {peptide.name}</Link>.
+            Read the full <Link href={`/library/${slug}`} className="text-amber-500 hover:underline">research profile for {peptide.name}</Link>.
           </p>
         </div>
       </header>

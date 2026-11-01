@@ -145,7 +145,7 @@ export interface ShoppingListEmailVendor {
 
 export interface ShoppingListEmailPeptide {
     peptideName: string;
-    bufferedMg: number;
+    quantityMg: number;
     vialsNeeded: number;
     vialSizeMg: number;
     cheapestPrice: number;
@@ -154,7 +154,6 @@ export interface ShoppingListEmailPeptide {
 export function shoppingListEmail(data: {
     vendors: ShoppingListEmailVendor[];
     peptides: ShoppingListEmailPeptide[];
-    cycleDuration: number;
     totalPeptides: number;
 }) {
     const cheapest = data.vendors[0]; // already sorted by cost-ascending
@@ -210,21 +209,20 @@ export function shoppingListEmail(data: {
     const peptideSummary = data.peptides.map(p =>
         `<tr>
             <td style="padding:6px 12px;font-size:13px;color:#e8e4de;border-bottom:1px solid rgba(255,255,255,0.04);">${p.peptideName}</td>
-            <td style="padding:6px 12px;font-size:13px;color:#a8a196;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);">${p.bufferedMg.toFixed(1)} mg</td>
+            <td style="padding:6px 12px;font-size:13px;color:#a8a196;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);">${Number(p.quantityMg).toFixed(1)} mg</td>
             <td style="padding:6px 12px;font-size:13px;color:#a8a196;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);">${p.vialsNeeded}× ${p.vialSizeMg}mg</td>
             <td style="padding:6px 12px;font-size:13px;color:#c9a961;text-align:right;border-bottom:1px solid rgba(255,255,255,0.04);">from $${p.cheapestPrice.toFixed(2)}</td>
         </tr>`
     ).join("");
 
     return {
-        subject: `Your Cycle Shopping List — ${data.totalPeptides} Peptide${data.totalPeptides !== 1 ? 's' : ''}, ${data.cycleDuration} Weeks`,
+        subject: "Your PeptiDex vendor shopping list",
         html: `<div style="${styles.wrapper}"><div style="${styles.card};max-width:600px;">
-            <h1 style="${styles.h1}">🧪 Your Procurement List</h1>
-            <p style="${styles.p}">Here's your optimized shopping list from the PeptiDex Cycle Planner. All quantities include a <strong style="color:#c9a961;">10% safety buffer</strong> to prevent mid-cycle shortfall.</p>
+            <h1 style="${styles.h1}">🧪 Your Vendor Shopping List</h1>
+            <p style="${styles.p}">Here's the vendor cart you built on PeptiDex, ranked by price after each vendor's PeptiDex discount.</p>
 
             <div style="display:flex;gap:24px;justify-content:center;margin:20px 0;flex-wrap:wrap;">
                 ${styles.stat("Peptides", String(data.totalPeptides))}
-                ${styles.stat("Duration", `${data.cycleDuration} wk`, "#a8a196")}
                 ${styles.stat("Best Price", `$${cheapest?.totalAfterDiscount.toFixed(2) ?? '—'}`, "#4ade80")}
             </div>
 
@@ -234,12 +232,12 @@ export function shoppingListEmail(data: {
             </div>
 
             <div style="margin:24px 0;">
-                <div style="font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px;">Per-Peptide Requirements (10% Buffer)</div>
+                <div style="font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px;">Per-Peptide Summary</div>
                 <table style="width:100%;border-collapse:collapse;" cellpadding="0" cellspacing="0">
                     <thead>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
                             <th style="padding:6px 12px;font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.1em;text-align:left;">Peptide</th>
-                            <th style="padding:6px 12px;font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.1em;text-align:center;">Need</th>
+                            <th style="padding:6px 12px;font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.1em;text-align:center;">Quantity</th>
                             <th style="padding:6px 12px;font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.1em;text-align:center;">Vials</th>
                             <th style="padding:6px 12px;font-size:10px;color:#5a564f;text-transform:uppercase;letter-spacing:0.1em;text-align:right;">Best Price</th>
                         </tr>
@@ -248,17 +246,13 @@ export function shoppingListEmail(data: {
                 </table>
             </div>
 
-            <div style="background:rgba(201,169,97,0.06);border:1px solid rgba(201,169,97,0.15);border-radius:8px;padding:14px 16px;font-size:12px;color:#a8a196;margin:20px 0;">
-                <strong style="color:#c9a961;">10% safety buffer included.</strong> Quantities include a non-negotiable 10% overage to prevent mid-cycle shortfall from reconstitution loss, dose rounding, and vial retention.
-            </div>
-
             <div style="text-align:center;margin-top:28px;">
-                <a href="https://peptidex.app/tools/cycle-planner" style="${styles.btn}">Open Cycle Planner →</a>
+                <a href="https://peptidex.app/tools/pricing" style="${styles.btn}">Compare Prices →</a>
             </div>
 
             <p style="${styles.footer}">
                 PeptiDex · Peptide Research Intelligence<br/>
-                You're receiving this because you requested a shopping list from the Cycle Planner.<br/>
+                You're receiving this because you requested a vendor shopping list on PeptiDex.<br/>
                 Prices verified ${new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}. Always confirm at checkout.<br/>
                 <a href="https://peptidex.app" style="color:#5a564f;">peptidex.app</a>
             </p>

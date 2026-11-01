@@ -7,6 +7,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase-server";
 
+// mv_peptide_vendor_stats still aggregates the legacy frequency column; never expose it.
+function omitFrequency<T>(row: T): T {
+    if (!row || typeof row !== "object") return row;
+    const clean = { ...(row as Record<string, unknown>) };
+    delete clean.most_common_frequency;
+    return clean as T;
+}
+
 export async function GET(request: NextRequest) {
     try {
         const supabase = createServerClient();
@@ -25,7 +33,7 @@ export async function GET(request: NextRequest) {
                 .single();
 
             if (error) return NextResponse.json({ stats: null, message: "No data yet" });
-            return NextResponse.json({ stats: data });
+            return NextResponse.json({ stats: omitFrequency(data) });
         }
 
         // Peptide-only query
@@ -44,7 +52,7 @@ export async function GET(request: NextRequest) {
 
             return NextResponse.json({
                 stats: peptideStats || null,
-                vendors: vendorBreakdown || [],
+                vendors: (vendorBreakdown || []).map(omitFrequency),
             });
         }
 
@@ -64,7 +72,7 @@ export async function GET(request: NextRequest) {
 
             return NextResponse.json({
                 stats: vendorStats || null,
-                peptides: peptideBreakdown || [],
+                peptides: (peptideBreakdown || []).map(omitFrequency),
             });
         }
 

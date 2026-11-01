@@ -12,29 +12,29 @@ PRICING_FILE_PATH = os.path.join(os.path.dirname(__file__), '..', 'src', 'data',
 # Vetted accurate prices scraped securely via isolated browser sessions. 
 # Defaults to `None` for Not Found, enabling UI 'Out of Stock' mapping.
 LIVE_BASE_DATA = [
-    { "name": "AOD-9604", "slug": "aod-9604", "typical_vial_mg": 5, "amino_price": 49.99, "soma_price": 59.99, "ascension_price": 64.99, "doses_per_vial": 15 },
-    { "name": "BPC-157", "slug": "bpc-157", "typical_vial_mg": 10, "amino_price": 39.99, "soma_price": 39.99, "ascension_price": 70.00, "doses_per_vial": 20 },
-    { "name": "CJC-1295", "slug": "cjc-1295", "typical_vial_mg": 2, "amino_price": 59.99, "soma_price": 29.99, "ascension_price": 50.00, "doses_per_vial": 8, "notes": "Amino Club is Combo; Soma/Ascension No DAC 5mg." },
-    { "name": "DSIP", "slug": "dsip", "typical_vial_mg": 5, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 75.00, "doses_per_vial": 10 },
-    { "name": "Epitalon", "slug": "epitalon", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 69.99, "doses_per_vial": 20 },
-    { "name": "Follistatin-344", "slug": "follistatin-344", "typical_vial_mg": 1, "amino_price": None, "soma_price": 99.99, "ascension_price": None, "doses_per_vial": 10 },
-    { "name": "GHK-Cu", "slug": "ghk-cu", "typical_vial_mg": 50, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 50.00, "doses_per_vial": 25, "notes": "Ascension is 100mg vial." },
-    { "name": "IGF-1 LR3", "slug": "igf-1-lr3", "typical_vial_mg": 1, "amino_price": 69.99, "soma_price": 59.99, "ascension_price": None, "doses_per_vial": 10 },
-    { "name": "Ipamorelin", "slug": "ipamorelin", "typical_vial_mg": 5, "amino_price": 49.99, "soma_price": 29.99, "ascension_price": 50.00, "doses_per_vial": 30 },
-    { "name": "KPV", "slug": "kpv", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 54.99, "ascension_price": 79.99, "doses_per_vial": 10 },
-    { "name": "MOTS-c", "slug": "mots-c", "typical_vial_mg": 10, "amino_price": 39.99, "soma_price": 54.99, "ascension_price": 79.99, "doses_per_vial": 2 },
-    { "name": "Melanotan II", "slug": "melanotan-ii", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 39.99, "ascension_price": 40.00, "doses_per_vial": 20 },
-    { "name": "PT-141", "slug": "pt-141", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 50.00, "doses_per_vial": 10 },
-    { "name": "Retatrutide", "slug": "retatrutide", "typical_vial_mg": 10, "amino_price": 69.99, "soma_price": 149.99, "ascension_price": 110.00, "doses_per_vial": 5, "notes": "Amino lists GLP-3 RT; Soma lists RETA." },
-    { "name": "SS-31", "slug": "ss-31", "typical_vial_mg": 10, "amino_price": None, "soma_price": 54.99, "ascension_price": 65.00, "doses_per_vial": 5 },
-    { "name": "Selank", "slug": "selank", "typical_vial_mg": 30, "amino_price": 29.99, "soma_price": 34.99, "ascension_price": 55.00, "doses_per_vial": 60, "notes": "Pricing for 30mg/10mg spray depending on vendor." },
-    { "name": "Semaglutide", "slug": "semaglutide", "typical_vial_mg": 5, "amino_price": None, "soma_price": 99.99, "ascension_price": None, "doses_per_vial": 5 },
-    { "name": "Semax", "slug": "semax", "typical_vial_mg": 30, "amino_price": 29.99, "soma_price": 34.99, "ascension_price": 55.00, "doses_per_vial": 60, "notes": "Pricing for 30mg/10mg spray depending on vendor." },
-    { "name": "Sermorelin", "slug": "sermorelin", "typical_vial_mg": 10, "amino_price": None, "soma_price": 49.99, "ascension_price": 85.00, "doses_per_vial": 7 },
-    { "name": "TB-500", "slug": "tb-500", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 44.99, "ascension_price": 50.00, "doses_per_vial": 7 },
-    { "name": "Tesamorelin", "slug": "tesamorelin", "typical_vial_mg": 5, "amino_price": 69.99, "soma_price": 49.99, "ascension_price": 89.99, "doses_per_vial": 10 },
-    { "name": "Thymosin Alpha-1", "slug": "thymosin-alpha-1", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 49.99, "ascension_price": None, "doses_per_vial": 8 },
-    { "name": "Tirzepatide", "slug": "tirzepatide", "typical_vial_mg": 10, "amino_price": None, "soma_price": 124.99, "ascension_price": None, "doses_per_vial": 4 }
+    { "name": "AOD-9604", "slug": "aod-9604", "typical_vial_mg": 5, "amino_price": 49.99, "soma_price": 59.99, "ascension_price": 64.99 },
+    { "name": "BPC-157", "slug": "bpc-157", "typical_vial_mg": 10, "amino_price": 39.99, "soma_price": 39.99, "ascension_price": 70.00 },
+    { "name": "CJC-1295", "slug": "cjc-1295", "typical_vial_mg": 2, "amino_price": 59.99, "soma_price": 29.99, "ascension_price": 50.00, "notes": "Amino Club is Combo; Soma/Ascension No DAC 5mg." },
+    { "name": "DSIP", "slug": "dsip", "typical_vial_mg": 5, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 75.00 },
+    { "name": "Epitalon", "slug": "epitalon", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 69.99 },
+    { "name": "Follistatin-344", "slug": "follistatin-344", "typical_vial_mg": 1, "amino_price": None, "soma_price": 99.99, "ascension_price": None },
+    { "name": "GHK-Cu", "slug": "ghk-cu", "typical_vial_mg": 50, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 50.00, "notes": "Ascension is 100mg vial." },
+    { "name": "IGF-1 LR3", "slug": "igf-1-lr3", "typical_vial_mg": 1, "amino_price": 69.99, "soma_price": 59.99, "ascension_price": None },
+    { "name": "Ipamorelin", "slug": "ipamorelin", "typical_vial_mg": 5, "amino_price": 49.99, "soma_price": 29.99, "ascension_price": 50.00 },
+    { "name": "KPV", "slug": "kpv", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 54.99, "ascension_price": 79.99 },
+    { "name": "MOTS-c", "slug": "mots-c", "typical_vial_mg": 10, "amino_price": 39.99, "soma_price": 54.99, "ascension_price": 79.99 },
+    { "name": "Melanotan II", "slug": "melanotan-ii", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 39.99, "ascension_price": 40.00 },
+    { "name": "PT-141", "slug": "pt-141", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 50.00 },
+    { "name": "Retatrutide", "slug": "retatrutide", "typical_vial_mg": 10, "amino_price": 69.99, "soma_price": 149.99, "ascension_price": 110.00, "notes": "Amino lists GLP-3 RT; Soma lists RETA." },
+    { "name": "SS-31", "slug": "ss-31", "typical_vial_mg": 10, "amino_price": None, "soma_price": 54.99, "ascension_price": 65.00 },
+    { "name": "Selank", "slug": "selank", "typical_vial_mg": 30, "amino_price": 29.99, "soma_price": 34.99, "ascension_price": 55.00, "notes": "Pricing for 30mg/10mg spray depending on vendor." },
+    { "name": "Semaglutide", "slug": "semaglutide", "typical_vial_mg": 5, "amino_price": None, "soma_price": 99.99, "ascension_price": None },
+    { "name": "Semax", "slug": "semax", "typical_vial_mg": 30, "amino_price": 29.99, "soma_price": 34.99, "ascension_price": 55.00, "notes": "Pricing for 30mg/10mg spray depending on vendor." },
+    { "name": "Sermorelin", "slug": "sermorelin", "typical_vial_mg": 10, "amino_price": None, "soma_price": 49.99, "ascension_price": 85.00 },
+    { "name": "TB-500", "slug": "tb-500", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 44.99, "ascension_price": 50.00 },
+    { "name": "Tesamorelin", "slug": "tesamorelin", "typical_vial_mg": 5, "amino_price": 69.99, "soma_price": 49.99, "ascension_price": 89.99 },
+    { "name": "Thymosin Alpha-1", "slug": "thymosin-alpha-1", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 49.99, "ascension_price": None },
+    { "name": "Tirzepatide", "slug": "tirzepatide", "typical_vial_mg": 10, "amino_price": None, "soma_price": 124.99, "ascension_price": None }
 ]
 
 def rewrite_pricing_ts():
@@ -53,11 +53,6 @@ def rewrite_pricing_ts():
             min_p = min(valid_prices)
             max_p = max(valid_prices)
 
-        doses = d.get('doses_per_vial')
-        cost_per_dose = (avg_price / doses) if doses and avg_price > 0 else None
-        
-        cpd_str = f"cost_per_dose_usd: {cost_per_dose:.2f}," if cost_per_dose else ""
-        dpv_str = f"doses_per_vial: {doses}," if doses else ""
         notes = d.get('notes')
         notes_str = f'notes: "{notes}",' if notes else ""
 
@@ -84,8 +79,6 @@ def rewrite_pricing_ts():
         typical_vial_mg: {d['typical_vial_mg']},
         avg_price_usd: {avg_price:.2f},
         price_range_usd: [{min_p:.2f}, {max_p:.2f}],
-        {cpd_str}
-        {dpv_str}
         {notes_str}
         vendors: [
             {', '.join(vendors_js)}
@@ -106,8 +99,6 @@ export interface PeptidePricing {{
     typical_vial_mg: number;
     avg_price_usd: number;
     price_range_usd: [number, number];
-    cost_per_dose_usd?: number;
-    doses_per_vial?: number;
     notes?: string;
     vendors: VendorPrice[];
 }}

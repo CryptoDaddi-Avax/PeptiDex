@@ -356,55 +356,6 @@
   opacity: 0.85;
 }
 
-/* ═══════ DOSING GRID ═══════ */
-.pd-dosing-warn {
-  padding: 14px 20px;
-  background: rgba(199,97,59,0.04);
-  border: 1px solid rgba(199,97,59,0.15);
-  margin-bottom: 20px;
-}
-.pd-dosing-warn p {
-  font-size: 11px;
-  color: var(--rust);
-  margin: 0;
-  opacity: 0.8;
-}
-.pd-dosing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.pd-dosing-cell {
-  padding: 20px;
-  background: var(--ink-2);
-}
-.pd-dosing-label {
-  display: block;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--paper-3);
-  margin-bottom: 8px;
-}
-.pd-dosing-value {
-  font-family: var(--sans);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--paper);
-}
-.pd-dosing-notes {
-  margin-top: 16px;
-  padding: 16px 20px;
-  background: var(--ink-2);
-  border: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--paper-2);
-  line-height: 1.6;
-}
-
 /* ═══════ TIMELINE ═══════ */
 .pd-timeline {
   display: flex;
@@ -801,7 +752,6 @@
   .pd-container { padding: 0 20px; }
   .pd-page-title { font-size: clamp(36px, 8vw, 60px); }
   .pd-page-meta { gap: 16px; }
-  .pd-dosing-grid { grid-template-columns: 1fr; }
   .pd-legal-list { grid-template-columns: 1fr; }
   .pd-disclaimer-strip { padding: 16px 20px; }
   .pd-section { margin-bottom: 48px; }

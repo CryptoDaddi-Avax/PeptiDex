@@ -66,8 +66,8 @@ export default function DisclaimerPage() {
 
         <h2>Not <em>medical advice</em>.</h2>
         <p>
-          The information published on PeptiDex — including peptide profiles, dosing references, protocol
-          stacks, and the Cycle Planner — is provided for educational reference. It is not intended to
+          The information published on PeptiDex — including peptide profiles, research summaries, peptide
+          stacks, and our interactive tools — is provided for educational reference. It is not intended to
           diagnose, treat, cure, or prevent any disease or condition.
         </p>
         <p>

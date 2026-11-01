@@ -44,7 +44,6 @@ export default function Footer() {
             <div className="footer-col">
               <h4>§ Tools</h4>
               <ul>
-                <li><a href="/tools/cycle-planner">Cycle Planner</a></li>
                 <li><a href="/tools/evidence">Evidence Dashboard</a></li>
                 <li><a href="/tools/compare">Peptide Comparison</a></li>
                 <li><a href="/tools/pricing">Price Comparison</a></li>

@@ -82,7 +82,7 @@ const rawStacks: Omit<Stack, "slug">[] = [
             { name: "Epitalon", role_in_stack: "Resets the pineal gland to restore youth-level natural melatonin production and circadian rhythm timing" },
             { name: "MK-677", role_in_stack: "Clinically proven to increase stage IV deep sleep by 50% while sustaining an overnight anabolic GH pulse" },
         ],
-        synergy_rationale: "DSIP physically initiates deep sleep onset. Epitalon fixes the underlying circadian clock so you stay asleep. MK-677 taken before bed massively extends the duration of that deep sleep while flooding the body with reparative Growth Hormone. The ultimate overnight recovery protocols.",
+        synergy_rationale: "DSIP physically initiates deep sleep onset. Epitalon fixes the underlying circadian clock so you stay asleep. MK-677 massively extends the duration of that deep sleep while flooding the body with reparative Growth Hormone. The ultimate overnight recovery protocols.",
         supporting_studies: [
             { description: "DSIP promotes delta sleep", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/6895513/" },
             { description: "MK-677 increases stage IV sleep by 50%", pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/9349662/" },

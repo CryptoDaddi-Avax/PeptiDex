@@ -90,7 +90,7 @@ export default function AdvisorSectionV13() {
               {/* Bot reply 2 */}
               <div className="chat-msg bot">
                 <div className="chat-bubble">
-                  Tesamorelin has a plasma half-life of ~26 minutes (FDA Egrifta prescribing info), administered subcutaneously once daily.
+                  Tesamorelin has a plasma half-life of ~26 minutes (FDA Egrifta prescribing info).
                 </div>
                 <span className="chat-time">10:44 AM</span>
               </div>

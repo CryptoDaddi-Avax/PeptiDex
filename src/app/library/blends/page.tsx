@@ -15,7 +15,7 @@ import BlendsClient from './BlendsClient';
 
 export const metadata: Metadata = {
   title: `Peptide Blend Directory — ${peptideBlends.length} Stacks | PeptiDex`,
-  description: `${peptideBlends.length} evidence-based peptide blend protocols: BPC-157/TB-500, CJC-1295/Ipamorelin, and more. Mechanism breakdowns, dosing ratios, and timeline data.`,
+  description: `${peptideBlends.length} evidence-based peptide blend protocols: BPC-157/TB-500, CJC-1295/Ipamorelin, and more. Mechanism breakdowns, supporting studies, and timeline data.`,
   alternates: {
     canonical: 'https://peptidex.app/library/blends',
   },

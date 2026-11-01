@@ -21,8 +21,6 @@ interface ProtocolLog {
     id: string;
     peptide_slugs: string[];
     vendor_slug: string;
-    dose_mcg: number | null;
-    frequency: string | null;
     duration_weeks: number | null;
     efficacy_score: number;
     side_effect_score: number;
@@ -332,11 +330,11 @@ export default function ProfileClient() {
                                                     via {log.vendor_slug.replace(/-/g, " ")}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center gap-4 mt-2" style={{ fontFamily: "var(--sans)", fontSize: 13, color: "var(--ink-dim)" }}>
-                                                {log.dose_mcg && <span>{log.dose_mcg}mcg</span>}
-                                                {log.frequency && <span>{log.frequency}</span>}
-                                                {log.duration_weeks && <span>{log.duration_weeks}wk</span>}
-                                            </div>
+                                            {log.duration_weeks && (
+                                                <div className="flex items-center gap-4 mt-2" style={{ fontFamily: "var(--sans)", fontSize: 13, color: "var(--ink-dim)" }}>
+                                                    <span>{log.duration_weeks}wk</span>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="text-right shrink-0">
                                             <div className="flex items-center gap-3">

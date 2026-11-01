@@ -70,7 +70,7 @@ function generateMechanismProse(a: Peptide, b: Peptide): { htmlA: string; htmlB:
       const shorter = hlA > hlB ? b : a;
       const longerHL = hlA > hlB ? hlA : hlB;
       const shorterHL = hlA > hlB ? hlB : hlA;
-      diff += ` ${longer.name} has a significantly longer half-life (${formatHalfLife(longerHL)}) compared to ${shorter.name} (${formatHalfLife(shorterHL)}), which impacts dosing frequency and sustained activity.`;
+      diff += ` ${longer.name} has a significantly longer half-life (${formatHalfLife(longerHL)}) compared to ${shorter.name} (${formatHalfLife(shorterHL)}), which affects how long each compound remains active in pharmacokinetic studies.`;
     }
   }
 
@@ -80,7 +80,7 @@ function generateMechanismProse(a: Peptide, b: Peptide): { htmlA: string; htmlB:
 function generateFAQs(a: Peptide, b: Peptide, pair: ComparisonPair): { q: string; a: string }[] {
   const faqs: { q: string; a: string }[] = [];
 
-  // FAQ 1: Can I take them together?
+  // FAQ 1: Can they be combined?
   const aInteractions = a.interactions;
   const bInteractions = b.interactions;
   let interactionAnswer: string;
@@ -98,15 +98,15 @@ function generateFAQs(a: Peptide, b: Peptide, pair: ComparisonPair): { q: string
   if (aContra.includes(bNameLower) || bContra.includes(aNameLower)) {
     interactionAnswer = `No — ${a.name} and ${b.name} are flagged as contraindicated in interaction databases. They should not be combined due to overlapping receptor activity or safety concerns.`;
   } else if (aCautions.includes(bNameLower) || bCautions.includes(aNameLower)) {
-    interactionAnswer = `Use caution. ${a.name} and ${b.name} have overlapping mechanisms that may require careful dosing adjustment when used concurrently. Consult published research protocols before combining.`;
+    interactionAnswer = `Use caution. ${a.name} and ${b.name} have overlapping mechanisms that interaction databases flag for caution when combined. Review the published research on each compound before combining.`;
   } else if (aSynergies.includes(bNameLower) || bSynergies.includes(aNameLower)) {
-    interactionAnswer = `Yes — ${a.name} and ${b.name} are identified as synergistic in interaction databases. They operate through complementary mechanisms and are commonly combined in research protocols.`;
+    interactionAnswer = `Yes — ${a.name} and ${b.name} are identified as synergistic in interaction databases. They operate through complementary mechanisms and are commonly studied together.`;
   } else {
-    interactionAnswer = `No direct interaction data is available for this specific pair. They target different receptor systems, suggesting they could potentially be combined, but no published protocol validates this combination.`;
+    interactionAnswer = `No direct interaction data is available for this specific pair. They target different receptor systems, suggesting they could potentially be combined, but no published study validates this combination.`;
   }
 
   faqs.push({
-    q: `Can I take ${a.name} and ${b.name} together?`,
+    q: `Can ${a.name} and ${b.name} be combined?`,
     a: interactionAnswer,
   });
 
@@ -146,7 +146,7 @@ function generateFAQs(a: Peptide, b: Peptide, pair: ComparisonPair): { q: string
     const goalLabel = pair.sharedGoals[0].replace(/-/g, ' ');
     faqs.push({
       q: `Which is better for ${goalLabel} — ${a.name} or ${b.name}?`,
-      a: `Both are researched for ${goalLabel}. ${a.name} addresses this via ${a.primary_benefits.toLowerCase()}. ${b.name} approaches it through ${b.primary_benefits.toLowerCase()}. The optimal choice depends on your specific research protocol and which mechanism aligns with your objectives.`,
+      a: `Both are researched for ${goalLabel}. ${a.name} addresses this via ${a.primary_benefits.toLowerCase()}. ${b.name} approaches it through ${b.primary_benefits.toLowerCase()}. The better fit depends on which mechanism aligns with your research objectives.`,
     });
   }
 
@@ -363,19 +363,9 @@ export function ProgrammaticComparisonPage({ pair, peptideA, peptideB }: Program
                   <td className="px-4 py-4 text-zinc-300">{peptideB.half_life_hours ? formatHalfLife(peptideB.half_life_hours) : 'Not established'}</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-4 text-zinc-400 font-medium">Route</td>
-                  <td className="px-4 py-4 text-zinc-300">{peptideA.dosing?.route || 'Varies'}</td>
-                  <td className="px-4 py-4 text-zinc-300">{peptideB.dosing?.route || 'Varies'}</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-4 text-zinc-400 font-medium">Typical Dose</td>
-                  <td className="px-4 py-4 text-zinc-300">{peptideA.dosing ? `${peptideA.dosing.typical_dose_mcg[0]}–${peptideA.dosing.typical_dose_mcg[1]} mcg` : 'Varies'}</td>
-                  <td className="px-4 py-4 text-zinc-300">{peptideB.dosing ? `${peptideB.dosing.typical_dose_mcg[0]}–${peptideB.dosing.typical_dose_mcg[1]} mcg` : 'Varies'}</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-4 text-zinc-400 font-medium">Frequency</td>
-                  <td className="px-4 py-4 text-zinc-300">{peptideA.dosing?.frequency || 'Varies'}</td>
-                  <td className="px-4 py-4 text-zinc-300">{peptideB.dosing?.frequency || 'Varies'}</td>
+                  <td className="px-4 py-4 text-zinc-400 font-medium">Route Studied</td>
+                  <td className="px-4 py-4 text-zinc-300">{peptideA.route_studied || 'Varies'}</td>
+                  <td className="px-4 py-4 text-zinc-300">{peptideB.route_studied || 'Varies'}</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-4 text-zinc-400 font-medium">Evidence Level</td>

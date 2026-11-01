@@ -42,7 +42,7 @@ const schemaJsonLd = {
         "Severity-graded conflict analysis (SAFE/CAUTION/WARNING/DO_NOT_STACK)",
         "PubMed-cited evidence for each interaction pair",
         "Alternative compound suggestions on conflicts",
-        "Save to Cycle Planner integration",
+        "One-click vendor price comparison for the selected stack",
         "52+ interaction pairs in database",
       ],
     },

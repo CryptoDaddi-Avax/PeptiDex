@@ -3,27 +3,20 @@
 import { SITE_STATS } from "@/data/site-stats";
 
 import Link from "next/link";
-import { 
-  GitCompare, ShieldAlert, ArrowRight, GraduationCap, 
-  BookA, BarChart3, DollarSign, Activity, Calendar, Store, Stethoscope, 
-  Sparkles, Users, TrendingDown, ShieldCheck, Timer, ClipboardList, 
-  HelpCircle, ShoppingCart 
+import {
+  GitCompare, ShieldAlert, ArrowRight, GraduationCap,
+  BookA, BarChart3, DollarSign, Store, Stethoscope,
+  Sparkles, Users, TrendingDown, ShieldCheck, Timer,
+  HelpCircle, ShoppingCart
 } from "lucide-react";
 import './tools-redesign.css';
 
-const tools = [
-    {
-        href: "/tools/cycle-planner",
-        icon: ShoppingCart,
-        title: "Cycle Planner",
-        description: "Plan your full cycle — get exact vial counts, dosing schedules, and order everything from a trusted vendor.",
-        badge: "NEW",
-    },
+const tools: { href: string; icon: typeof GitCompare; title: string; description: string; badge?: string }[] = [
     {
         href: "/tools/compare",
         icon: GitCompare,
         title: "Peptide Comparison",
-        description: "Compare 2-3 peptides side-by-side: mechanisms, dosing, evidence, safety, and interactions.",
+        description: "Compare 2-3 peptides side-by-side: mechanisms, evidence, safety, and interactions.",
     },
     {
         href: "/tools/interactions",
@@ -41,19 +34,13 @@ const tools = [
         href: "/tools/pricing",
         icon: DollarSign,
         title: "Price Comparison",
-        description: "Average cost per vial, per dose, and doses per vial for all peptides.",
-    },
-    {
-        href: "/tools/bloodwork",
-        icon: Activity,
-        title: "Blood Work Analyzer",
-        description: "Input your lab results and get personalized peptide suggestions based on your biomarkers.",
+        description: "Cost per vial and per mg, with PEPTIDEX discounts. Build a multi-peptide vendor cart.",
     },
     {
         href: "/tools/pk",
         icon: TrendingDown,
         title: "PK Plasma Graphs",
-        description: "Visualize pharmacokinetic plasma concentration curves for any peptide peaks, half-life decay, and multi-dose accumulation.",
+        description: "Visualize normalized pharmacokinetic plasma concentration curves: time to peak and half-life decay.",
     },
     {
         href: "/tools/coa",
@@ -65,7 +52,7 @@ const tools = [
         href: "/tools/halflife",
         icon: Timer,
         title: "Half-Life Visualizer",
-        description: "See how multiple peptides' plasma levels overlap throughout the day. Optimize injection timing with interactive curves.",
+        description: "Compare how quickly multiple peptides' plasma levels decay, side-by-side on interactive curves.",
     },
 ];
 
@@ -90,7 +77,7 @@ export default function ToolsClient() {
                                 PeptiDex Advisor <ArrowRight />
                             </h2>
                             <p className="tools-ai-desc">
-                                Chat with our AI advisor — get personalized peptide recommendations, dosing help, stack analysis, and more.
+                                Chat with our AI advisor — explore peptide research, compare compounds, analyze stacks, and more.
                             </p>
                         </div>
                     </div>
@@ -130,15 +117,10 @@ export default function ToolsClient() {
                     </div>
                 </div>
 
-                {/* Track + Find Section */}
+                {/* Find Section */}
                 <div>
-                    <h2 className="tools-section-heading">Track &amp; Find</h2>
+                    <h2 className="tools-section-heading">Find</h2>
                     <div className="tools-small-grid four-cols">
-                        <Link href="/tracker" className="tool-small-card">
-                            <Calendar />
-                            <h3 className="tool-small-title">Tracker</h3>
-                            <p className="tool-small-desc">Log doses &amp; cycles</p>
-                        </Link>
                         <Link href="/suppliers" className="tool-small-card">
                             <Store />
                             <h3 className="tool-small-title">Suppliers</h3>
@@ -157,17 +139,12 @@ export default function ToolsClient() {
                         <Link href="/stacks" className="tool-small-card">
                             <Users />
                             <h3 className="tool-small-title">Stacks</h3>
-                            <p className="tool-small-desc">Community protocols</p>
+                            <p className="tool-small-desc">Community stacks</p>
                         </Link>
                         <Link href="/quiz" className="tool-small-card">
                             <HelpCircle />
                             <h3 className="tool-small-title">Find Your Stack</h3>
                             <p className="tool-small-desc">5-question quiz</p>
-                        </Link>
-                        <Link href="/protocol" className="tool-small-card">
-                            <ClipboardList />
-                            <h3 className="tool-small-title">Protocol Builder</h3>
-                            <p className="tool-small-desc">Build &amp; export</p>
                         </Link>
                     </div>
                 </div>

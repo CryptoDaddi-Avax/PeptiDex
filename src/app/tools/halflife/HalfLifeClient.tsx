@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { peptides } from "@/data/peptides";
-import { Activity, Plus, X, Clock, Info } from "lucide-react";
+import { Activity, Plus, X, Info } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 
 /* ──────── Pharmacokinetics Engine ──────── */
@@ -16,7 +16,7 @@ const COLORS = [
 type SelectedPeptide = {
     name: string;
     halfLifeH: number;
-    injectionHour: number;
+    offsetHour: number;
     color: string;
 };
 
@@ -24,10 +24,10 @@ type SelectedPeptide = {
  * Exponential decay: C(t) = C0 * (0.5)^(t / t½)
  * Returns normalized concentration [0–1] at each hour
  */
-function getConcentrationCurve(halfLifeH: number, injectionHour: number, hours: number): number[] {
+function getConcentrationCurve(halfLifeH: number, offsetHour: number, hours: number): number[] {
     const curve: number[] = [];
     for (let h = 0; h < hours; h++) {
-        const elapsed = h - injectionHour;
+        const elapsed = h - offsetHour;
         if (elapsed < 0) {
             curve.push(0);
         } else {
@@ -53,7 +53,7 @@ function HalfLifeChart({ selected, totalHours }: { selected: SelectedPeptide[]; 
         () =>
             selected.map((s) => ({
                 ...s,
-                data: getConcentrationCurve(s.halfLifeH, s.injectionHour, totalHours),
+                data: getConcentrationCurve(s.halfLifeH, s.offsetHour, totalHours),
             })),
         [selected, totalHours]
     );
@@ -104,8 +104,8 @@ function HalfLifeChart({ selected, totalHours }: { selected: SelectedPeptide[]; 
                     <path d={toArea(c.data)} fill={c.color} fillOpacity={0.08} />
                     {/* Line */}
                     <path d={toPath(c.data)} fill="none" stroke={c.color} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-                    {/* Injection marker */}
-                    <circle cx={xScale(c.injectionHour)} cy={yScale(c.data[c.injectionHour] ?? 0)} r={4} fill={c.color} />
+                    {/* Offset (t0) marker */}
+                    <circle cx={xScale(c.offsetHour)} cy={yScale(c.data[c.offsetHour] ?? 0)} r={4} fill={c.color} />
                 </g>
             ))}
 
@@ -118,7 +118,7 @@ function HalfLifeChart({ selected, totalHours }: { selected: SelectedPeptide[]; 
                 Plasma Level
             </text>
             <text x={pad.left + cw / 2} y={h - 0} textAnchor="middle" fill="#71717a" fontSize={10}>
-                Hours After First Injection
+                Hours after t0
             </text>
         </svg>
     );
@@ -141,7 +141,7 @@ export default function HalfLifeClient() {
             {
                 name,
                 halfLifeH,
-                injectionHour: 0,
+                offsetHour: 0,
                 color: COLORS[s.length % COLORS.length],
             },
         ]);
@@ -153,9 +153,9 @@ export default function HalfLifeClient() {
         setSelected((s) => s.filter((p) => p.name !== name));
     };
 
-    const updateInjectionHour = (name: string, hour: number) => {
+    const updateOffsetHour = (name: string, hour: number) => {
         setSelected((s) =>
-            s.map((p) => (p.name === name ? { ...p, injectionHour: hour } : p))
+            s.map((p) => (p.name === name ? { ...p, offsetHour: hour } : p))
         );
     };
 
@@ -180,7 +180,7 @@ export default function HalfLifeClient() {
                 <Activity className="w-5 h-5 text-cyan-400" /> Half-Life Visualizer
             </h1>
             <p className="text-xs text-zinc-500 mb-6">
-                See how multiple peptides&apos; active levels overlap throughout the day. Adjust injection times to optimize your protocol timing.
+                Compare how quickly different peptides&apos; relative plasma levels decay, based on published half-life data.
             </p>
 
             {/* Time Range Selector */}
@@ -225,15 +225,15 @@ export default function HalfLifeClient() {
                                 <p className="text-[10px] text-zinc-500">t½ = {s.halfLifeH}h</p>
                             </div>
                             <div className="flex items-center gap-2">
-                                <label className="text-[10px] text-zinc-500 whitespace-nowrap">Inject at:</label>
+                                <label className="text-[10px] text-zinc-500 whitespace-nowrap">Offset (h):</label>
                                 <select
-                                    value={s.injectionHour}
-                                    onChange={(e) => updateInjectionHour(s.name, Number(e.target.value))}
+                                    value={s.offsetHour}
+                                    onChange={(e) => updateOffsetHour(s.name, Number(e.target.value))}
                                     className="px-2 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs text-zinc-300 appearance-none focus:outline-none"
                                 >
                                     {Array.from({ length: Math.min(totalHours, 24) }, (_, i) => (
                                         <option key={i} value={i}>
-                                            {i === 0 ? "12 AM" : i < 12 ? `${i} AM` : i === 12 ? "12 PM" : `${i - 12} PM`}
+                                            {i}h
                                         </option>
                                     ))}
                                 </select>
@@ -264,7 +264,7 @@ export default function HalfLifeClient() {
                 <Info className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
                 <div className="text-[11px] text-zinc-400 leading-relaxed">
                     <p className="font-medium text-zinc-300 mb-1">How to read this chart</p>
-                    <p>Each curve shows the relative plasma concentration after injection. The <strong className="text-zinc-300">peak</strong> represents maximum absorption, and the curve drops to 50% at the half-life mark. Use injection time selectors to see how your peptides overlap and find optimal timing windows.</p>
+                    <p>Each curve shows relative plasma concentration over time from its starting point (t0). The <strong className="text-zinc-300">peak</strong> represents maximum absorption, and the curve drops to 50% at the half-life mark. Use the offset selectors to shift curves along the time axis for side-by-side comparison of decay rates.</p>
                 </div>
             </div>
 

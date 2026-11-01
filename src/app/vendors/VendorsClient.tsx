@@ -429,7 +429,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
                 <span className="vn-tool-callout-label">Price Comparison Tool</span>
                 <span className="vn-tool-callout-desc">
                   Compare live cross-vendor pricing for BPC-157, TB-500, Ipamorelin, and
-                  20+ other peptides — cost per vial, per dose, with PEPTIDEX discounts
+                  20+ other peptides — cost per vial, per mg, with PEPTIDEX discounts
                   applied →
                 </span>
               </div>

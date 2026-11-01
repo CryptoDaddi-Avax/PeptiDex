@@ -16,14 +16,11 @@ interface PairStats {
     repeat_pct: number | null;
     verified_count: number;
     lab_confirmed_count: number;
-    most_common_frequency: string | null;
     avg_duration_weeks: number | null;
 }
 
 interface LogEntry {
     id: string;
-    dose_mcg: number | null;
-    frequency: string | null;
     duration_weeks: number | null;
     goal_slug: string | null;
     efficacy_score: number;
@@ -127,11 +124,10 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                     </div>
 
                     {/* ── Protocol details ── */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
                         {[
                             { label: "Verified Buyer logs", value: String(stats.verified_count || 0), color: "var(--green)" },
                             { label: "Lab Confirmed", value: String(stats.lab_confirmed_count || 0), color: "var(--gold)" },
-                            { label: "Common Frequency", value: stats.most_common_frequency?.replace(/_/g, "/") || "—", color: "var(--ink)" },
                             { label: "Avg Duration", value: stats.avg_duration_weeks ? `${stats.avg_duration_weeks}wk` : "—", color: "var(--ink)" },
                         ].map(s => (
                             <div key={s.label} className="rounded-lg px-4 py-3" style={{ background: "var(--bg-soft)", border: "1px solid var(--line)" }}>
@@ -183,8 +179,6 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2 flex-wrap mb-2">
                                             <VerificationBadge level={log.verification_level} size="sm" />
-                                            {log.dose_mcg && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>{log.dose_mcg}mcg</span>}
-                                            {log.frequency && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>{log.frequency.replace(/_/g, "/")}</span>}
                                             {log.duration_weeks && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>{log.duration_weeks}wk</span>}
                                         </div>
                                         {log.outcome_text && (

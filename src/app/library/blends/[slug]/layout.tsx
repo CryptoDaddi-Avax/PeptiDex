@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!blend) return { title: "Blend Not Found" };
 
     const title = `${blend.name} — "${blend.nickname}" | PeptiDex`;
-    const description = `${blend.primary_benefits}. Learn about dosing, mechanism, timeline, and supporting studies for the ${blend.name} peptide blend.`;
+    const description = `${blend.primary_benefits}. Learn about the mechanism, timeline, and supporting studies for the ${blend.name} peptide blend.`;
 
     return {
         title,

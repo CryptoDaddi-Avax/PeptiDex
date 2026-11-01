@@ -15,14 +15,6 @@ function formatHalfLife(hours: number | undefined): string {
   return `${hours} hours`;
 }
 
-function formatDose(peptide: Peptide): string {
-  if (!peptide.dosing) return 'varies by protocol';
-  const [lo, hi] = peptide.dosing.typical_dose_mcg;
-  const unit = hi >= 1000 ? 'mg' : 'mcg';
-  const scale = hi >= 1000 ? 1000 : 1;
-  return `${(lo / scale).toFixed(lo / scale % 1 === 0 ? 0 : 2)}–${(hi / scale).toFixed(hi / scale % 1 === 0 ? 0 : 2)} ${unit} ${peptide.dosing.frequency.toLowerCase()}`;
-}
-
 export function QuickAnswerBlock({ peptide }: { peptide: Peptide }) {
   // Check for hand-tuned lead block override first
   const override = leadBlockOverrides[peptide.slug];
@@ -38,7 +30,6 @@ export function QuickAnswerBlock({ peptide }: { peptide: Peptide }) {
 
   // Fallback: auto-generated for non-priority peptides
   const halfLife = formatHalfLife(peptide.half_life_hours);
-  const dose = formatDose(peptide);
   const fdaStatus = peptide.is_fda_approved
     ? 'FDA-approved'
     : 'research compound (not FDA-approved for human use)';
@@ -47,7 +38,7 @@ export function QuickAnswerBlock({ peptide }: { peptide: Peptide }) {
   const summary =
     `${peptide.name} is a ${peptide.category.toLowerCase()} ${fdaStatus} studied for ${primaryBenefit}. ` +
     `${peptide.laypersonSummary ? peptide.laypersonSummary + ' ' : ''}` +
-    `Research dose: ${dose}. Half-life: ${halfLife}. ` +
+    `Half-life: ${halfLife}. ` +
     `Available from COA-verified vendors with code PEPTIDEX for up to 20% off.`;
 
   return (

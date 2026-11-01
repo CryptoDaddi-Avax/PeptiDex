@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { stacks, getStackBySlug } from '@/data/stacks';
-import { getPeptideByName } from '@/data/peptides';
+import { getVendorPricing } from '@/data/vendor-pricing';
 import { BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
@@ -24,7 +24,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
     const goalName = stack.stack_name.replace(' Stack', '');
     const title = `Best Peptides for ${goalName}: Research Stack Guide | PeptiDex`;
     const descTokens = stack.peptides.map(p => p.name).join(', ');
-    const rawDesc = `Explore the best research peptides for ${goalName.toLowerCase()}. Comprehensive guide covering stack protocols, synergy rationale, and studies for ${descTokens}. Educational use only.`;
+    const rawDesc = `Explore the best research peptides for ${goalName.toLowerCase()}. Comprehensive guide covering mechanisms, synergy rationale, and studies for ${descTokens}. Educational use only.`;
     const description = rawDesc.substring(0, 160);
 
     return {
@@ -65,7 +65,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
 
   const articleSchema = {
     ...buildArticleSchema({
-      headline: `Best Peptide Stack for ${goalName}, Research-Backed Protocols`,
+      headline: `Best Peptide Stack for ${goalName}, Research Overview`,
       description: `Explore the optimal peptide combinations for ${goalName.toLowerCase()}, with synergy rationale and preclinical study data.`,
       datePublished: '2026-03-31',
       dateModified: DATE_MOD,
@@ -99,7 +99,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
     },
     {
       q: `Are these peptides safe to stack?`,
-      a: `All compound combinations carry cumulative experimental risks. These protocols are derived strictly from controlled preclinical literature and are not intended for human medical application. Researchers should evaluate the safety profiles of each individual peptide.`
+      a: `All compound combinations carry cumulative experimental risks. These combinations are drawn strictly from controlled preclinical literature and are not intended for human medical application. Researchers should evaluate the safety profiles of each individual peptide.`
     }
   ]);
 
@@ -138,7 +138,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
 
         {/* ═══ HEADER ═══ */}
         <h1 className="stack-detail-title">
-          Best Peptide Stack for {goalName}, Research-Backed Protocols
+          Best Peptide Stack for {goalName}, Research Overview
         </h1>
         <p className="stack-detail-date">Last Updated: April 2026</p>
         <AuthorByline 
@@ -218,15 +218,8 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
 
           <div className="stack-source-items">
             {stack.peptides.map((p) => {
-              const pepData = getPeptideByName(p.name);
               const pepSlug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-              
-              let dosageDisplay = "Research protocol";
-              if (pepData?.dosing) {
-                const dose = pepData.dosing.typical_dose_mcg;
-                dosageDisplay = `${dose[0]}${dose[0] !== dose[1] ? `-${dose[1]}` : ''}mcg / ${pepData.dosing.frequency.toLowerCase()}`;
-              }
-              const vialDisplay = pepData?.dosing?.typical_vial_mg ? `${pepData.dosing.typical_vial_mg}mg vial` : "Varies by vendor";
+              const aminoVialMg = getVendorPricing(pepSlug)?.vendors.find((v) => v.vendor === 'Amino Club')?.vial_mg;
 
               const aminoUrl = `https://www.aminoclub.com/us/products/${pepSlug}?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&code=PEPTIDEX`;
 
@@ -234,16 +227,14 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
                 <div key={p.name} className="stack-source-item">
                   <div className="stack-source-info">
                     <h3>{p.name}</h3>
-                    <div className="stack-source-meta">
-                      <div className="stack-source-meta-item">
-                        <div className="stack-source-dot blue" />
-                        {dosageDisplay}
+                    {aminoVialMg && (
+                      <div className="stack-source-meta">
+                        <div className="stack-source-meta-item">
+                          <div className="stack-source-dot purple" />
+                          {aminoVialMg}mg vial
+                        </div>
                       </div>
-                      <div className="stack-source-meta-item">
-                        <div className="stack-source-dot purple" />
-                        {vialDisplay}
-                      </div>
-                    </div>
+                    )}
                   </div>
                   <a href={aminoUrl} target="_blank" rel="noopener noreferrer" className="stack-source-btn">
                     Buy from Amino Club <ArrowRight />

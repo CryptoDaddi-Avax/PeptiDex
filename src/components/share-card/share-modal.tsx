@@ -10,7 +10,7 @@ import { useShareCard, trackShareEvent } from "./share-card-renderer";
 
 /* ═══════════════════════════════════════════════════════════════════════
    ShareModal — Modal UI for generating & sharing branded result cards.
-   Reused across Quiz, Compare, Cycle Planner, Evidence.
+   Reused across Quiz, Compare, Evidence.
    ═══════════════════════════════════════════════════════════════════════ */
 
 interface ShareModalProps {

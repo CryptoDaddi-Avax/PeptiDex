@@ -157,8 +157,6 @@ export default async function LogDetailPage({
                         {[
                             { label: "Peptide(s)", value: pepNames.join(" + ") },
                             { label: "Vendor", value: vendorObj?.name || log.vendor_slug },
-                            log.dose_mcg && { label: "Dose", value: `${log.dose_mcg} mcg` },
-                            log.frequency && { label: "Frequency", value: log.frequency.replace(/_/g, "/") },
                             log.duration_weeks && { label: "Duration", value: `${log.duration_weeks} weeks` },
                             log.route && { label: "Route", value: log.route },
                             log.goal_slug && { label: "Goal", value: log.goal_slug.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()) },

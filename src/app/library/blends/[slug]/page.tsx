@@ -19,7 +19,7 @@ import { notFound } from "next/navigation";
 import {
     ArrowLeft,
     FlaskConical,
-    Clock,
+    Package,
     Beaker,
     AlertTriangle,
     BookOpen,
@@ -48,11 +48,10 @@ export async function generateMetadata({
     const blend = getBlendBySlug(slug);
     if (!blend) return {};
 
-    const title = `${blend.name} Stack — Dosing, Mechanism & Research | PeptiDex`;
+    const title = `${blend.name} Stack — Mechanism & Research | PeptiDex`;
     const description =
         `${blend.nickname}: ${blend.primary_benefits}. ` +
-        `Research-backed blend combining ${blend.components.join(", ")}. ` +
-        blend.dosing_notes.slice(0, 80);
+        `Research-backed blend combining ${blend.components.join(", ")}.`;
 
     return {
         title,
@@ -223,17 +222,16 @@ export default async function BlendDetailPage({
                 <p className="text-sm text-zinc-300 leading-relaxed">{blend.mechanism}</p>
             </div>
 
-            {/* Dosing */}
-            <div className="mb-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/15">
-                <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-4 h-4 text-emerald-400" />
-                    <h2 className="text-sm font-semibold text-zinc-200">Dosing Protocol</h2>
+            {/* Product format (vial contents only, no dosing) */}
+            {blend.vial_composition && (
+                <div className="mb-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/15">
+                    <div className="flex items-center gap-2 mb-2">
+                        <Package className="w-4 h-4 text-emerald-400" />
+                        <h2 className="text-sm font-semibold text-zinc-200">Product Format</h2>
+                    </div>
+                    <p className="text-xs text-zinc-400">{blend.vial_composition}</p>
                 </div>
-                <div className="space-y-1.5">
-                    <p className="text-xs text-zinc-400"><strong className="text-zinc-300">Typical Ratio:</strong> {blend.typical_ratio}</p>
-                    <p className="text-xs text-zinc-400 leading-relaxed">{blend.dosing_notes}</p>
-                </div>
-            </div>
+            )}
 
             {/* Outcomes Timeline */}
             <div className="mb-4">

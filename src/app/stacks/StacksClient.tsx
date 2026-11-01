@@ -173,14 +173,14 @@ export default function StacksClient() {
                 <div style={{ marginTop: '80px', padding: '48px', background: 'var(--bg-card)', borderLeft: '3px solid var(--gold)' }} className="fade-up is-visible">
                     <div className="section-label">§ Need help choosing?</div>
                     <h3 style={{ fontFamily: 'var(--serif)', fontSize: '36px', fontWeight: 300, marginBottom: '16px', letterSpacing: '-0.02em' }}>
-                        Try the <em className="text-gold italic">Cycle Planner</em>.
+                        Try the <em className="text-gold italic">Stack Quiz</em>.
                     </h3>
                     <p style={{ color: 'var(--ink-dim)', fontSize: '16px', lineHeight: 1.6, maxWidth: '680px', marginBottom: '24px' }}>
-                        Get a personalized peptide protocol based on your goals, experience level, and timeline. Free, instant, and based on published research dosing.
+                        Answer five quick questions about your research interests and see which stacks the published literature covers. Free and instant.
                     </p>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <Link href="/tools/cycle-planner" className="btn-primary">
-                            <span>Open the Cycle Planner</span>
+                        <Link href="/quiz" className="btn-primary">
+                            <span>Take the Stack Quiz</span>
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginLeft: '8px' }}><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
                         </Link>
                         <Link href="/tools/compare" className="btn-ghost">

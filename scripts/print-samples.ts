@@ -18,7 +18,7 @@ const drugSchema = buildDrugSchema({
     alternateName: peptide.aliases,
     description: peptide.primary_benefits,
     mechanismOfAction: peptide.mechanism,
-    clinicalPharmacology: peptide.half_life_hours ? `Half-life: ${peptide.half_life_hours} hours. Route: ${peptide.dosing?.route || 'Varies'}` : undefined
+    clinicalPharmacology: peptide.half_life_hours ? `Half-life: ${peptide.half_life_hours} hours. Route studied: ${peptide.route_studied || 'Varies'}` : undefined
 });
 
 const peptideArticle = buildMedicalWebPageSchema({
@@ -80,7 +80,7 @@ console.log("\n");
 // 4. Tool Page
 const toolSchema = buildSoftwareApplicationSchema({
     name: "PeptiDex Pharmacokinetics Simulator",
-    description: "Model peptide concentration over time from half-life and dosing inputs.",
+    description: "Model peptide concentration over time from published half-life data.",
     url: "https://peptidex.app/tools/pk",
     applicationCategory: "UtilityApplication"
 });

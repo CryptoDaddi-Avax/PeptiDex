@@ -1,33 +1,26 @@
 /**
  * Vial Optimizer Engine
  * =====================
- * Calculates the exact number of vials a user needs to purchase for a
- * planned peptide cycle, with a 10% safety buffer to prevent mid-cycle
- * shortfall.
+ * Given a peptide and a total quantity (mg) the user wants to buy, works out
+ * how many vials each vendor would need to ship to cover that quantity and
+ * ranks vendors by price after the PEPTIDEX discount.
  *
  * Formula:
- *   totalMgRaw = (doseMcg / 1000) × injectionsPerWeek × cycleWeeks
- *   bufferedMg = totalMgRaw × 1.10  (non-negotiable 10% safety buffer)
- *   vialsNeeded = ceil(bufferedMg / vialSizeMg)
+ *   vialsNeeded = ceil(quantityMg / vialSizeMg)
  */
 
-import { vendorPricing, type PeptideVendorPricing, type VendorPrice } from "@/data/vendor-pricing";
+import { vendorPricing, type VendorPrice } from "@/data/vendor-pricing";
 import { vendorCartConfigs, type VendorCartConfig, type CartTier } from "@/data/vendor-cart-config";
 import { aminoClubProductMap, buildAminoClubProductUrl } from "@/data/vendor-product-maps/amino-club";
 import { vendorBySlug } from "@/data/vendors";
-
-// ── Constants ────────────────────────────────────────────────────────────
-
-const SAFETY_BUFFER = 1.10; // 10% buffer — non-negotiable
 
 // ── Types ────────────────────────────────────────────────────────────────
 
 export interface VialOptimizationInput {
   peptideSlug: string;
   peptideName: string;
-  doseMcg: number;
-  injectionsPerWeek: number;
-  cycleWeeks: number;
+  /** Total product quantity the user wants to purchase, in mg */
+  quantityMg: number;
 }
 
 export interface VendorPlan {
@@ -53,27 +46,54 @@ export interface VendorPlan {
 export interface VialOptimizationResult {
   peptideSlug: string;
   peptideName: string;
-  totalMgRaw: number;
-  bufferedMg: number;
-  cycleWeeks: number;
-  doseMcg: number;
-  injectionsPerWeek: number;
+  /** Requested total quantity in mg (echoed from the input) */
+  quantityMg: number;
   /** Sorted by subtotalAfterDiscount ascending (cheapest first) */
   vendorPlans: VendorPlan[];
   /** True if no vendor carries this peptide */
   noVendorsAvailable: boolean;
 }
 
+/** A peptide that at least one active vendor stocks, with its vial sizes. */
+export interface CartablePeptide {
+  slug: string;
+  name: string;
+  /** Distinct in-stock vial sizes (mg), ascending */
+  vialSizesMg: number[];
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────
+
+function isActiveInStock(vp: VendorPrice): boolean {
+  if (!vp.inStock) return false;
+  // Skip deactivated vendors (isActive: false in vendors.ts)
+  const slug = resolveVendorSlug(vp.vendor);
+  return vendorBySlug[slug]?.isActive !== false;
+}
+
+/**
+ * Peptides that can be added to a vendor cart (stocked by ≥1 active vendor),
+ * sorted by name.
+ */
+export function getCartablePeptides(): CartablePeptide[] {
+  return vendorPricing
+    .map((p) => {
+      const sizes = Array.from(
+        new Set(p.vendors.filter(isActiveInStock).map((vp) => vp.vial_mg))
+      ).sort((a, b) => a - b);
+      return { slug: p.slug, name: p.name, vialSizesMg: sizes };
+    })
+    .filter((p) => p.vialSizesMg.length > 0)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 // ── Core Engine ──────────────────────────────────────────────────────────
 
 export function optimizeVials(input: VialOptimizationInput): VialOptimizationResult {
-  const { peptideSlug, peptideName, doseMcg, injectionsPerWeek, cycleWeeks } = input;
+  const { peptideSlug, peptideName } = input;
+  const quantityMg = Math.max(0, input.quantityMg);
 
-  // Step 1: Calculate total mg needed
-  const totalMgRaw = (doseMcg / 1000) * injectionsPerWeek * cycleWeeks;
-  const bufferedMg = totalMgRaw * SAFETY_BUFFER;
-
-  // Step 2: Find vendor pricing for this peptide
+  // Find vendor pricing for this peptide
   const pricingEntry = vendorPricing.find(
     (p) => p.slug === peptideSlug || p.name === peptideName
   );
@@ -82,35 +102,22 @@ export function optimizeVials(input: VialOptimizationInput): VialOptimizationRes
     return {
       peptideSlug,
       peptideName,
-      totalMgRaw: parseFloat(totalMgRaw.toFixed(2)),
-      bufferedMg: parseFloat(bufferedMg.toFixed(2)),
-      cycleWeeks,
-      doseMcg,
-      injectionsPerWeek,
+      quantityMg,
       vendorPlans: [],
       noVendorsAvailable: true,
     };
   }
 
-  // Step 3: Build vendor plans
+  // Build vendor plans
   const vendorPlans: VendorPlan[] = pricingEntry.vendors
-    .filter((vp) => {
-      if (!vp.inStock) return false;
-      // Skip deactivated vendors (isActive: false in vendors.ts)
-      const slug = resolveVendorSlug(vp.vendor);
-      return vendorBySlug[slug]?.isActive !== false;
-    })
-    .map((vp) => buildVendorPlan(vp, peptideSlug, bufferedMg))
+    .filter(isActiveInStock)
+    .map((vp) => buildVendorPlan(vp, peptideSlug, quantityMg))
     .sort((a, b) => a.subtotalAfterDiscount - b.subtotalAfterDiscount);
 
   return {
     peptideSlug,
     peptideName,
-    totalMgRaw: parseFloat(totalMgRaw.toFixed(2)),
-    bufferedMg: parseFloat(bufferedMg.toFixed(2)),
-    cycleWeeks,
-    doseMcg,
-    injectionsPerWeek,
+    quantityMg,
     vendorPlans,
     noVendorsAvailable: vendorPlans.length === 0,
   };
@@ -121,14 +128,14 @@ export function optimizeVials(input: VialOptimizationInput): VialOptimizationRes
 function buildVendorPlan(
   vp: VendorPrice,
   peptideSlug: string,
-  bufferedMg: number
+  quantityMg: number
 ): VendorPlan {
   // Resolve vendor slug from display name
   const vendorSlug = resolveVendorSlug(vp.vendor);
   const cartConfig = vendorCartConfigs[vendorSlug];
   const vendor = vendorBySlug[vendorSlug];
 
-  const vialsNeeded = Math.ceil(bufferedMg / vp.vial_mg);
+  const vialsNeeded = Math.ceil(quantityMg / vp.vial_mg);
   const subtotal = parseFloat((vp.price_usd * vialsNeeded).toFixed(2));
 
   // Resolve discount
@@ -212,10 +219,10 @@ function resolveVendorSlug(vendorName: string): string {
 // ── Batch Optimizer ──────────────────────────────────────────────────────
 
 /**
- * Optimize vials for an entire cycle (multiple peptides).
+ * Optimize vials for a multi-peptide cart.
  * Returns per-peptide results + aggregate vendor totals.
  */
-export function optimizeCycleVials(
+export function optimizeCartVials(
   inputs: VialOptimizationInput[]
 ): {
   results: VialOptimizationResult[];

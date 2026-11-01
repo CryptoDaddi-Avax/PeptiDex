@@ -8,7 +8,7 @@ import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 export const metadata: Metadata = {
     title: "TB-500: Research Overview, Benefits & Stack Guide",
-    description: "TB-500 is a synthetic peptide studied for systemic healing, inflammation reduction, and recovery. Explore the science, dosing context, and stacks.",
+    description: "TB-500 is a synthetic peptide studied for systemic healing, inflammation reduction, and recovery. Explore the science, research context, and stacks.",
 };
 
 export default function TB500ReferencePage() {
@@ -86,7 +86,7 @@ export default function TB500ReferencePage() {
                         <h2 className="text-xl font-bold text-zinc-100">How It&apos;s Typically Used in Research</h2>
                     </div>
                     <p className="text-zinc-300 leading-relaxed text-[15px]">
-                        In preclinical and early clinical studies, researchers have primarily used subcutaneous (SubQ) or intramuscular (IM) injection routes to administer TB-500. Subcutaneous injection is the most commonly documented method, as the peptide&apos;s systemic nature means it does not strictly need to be administered adjacent to the site of injury to be structurally effective. Because TB-500 possesses a longer active half-life relative to other regenerative compounds, research protocols often utilize a heavier loading phase with frequent administration, followed by an extended maintenance phase.
+                        In preclinical and early clinical studies, researchers have primarily used subcutaneous (SubQ) or intramuscular (IM) injection routes to administer TB-500. Subcutaneous injection is the most commonly documented method, as the peptide&apos;s systemic nature means it does not strictly need to be administered adjacent to the site of injury to be structurally effective.
                     </p>
                 </section>
 

@@ -5,11 +5,11 @@ import HalfLifeClient from "./HalfLifeClient";
 export const metadata: Metadata = {
     title: "Peptide Half-Life Visualizer — Decay Curve Overlay Tool",
     description:
-        "Free half-life visualizer: compare up to 8 peptide decay curves side-by-side. Adjust injection times to optimize protocol timing.",
+        "Free half-life visualizer: compare up to 8 peptide decay curves side-by-side, based on published half-life data.",
     alternates: { canonical: "https://peptidex.app/tools/halflife" },
     openGraph: {
         title: "Peptide Half-Life Visualizer | PeptiDex",
-        description: "Compare peptide plasma decay curves side-by-side with adjustable injection timing.",
+        description: "Compare peptide plasma decay curves side-by-side with adjustable time offsets.",
         url: "https://peptidex.app/tools/halflife",
         type: "website",
     },
