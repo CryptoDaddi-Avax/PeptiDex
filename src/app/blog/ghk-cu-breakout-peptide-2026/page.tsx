@@ -169,7 +169,7 @@ export default function GHKCuArticle() {
         </p>
 
         <p>
-          <strong>Wound healing.</strong> GHK-Cu has been shown to accelerate wound closure and increase collagen deposition in animal models. A study published in <em>Wound Repair and Regeneration</em> found that topical GHK-Cu reduced wound size by 64.5% over 13 days in rats with ischemic wounds, compared to 45.6% with vehicle treatment and 28.2% in untreated controls. The GHK-Cu group also showed significantly reduced levels of tumor necrosis factor-alpha (TNF-α).¹² Notably, GHK-Cu has demonstrated <em>systemic</em> healing effects — meaning an injection administered in one area of the body can improve tissue repair at distant sites — a finding replicated across rat, mouse, and pig models.⁴ ⁶
+          <strong>Wound healing.</strong> GHK-Cu has been shown to accelerate wound closure and increase collagen deposition in animal models. A study published in <em>Wound Repair and Regeneration</em> found that topical GHK-Cu reduced wound size by 64.5% over 13 days in rats with ischemic wounds, compared to 45.6% with vehicle treatment and 28.2% in untreated controls. The GHK-Cu group also showed significantly reduced levels of tumor necrosis factor-alpha (TNF-α).¹² In rat, mouse, and pig models, GHK-Cu given at one site was also associated with improved repair at distant wound sites, a <em>systemic</em> effect that has not been tested in humans.⁴ ⁶
         </p>
 
         <p>

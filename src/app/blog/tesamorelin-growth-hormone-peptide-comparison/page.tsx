@@ -142,9 +142,8 @@ const COMPARISON: ComparisonRow[] = [
   { label: 'Visceral Fat Reduction', tesamorelin: '~15% in phase 3 (HIV lipodystrophy)', sermorelin: 'No visceral fat trials', cjc1295: 'No outcome trials', ipamorelin: 'No outcome trials', mk677: 'Not a primary endpoint', tesamorelinPos: true },
   { label: 'Receptor Desensitization Risk', tesamorelin: 'Low (pulsatile)', sermorelin: 'Low', cjc1295: 'Moderate–High (DAC)', ipamorelin: 'Very Low', mk677: 'Moderate', tesamorelinPos: true },
   { label: 'Cortisol / Prolactin Elevation', tesamorelin: 'None reported', sermorelin: 'None', cjc1295: 'Minimal', ipamorelin: 'None (highly selective)', mk677: 'Minimal', tesamorelinPos: null },
-  { label: 'Phase III Clinical Data', tesamorelin: 'Robust (TESOMET trial)', sermorelin: 'Limited', cjc1295: 'Limited', ipamorelin: 'Limited', mk677: 'Moderate', tesamorelinPos: true },
-  { label: 'Estimated Monthly Cost', tesamorelin: '$1,000–$3,000', sermorelin: '$200–$500', cjc1295: '$300–$800', ipamorelin: '$150–$400', mk677: '$50–$150', tesamorelinPos: false },
-  { label: 'Route of Administration', tesamorelin: 'Subcutaneous injection', sermorelin: 'Subcutaneous injection', cjc1295: 'Subcutaneous injection', ipamorelin: 'Subcutaneous injection', mk677: 'Oral', tesamorelinPos: null },
+  { label: 'Phase III Clinical Data', tesamorelin: 'Two Phase 3 trials (HIV lipodystrophy)', sermorelin: 'Limited', cjc1295: 'Limited', ipamorelin: 'Limited', mk677: 'Moderate', tesamorelinPos: true },
+  { label: 'Route Studied', tesamorelin: 'Subcutaneous', sermorelin: 'Subcutaneous', cjc1295: 'Subcutaneous', ipamorelin: 'Subcutaneous', mk677: 'Oral', tesamorelinPos: null },
 ];
 
 const BEST_FOR_ITEMS = [
@@ -286,8 +285,8 @@ export default function TesamorelinArticle() {
           {[
             { label: 'Potency', icon: <Zap className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin produces a stronger GH response and more pronounced IGF-1 elevation. Clinical research consistently demonstrates more robust GH release and greater effects on body composition.' },
             { label: 'Visceral Fat Specificity', icon: <TrendingDown className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin\'s defining feature. Phase 3 trials in HIV-associated lipodystrophy reported visceral adipose tissue reductions of roughly 15% versus placebo. Sermorelin has some body-composition data in older adults, but no comparable visceral fat trials.' },
-            { label: 'Clinical Validation', icon: <Shield className="w-4 h-4 text-amber-400" />, text: 'The TESOMET trial and Phase III studies provide robust peer-reviewed data. More recent research shows a 32% liver fat reduction in NAFLD patients (JCEM). Sermorelin has a solid safety record but lacks this level of targeted validation.' },
-            { label: 'Cost', icon: <Activity className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin runs $1,000–$3,000/month at clinics vs. $200–$500 for Sermorelin through compounding pharmacies. For general wellness and gentle GH support, Sermorelin\'s price point often wins. For urgent visceral fat reduction, Tesamorelin\'s cost is justified.' },
+            { label: 'Clinical Validation', icon: <Shield className="w-4 h-4 text-amber-400" />, text: 'Two Phase 3 trials in HIV-associated lipodystrophy provide peer-reviewed data, and a randomized trial in the same population also reported reduced liver fat (PMID 25038357). Sermorelin has an older clinical record but no comparable targeted trials.' },
+            { label: 'Regulatory Status', icon: <Activity className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin (Egrifta) is FDA-approved only for reducing excess abdominal fat in HIV-associated lipodystrophy. Sermorelin\'s US product (Geref) was discontinued in 2008. Neither is approved for general wellness or body-composition use.' },
           ].map(item => (
             <div key={item.label} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-amber-500/30 transition-colors">
               <div className="flex items-center gap-2 mb-2">
@@ -362,17 +361,17 @@ export default function TesamorelinArticle() {
         <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="vs-mk677">How It Differs from MK-677</h2>
         <p>
-          MK-677 (Ibutamoren) shows up in nearly every GH peptide comparison, even though it technically isn&apos;t a peptide &mdash; it&apos;s a non-peptide ghrelin receptor agonist taken <em>orally</em>. Its primary advantage is convenience: no injections required. But that convenience comes with trade-offs.
+          MK-677 (Ibutamoren) shows up in nearly every GH peptide comparison, even though it technically isn&apos;t a peptide &mdash; it&apos;s a non-peptide ghrelin receptor agonist studied as an <em>oral</em> compound, which sets it apart pharmacologically from the GHRH analogs above. Its trial data also show trade-offs.
         </p>
 
         <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3 text-emerald-400">
               <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-              <p className="text-sm font-bold text-zinc-200">MK-677 Advantages</p>
+              <p className="text-sm font-bold text-zinc-200">MK-677 in Studies</p>
             </div>
             <ul className="space-y-1.5">
-              {['Oral — no injections', 'Low cost ($50–$150/mo)', 'Consistent GH/IGF-1 elevation'].map(t => (
+              {['Orally active in human trials', 'Two-year RCT data in older adults', 'Sustained GH/IGF-1 elevation in trials'].map(t => (
                 <li key={t} className="text-xs text-zinc-400 flex items-start gap-2"><span className="text-emerald-500 mt-0.5">+</span>{t}</li>
               ))}
             </ul>
