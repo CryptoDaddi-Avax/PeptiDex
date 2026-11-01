@@ -25,16 +25,13 @@ LIVE_BASE_DATA = [
     { "name": "MOTS-c", "slug": "mots-c", "typical_vial_mg": 10, "amino_price": 39.99, "soma_price": 54.99, "ascension_price": 79.99 },
     { "name": "Melanotan II", "slug": "melanotan-ii", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 39.99, "ascension_price": 40.00 },
     { "name": "PT-141", "slug": "pt-141", "typical_vial_mg": 10, "amino_price": 29.99, "soma_price": 49.99, "ascension_price": 50.00 },
-    { "name": "Retatrutide", "slug": "retatrutide", "typical_vial_mg": 10, "amino_price": 69.99, "soma_price": 149.99, "ascension_price": 110.00, "notes": "Amino lists GLP-3 RT; Soma lists RETA." },
     { "name": "SS-31", "slug": "ss-31", "typical_vial_mg": 10, "amino_price": None, "soma_price": 54.99, "ascension_price": 65.00 },
     { "name": "Selank", "slug": "selank", "typical_vial_mg": 30, "amino_price": 29.99, "soma_price": 34.99, "ascension_price": 55.00, "notes": "Pricing for 30mg/10mg spray depending on vendor." },
-    { "name": "Semaglutide", "slug": "semaglutide", "typical_vial_mg": 5, "amino_price": None, "soma_price": 99.99, "ascension_price": None },
     { "name": "Semax", "slug": "semax", "typical_vial_mg": 30, "amino_price": 29.99, "soma_price": 34.99, "ascension_price": 55.00, "notes": "Pricing for 30mg/10mg spray depending on vendor." },
     { "name": "Sermorelin", "slug": "sermorelin", "typical_vial_mg": 10, "amino_price": None, "soma_price": 49.99, "ascension_price": 85.00 },
     { "name": "TB-500", "slug": "tb-500", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 44.99, "ascension_price": 50.00 },
     { "name": "Tesamorelin", "slug": "tesamorelin", "typical_vial_mg": 5, "amino_price": 69.99, "soma_price": 49.99, "ascension_price": 89.99 },
-    { "name": "Thymosin Alpha-1", "slug": "thymosin-alpha-1", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 49.99, "ascension_price": None },
-    { "name": "Tirzepatide", "slug": "tirzepatide", "typical_vial_mg": 10, "amino_price": None, "soma_price": 124.99, "ascension_price": None }
+    { "name": "Thymosin Alpha-1", "slug": "thymosin-alpha-1", "typical_vial_mg": 5, "amino_price": 39.99, "soma_price": 49.99, "ascension_price": None }
 ]
 
 def rewrite_pricing_ts():

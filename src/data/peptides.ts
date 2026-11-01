@@ -120,7 +120,7 @@ export const peptides: Peptide[] = [
         {
                 title: "Gateways to clinical trials.",
                 pubmed_url: "https://pubmed.ncbi.nlm.nih.gov/14685303/",
-                summary: "A 2003 bibliography documented ongoing clinical trial data for numerous pharmacological compounds, including AOD-9604 and exenatide, utilizing the Prous Science Integrity database. The publication provided a comprehensive reference guide for recent drug discovery and development efforts across various therapeutic categories.",
+                summary: "A 2003 bibliography documented ongoing clinical trial data for numerous pharmacological compounds, including AOD-9604, utilizing the Prous Science Integrity database. The publication provided a comprehensive reference guide for recent drug discovery and development efforts across various therapeutic categories.",
                 evidence_level: "emerging"
             },
         {

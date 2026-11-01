@@ -60,4 +60,9 @@ update_vps_env.js
 check_remote_git.js
 check_remote_logs.js
 
+# build/deploy archives
+peptidex_out.zip
+peptidex.tar.gz
+sync.tar.gz
+
 # _design-reference/  # uncomment before merge to prod

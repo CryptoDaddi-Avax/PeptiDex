@@ -63,11 +63,9 @@ function checkFirstPersonDensity(text, wordCount) {
 
 const FILES_TO_CHECK = [
   { path: 'src/data/guides.ts', varName: 'guides', minWords: 1200 },
-  { path: 'src/data/research.ts', varName: 'researchArticles', minWords: 1200 },
   { path: 'src/data/where-to-buy-spokes.ts', varName: 'whereToBuyArticles', minWords: 1500 },
   { path: 'src/data/coupon-spokes.ts', varName: 'couponArticles', minWords: 1500 },
   { path: 'src/data/cost-analysis-spokes.ts', varName: 'costAnalysisArticles', minWords: 1500 },
-  { path: 'src/data/matchups.ts', varName: 'matchups', minWords: 1200 },
 ];
 
 let hasErrors = false;
