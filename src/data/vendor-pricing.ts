@@ -9,7 +9,7 @@ export interface VendorPrice {
     vial_mg: number;
     inStock: boolean;
     affiliateUrl: string;
-    badge?: "Best Price" | "Editor's Pick" | "Best for Intl" | "Triple-Tested";
+    badge?: "Best Price" | "Best for Intl" | "Triple-Tested";
     coaUrl?: string; 
     lastTestedDate?: string; 
 }
@@ -44,7 +44,6 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick",
                 "coaUrl": "https://aminoclub.com/coa/bpc-157-latest.pdf",
                 "lastTestedDate": "2026-04-10"
             },
@@ -75,8 +74,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -105,8 +103,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 59.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -119,8 +116,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 59.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -149,8 +145,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -180,8 +175,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -211,8 +205,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 50,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -242,8 +235,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Bio Longevity Labs",
@@ -264,8 +256,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 49.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -278,8 +269,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -291,7 +281,7 @@ export const vendorPricing: PeptideVendorPricing[] =
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 65.98,
+                "price_usd": 109.97,
                 "vial_mg": 10,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
@@ -306,7 +296,7 @@ export const vendorPricing: PeptideVendorPricing[] =
         "vendors": [
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 56.98,
+                "price_usd": 94.97,
                 "vial_mg": 20,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
@@ -365,8 +355,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 29.99,
                 "vial_mg": 5,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Bio Longevity Labs",
@@ -393,8 +382,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 39.99,
                 "vial_mg": 10,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Limitless Life",
@@ -456,12 +444,11 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 69.99,
                 "vial_mg": 500,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             },
             {
                 "vendor": "Bio Longevity Labs",
-                "price_usd": 174.98,
+                "price_usd": 249.97,
                 "vial_mg": 500,
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
@@ -478,8 +465,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "price_usd": 59.99,
                 "vial_mg": 1500,
                 "inStock": true,
-                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX",
-                "badge": "Editor's Pick"
+                "affiliateUrl": "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=vendor_pricing&code=PEPTIDEX"
             }
         ]
     },
@@ -706,7 +692,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "vendor": "Bio Longevity Labs",
                 "price_usd": 69.97,
                 "vial_mg": 20,
-                "inStock": true,
+                "inStock": false,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "badge": "Triple-Tested",
                 "lastTestedDate": "2026-05-08"
@@ -728,7 +714,7 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "vendor": "Bio Longevity Labs",
                 "price_usd": 274.97,
                 "vial_mg": 10,
-                "inStock": true,
+                "inStock": false,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "badge": "Triple-Tested",
                 "lastTestedDate": "2026-05-08"
