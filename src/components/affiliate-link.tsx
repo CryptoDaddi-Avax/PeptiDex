@@ -65,8 +65,11 @@ export function AffiliateLink({
   style,
   disclosure = true,
 }: AffiliateLinkProps) {
+  // The link's domain wins over the `vendor` prop: several PRIMARY_PROMO links
+  // still pass vendor="amino_club" while pointing at another vendor.
+  const urlVendor = vendorKeyFromUrl(href);
   const resolvedVendor: AffiliateVendor | "unknown" =
-    vendor ?? vendorKeyFromUrl(href);
+    urlVendor !== "unknown" ? urlVendor : (vendor ?? "unknown");
 
   // Derive vendorSlug from vendorKey if not explicitly provided
   const resolvedVendorSlug =
@@ -108,7 +111,8 @@ export function AffiliateLink({
     </a>
   );
 
-  if (!disclosure || !isFounderOwned(resolvedVendorSlug)) return link;
+  const destinationSlug = urlVendor !== "unknown" ? urlVendor.replace(/_/g, "-") : resolvedVendorSlug;
+  if (!disclosure || !isFounderOwned(destinationSlug)) return link;
   return (
     <>
       {link}
