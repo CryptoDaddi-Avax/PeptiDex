@@ -31,11 +31,10 @@ export interface VendorRecommendation {
     affiliateUrl: string;       // With UTM source=vendor_picker
 }
 
-// ── Shipping speed → numeric days (lower = faster) ───────────────────────────
+// ── Shipping speed → stated dispatch days (lower = faster; unpublished = slowest) ──
 
-function parseShippingDays(speed: string): number {
-    const m = speed.match(/(\d+)/);
-    return m ? parseInt(m[1]) : 99;
+function shippingDays(vendor: Vendor): number {
+    return vendor.shipping.dispatchBusinessDays ?? 99;
 }
 
 // ── Payment check ────────────────────────────────────────────────────────────
@@ -51,8 +50,8 @@ function paymentMatch(vendor: Vendor, payment: Payment): boolean {
 
 function regionMatch(vendor: Vendor, region: Region): boolean {
     if (region === "us-only") return vendor.shipsTo.some(s => s === "USA" || s === "US");
-    // international: vendor must ship somewhere outside USA
-    return vendor.shipsTo.length > 1 || vendor.shipsTo.some(s => s === "International");
+    // international: vendor states it ships somewhere outside the USA
+    return vendor.shipping.international === true;
 }
 
 // ── Get price for this peptide from this vendor ───────────────────────────────
@@ -119,7 +118,7 @@ export function rankVendors(input: PickerInput): VendorRecommendation[] {
                 score -= 10; // Penalize no price data
             }
         } else if (priority === "fastest-shipping") {
-            const days = parseShippingDays(vendor.shippingSpeed);
+            const days = shippingDays(vendor);
             score += Math.max(0, 20 - days * 3); // Faster = more points
         } else if (priority === "highest-purity") {
             score += purityScore(vendor) * 8; // Heavily weight purity
@@ -160,7 +159,7 @@ export function rankVendors(input: PickerInput): VendorRecommendation[] {
         if (priority === "cheapest") {
             reasoning = `${vendor.name} offers ${peptideSlug.replace(/-/g, " ").toUpperCase()} at ${priceStr}${vendor.discountCode ? ` with code ${vendor.discountCode}` : ""}, the most competitive price for your region.`;
         } else if (priority === "fastest-shipping") {
-            reasoning = `${vendor.name} ships in ${vendor.shippingSpeed} — the fastest available option meeting your payment and region requirements.`;
+            reasoning = `${vendor.name}: ${vendor.shippingSpeed} (per the vendor). Stated dispatch time is weighted heavily in this ranking, alongside the published criteria score.`;
         } else if (priority === "highest-purity") {
             reasoning = `${vendor.name} provides ${vendor.purity} purity verified via ${vendor.testingMethods.join(", ")} — highest verification level for your search.`;
         } else if (priority === "best-coa") {

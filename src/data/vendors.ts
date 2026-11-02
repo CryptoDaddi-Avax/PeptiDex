@@ -39,6 +39,31 @@ export interface ThirdPartyRating {
   checked: string;
 }
 
+/** A vendor page a shipping input was read from. */
+export interface ShippingSource {
+  label: string;
+  url: string;
+  /** YYYY-MM-DD the page was read */
+  checked: string;
+}
+
+/**
+ * The vendor's published US shipping terms — the only input to the Shipping
+ * criterion (src/lib/vendor-criteria.ts). null = the vendor does not publish
+ * it; the criterion scores that input as the worst case and labels it unverified.
+ */
+export interface ShippingPolicy {
+  /** Standard US shipping charged below the free threshold (null = not published) */
+  standardRateUsd: number | null;
+  /** Free standard shipping at this pre-discount subtotal or more (null = no threshold published) */
+  freeFromUsd: number | null;
+  /** Upper bound of the stated standard dispatch/processing time, in business days (null = not published) */
+  dispatchBusinessDays: number | null;
+  /** Ships to addresses outside the US (null = not stated) */
+  international: boolean | null;
+  sources: ShippingSource[];
+}
+
 export interface Vendor {
   /** URL-safe slug: "amino-club", "bio-longevity-labs", etc. */
   slug: string;
@@ -77,12 +102,14 @@ export interface Vendor {
   coaStatus: string;
   /** Testing methods array */
   testingMethods: string[];
-  /** Shipping speed string */
+  /** Shipping speed string (display; must match `shipping`) */
   shippingSpeed: string;
-  /** Shipping cost string */
+  /** Shipping cost string (display; must match `shipping`) */
   shippingCost: string;
-  /** Countries shipped to */
+  /** Countries shipped to (display; must match `shipping`) */
   shipsTo: string[];
+  /** Published shipping terms with sources — scored by the Shipping criterion */
+  shipping: ShippingPolicy;
   /** Catalog size string */
   catalogSize: string;
   /** Payment methods accepted */
@@ -142,9 +169,24 @@ const vendorInputs: VendorInput[] = [
     // vs reference standard (ILS) or FTIR (BTLabs) — not mass spec. Endotoxin on all
     // 13 released lots (confirmed by the owner 2026-11-02).
     testingMethods: ["HPLC", "FTIR", "Endotoxin"],
+    // Terms still say ~48h (re-checked 2026-11-02 23:00Z); switch to 24h only when the terms page does.
     shippingSpeed: "Ships within ~48 hours",
-    shippingCost: "Free over $150 · $6 flat under $150",
+    shippingCost: "$6 flat shipping, free over $150",
     shipsTo: ["USA"],
+    shipping: {
+      // $6 is only in the storefront checkout code (store.js SHIP_COST), not on any Elyria page,
+      // so it scores as unverified like every other checkout-only rate. Set 6 and cite the
+      // terms page once the live terms page states it.
+      standardRateUsd: null,
+      freeFromUsd: 150,
+      dispatchBusinessDays: 2,
+      international: false,
+      sources: [
+        { label: "Terms of Sale — ships within approximately 48 hours", url: "https://elyriabio.com/legal/terms.html", checked: "2026-11-02" },
+        { label: "Homepage FAQ — free over $150; U.S. addresses only", url: "https://elyriabio.com/", checked: "2026-11-02" },
+        { label: "Checkout code only — $6.00 standard rate (not on a page yet, so scored unverified)", url: "https://elyriabio.com/store.js", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "11 research products on sale",
     paymentMethods: ["Venmo", "Cash App", "X Money", "Crypto"],
     returnPolicy: "Replacement or refund for nonconforming product",
@@ -178,9 +220,18 @@ const vendorInputs: VendorInput[] = [
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
-    shippingSpeed: "2–4 business days (US)",
-    shippingCost: "Free over $100",
-    shipsTo: ["USA", "International"],
+    shippingSpeed: "Same-day dispatch (before 3 PM ET)",
+    shippingCost: "Free over $100 · rate under $100 not published",
+    shipsTo: ["USA"],
+    shipping: {
+      standardRateUsd: null,
+      freeFromUsd: 100,
+      dispatchBusinessDays: 1,
+      international: false,
+      sources: [
+        { label: "Shipping — free on invoices over $100; same-day before 3 PM ET; US only", url: "https://www.aminoclub.com/us/shipping", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "40+ compounds",
     paymentMethods: ["Credit Card", "Crypto", "Zelle"],
     returnPolicy: "60-day money-back guarantee",
@@ -207,9 +258,19 @@ const vendorInputs: VendorInput[] = [
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "2–5 business days (US)",
-    shippingCost: "Free over $150",
-    shipsTo: ["USA", "International"],
+    shippingSpeed: "Same-day dispatch (before 12 PM PT)",
+    shippingCost: "Free over $400 · rates under $400 not published",
+    shipsTo: ["USA", "Limited international (e.g. Canada)"],
+    shipping: {
+      standardRateUsd: null,
+      freeFromUsd: 400,
+      dispatchBusinessDays: 1,
+      international: true,
+      sources: [
+        { label: "Shipping & Payments — free over $400; same day before 12 PM PST", url: "https://biolongevitylabs.com/shipping-and-payments/", checked: "2026-11-02" },
+        { label: "FAQs — ships to a limited number of countries outside the US", url: "https://biolongevitylabs.com/faqs/", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "80+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "30-day money-back guarantee",
@@ -235,9 +296,19 @@ const vendorInputs: VendorInput[] = [
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "3–5 business days (US)",
-    shippingCost: "Free over $100",
-    shipsTo: ["USA"],
+    shippingSpeed: "3–5 business days processing",
+    shippingCost: "$14 standard · no free-shipping threshold published",
+    shipsTo: ["USA", "International"],
+    shipping: {
+      standardRateUsd: 14,
+      freeFromUsd: null,
+      dispatchBusinessDays: 5,
+      international: true,
+      sources: [
+        { label: "FAQs — Standard Shipping $14; processing 3–5 business days", url: "https://limitlesslifenootropics.com/faqs/", checked: "2026-11-02" },
+        { label: "Shipping & Returns — ships to virtually any address in the world", url: "https://limitlesslifenootropics.com/shipping-returns/", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "90+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "Satisfaction guarantee",
@@ -265,9 +336,18 @@ const vendorInputs: VendorInput[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3–5 business days (US)",
-    shippingCost: "Free over $150",
-    shipsTo: ["USA"],
+    shippingSpeed: "Most orders ship within 24 hours",
+    shippingCost: "$15 flat (domestic)",
+    shipsTo: ["USA", "International: not stated"],
+    shipping: {
+      standardRateUsd: 15,
+      freeFromUsd: null,
+      dispatchBusinessDays: 1,
+      international: null,
+      sources: [
+        { label: "Shipping Policies — $15 flat domestic; most orders ship within 24 hours", url: "https://ascensionpeptides.com/shipping-policies/", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "60+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "30-day return policy",
@@ -293,9 +373,20 @@ const vendorInputs: VendorInput[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3–5 business days (US)",
-    shippingCost: "Free over $100",
-    shipsTo: ["USA"],
+    shippingSpeed: "Same-day dispatch (before 10 AM PT)",
+    shippingCost: "Rates shown at checkout (not published)",
+    shipsTo: ["USA", "Canada"],
+    shipping: {
+      standardRateUsd: null,
+      freeFromUsd: null,
+      dispatchBusinessDays: 1,
+      // Canada through Pantheon's Canadian store (pantheonpeptides.com/ca)
+      international: true,
+      sources: [
+        { label: "US Shipping & Returns — rates shown at checkout; same day before 10 AM PT", url: "https://www.pantheonpeptides.com/us/shipping", checked: "2026-11-02" },
+        { label: "Canada Shipping — ships within Canada", url: "https://www.pantheonpeptides.com/ca/shipping", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "50+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "30-day return policy",
@@ -320,9 +411,19 @@ const vendorInputs: VendorInput[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3–5 business days (US)",
-    shippingCost: "Free over $75",
-    shipsTo: ["USA"],
+    shippingSpeed: "2–4 business days processing",
+    shippingCost: "Free over $300 · rate under $300 not published",
+    shipsTo: ["USA", "International"],
+    shipping: {
+      standardRateUsd: null,
+      freeFromUsd: 300,
+      dispatchBusinessDays: 4,
+      international: true,
+      sources: [
+        { label: "Homepage — free standard shipping on orders over $300", url: "https://www.lvluphealth.com/", checked: "2026-11-02" },
+        { label: "Shipping Policy — processing 2–4 business days; international 14–30 business days", url: "https://www.lvluphealth.com/shipping-policy", checked: "2026-11-02" },
+      ],
+    },
     catalogSize: "20+ compounds",
     paymentMethods: ["Credit Card", "Crypto"],
     returnPolicy: "30-day return policy",

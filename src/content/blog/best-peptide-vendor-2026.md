@@ -15,7 +15,7 @@ faqSchema: |
         "name": "What is the best peptide vendor in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "On our published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options and returns), Amino Club scores highest as of November 2026, followed by Bio Longevity Labs and Limitless Life. Scores use each vendor's own published information; PeptiDex does not test products. PeptiDex earns affiliate commission from these vendors, and PeptiDex's founder owns Elyria Bio."
+          "text": "On our published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options and returns), Amino Club scores highest as of November 2026, followed by Elyria Bio (owned by PeptiDex's founder), Limitless Life and Bio Longevity Labs. Scores use each vendor's own published information; PeptiDex does not test products. PeptiDex earns affiliate commission from these vendors, and PeptiDex's founder owns Elyria Bio."
         }
       },
       {
@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Do peptide vendors ship internationally?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Many US-based peptide vendors do not ship internationally due to customs seizure risks. Amino Club and Bio Longevity Labs ship internationally. Elyria Bio ships US only."
+          "text": "Some do. Per their own shipping pages, Limitless Life and LVLUP Health ship internationally, Bio Longevity Labs ships to a limited number of countries such as Canada, and Pantheon Peptides runs a separate Canadian store. Amino Club and Elyria Bio ship US only."
         }
       }
     ]
@@ -59,11 +59,11 @@ faqSchema: |
 <div className="bg-gradient-to-r from-violet-900/20 to-zinc-900/40 border-l-4 border-l-violet-500 border-y border-r border-zinc-800 rounded-lg p-6 my-8 shadow-xl">
   <h2 className="text-xl font-bold text-zinc-100 mb-3 mt-0 border-none pb-0">TL;DR: Injectable Vendors by Criteria Score (November 2026)</h2>
   <ul className="space-y-2 text-zinc-300 text-sm font-medium m-0 list-disc list-inside">
-    <li><strong>Amino Club:</strong> Batch-specific COAs from named third-party labs, largest code discount (20% off), 60-day money-back guarantee, ships internationally.</li>
-    <li><strong>Bio Longevity Labs:</strong> HPLC + LC-MS + endotoxin COAs (per vendor), stackable 15% PEPTIDEX discount, ships internationally.</li>
-    <li><strong>Limitless Life:</strong> Largest catalog (90+ compounds), competitive list prices, US only.</li>
-    <li><strong>Elyria Bio (owned by PeptiDex's founder):</strong> COAs from ILS Labs and BT Labs (per Elyria Bio), ships within ~48 hours, US only, pays by Venmo, Cash App, X Money or crypto. Free shipping over $150, $6 flat under. Code PEPTIDEX = 10% off.</li>
-    <li><strong>Pantheon Peptides:</strong> COAs available, smaller catalog, US only.</li>
+    <li><strong>Amino Club:</strong> Batch-specific COAs from named third-party labs, largest code discount (20% off), 60-day money-back guarantee, same-day dispatch, free shipping over $100, US only.</li>
+    <li><strong>Elyria Bio (owned by PeptiDex's founder):</strong> COAs from ILS Labs and BT Labs (per Elyria Bio), ships within ~48 hours, US only, pays by Venmo, Cash App, X Money or crypto. $6 flat shipping, free over $150. Code PEPTIDEX = 10% off.</li>
+    <li><strong>Limitless Life:</strong> Largest catalog (90+ compounds), competitive list prices, $14 standard shipping, ships internationally.</li>
+    <li><strong>Bio Longevity Labs:</strong> HPLC + LC-MS + endotoxin COAs (per vendor), stackable 15% PEPTIDEX discount, same-day dispatch, free shipping over $400, ships to a limited number of countries such as Canada.</li>
+    <li><strong>Pantheon Peptides:</strong> COAs available, smaller catalog, shipping rates shown at checkout.</li>
   </ul>
 </div>
 
@@ -77,7 +77,7 @@ This guide compares the peptide vendors we link to. We score each one on six pub
 
 ## Amino Club
 
-Amino Club states that every batch is tested by named third-party labs (MZ Biolabs and Janoshik) for HPLC purity, mass-spec identity and endotoxin. It offers a 60-day money-back guarantee (the longest among the vendors we list) and the largest code discount at 20% off with PEPTIDEX. Its 40+ compound catalog covers the core research peptides, and it ships domestically and internationally. See our full <a href="/vendors/amino-club" className="font-bold text-emerald-400 underline">Amino Club review</a>.
+Amino Club states that every batch is tested by named third-party labs (MZ Biolabs and Janoshik) for HPLC purity, mass-spec identity and endotoxin. It offers a 60-day money-back guarantee (the longest among the vendors we list) and the largest code discount at 20% off with PEPTIDEX. Its 40+ compound catalog covers the core research peptides. It ships within the US only, with same-day dispatch before 3 PM ET and free shipping on orders over $100. See our full <a href="/vendors/amino-club" className="font-bold text-emerald-400 underline">Amino Club review</a>.
 
 ## Bio Longevity Labs
 
@@ -91,7 +91,7 @@ We advise emailing their support team to request the most recent COA for niche p
 
 ## Elyria Bio (owned by PeptiDex's founder)
 
-PeptiDex's founder owns Elyria Bio. It is scored on the same criteria as every other vendor. Per Elyria Bio, released lots are tested by ILS Labs and BT Labs (per Elyria Bio) for HPLC purity (≥99% floor) and identity (HPLC retention time or FTIR), and each vial is lot-coded to its COA. It ships within about 48 hours, to the US only, with free shipping over $150 and a $6 flat rate under $150. It accepts Venmo, Cash App, X Money and cryptocurrency. Its prices were checked on elyriabio.com on November 2, 2026. Code PEPTIDEX takes 10% off. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">See our full Elyria Bio review</a>.
+PeptiDex's founder owns Elyria Bio. It is scored on the same criteria as every other vendor. Per Elyria Bio, released lots are tested by ILS Labs and BT Labs (per Elyria Bio) for HPLC purity (≥99% floor) and identity (HPLC retention time or FTIR), and each vial is lot-coded to its COA. It ships within about 48 hours, to the US only, with $6 flat shipping, free over $150. It accepts Venmo, Cash App, X Money and cryptocurrency. Its prices were checked on elyriabio.com on November 2, 2026. Code PEPTIDEX takes 10% off. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">See our full Elyria Bio review</a>.
 
 For researchers studying delicate sequences like [BPC-157](/library/bpc-157) or [TB-500](/library/tb-500), a domestic supply chain shortens transit time.
 
@@ -102,7 +102,7 @@ Every vendor is scored out of 100 on the same criteria. The full point rules are
 1. **COA availability (25 points)** — batch-specific COAs published, or COAs available.
 2. **Third-party lab testing (20 points)** — the vendor states an independent lab issues its COAs; HPLC, mass-spec and endotoxin testing listed.
 3. **Price per mg (25 points)** — list price per mg against the other vendors on shared peptides, from prices we have checked.
-4. **Shipping (15 points)** — free-shipping threshold and whether the vendor ships outside the US.
+4. **Shipping (15 points)** — what a US buyer pays for standard shipping on a $50, $100 and $150 order, the vendor's stated dispatch time, and whether it ships outside the US. Anything a vendor does not publish scores 0 and is labeled unverified.
 5. **Payment options (10 points)** — number of payment methods accepted.
 6. **Return policy (5 points)** — money-back guarantee, or a stated return/refund policy.
 
@@ -137,7 +137,7 @@ On our six published criteria, Amino Club scores highest as of November 2026. Pe
 Cheaper vendors almost always skip independent laboratory testing to cut costs, or they source low-purity, unwashed peptides from bulk overseas manufacturers. The "cheap" peptide often contains synthesis byproducts or is severely under-dosed.
 
 **Do these vendors ship internationally?**
-While many domestic US vendors restrict shipping to within the United States, Amino Club and Bio Longevity Labs have established international shipping lanes for researchers in Canada, the UK, and Australia. Elyria Bio ships US only.
+Some do. Per their own shipping pages (checked November 2, 2026), Limitless Life and LVLUP Health ship internationally, Bio Longevity Labs ships to a limited number of countries such as Canada, and Pantheon Peptides runs a separate Canadian store. Amino Club and Elyria Bio ship US only.
 
 **Is it safe to pay with a credit card?**
 Yes, if the vendor is reputable. The peptide industry is considered "high risk" by payment processors, so many vendors use alternative gateways. However, top-tier vendors secure reliable credit card processing, which offers you chargeback protection.

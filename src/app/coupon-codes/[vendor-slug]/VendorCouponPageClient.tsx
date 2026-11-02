@@ -139,7 +139,7 @@ export function VendorCouponPageClient({
             { icon: <BadgePercent className="w-4 h-4 text-amber-400" />, label: "Discount", value: `${deal.discountPercent}% off` },
             { icon: <RotateCcw className="w-4 h-4 text-zinc-400" />, label: "Expires", value: deal.expiresLabel },
             { icon: <Zap className={`w-4 h-4 ${deal.stackable ? "text-emerald-400" : "text-zinc-600"}`} />, label: "Stackable", value: deal.stackable ? "Yes — stacks with sales" : "No" },
-            { icon: <Package className="w-4 h-4 text-zinc-400" />, label: "Free Shipping", value: deal.freeShippingThreshold ? `Orders over $${deal.freeShippingThreshold}` : "See site" },
+            { icon: <Package className="w-4 h-4 text-zinc-400" />, label: "Shipping", value: vendor ? vendor.shippingCost : deal.freeShippingThreshold ? `Free over $${deal.freeShippingThreshold}` : "See site" },
             { icon: <ShieldCheck className="w-4 h-4 text-zinc-400" />, label: "Exclusions", value: deal.exclusions && deal.exclusions.length > 0 ? deal.exclusions.join(", ") : "None — applies sitewide" },
             ...(vendor ? [{ icon: <Star className="w-4 h-4 text-amber-400" />, label: "Criteria score", value: `${vendor.criteria.total}/100 (#${vendor.sortOrder})` }] : []),
           ].map(({ icon, label, value }) => (

@@ -26,11 +26,11 @@ import { RANKING_DISCLOSURE } from "@/lib/vendor-criteria";
 
 /** One-line notes for email 3; order and scores come from the published criteria. */
 const EMAIL3_NOTES: Record<string, string> = {
-  "amino-club": "Batch COAs from named third-party labs (HPLC + MS + endotoxin, per vendor). 60-day money-back guarantee. Ships internationally.",
+  "amino-club": "Batch COAs from named third-party labs (HPLC + MS + endotoxin, per vendor). 60-day money-back guarantee. US only.",
   "bio-longevity-labs": "HPLC + LC-MS + endotoxin COAs (per vendor). 80+ compounds. PEPTIDEX stacks with their sales.",
-  "limitless-life": "USA-manufactured (per vendor). 90+ compounds — largest catalog in the index. US only.",
+  "limitless-life": "USA-manufactured (per vendor). 90+ compounds — largest catalog in the index. Ships internationally.",
   "elyria-bio": "COAs from ILS Labs and BT Labs with HPLC purity, identity and endotoxin, lot-traceable (per vendor). Venmo, Cash App, X Money, crypto. US only.",
-  "pantheon-peptides": "COAs available. 50+ compounds. US only.",
+  "pantheon-peptides": "COAs available. 50+ compounds. US store plus a separate Canadian store.",
   "lvlup-health": "Oral peptide specialist. Capsules + sublingual formats.",
 };
 
@@ -234,7 +234,7 @@ export function email5_vendorPicker(firstName = "there") {
     ${p(`It cross-references our vendor index, catalog data, and current pricing to give you a ranked list — not a generic "all are good" answer.`)}
     ${cta("Take the 4-question picker", "https://peptidex.app/tools/vendor-picker")}
     ${divider()}
-    ${p(`Quick note: if you're outside the US, your options are limited. Amino Club and Bio Longevity Labs are the only vendors in our index that ship internationally. Elyria Bio ships US only.`)}
+    ${p(`Quick note: if you're outside the US, check shipping first. Per their own shipping pages, Limitless Life and LVLUP Health ship internationally, Bio Longevity Labs ships to a limited number of countries such as Canada, and Pantheon Peptides runs a separate Canadian store. Amino Club and Elyria Bio ship US only.`)}
     ${p(`<strong>Disclosure:</strong> ${FOUNDER_OWNERSHIP_DISCLOSURE}`)}
     ${p(`If your priority is value, Bio Longevity Labs lets you stack code <strong>PEPTIDEX</strong> (15% off) with their site-wide sales — the only vendor in our index where the code stacks with existing promotions. Total savings can exceed 30% during sales.`)}
     ${p(`— The PeptiDex Research Team`)}

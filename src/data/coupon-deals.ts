@@ -82,7 +82,7 @@ export const vendorDeals: VendorDeal[] = [
     expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
     proTip: "Bio Longevity Labs regularly runs 25–30% sitewide sales. Because PEPTIDEX stacks on top, you can hit 40%+ total savings during a sale — check their homepage before ordering.",
-    freeShippingThreshold: 150,
+    freeShippingThreshold: 400,
   },
   {
     vendorSlug: "limitless-life",
@@ -96,7 +96,6 @@ export const vendorDeals: VendorDeal[] = [
     expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     proTip: "Limitless Life has the widest catalog of any vendor we list (90+ compounds). Best choice when you need harder-to-find peptides.",
-    freeShippingThreshold: 100,
   },
   {
     vendorSlug: "pantheon-peptides",
@@ -110,7 +109,6 @@ export const vendorDeals: VendorDeal[] = [
     expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
     proTip: "Pantheon Peptides offers competitive per-mg pricing, especially on GH peptides. Good alternative when Amino Club is out of stock on specific compounds.",
-    freeShippingThreshold: 100,
   },
   {
     vendorSlug: "lvlup-health",
@@ -124,7 +122,7 @@ export const vendorDeals: VendorDeal[] = [
     expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
     proTip: "LVLUP is the only oral & nasal formulation specialist on our list, carrying non-injectable formats of research compounds such as BPC-157, Semax, and Selank. Code applies to all oral capsule products.",
-    freeShippingThreshold: 75,
+    freeShippingThreshold: 300,
   },
 ];
 

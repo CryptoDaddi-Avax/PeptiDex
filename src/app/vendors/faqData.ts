@@ -43,6 +43,6 @@ export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "How long does it take to ship research peptides?",
-    a: "Most US-based vendors ship within 1–2 business days of order confirmation. Domestic US delivery typically arrives in 2–5 business days depending on the vendor: Amino Club (2–4 days), Bio Longevity Labs (2–5 days), Limitless Life, Ascension Peptides, and Pantheon Peptides (3–5 days each). LVLUP Health ships in 3–5 days. International shipping, available from Amino Club and Bio Longevity Labs, adds 7–21 days depending on the destination. Peptides should ship refrigerated or with cold packs for temperature-sensitive compounds. → Check live shipping details at peptidex.app/vendors",
+    a: "It depends on the vendor. Per each vendor's own shipping page (checked Nov 2, 2026): Amino Club, Bio Longevity Labs and Pantheon Peptides ship orders placed before a same-day cutoff the same business day; Elyria Bio (owned by PeptiDex's founder) ships within about 48 hours; LVLUP Health processes orders in 2–4 business days and Limitless Life in 3–5. Amino Club states 1–4 business days for standard delivery and Limitless Life 5–7 business days from order to delivery. Limitless Life, LVLUP Health, Bio Longevity Labs (a limited number of countries, such as Canada) and Pantheon Peptides (through its Canadian store) ship outside the US; Amino Club and Elyria Bio ship within the US only. Peptides should ship refrigerated or with cold packs for temperature-sensitive compounds. → Check live shipping details at peptidex.app/vendors",
   },
 ];

@@ -145,11 +145,11 @@ export const couponFAQs: FAQItem[] = [
   },
   {
     question: 'How fast is shipping?',
-    answer: 'Domestic US shipping is typically 2–5 business days across all vendors. Amino Club and Bio Longevity Labs offer free shipping on orders over $100 and $150 respectively. Pantheon and Limitless Life offer free shipping over $100.',
+    answer: 'Per each vendor\'s shipping page (checked Nov 2, 2026): Amino Club, Bio Longevity Labs and Pantheon Peptides ship orders placed before a same-day cutoff the same business day; Limitless Life processes orders in 3–5 business days and LVLUP Health in 2–4. Amino Club ships free over $100, Bio Longevity Labs over $400 and LVLUP Health over $300; Limitless Life charges $14 standard shipping with no free threshold published, and Pantheon shows rates only at checkout. See the shipping table on our vendors page for sources.',
   },
   {
     question: 'Do these vendors ship internationally?',
-    answer: 'Amino Club and Bio Longevity Labs ship internationally. Limitless Life, Pantheon Peptides, and LVLUP Health currently ship within the USA only. International shipping availability may change — check each vendor\'s shipping page for the latest.',
+    answer: 'Per their own shipping pages, Limitless Life and LVLUP Health ship internationally, Bio Longevity Labs ships to a limited number of countries such as Canada, and Pantheon Peptides runs a separate Canadian store. Amino Club ships within the US only. International shipping availability may change — check each vendor\'s shipping page for the latest.',
   },
   {
     question: 'Can I use PEPTIDEX on mobile checkout?',

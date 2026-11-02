@@ -35,6 +35,7 @@ import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
 import { VENDORS_FAQ_ITEMS } from './faqData';
 import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTable';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
+import { ShippingInputsTable } from '@/components/vendors/ShippingInputsTable';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
 import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
 import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
@@ -285,6 +286,8 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
             </table>
           </div>
 
+          <ShippingInputsTable vendors={vendorsSorted} />
+
           <div className="vmeth-note">
             <AlertTriangle size={14} />
             <span>
@@ -361,9 +364,9 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
                 for short transit durations. However, some liquid formulations require
                 refrigeration. Verify with your chosen vendor whether
                 your specific compound ships with cold packs and whether the estimated
-                transit time is within the stability window for that formulation. Domestic
-                US orders from the vendors in this index typically arrive in 2–5 business
-                days, which is within safe stability margins for lyophilized compounds.
+                transit time is within the stability window for that formulation. Stated
+                dispatch times range from same day to 3–5 business days of processing — see
+                each vendor&apos;s shipping terms in the table above.
               </p>
             </div>
 
