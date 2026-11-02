@@ -4,13 +4,17 @@
  * without requiring Inngest dashboard access.
  * DELETE this route after confirmed live (or leave protected — it's safe).
  *
- * Usage: GET /api/admin/aeo-trigger?secret=<CRON_SECRET>
+ * Usage: GET /api/admin/aeo-trigger with `Authorization: Bearer <CRON_SECRET>`
+ * (preferred: keeps the secret out of access logs), or ?secret=<CRON_SECRET>.
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { inngest } from '@/inngest/client';
 
 export async function GET(req: NextRequest) {
-  const secret = req.nextUrl.searchParams.get('secret');
+  const auth = req.headers.get('authorization');
+  const secret = auth?.startsWith('Bearer ')
+    ? auth.slice('Bearer '.length)
+    : req.nextUrl.searchParams.get('secret');
 
   if (!secret || secret !== process.env.CRON_SECRET) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
