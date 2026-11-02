@@ -3,7 +3,6 @@ import { peptides, getPeptideBySlug } from "@/data/peptides";
 import { stacks } from "@/data/stacks";
 import { vendorPricing } from "@/data/vendor-pricing";
 import { vendors } from "@/data/vendors";
-import type { EvidenceLevel } from "@/data/types";
 import { PeptideDetailRedesign } from "./client";
 import { buildDrugSchema, buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 import { buildLibraryMedicalWebPageSchema, buildLibraryFAQSchema } from "@/lib/seo/schema/library";
@@ -75,16 +74,6 @@ const FDA_INDICATIONS: Record<string, string> = {
     "pt-141": "Treatment of hypoactive sexual desire disorder (HSDD) in premenopausal women",
 };
 
-/* ── Evidence grade → numeric rating map ── */
-const EVIDENCE_RATING: Record<EvidenceLevel, number> = {
-    "very-strong":      4.8,
-    "strong":           4.5,
-    "moderate-strong":  4.2,
-    "moderate":         4.0,
-    "preclinical":      3.5,
-    "emerging":         3.0,
-    "anecdotal":        2.5,
-};
 
 /** Build the server-side FAQPage JSON-LD (8 required Qs + custom overrides) */
 function buildLibraryFAQItems(peptide: ReturnType<typeof getPeptideBySlug>) {
@@ -141,12 +130,6 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
 
     // ─── JSON-LD: Drug ──────────────────────────────────────────────────────
     const isFDA = FDA_APPROVED_SLUGS.has(slug);
-    const topEvidenceLevel = peptide.key_studies.reduce<EvidenceLevel | null>((best, s) => {
-        if (!best) return s.evidence_level;
-        return EVIDENCE_RATING[s.evidence_level] > EVIDENCE_RATING[best] ? s.evidence_level : best;
-    }, null);
-    const ratingValue = topEvidenceLevel ? EVIDENCE_RATING[topEvidenceLevel] : 3.0;
-    const ratingCount = Math.max(peptide.key_studies.length, 1);
 
     const drugSchemaObj = buildDrugSchema({
         name: peptide.name,
@@ -227,10 +210,7 @@ export default async function PeptideDetailPage({ params }: { params: Promise<{ 
         // Uses /api/og?title=NAME&type=profile which returns 200 image/png (confirmed live).
         image: `https://peptidex.app/api/og?title=${encodeURIComponent(peptide.name)}&type=profile`,
         brand: "PEPTIDEX Reviewed",
-        aggregateRating: topEvidenceLevel ? {
-            ratingValue: ratingValue.toFixed(1),
-            ratingCount: ratingCount
-        } : undefined
+        // No aggregateRating: an evidence grade is not a review rating.
     });
 
     // ─── Assemble All Schemas ──────────────────────────────────────────────
