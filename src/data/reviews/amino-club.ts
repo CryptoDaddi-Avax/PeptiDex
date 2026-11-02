@@ -48,7 +48,7 @@ export const aminoClubReview: VendorReviewData = {
   shippingDetail: 'Per vendor disclosure, Amino Club processes most orders within 24 hours (excluding weekends) from US-based domestic facilities. Domestic shipping via USPS typically arrives in 2–4 business days with full tracking. Free shipping applies to orders over $100.\n\nInternational shipping is available — a genuine differentiator in the research peptide market where most verified vendors restrict to US-only delivery. International transit times vary by destination. Payment options include major credit cards through encrypted gateways, cryptocurrency, and Zelle — the broadest payment flexibility in this index.',
   bestFor: ['Researchers who prioritize COA verification depth and batch traceability', 'First-time buyers who want a risk-free trial (60-day MBG)', 'International researchers who need a US-based verified vendor', 'Budget-conscious buyers who want the largest single discount code (20%)'],
   alternatives: [
-    { name: 'Elyria Bio', slug: 'elyria-bio', bestFor: 'Owned by PeptiDex\'s founder — ≥99% HPLC floor, 24h dispatch, US only', href: '/vendors/elyria-bio' },
+    { name: 'Elyria Bio', slug: 'elyria-bio', bestFor: 'Owned by PeptiDex\'s founder — ≥99% HPLC floor, COAs from ILS Labs and BT Labs, US only', href: '/vendors/elyria-bio' },
     { name: 'Bio Longevity Labs', slug: 'bio-longevity-labs', bestFor: 'Triple-tested + stackable discount', href: '/vendors/bio-longevity-labs' },
     { name: 'Limitless Life', slug: 'limitless-life', bestFor: 'Largest catalog (90+ compounds)', href: '/vendors/limitless-life' },
   ],

@@ -74,6 +74,7 @@ describe("TC-01 — Single peptide, single vendor (BPC-157 / Amino Club, 20 mg)"
 //
 // BPC-157 carried by several vendors in vendor-pricing.ts.
 // For 20 mg, expected discounted subtotals:
+//   Elyria Bio:       2 × $29.99 × 0.90 = $53.98  (10mg vials; prices checked 2026-11-02)
 //   Amino Club:       2 × $39.99 × 0.80 = $63.98  (10mg vials)
 //   Bio Longevity:    2 × $99.97 × 0.85 = $169.95 (10mg vials)
 //   Limitless Life:   4 × $49.99 × 0.85 = $169.97 (5mg vials → ceil(20/5)=4)
@@ -98,8 +99,9 @@ describe("TC-02 — Single peptide, multi-vendor — cost-ascending sort (BPC-15
     }
   });
 
-  test("Amino Club is cheapest (lowest discounted subtotal)", () => {
-    expect(result.vendorPlans[0].vendorSlug).toBe("amino-club");
+  test("Elyria Bio is cheapest, then Amino Club (lowest discounted subtotals)", () => {
+    expect(result.vendorPlans[0].vendorSlug).toBe("elyria-bio");
+    expect(result.vendorPlans[1].vendorSlug).toBe("amino-club");
   });
 
   test("Limitless Life uses 5mg vials → needs 4 vials (not 2)", () => {

@@ -4,7 +4,8 @@ import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, Trophy, Download } from "lucide-react";
 import { vendorsSorted, type Vendor } from "@/data/vendors";
-import { vendorPricing, PRICES_LAST_CHECKED_LABEL } from "@/data/vendor-pricing";
+import { vendorPricing, PRICES_LAST_CHECKED_LABEL, PRICES_CHECKED_BY_VENDOR, pricesCheckedLabel } from "@/data/vendor-pricing";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import { peptides as allPeptides } from "@/data/peptides";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
 import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
@@ -13,6 +14,15 @@ import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 import './pricing-redesign.css';
 
 type SortMode = "price" | "vendor" | "cpd";
+
+/** "May 9, 2026 (Elyria Bio: November 2, 2026)" — vendors checked on their own date are listed. */
+const PRICES_CHECKED_NOTE = [
+  PRICES_LAST_CHECKED_LABEL,
+  ...Object.keys(PRICES_CHECKED_BY_VENDOR).map((v) => `(${v}: ${pricesCheckedLabel(v)})`),
+].join(" ");
+
+const CODE_PERCENTS = vendorsSorted.map((v) => v.discountPercent ?? 0).filter((p) => p > 0);
+const CODE_PERCENT_RANGE = `${Math.min(...CODE_PERCENTS)}–${Math.max(...CODE_PERCENTS)}%`;
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -166,11 +176,9 @@ function DesktopRow({ row }: { row: EnrichedVendorRow }) {
               <Trophy size={9} style={{ display: 'inline', marginRight: 3 }} />Best Price
             </span>
           )}
-          {row.vendor.badge === "Editor's Choice" && !row.isBestPrice && (
-            <span className="prc-vendor-badge">{row.vendor.badge}</span>
-          )}
         </div>
         <span className="prc-vendor-meta">{row.vendor.tagline}</span>
+        <FounderOwnershipDisclosure vendorSlug={row.vendor.slug} variant="inline" />
       </div>
 
       {/* List Price */}
@@ -236,6 +244,7 @@ function MobileCard({ row }: { row: EnrichedVendorRow }) {
         <div className="prc-card-vendor">
           <span className={`prc-vendor-dot ${row.dotClass}`} />
           <span className="prc-card-vendor-name">{row.vendor.name}</span>
+          <FounderOwnershipDisclosure vendorSlug={row.vendor.slug} variant="inline" />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           {hasPrice ? (
@@ -463,7 +472,7 @@ export default function PricingClient() {
           <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 640, lineHeight: 1.6, marginBottom: 0 }}>
             Real vendor prices for {enriched.length} peptides across{" "}
             {vendorsSorted.length} verified suppliers — with{" "}
-            <strong style={{ color: 'var(--gold)' }}>PEPTIDEX discount applied</strong>. Prices checked: {PRICES_LAST_CHECKED_LABEL}.
+            <strong style={{ color: 'var(--gold)' }}>PEPTIDEX discount applied</strong>. Prices checked: {PRICES_CHECKED_NOTE}.
           </p>
 
           <div style={{
@@ -675,7 +684,7 @@ export default function PricingClient() {
                 </div>
               )}
               <div className="prc-stat">
-                Prices checked: <strong>{PRICES_LAST_CHECKED_LABEL}</strong>
+                Prices checked: <strong>{PRICES_CHECKED_NOTE}</strong>
               </div>
             </div>
           )}
@@ -712,11 +721,11 @@ export default function PricingClient() {
             <p>
               💡 <strong>How PEPTIDEX discounts work:</strong> Enter code{" "}
               <strong>PEPTIDEX</strong> at checkout at any vendor showing the code badge above.
-              All {vendorsSorted.length} vendors in our index accept this code for 15–20% off.
+              All {vendorsSorted.length} vendors in our index accept this code for {CODE_PERCENT_RANGE} off.
               Bio Longevity Labs code stacks with site-wide sales for up to 40%+ savings.
             </p>
             <p>
-              Prices checked: {PRICES_LAST_CHECKED_LABEL}. Vendor pricing changes frequently —
+              Prices checked: {PRICES_CHECKED_NOTE}. Vendor pricing changes frequently —
               always confirm the final price at checkout before purchasing.{" "}
               <Link href="/about/editorial-policy" className="prc-footnote-link">
                 How we verify pricing →

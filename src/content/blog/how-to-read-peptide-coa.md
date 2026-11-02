@@ -120,7 +120,7 @@ To read this report, you must know the theoretical molecular weight of the pepti
 
 When you look at the mass spectrometry graph for a batch of BPC-157, the primary, massive peak on the X-axis must align almost perfectly with 1419.5 (often shown with various ionization states, such as [M+H]+ around 1420.5 or [M+2H]2+ around 710.8). If the primary peak is sitting at 800 or 2500, the vendor did not send you BPC-157.
 
-If a vendor provides an HPLC graph but refuses to provide Mass Spectrometry data, do not purchase from them. 
+If a vendor provides an HPLC purity graph but no identity test at all (mass spectrometry, FTIR, or HPLC against a reference standard), do not purchase from them. Mass spectrometry is the most direct identity check because it measures molecular weight. 
 
 ## 4. Net Content Verification (Label Accuracy)
 
@@ -157,7 +157,7 @@ When conducting an in-vitro assay or animal study, you cannot afford to compromi
 
 If you are looking for vendors that adhere strictly to these analytical transparency standards, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Elyria Bio is owned by PeptiDex's founder. Per Elyria Bio, it provides batch-specific COAs from an independent US lab for every compound it sells. You can verify the HPLC purity, the Mass Spectrometry identity, and the exact mass content before you make a purchase. 
+Elyria Bio is owned by PeptiDex's founder. Per Elyria Bio, it publishes lot-specific COAs from ILS Labs and BT Labs (per Elyria Bio) once a lot is tested and released. Each certificate shows the HPLC purity and the identity method (HPLC retention time or FTIR) before you make a purchase. 
 
 Furthermore, by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, your laboratory can get 10% off. These compounds are sold for laboratory research use only, not for human consumption.
 

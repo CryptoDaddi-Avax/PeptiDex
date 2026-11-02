@@ -33,7 +33,7 @@ export const RANKING_CRITERIA: Criterion[] = [
     key: "lab",
     label: "Third-party lab testing",
     max: 20,
-    rule: "Vendor states its COAs come from an independent third-party lab = 8; plus 4 each for HPLC purity, mass-spec identity (MS or LC-MS) and endotoxin testing listed on the COA.",
+    rule: "Vendor states its COAs come from an independent third-party lab = 8; plus 4 for HPLC purity; plus an identity test — 4 for mass spec (MS or LC-MS), 2 for FTIR or HPLC against a reference standard; plus 4 for endotoxin testing listed on the COA.",
   },
   {
     key: "price",
@@ -97,8 +97,11 @@ function scoreLab(v: ScorableVendor): [number, string] {
   const m = v.testingMethods.map((t) => t.toLowerCase());
   const hplc = m.some((t) => t.includes("hplc"));
   const ms = m.some((t) => t.includes("mass spec") || t.includes("lc-ms"));
+  // Partial identity credit: FTIR, or HPLC retention time against a reference standard
+  const otherIdentity = m.some((t) => t.includes("ftir") || t.includes("reference standard"));
+  const identity = ms ? 4 : otherIdentity ? 2 : 0;
   const endo = m.some((t) => t.includes("endotoxin"));
-  const points = (v.thirdPartyLab ? 8 : 0) + (hplc ? 4 : 0) + (ms ? 4 : 0) + (endo ? 4 : 0);
+  const points = (v.thirdPartyLab ? 8 : 0) + (hplc ? 4 : 0) + identity + (endo ? 4 : 0);
   const basis = [
     v.thirdPartyLab ? `Third-party lab: ${v.thirdPartyLab}` : "No third-party lab stated",
     v.testingMethods.join(", "),

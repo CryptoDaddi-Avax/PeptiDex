@@ -138,18 +138,21 @@ const vendorInputs: VendorInput[] = [
     discountStackable: false,
     purity: "99%+",
     coaStatus: "Batch-specific COA",
-    testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "Ships within 24 hours",
-    shippingCost: "Free over $150 · Free express over $250",
+    // Per elyriabio.com/company/laboratories.html: identity by HPLC retention time
+    // vs reference standard (ILS) or FTIR (BTLabs) — not mass spec. Endotoxin on all
+    // 13 released lots (confirmed by the owner 2026-11-02).
+    testingMethods: ["HPLC", "FTIR", "Endotoxin"],
+    shippingSpeed: "Ships within ~48 hours",
+    shippingCost: "Free over $150 · $6 flat under $150",
     shipsTo: ["USA"],
-    catalogSize: "29 peptides",
-    paymentMethods: ["Credit Card"],
+    catalogSize: "11 research products on sale",
+    paymentMethods: ["Venmo", "Cash App", "X Money", "Crypto"],
     returnPolicy: "Replacement or refund for nonconforming product",
     lastTestedDate: "2026-08-01",
     gaKey: "elyria_bio",
     domainMatch: "elyriabio.com",
     finnrickSlug: "elyria-bio",
-    thirdPartyLab: "independent US lab (not named by the vendor)",
+    thirdPartyLab: "ILS Labs and BT Labs (per Elyria Bio)",
     ownedByFounder: true,
   },
 

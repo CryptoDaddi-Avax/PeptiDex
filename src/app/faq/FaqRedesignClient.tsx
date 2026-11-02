@@ -16,7 +16,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'How does PeptiDex rank vendors?',
-    answer: 'Vendors must state that they provide COAs with HPLC and Mass Spectrometry data. We score every vendor on six published criteria — COA availability, third-party lab testing, price per mg, shipping, payment options and returns — using their own published information. PeptiDex does not test products. PeptiDex earns affiliate commission and its founder owns Elyria Bio.',
+    answer: 'Vendors must state that they provide COAs with HPLC purity data and an identity test (mass spectrometry, LC-MS, FTIR, or HPLC against a reference standard). We score every vendor on six published criteria — COA availability, third-party lab testing, price per mg, shipping, payment options and returns — using their own published information. PeptiDex does not test products. PeptiDex earns affiliate commission and its founder owns Elyria Bio.',
   },
   {
     question: 'Is PeptiDex a medical authority?',

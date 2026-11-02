@@ -47,7 +47,7 @@ faqSchema: |
         "name": "Where can researchers source these peptides?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Researchers should source these analytical chemicals from suppliers that provide batch-specific, independent HPLC and Mass Spectrometry documentation, such as Elyria Bio. They are sold for research use only, not for human consumption."
+          "text": "Researchers should source these analytical chemicals from suppliers that publish batch-specific third-party HPLC purity and identity documentation, such as Elyria Bio (owned by PeptiDex's founder). They are sold for research use only, not for human consumption."
         }
       }
     ]
