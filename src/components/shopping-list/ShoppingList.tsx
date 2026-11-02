@@ -1,52 +1,121 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import {
   ExternalLink, ShoppingCart, Copy, Check, ChevronDown,
-  Mail, Package, Tag,
+  Mail, Package, Tag, Plus, X,
 } from "lucide-react";
 import {
-  optimizeCycleVials,
+  optimizeCartVials,
+  getCartablePeptides,
   type VialOptimizationInput,
-  type VialOptimizationResult,
-  type VendorPlan,
 } from "@/lib/vial-optimizer";
-import type { CyclePeptideResult } from "@/lib/cycle-engine";
 import "./shopping-list.css";
 
 /* ── Props ─────────────────────────────────────────────── */
 
 interface ShoppingListProps {
-  /** Cycle results from the cycle planner engine */
-  cycleResults: CyclePeptideResult[];
+  /** Peptide preselected in the "add" form (falls back to the first stocked peptide) */
+  defaultPeptideSlug?: string;
   /** Optional: max vendors to show (default 5, top by cost) */
   maxVendors?: number;
 }
 
+/** One line of the user's cart: a peptide and how many vials of a given size */
+interface CartLine {
+  peptideSlug: string;
+  peptideName: string;
+  vialSizeMg: number;
+  vials: number;
+}
+
+const MAX_VIALS = 50;
+
 /* ── Component ──────────────────────────────────────────── */
 
-export function ShoppingList({ cycleResults, maxVendors = 5 }: ShoppingListProps) {
+export function ShoppingList({ defaultPeptideSlug, maxVendors = 5 }: ShoppingListProps) {
+  const cartable = useMemo(() => getCartablePeptides(), []);
+  const initialPeptide =
+    cartable.find((p) => p.slug === defaultPeptideSlug) ?? cartable[0];
+
+  const [lines, setLines] = useState<CartLine[]>([]);
+  const [formSlug, setFormSlug] = useState<string>(initialPeptide?.slug ?? "");
+  const [formSize, setFormSize] = useState<number>(initialPeptide?.vialSizesMg[0] ?? 0);
+  const [formVials, setFormVials] = useState<number>(1);
+
   const [breakdownOpen, setBreakdownOpen] = useState(false);
   const [overlayVendor, setOverlayVendor] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
 
-  // ── Transform CyclePeptideResults → VialOptimizationInputs ──
-  const optimizationInputs: VialOptimizationInput[] = useMemo(() =>
-    cycleResults.map((r) => ({
-      peptideSlug: r.peptideName.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""),
-      peptideName: r.peptideName,
-      doseMcg: r.doseMcg,
-      injectionsPerWeek: r.injectionsPerWeek,
-      cycleWeeks: r.cycleWeeks,
-    })),
-    [cycleResults]
-  );
+  const formPeptide = cartable.find((p) => p.slug === formSlug);
+
+  // Prefill from ?cart=slug1,slug2 (e.g. linked from the Interaction Checker):
+  // one vial of each peptide's smallest stocked size.
+  useEffect(() => {
+    const param = new URLSearchParams(window.location.search).get("cart");
+    if (!param) return;
+    const prefill: CartLine[] = [];
+    for (const slug of param.split(",")) {
+      const p = cartable.find((c) => c.slug === slug.trim());
+      if (p && !prefill.some((l) => l.peptideSlug === p.slug)) {
+        prefill.push({ peptideSlug: p.slug, peptideName: p.name, vialSizeMg: p.vialSizesMg[0], vials: 1 });
+      }
+    }
+    if (prefill.length > 0) setLines(prefill);
+  }, [cartable]);
+
+  // ── Cart editing ──
+  const handlePeptideChange = useCallback((slug: string) => {
+    setFormSlug(slug);
+    const p = cartable.find((c) => c.slug === slug);
+    setFormSize(p?.vialSizesMg[0] ?? 0);
+  }, [cartable]);
+
+  const addLine = useCallback(() => {
+    if (!formPeptide || formSize <= 0) return;
+    const vials = Math.min(MAX_VIALS, Math.max(1, Math.floor(formVials) || 1));
+    setLines((prev) => {
+      const idx = prev.findIndex(
+        (l) => l.peptideSlug === formPeptide.slug && l.vialSizeMg === formSize
+      );
+      if (idx >= 0) {
+        const next = [...prev];
+        next[idx] = { ...next[idx], vials: Math.min(MAX_VIALS, next[idx].vials + vials) };
+        return next;
+      }
+      return [
+        ...prev,
+        { peptideSlug: formPeptide.slug, peptideName: formPeptide.name, vialSizeMg: formSize, vials },
+      ];
+    });
+  }, [formPeptide, formSize, formVials]);
+
+  const removeLine = useCallback((idx: number) => {
+    setLines((prev) => prev.filter((_, i) => i !== idx));
+  }, []);
+
+  const updateLineVials = useCallback((idx: number, vials: number) => {
+    const clamped = Math.min(MAX_VIALS, Math.max(1, Math.floor(vials) || 1));
+    setLines((prev) => prev.map((l, i) => (i === idx ? { ...l, vials: clamped } : l)));
+  }, []);
+
+  // ── Cart lines → VialOptimizationInputs (one per peptide, quantities summed) ──
+  const optimizationInputs: VialOptimizationInput[] = useMemo(() => {
+    const byPeptide = new Map<string, VialOptimizationInput>();
+    for (const l of lines) {
+      const mg = l.vialSizeMg * l.vials;
+      const existing = byPeptide.get(l.peptideSlug);
+      if (existing) existing.quantityMg += mg;
+      else byPeptide.set(l.peptideSlug, { peptideSlug: l.peptideSlug, peptideName: l.peptideName, quantityMg: mg });
+    }
+    return Array.from(byPeptide.values());
+  }, [lines]);
 
   // ── Run optimizer ──
   const { results, vendorTotals } = useMemo(
-    () => optimizeCycleVials(optimizationInputs),
+    () => optimizeCartVials(optimizationInputs),
     [optimizationInputs]
   );
 
@@ -93,7 +162,7 @@ export function ShoppingList({ cycleResults, maxVendors = 5 }: ShoppingListProps
   );
 
   // ── CTA handlers ──
-  const handleCartClick = useCallback((plan: typeof vendorTotals[0], items: ReturnType<typeof getVendorPeptideBreakdown>) => {
+  const handleCartClick = useCallback((plan: typeof vendorTotals[0]) => {
     // For Tier 1 vendors, find the first result with this vendor and open cart URL
     for (const r of results) {
       const vp = r.vendorPlans.find((p) => p.vendorSlug === plan.vendorSlug);
@@ -159,7 +228,7 @@ export function ShoppingList({ cycleResults, maxVendors = 5 }: ShoppingListProps
         const cheapestPlan = r.vendorPlans[0];
         return {
           peptideName: r.peptideName,
-          bufferedMg: r.bufferedMg,
+          quantityMg: r.quantityMg,
           vialsNeeded: cheapestPlan?.vialsNeeded ?? 0,
           vialSizeMg: cheapestPlan?.vialSizeMg ?? 0,
           cheapestPrice: cheapestPlan?.subtotalAfterDiscount ?? 0,
@@ -173,7 +242,6 @@ export function ShoppingList({ cycleResults, maxVendors = 5 }: ShoppingListProps
           email,
           vendors: emailVendors,
           peptides: emailPeptides,
-          cycleDuration: cycleResults[0]?.cycleWeeks ?? 0,
           totalPeptides: results.length,
         }),
       });
@@ -192,191 +260,290 @@ export function ShoppingList({ cycleResults, maxVendors = 5 }: ShoppingListProps
     } finally {
       setEmailLoading(false);
     }
-  }, [email, vendorTotals, results, getVendorPeptideBreakdown, cycleResults]);
+  }, [email, vendorTotals, results, getVendorPeptideBreakdown]);
 
 
-  // ── Guard: no results ──
-  if (cycleResults.length === 0 || vendorTotals.length === 0) return null;
+  // ── Guard: nothing stocked ──
+  if (cartable.length === 0) return null;
 
   const visibleVendors = vendorTotals.slice(0, maxVendors);
+  const hasCart = lines.length > 0;
 
   return (
     <div className="shopping-list" id="shopping-list">
       {/* Header */}
       <div className="shopping-list-header">
         <h3 className="shopping-list-title">
-          <em>Procurement</em> Bridge
+          <em>Build</em> a vendor cart
         </h3>
         <span className="shopping-list-subtitle">
-          {results.length} peptide{results.length !== 1 ? "s" : ""} • {vendorTotals.length} vendor{vendorTotals.length !== 1 ? "s" : ""}
+          {hasCart
+            ? `${results.length} peptide${results.length !== 1 ? "s" : ""} • ${vendorTotals.length} vendor${vendorTotals.length !== 1 ? "s" : ""}`
+            : "Pick peptides and vial counts"}
         </span>
       </div>
 
-      {/* Vendor Cards — sorted by discounted cost ASC */}
-      <div className="vendor-cards">
-        {visibleVendors.map((vendor, idx) => {
-          const isBestDeal = idx === 0;
-          const isDeferred = vendor.actionType === "affiliate";
-          const items = getVendorPeptideBreakdown(vendor.vendorSlug);
-          const totalVials = items.reduce((sum, item) => sum + item.vialsNeeded, 0);
-
-          return (
-            <div
-              key={vendor.vendorSlug}
-              className={`vendor-card${isBestDeal ? " best-deal" : ""}${isDeferred ? " deferred" : ""}`}
-              id={`vendor-card-${vendor.vendorSlug}`}
-            >
-              {/* Left: Info */}
-              <div className="vendor-card-info">
-                <div className="vendor-card-name">
-                  {vendor.vendorName}
-                  {vendor.actionType === "cart" && (
-                    <span className="vendor-tier-badge tier-1">Cart Pre-fill</span>
-                  )}
-                  {vendor.actionType === "deeplink" && (
-                    <span className="vendor-tier-badge tier-2">Deep Link</span>
-                  )}
-                </div>
-
-                <div className="vendor-card-meta">
-                  <span>
-                    <Package size={12} />
-                    {totalVials} vial{totalVials !== 1 ? "s" : ""} • {vendor.peptideCount}/{results.length} peptides
-                  </span>
-                  {vendor.discountPercent > 0 && (
-                    <span>
-                      <Tag size={12} />
-                      {vendor.discountPercent}% off w/ PEPTIDEX
-                    </span>
-                  )}
-                </div>
-
-                {/* CTA */}
-                {vendor.actionType === "cart" && (
-                  <button
-                    className="vendor-cta cta-cart"
-                    onClick={() => handleCartClick(vendor, items)}
-                    id={`cta-cart-${vendor.vendorSlug}`}
-                  >
-                    <ShoppingCart size={14} />
-                    Build cart at {vendor.vendorName} →
-                  </button>
-                )}
-                {vendor.actionType === "deeplink" && (
-                  <button
-                    className="vendor-cta cta-deeplink"
-                    onClick={() => handleDeeplinkClick(vendor.vendorSlug)}
-                    id={`cta-deeplink-${vendor.vendorSlug}`}
-                  >
-                    <ExternalLink size={14} />
-                    Shop at {vendor.vendorName} →
-                  </button>
-                )}
-                {vendor.actionType === "affiliate" && (
-                  <span className="vendor-cta cta-deferred">
-                    Coming soon — Phase 1B
-                  </span>
-                )}
-              </div>
-
-              {/* Right: Pricing */}
-              <div className="vendor-card-cost">
-                <span className="vendor-cost-total">
-                  ${vendor.totalAfterDiscount.toFixed(2)}
-                </span>
-                {vendor.discountPercent > 0 && vendor.total !== vendor.totalAfterDiscount && (
-                  <>
-                    <span className="vendor-cost-original">
-                      ${vendor.total.toFixed(2)}
-                    </span>
-                    <span className="vendor-discount-badge">
-                      Save ${(vendor.total - vendor.totalAfterDiscount).toFixed(2)}
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-          );
-        })}
+      {/* Cart builder */}
+      <div className="cart-builder" id="cart-builder">
+        <label className="cart-builder-field cart-builder-peptide">
+          <span className="cart-builder-label">Peptide</span>
+          <select
+            className="cart-builder-input"
+            value={formSlug}
+            onChange={(e) => handlePeptideChange(e.target.value)}
+            id="cart-builder-peptide"
+          >
+            {cartable.map((p) => (
+              <option key={p.slug} value={p.slug}>{p.name}</option>
+            ))}
+          </select>
+        </label>
+        <label className="cart-builder-field">
+          <span className="cart-builder-label">Vial size</span>
+          <select
+            className="cart-builder-input"
+            value={formSize}
+            onChange={(e) => setFormSize(Number(e.target.value))}
+            id="cart-builder-size"
+          >
+            {(formPeptide?.vialSizesMg ?? []).map((s) => (
+              <option key={s} value={s}>{s} mg</option>
+            ))}
+          </select>
+        </label>
+        <label className="cart-builder-field">
+          <span className="cart-builder-label">Vials</span>
+          <input
+            type="number"
+            min={1}
+            max={MAX_VIALS}
+            step={1}
+            className="cart-builder-input"
+            value={formVials}
+            onChange={(e) => setFormVials(Number(e.target.value))}
+            onKeyDown={(e) => e.key === "Enter" && addLine()}
+            id="cart-builder-vials"
+          />
+        </label>
+        <button
+          type="button"
+          className="vendor-cta cta-cart cart-builder-add"
+          onClick={addLine}
+          disabled={!formPeptide || formSize <= 0}
+          id="cart-builder-add"
+        >
+          <Plus size={14} /> Add to cart
+        </button>
       </div>
 
-      {/* Peptide Breakdown (expandable) */}
-      <div className="peptide-breakdown">
-        <div
-          className="peptide-breakdown-header"
-          onClick={() => setBreakdownOpen(!breakdownOpen)}
-          id="peptide-breakdown-toggle"
-        >
-          <span className="peptide-breakdown-title">
-            Per-Peptide Vial Requirements (with 10% safety buffer)
-          </span>
-          <ChevronDown
-            size={14}
-            className={`peptide-breakdown-toggle${breakdownOpen ? " open" : ""}`}
-          />
-        </div>
-        <div className={`peptide-breakdown-rows${breakdownOpen ? " open" : ""}`}>
-          {results.map((r) => (
-            <div key={r.peptideSlug} className="peptide-breakdown-row">
-              <span className="pep-name">{r.peptideName}</span>
-              <span className="pep-detail">{r.bufferedMg.toFixed(1)} mg needed</span>
-              <span className="pep-detail">
-                {r.vendorPlans.length > 0
-                  ? `${r.vendorPlans[0].vialsNeeded}× ${r.vendorPlans[0].vialSizeMg}mg vials`
-                  : "No vendors"}
+      {hasCart ? (
+        <div className="cart-lines">
+          {lines.map((l, idx) => (
+            <div key={`${l.peptideSlug}-${l.vialSizeMg}`} className="cart-line">
+              <span className="cart-line-name">{l.peptideName}</span>
+              <span className="cart-line-detail">
+                <input
+                  type="number"
+                  min={1}
+                  max={MAX_VIALS}
+                  step={1}
+                  className="cart-line-qty"
+                  value={l.vials}
+                  onChange={(e) => updateLineVials(idx, Number(e.target.value))}
+                  aria-label={`Number of ${l.vialSizeMg}mg ${l.peptideName} vials`}
+                />
+                × {l.vialSizeMg}mg vial{l.vials !== 1 ? "s" : ""}
               </span>
-              <span className="pep-detail">
-                {r.vendorPlans.length > 0
-                  ? `from $${r.vendorPlans[0].subtotalAfterDiscount.toFixed(2)}`
-                  : "—"}
-              </span>
+              <button
+                type="button"
+                className="cart-line-remove"
+                onClick={() => removeLine(idx)}
+                aria-label={`Remove ${l.peptideName}`}
+              >
+                <X size={14} />
+              </button>
             </div>
           ))}
         </div>
-      </div>
+      ) : (
+        <p className="cart-empty">
+          Add one or more peptides to compare the total cost across vendors, with each
+          vendor&apos;s PEPTIDEX discount applied.
+        </p>
+      )}
 
-      {/* Safety Buffer Note */}
-      <div className="safety-buffer-note">
-        <strong>10% safety buffer included.</strong> Quantities include a non-negotiable
-        10% overage to prevent mid-cycle shortfall from reconstitution loss, dose rounding,
-        and vial retention.
-      </div>
+      {hasCart && vendorTotals.length === 0 && (
+        <p className="cart-empty">No in-stock vendor carries these items right now.</p>
+      )}
 
-      {/* Email Capture */}
-      <div className="email-capture" id="email-capture">
-        <input
-          type="email"
-          className="email-capture-input"
-          placeholder="Email me this shopping list..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleEmailSubmit()}
-          disabled={emailLoading}
-          id="email-capture-input"
-        />
-        <button
-          className="email-capture-btn"
-          onClick={handleEmailSubmit}
-          disabled={emailSent || emailLoading || !email.includes("@")}
-          id="email-capture-btn"
-        >
-          {emailSent ? (
-            <>
-              <Check size={14} /> Sent!
-            </>
-          ) : emailLoading ? (
-            <>
-              <Mail size={14} className="spin" /> Sending…
-            </>
-          ) : (
-            <>
-              <Mail size={14} /> Send List
-            </>
+      {hasCart && vendorTotals.length > 0 && (
+        <>
+          {/* Vendor Cards — sorted by discounted cost ASC */}
+          <div className="vendor-cards">
+            {visibleVendors.map((vendor, idx) => {
+              const isBestDeal = idx === 0;
+              const isDeferred = vendor.actionType === "affiliate";
+              const items = getVendorPeptideBreakdown(vendor.vendorSlug);
+              const totalVials = items.reduce((sum, item) => sum + item.vialsNeeded, 0);
+
+              return (
+                <div
+                  key={vendor.vendorSlug}
+                  className={`vendor-card${isBestDeal ? " best-deal" : ""}${isDeferred ? " deferred" : ""}`}
+                  id={`vendor-card-${vendor.vendorSlug}`}
+                >
+                  {/* Left: Info */}
+                  <div className="vendor-card-info">
+                    <div className="vendor-card-name">
+                      {vendor.vendorName}
+                      {vendor.actionType === "cart" && (
+                        <span className="vendor-tier-badge tier-1">Cart Pre-fill</span>
+                      )}
+                      {vendor.actionType === "deeplink" && (
+                        <span className="vendor-tier-badge tier-2">Deep Link</span>
+                      )}
+                    </div>
+
+                    <div className="vendor-card-meta">
+                      <span>
+                        <Package size={12} />
+                        {totalVials} vial{totalVials !== 1 ? "s" : ""} • {vendor.peptideCount}/{results.length} peptides
+                      </span>
+                      {vendor.discountPercent > 0 && (
+                        <span>
+                          <Tag size={12} />
+                          {vendor.discountPercent}% off w/ PEPTIDEX
+                        </span>
+                      )}
+                    </div>
+
+                    {/* CTA */}
+                    {vendor.actionType === "cart" && (
+                      <button
+                        className="vendor-cta cta-cart"
+                        onClick={() => handleCartClick(vendor)}
+                        id={`cta-cart-${vendor.vendorSlug}`}
+                      >
+                        <ShoppingCart size={14} />
+                        Build cart at {vendor.vendorName} →
+                      </button>
+                    )}
+                    {vendor.actionType === "deeplink" && (
+                      <button
+                        className="vendor-cta cta-deeplink"
+                        onClick={() => handleDeeplinkClick(vendor.vendorSlug)}
+                        id={`cta-deeplink-${vendor.vendorSlug}`}
+                      >
+                        <ExternalLink size={14} />
+                        Shop at {vendor.vendorName} →
+                      </button>
+                    )}
+                    {vendor.actionType === "affiliate" && (
+                      <span className="vendor-cta cta-deferred">
+                        Coming soon — Phase 1B
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Right: Pricing */}
+                  <div className="vendor-card-cost">
+                    <span className="vendor-cost-total">
+                      ${vendor.totalAfterDiscount.toFixed(2)}
+                    </span>
+                    {vendor.discountPercent > 0 && vendor.total !== vendor.totalAfterDiscount && (
+                      <>
+                        <span className="vendor-cost-original">
+                          ${vendor.total.toFixed(2)}
+                        </span>
+                        <span className="vendor-discount-badge">
+                          Save ${(vendor.total - vendor.totalAfterDiscount).toFixed(2)}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Peptide Breakdown (expandable) */}
+          <div className="peptide-breakdown">
+            <div
+              className="peptide-breakdown-header"
+              onClick={() => setBreakdownOpen(!breakdownOpen)}
+              id="peptide-breakdown-toggle"
+            >
+              <span className="peptide-breakdown-title">
+                Per-Peptide Breakdown (cheapest vendor)
+              </span>
+              <ChevronDown
+                size={14}
+                className={`peptide-breakdown-toggle${breakdownOpen ? " open" : ""}`}
+              />
+            </div>
+            <div className={`peptide-breakdown-rows${breakdownOpen ? " open" : ""}`}>
+              {results.map((r) => (
+                <div key={r.peptideSlug} className="peptide-breakdown-row">
+                  <span className="pep-name">{r.peptideName}</span>
+                  <span className="pep-detail">{r.quantityMg} mg total</span>
+                  <span className="pep-detail">
+                    {r.vendorPlans.length > 0
+                      ? `${r.vendorPlans[0].vialsNeeded}× ${r.vendorPlans[0].vialSizeMg}mg vials`
+                      : "No vendors"}
+                  </span>
+                  <span className="pep-detail">
+                    {r.vendorPlans.length > 0
+                      ? `from $${r.vendorPlans[0].subtotalAfterDiscount.toFixed(2)}`
+                      : "—"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Vial size note */}
+          <div className="vial-size-note">
+            <strong>Vial sizes differ by vendor.</strong> Each vendor&apos;s total covers at
+            least the same total mg as your cart, rounded up to whole vials.
+          </div>
+
+          {/* Email Capture */}
+          <div className="email-capture" id="email-capture">
+            <input
+              type="email"
+              className="email-capture-input"
+              placeholder="Email me this shopping list..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleEmailSubmit()}
+              disabled={emailLoading}
+              id="email-capture-input"
+            />
+            <button
+              className="email-capture-btn"
+              onClick={handleEmailSubmit}
+              disabled={emailSent || emailLoading || !email.includes("@")}
+              id="email-capture-btn"
+            >
+              {emailSent ? (
+                <>
+                  <Check size={14} /> Sent!
+                </>
+              ) : emailLoading ? (
+                <>
+                  <Mail size={14} className="spin" /> Sending…
+                </>
+              ) : (
+                <>
+                  <Mail size={14} /> Send List
+                </>
+              )}
+            </button>
+          </div>
+          {emailError && (
+            <div className="email-error" role="alert">{emailError}</div>
           )}
-        </button>
-      </div>
-      {emailError && (
-        <div className="email-error" role="alert">{emailError}</div>
+        </>
       )}
 
 

@@ -15,7 +15,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Ipamorelin vs CJC-1295: Stack Comparison Guide';
 const POST_DESC = 'Compare the mechanisms of GHRP vs GHRH. Explore the synergy of stacking Ipamorelin with CJC-1295 without DAC to safely elevate endogenous growth hormone pulses.';
-const AUTHOR = 'Editorial Team';
+const AUTHOR = 'PeptiDex Editorial Team';
 const DATE_PUB = '2026-03-10';
 const DATE_MOD = '2026-04-01';
 
@@ -64,7 +64,7 @@ export default function BlogPostTemplate() {
     description: POST_DESC,
     keywords: metadata.keywords,
     image: 'https://peptidex.app/og-image.png',
-    author: { '@type': 'Person', name: AUTHOR },
+    author: { '@type': 'Organization', name: AUTHOR, url: 'https://peptidex.app/team/peptidex-research' },
     publisher: {
       '@type': 'Organization',
       name: 'PeptiDex',

@@ -7,7 +7,7 @@ import { getCategoryIcon } from "@/data/category-icons";
 import { SaveButton } from "@/components/save-button";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { AuthorByline } from '@/components/shared/AuthorByline';
-import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
+import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO, EVIDENCE_SCALE } from '@/data/constants';
 import { PeptideStackCard } from '@/components/affiliate/PeptideStackCard';
 import { StackCartBuilder } from '@/components/affiliate/StackCartBuilder';
 import './best-goal-redesign.css';
@@ -25,17 +25,10 @@ function getPepCardRole(index: number): PepRole {
     return ROLE_SEQUENCE[index] ?? 'support';
 }
 
-function getPepDosingSummary(pep: { dosing?: { typical_dose_mcg?: [number, number]; frequency?: string } | null; category?: string }): string {
-    if (pep.dosing) {
-        const dose = pep.dosing.typical_dose_mcg;
-        const freq = pep.dosing.frequency ?? '';
-        if (dose) {
-            const doseStr = dose[0] === dose[1] ? `${dose[0]}mcg` : `${dose[0]}-${dose[1]}mcg`;
-            return freq ? `${doseStr} ${freq}`.slice(0, 28) : doseStr.slice(0, 28);
-        }
-        return freq.slice(0, 28) || 'Dosing varies';
-    }
-    return pep.category === 'injectable' ? 'Dosing varies' : 'See library';
+function getPepEvidenceLabel(pep: { key_studies?: { evidence_level?: string }[]; category?: string }): string {
+    const level = pep.key_studies?.[0]?.evidence_level;
+    if (level && EVIDENCE_SCALE[level]) return `${EVIDENCE_SCALE[level].label} evidence`.slice(0, 28);
+    return (pep.category ?? 'See library').slice(0, 28);
 }
 
 function getPepRationale(pep: { primary_benefits?: string; mechanism?: string | null }): string {
@@ -51,6 +44,17 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
 
     /* Derive a clean display name for the title */
     const titleText = goal.h1.replace(/^Best Peptides for\s*/i, '');
+
+    /* Studies cited for this goal (goal references + key studies of featured peptides), de-duplicated by URL */
+    const citedStudyCount = new Set([
+        ...peptides.flatMap(p => p.key_studies.map(s => s.pubmed_url)),
+        ...(goal.references ?? []).map(r => r.link),
+    ].filter(Boolean)).size;
+
+    /* Side-by-side comparison of the featured peptides (compare tool accepts up to 3) */
+    const compareHref = peptides.length >= 2
+        ? `/tools/compare?p=${peptides.slice(0, 3).map(p => p.slug).join(',')}`
+        : '/tools/compare';
 
     return (
             <>
@@ -75,36 +79,38 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                         <SaveButton type="goal" slug={slug} title={goal.h1} />
                     </div>
 
-                    <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="compact" className="justify-center mt-6 mb-2" />
+                    <AuthorByline name="PeptiDex Editorial Team" date={LAST_REVIEWED_DATE} variant="compact" className="justify-center mt-6 mb-2" />
 
                     <p className="goal-page-subtitle">{goal.intro}</p>
                     <div className="goal-page-meta">
                         <div className="goal-meta-item"><strong>{goal.stackNames.length}</strong> curated stack{goal.stackNames.length !== 1 ? 's' : ''}</div>
                         <div className="goal-meta-item"><strong>{peptides.length}</strong> peptides involved</div>
-                        <div className="goal-meta-item"><strong>12</strong> week protocol</div>
+                        {citedStudyCount > 0 && (
+                            <div className="goal-meta-item"><strong>{citedStudyCount}</strong> cited stud{citedStudyCount !== 1 ? 'ies' : 'y'}</div>
+                        )}
                         <div className="goal-meta-item"><strong>Intermediate</strong> level</div>
                     </div>
                 </div>
             </header>
 
-            {/* ═══ PROTOCOL SECTION ═══ */}
+            {/* ═══ STACK SECTION ═══ */}
             <section className="goal-protocol-section fade-up">
                 <div className="goal-container">
-                    <div className="goal-section-label">§ The Protocol</div>
+                    <div className="goal-section-label">§ The Research</div>
                     <h2 className="goal-protocol-title">
                         The <em>{titleText}</em> stack.
                     </h2>
                     <p className="goal-protocol-desc">
-                        A balanced protocol engineered for {titleText.toLowerCase()} via targeted peptide synergy.
+                        Peptides studied for {titleText.toLowerCase()}, grouped by complementary mechanisms of action.
                     </p>
 
                     <div className="goal-protocol-block">
                         <div className="goal-section-label">§ The Stack</div>
                         <h3 className="goal-protocol-block-title">
-                            {peptides.length} peptides, <em>precisely</em> sequenced.
+                            {peptides.length} peptides, <em>complementary</em> roles.
                         </h3>
                         <p className="goal-protocol-block-desc">
-                            Each peptide plays a specific role. Removing any one breaks the synergy.
+                            Each peptide has been studied through a different mechanism; no controlled human trial has tested these compounds as a combination.
                         </p>
 
                         {/* ── PeptideStackCard grid ── */}
@@ -115,33 +121,33 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                                     peptideSlug={pep.slug}
                                     peptideName={pep.name}
                                     role={getPepCardRole(i)}
-                                    dosingSummary={getPepDosingSummary(pep)}
+                                    summaryLabel={getPepEvidenceLabel(pep)}
                                     rationale={getPepRationale(pep)}
                                     surface="goal_page"
                                 />
                             ))}
-                            <Link href={`/tools/cycle-planner?goal=${slug}`} className="goal-protocol-pep cta-card">
-                                <div className="goal-pep-role">§ Build your version</div>
-                                <h4>Customize this protocol</h4>
-                                <p>Open this protocol in the Cycle Planner to adjust duration, swap peptides, and generate your reference dosing chart.</p>
+                            <Link href={compareHref} className="goal-protocol-pep cta-card">
+                                <div className="goal-pep-role">§ Go deeper</div>
+                                <h4>Compare these peptides</h4>
+                                <p>See evidence levels, half-lives, synergies, and safety notes side by side in the Compare tool.</p>
                             </Link>
                         </div>
                     </div>
 
-                    {/* Expected outcomes */}
-                    <div className="goal-section-label goal-outcomes-label">§ Expected Outcomes</div>
-                    <h3 className="goal-outcomes-title">Based on published <em>trial data</em>.</h3>
+                    {/* Research overview */}
+                    <div className="goal-section-label goal-outcomes-label">§ Research Overview</div>
+                    <h3 className="goal-outcomes-title">Outcomes reported in <em>published studies</em>.</h3>
 
                     <div className="goal-expected-results">
                         <div className="goal-result-card">
-                            <div className="goal-result-label">Primary target</div>
+                            <div className="goal-result-label">Research area</div>
                             <div className="goal-result-value">{titleText}</div>
-                            <div className="goal-result-desc">Optimized through peptide synergy</div>
+                            <div className="goal-result-desc">Mostly preclinical or small human studies; see citations below</div>
                         </div>
                         <div className="goal-result-card">
                             <div className="goal-result-label">Compounds</div>
                             <div className="goal-result-value">{peptides.length} active</div>
-                            <div className="goal-result-desc">Covering {peptides.length} complementary pathways</div>
+                            <div className="goal-result-desc">Studied via {peptides.length} distinct mechanisms</div>
                         </div>
                         <div className="goal-result-card">
                             <div className="goal-result-label">Stacks</div>
@@ -151,8 +157,8 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                     </div>
 
                     <div className="goal-cta-row">
-                        <Link href={`/tools/cycle-planner?goal=${slug}`} className="btn-primary">
-                            <span>Plan this cycle</span>
+                        <Link href={compareHref} className="btn-primary">
+                            <span>Compare side by side</span>
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
                         </Link>
                         <Link href="/vendors" className="btn-ghost">Find verified sources</Link>
@@ -259,7 +265,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
 
             {/* ═══ DISCLAIMER ═══ */}
             <div className="goal-disclaimer">
-                ⚠ Educational only · Not medical advice · Most peptides are research-only / not FDA-approved
+                ⚠ Educational only · Not medical advice · Most peptides discussed here are not FDA-approved and are sold for research use only, not for human consumption
             </div>
             </>
     );

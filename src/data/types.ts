@@ -7,15 +7,9 @@ export interface Study {
     evidence_level: EvidenceLevel;
 }
 
-export interface DosingProtocol {
-    route: string;                     // "SubQ" | "IM" | "Nasal" | "Oral" | "Topical"
-    typical_dose_mcg: [number, number]; // range [low, high] in micrograms
-    frequency: string;                  // "Daily" | "2x/week" | "5 on 2 off" etc
-    cycle_weeks?: [number, number];     // cycle length range
-    timing?: string;                    // "Morning" | "Pre-bed" | "Pre-workout"
-    reconstitution_ml?: number;         // diluent volume per standard vial (ml)
-    typical_vial_mg?: number;           // standard vial size (mg)
-    notes?: string;
+export interface StudiedDoseCitation {
+    title: string;   // title of an FDA label or human trial already listed in key_studies
+    url: string;
 }
 
 export interface PeptideInteractions {
@@ -34,7 +28,7 @@ export interface OutcomesTimeline {
 
 export interface SideEffect {
     name: string;
-    incidence: string;       // e.g. "~5% of users" | "rare (<2%)"
+    incidence: string;       // qualitative label, e.g. "Reported in clinical trials" | "Rare reports" | "Frequency not established"; use "reported in N% of study participants (pubmed X)" only when a key_studies entry for that peptide reports the figure
     severity: "mild" | "moderate" | "uncommon" | "rare";
     note?: string;
 }
@@ -52,7 +46,8 @@ export interface Peptide {
     safety_notes: string;
     is_fda_approved?: boolean;
     half_life_hours?: number;
-    dosing?: DosingProtocol;
+    route_studied?: string;  // administration route used in published studies: "SubQ" | "IM" | "Nasal" | "Oral" | "Topical" (no dose info)
+    studied_dose_citation?: StudiedDoseCitation;  // only for compounds with an FDA label or human trial
     interactions?: PeptideInteractions;
     outcomes_timeline?: OutcomesTimeline;
     side_effects?: SideEffect[];

@@ -69,7 +69,7 @@ export default function AboutPage() {
         name: 'Who runs PeptiDex?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'PeptiDex is managed by an independent editorial team and supported by expert reviewers dedicated to curating evidence-based peptide science. We do not accept sponsorships from vendors to influence our reviews or rankings.'
+          text: 'PeptiDex is independently operated by its founder and published under the byline PeptiDex Editorial Team. Content is compiled from published research, vendor Certificates of Analysis, and vendor price data. No medical professionals review the content. The site is affiliate-funded; we do not accept sponsorships from vendors to influence our reviews or rankings.'
         }
       }
     ]
@@ -115,26 +115,16 @@ export default function AboutPage() {
           conduct safe, effective, and reproducible studies.
         </p>
 
-        <h2>Our Editorial Team</h2>
+        <h2>Who Runs PeptiDex</h2>
         <p>
-          PeptiDex is maintained by an independent group of researchers, data analysts, and writers dedicated to 
-          curating evidence-based peptide science. We do not have a medical board or clinical staff on payroll, 
-          which allows us to remain entirely free from pharmaceutical or vendor influence.
+          PeptiDex is independently operated by its founder and published under the byline{' '}
+          <Link href="/team/peptidex-research" className="text-emerald-400 font-bold hover:underline">PeptiDex Editorial Team</Link>.
+          Content is compiled from published research, vendor Certificates of Analysis, and vendor price data.
+          No medical professionals review the content, and nothing on this site is medical advice.
         </p>
         <p>
-          Meet the team behind the research:
+          PeptiDex is affiliate-funded: we may earn a commission when you buy through vendor links on the site.
         </p>
-        <ul>
-          <li>
-            <Link href="/team/peptidex-research" className="text-emerald-400 font-bold hover:underline">PeptiDex Research Team</Link> — Our core editorial staff responsible for vendor verification, data aggregation, and library curation.
-          </li>
-          <li>
-            <Link href="/team/dr-e-vance" className="text-emerald-400 font-bold hover:underline">Dr. E. Vance, PhD</Link> — Independent contributor and principal author of our educational library.
-          </li>
-          <li>
-            <span className="text-emerald-400 font-bold">Legal &amp; Compliance</span> — Manages our regulatory tracking and terms of service.
-          </li>
-        </ul>
 
         <h2>Who We Are / Who We&apos;re Not</h2>
         
@@ -192,7 +182,7 @@ export default function AboutPage() {
           </div>
           <div className="faq-item">
             <h3>Who runs PeptiDex?</h3>
-            <p>PeptiDex is managed by an independent editorial team and supported by expert reviewers dedicated to curating evidence-based peptide science. We do not accept sponsorships from vendors to influence our reviews or rankings.</p>
+            <p>PeptiDex is independently operated by its founder and published under the byline PeptiDex Editorial Team. Content is compiled from published research, vendor Certificates of Analysis, and vendor price data. No medical professionals review the content. The site is affiliate-funded; we do not accept sponsorships from vendors to influence our reviews or rankings.</p>
           </div>
         </div>
 
@@ -204,7 +194,7 @@ export default function AboutPage() {
         </p>
 
         <p className="affiliate-note">
-          PeptiDex is independent and self-funded. We may earn affiliate commission on qualifying purchases through
+          PeptiDex is independent and affiliate-funded. We may earn affiliate commission on qualifying purchases through
           links to verified vendors — this disclosure is required by FTC guidelines and does not affect our editorial.
         </p>
       </div>

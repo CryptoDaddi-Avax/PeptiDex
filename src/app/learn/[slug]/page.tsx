@@ -159,8 +159,8 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
                 </div>
               )}
               <div className="p-3 rounded-xl bg-zinc-950/50 border border-zinc-800/50">
-                <p className="text-[10px] font-bold text-zinc-500 uppercase mb-1">Route</p>
-                <p className="text-sm text-zinc-200 font-semibold">{peptide.dosing?.route || 'Varies'}</p>
+                <p className="text-[10px] font-bold text-zinc-500 uppercase mb-1">Route Studied</p>
+                <p className="text-sm text-zinc-200 font-semibold">{peptide.route_studied || 'Varies'}</p>
               </div>
               <div className="p-3 rounded-xl bg-zinc-950/50 border border-zinc-800/50">
                 <p className="text-[10px] font-bold text-zinc-500 uppercase mb-1">FDA Status</p>
@@ -317,7 +317,7 @@ export default async function LearnPeptidePage({ params }: { params: Promise<{ s
               <div>
                 <p className="text-xs text-zinc-500 uppercase tracking-widest mb-1">Full Research Profile</p>
                 <h3 className="text-lg font-bold text-zinc-100 group-hover:text-violet-400 transition-colors">
-                  {peptide.name} — dosing, interactions, timelines & more
+                  {peptide.name} — mechanism, studies, interactions & more
                 </h3>
                 <p className="text-sm text-zinc-400 mt-1">Comprehensive compound profile with sourcing information, stacking synergies, and outcome timelines.</p>
               </div>

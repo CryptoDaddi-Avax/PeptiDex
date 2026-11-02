@@ -13,7 +13,7 @@ import { SHORT_DISCLAIMER } from "@/data/constants";
 import {
   ShieldAlert, X, Search, CheckCircle, AlertTriangle,
   XCircle, Ban, ExternalLink, BookOpen, FlaskConical,
-  ArrowRight, Bookmark, ChevronDown, ChevronUp,
+  ArrowRight, ShoppingCart, ChevronDown, ChevronUp,
 } from "lucide-react";
 import { getCategoryIcon } from "@/data/category-icons";
 
@@ -158,9 +158,12 @@ export default function InteractionsPage() {
     });
   };
 
-  const saveToPlanner = () => {
-    const params = new URLSearchParams({ stack: selected.join(",") });
-    window.location.href = `/tools/cycle-planner?${params}`;
+  const priceThisStack = () => {
+    const slugs = selected
+      .map((name) => peptides.find((p) => p.name === name)?.slug)
+      .filter(Boolean) as string[];
+    const params = new URLSearchParams({ cart: slugs.join(",") });
+    window.location.href = `/tools/pricing?${params}#shopping-list`;
   };
 
   // Group by severity for rendering
@@ -234,11 +237,11 @@ export default function InteractionsPage() {
       {selected.length >= 2 && (
         <div className="flex items-center gap-2 mb-4">
           <button
-            onClick={saveToPlanner}
+            onClick={priceThisStack}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/25 transition-colors"
           >
-            <Bookmark className="w-3.5 h-3.5" />
-            Save Stack to Cycle Planner
+            <ShoppingCart className="w-3.5 h-3.5" />
+            Compare Vendor Prices for This Stack
             <ArrowRight className="w-3 h-3" />
           </button>
           <button
@@ -301,7 +304,7 @@ export default function InteractionsPage() {
                 { key: "doNotStack", label: "DO NOT STACK", count: summary.doNotStack, cfg: SEVERITY_CONFIG.DO_NOT_STACK },
                 { key: "warnings",   label: "WARNING",      count: summary.warnings,   cfg: SEVERITY_CONFIG.WARNING      },
                 { key: "cautions",   label: "CAUTION",      count: summary.cautions,   cfg: SEVERITY_CONFIG.CAUTION      },
-                { key: "safe",       label: "SAFE",         count: summary.safe,        cfg: SEVERITY_CONFIG.SAFE         },
+                { key: "safe",       label: SEVERITY_CONFIG.SAFE.label, count: summary.safe,        cfg: SEVERITY_CONFIG.SAFE         },
               ].map(({ key, label, count, cfg }) => (
                 <div key={key} className={`rounded-lg p-2 text-center ${cfg.bg} border ${cfg.border}`}>
                   <p className={`text-lg font-bold ${cfg.text}`}>{count}</p>
@@ -372,7 +375,7 @@ export default function InteractionsPage() {
           {safe.length > 0 && (
             <div className="space-y-3">
               <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400">
-                ✅ Known Safe Combinations ({safe.length})
+                No Known Conflict ({safe.length})
               </h2>
               {safe.map((i, idx) => <InteractionCard key={idx} interaction={i} />)}
             </div>
@@ -381,11 +384,11 @@ export default function InteractionsPage() {
           {/* Save CTA at bottom */}
           <div className="pt-2 pb-6">
             <button
-              onClick={saveToPlanner}
+              onClick={priceThisStack}
               className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-bold hover:opacity-90 transition-opacity shadow-lg shadow-violet-900/30"
             >
-              <Bookmark className="w-4 h-4" />
-              Save This Stack to Cycle Planner
+              <ShoppingCart className="w-4 h-4" />
+              Compare Vendor Prices for This Stack
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

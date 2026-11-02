@@ -4,7 +4,6 @@ const path = require('path');
 const BLOG_DIR = path.join(__dirname, 'src/app/blog');
 
 const slugMap = {
-  'Dr. E. Vance': 'dr-e-vance',
   'PeptideX Editorial': 'peptidex-editorial',
   'Editorial Team': 'peptidex-editorial',
   'Legal Dept': 'peptidex-editorial',

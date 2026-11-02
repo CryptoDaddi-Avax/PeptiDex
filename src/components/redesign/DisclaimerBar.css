@@ -26,6 +26,12 @@
   overflow: hidden;
 }
 
+.disclaimer-bar .disclaimer-text {
+  margin: 0;
+  max-width: 100%;
+  text-align: center;
+}
+
 .disclaimer-bar .warn { font-weight: 500; }
 
 .disclaimer-bar a {
@@ -43,9 +49,19 @@
 }
 
 /* ---------- MOBILE ---------- */
+/* The full statement stays visible on small screens: the text wraps onto
+   (at most) two compact lines inside the fixed-height bar. */
 @media (max-width: 680px) {
-  .disclaimer-bar { font-size: 10px; gap: 6px; }
-  .disclaimer-bar .verbose { display: none; }
+  .disclaimer-bar {
+    font-size: 10px;
+    padding: 0 10px;
+    white-space: normal;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 380px) {
+  .disclaimer-bar { font-size: 9.5px; padding: 0 8px; }
 }
 
 /* ---------- SAFE AREAS (notch / home indicator) ---------- */
@@ -65,5 +81,8 @@
   .disclaimer-bar a {
     display: inline-block;
     padding: 6px 0;
+    /* Negative margin keeps the larger hit area without growing the line box,
+       so the wrapped two-line text still fits the bar height. */
+    margin: -6px 0;
   }
 }

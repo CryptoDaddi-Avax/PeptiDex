@@ -24,7 +24,13 @@ export async function generateMetadata({
         .eq("status", "published")
         .single();
 
-    if (!log) return { title: "Protocol Log | PeptiDex" };
+    if (!log) {
+        return {
+            title: "Protocol Log | PeptiDex",
+            alternates: { canonical: `https://peptidex.app/logs/entry/${id}` },
+            robots: { index: false, follow: true },
+        };
+    }
 
     const pepNames = (log.peptide_slugs as string[]).map(s => peptides.find(p => p.slug === s)?.name || s).join(" + ");
     const vendorName = vendors.find(v => v.slug === log.vendor_slug)?.name || log.vendor_slug;
@@ -34,7 +40,7 @@ export async function generateMetadata({
         title,
         description: `Community-submitted protocol log for ${pepNames} from ${vendorName}. Efficacy: ${log.efficacy_score}/10.`,
         alternates: { canonical: `https://peptidex.app/logs/entry/${id}` },
-        robots: { index: true, follow: true },
+        robots: { index: false, follow: true },
     };
 }
 
@@ -157,9 +163,6 @@ export default async function LogDetailPage({
                         {[
                             { label: "Peptide(s)", value: pepNames.join(" + ") },
                             { label: "Vendor", value: vendorObj?.name || log.vendor_slug },
-                            log.dose_mcg && { label: "Dose", value: `${log.dose_mcg} mcg` },
-                            log.frequency && { label: "Frequency", value: log.frequency.replace(/_/g, "/") },
-                            log.duration_weeks && { label: "Duration", value: `${log.duration_weeks} weeks` },
                             log.route && { label: "Route", value: log.route },
                             log.goal_slug && { label: "Goal", value: log.goal_slug.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()) },
                             { label: "Would Repeat", value: log.would_repeat ? "✓ Yes" : "✗ No" },

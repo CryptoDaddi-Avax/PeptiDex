@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ChevronRight, ExternalLink, ArrowRight, BookOpen, Calendar, BadgeCheck, Award } from 'lucide-react';
+import { ChevronRight, ExternalLink, ArrowRight, BookOpen, Calendar, Award } from 'lucide-react';
 import { getAllAuthorSlugs, getAuthorBySlug, getAuthorSlug, getCanonicalSlug } from '@/data/authors';
 import { blogPosts, formatDate } from '@/data/blog';
 
@@ -47,22 +47,14 @@ export default async function AuthorProfilePage(props: Props) {
     .filter((p) => getAuthorSlug(p.author) === slug)
     .sort((a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime());
 
-  // JSON-LD Person Schema — url uses /about/${slug} (matches canonical above)
-  const personSchema = {
+  // JSON-LD author Organization — url uses /about/${slug} (matches canonical above)
+  const authorSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
+    '@type': 'Organization',
     name: author.name,
-    jobTitle: author.title,
-    image: `https://peptidex.app${author.image}`,
+    logo: `https://peptidex.app${author.image}`,
     description: author.bio,
     url: `https://peptidex.app/about/${slug}`,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'PeptiDex',
-      url: 'https://peptidex.app',
-    },
-    sameAs: author.sameAs.length > 0 ? author.sameAs : undefined,
-    knowsAbout: author.expertise,
   };
 
   const breadcrumbSchema = {
@@ -77,7 +69,7 @@ export default async function AuthorProfilePage(props: Props) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-12">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       {/* Breadcrumbs */}
@@ -115,10 +107,6 @@ export default async function AuthorProfilePage(props: Props) {
                 <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-zinc-100">
                   {author.name}
                 </h1>
-                <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                  <BadgeCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">Verified Author</span>
-                </div>
               </div>
               <p className="text-sm md:text-base text-violet-400 font-medium mt-1">{author.title}</p>
             </div>

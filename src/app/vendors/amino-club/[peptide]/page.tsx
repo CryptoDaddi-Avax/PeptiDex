@@ -303,18 +303,18 @@ export default async function AminoClubProductPage({ params }: { params: Promise
           </AutoLink>
         </section>
 
-        {/* ── WHO SHOULD CONSIDER ── */}
-        <section id="who-should-consider">
+        {/* ── WHAT IS IT STUDIED FOR ── */}
+        <section id="what-is-it-studied-for">
           <div className="section-label">§ Research Context</div>
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">Who should consider {name}?</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">What is {name} studied for?</h2>
           <AutoLink>
             <p className="text-zinc-400 leading-relaxed mb-4">
-              Based on the current body of literature, {name} is primarily investigated for its effects related to {pData.primary_benefits.toLowerCase()}. Researchers studying {pData.category.toLowerCase()} pathways often select {name} over alternatives due to its specific mechanism of action.
+              In the published literature, {name} has been studied for endpoints related to {pData.primary_benefits.toLowerCase()}. Study models in {pData.category.toLowerCase()} research range from cell and animal work to, for some compounds, small human trials, so findings should be read in the context of each study design.
             </p>
             <p className="text-zinc-400 leading-relaxed">
-              <strong className="text-zinc-200">Dosing & Administration:</strong> If you are planning a research protocol with {name}, you can refer to our comprehensive{' '}
+              <strong className="text-zinc-200">Research Profile:</strong> For the published literature on {name}, see our comprehensive{' '}
               <Link href={`/library/${slug}`} className="text-emerald-400 font-semibold hover:underline">{name} Research Profile</Link>{' '}
-              for aggregated data on clinical half-life ({pData.half_life_hours} hours), receptor affinity, and standard investigational dosing parameters.
+              for reported half-life ({pData.half_life_hours} hours), mechanism of action, and cited studies.
             </p>
           </AutoLink>
         </section>

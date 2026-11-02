@@ -18,14 +18,24 @@ const GONE_EXACT = [
   "/goals/metabolic-health",
   "/stacks/fat-loss-focus-stack",
   "/stacks/metabolic-insulin-sensitivity-stack",
+  // Human cycling guide removed 2026-11-01
+  "/blog/peptide-cycle-length-research-guide",
 ];
 
 // Matches the path itself and any subpath.
-const GONE_PREFIX = ["/tools/calculator", "/tools/reconstitution-calculator"];
+const GONE_PREFIX = [
+  "/tools/calculator",
+  "/tools/reconstitution-calculator",
+  // Dose-planning / personal-use tools removed 2026-11-01
+  "/tools/cycle-planner",
+  "/tools/bloodwork",
+  "/protocol",
+  "/tracker",
+];
 
 // Any URL naming a removed compound (library, learn, logs, peptides/*/at/*,
 // buy, where-to-buy, vendor product pages, compare/vs pairs, blog, COA PDFs).
-// Kept in sync with REMOVED_SLUG_PATTERN in next.config.ts.
+// Kept in sync with KEEP_SLUG in next.config.ts.
 export const REMOVED_COMPOUND_PATTERN =
   /retatrutide|tirzepatide|semaglutide|cagrilintide|cagrisema|tesofensine|glp-?1|wegovy|ozempic|mounjaro|zepbound|rybelsus|saxenda|liraglutide|orforglipron/i;
 

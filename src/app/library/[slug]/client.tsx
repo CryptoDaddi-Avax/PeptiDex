@@ -15,7 +15,7 @@ import { legalData, legalStatusColors, legalStatusLabels } from '@/data/legal-st
 import { comparisons } from '@/data/comparisons';
 import {
   ExternalLink, ShieldAlert, Info, Beaker, BookOpen,
-  BadgeCheck, Clock, Syringe, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight, User as UserIcon, Calendar as CalendarIcon
+  BadgeCheck, Clock, Globe, TrendingUp, AlertCircle, Sparkles, GitCompare, ArrowRight, User as UserIcon, Calendar as CalendarIcon
 } from 'lucide-react';
 import { HalfLifeChart } from '@/components/half-life-chart';
 import { LeadMagnetInline } from '@/components/lead-magnet-inline';
@@ -26,7 +26,7 @@ import { WhereToBuySection } from '@/components/library/WhereToBuySection';
 import { TrustBlock } from '@/components/library/TrustBlock';
 import { RelatedArticles } from '@/components/related-articles';
 import { AffiliateSource } from '@/components/affiliate-source';
-import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
+import { DisclaimerCard } from '@/components/ui/DisclaimerCard';
 import { StickyQuickCompare } from '@/components/sticky-quick-compare';
 import { StackCard } from '@/components/stack-card';
 import { SaveButton } from '@/components/save-button';
@@ -124,7 +124,7 @@ export function PeptideDetailRedesign({
             <SaveButton type="peptide" slug={peptide.slug} title={peptide.name} />
           </div>
 
-          <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="compact" className="mt-6 mb-2" />
+          <AuthorByline name="PeptiDex Editorial Team" date={LAST_REVIEWED_DATE} variant="compact" className="mt-6 mb-2" />
 
           {peptide.aliases.length > 0 && (
             <p className="pd-aliases">Also known as: {peptide.aliases.join(', ')}</p>
@@ -189,7 +189,7 @@ export function PeptideDetailRedesign({
             </Section>
 
             {/* Benefits */}
-            <Section icon={<Beaker />} label="§ Primary Benefits" title="Benefits">
+            <Section icon={<Beaker />} label="§ Areas of Research" title="Benefits">
               <ol className="pd-benefits-list">
                 {benefits.map((b, i) => (
                   <li key={i} className="pd-benefit-item">
@@ -233,6 +233,19 @@ export function PeptideDetailRedesign({
                   </button>
                 </div>
               )}
+              {peptide.studied_dose_citation && (
+                <p id="studied-doses" style={{ fontSize: 13, color: 'var(--ink-mute)', marginTop: 16 }}>
+                  Doses studied in published research: see{' '}
+                  <a
+                    href={peptide.studied_dose_citation.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'var(--gold)' }}
+                  >
+                    {peptide.studied_dose_citation.title}
+                  </a>.
+                </p>
+              )}
             </Section>
 
             {/* Safety */}
@@ -247,46 +260,6 @@ export function PeptideDetailRedesign({
                 See our <a href="/about/methodology#evidence-grading" style={{ color: 'var(--gold)' }}>evidence grading methodology</a> for how we evaluate and grade peptide safety data.
               </p>
             </Section>
-
-            {/* Dosing Protocol */}
-            {peptide.dosing && (
-              <Section icon={<Syringe />} label="§ Dosing Protocol" title="Dosing">
-                <InlineDisclaimer type="dosing" />
-                <div className="pd-dosing-grid">
-                  <div className="pd-dosing-cell">
-                    <span className="pd-dosing-label">Route</span>
-                    <span className="pd-dosing-value">{peptide.dosing.route}</span>
-                  </div>
-                  <div className="pd-dosing-cell">
-                    <span className="pd-dosing-label">Dose Range</span>
-                    <span className="pd-dosing-value">
-                      {peptide.dosing.typical_dose_mcg[0]}–{peptide.dosing.typical_dose_mcg[1]} mcg
-                    </span>
-                  </div>
-                  <div className="pd-dosing-cell">
-                    <span className="pd-dosing-label">Frequency</span>
-                    <span className="pd-dosing-value">{peptide.dosing.frequency}</span>
-                  </div>
-                  {peptide.dosing.timing && (
-                    <div className="pd-dosing-cell">
-                      <span className="pd-dosing-label">Timing</span>
-                      <span className="pd-dosing-value">{peptide.dosing.timing}</span>
-                    </div>
-                  )}
-                  {peptide.dosing.cycle_weeks && (
-                    <div className="pd-dosing-cell">
-                      <span className="pd-dosing-label">Cycle Length</span>
-                      <span className="pd-dosing-value">
-                        {peptide.dosing.cycle_weeks[0]}–{peptide.dosing.cycle_weeks[1]} weeks
-                      </span>
-                    </div>
-                  )}
-                </div>
-                {peptide.dosing.notes && (
-                  <p className="pd-dosing-notes">{peptide.dosing.notes}</p>
-                )}
-              </Section>
-            )}
 
             {/* Half-Life Chart */}
             {peptide.half_life_hours && (
@@ -329,9 +302,9 @@ export function PeptideDetailRedesign({
               );
             })()}
 
-            {/* Expected Timeline */}
-            {peptide.outcomes_timeline && (
-              <Section icon={<TrendingUp />} label="§ Expected Outcomes" title="Timeline">
+            {/* Time course in published studies (title kept as "Timeline" so the #timeline anchor stays stable) */}
+            {peptide.outcomes_timeline && Object.values(peptide.outcomes_timeline).some(Boolean) && (
+              <Section icon={<TrendingUp />} label="§ Time course in published studies" title="Timeline">
                 <TimelineBlock timeline={peptide.outcomes_timeline} />
               </Section>
             )}
@@ -493,19 +466,11 @@ export function PeptideDetailRedesign({
                     <span className="pd-qr-value">{halfLife}</span>
                   </div>
                 )}
-                {peptide.dosing && (
-                  <>
-                    <div className="pd-quick-ref-row">
-                      <span className="pd-qr-label">Route</span>
-                      <span className="pd-qr-value">{peptide.dosing.route}</span>
-                    </div>
-                    <div className="pd-quick-ref-row">
-                      <span className="pd-qr-label">Dose</span>
-                      <span className="pd-qr-value">
-                        {peptide.dosing.typical_dose_mcg[0]}–{peptide.dosing.typical_dose_mcg[1]} mcg
-                      </span>
-                    </div>
-                  </>
+                {peptide.route_studied && (
+                  <div className="pd-quick-ref-row">
+                    <span className="pd-qr-label">Route studied</span>
+                    <span className="pd-qr-value">{peptide.route_studied}</span>
+                  </div>
                 )}
                 <div className="pd-quick-ref-row">
                   <span className="pd-qr-label">Studies</span>
@@ -522,12 +487,11 @@ export function PeptideDetailRedesign({
                 <h4 className="pd-toc-title">§ On This Page</h4>
                 <ul className="pd-toc-list">
                   <li><a href="#mechanism">How It Works</a></li>
-                  <li><a href="#benefits">Benefits</a></li>
+                  <li><a href="#benefits">Areas of Research</a></li>
                   <li><a href="#studies">Key Studies</a></li>
                   <li><a href="#safety">Safety Notes</a></li>
-                  {peptide.dosing && <li><a href="#dosing">Dosing Protocol</a></li>}
                   {peptide.half_life_hours && <li><a href="#halflife">Half-Life</a></li>}
-                  {peptide.outcomes_timeline && <li><a href="#timeline">Timeline</a></li>}
+                  {peptide.outcomes_timeline && <li><a href="#timeline">Time course in published studies</a></li>}
                   {peptide.side_effects?.length && <li><a href="#sideeffects">Side Effects</a></li>}
                   {references && references.length > 0 && <li><a href="#references">References</a></li>}
                 </ul>
@@ -539,7 +503,7 @@ export function PeptideDetailRedesign({
 
       {/* ═══ AUTHOR BIO ═══ */}
       <div className="pd-container mb-12">
-        <AuthorByline name="Dr. E. Vance" variant="full" />
+        <AuthorByline name="PeptiDex Editorial Team" variant="full" />
       </div>
 
       {/* Last Reviewed */}
@@ -640,8 +604,7 @@ function SideEffectsTable({
         </tbody>
       </table>
       <p className="pd-se-footer">
-        Incidence rates sourced from published clinical trial data where available;
-        otherwise based on community research observations.
+        Incidence labels are qualitative unless a cited study reports a figure.
       </p>
     </div>
   );

@@ -80,6 +80,9 @@ const nextConfig: NextConfig = {
       { source: '/blog/tesamorelin-growth-hormone', destination: '/blog/tesamorelin-growth-hormone-peptide-comparison', permanent: true },
       { source: '/blog/mk-677-ibutamoren-guide', destination: '/blog/mk-677-vs-ipamorelin', permanent: true },
 
+      // Retired legacy byline slug → the single author profile (before the generic rule)
+      { source: '/:base(team|about|authors)/dr-e-vance', destination: '/team/peptidex-research', permanent: true },
+
       // Authors → Team redirect
       { source: '/authors/:slug', destination: '/team/:slug', permanent: true },
 

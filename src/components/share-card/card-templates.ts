@@ -21,23 +21,13 @@ export interface CompareCardData {
     synergies: string[];
 }
 
-export interface CycleCardData {
-    type: "cycle";
-    stackName: string;
-    goalName: string;
-    peptides: { name: string; doseMcg: number; cycleWeeks: number; vialsNeeded: number }[];
-    totalVials: number;
-    totalCost: number;
-    maxWeeks: number;
-}
-
 export interface EvidenceCardData {
     type: "evidence";
     tiers: { label: string; color: string; peptides: string[] }[];
     totalPeptides: number;
 }
 
-export type ShareCardData = QuizCardData | CompareCardData | CycleCardData | EvidenceCardData;
+export type ShareCardData = QuizCardData | CompareCardData | EvidenceCardData;
 
 // ── Color Palette ──────────────────────────────────────────────────────
 const COLORS = {
@@ -349,89 +339,6 @@ export function renderCompareCard(ctx: CanvasRenderingContext2D, data: CompareCa
         ctx.textAlign = "center";
         ctx.fillText(`\u2728 Synergy: ${data.synergies.join(", ")}`, w / 2, sy);
     }
-}
-
-// ── Template: Cycle Planner ────────────────────────────────────────────
-export function renderCycleCard(ctx: CanvasRenderingContext2D, data: CycleCardData, format: CardFormat, logo: HTMLImageElement | null) {
-    const [w, h] = getDimensions(format);
-    drawBackground(ctx, w, h);
-    drawLogo(ctx, logo);
-    drawFooter(ctx, w, h);
-
-    const centerX = w / 2;
-    const startY = format === "story" ? 280 : 160;
-
-    // Title
-    ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.orange400;
-    ctx.textAlign = "center";
-    ctx.fillText(`MY ${data.maxWeeks}-WEEK ${data.goalName.toUpperCase()} CYCLE — $${data.totalCost.toFixed(2)} TOTAL`, centerX, startY);
-
-    // Stack name
-    ctx.font = "bold 44px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    ctx.fillStyle = COLORS.white;
-    const sn = data.stackName.length > 28 ? data.stackName.substring(0, 26) + "..." : data.stackName;
-    ctx.fillText(sn, centerX, startY + 60);
-
-    // The goal name was moved to the title, so we can skip printing it here to save vertical space.
-
-    // Peptide timeline bars
-    const barY = startY + 130;
-    const maxWeeks = Math.max(...data.peptides.map(p => p.cycleWeeks), 16);
-    const barW = w - 140;
-    const barColors = [COLORS.violet400, COLORS.emerald400, COLORS.blue400, COLORS.orange400, COLORS.cyan400];
-
-    data.peptides.forEach((pep, i) => {
-        const y = barY + i * 90;
-
-        // Peptide name + info
-        ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-        ctx.fillStyle = COLORS.white;
-        ctx.textAlign = "left";
-        ctx.fillText(pep.name, 70, y);
-
-        ctx.font = "16px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-        ctx.fillStyle = COLORS.zinc500;
-        ctx.fillText(`${pep.doseMcg}mcg · ${pep.cycleWeeks}wk · ${pep.vialsNeeded} vial${pep.vialsNeeded !== 1 ? "s" : ""}`, 70, y + 24);
-
-        // Timeline bar background
-        ctx.fillStyle = COLORS.zinc800;
-        roundRect(ctx, 70, y + 36, barW, 24, 12);
-        ctx.fill();
-
-        // Timeline bar fill
-        const fillW = (pep.cycleWeeks / maxWeeks) * barW;
-        const barGrad = ctx.createLinearGradient(70, 0, 70 + fillW, 0);
-        barGrad.addColorStop(0, barColors[i % barColors.length]);
-        barGrad.addColorStop(1, barColors[(i + 1) % barColors.length]);
-        ctx.fillStyle = barGrad;
-        roundRect(ctx, 70, y + 36, fillW, 24, 12);
-        ctx.fill();
-
-        // Week label inside bar
-        ctx.font = "bold 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-        ctx.fillStyle = COLORS.white;
-        ctx.textAlign = "center";
-        if (fillW > 60) {
-            ctx.fillText(`${pep.cycleWeeks} weeks`, 70 + fillW / 2, y + 52);
-        }
-    });
-
-    // Total vials badge
-    const vialY = barY + data.peptides.length * 90 + 20;
-    const vialText = `${data.totalVials} Total Vials`;
-    ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    const vbw = ctx.measureText(vialText).width + 50;
-    ctx.fillStyle = "rgba(251, 146, 60, 0.12)";
-    roundRect(ctx, centerX - vbw / 2, vialY, vbw, 50, 25);
-    ctx.fill();
-    ctx.strokeStyle = "rgba(251, 146, 60, 0.4)";
-    ctx.lineWidth = 1.5;
-    roundRect(ctx, centerX - vbw / 2, vialY, vbw, 50, 25);
-    ctx.stroke();
-    ctx.fillStyle = COLORS.orange400;
-    ctx.textAlign = "center";
-    ctx.fillText(vialText, centerX, vialY + 35);
 }
 
 // ── Template: Evidence Tier List ───────────────────────────────────────

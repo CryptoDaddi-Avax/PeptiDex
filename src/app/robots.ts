@@ -15,10 +15,9 @@ export default function robots(): MetadataRoute.Robots {
           '/auth/',
           '/profile',
           '/saved',
-          '/log-protocol',
-          '/lead/',
-          '/tracker',
-          '/logs/entry/',
+          // /log-protocol, /lead/ and /logs/entry/ are intentionally NOT
+          // disallowed: they carry a noindex meta tag, and crawlers must be
+          // able to fetch them to see it and drop them from the index.
           '/redesign',
           '/redesign-v2',
           '/unsubscribed',

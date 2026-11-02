@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ShieldAlert, BookOpen, Beaker, HelpCircle, ArrowRight, GraduationCap, Store, FlaskConical, Tag } from 'lucide-react';
+import { ShieldAlert, BookOpen, HelpCircle, GraduationCap, Store, Tag } from 'lucide-react';
 import { getAllPosts } from '@/data/blog';
 import { PromoCodeDisplay } from '@/components/promos/PromoCodeDisplay';
 import { PRIMARY_PROMO } from '@/lib/promos/config';
@@ -18,7 +18,7 @@ export function Footer() {
             <div>
               <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">Research Disclaimer</p>
               <p className="text-xs text-amber-400/70 leading-relaxed">
-                All information on PeptiDex is for educational and research purposes only. None of the compounds discussed are FDA-approved for human consumption unless explicitly noted (e.g., Tesamorelin under prescription). Always consult a qualified medical professional before considering any peptide protocol. The vendors listed operate as raw chemical and laboratory supply companies. Their products are intended solely for authorized laboratory, educational, and research purposes. PeptiDex does not sell, distribute, or endorse any compound for human or animal use.
+                All information on PeptiDex is for educational and research purposes only. None of the compounds discussed are FDA-approved for human consumption unless explicitly noted (e.g., Tesamorelin under prescription). Compounds referenced are sold by third parties for laboratory research use only and are not for human consumption. The vendors listed operate as raw chemical and laboratory supply companies. Their products are intended solely for authorized laboratory, educational, and research purposes. PeptiDex does not sell, distribute, or endorse any compound for human or animal use.
               </p>
               {/* Affiliate disclosure — immediately below research disclaimer */}
               <p className="text-[10px] text-amber-400/40 leading-relaxed mt-2 border-t border-amber-500/10 pt-2">
@@ -78,7 +78,6 @@ export function Footer() {
               <li><Link href="/coupon-codes" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><Tag className="w-3.5 h-3.5"/> Coupons &amp; Deals</Link></li>
               <li><Link href="/tools/pricing" className="hover:text-emerald-400 transition-colors">Price Comparison</Link></li>
               <li><Link href="/tools/compare" className="hover:text-emerald-400 transition-colors">Compare Tool</Link></li>
-              <li><Link href="/tools/cycle-planner" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><FlaskConical className="w-3.5 h-3.5"/> Cycle Planner</Link></li>
               <li><Link href="/stacks" className="hover:text-emerald-400 transition-colors">Community Stacks</Link></li>
             </ul>
           </div>

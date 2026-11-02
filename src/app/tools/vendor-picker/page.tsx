@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SmartVendorPicker } from "@/components/tools/SmartVendorPicker";
 import { SITE_STATS } from "@/data/site-stats";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 export const metadata: Metadata = {
     title: "Vendor Picker — Find the Best Peptide Vendor for Your Needs",
@@ -48,11 +49,14 @@ export default function VendorPickerPage() {
                             "name": "PeptiDex Smart Vendor Picker",
                             "url": "https://peptidex.app/tools/vendor-picker",
                             "description": "4-question wizard that recommends the best peptide vendor based on peptide, region, payment, and priority.",
-                            "applicationCategory": "HealthApplication",
+                            "applicationCategory": "ShoppingApplication",
                             "operatingSystem": "Web",
                         }),
                     }}
                 />
+
+                {/* Research-use-only notice — above the picker and its shop CTAs */}
+                <DisclaimerCard variant="vendor" className="!mt-0" />
 
                 <SmartVendorPicker mode="page" />
 

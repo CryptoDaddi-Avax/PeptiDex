@@ -10,14 +10,16 @@
  * Schedule:
  *   Email 1  — Day 0:  Welcome + Cheat Sheet
  *   Email 2  — Day 2:  How to Read a COA
- *   Email 3  — Day 4:  The 5 Vendors We Trust
- *   Email 4  — Day 7:  Your First Cycle Walkthrough
+ *   Email 3  — Day 4:  The 6 Vendors We Trust
+ *   Email 4  — Day 7:  How to Verify a Vendor Before You Order (key "first_cycle")
  *   Email 5  — Day 10: Smart Vendor Picker Quiz
  *   Email 6  — Day 14: Deal of the Week
  *   Email 7  — Day 21: Log Your Protocol
  */
 
 import { Resend } from "resend";
+import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
 
 const FROM   = "PeptiDex Research <brief@peptidex.app>";
 const REPLY  = "reply@peptidex.app";
@@ -71,6 +73,10 @@ function cta(label: string, href: string) {
 function ul(items: string[]) {
   return `<ul style="font-size:15px;line-height:1.9;color:#1f2937;margin:0 0 20px;padding-left:20px;">${items.map(i => `<li>${i}</li>`).join("")}</ul>`;
 }
+/** Hidden inbox preview text (shown after the subject line in most clients). */
+function preheader(text: string) {
+  return `<div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">${text}</div>`;
+}
 function divider() {
   return `<hr style="border:none;border-top:1px solid #e5e7eb;margin:28px 0;">`;
 }
@@ -83,25 +89,25 @@ export function email1_welcome(firstName = "there") {
   const subject = "Your peptide cheat sheet is here 🧬";
   const html = wrap(`
     ${h1(`Hey ${firstName}, welcome to The Peptide Brief.`)}
-    ${p(`You just joined a research-focused newsletter built for people who take peptides seriously. No hype, no "miracle cure" headlines — just clean summaries of what the research actually says.`)}
+    ${p(`You just joined a research-focused newsletter built for people who follow peptide research seriously. No hype, no "miracle cure" headlines — just clean summaries of what the published studies actually say.`)}
     ${p(`First things first: here's the cheat sheet you were promised.`)}
     ${divider()}
-    <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;color:#6b7280;text-transform:uppercase;margin:0 0 12px;">Your First Peptide Cheat Sheet</p>
-    ${p(`We pulled together the 8 most-researched peptides and summarized the key facts for each — mechanism, typical dose, cycle length, and evidence grade:`)}
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;color:#6b7280;text-transform:uppercase;margin:0 0 12px;">Peptide Research Cheat Sheet</p>
+    ${p(`We pulled together 8 of the most-researched peptides and summarized what each has been studied for, along with its evidence grade:`)}
     ${ul([
-      "<strong>BPC-157</strong> — gut + tissue repair, 250–500 mcg/day, strong animal data",
-      "<strong>TB-500</strong> — systemic recovery, 2–2.5 mg/week, often stacked with BPC",
-      "<strong>Ipamorelin</strong> — GH pulse trigger, 200–300 mcg/dose, clean profile",
-      "<strong>CJC-1295 no DAC</strong> — GHRH analog, stacks with Ipamorelin",
-      "<strong>GHK-Cu</strong> — skin/wound healing, topical or injectable",
-      "<strong>MOTS-c</strong> — mitochondrial peptide, metabolic research",
-      "<strong>Semax</strong> — intranasal nootropic, cognitive research",
-      "<strong>Epitalon</strong> — telomere + pineal research, 5–10 mg/cycle",
+      "<strong>BPC-157</strong> — studied in tissue-repair and GI models, mostly animal data",
+      "<strong>TB-500</strong> — thymosin beta-4 fragment studied in tissue-repair models",
+      "<strong>Ipamorelin</strong> — growth hormone secretagogue studied in animal and early human research",
+      "<strong>CJC-1295 no DAC</strong> — GHRH analog studied in growth hormone research",
+      "<strong>GHK-Cu</strong> — copper peptide studied in skin and wound-healing models",
+      "<strong>MOTS-c</strong> — mitochondrial-derived peptide studied in metabolic research",
+      "<strong>Semax</strong> — ACTH-derived peptide studied in cognitive and neurological research",
+      "<strong>Epitalon</strong> — studied in telomere and pineal-gland research",
     ])}
-    ${p(`The full reference page for each is on PeptiDex — with sourced half-life tables, evidence grades, and COA data from verified vendors.`)}
+    ${p(`The full reference page for each is on PeptiDex — with cited studies, evidence grades, and COA data from verified vendors.`)}
     ${cta("Open the full peptide library", "https://peptidex.app/learn")}
     ${divider()}
-    ${p(`Over the next few weeks I'll walk you through how to read a COA, which vendors we actually trust, and how to structure your first cycle. Next email lands in 2 days.`)}
+    ${p(`Over the next few weeks I'll walk you through how to read a COA, which vendors we actually trust, and how to verify a vendor before you order. Next email lands in 2 days.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/learn") };
@@ -128,20 +134,20 @@ export function email2_coa(firstName = "there") {
     ${cta("Open the COA Analyzer", "https://peptidex.app/tools/coa")}
     ${divider()}
     ${p(`Quick tip: if a vendor doesn't have a publicly linked COA for the specific product you're buying, ask for one before ordering. Legitimate vendors have them ready.`)}
-    ${p(`Next email: the 5 vendors we've vetted and why we ranked them the way we did.`)}
+    ${p(`Next email: the 6 vendors we've vetted and why we ranked them the way we did.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/coa") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// EMAIL 3 — Day 4: The 5 Vendors We Trust
+// EMAIL 3 — Day 4: The 6 Vendors We Trust
 // ══════════════════════════════════════════════════════════════════════════════
 
 export function email3_vendors(firstName = "there") {
-  const subject = "The 5 peptide vendors we actually trust (and why)";
+  const subject = "The 6 peptide vendors we actually trust (and why)";
   const html = wrap(`
-    ${h1(`The 5 vendors in the PeptiDex index — and how we ranked them`)}
+    ${h1(`The 6 vendors in the PeptiDex index — and how we ranked them`)}
     ${p(`We review vendors on five criteria: testing methodology, COA transparency, purity specification, shipping reliability, and community sentiment. Here's the current lineup:`)}
     ${ul([
       `<strong>#1 Elyria Bio</strong> — Editor's Choice. ≥99% HPLC purity floor, third-party US lab COAs, lot-traceable. 24h dispatch. US only. Code <strong>PEPTIDEX</strong> = 10% off.`,
@@ -155,33 +161,49 @@ export function email3_vendors(firstName = "there") {
     ${cta("Read the full vendor comparison", "https://peptidex.app/vendors")}
     ${divider()}
     ${p(`One thing I want to be transparent about: PeptiDex earns an affiliate commission when you buy through our links. That's how the site stays free. It doesn't change our rankings — vendors are evaluated blind to their affiliate terms.`)}
-    ${p(`Next email in 3 days: how to structure your first peptide cycle.`)}
+    ${p(`Next email in 3 days: how to verify a vendor before you order.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/vendors") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// EMAIL 4 — Day 7: Your First Cycle
+// EMAIL 4 — Day 7: How to Verify a Vendor Before You Order
 // ══════════════════════════════════════════════════════════════════════════════
 
-export function email4_firstCycle(firstName = "there") {
-  const subject = "Your first peptide cycle — a walkthrough";
+// Sequence key ("first_cycle") is kept stable so already-queued email_queue
+// rows resolve to this template instead of failing with "Unknown email key".
+export const EMAIL4_SUBJECT = "How to verify a peptide vendor before you order";
+
+export function email4_verifyVendor(firstName = "there") {
+  const subject = EMAIL4_SUBJECT;
+  const promo = PRIMARY_PROMO;
+  const promoUrl = buildAffiliateUrl(promo, "email_welcome_verify_vendor");
   const html = wrap(`
-    ${h1(`How to structure your first peptide cycle`)}
-    ${p(`If you're starting with peptides for the first time, the most common mistake is doing too much at once. Here's the approach I'd recommend:`)}
-    <p style="font-size:14px;font-weight:700;color:#16a34a;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.05em;">Week 1–2: Foundation</p>
-    ${p(`Start with a single peptide. BPC-157 is the most forgiving starting point — broad tissue repair applications, strong safety profile in animal literature, minimal reported side effects. Dose: 250–500 mcg/day subcutaneous, split AM/PM.`)}
-    <p style="font-size:14px;font-weight:700;color:#16a34a;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.05em;">Week 3–8: Core Cycle</p>
-    ${p(`If week 1–2 goes well, continue for a full 6–8 week cycle. Log how you feel weekly — that data becomes useful for your next cycle. Common addition at week 3: TB-500 2x/week for systemic synergy with BPC.`)}
-    <p style="font-size:14px;font-weight:700;color:#16a34a;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.05em;">Week 9+: Off-cycle & Assessment</p>
-    ${p(`4 weeks off minimum. Review your log. Decide whether to repeat, adjust dose, or switch peptides based on what you observed.`)}
+    ${preheader(`COAs, batch numbers, and the red flags that should stop an order — plus this month's ${promo.vendorName} code.`)}
+    ${h1(`How to verify a peptide vendor before you order`)}
+    ${p(`Hey ${firstName} — a polished storefront tells you nothing about what's in the vial. Before you place an order with any research peptide vendor, run through this checklist:`)}
+    ${ul([
+      `<strong>Third-party COAs</strong> — look for a Certificate of Analysis from an independent lab, ideally HPLC (purity) plus mass spectrometry (identity). Vendor self-testing is not verification.`,
+      `<strong>Matching batch numbers</strong> — the lot number on the COA should match the lot on the product you receive. A generic or undated COA is a warning sign.`,
+      `<strong>Run the COA through our checker</strong> — the PeptiDex COA checker flags missing fields, low purity values, and weak testing methods.`,
+      `<strong>Read the vendor reviews</strong> — our vendor pages summarize testing methodology, COA transparency, and shipping reliability for each vendor in the index.`,
+    ])}
+    ${cta("Check a COA", "https://peptidex.app/tools/coa")}
     ${divider()}
-    ${p(`The Cycle Planner tool on PeptiDex will walk you through this interactively — you input your goal and it outputs a suggested cycle with dose ranges, timing, and reconstitution math.`)}
-    ${cta("Open the Cycle Planner", "https://peptidex.app/tools/cycle-planner")}
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;color:#6b7280;text-transform:uppercase;margin:0 0 12px;">Red flags</p>
+    ${ul([
+      `No COA available, or a COA that won't name the testing lab`,
+      `Products marketed for human use or consumption`,
+      `Dosing, injection, or "protocol" advice on product pages — legitimate research suppliers don't give it`,
+    ])}
+    ${p(`Compare vendors side by side on the <a href="https://peptidex.app/vendors" style="color:#16a34a;">PeptiDex vendor reviews</a> page.`)}
+    ${divider()}
+    ${p(`Comparing prices? The <a href="https://peptidex.app/tools/pricing" style="color:#16a34a;">PeptiDex price comparison</a> shows each vendor's price with current coupon codes applied, and its cart optimizer finds the lowest-cost vendor and vial mix for the vials you add.`)}
+    ${p(`Current coupon: <strong>${promo.vendorName}</strong> — code <strong>${promo.code}</strong> takes ${promo.discountPercent}% off at checkout. <a href="${promoUrl}" rel="sponsored nofollow" style="color:#16a34a;">Shop ${promo.vendorName}</a> (affiliate link).`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
-  return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/cycle-planner") };
+  return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/coa") };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -196,8 +218,8 @@ export function email5_vendorPicker(firstName = "there") {
     ${ul([
       "What peptide are you researching?",
       "Are you in the US or outside the US?",
-      "Is price or testing quality your priority?",
-      "Do you prefer injectable or oral format?",
+      "Do you pay by card or crypto?",
+      "Is price, shipping speed, or testing quality your priority?",
     ])}
     ${p(`It cross-references our vendor index, catalog data, and current pricing to give you a ranked list — not a generic "all are good" answer.`)}
     ${cta("Take the 4-question picker", "https://peptidex.app/tools/vendor-picker")}
@@ -242,20 +264,19 @@ export function email7_logProtocol(firstName = "there") {
   const subject = "One ask: log your protocol (it helps everyone)";
   const html = wrap(`
     ${h1(`Want to help other researchers? Log your protocol.`)}
-    ${p(`Three weeks in — if you've started a cycle, you're now sitting on data that other researchers need.`)}
+    ${p(`If you have outcome data from a research protocol, it's exactly the kind of data other researchers need.`)}
     ${p(`The PeptiDex protocol log is a structured form where you record:`)}
     ${ul([
-      "Which peptide(s) you're running",
-      "Dose and frequency",
+      "Which peptide(s) were researched",
       "Which vendor and batch",
-      "Weekly subjective efficacy and side effect ratings",
-      "Final outcome notes at cycle end",
+      "Subjective efficacy and side effect ratings",
+      "Final outcome notes",
     ])}
-    ${p(`Anonymous logs are aggregated into the PeptiDex community dataset — the efficacy and side effect scores you see on each peptide page come directly from contributor logs like yours.`)}
-    ${p(`You don't have to be an expert. A basic log — "BPC-157, 500 mcg/day, 8 weeks, vendor X, efficacy 7/10" — is more useful than nothing.`)}
-    ${cta("Log my protocol", "https://peptidex.app/log-protocol")}
+    ${p(`Anonymous logs are aggregated into the PeptiDex community dataset — the efficacy and side effect scores you see on each peptide page come directly from contributor logs.`)}
+    ${p(`You don't have to be an expert. A basic log — compound, vendor, batch, and an outcome rating — is more useful than nothing.`)}
+    ${cta("Log a protocol", "https://peptidex.app/log-protocol")}
     ${divider()}
-    ${p(`If you haven't started a cycle yet, you can still log a planned protocol and come back to fill in the outcomes. The form saves your progress.`)}
+    ${p(`You can start a log now and come back later to add outcome notes. The form saves your progress.`)}
     ${p(`Thanks for being part of this. The whole point of PeptiDex is to build a research dataset that's actually useful — and that only works if people like you contribute to it.`)}
     ${p(`— The PeptiDex Research Team`)}
     ${divider()}
@@ -275,8 +296,8 @@ function textFallback(subject: string, ctaUrl: string): string {
 export const WELCOME_SEQUENCE = [
   { delayDays: 0,  key: "welcome",       fn: email1_welcome,     subject: "Your peptide cheat sheet is here 🧬" },
   { delayDays: 2,  key: "coa",           fn: email2_coa,         subject: "How to read a peptide COA" },
-  { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 5 vendors we actually trust" },
-  { delayDays: 7,  key: "first_cycle",   fn: email4_firstCycle,  subject: "Your first peptide cycle" },
+  { delayDays: 4,  key: "vendors",       fn: email3_vendors,     subject: "The 6 vendors we actually trust" },
+  { delayDays: 7,  key: "first_cycle",   fn: email4_verifyVendor, subject: EMAIL4_SUBJECT },
   { delayDays: 10, key: "vendor_picker", fn: email5_vendorPicker, subject: "4 questions → the right vendor" },
   { delayDays: 14, key: "deal",          fn: email6_deal,        subject: "Deal of the week" },
   { delayDays: 21, key: "log_protocol",  fn: email7_logProtocol, subject: "Log your protocol" },

@@ -11,7 +11,6 @@ export interface LibraryMedicalWebPageParams {
   url: string;
   dateModified: string;
   datePublished?: string;
-  reviewedBy?: { name: string; url?: string };
   about: object;
   keywords?: string[];
 }
@@ -24,7 +23,7 @@ export interface LibraryFAQParams {
 // ── MedicalWebPage ───────────────────────────────────────────────────────────
 
 export function buildLibraryMedicalWebPageSchema(params: LibraryMedicalWebPageParams) {
-  const { name, description, url, dateModified, datePublished, reviewedBy, about, keywords } = params;
+  const { name, description, url, dateModified, datePublished, about, keywords } = params;
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
@@ -34,18 +33,9 @@ export function buildLibraryMedicalWebPageSchema(params: LibraryMedicalWebPagePa
     datePublished: datePublished ?? '2026-01-15',
     dateModified,
     lastReviewed: dateModified,
-    ...(reviewedBy
-      ? {
-          reviewedBy: {
-            '@type': 'Person',
-            name: reviewedBy.name,
-            ...(reviewedBy.url ? { url: reviewedBy.url } : {}),
-          },
-        }
-      : {}),
     author: {
-      '@type': 'Person',
-      name: 'Dr. E. Vance',
+      '@type': 'Organization',
+      name: 'PeptiDex Editorial Team',
       url: 'https://peptidex.app/team/peptidex-research',
     },
     publisher: {

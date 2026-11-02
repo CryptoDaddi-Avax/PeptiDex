@@ -1,6 +1,7 @@
-// Single-author setup. PeptiDex is a one-person independent research project.
-// Legacy slugs ('dr-e-vance', 'peptidex-editorial') are kept as URL aliases so
-// existing internal links keep working — they all resolve to the same author.
+// Single-author setup. PeptiDex is a one-person independent research project,
+// bylined as the "PeptiDex Editorial Team" Organization. Legacy slugs
+// ('peptidex-editorial', ...) are kept as URL aliases so existing internal
+// links keep working — they all resolve to the same author.
 
 import peptidexResearch from '@/content/authors/peptidex-research.json';
 
@@ -49,7 +50,6 @@ const RAW: RawAuthor[] = [peptidexResearch];
 
 /** Slugs that should redirect/canonicalize to a primary author slug. */
 const SLUG_ALIASES: Record<string, string> = {
-  'dr-e-vance': 'peptidex-research',
   'peptidex-editorial': 'peptidex-research',
   'the-crypto-daddi': 'peptidex-research',
   'research-team': 'peptidex-research',
@@ -129,7 +129,7 @@ const BYLINE_TO_SLUG: Record<string, string> = {
   'PeptiDex Research': 'peptidex-research',
   'PeptiDex Editorial': 'peptidex-research',
   'Editorial Team': 'peptidex-research',
-  'Dr. E. Vance': 'peptidex-research',
+  'PeptiDex Editorial Team': 'peptidex-research',
   'Legal Dept': 'peptidex-research',
 };
 
@@ -143,23 +143,15 @@ export function getAuthorByName(name: string): Author | undefined {
   return getAuthorBySlug(getAuthorSlug(name));
 }
 
-export function getPersonSchema(author: Author, baseUrl = 'https://peptidex.app') {
+/** Author JSON-LD: an Organization byline — no jobTitle, credentials or reviewer claims. */
+export function getAuthorSchema(author: Author, baseUrl = 'https://peptidex.app') {
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
+    '@type': 'Organization',
     name: author.name,
     description: author.bio.split('\n\n')[0],
     url: `${baseUrl}/team/${author.slug}`,
-    worksFor: {
-      '@type': 'Organization',
-      name: author.worksFor || 'PeptiDex',
-      url: baseUrl,
-    },
-    knowsAbout: author.specialties.filter((s) => !s.startsWith('[')),
   };
-  if (author.title) schema.jobTitle = author.title;
-  if (author.photo) schema.image = `${baseUrl}${author.photo}`;
-  const verifiedSameAs = author.sameAs.filter((s) => !s.startsWith('['));
-  if (verifiedSameAs.length > 0) schema.sameAs = verifiedSameAs;
+  if (author.photo) schema.logo = `${baseUrl}${author.photo}`;
   return schema;
 }

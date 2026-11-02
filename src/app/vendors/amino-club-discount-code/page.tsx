@@ -80,12 +80,12 @@ export default function AminoClubDiscountCode() {
             <span className="sep">/</span>
             <span className="current">Discount Code</span>
           </nav>
-          <div className="section-label">Â§ Verified Promo Code</div>
+          <div className="section-label">§ Verified Promo Code</div>
           <h1 className="page-title">
             Amino Club<br /><em>PEPTIDEX</em> code.
           </h1>
           <p className="page-subtitle">
-            Saves {DISCOUNT_PERCENT} on your entire order â€” verified, active, no expiration date.
+            Saves {DISCOUNT_PERCENT} on your entire order — verified, active, no expiration date.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
@@ -106,14 +106,14 @@ export default function AminoClubDiscountCode() {
 
       <div className="about-content fade-up space-y-16">
 
-        {/* â”€â”€ HERO CODE BOX â”€â”€ */}
+        {/* ── HERO CODE BOX ── */}
         <section id="code-box">
           <div className="flex items-center gap-3 mb-6">
             <Tag className="w-6 h-6 text-amber-400 flex-shrink-0" />
             <h2 className="text-2xl font-bold text-zinc-100">Your discount code</h2>
           </div>
           <div className="rounded-xl border border-amber-500/30 bg-amber-950/15 p-8 text-center">
-            <div className="text-xs font-bold text-amber-400 font-mono mb-4">Â§ Apply at Checkout</div>
+            <div className="text-xs font-bold text-amber-400 font-mono mb-4">§ Apply at Checkout</div>
             <div className="inline-flex items-center bg-zinc-950 border-2 border-zinc-700 rounded-xl px-8 py-4 mb-8">
               <span className="text-3xl md:text-4xl font-mono font-black text-amber-400 tracking-wider select-all">PEPTIDEX</span>
             </div>
@@ -132,7 +132,7 @@ export default function AminoClubDiscountCode() {
           </div>
         </section>
 
-        {/* â”€â”€ HOW TO APPLY â”€â”€ */}
+        {/* ── HOW TO APPLY ── */}
         <section id="how-to-apply">
           <div className="flex items-center gap-3 mb-6">
             <CheckCircle2 className="w-6 h-6 text-emerald-400 flex-shrink-0" />
@@ -144,7 +144,7 @@ export default function AminoClubDiscountCode() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {HOW_TO_STEPS.map((s) => (
               <div key={s.num} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
-                <div className="text-xs font-bold text-emerald-400 font-mono mb-3">Â§ {s.num}</div>
+                <div className="text-xs font-bold text-emerald-400 font-mono mb-3">§ {s.num}</div>
                 <h3 className="font-bold text-zinc-100 mb-2">{s.title}</h3>
                 <p className="text-sm text-zinc-400 leading-relaxed">{s.body}</p>
               </div>
@@ -152,9 +152,9 @@ export default function AminoClubDiscountCode() {
           </div>
         </section>
 
-        {/* â”€â”€ ELIGIBILITY â”€â”€ */}
+        {/* ── ELIGIBILITY ── */}
         <section id="eligibility">
-          <div className="section-label">Â§ Eligible Products</div>
+          <div className="section-label">§ Eligible Products</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-6">What is eligible?</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             The <strong className="text-zinc-200">PEPTIDEX</strong> discount code is virtually universal across the Amino Club catalog. It applies to:
@@ -177,18 +177,18 @@ export default function AminoClubDiscountCode() {
           </div>
         </section>
 
-        {/* â”€â”€ EXPIRATION â”€â”€ */}
+        {/* ── EXPIRATION ── */}
         <section id="expiration">
-          <div className="section-label">Â§ Verification</div>
+          <div className="section-label">§ Verification</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Expiration & verification</h2>
           <p className="text-zinc-400 leading-relaxed">
             We constantly monitor and verify our exclusive partner codes. As of <strong className="text-zinc-200">April 2026</strong>, the <strong className="text-zinc-200">PEPTIDEX</strong> code is active, valid, and has no set expiration date. If you ever encounter an issue with the code, please contact us immediately so we can resolve it with the vendor.
           </p>
         </section>
 
-        {/* â”€â”€ PRICING TABLE â”€â”€ */}
+        {/* ── PRICING TABLE ── */}
         <section id="pricing-comparison">
-          <div className="section-label">Â§ Pricing Impact</div>
+          <div className="section-label">§ Pricing Impact</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-6">Final price comparison</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
             Here is a quick look at how the code impacts the pricing of common items (prices subject to change; check Amino Club for current rates):

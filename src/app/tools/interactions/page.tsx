@@ -4,12 +4,12 @@ import InteractionsClient from "./InteractionsClient";
 export const metadata: Metadata = {
   title: "Peptide Stack Conflict Checker — Interaction Analyzer",
   description:
-    "Check interactions between up to 6 peptides at once. Severity-graded warnings (SAFE → DO NOT STACK), PubMed citations, and alternative recommendations. Free research tool.",
+    "Check interactions between up to 6 peptides at once. Severity-graded flags (No known conflict → Do not stack), PubMed citations, and alternative recommendations. Free research tool.",
   alternates: { canonical: "https://peptidex.app/tools/interactions" },
   openGraph: {
     title: "Peptide Stack Interaction Checker — Free Tool | PeptiDex",
     description:
-      "Analyze up to 6 peptides for conflicts. SAFE to DO NOT STACK severity grading with citations.",
+      "Analyze up to 6 peptides for conflicts. No known conflict to Do not stack grading with citations.",
     url: "https://peptidex.app/tools/interactions",
     type: "website",
   },
@@ -23,7 +23,7 @@ const schemaJsonLd = {
       name: "PeptiDex Stack Conflict Checker",
       url: "https://peptidex.app/tools/interactions",
       description:
-        "Interactive tool for checking interactions between up to 6 research peptides. Provides severity-graded warnings (SAFE, CAUTION, WARNING, DO NOT STACK) with PubMed-cited evidence and alternative compound suggestions.",
+        "Interactive tool for checking interactions between up to 6 research peptides. Provides severity-graded warnings (No known conflict, Caution, Warning, Do not stack) with PubMed-cited evidence and alternative compound suggestions.",
       applicationCategory: "HealthApplication",
       operatingSystem: "Any",
       offers: {
@@ -39,11 +39,11 @@ const schemaJsonLd = {
       },
       featureList: [
         "Multi-peptide selector (up to 6)",
-        "Severity-graded conflict analysis (SAFE/CAUTION/WARNING/DO_NOT_STACK)",
+        "Severity-graded conflict analysis (No known conflict / Caution / Warning / Do not stack)",
         "PubMed-cited evidence for each interaction pair",
         "Alternative compound suggestions on conflicts",
-        "Save to Cycle Planner integration",
-        "52+ interaction pairs in database",
+        "One-click vendor price comparison for the selected stack",
+        "35+ interaction pairs in database",
       ],
     },
     {

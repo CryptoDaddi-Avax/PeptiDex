@@ -13,7 +13,7 @@ export const SITE_STATS = {
   stacks: { count: stacks.length, label: "Curated Stacks" },
   studies: { count: STUDY_COUNT, label: "Peer-Reviewed Studies" },
   vendors: { count: 6, label: "Verified Vendors" },
-  tools: { count: 9, label: "Research Tools" },
+  tools: { count: 7, label: "Research Tools" }, // must match the tool cards on /tools (ToolsClient.tsx)
   purityThreshold: { value: 99, unit: "%", label: "COA Purity Threshold" },
   lastReviewed: "2026-05-15", // ISO date, auto-updated by freshness engine
 } as const;

@@ -3,7 +3,8 @@
  * Server component. No client-side JS. Pure data merge.
  *
  * Editorial promise: research lives in /library/, sourcing lives here.
- * Side effects + timeline are truncated to 100-150 words with link to /library/.
+ * No outcome/timeline claims here: research is summarized as a cited-study count
+ * linking to /library/. RUO DisclaimerCard renders at the top of the content.
  *
  * Created: 2026-05-11 — pSEO route architecture
  */
@@ -15,6 +16,7 @@ import { vendorVerifications } from "@/data/verification-data";
 import { vendorEditorial } from "@/data/vendorEditorial";
 import { comparisons } from "@/data/comparisons";
 import { vendorCartConfigs } from "@/data/vendor-cart-config";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -34,22 +36,6 @@ function tierLabel(tier: string): string {
 
 function tierEmoji(tier: string): string {
   return { gold: "🥇", silver: "🥈", bronze: "🥉", unverified: "❓" }[tier] || "❓";
-}
-
-/** Compute vials needed for a standard cycle */
-function computeVials(pair: PseoPair): { vials: number; totalMcg: number } | null {
-  const d = pair.peptide.dosing;
-  if (!d?.typical_dose_mcg || !d?.cycle_weeks) return null;
-  const doseMcg = d.typical_dose_mcg[1]; // high end
-  const weeks = d.cycle_weeks[1];
-  const freqPerWeek = d.frequency?.toLowerCase().includes("daily") ? 7
-    : d.frequency?.toLowerCase().includes("2x") ? 2
-    : d.frequency?.toLowerCase().includes("3x") ? 3
-    : d.frequency?.toLowerCase().includes("5 on") ? 5
-    : 7;
-  const totalMcg = doseMcg * freqPerWeek * weeks * 1.1; // 10% buffer
-  const vialMcg = pair.pricing.vial_mg * 1000;
-  return { vials: Math.ceil(totalMcg / vialMcg), totalMcg };
 }
 
 // ── Styles ───────────────────────────────────────────────────────────────────
@@ -105,7 +91,6 @@ export function PeptideVendorContent({ pair }: Props) {
   const verification = vendorVerifications.find(v => v.vendorSlug === vendor.slug);
   const editorial = vendorEditorial[vendor.slug];
   const cartConfig = vendorCartConfigs[vendor.slug];
-  const vialCalc = computeVials(pair);
   const altVendors = getVendorsForPeptide(pair.peptideSlug).filter(
     p => p.vendorSlug !== pair.vendorSlug
   );
@@ -123,6 +108,9 @@ export function PeptideVendorContent({ pair }: Props) {
 
   return (
     <div className="about-content" style={{ maxWidth: 900 }}>
+
+      {/* ── Research-use-only notice (above pricing) ── */}
+      <DisclaimerCard variant="vendor" />
 
       {/* ── Section 1: Product Overview ── */}
       <section style={sectionStyle} id="product-overview">
@@ -149,49 +137,7 @@ export function PeptideVendorContent({ pair }: Props) {
         )}
       </section>
 
-      {/* ── Section 2: Dosing & Vial Calculator ── */}
-      {peptide.dosing && (
-        <section style={sectionStyle} id="dosing-protocol">
-          <h2 style={h2Style}>
-            Standard Research Protocol for {peptide.name}
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12, marginBottom: 16 }}>
-            {[
-              { label: "Route", value: peptide.dosing.route },
-              { label: "Dose Range", value: `${peptide.dosing.typical_dose_mcg[0]}–${peptide.dosing.typical_dose_mcg[1]} mcg` },
-              { label: "Frequency", value: peptide.dosing.frequency },
-              ...(peptide.dosing.cycle_weeks ? [{ label: "Cycle Length", value: `${peptide.dosing.cycle_weeks[0]}–${peptide.dosing.cycle_weeks[1]} weeks` }] : []),
-              ...(peptide.dosing.timing ? [{ label: "Timing", value: peptide.dosing.timing }] : []),
-              ...(peptide.half_life_hours ? [{ label: "Half-life", value: `${peptide.half_life_hours} hours` }] : []),
-            ].map(item => (
-              <div key={item.label} style={{ padding: "10px 14px", background: "var(--bg-soft)", borderRadius: 10, border: "1px solid var(--line)" }}>
-                <div style={labelStyle}>{item.label}</div>
-                <div style={{ ...valueStyle, fontWeight: 600, marginTop: 4 }}>{item.value}</div>
-              </div>
-            ))}
-          </div>
-
-          {vialCalc && (
-            <div style={{ padding: 16, background: "rgba(201,169,97,0.06)", borderRadius: 12, border: "1px solid rgba(201,169,97,0.15)" }}>
-              <p style={{ ...valueStyle, fontSize: 13 }}>
-                <strong>Estimated procurement:</strong> At {peptide.dosing.typical_dose_mcg[1]} mcg{" "}
-                {peptide.dosing.frequency?.toLowerCase()} for {peptide.dosing.cycle_weeks?.[1]} weeks,
-                you would need approximately <strong>{vialCalc.vials} × {pricing.vial_mg}mg vials</strong> from{" "}
-                {vendor.name} — <strong>${fmt(vialCalc.vials * pricing.price_usd)}</strong> before discount,{" "}
-                <strong>${fmt(vialCalc.vials * discountedPrice)}</strong> after {discountPct}% off.
-              </p>
-            </div>
-          )}
-
-          {peptide.dosing.notes && (
-            <p style={{ ...valueStyle, fontSize: 12, color: "var(--ink-mute)", marginTop: 12 }}>
-              Note: {peptide.dosing.notes}
-            </p>
-          )}
-        </section>
-      )}
-
-      {/* ── Section 3: Vendor Quality Profile ── */}
+      {/* ── Section 2: Vendor Quality Profile ── */}
       <section style={sectionStyle} id="vendor-quality">
         <h2 style={h2Style}>
           {vendor.name} Quality Profile
@@ -228,7 +174,7 @@ export function PeptideVendorContent({ pair }: Props) {
         )}
       </section>
 
-      {/* ── Section 4: COA & Purity Data (Conditional) ── */}
+      {/* ── Section 3: COA & Purity Data (Conditional) ── */}
       <section style={sectionStyle} id="coa-data">
         <h2 style={h2Style}>
           Certificate of Analysis — {peptide.name} from {vendor.name}
@@ -271,27 +217,23 @@ export function PeptideVendorContent({ pair }: Props) {
         )}
       </section>
 
-      {/* ── Section 5: Research Summary (truncated) ── */}
-      {peptide.outcomes_timeline && (
+      {/* ── Section 4: Research pointer (no outcome claims on sourcing pages) ── */}
+      {peptide.key_studies?.length > 0 && (
         <section style={sectionStyle} id="research-summary">
           <h2 style={h2Style}>
-            What to Expect on {peptide.name}
+            Published research on {peptide.name}: {peptide.key_studies.length} cited studies
           </h2>
-          <div style={{ display: "grid", gap: 8 }}>
-            {peptide.outcomes_timeline.week_1 && (
-              <p style={valueStyle}><strong>Week 1:</strong> {peptide.outcomes_timeline.week_1}</p>
-            )}
-            {peptide.outcomes_timeline.week_2_4 && (
-              <p style={valueStyle}><strong>Weeks 2–4:</strong> {peptide.outcomes_timeline.week_2_4}</p>
-            )}
-          </div>
+          <p style={valueStyle}>
+            Study models, endpoints, and evidence levels for {peptide.name} are summarized on its research profile.
+            This page covers sourcing only.
+          </p>
           <Link href={`/library/${peptide.slug}`} style={{ ...linkStyle, display: "inline-block", marginTop: 12, fontSize: 13 }}>
-            Full {peptide.name} research profile — outcomes, side effects, studies →
+            {peptide.name} research profile — {peptide.key_studies.length} cited studies →
           </Link>
         </section>
       )}
 
-      {/* ── Section 6: Key Research (top 2 studies) ── */}
+      {/* ── Section 5: Key Research (top 2 studies) ── */}
       {peptide.key_studies?.length > 0 && (
         <section style={sectionStyle} id="key-research">
           <h2 style={h2Style}>Key Research</h2>
@@ -317,7 +259,7 @@ export function PeptideVendorContent({ pair }: Props) {
         </section>
       )}
 
-      {/* ── Section 7: Vendor Comparison Strip ── */}
+      {/* ── Section 6: Vendor Comparison Strip ── */}
       {altVendors.length > 0 && (
         <section style={sectionStyle} id="vendor-comparison">
           <h2 style={h2Style}>
@@ -368,7 +310,7 @@ export function PeptideVendorContent({ pair }: Props) {
         </section>
       )}
 
-      {/* ── Section 8: Internal Links ── */}
+      {/* ── Section 7: Internal Links ── */}
       <section style={sectionStyle} id="related-pages">
         <h2 style={h2Style}>Related Pages</h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
@@ -381,8 +323,8 @@ export function PeptideVendorContent({ pair }: Props) {
           <Link href={`/where-to-buy/${peptide.slug}`} style={{ ...linkStyle, fontSize: 13 }}>
             🛒 Compare all {peptide.name} vendors →
           </Link>
-          <Link href="/tools/cycle-planner" style={{ ...linkStyle, fontSize: 13 }}>
-            📐 Plan a {peptide.name} cycle →
+          <Link href={`/tools/pk?peptide=${peptide.slug}`} style={{ ...linkStyle, fontSize: 13 }}>
+            📈 {peptide.name} half-life &amp; PK reference →
           </Link>
           {relatedComparisons.slice(0, 2).map(comp => (
             <Link key={comp.slug} href={`/compare/${comp.slug}`} style={{ ...linkStyle, fontSize: 13 }}>
@@ -392,7 +334,7 @@ export function PeptideVendorContent({ pair }: Props) {
         </div>
       </section>
 
-      {/* ── Section 9: Primary + Alternate CTAs ── */}
+      {/* ── Section 8: Primary + Alternate CTAs ── */}
       <section style={{ ...sectionStyle, textAlign: "center", background: "linear-gradient(135deg, rgba(201,169,97,0.08) 0%, rgba(201,169,97,0.02) 100%)" }} id="buy-cta">
         <a
           href={pricing.affiliateUrl || vendor.affiliateUrl}

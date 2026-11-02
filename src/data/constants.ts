@@ -1,6 +1,6 @@
-export const DISCLAIMER_TEXT = "EDUCATIONAL AND INFORMATIONAL ONLY. This app is NOT medical advice. Most peptides are research-only compounds and NOT FDA-approved for human use (except specific approved ones like Tesamorelin/PT-141 under prescription). Consult a licensed healthcare professional before considering any peptide. Information is compiled from peer-reviewed studies (mostly preclinical or early clinical); individual results vary and risks exist. Always verify latest regulatory status. Prominent disclaimers must appear on EVERY screen and recommendation in the app.";
+export const DISCLAIMER_TEXT = "FOR RESEARCH AND EDUCATIONAL REFERENCE ONLY. This site is NOT medical advice. Most peptides discussed are research compounds sold for laboratory research use only, are not for human consumption, and are NOT FDA-approved for human use (approved drug products such as tesamorelin (Egrifta) and bremelanotide (Vyleesi) are noted where relevant). Information is compiled from peer-reviewed studies, mostly preclinical or early clinical. Always verify current regulatory status in your jurisdiction.";
 
-export const SHORT_DISCLAIMER = "⚠️ Educational only · Not medical advice · Consult a doctor · Most peptides are research-only / not FDA-approved for human use";
+export const SHORT_DISCLAIMER = "⚠️ For research use only · Not for human consumption · Not medical advice · Not FDA-approved for human use";
 
 /** Editorial review date — auto-computed from last git commit at build time.
  *  NEXT_PUBLIC_BUILD_DATE is injected by next.config.ts via `git log -1 --format=%cI`.

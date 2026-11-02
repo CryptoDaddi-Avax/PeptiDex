@@ -356,11 +356,11 @@ export default function PeptideLibraryPage() {
       <section className="rounded-2xl bg-gradient-to-br from-violet-900/30 to-zinc-900 border border-violet-500/20 p-6 md:p-8 text-center space-y-4">
         <h2 className="text-xl font-bold text-zinc-100">Ready to dive deeper?</h2>
         <p className="text-sm text-zinc-400 max-w-lg mx-auto">
-          Our interactive tools let you compare peptides side-by-side, plan research cycles, and check compound interactions.
+          Our interactive tools let you compare peptides side-by-side, compare vendor prices, and check compound interactions.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <Link href="/tools/cycle-planner" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm transition-all shadow-lg hover:shadow-violet-500/20">
-            Cycle Planner <ArrowRight className="w-4 h-4" />
+          <Link href="/tools" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm transition-all shadow-lg hover:shadow-violet-500/20">
+            Explore Research Tools <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

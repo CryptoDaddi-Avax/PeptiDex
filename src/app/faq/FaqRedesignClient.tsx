@@ -43,8 +43,8 @@ const FAQ_ITEMS = [
     answer: 'Some peptides are FDA approved, but many are not. Over 80 peptide-based drugs have received FDA approval, including tesamorelin and PT-141 (bremelanotide). However, many widely discussed research peptides — including BPC-157, TB-500, and MOTS-c — have not undergone the FDA approval process.',
   },
   {
-    question: 'How are peptides administered?',
-    answer: 'Peptides are most commonly administered via subcutaneous injection. Other routes include intramuscular injection, intranasal spray (e.g. Semax, Selank), topical creams (GHK-Cu), and a small number of oral formulations.',
+    question: 'What routes have peptides been studied by?',
+    answer: 'In published studies, peptides have been given by subcutaneous, intramuscular, intranasal, topical and oral routes.',
   },
   {
     question: 'What are the most popular peptides in 2026?',
@@ -60,7 +60,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'What are growth hormone secretagogue peptides?',
-    answer: "GHS peptides stimulate the body's natural production of growth hormone from the pituitary gland. Major examples include CJC-1295 (a GHRH analog), Ipamorelin (selective GHRP without cortisol elevation), Sermorelin, and MK-677 (oral secretagogue). These are frequently stacked for synergistic GH pulse amplification.",
+    answer: "GHS peptides stimulate the body's natural production of growth hormone from the pituitary gland. Major examples include CJC-1295 (a GHRH analog), Ipamorelin (selective GHRP without cortisol elevation), Sermorelin, and MK-677 (oral secretagogue). Because GHRH analogs and GHRPs act on different receptors, researchers have studied them in combination.",
   },
   {
     question: 'What are the best peptides for healing and recovery?',

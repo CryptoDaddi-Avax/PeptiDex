@@ -5,7 +5,7 @@ import { SITE_STATS } from '@/data/site-stats';
 import '../Sections.css';
 
 /**
- * QuizCTA — v13 personalized quiz section (§06).
+ * QuizCTA — v13 research-area finder quiz section (§06).
  * Glass card with badge, chip tags, and lime CTA → /quiz.
  *
  * This is a NEW component — the old QuizPromoCard is left intact
@@ -20,7 +20,7 @@ const ArrowUpRight = () => (
 
 export default function QuizCTA() {
   return (
-    <section className="sec" id="quiz-cta" aria-label="Personalized peptide stack quiz">
+    <section className="sec" id="quiz-cta" aria-label="Peptide research-area finder quiz">
       <div className="sec-inner">
         <header className="sec-head" style={{ maxWidth: 760 }}>
           <div className="section-rule fade-up" aria-hidden="true">
@@ -28,19 +28,19 @@ export default function QuizCTA() {
             <span className="rule-mark">§<span className="num">06</span></span>
             <span className="rule-line" />
           </div>
-          <p className="sec-eyebrow fade-up" style={{ '--delay': '60ms' } as React.CSSProperties}>PERSONALIZED</p>
+          <p className="sec-eyebrow fade-up" style={{ '--delay': '60ms' } as React.CSSProperties}>RESEARCH FINDER</p>
           <h2 className="sec-h2 fade-up" style={{ '--delay': '140ms' } as React.CSSProperties}>
-            Get your custom peptide stack in <span className="em">60 seconds</span>.
+            Find peptides by research area in <span className="em">60 seconds</span>.
           </h2>
           <p className="sec-sub fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>
-            5 quick questions → personalized peptide recommendations backed by published research.
+            3 quick questions → a research-area overview with mechanisms and citations.
           </p>
         </header>
 
         <div className="quiz-card glass fade-up" style={{ '--delay': '320ms' } as React.CSSProperties}>
           <span className="quiz-badge">
             <span className="dot" aria-hidden="true" />
-            5 QUESTIONS · NO ACCOUNT
+            3 QUESTIONS · NO ACCOUNT
           </span>
 
           <div className="quiz-chips">

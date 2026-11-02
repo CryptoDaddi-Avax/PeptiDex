@@ -8,7 +8,7 @@ import { ShareBar } from '@/components/share-bar';
 import { CiteThisPage } from '@/components/cite-page';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { FeedbackModal } from '@/components/feedback-modal';
-import { getAuthorSlug, getAuthorBySlug, getPersonSchema } from '@/lib/authors';
+import { getAuthorSlug, getAuthorBySlug, getAuthorSchema } from '@/lib/authors';
 import { getPostBySlug, getAllSlugs } from '@/lib/markdown';
 import { Byline } from '@/components/byline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
@@ -54,7 +54,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const authorSlug = getAuthorSlug(author || 'PeptiDex Editorial');
   const authorRecord = getAuthorBySlug(authorSlug);
-  const reviewerRecord = medicallyReviewedBy ? getAuthorBySlug(medicallyReviewedBy) : undefined;
 
   const articleSchema = {
     ...buildArticleSchema({
@@ -66,9 +65,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       url: canonical,
     }),
     author: authorRecord
-      ? getPersonSchema(authorRecord)
-      : { '@type': 'Person', name: author || 'PeptiDex Editorial', url: `https://peptidex.app/team/${authorSlug}` },
-    ...(reviewerRecord ? { reviewedBy: getPersonSchema(reviewerRecord) } : {}),
+      ? getAuthorSchema(authorRecord)
+      : { '@type': 'Organization', name: author || 'PeptiDex Editorial Team', url: `https://peptidex.app/team/${authorSlug}` },
     ...(reviewedDate ? { lastReviewed: reviewedDate } : {}),
     publisher: { '@type': 'Organization', name: 'PeptiDex', logo: { '@type': 'ImageObject', url: 'https://peptidex.app/logo.png' } },
   };

@@ -16,15 +16,10 @@ interface PairStats {
     repeat_pct: number | null;
     verified_count: number;
     lab_confirmed_count: number;
-    most_common_frequency: string | null;
-    avg_duration_weeks: number | null;
 }
 
 interface LogEntry {
     id: string;
-    dose_mcg: number | null;
-    frequency: string | null;
-    duration_weeks: number | null;
     goal_slug: string | null;
     efficacy_score: number;
     side_effect_score: number;
@@ -86,7 +81,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                             : `No community data yet for ${peptideName} from ${vendorName}`}
                     </p>
                     <p className="mt-2" style={{ fontFamily: "var(--sans)", fontSize: 14, color: "var(--ink-dim)" }}>
-                        Purchased {peptideName} from {vendorName}? Be the first to log your protocol.
+                        Have batch test data for {peptideName} from {vendorName}? Submit a report.
                     </p>
                     <div className="flex gap-4 justify-center mt-8 flex-wrap">
                         <Link
@@ -94,7 +89,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                             className="px-6 py-3 rounded-lg font-semibold transition-all hover:scale-[1.02]"
                             style={{ background: "linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%)", color: "#0a0a0b", fontFamily: "var(--sans)", fontSize: 14 }}
                         >
-                            Log This Cycle →
+                            Submit batch report →
                         </Link>
                         {affiliateUrl && (
                             <a
@@ -127,12 +122,10 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                     </div>
 
                     {/* ── Protocol details ── */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                         {[
                             { label: "Verified Buyer logs", value: String(stats.verified_count || 0), color: "var(--green)" },
                             { label: "Lab Confirmed", value: String(stats.lab_confirmed_count || 0), color: "var(--gold)" },
-                            { label: "Common Frequency", value: stats.most_common_frequency?.replace(/_/g, "/") || "—", color: "var(--ink)" },
-                            { label: "Avg Duration", value: stats.avg_duration_weeks ? `${stats.avg_duration_weeks}wk` : "—", color: "var(--ink)" },
                         ].map(s => (
                             <div key={s.label} className="rounded-lg px-4 py-3" style={{ background: "var(--bg-soft)", border: "1px solid var(--line)" }}>
                                 <div style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: "0.1em" }}>{s.label}</div>
@@ -165,7 +158,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                                 className="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02]"
                                 style={{ background: "linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%)", color: "#0a0a0b", fontFamily: "var(--sans)" }}
                             >
-                                + Log This Cycle
+                                + Submit batch report
                             </Link>
                         </div>
                     </div>
@@ -183,9 +176,6 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2 flex-wrap mb-2">
                                             <VerificationBadge level={log.verification_level} size="sm" />
-                                            {log.dose_mcg && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>{log.dose_mcg}mcg</span>}
-                                            {log.frequency && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>{log.frequency.replace(/_/g, "/")}</span>}
-                                            {log.duration_weeks && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>{log.duration_weeks}wk</span>}
                                         </div>
                                         {log.outcome_text && (
                                             <p style={{ fontFamily: "var(--serif)", fontSize: 14, color: "var(--ink-dim)", fontStyle: "italic", lineHeight: 1.6 }}>

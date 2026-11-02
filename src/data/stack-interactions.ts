@@ -4,7 +4,7 @@
  * Each entry describes one pair (order-independent).
  * 
  * Severity scale:
- *   SAFE         — well-documented safe combination, often synergistic
+ *   SAFE         — no known pharmacological conflict (displayed as "No known conflict"; not a safety guarantee)
  *   CAUTION      — theoretical concern or limited human data; proceed with awareness
  *   WARNING      — documented adverse effect or pharmacological conflict
  *   DO_NOT_STACK — clear contraindication; avoid combining
@@ -38,14 +38,14 @@ export interface StackInteraction {
 
 export const stackInteractions: StackInteraction[] = [
 
-  // ══════════ SAFE — Well-documented synergies ══════════════════════════════
+  // ══════════ SAFE (no known conflict) — distinct mechanisms ════════════════
 
   {
     peptideA: "BPC-157",
     peptideB: "TB-500",
     severity: "SAFE",
-    headline: "Classic synergistic stack — widely used for tissue repair",
-    detail: "BPC-157 promotes local angiogenesis and tendon/gut healing via VEGF upregulation. TB-500 (Thymosin Beta-4) acts systemically to promote actin polymerization and cell migration. The two mechanisms are complementary and non-overlapping. This is one of the most commonly co-administered research combinations with no documented adverse interactions.",
+    headline: "No known conflict — distinct mechanisms studied in tissue-repair models",
+    detail: "BPC-157 has been studied in rodent models for local angiogenesis and tendon/GI lesion repair via VEGF upregulation. TB-500 (Thymosin Beta-4) has been studied for actin regulation and cell migration. The two mechanisms are distinct and non-overlapping. They are frequently discussed together; no adverse interactions are documented, but the combination has not been studied in controlled trials.",
     citations: [
       { type: "pubmed", label: "Sikiric et al., 2018 — Curr Pharm Des", url: "https://pubmed.ncbi.nlm.nih.gov/27138887/" },
       { type: "editorial", label: "Editorial: No pharmacokinetic conflict identified; distinct receptor profiles" },
@@ -56,12 +56,12 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Ipamorelin",
     peptideB: "CJC-1295",
     severity: "SAFE",
-    headline: "Complementary GH secretagogue stack — standard protocol",
-    detail: "Ipamorelin is a GH secretagogue receptor (GHSR) agonist that triggers a GH pulse. CJC-1295 (without DAC) is a GHRH analog that amplifies the pituitary response. Together they target different steps in the same axis, producing a stronger and more physiological GH pulse than either alone. This combination is the most widely studied GH peptide stack.",
+    headline: "No known conflict — dual-axis GH secretagogue mechanism",
+    detail: "Ipamorelin is a GH secretagogue receptor (GHSR) agonist that triggers a GH pulse. CJC-1295 (without DAC) is a GHRH analog that amplifies the pituitary response. They target different steps in the same axis, and combined GHRH + GHRP stimulation has been reported to amplify GH release. This specific pair is widely discussed but has not been tested in controlled human trials.",
     citations: [
       { type: "pubmed", label: "Raun et al., 1998 — Eur J Endocrinol (Ipamorelin)", url: "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
       { type: "pubmed", label: "Teichman et al., 2006 — J Clin Endocrinol Metab (CJC-1295)", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
-      { type: "editorial", label: "Editorial: Dual-axis mechanism well characterized; widely used in GH deficiency research" },
+      { type: "editorial", label: "Editorial: Dual-axis mechanism characterized for each compound separately; no published pair study" },
     ],
   },
 
@@ -69,10 +69,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "BPC-157",
     peptideB: "GHK-Cu",
     severity: "SAFE",
-    headline: "Complementary tissue repair — different mechanisms, no overlap",
-    detail: "BPC-157 promotes angiogenesis and tendon healing via VEGF and nitric oxide pathways. GHK-Cu (copper peptide) stimulates collagen synthesis, antioxidant activity, and wound healing through distinct copper-dependent enzymatic pathways. No pharmacological conflict. Commonly used together in skin and connective tissue repair protocols.",
+    headline: "No known conflict — different mechanisms, no overlap",
+    detail: "BPC-157 has been studied in animal models for angiogenesis and tendon repair via VEGF and nitric oxide pathways. GHK-Cu (copper peptide) has been studied for collagen synthesis, antioxidant activity and wound models through distinct copper-dependent enzymatic pathways. No pharmacological conflict is known. The combination has not been studied.",
     citations: [
-      { type: "editorial", label: "Editorial: Non-overlapping receptor profiles; additive expected, not antagonistic" },
+      { type: "editorial", label: "Editorial: Non-overlapping receptor profiles; no antagonism expected, combination unstudied" },
     ],
   },
 
@@ -80,8 +80,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Ipamorelin",
     peptideB: "BPC-157",
     severity: "SAFE",
-    headline: "No known conflict — different axes, commonly co-administered",
-    detail: "Ipamorelin operates via GHSR on the GH/IGF-1 axis. BPC-157 operates locally via VEGF, NO, and dopamine pathways. The two peptides do not compete for the same receptors or pathways. No documented adverse interactions in animal or human studies.",
+    headline: "No known conflict — different axes",
+    detail: "Ipamorelin operates via GHSR on the GH/IGF-1 axis. BPC-157 has been studied for local VEGF, NO and dopamine pathway effects. The two peptides do not compete for the same receptors or pathways. No adverse interactions are documented, but the combination has not been studied.",
     citations: [
       { type: "editorial", label: "Editorial: Distinct pharmacological axes; no conflict identified in literature" },
     ],
@@ -91,8 +91,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Epithalon",
     peptideB: "GHK-Cu",
     severity: "SAFE",
-    headline: "Anti-aging combination — telomere and collagen axes",
-    detail: "Epitalon (Epithalon) is a tetrapeptide that stimulates telomerase activity and pineal melatonin secretion. GHK-Cu works through collagen synthesis and antioxidant pathways. The two mechanisms are independent and non-competing. Both are used in longevity-focused protocols with no reported interactions.",
+    headline: "No known conflict — telomere and collagen research axes",
+    detail: "Epitalon (Epithalon) is a tetrapeptide studied for telomerase activity in cell culture and pineal melatonin secretion. GHK-Cu has been studied for collagen synthesis and antioxidant pathways. The two mechanisms are independent and non-competing. No interactions have been reported; the combination has not been studied.",
     citations: [
       { type: "editorial", label: "Editorial: Non-overlapping mechanisms; no conflict in published literature" },
     ],
@@ -102,10 +102,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "TB-500",
     peptideB: "GHK-Cu",
     severity: "SAFE",
-    headline: "Complementary systemic and local repair mechanisms",
-    detail: "TB-500 promotes systemic cell migration and actin remodeling. GHK-Cu stimulates local collagen and GAG synthesis. Both support tissue repair from different angles. No documented pharmacological conflict.",
+    headline: "No known conflict — distinct cell-migration and collagen mechanisms",
+    detail: "TB-500 has been studied for cell migration and actin remodeling. GHK-Cu has been studied for collagen and GAG synthesis. Both are studied in tissue-repair models through different mechanisms. No documented pharmacological conflict; the combination has not been studied.",
     citations: [
-      { type: "editorial", label: "Editorial: Distinct receptor/enzyme profiles; additive repair effects expected" },
+      { type: "editorial", label: "Editorial: Distinct receptor/enzyme profiles; no antagonism expected, combination unstudied" },
     ],
   },
 
@@ -113,10 +113,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Sermorelin",
     peptideB: "Ipamorelin",
     severity: "SAFE",
-    headline: "GHRH + GHSR dual-axis GH stimulation — well characterized",
-    detail: "Sermorelin is a GHRH analog; Ipamorelin is a GHSR agonist. Like CJC-1295 + Ipamorelin, this combination targets two steps in GH release for a synergistic effect. Sermorelin has a shorter half-life than CJC-1295 but the mechanism of co-administration is well understood.",
+    headline: "No known conflict — GHRH + GHSR dual-axis mechanism",
+    detail: "Sermorelin is a GHRH analog; Ipamorelin is a GHSR agonist. Like CJC-1295 + Ipamorelin, this combination targets two steps in GH release, which is expected to amplify the GH response. Sermorelin has a shorter half-life than CJC-1295. The pair has not been tested in controlled trials.",
     citations: [
-      { type: "editorial", label: "Editorial: Same dual-axis rationale as CJC-1295 + Ipamorelin; established protocol" },
+      { type: "editorial", label: "Editorial: Same dual-axis rationale as CJC-1295 + Ipamorelin; mechanism well characterized" },
     ],
   },
 
@@ -139,7 +139,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "Sermorelin",
     severity: "CAUTION",
     headline: "Redundant GHRH agonism — no additive benefit expected",
-    detail: "Both CJC-1295 and Sermorelin are GHRH analogs acting on the same pituitary receptor. Co-administration provides no established additive benefit and wastes dose. Choose one GHRH analog and pair with a GHSR agonist (Ipamorelin or MK-677) for a rational dual-axis stack.",
+    detail: "Both CJC-1295 and Sermorelin are GHRH analogs acting on the same pituitary receptor. Co-administration provides no established additive benefit. A GHRH analog paired with a GHSR agonist (Ipamorelin or MK-677) is the mechanistically complementary dual-axis combination.",
     citations: [
       { type: "editorial", label: "Editorial: Identical receptor target; redundancy confirmed by mechanism" },
     ],
@@ -150,8 +150,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "BPC-157",
     peptideB: "Insulin",
     severity: "CAUTION",
-    headline: "BPC-157 modulates insulin sensitivity — monitor blood glucose",
-    detail: "Animal studies show BPC-157 can influence insulin secretion and peripheral glucose uptake. Co-administration with exogenous insulin may unpredictably alter glycemic response. Not formally contraindicated, but blood glucose monitoring is recommended, especially at higher BPC-157 doses.",
+    headline: "BPC-157 modulates insulin sensitivity — possible glycemic interaction",
+    detail: "Animal studies show BPC-157 can influence insulin secretion and peripheral glucose uptake. Co-administration with exogenous insulin may unpredictably alter glycemic response. Not formally contraindicated; an additive glycemic effect is mechanistically plausible but has not been studied in humans.",
     citations: [
       { type: "editorial", label: "Editorial: Animal data only; human insulin interaction not formally studied" },
     ],
@@ -162,22 +162,22 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "PT-141",
     severity: "CAUTION",
     headline: "Same melanocortin receptor family — additive side effects",
-    detail: "Melanotan II (MT-II) and PT-141 both activate melanocortin receptors (MT-II broadly, PT-141 selectively MC4R). Co-administration may produce additive nausea, facial flushing, blood pressure elevation, and prolonged erections. Not contraindicated, but dose reduction is advisable if combining.",
+    detail: "Melanotan II (MT-II) and PT-141 both activate melanocortin receptors (MT-II broadly, PT-141 selectively MC4R). Co-administration may produce additive nausea, facial flushing, blood pressure elevation, and prolonged erections. Not formally contraindicated; additive effects are mechanistically plausible (see cited study).",
     citations: [
       { type: "pubmed", label: "Wikberg et al., 2000 — Pharmacol Res (Melanocortin receptors)", url: "https://pubmed.ncbi.nlm.nih.gov/11023702/" },
       { type: "editorial", label: "Editorial: Receptor overlap confirmed; additive side effect profile expected" },
     ],
-    alternatives: ["PT-141 alone at appropriate dose"],
+    alternatives: ["PT-141 alone"],
   },
 
   {
     peptideA: "Epithalon",
     peptideB: "Melatonin",
     severity: "CAUTION",
-    headline: "Epitalon stimulates endogenous melatonin — avoid exogenous melatonin overlap",
-    detail: "Epitalon upregulates pineal melatonin secretion. Co-administering exogenous melatonin may push total melatonin levels higher than intended, causing excessive sedation or circadian disruption. Not dangerous, but time your cycles carefully.",
+    headline: "Epitalon stimulates endogenous melatonin — overlaps with exogenous melatonin",
+    detail: "Epitalon upregulates pineal melatonin secretion. Co-administering exogenous melatonin may push total melatonin levels higher than intended, causing excessive sedation or circadian disruption. Additive effects are mechanistically plausible; no pair study is available.",
     citations: [
-      { type: "editorial", label: "Editorial: Mechanism-based redundancy; not a safety concern at typical doses" },
+      { type: "editorial", label: "Editorial: Mechanism-based redundancy; additive effect plausible" },
     ],
   },
 
@@ -185,10 +185,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "IGF-1 LR3",
     peptideB: "Ipamorelin",
     severity: "CAUTION",
-    headline: "Downstream IGF-1 elevation overlap — monitor for hypoglycemia",
-    detail: "Ipamorelin stimulates GH release which triggers liver IGF-1 production. IGF-1 LR3 directly provides exogenous IGF-1. Combined use may produce supraphysiological IGF-1 signaling, increasing hypoglycemia risk and theoretically promoting abnormal cell proliferation with chronic use. Use with awareness and monitor blood glucose.",
+    headline: "Downstream IGF-1 elevation overlap — additive hypoglycemia risk",
+    detail: "Ipamorelin stimulates GH release which triggers liver IGF-1 production. IGF-1 LR3 directly provides exogenous IGF-1. Combined use may produce supraphysiological IGF-1 signaling, increasing hypoglycemia risk and theoretically promoting abnormal cell proliferation with chronic exposure.",
     citations: [
-      { type: "editorial", label: "Editorial: Synergistic IGF-1 pathway elevation; hypoglycemia monitoring essential" },
+      { type: "editorial", label: "Editorial: Synergistic IGF-1 pathway elevation; hypoglycemia is the primary concern" },
     ],
     alternatives: ["BPC-157", "TB-500"],
   },
@@ -204,18 +204,16 @@ export const stackInteractions: StackInteraction[] = [
     citations: [
       { type: "editorial", label: "Editorial: Mechanism analogous to PDE5i + nitrate contraindication" },
     ],
-    alternatives: ["Discontinue nitrate use before PT-141 administration"],
   },
 
   {
     peptideA: "IGF-1 LR3",
     peptideB: "Insulin",
     severity: "WARNING",
-    headline: "Significant hypoglycemia risk — requires careful glucose management",
-    detail: "Both IGF-1 LR3 and insulin lower blood glucose through related but distinct pathways. IGF-1 LR3 binds insulin receptors in addition to IGF-1R. Co-administration substantially increases hypoglycemia risk. This combination requires strict glucose monitoring, carbohydrate availability, and experienced judgment. Not recommended for unsupervised use.",
+    headline: "Significant hypoglycemia risk — additive glucose-lowering effects",
+    detail: "Both IGF-1 LR3 and insulin lower blood glucose through related but distinct pathways. IGF-1 LR3 binds insulin receptors in addition to IGF-1R. Co-administration substantially increases hypoglycemia risk, and this pairing is flagged as a significant safety concern.",
     citations: [
     ],
-    alternatives: ["Use IGF-1 LR3 alone with glucose monitoring; do not combine with insulin"],
   },
 
   // ══════════ BATCH 2: Nootropics ═══════════════════════════════════════════
@@ -224,8 +222,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Selank",
     peptideB: "Semax",
     severity: "SAFE",
-    headline: "Complementary nootropic peptides — anxiolytic + cognitive enhancement",
-    detail: "Selank acts as an anxiolytic and immune modulator via tuftsin mimicry and serotonin/GABA modulation. Semax is a pro-cognitive peptide that upregulates BDNF and influences dopamine/serotonin systems. Their mechanisms are distinct: Selank reduces anxiety and stabilizes mood, while Semax drives cognitive processing speed and neuroplasticity. No pharmacological conflict identified. Widely co-used in Russian peptide research protocols.",
+    headline: "No known conflict — anxiolytic + pro-cognitive research profiles",
+    detail: "Selank acts as an anxiolytic and immune modulator via tuftsin mimicry and serotonin/GABA modulation. Semax is a pro-cognitive peptide that upregulates BDNF and influences dopamine/serotonin systems. Their mechanisms are distinct: Selank has been studied for anxiolytic effects, Semax for BDNF signaling and neuroplasticity. No pharmacological conflict identified. The combination has not been studied in controlled trials.",
     citations: [
       { type: "pubmed", label: "Kozlovskiy et al., 2008 — Eksp Klin Farmakol (Selank mnestic)", url: "https://pubmed.ncbi.nlm.nih.gov/18488898/" },
       { type: "pubmed", label: "Agapova et al., 2007 — Neurosci Lett (Semax neurotrophin)", url: "https://pubmed.ncbi.nlm.nih.gov/17353092/" },
@@ -237,11 +235,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Selank",
     peptideB: "BPC-157",
     severity: "SAFE",
-    headline: "Neuroprotection + gut-brain axis — no overlap, potentially additive",
-    detail: "Selank modulates anxiety and immune function centrally. BPC-157 has documented neuroprotective and gut-brain axis effects peripherally. The two operate in different compartments with non-competing mechanisms. BPC-157 may complement Selank in protocols targeting both CNS stability and peripheral inflammation.",
+    headline: "No known conflict — central and peripheral mechanisms",
+    detail: "Selank modulates anxiety and immune function centrally. BPC-157 has been studied in animal models for neuroprotective and gut-brain axis effects. The two operate in different compartments with non-competing mechanisms. The combination has not been studied.",
     citations: [
       { type: "pubmed", label: "Sikiric et al., 2016 — Curr Neuropharmacol (BPC-157 CNS)", url: "https://pubmed.ncbi.nlm.nih.gov/27138887/" },
-      { type: "editorial", label: "Editorial: Non-overlapping; additive neuroprotective profile plausible" },
+      { type: "editorial", label: "Editorial: Non-overlapping mechanisms; combination unstudied" },
     ],
   },
 
@@ -250,7 +248,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "Ipamorelin",
     severity: "SAFE",
     headline: "Cognitive + GH stack — distinct axes, no conflict",
-    detail: "Semax operates on BDNF, dopamine, and serotonin pathways in the CNS. Ipamorelin stimulates pituitary GH release via GHSR. No receptor overlap. This combination is used in performance protocols targeting both cognitive function and body composition. No documented adverse interactions.",
+    detail: "Semax operates on BDNF, dopamine, and serotonin pathways in the CNS. Ipamorelin stimulates pituitary GH release via GHSR. No receptor overlap and no documented adverse interactions. The combination has not been studied.",
     citations: [
       { type: "editorial", label: "Editorial: Distinct pharmacological axes; no interaction in published literature" },
     ],
@@ -260,7 +258,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Selank",
     peptideB: "Semax",
     severity: "SAFE",
-    headline: "Complementary nootropic peptides — anxiolytic + cognitive enhancement",
+    headline: "No known conflict — anxiolytic + pro-cognitive research profiles",
     detail: "Selank and Semax are both nasal peptides from Russian research with complementary CNS profiles. Selank is primarily anxiolytic; Semax is primarily pro-cognitive. They modulate different neurotransmitter systems without pharmacological antagonism.",
     citations: [
       { type: "editorial", label: "Editorial: Clinical use in Russia documented; no adverse pair events reported" },
@@ -273,11 +271,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "LL-37",
     peptideB: "Thymosin Alpha-1",
     severity: "SAFE",
-    headline: "Complementary immune modulators — innate + adaptive immunity",
-    detail: "LL-37 (Cathelicidin) is an innate immune antimicrobial peptide that disrupts bacterial membranes and modulates inflammatory signaling via TLR4. Thymosin Alpha-1 (Thymalfasin) operates on the adaptive immune system by enhancing T-cell maturation and dendritic cell function. The two immunological axes are non-competing and potentially synergistic in supporting broad immune function.",
+    headline: "No known conflict — innate + adaptive immune mechanisms",
+    detail: "LL-37 (Cathelicidin) is an innate immune antimicrobial peptide that disrupts bacterial membranes and modulates inflammatory signaling via TLR4. Thymosin Alpha-1 (Thymalfasin) operates on the adaptive immune system by enhancing T-cell maturation and dendritic cell function. The two immunological axes are non-competing. The combination has not been studied, and neither peptide is FDA-approved.",
     citations: [
       { type: "pubmed", label: "Alford et al., 2020 — Front Microbiol (LL-37 immune)", url: "https://pubmed.ncbi.nlm.nih.gov/32982998/" },
-      { type: "editorial", label: "Editorial: Distinct mechanisms; innate + adaptive synergy is pharmacologically rational" },
+      { type: "editorial", label: "Editorial: Distinct mechanisms; no published pair study" },
     ],
   },
 
@@ -285,10 +283,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Thymosin Alpha-1",
     peptideB: "BPC-157",
     severity: "SAFE",
-    headline: "Immune modulation + tissue repair — complementary, no conflict",
-    detail: "Thymosin Alpha-1 enhances T-cell and NK cell activity via thymic hormone pathways. BPC-157 reduces systemic inflammation via the NO and dopamine systems while promoting local tissue healing. Both support recovery but through non-overlapping mechanisms. Often combined in post-illness or post-surgical recovery protocols.",
+    headline: "No known conflict — immune modulation + tissue-repair research",
+    detail: "Thymosin Alpha-1 enhances T-cell and NK cell activity via thymic hormone pathways. BPC-157 has been studied in animal models for anti-inflammatory and tissue-repair effects via the NO and dopamine systems. The mechanisms do not overlap. The combination has not been studied.",
     citations: [
-      { type: "editorial", label: "Editorial: No pharmacological conflict; clinically rational for immune + repair protocols" },
+      { type: "editorial", label: "Editorial: No pharmacological conflict identified; combination unstudied" },
     ],
   },
 
@@ -296,8 +294,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "LL-37",
     peptideB: "BPC-157",
     severity: "CAUTION",
-    headline: "Both modulate inflammatory signaling — monitor for immune overstimulation",
-    detail: "LL-37 directly activates inflammatory pathways (TLR4, formyl peptide receptors) as part of its antimicrobial role. BPC-157 simultaneously suppresses some of those same inflammatory cascades. The opposing actions on inflammation could theoretically blunt efficacy of one or both compounds, or produce unpredictable immune signaling in acute infection settings. Monitor closely; avoid during active severe infections.",
+    headline: "Both modulate inflammatory signaling — possible opposing immune effects",
+    detail: "LL-37 directly activates inflammatory pathways (TLR4, formyl peptide receptors) as part of its antimicrobial role. BPC-157 simultaneously suppresses some of those same inflammatory cascades. The opposing actions on inflammation could theoretically blunt efficacy of one or both compounds, or produce unpredictable immune signaling in acute infection settings. Opposing effects on inflammation are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Mookherjee et al., 2020 — Nat Rev Drug Discov (LL-37)", url: "https://pubmed.ncbi.nlm.nih.gov/32107480/" },
       { type: "editorial", label: "Editorial: Opposing pro/anti-inflammatory signals; interaction theoretical but plausible" },
@@ -310,11 +308,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "DSIP",
     peptideB: "Ipamorelin",
     severity: "SAFE",
-    headline: "Sleep-wake cycle + GH pulse — timing-dependent synergy",
-    detail: "DSIP (Delta Sleep-Inducing Peptide) promotes slow-wave sleep and may enhance the natural nocturnal GH surge. Ipamorelin also stimulates GH release. Timing both pre-sleep may produce a complementary effect on overnight GH secretion and recovery. No documented adverse pharmacological interaction; the main consideration is timing (both ideally administered pre-sleep).",
+    headline: "No known conflict — sleep-wake and GH-pulse mechanisms",
+    detail: "DSIP (Delta Sleep-Inducing Peptide) promotes slow-wave sleep and may enhance the natural nocturnal GH surge. Ipamorelin also stimulates GH release. A complementary effect on overnight GH secretion is mechanistically plausible. No documented adverse pharmacological interaction.",
     citations: [
       { type: "pubmed", label: "Monnier et al., 1977 — Experientia (DSIP sleep)", url: "https://pubmed.ncbi.nlm.nih.gov/862769/" },
-      { type: "editorial", label: "Editorial: Timing synergy plausible; no adverse interaction documented" },
+      { type: "editorial", label: "Editorial: Complementary effect plausible; no adverse interaction documented" },
     ],
   },
 
@@ -322,8 +320,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "DSIP",
     peptideB: "Epithalon",
     severity: "SAFE",
-    headline: "Complementary sleep and circadian regulation",
-    detail: "DSIP promotes delta-wave sleep and normalizes cortisol rhythms. Epitalon regulates pineal melatonin output and circadian gene expression. Both support sleep quality through different but complementary mechanisms. Commonly used together in longevity and sleep optimization protocols with no reported adverse interactions.",
+    headline: "No known conflict — sleep and circadian research mechanisms",
+    detail: "DSIP has been studied for delta-wave sleep and cortisol rhythms. Epitalon has been studied, mainly in Russian research, for pineal melatonin output and circadian gene expression. The mechanisms differ, and no adverse interactions have been reported; the combination has not been studied.",
     citations: [
       { type: "editorial", label: "Editorial: Complementary circadian mechanisms; no conflict identified" },
     ],
@@ -333,11 +331,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "DSIP",
     peptideB: "Melatonin",
     severity: "CAUTION",
-    headline: "Additive sedation possible — stagger timing or reduce doses",
-    detail: "Both DSIP and melatonin promote sleep onset and slow-wave activity through overlapping but distinct mechanisms. Co-administration at full doses of both may produce stronger sedation than intended, causing difficulty waking or daytime grogginess. If combining, reduce melatonin to ≤0.5 mg and administer DSIP 30–60 minutes before sleep separately.",
+    headline: "Additive sedation possible — overlapping sleep mechanisms",
+    detail: "Both DSIP and melatonin promote sleep onset and slow-wave activity through overlapping but distinct mechanisms. Co-administration may produce stronger sedation than intended, causing difficulty waking or daytime grogginess. Additive effects are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Schoenenberger & Monnier, 1977 — Proc Natl Acad Sci (DSIP)", url: "https://pubmed.ncbi.nlm.nih.gov/265572/" },
-      { type: "editorial", label: "Editorial: Additive sedation risk at full doses; dose reduction recommended if combining" },
+      { type: "editorial", label: "Editorial: Additive sedation risk; no pair study available" },
     ],
   },
 
@@ -362,7 +360,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "Ipamorelin",
     severity: "CAUTION",
     headline: "Redundant GHSR agonism — GHRP-2 cortisol elevation stacks unfavorably",
-    detail: "GHRP-2 and Ipamorelin both activate GHSR. GHRP-2 additionally raises cortisol and prolactin more than Ipamorelin. Combining them provides redundant GHSR signaling with additive cortisol/prolactin effects but no proven additional GH release benefit over a GHRH + GHSR dual-axis stack. Choose one GHSR agonist and pair with a GHRH analog.",
+    detail: "GHRP-2 and Ipamorelin both activate GHSR. GHRP-2 additionally raises cortisol and prolactin more than Ipamorelin. Combining them provides redundant GHSR signaling with additive cortisol/prolactin effects but no proven additional GH release benefit over a GHRH + GHSR dual-axis stack, which is the mechanistically complementary alternative.",
     citations: [
       { type: "editorial", label: "Editorial: Additive cortisol/prolactin with no clear GH advantage; redundant mechanism" },
     ],
@@ -386,7 +384,7 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "CJC-1295",
     severity: "SAFE",
     headline: "GHSR + GHRH dual-axis — functional but GHRP-6 adds hunger/cortisol",
-    detail: "Like Ipamorelin + CJC-1295, GHRP-6 + CJC-1295 targets both GHSR and GHRH receptor for amplified GH release. This combination is pharmacologically rational and commonly used. The main downside vs Ipamorelin + CJC-1295 is GHRP-6's significant appetite stimulation and cortisol/prolactin elevation, making it better suited for bulk phases.",
+    detail: "Like Ipamorelin + CJC-1295, GHRP-6 + CJC-1295 targets both GHSR and GHRH receptor for amplified GH release. The dual-axis rationale is the same. The main difference vs Ipamorelin + CJC-1295 is GHRP-6's significant appetite stimulation and cortisol/prolactin elevation.",
     citations: [
       { type: "pubmed", label: "Bowers et al., 1994 — J Clin Endocrinol Metab (GHRP-6 + GHRH)", url: "https://pubmed.ncbi.nlm.nih.gov/7962301/" },
       { type: "editorial", label: "Editorial: Dual-axis rationale sound; side effect profile less selective than Ipamorelin variant" },
@@ -399,11 +397,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Kisspeptin-10",
     peptideB: "PT-141",
     severity: "SAFE",
-    headline: "Upstream HPG axis + central melanocortin — complementary sexual function",
-    detail: "Kisspeptin-10 acts on GnRH neurons to upregulate LH/FSH and downstream testosterone, operating at the hypothalamic level. PT-141 (Bremelanotide) activates MC4R in the brain to drive sexual arousal independently of hormonal status. The two mechanisms are upstream/downstream rather than competing: Kisspeptin addresses hormonal substrate, PT-141 addresses central arousal signaling. No pharmacological conflict.",
+    headline: "No known conflict — HPG axis + central melanocortin mechanisms",
+    detail: "Kisspeptin-10 acts on GnRH neurons to upregulate LH/FSH and downstream testosterone, operating at the hypothalamic level. PT-141 (Bremelanotide) activates MC4R in the brain and acts on sexual desire independently of hormonal status. The two mechanisms are separate rather than competing. No pharmacological conflict is known; the combination has not been studied.",
     citations: [
       { type: "pubmed", label: "Dhillo et al., 2005 — J Clin Endocrinol Metab (Kisspeptin-10)", url: "https://pubmed.ncbi.nlm.nih.gov/16174713/" },
-      { type: "editorial", label: "Editorial: Non-overlapping receptor targets; complementary sexual function axes" },
+      { type: "editorial", label: "Editorial: Non-overlapping receptor targets; combination unstudied" },
     ],
   },
 
@@ -411,11 +409,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Kisspeptin-10",
     peptideB: "Melanotan II",
     severity: "CAUTION",
-    headline: "HPG axis + melanocortin — monitor for LH surge and cardiovascular effects",
-    detail: "Kisspeptin-10 drives a strong LH/FSH pulse and can produce transient hormonal surges. Melanotan II causes melanocortin-mediated sexual arousal, skin tanning, and nausea. Together, the combined hormonal activation and peripheral melanocortin effects may amplify cardiovascular stress (elevated BP, heart rate) and hormonal overshoot in some individuals. Monitor cardiovascular parameters.",
+    headline: "HPG axis + melanocortin — possible LH surge and cardiovascular effects",
+    detail: "Kisspeptin-10 drives a strong LH/FSH pulse and can produce transient hormonal surges. Melanotan II causes melanocortin-mediated sexual arousal, skin tanning, and nausea. Together, the combined hormonal activation and peripheral melanocortin effects may amplify cardiovascular stress (elevated BP, heart rate) and hormonal overshoot in some individuals. Additive effects are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Dhillo et al., 2005 — JCEM (Kisspeptin LH surge)", url: "https://pubmed.ncbi.nlm.nih.gov/16174713/" },
-      { type: "editorial", label: "Editorial: Additive cardiovascular and hormonal stimulation; monitoring advised" },
+      { type: "editorial", label: "Editorial: Additive cardiovascular and hormonal stimulation plausible" },
     ],
   },
 
@@ -425,11 +423,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Epithalon",
     peptideB: "Thymosin Alpha-1",
     severity: "SAFE",
-    headline: "Longevity stack — telomere protection + immune enhancement",
-    detail: "Epitalon stimulates telomerase and melatonin, supporting cellular longevity and circadian regulation. Thymosin Alpha-1 enhances T-cell function and immune surveillance. These two peptides are among the most studied for longevity applications and are frequently co-administered. No pharmacological conflict; immune enhancement complements cellular anti-aging.",
+    headline: "No known conflict — telomere and immune research mechanisms",
+    detail: "Epitalon has been studied for telomerase activation (in cell culture) and melatonin regulation. Thymosin Alpha-1 has been studied for T-cell function and immune surveillance. No pharmacological conflict is known; the combination has not been studied.",
     citations: [
       { type: "pubmed", label: "Khavinson et al., 2003 — Neuroendocrinol Lett (Epitalon longevity)", url: "https://pubmed.ncbi.nlm.nih.gov/14523363/" },
-      { type: "editorial", label: "Editorial: Highly compatible; considered a core longevity stack in peptide research literature" },
+      { type: "editorial", label: "Editorial: Non-overlapping mechanisms; no published pair study" },
     ],
   },
 
@@ -437,8 +435,8 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "SS-31",
     peptideB: "GHK-Cu",
     severity: "SAFE",
-    headline: "Mitochondrial + extracellular matrix — dual anti-aging mechanisms",
-    detail: "SS-31 (Elamipretide) is a mitochondria-targeting peptide that reduces oxidative phosphorylation dysfunction and protects cardiolipin. GHK-Cu supports extracellular matrix renewal through collagen synthesis and antioxidant signaling. The two target intracellular vs extracellular aging mechanisms respectively, with no pharmacological competition.",
+    headline: "No known conflict — mitochondrial + extracellular matrix mechanisms",
+    detail: "SS-31 (Elamipretide) is a mitochondria-targeting peptide studied for oxidative phosphorylation dysfunction and cardiolipin binding. GHK-Cu has been studied for collagen synthesis and antioxidant signaling. The two target intracellular vs extracellular aging mechanisms respectively, with no pharmacological competition.",
     citations: [
       { type: "pubmed", label: "Bhatt et al., 2017 — J Am Heart Assoc (SS-31 mitochondria)", url: "https://pubmed.ncbi.nlm.nih.gov/29217757/" },
       { type: "editorial", label: "Editorial: Intracellular + extracellular mechanisms; no overlap or conflict" },
@@ -449,10 +447,10 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "Epithalon",
     peptideB: "BPC-157",
     severity: "SAFE",
-    headline: "Longevity + tissue maintenance — complementary repair axes",
-    detail: "Epitalon promotes telomerase activity and melatonin production, targeting cellular aging. BPC-157 repairs gut, tendon, and vascular tissue via angiogenic pathways. Both support longevity from different angles: cellular lifespan vs tissue-level maintenance. No pharmacological conflict.",
+    headline: "No known conflict — distinct cellular and tissue-repair mechanisms",
+    detail: "Epitalon has been studied for telomerase activity and melatonin production. BPC-157 has been studied in animal models of gut, tendon and vascular injury via angiogenic pathways. No pharmacological conflict is known; the combination has not been studied.",
     citations: [
-      { type: "editorial", label: "Editorial: Non-overlapping mechanisms; complementary for longevity-focused protocols" },
+      { type: "editorial", label: "Editorial: Non-overlapping mechanisms; combination unstudied" },
     ],
   },
 
@@ -462,11 +460,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "AOD-9604",
     peptideB: "Ipamorelin",
     severity: "SAFE",
-    headline: "Lipolysis + GH pulse — body composition stack with no conflict",
-    detail: "AOD-9604 targets adipose tissue lipolysis via the GH receptor fragment. Ipamorelin stimulates GH release from the pituitary. AOD-9604 does not stimulate GH itself (it is a fragment that bypasses the full GH effect on growth and insulin resistance). This combination targets both local fat breakdown and systemic anabolic GH signaling without pharmacological overlap.",
+    headline: "No known conflict — lipolysis + GH-pulse mechanisms",
+    detail: "AOD-9604 targets adipose tissue lipolysis via the GH receptor fragment. Ipamorelin stimulates GH release from the pituitary. AOD-9604 does not stimulate GH itself (it is a fragment that bypasses the full GH effect on growth and insulin resistance). The two mechanisms do not overlap pharmacologically. The combination has not been studied.",
     citations: [
       { type: "pubmed", label: "Heffernan et al., 2001 — J Endocrinol (AOD-9604)", url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" },
-      { type: "editorial", label: "Editorial: Non-overlapping mechanisms; a rational body composition stack" },
+      { type: "editorial", label: "Editorial: Non-overlapping mechanisms; combination unstudied" },
     ],
   },
 
@@ -477,9 +475,9 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "CJC-1295",
     severity: "CAUTION",
     headline: "Upstream GH stimulation + downstream IGF-1 elevation — supraphysiological IGF-1 risk",
-    detail: "CJC-1295 stimulates GH release, which drives hepatic IGF-1 production. IGF-1 LR3 additionally provides direct, highly bioavailable exogenous IGF-1. The combined effect may push IGF-1 levels significantly above physiological range, increasing hypoglycemia risk and long-term cell proliferation concerns. If combining, use reduced doses of each and monitor IGF-1 blood levels.",
+    detail: "CJC-1295 stimulates GH release, which drives hepatic IGF-1 production. IGF-1 LR3 additionally provides direct, highly bioavailable exogenous IGF-1. The combined effect may push IGF-1 levels significantly above physiological range, increasing hypoglycemia risk and long-term cell proliferation concerns. Additive effects are mechanistically plausible; no pair study is available.",
     citations: [
-      { type: "editorial", label: "Editorial: Additive IGF-1 pathway; blood level monitoring strongly recommended" },
+      { type: "editorial", label: "Editorial: Additive IGF-1 pathway; no pair study available" },
     ],
     alternatives: ["CJC-1295 + Ipamorelin without exogenous IGF-1", "IGF-1 LR3 alone"],
   },
@@ -488,11 +486,11 @@ export const stackInteractions: StackInteraction[] = [
     peptideA: "MK-677",
     peptideB: "CJC-1295",
     severity: "CAUTION",
-    headline: "Dual GH elevation pathways — monitor IGF-1, glucose, and cortisol",
-    detail: "MK-677 (Ibutamoren) is an oral GHSR agonist providing sustained 24-hour GH elevation. CJC-1295 is a GHRH analog that amplifies pituitary GH output. Together they produce continuous strong GH stimulation, which substantially raises IGF-1, may impair insulin sensitivity, and can elevate cortisol and prolactin with chronic use. Cycle length and bloodwork monitoring are essential.",
+    headline: "Dual GH elevation pathways — additive IGF-1, glucose, and cortisol effects",
+    detail: "MK-677 (Ibutamoren) is an oral GHSR agonist providing sustained 24-hour GH elevation. CJC-1295 is a GHRH analog that amplifies pituitary GH output. Together they produce continuous strong GH stimulation, which substantially raises IGF-1, may impair insulin sensitivity, and can elevate cortisol and prolactin with chronic exposure. Additive effects are mechanistically plausible; see cited study.",
     citations: [
       { type: "pubmed", label: "Teichman et al., 2006 — JCEM (CJC-1295)", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
-      { type: "editorial", label: "Editorial: Additive GH/IGF-1 elevation; bloodwork strongly recommended with chronic use" },
+      { type: "editorial", label: "Editorial: Additive GH/IGF-1 elevation with chronic exposure" },
     ],
   },
 
@@ -501,9 +499,9 @@ export const stackInteractions: StackInteraction[] = [
     peptideB: "LL-37",
     severity: "CAUTION",
     headline: "Dual immune activation — theoretical inflammatory overshoot in autoimmune contexts",
-    detail: "In healthy individuals, combining Thymosin Alpha-1 and LL-37 is complementary (adaptive + innate immunity). However, in individuals with autoimmune conditions, simultaneously activating both immune axes may amplify inflammatory responses. Those with autoimmune diagnoses should proceed with significant caution and ideally medical supervision.",
+    detail: "Thymosin Alpha-1 and LL-37 act on different arms of immunity (adaptive + innate). However, in individuals with autoimmune conditions, simultaneously activating both immune axes may amplify inflammatory responses. This concern is theoretical; no pair study is available.",
     citations: [
-      { type: "editorial", label: "Editorial: Autoimmune population-specific concern; healthy individuals at low risk" },
+      { type: "editorial", label: "Editorial: Autoimmune population-specific concern; risk in other populations not characterized" },
     ],
   },
 
@@ -573,7 +571,7 @@ export function stackSummary(interactions: StackInteraction[]) {
 }
 
 export const SEVERITY_CONFIG = {
-  SAFE:         { label: "SAFE",          color: "emerald", bg: "bg-emerald-950/30", border: "border-emerald-500/30", text: "text-emerald-300", badge: "bg-emerald-500/20 text-emerald-300" },
+  SAFE:         { label: "NO KNOWN CONFLICT", color: "emerald", bg: "bg-emerald-950/30", border: "border-emerald-500/30", text: "text-emerald-300", badge: "bg-emerald-500/20 text-emerald-300" },
   CAUTION:      { label: "CAUTION",       color: "amber",   bg: "bg-amber-950/30",   border: "border-amber-500/30",   text: "text-amber-300",   badge: "bg-amber-500/20 text-amber-300"   },
   WARNING:      { label: "WARNING",       color: "orange",  bg: "bg-orange-950/30",  border: "border-orange-500/30",  text: "text-orange-300",  badge: "bg-orange-500/20 text-orange-300"  },
   DO_NOT_STACK: { label: "DO NOT STACK",  color: "red",     bg: "bg-red-950/30",     border: "border-red-500/30",     text: "text-red-300",     badge: "bg-red-500/20 text-red-300"       },

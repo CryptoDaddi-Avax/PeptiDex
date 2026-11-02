@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const blend = peptideBlends.find((b) => b.slug === slug);
     if (!blend) return { title: "Blend Not Found" };
 
-    const title = `${blend.name} — "${blend.nickname}" | PeptiDex`;
-    const description = `${blend.primary_benefits}. Learn about dosing, mechanism, timeline, and supporting studies for the ${blend.name} peptide blend.`;
+    const title = `${blend.name} — ${blend.nickname} | PeptiDex`;
+    const description = `${blend.primary_benefits}. Learn about the mechanism and supporting studies for the ${blend.name} peptide blend.`;
 
     return {
         title,

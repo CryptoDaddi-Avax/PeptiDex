@@ -18,11 +18,11 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'bpc-157': [
     {
       q: 'Does BPC-157 need to be refrigerated?',
-      a: 'Lyophilized (dry powder) BPC-157 should be stored in a cool, dry place away from light — refrigeration is recommended. Once reconstituted, it should be refrigerated and used within 28–30 days. Avoid freezing the reconstituted solution.',
+      a: 'Like most research peptides, lyophilized (dry powder) BPC-157 is generally stored in a cool, dry place away from light, and refrigeration is standard. Storage specifications vary by product, so check the vendor\'s documentation for the specific batch.',
     },
     {
-      q: 'Can BPC-157 be taken orally?',
-      a: 'BPC-157 has been studied in both oral and injectable forms in animal models. Oral administration has shown systemic effects in rodent studies, but injectable (subcutaneous or intramuscular) protocols are more commonly used in research contexts for predictable bioavailability.',
+      q: 'Has BPC-157 been studied by the oral route?',
+      a: 'Yes. BPC-157 has been studied by both oral and injected routes in animal models, and rodent studies have reported systemic effects with oral administration. Human data for any route remain limited.',
     },
     {
       q: 'How does BPC-157 compare to TB-500?',
@@ -55,7 +55,7 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'ipamorelin': [
     {
       q: 'Is ipamorelin better than GHRP-2 or GHRP-6?',
-      a: 'Ipamorelin is often preferred in research protocols because it produces clean GH release without significant cortisol or prolactin elevation — a key advantage over GHRP-2 (which raises cortisol) and GHRP-6 (which causes pronounced hunger). This makes ipamorelin a popular choice for longer research cycles.',
+      a: 'Ipamorelin is often preferred in research protocols because it produces clean GH release without significant cortisol or prolactin elevation — a key advantage over GHRP-2 (which raises cortisol) and GHRP-6 (which causes pronounced hunger). This selectivity is a key reason ipamorelin is frequently studied.',
     },
     {
       q: 'Is ipamorelin often combined with CJC-1295?',
@@ -66,7 +66,7 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'cjc-1295': [
     {
       q: 'What is the difference between CJC-1295 with DAC and without DAC (mod GRF 1-29)?',
-      a: 'CJC-1295 with DAC (Drug Affinity Complex) binds to albumin in the bloodstream, extending its half-life to approximately 6–8 days and producing sustained GH release. CJC-1295 without DAC (also called Mod GRF 1-29) has a half-life of ~30 minutes and produces a more pulsatile, natural GH pattern. The choice depends on the protocol goals.',
+      a: 'CJC-1295 with DAC (Drug Affinity Complex) binds to albumin in the bloodstream, extending its half-life to approximately 6–8 days and producing sustained GH release. CJC-1295 without DAC (also called Mod GRF 1-29) has a half-life of ~30 minutes and produces a more pulsatile, natural GH pattern.',
     },
   ],
 
@@ -76,8 +76,8 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
       a: 'Yes — PT-141 is the research name for bremelanotide, which is FDA-approved under the brand name Vyleesi for hypoactive sexual desire disorder (HSDD) in premenopausal women. It is a melanocortin receptor agonist that acts centrally (on the brain), unlike PDE5 inhibitors which act peripherally.',
     },
     {
-      q: 'How long does PT-141 take to work?',
-      a: 'In clinical trials, PT-141 (bremelanotide) typically produces effects within 45–90 minutes of subcutaneous administration. The recommended clinical dose (Vyleesi) is 1.75mg approximately 45 minutes before anticipated sexual activity, with effects lasting up to 12–24 hours in some subjects.',
+      q: 'How was PT-141 studied in clinical trials?',
+      a: 'In its Phase 3 clinical trials, PT-141 (bremelanotide) was given subcutaneously to premenopausal women with HSDD, with outcomes measured against placebo. FDA-approved labeling for Vyleesi specifies the dose; see the prescribing information.',
     },
   ],
 
@@ -166,11 +166,11 @@ export const peptideFAQOverrides: Record<string, FAQItem[]> = {
   'tesamorelin': [
     {
       q: 'Is tesamorelin FDA-approved?',
-      a: 'Yes — tesamorelin is the only FDA-approved GHRH analog, marketed as Egrifta by Theratechnologies. It is approved specifically for reduction of excess abdominal fat in HIV-infected patients with lipodystrophy. Research-grade tesamorelin is also available from peptide research vendors for off-label investigation.',
+      a: 'Yes — tesamorelin is the only FDA-approved GHRH analog, marketed as Egrifta by Theratechnologies. It is approved specifically for reduction of excess abdominal fat in HIV-infected patients with lipodystrophy. Research-grade tesamorelin sold by peptide vendors is labeled for laboratory research use only.',
     },
     {
-      q: 'How does tesamorelin reduce visceral fat specifically?',
-      a: 'Tesamorelin stimulates pulsatile growth hormone release from the pituitary, which preferentially targets visceral adipose tissue (VAT) over subcutaneous fat. The Phase 3 SEROSTIM trials showed a 17.5% reduction in trunk fat. This selectivity for visceral vs. subcutaneous fat is unique among GH-axis compounds and is the primary reason tesamorelin is studied for body composition beyond just scale weight.',
+      q: 'What did the tesamorelin visceral fat trials find?',
+      a: 'Tesamorelin stimulates pulsatile growth hormone release from the pituitary. In a pooled analysis of two Phase 3 trials in HIV-associated lipodystrophy, visceral adipose tissue decreased significantly with tesamorelin versus placebo, while abdominal subcutaneous fat was preserved (PMID: 20554713). That trial supports its FDA-approved indication (Egrifta); effects on visceral fat outside that population are investigational.',
     },
     {
       q: 'Where can I buy tesamorelin for research?',

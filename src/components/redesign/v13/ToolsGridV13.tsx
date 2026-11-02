@@ -6,10 +6,10 @@ import '../Sections.css';
 
 /**
  * ToolsGridV13 — v13 tools section (§04).
- * 7 light tilt-cards matching v13's reference exactly.
+ * 6 light tilt-cards.
  *
  * All hrefs verified against src/app/tools/ directory:
- *  /tools/cycle-planner ✅, /tools/evidence ✅, /tools/compare ✅,
+ *  /tools/evidence ✅, /tools/compare ✅,
  *  /tools/pricing ✅, /tools/coa ✅,
  *  /tools/interactions ✅, /tools/pk ✅
  */
@@ -21,13 +21,12 @@ const ArrowUpRight = () => (
 );
 
 const TOOLS = [
-  { name: 'Cycle Planner',           desc: 'Map dosing schedules across a full research cycle.',       href: '/tools/cycle-planner',  index: '01 / 07' },
-  { name: 'Evidence Dashboard',      desc: `Browse ${SITE_STATS.studies.count}+ studies by peptide, goal, and outcome.`, href: '/tools/evidence',       index: '02 / 07' },
-  { name: 'Peptide Comparison',      desc: 'Compare mechanisms, dosing, and evidence side-by-side.',   href: '/tools/compare',        index: '03 / 07' },
-  { name: 'Price Comparison',        desc: 'Track vendor pricing per mg across verified sources.',     href: '/tools/pricing',        index: '04 / 07' },
-  { name: 'COA Analyzer',            desc: 'Read and validate certificates of analysis.',              href: '/tools/coa',            index: '05 / 07' },
-  { name: 'Interaction Checker',     desc: 'Flag known peptide–peptide interactions.',                 href: '/tools/interactions',   index: '06 / 07' },
-  { name: 'PK Plasma Curves',        desc: 'Model plasma concentration over time.',                   href: '/tools/pk',             index: '07 / 07' },
+  { name: 'Evidence Dashboard',      desc: `Browse ${SITE_STATS.studies.count}+ studies by peptide, goal, and outcome.`, href: '/tools/evidence',       index: '01 / 06' },
+  { name: 'Peptide Comparison',      desc: 'Compare mechanisms, evidence, and safety side-by-side.',   href: '/tools/compare',        index: '02 / 06' },
+  { name: 'Price Comparison',        desc: 'Track vendor pricing per mg across verified sources.',     href: '/tools/pricing',        index: '03 / 06' },
+  { name: 'COA Analyzer',            desc: 'Read and validate certificates of analysis.',              href: '/tools/coa',            index: '04 / 06' },
+  { name: 'Interaction Checker',     desc: 'Flag known peptide–peptide interactions.',                 href: '/tools/interactions',   index: '05 / 06' },
+  { name: 'PK Plasma Curves',        desc: 'Model plasma concentration over time.',                   href: '/tools/pk',             index: '06 / 06' },
 ];
 
 export default function ToolsGridV13() {
@@ -45,7 +44,7 @@ export default function ToolsGridV13() {
             Research <span className="em">tools</span>.
           </h2>
           <p className="sec-sub fade-up" style={{ '--delay': '240ms' } as React.CSSProperties}>
-            Seven free, interactive tools — from cycle planning to plasma curves. No account required.
+            Six free, interactive tools — from price comparison to plasma curves. No account required.
           </p>
         </header>
 

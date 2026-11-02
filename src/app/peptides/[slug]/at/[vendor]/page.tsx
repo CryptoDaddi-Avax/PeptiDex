@@ -7,6 +7,7 @@ import { getPseoPair, getPseoStaticParams, hasPricingData } from "@/lib/pseo-pai
 import { generatePseoSchema } from "@/lib/pseo-schema";
 import { PeptideVendorContent } from "./PeptideVendorContent";
 import { PeptideVendorLogsClient } from "./PeptideVendorLogsClient";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 
 // ── Static Params ────────────────────────────────────────────────────────────
 // Decision 1: Dynamic. Pages exist only if vendor-pricing.ts has a real row.
@@ -124,7 +125,7 @@ export default async function PeptideAtVendorPage({
                                 {" "}· {vendorObj.purity} purity · {vendorObj.coaStatus}
                             </>
                         ) : (
-                            <>Community-verified protocol data for {peptide.name} purchased from {vendorObj.name}.</>
+                            <>Community batch reports for {peptide.name} from {vendorObj.name}. Research use only.</>
                         )}
                     </p>
                 </div>
@@ -149,7 +150,7 @@ export default async function PeptideAtVendorPage({
                                 color: "var(--ink)",
                                 marginBottom: 16,
                             }}>
-                                Community Protocol Data
+                                Community Reports
                             </h2>
                             <PeptideVendorLogsClient
                                 peptideSlug={slug}
@@ -162,13 +163,19 @@ export default async function PeptideAtVendorPage({
                     </div>
                 </>
             ) : (
-                <PeptideVendorLogsClient
-                    peptideSlug={slug}
-                    peptideName={peptide.name}
-                    vendorSlug={vendor}
-                    vendorName={vendorObj.name}
-                    affiliateUrl={vendorObj.affiliateUrl}
-                />
+                <>
+                    {/* Research-use-only notice for pairs without pricing data */}
+                    <div className="about-content" style={{ maxWidth: 900 }}>
+                        <DisclaimerCard variant="vendor" />
+                    </div>
+                    <PeptideVendorLogsClient
+                        peptideSlug={slug}
+                        peptideName={peptide.name}
+                        vendorSlug={vendor}
+                        vendorName={vendorObj.name}
+                        affiliateUrl={vendorObj.affiliateUrl}
+                    />
+                </>
             )}
         </div>
     );

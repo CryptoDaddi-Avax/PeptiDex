@@ -65,14 +65,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             "@type": "MedicalSignOrSymptom",
             name: s,
         })),
-        possibleTreatment: peptides.map((p) => ({
-            "@type": "Drug",
-            name: p!.name,
-            url: `https://peptidex.app/library/${p!.slug}`,
-            description: p!.laypersonSummary || p!.mechanism.slice(0, 150),
-            drugClass: p!.category,
-            ...(p!.is_fda_approved ? {} : { legalStatus: "Research Compound (Not FDA Approved)" }),
-        })),
     } : null;
 
     const articleSchema = {
@@ -81,7 +73,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             description: goal.metaDescription,
             datePublished: "2026-01-15",
             dateModified: "2026-04-29",
-            author: { name: "Dr. E. Vance", url: "https://peptidex.app/team/peptidex-research" },
+            author: { name: "PeptiDex Editorial Team", url: "https://peptidex.app/team/peptidex-research" },
             url: `https://peptidex.app/best/${slug}`,
             image: "https://peptidex.app/icon-512.png"
         }),

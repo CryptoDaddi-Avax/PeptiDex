@@ -23,7 +23,7 @@ export function DisclaimerCard({ variant, peptideName, topic, className = '' }: 
     case 'peptide':
       title = 'Research Compound';
       content = (
-        <>{peptideName || 'This compound'} is a research chemical. It is not FDA-approved for human therapeutic use. Information on this page reflects published research literature and is not medical advice. Do not use without licensed medical supervision.</>
+        <>{peptideName || 'This compound'} is a research chemical sold for laboratory research use only. Not for human consumption. Not FDA-approved for human use. Information on this page reflects published research literature and is not medical advice.</>
       );
       break;
     case 'vendor':
@@ -35,7 +35,7 @@ export function DisclaimerCard({ variant, peptideName, topic, className = '' }: 
     case 'tool':
       title = 'Research Tool';
       content = (
-        <>This tool is for educational reference only. Outputs are based on published research protocols and do not constitute medical advice or a dosing recommendation. Not for use in human clinical applications without licensed medical oversight.</>
+        <>This tool is for educational reference only. Outputs summarize published research literature. Research compounds are not for human consumption. Not medical advice.</>
       );
       break;
     case 'educational':
@@ -64,12 +64,9 @@ export function DisclaimerCard({ variant, peptideName, topic, className = '' }: 
   );
 }
 
-export function InlineDisclaimer({ type, className = '' }: { type: 'dosing' | 'pricing' | 'affiliate' | 'coa', className?: string }) {
+export function InlineDisclaimer({ type, className = '' }: { type: 'pricing' | 'affiliate' | 'coa', className?: string }) {
   let text = '';
   switch (type) {
-    case 'dosing':
-      text = 'Dosing data from published literature — not a human use recommendation.';
-      break;
     case 'pricing':
       text = 'Prices for research peptide acquisition. Not therapeutic products.';
       break;

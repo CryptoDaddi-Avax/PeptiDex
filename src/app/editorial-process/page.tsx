@@ -104,7 +104,7 @@ export default function EditorialProcessPage() {
         <div className="space-y-3 text-sm md:text-[15px] text-zinc-300 leading-relaxed">
           <p>
             Every peptide profile, stack page, and long-form article begins with a literature
-            review against peer-reviewed primary sources. Mechanism statements, dosing references,
+            review against peer-reviewed primary sources. Mechanism statements, study-design details,
             half-life values, side-effect incidences, and clinical-trial outcomes are traceable to
             indexed publications — never to forum posts, vendor marketing pages, or AI-generated
             summaries.

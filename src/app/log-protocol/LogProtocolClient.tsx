@@ -9,7 +9,6 @@ import { vendors } from "@/data/vendors";
 import { goals } from "@/data/goals";
 import Link from "next/link";
 
-const FREQUENCIES = ["daily", "5on2off", "2x_week", "eod", "3x_week", "weekly"];
 const ROUTES = ["subq", "im", "oral", "nasal", "topical"];
 const COMMON_SIDE_EFFECTS = [
   "injection_site_redness", "fatigue", "nausea", "headache", "water_retention",
@@ -31,10 +30,7 @@ export default function LogProtocolClient() {
   const [selectedPeptides, setSelectedPeptides] = useState<string[]>([]);
   const [peptideSearch, setPeptideSearch] = useState("");
   const [vendorSlug, setVendorSlug] = useState("");
-  const [doseMcg, setDoseMcg] = useState("");
-  const [frequency, setFrequency] = useState("");
   const [route, setRoute] = useState("");
-  const [durationWeeks, setDurationWeeks] = useState(8);
   const [goalSlug, setGoalSlug] = useState("");
   const [startDate, setStartDate] = useState("");
 
@@ -77,10 +73,7 @@ export default function LogProtocolClient() {
         body: JSON.stringify({
           peptide_slugs: selectedPeptides,
           vendor_slug: vendorSlug,
-          dose_mcg: doseMcg ? parseInt(doseMcg) : null,
-          frequency: frequency || null,
           route: route || null,
-          duration_weeks: durationWeeks,
           goal_slug: goalSlug || null,
           efficacy_score: efficacy,
           side_effect_score: sideEffectScore,
@@ -205,25 +198,6 @@ export default function LogProtocolClient() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div style={cardStyle}>
-                <label style={labelStyle}>Dose (mcg)</label>
-                <input type="number" value={doseMcg} onChange={e => setDoseMcg(e.target.value)} placeholder="e.g. 250" style={inputStyle} />
-              </div>
-              <div style={cardStyle}>
-                <label style={labelStyle}>Duration (weeks)</label>
-                <input type="range" min={1} max={24} value={durationWeeks} onChange={e => setDurationWeeks(parseInt(e.target.value))} className="w-full accent-amber-500" />
-                <div style={{ fontFamily: "var(--mono)", fontSize: 14, color: "var(--gold)", textAlign: "center", marginTop: 4 }}>{durationWeeks} weeks</div>
-              </div>
-            </div>
-
-            <div style={cardStyle}>
-              <label style={labelStyle}>Frequency</label>
-              <div className="flex flex-wrap gap-2">
-                {FREQUENCIES.map(f => (<button key={f} onClick={() => setFrequency(f)} style={chipStyle(frequency === f)}>{f.replace(/_/g, "/")}</button>))}
-              </div>
-            </div>
-
             <div style={cardStyle}>
               <label style={labelStyle}>Route of administration</label>
               <div className="flex flex-wrap gap-2">
@@ -330,10 +304,7 @@ export default function LogProtocolClient() {
               <div className="space-y-3" style={{ fontFamily: "var(--sans)", fontSize: 14, color: "var(--ink-dim)" }}>
                 <div className="flex justify-between"><span>Peptide(s)</span><span style={{ color: "var(--gold)" }}>{selectedPeptides.map(s => peptides.find(p => p.slug === s)?.name || s).join(" + ")}</span></div>
                 <div className="flex justify-between"><span>Vendor</span><span style={{ color: "var(--ink)" }}>{vendors.find(v => v.slug === vendorSlug)?.name}</span></div>
-                {doseMcg && <div className="flex justify-between"><span>Dose</span><span>{doseMcg} mcg</span></div>}
-                {frequency && <div className="flex justify-between"><span>Frequency</span><span>{frequency}</span></div>}
                 {route && <div className="flex justify-between"><span>Route</span><span>{route.toUpperCase()}</span></div>}
-                <div className="flex justify-between"><span>Duration</span><span>{durationWeeks} weeks</span></div>
                 <hr style={{ borderColor: "var(--line)" }} />
                 <div className="flex justify-between"><span>Efficacy</span><span style={{ color: "var(--gold)", fontWeight: 700 }}>{efficacy}/10</span></div>
                 <div className="flex justify-between"><span>Side Effects</span><span style={{ color: sideEffectScore <= 3 ? "var(--green)" : "var(--amber)", fontWeight: 700 }}>{sideEffectScore}/10</span></div>

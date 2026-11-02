@@ -9,7 +9,7 @@ const quickPrompts = [
     "What's good for healing?",
     "Best peptide for fat loss?",
     "Tell me about BPC-157",
-    "CJC-1295 dosing info",
+    "CJC-1295 mechanism",
     "Compare BPC-157 vs TB-500",
     "Can I stack Semax and Selank?",
     "What's the cheapest peptide?",
@@ -106,7 +106,7 @@ export default function AdvisorPage() {
                             <Bot className="w-8 h-8 text-violet-400" />
                         </div>
                         <h2 className="text-lg font-bold text-zinc-200 mb-1">Ask me anything about peptides</h2>
-                        <p className="text-xs text-zinc-500 mb-6">Goals, exact dosages, stacks, interactions, and comparisons.</p>
+                        <p className="text-xs text-zinc-500 mb-6">Goals, mechanisms, stacks, interactions, and comparisons.</p>
                         <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
                             {quickPrompts.map((prompt) => (
                                 <button key={prompt} onClick={() => handleQuickPrompt(prompt)}
@@ -172,7 +172,7 @@ export default function AdvisorPage() {
             {/* Input */}
             <div className="px-3 py-3 border-t border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md relative z-10">
                 <form onSubmit={handleSubmit} className="flex items-center gap-2 relative">
-                    <input ref={inputRef} type="text" placeholder="Design a protocol for..." value={input} onChange={handleInputChange} disabled={isLoading}
+                    <input ref={inputRef} type="text" placeholder="Ask about a peptide, goal, or stack..." value={input} onChange={handleInputChange} disabled={isLoading}
                         className="flex-1 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 shadow-inner transition-all disabled:opacity-50" />
                     <button type="submit" disabled={!input.trim() || isLoading}
                         className="w-11 h-11 rounded-xl bg-violet-600 flex items-center justify-center disabled:opacity-40 hover:bg-violet-500 transition-colors shadow-lg shadow-violet-500/20 flex-shrink-0">

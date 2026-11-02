@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { stacks } from "@/data/stacks";
 import {
-    Target, Zap, Syringe, Clock, DollarSign,
+    Target, Zap, DollarSign,
     ChevronRight, ChevronLeft, RotateCcw,
     FlaskConical, ArrowRight, Sparkles, CheckCircle2
 } from "lucide-react";
@@ -30,8 +30,8 @@ type QuizQuestion = {
 const questions: QuizQuestion[] = [
     {
         id: "goal",
-        question: "What's your primary goal?",
-        subtitle: "Pick the one that matters most right now",
+        question: "Which research area interests you most?",
+        subtitle: "Pick the research area you want to read about first",
         icon: <Target className="w-5 h-5" />,
         options: [
             { label: "Fat Loss / Body Recomp", emoji: "🔥", tags: ["fat-loss", "body-recomp", "metabolic"] },
@@ -54,29 +54,7 @@ const questions: QuizQuestion[] = [
         options: [
             { label: "Complete Beginner", emoji: "🌱", tags: ["beginner"] },
             { label: "Some Research Done", emoji: "📚", tags: ["intermediate"] },
-            { label: "Experienced User", emoji: "🔬", tags: ["advanced"] },
-        ],
-    },
-    {
-        id: "comfort",
-        question: "Injection comfort level?",
-        subtitle: "Some peptides are available as nasal sprays or oral",
-        icon: <Syringe className="w-5 h-5" />,
-        options: [
-            { label: "No injections please", emoji: "🚫", tags: ["oral-nasal"] },
-            { label: "Fine with subcutaneous", emoji: "👌", tags: ["subq"] },
-            { label: "I'll do whatever works best", emoji: "💉", tags: ["any-route"] },
-        ],
-    },
-    {
-        id: "timeline",
-        question: "How soon do you need results?",
-        subtitle: "Realistic timelines help set expectations",
-        icon: <Clock className="w-5 h-5" />,
-        options: [
-            { label: "Next 2-4 weeks", emoji: "⚡", tags: ["fast"] },
-            { label: "1-3 months", emoji: "📈", tags: ["medium"] },
-            { label: "Long-term optimization", emoji: "♾️", tags: ["long-term"] },
+            { label: "Experienced Researcher", emoji: "🔬", tags: ["advanced"] },
         ],
     },
     {
@@ -105,20 +83,20 @@ function scoreStacks(answers: Record<string, string[]>): StackScore[] {
         const sn = stack.stack_name.toLowerCase();
 
         // Goal matching (primary driver)
-        if (goalTags.includes("fat-loss") && (sn.includes("fat") || sn.includes("recomp") || sn.includes("metabolic"))) { score += 10; reasons.push("Matches your fat loss goal"); }
-        if (goalTags.includes("body-recomp") && sn.includes("recomp")) { score += 8; reasons.push("Ideal for body recomposition"); }
-        if (goalTags.includes("healing") && (sn.includes("injury") || sn.includes("recovery") || sn.includes("gut"))) { score += 10; reasons.push("Optimized for healing & recovery"); }
-        if (goalTags.includes("muscle") && sn.includes("muscle")) { score += 10; reasons.push("Designed for muscle growth"); }
-        if (goalTags.includes("cognitive") && (sn.includes("mental") || sn.includes("cognit"))) { score += 10; reasons.push("Targets cognitive enhancement"); }
-        if (goalTags.includes("sleep") && sn.includes("sleep")) { score += 10; reasons.push("Optimized for deep sleep & recovery"); }
-        if (goalTags.includes("longevity") && (sn.includes("longevity") || sn.includes("anti-aging"))) { score += 10; reasons.push("Targets aging mechanisms"); }
-        if (goalTags.includes("immune") && sn.includes("immune")) { score += 10; reasons.push("Strengthens immune function"); }
-        if (goalTags.includes("skin") && (sn.includes("skin") || sn.includes("aesthet"))) { score += 10; reasons.push("Targets skin rejuvenation"); }
-        if (goalTags.includes("gut") && sn.includes("gut")) { score += 10; reasons.push("Designed for gut healing"); }
-        if (goalTags.includes("hormonal") && sn.includes("hormonal")) { score += 10; reasons.push("Supports hormonal balance"); }
-        if (goalTags.includes("metabolic") && sn.includes("metabolic")) { score += 8; reasons.push("Improves metabolic health"); }
-        if (goalTags.includes("growth-hormone") && (sn.includes("muscle") || sn.includes("hormonal"))) { score += 5; reasons.push("Includes GH optimization"); }
-        if (goalTags.includes("recovery") && (sn.includes("recovery") || sn.includes("sleep"))) { score += 5; reasons.push("Enhances recovery"); }
+        if (goalTags.includes("fat-loss") && (sn.includes("fat") || sn.includes("recomp") || sn.includes("metabolic"))) { score += 10; reasons.push("Matches research area: fat metabolism"); }
+        if (goalTags.includes("body-recomp") && sn.includes("recomp")) { score += 8; reasons.push("Matches research area: body composition"); }
+        if (goalTags.includes("healing") && (sn.includes("injury") || sn.includes("recovery") || sn.includes("gut"))) { score += 10; reasons.push("Matches research area: tissue repair"); }
+        if (goalTags.includes("muscle") && sn.includes("muscle")) { score += 10; reasons.push("Matches research area: GH/IGF-1 and lean mass"); }
+        if (goalTags.includes("cognitive") && (sn.includes("mental") || sn.includes("cognit"))) { score += 10; reasons.push("Matches research area: cognition"); }
+        if (goalTags.includes("sleep") && sn.includes("sleep")) { score += 10; reasons.push("Matches research area: sleep"); }
+        if (goalTags.includes("longevity") && (sn.includes("longevity") || sn.includes("anti-aging"))) { score += 10; reasons.push("Matches research area: aging mechanisms"); }
+        if (goalTags.includes("immune") && sn.includes("immune")) { score += 10; reasons.push("Matches research area: immune modulation"); }
+        if (goalTags.includes("skin") && (sn.includes("skin") || sn.includes("aesthet"))) { score += 10; reasons.push("Matches research area: skin and collagen"); }
+        if (goalTags.includes("gut") && sn.includes("gut")) { score += 10; reasons.push("Matches research area: GI models"); }
+        if (goalTags.includes("hormonal") && sn.includes("hormonal")) { score += 10; reasons.push("Matches research area: hormonal axes"); }
+        if (goalTags.includes("metabolic") && sn.includes("metabolic")) { score += 8; reasons.push("Matches research area: metabolic signaling"); }
+        if (goalTags.includes("growth-hormone") && (sn.includes("muscle") || sn.includes("hormonal"))) { score += 5; reasons.push("Includes GH-axis compounds"); }
+        if (goalTags.includes("recovery") && (sn.includes("recovery") || sn.includes("sleep"))) { score += 5; reasons.push("Matches research area: recovery"); }
 
         // Budget matching
         const budgetTags = answers.budget || [];
@@ -275,14 +253,14 @@ export default function QuizPage() {
                     >
                         <div className="text-center mb-8">
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-3">
-                                <Sparkles className="w-3.5 h-3.5" /> Your Personalized Results
+                                <Sparkles className="w-3.5 h-3.5" /> Your Quiz Results
                             </div>
                             <h1 className="text-2xl font-bold text-zinc-100 mb-2">
-                                {results.length > 0 ? "We Found Your Ideal Stack" : "No Perfect Match"}
+                                {results.length > 0 ? "Research Stacks Matching Your Interests" : "No Perfect Match"}
                             </h1>
                             <p className="text-sm text-zinc-400">
                                 {results.length > 0
-                                    ? `Based on your answers, here ${results.length === 1 ? "is" : "are"} your top ${Math.min(results.length, 3)} recommendation${results.length > 1 ? "s" : ""}`
+                                    ? `Based on your answers, here ${results.length === 1 ? "is" : "are"} the top ${Math.min(results.length, 3)} matching research stack${results.length > 1 ? "s" : ""}`
                                     : "Try adjusting your goals for more specific results"
                                 }
                             </p>
@@ -356,10 +334,10 @@ export default function QuizPage() {
                                 </div>
                                 
                                 <h2 className="text-2xl font-bold text-zinc-100 mb-2 relative z-10 text-center">
-                                    Get started with your {results[0].stack.stack_name.replace('Stack', '').trim()} stack
+                                    Where to source the {results[0].stack.stack_name.replace('Stack', '').trim()} research stack
                                 </h2>
                                 <p className="text-[15px] text-zinc-400 max-w-lg mx-auto mb-8 relative z-10 text-center leading-relaxed">
-                                    Sourcing is everything. Here are the exact products we recommend to confidently run your personalized protocol.
+                                    Vendors carrying the compounds in this research stack.
                                 </p>
                                 
                                 <div className="space-y-3 mb-8 relative z-10">
@@ -392,6 +370,9 @@ export default function QuizPage() {
                                 </div>
                                 
                                 <div className="relative z-10 space-y-4 pt-4 border-t border-zinc-800/50">
+                                    <p className="text-xs text-zinc-400 text-center font-medium">
+                                        Sold for laboratory research use only — not for human consumption.
+                                    </p>
                                     <AffiliateLink
                                         href={buildAffiliateUrl(PRIMARY_PROMO, "quiz_full_stack_cta")}
                                         vendor="amino_club"

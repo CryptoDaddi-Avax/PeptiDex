@@ -54,31 +54,31 @@ const breadcrumbSchema = {
 const VERIFICATION_PILLARS = [
   {
     icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />,
-    label: 'Â§ 01 â€” Business Operations',
+    label: '§ 01 — Business Operations',
     title: 'Domestic Fulfillment',
     body: 'Unlike many "drop-ship" vendors that simply route orders to overseas laboratories, Amino Club fulfills orders directly from within the United States. This significantly reduces shipping times and eliminates customs seizure risks for US-based researchers.',
   },
   {
     icon: <CheckCircle2 className="w-6 h-6 text-violet-400" />,
-    label: 'Â§ 02 â€” Analytical Testing',
+    label: '§ 02 — Analytical Testing',
     title: 'Third-Party COA Testing',
-    body: 'Amino Club uses industry-standard laboratories (predominantly MZ Biolabs) to perform HPLC and Mass Spectrometry on their products. More importantly, they provide batch-specific testing â€” the COA you view on their website corresponds to the exact lot currently being sold. Their stated purity threshold is â‰¥99%.',
+    body: 'Amino Club uses industry-standard laboratories (predominantly MZ Biolabs) to perform HPLC and Mass Spectrometry on their products. More importantly, they provide batch-specific testing — the COA you view on their website corresponds to the exact lot currently being sold. Their stated purity threshold is ≥99%.',
   },
   {
     icon: <Star className="w-6 h-6 text-amber-400 fill-amber-400" />,
-    label: 'Â§ 03 â€” Customer Reviews',
+    label: '§ 03 — Customer Reviews',
     title: 'Trustpilot Verified',
     body: 'Amino Club maintains an active presence on Trustpilot, a platform that aggressively filters fake reviews. As of 2026, they hold an "Excellent" rating with over 87+ reviews. Customers consistently praise their fast shipping and responsive customer service.',
   },
   {
     icon: <Truck className="w-6 h-6 text-sky-400" />,
-    label: 'Â§ 04 â€” Logistics',
+    label: '§ 04 — Logistics',
     title: 'Fast & Tracked',
     body: 'Orders are typically processed and shipped within 24 hours of payment clearing (excluding weekends). They utilize standard USPS tracking, ensuring transparency throughout the delivery process.',
   },
   {
     icon: <Lock className="w-6 h-6 text-violet-400" />,
-    label: 'Â§ 05 â€” Payments',
+    label: '§ 05 — Payments',
     title: 'Standard Processor Integration',
     body: 'A major red flag for scam vendors is forcing customers to use irreversible payment methods like Zelle or Crypto exclusively. Amino Club accepts major credit cards through secure, standard payment gateways, offering buyers fraud protection and chargeback capabilities if necessary.',
   },
@@ -100,12 +100,12 @@ export default function IsAminoClubLegit() {
             <span className="sep">/</span>
             <span className="current">Legitimacy Report</span>
           </nav>
-          <div className="section-label">Â§ Vendor Verification</div>
+          <div className="section-label">§ Vendor Verification</div>
           <h1 className="page-title">
             Is Amino Club<br /><em>legit</em>?
           </h1>
           <p className="page-subtitle">
-            Yes â€” here is the independent verification data: third-party COAs, Trustpilot ratings, secure payments, and confirmed US operations.
+            Yes — here is the independent verification data: third-party COAs, Trustpilot ratings, secure payments, and confirmed US operations.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ export default function IsAminoClubLegit() {
 
       <div className="about-content fade-up space-y-16">
 
-        {/* â”€â”€ LEAD â”€â”€ */}
+        {/* ── LEAD ── */}
         <section id="overview">
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-6 mb-8">
             <p className="text-zinc-300 leading-relaxed">
@@ -136,7 +136,7 @@ export default function IsAminoClubLegit() {
           </div>
         </section>
 
-        {/* â”€â”€ VERIFICATION PILLARS â”€â”€ */}
+        {/* ── VERIFICATION PILLARS ── */}
         <section id="verification">
           <div className="flex items-center gap-3 mb-6">
             <ShieldCheck className="w-6 h-6 text-emerald-400 flex-shrink-0" />
@@ -158,21 +158,21 @@ export default function IsAminoClubLegit() {
           </div>
         </section>
 
-        {/* â”€â”€ BOTTOM LINE â”€â”€ */}
+        {/* ── BOTTOM LINE ── */}
         <section id="verdict">
-          <div className="section-label">Â§ Conclusion</div>
+          <div className="section-label">§ Conclusion</div>
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">The bottom line</h2>
           <AutoLink>
             <p className="text-zinc-400 leading-relaxed">
-              Based on our independent criteria â€” analytical testing transparency, operational history, shipping logistics, and customer feedback â€” Amino Club passes our rigorous verification process. They are a legitimate, high-quality source for research compounds.
+              Based on our independent criteria — analytical testing transparency, operational history, shipping logistics, and customer feedback — Amino Club passes our rigorous verification process. They are a legitimate, high-quality source for research compounds.
             </p>
           </AutoLink>
         </section>
 
-        {/* â”€â”€ CTA â”€â”€ */}
+        {/* ── CTA ── */}
         <section id="cta">
           <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-8 text-center">
-            <div className="text-xs font-bold text-amber-400 font-mono mb-4">Â§ Exclusive Code</div>
+            <div className="text-xs font-bold text-amber-400 font-mono mb-4">§ Exclusive Code</div>
             <h3 className="text-2xl font-bold text-zinc-100 mb-4">Ready to Order?</h3>
             <p className="text-zinc-300 mb-6">If you've decided to order, support your research with our verified discount code to save on your entire purchase.</p>
             <div className="inline-block bg-zinc-950 border border-zinc-800 rounded-lg px-6 py-3 mb-6">

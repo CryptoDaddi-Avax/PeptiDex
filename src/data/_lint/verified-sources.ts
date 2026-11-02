@@ -50,7 +50,7 @@ export const verifiedSources: VerifiedSource[] = [
     verified_by: 'Antigravity/Operator',
     supports_claims: [
       'Tesamorelin plasma half-life ~26 minutes under repeated dosing',
-      'Subcutaneous administration once daily',
+      'Subcutaneous route of administration',
       'Bioavailability <4%',
     ],
   },

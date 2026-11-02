@@ -2,28 +2,25 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { stacks } from '@/data/stacks';
 import { peptides } from '@/data/peptides';
-import { ArrowRight, Download, CheckCircle2, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Download, ExternalLink, ShieldCheck } from 'lucide-react';
 import { PrintButton } from '@/components/print-button';
+import { EVIDENCE_SCALE } from '@/data/constants';
 
 export const metadata: Metadata = {
     title: '2026 Peptide Stack Cheat Sheet',
-    description: '12 research-backed peptide stacks with exact dosages, cycle lengths, and timing — organized by goal. Your free printable reference guide.',
+    description: `${stacks.length} research peptide stacks organized by goal, with each compound's role, evidence level, and links to cited research. Your free printable reference guide.`,
     alternates: { canonical: 'https://peptidex.app/lead/cheat-sheet' },
+    robots: { index: false, follow: true },
 };
 
-function getDosing(peptideName: string) {
+function getEvidence(peptideName: string) {
     const p = peptides.find(pt => pt.name === peptideName);
-    if (!p?.dosing) return null;
-    const d = p.dosing;
-    const dose = d.typical_dose_mcg[0] === d.typical_dose_mcg[1]
-        ? `${d.typical_dose_mcg[0]} mcg`
-        : `${d.typical_dose_mcg[0]}–${d.typical_dose_mcg[1]} mcg`;
-    const cycle = d.cycle_weeks
-        ? d.cycle_weeks[0] === d.cycle_weeks[1]
-            ? `${d.cycle_weeks[0]} wk`
-            : `${d.cycle_weeks[0]}–${d.cycle_weeks[1]} wk`
-        : null;
-    return { dose, route: d.route, frequency: d.frequency, cycle, timing: d.timing };
+    if (!p) return null;
+    const level = p.key_studies[0]?.evidence_level;
+    return {
+        label: (level && EVIDENCE_SCALE[level]?.label) || 'Preclinical',
+        studies: p.key_studies.length,
+    };
 }
 
 const goalLabels: Record<string, string> = {
@@ -51,7 +48,7 @@ export default function CheatSheetPage() {
                     2026 Peptide Stack Cheat Sheet
                 </h1>
                 <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-                    All {stacks.length} curated peptide stacks with dosages, cycle lengths, and timing &mdash; organized by research goal. Print it, save it, reference it.
+                    All {stacks.length} curated research stacks organized by goal, with each compound&apos;s role, evidence level, and links to cited research. Print it, save it, reference it.
                 </p>
             </header>
 
@@ -88,14 +85,13 @@ export default function CheatSheetPage() {
                                 <thead>
                                     <tr className="text-left text-[10px] text-zinc-500 print:text-zinc-600 uppercase tracking-wider border-b border-zinc-800 print:border-zinc-300">
                                         <th className="pb-1.5 px-1 font-semibold">Peptide</th>
-                                        <th className="pb-1.5 px-1 font-semibold">Dose</th>
-                                        <th className="pb-1.5 px-1 font-semibold">Frequency</th>
-                                        <th className="pb-1.5 px-1 font-semibold">Cycle</th>
+                                        <th className="pb-1.5 px-1 font-semibold">Role in Stack</th>
+                                        <th className="pb-1.5 px-1 font-semibold">Evidence</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-zinc-800/50 print:divide-zinc-200">
                                     {stack.peptides.map((sp) => {
-                                        const dosing = getDosing(sp.name);
+                                        const evidence = getEvidence(sp.name);
                                         return (
                                             <tr key={sp.name} className="text-zinc-300 print:text-zinc-800">
                                                 <td className="py-1.5 px-1 font-semibold text-zinc-100 print:text-zinc-900">
@@ -103,9 +99,10 @@ export default function CheatSheetPage() {
                                                         {sp.name}
                                                     </Link>
                                                 </td>
-                                                <td className="py-1.5 px-1">{dosing?.dose || '—'}</td>
-                                                <td className="py-1.5 px-1">{dosing?.frequency || '—'}</td>
-                                                <td className="py-1.5 px-1">{dosing?.cycle || '—'}</td>
+                                                <td className="py-1.5 px-1">{sp.role_in_stack.split(' — ')[0]}</td>
+                                                <td className="py-1.5 px-1 whitespace-nowrap">
+                                                    {evidence ? `${evidence.label} · ${evidence.studies} ${evidence.studies === 1 ? 'study' : 'studies'}` : '—'}
+                                                </td>
                                             </tr>
                                         );
                                     })}
@@ -141,7 +138,7 @@ export default function CheatSheetPage() {
             {/* Disclaimer */}
             <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-5 text-center print:bg-gray-100 print:border-gray-300">
                 <p className="text-[10px] text-zinc-500 print:text-zinc-600 leading-relaxed">
-                    This reference guide is for educational and research purposes only. It does not constitute medical advice. Always consult a licensed healthcare provider before using any peptide compound. All dosages represent typical research protocols found in published literature.
+                    This reference guide is for educational and research purposes only. It does not constitute medical advice. Always consult a licensed healthcare provider before using any peptide compound. This sheet does not provide dosing guidance; doses studied in published research are in the papers cited on each compound&apos;s library page.
                 </p>
             </div>
         </div>

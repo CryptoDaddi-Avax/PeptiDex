@@ -17,7 +17,7 @@ import { BlogVendorCallout } from '@/components/blog-vendor-callout';
 
 const POST_TITLE = 'Tesamorelin: What Sets It Apart from Every Other Growth Hormone Peptide';
 const POST_DESC =
-  'A deep-dive comparison of Tesamorelin vs Sermorelin, CJC-1295, Ipamorelin, and MK-677. Covers mechanism, visceral fat specificity, clinical evidence, and who Tesamorelin is actually best suited for.';
+  'A deep-dive comparison of Tesamorelin vs Sermorelin, CJC-1295, Ipamorelin, and MK-677. Covers mechanism, visceral fat specificity, clinical evidence, and the populations in which Tesamorelin has been studied.';
 const AUTHOR = 'PeptiDex Editorial';
 const DATE_PUB = '2026-04-13';
 const DATE_MOD = '2026-04-13';
@@ -103,7 +103,7 @@ const faqSchema = {
       name: 'Can Tesamorelin be stacked with Ipamorelin?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes — and this is one of the most clinically rational combinations available. Tesamorelin acts via the GHRH pathway while Ipamorelin acts via the ghrelin/GHS-R1a pathway. When combined, Ipamorelin suppresses somatostatin tone while Tesamorelin provides the positive secretory signal, producing synergistic GH pulses that pharmacodynamic studies show can be 2-3x greater than either alone.',
+        text: 'The two act on different pathways: Tesamorelin via the GHRH receptor and Ipamorelin via the ghrelin/GHS-R1a receptor. GHRH + GHRP co-administration has been reported to amplify GH release in pharmacodynamic studies, but the Tesamorelin + Ipamorelin combination itself has not been tested in controlled trials.',
       },
     },
     {
@@ -116,10 +116,10 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'Who is Tesamorelin best suited for?',
+      name: 'In which populations has Tesamorelin been studied?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Tesamorelin is best suited for patients with significant visceral fat accumulation, individuals managing metabolic health issues (insulin resistance, NAFLD, cardiovascular risk), those who prioritize FDA-backed clinical evidence, and patients using it as part of a dual-pathway stack with a GHRP like Ipamorelin. It may not be the optimal choice for patients seeking gentle, low-cost GH support or those who prioritize oral convenience.',
+        text: 'Tesamorelin is FDA-approved (Egrifta) for reducing excess abdominal fat in HIV-associated lipodystrophy, and its phase 3 trials were conducted in that population. It has also been studied for liver fat in HIV-infected patients. Use outside the approved indication is off-label and should be decided with a physician.',
       },
     },
   ],
@@ -139,20 +139,19 @@ type ComparisonRow = {
 const COMPARISON: ComparisonRow[] = [
   { label: 'Mechanism', tesamorelin: 'GHRH analog (full 44-AA)', sermorelin: 'GHRH analog (29-AA)', cjc1295: 'GHRH + albumin (DAC)', ipamorelin: 'GHRP / ghrelin agonist', mk677: 'Oral ghrelin mimetic', tesamorelinPos: null },
   { label: 'FDA Approved', tesamorelin: 'Yes (Egrifta)', sermorelin: 'Discontinued (2008)', cjc1295: 'No', ipamorelin: 'No', mk677: 'No', tesamorelinPos: true },
-  { label: 'Visceral Fat Reduction', tesamorelin: '15–20% in clinical trials', sermorelin: 'Modest, non-specific', cjc1295: 'Mild body composition', ipamorelin: 'Indirect (via GH)', mk677: 'Minimal/variable', tesamorelinPos: true },
+  { label: 'Visceral Fat Reduction', tesamorelin: '~15% in phase 3 (HIV lipodystrophy)', sermorelin: 'No visceral fat trials', cjc1295: 'No outcome trials', ipamorelin: 'No outcome trials', mk677: 'Not a primary endpoint', tesamorelinPos: true },
   { label: 'Receptor Desensitization Risk', tesamorelin: 'Low (pulsatile)', sermorelin: 'Low', cjc1295: 'Moderate–High (DAC)', ipamorelin: 'Very Low', mk677: 'Moderate', tesamorelinPos: true },
   { label: 'Cortisol / Prolactin Elevation', tesamorelin: 'None reported', sermorelin: 'None', cjc1295: 'Minimal', ipamorelin: 'None (highly selective)', mk677: 'Minimal', tesamorelinPos: null },
-  { label: 'Phase III Clinical Data', tesamorelin: 'Robust (TESOMET trial)', sermorelin: 'Limited', cjc1295: 'Limited', ipamorelin: 'Limited', mk677: 'Moderate', tesamorelinPos: true },
-  { label: 'Estimated Monthly Cost', tesamorelin: '$1,000–$3,000', sermorelin: '$200–$500', cjc1295: '$300–$800', ipamorelin: '$150–$400', mk677: '$50–$150', tesamorelinPos: false },
-  { label: 'Route of Administration', tesamorelin: 'Subcutaneous injection', sermorelin: 'Subcutaneous injection', cjc1295: 'Subcutaneous injection', ipamorelin: 'Subcutaneous injection', mk677: 'Oral', tesamorelinPos: null },
+  { label: 'Phase III Clinical Data', tesamorelin: 'Two Phase 3 trials (HIV lipodystrophy)', sermorelin: 'Limited', cjc1295: 'Limited', ipamorelin: 'Limited', mk677: 'Moderate', tesamorelinPos: true },
+  { label: 'Route Studied', tesamorelin: 'Subcutaneous', sermorelin: 'Subcutaneous', cjc1295: 'Subcutaneous', ipamorelin: 'Subcutaneous', mk677: 'Oral', tesamorelinPos: null },
 ];
 
 const BEST_FOR_ITEMS = [
-  { icon: <TrendingDown className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Patients with significant visceral fat requiring targeted, organ-level reduction' },
-  { icon: <Activity className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Individuals managing metabolic health: insulin resistance, cardiovascular risk, or NAFLD' },
-  { icon: <Shield className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Patients who want FDA-backed efficacy — not just preclinical or anecdotal evidence' },
-  { icon: <Zap className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Those stacking with Ipamorelin for synergistic dual-pathway GH amplification' },
-  { icon: <Brain className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Anti-aging and longevity protocols emphasizing physiologically aligned GH stimulation' },
+  { icon: <TrendingDown className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Visceral fat in HIV-associated lipodystrophy (the FDA-approved indication)' },
+  { icon: <Activity className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Liver fat and metabolic markers in HIV-infected patients' },
+  { icon: <Shield className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Randomized phase 3 trial data, rather than preclinical or anecdotal evidence' },
+  { icon: <Zap className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'GHRH-receptor pharmacology, including its theoretical pairing with GHRPs (untested in trials)' },
+  { icon: <Brain className="w-5 h-5 text-amber-400 flex-shrink-0" />, text: 'Emerging research on GH/IGF-1 signaling and cognition' },
 ];
 
 /* ─── COMPONENT ─────────────────────────────────────────────────────── */
@@ -214,7 +213,7 @@ export default function TesamorelinArticle() {
           In a crowded field of growth hormone peptides &mdash; Sermorelin, Ipamorelin, CJC-1295, Hexarelin, GHRP-2, MK-677 &mdash; one compound consistently occupies a unique position: <strong>Tesamorelin</strong>. It&apos;s the only growth hormone-stimulating peptide with FDA approval. It&apos;s the only one backed by robust Phase III clinical trial data for visceral fat reduction. And its mechanism, while sharing the same receptor target as other GHRH analogs, produces a pharmacological profile that no other peptide in this class can replicate.
         </p>
         <p>
-          If you&apos;re evaluating growth hormone peptides for fat loss, body composition, metabolic health, or anti-aging purposes, understanding how Tesamorelin differentiates itself isn&apos;t just academic &mdash; it&apos;s the difference between choosing the right tool for the job and settling for a less precise one.
+          Tesamorelin is the only GHRH analog with FDA approval and phase 3 outcome data, so understanding how it differs from other growth hormone peptides helps put the rest of the evidence in context.
         </p>
 
         <div className="section-label mt-12 mb-2">§ 01</div>
@@ -285,9 +284,9 @@ export default function TesamorelinArticle() {
         <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           {[
             { label: 'Potency', icon: <Zap className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin produces a stronger GH response and more pronounced IGF-1 elevation. Clinical research consistently demonstrates more robust GH release and greater effects on body composition.' },
-            { label: 'Visceral Fat Specificity', icon: <TrendingDown className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin\'s defining advantage. Clinical trials have demonstrated 15–20% reductions in visceral adipose tissue in 3–4 months. Sermorelin shows some body composition improvements, but the magnitude and specificity simply aren\'t there.' },
-            { label: 'Clinical Validation', icon: <Shield className="w-4 h-4 text-amber-400" />, text: 'The TESOMET trial and Phase III studies provide robust peer-reviewed data. More recent research shows a 32% liver fat reduction in NAFLD patients (JCEM). Sermorelin has a solid safety record but lacks this level of targeted validation.' },
-            { label: 'Cost', icon: <Activity className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin runs $1,000–$3,000/month at clinics vs. $200–$500 for Sermorelin through compounding pharmacies. For general wellness and gentle GH support, Sermorelin\'s price point often wins. For urgent visceral fat reduction, Tesamorelin\'s cost is justified.' },
+            { label: 'Visceral Fat Specificity', icon: <TrendingDown className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin\'s defining feature. Phase 3 trials in HIV-associated lipodystrophy reported visceral adipose tissue reductions of roughly 15% versus placebo. Sermorelin has some body-composition data in older adults, but no comparable visceral fat trials.' },
+            { label: 'Clinical Validation', icon: <Shield className="w-4 h-4 text-amber-400" />, text: 'Two Phase 3 trials in HIV-associated lipodystrophy provide peer-reviewed data, and a randomized trial in the same population also reported reduced liver fat (PMID 25038357). Sermorelin has an older clinical record but no comparable targeted trials.' },
+            { label: 'Regulatory Status', icon: <Activity className="w-4 h-4 text-amber-400" />, text: 'Tesamorelin (Egrifta) is FDA-approved only for reducing excess abdominal fat in HIV-associated lipodystrophy. Sermorelin\'s US product (Geref) was discontinued in 2008. Neither is approved for general wellness or body-composition use.' },
           ].map(item => (
             <div key={item.label} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-amber-500/30 transition-colors">
               <div className="flex items-center gap-2 mb-2">
@@ -351,28 +350,28 @@ export default function TesamorelinArticle() {
             <CheckCircle2 className="w-4 h-4" /> The Synergy Opportunity
           </h4>
           <p className="text-sm text-zinc-300 leading-relaxed">
-            Pairing <strong>Tesamorelin (GHRH pathway)</strong> with <strong>Ipamorelin (ghrelin pathway)</strong> creates a dual-pathway synergy. The GHRP reduces somatostatin tone — the inhibitory brake on GH release — while Tesamorelin provides the accelerating signal. Pharmacodynamic data shows this combination can produce <strong>2–3× greater GH pulses</strong> than either compound alone. Experienced clinicians don&apos;t view them as competitors. They view them as the two halves of an optimized protocol.
+            Pairing <strong>Tesamorelin (GHRH pathway)</strong> with <strong>Ipamorelin (ghrelin pathway)</strong> creates a dual-pathway synergy. The GHRP reduces somatostatin tone — the inhibitory brake on GH release — while Tesamorelin provides the accelerating signal. GHRH + GHRP co-administration has been reported to produce <strong>larger GH pulses</strong> than either agent alone, but the Tesamorelin + Ipamorelin pairing itself has not been tested in controlled trials.
           </p>
         </div>
 
         <p>
-          Other GHRPs like Hexarelin and GHRP-2 also stimulate the ghrelin pathway but come with more side effects. Hexarelin is the most potent GHRP available but loses effectiveness over time due to receptor desensitization and can elevate cortisol and prolactin. GHRP-2 sits between Ipamorelin and Hexarelin in potency and side effect profile.
+          Other GHRPs like Hexarelin and GHRP-2 also stimulate the ghrelin pathway but come with more side effects. Hexarelin produced the highest peak GH response among GHRPs in comparative human studies but loses effectiveness over time due to receptor desensitization and can elevate cortisol and prolactin. GHRP-2 sits between Ipamorelin and Hexarelin in potency and side effect profile.
         </p>
 
         <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="vs-mk677">How It Differs from MK-677</h2>
         <p>
-          MK-677 (Ibutamoren) shows up in nearly every GH peptide comparison, even though it technically isn&apos;t a peptide &mdash; it&apos;s a non-peptide ghrelin receptor agonist taken <em>orally</em>. Its primary advantage is convenience: no injections required. But that convenience comes with trade-offs.
+          MK-677 (Ibutamoren) shows up in nearly every GH peptide comparison, even though it technically isn&apos;t a peptide &mdash; it&apos;s a non-peptide ghrelin receptor agonist studied as an <em>oral</em> compound, which sets it apart pharmacologically from the GHRH analogs above. Its trial data also show trade-offs.
         </p>
 
         <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3 text-emerald-400">
               <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-              <p className="text-sm font-bold text-zinc-200">MK-677 Advantages</p>
+              <p className="text-sm font-bold text-zinc-200">MK-677 in Studies</p>
             </div>
             <ul className="space-y-1.5">
-              {['Oral — no injections', 'Low cost ($50–$150/mo)', 'Consistent GH/IGF-1 elevation'].map(t => (
+              {['Orally active in human trials', 'Two-year RCT data in older adults', 'Sustained GH/IGF-1 elevation in trials'].map(t => (
                 <li key={t} className="text-xs text-zinc-400 flex items-start gap-2"><span className="text-emerald-500 mt-0.5">+</span>{t}</li>
               ))}
             </ul>
@@ -417,8 +416,8 @@ export default function TesamorelinArticle() {
         </div>
 
         <div className="section-label mt-12 mb-2">§ 07</div>
-          <h2 id="best-for">Who Is Tesamorelin Best For?</h2>
-        <p>Given its specific strengths and trade-offs, Tesamorelin is best suited for the following profiles:</p>
+          <h2 id="best-for">Where Tesamorelin Has Been Studied</h2>
+        <p>The published research on Tesamorelin centers on the following areas:</p>
 
         <div className="lg:col-span-8 lg:order-1 prose prose-invert prose-zinc max-w-none prose-h2:text-2xl prose-h2:text-zinc-100 prose-h2:font-bold prose-h2:mb-6 prose-h3:text-xl prose-h3:text-zinc-300 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-amber-300 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:marker:text-amber-500 prose-blockquote:border-l-2 prose-blockquote:border-amber-400 prose-blockquote:bg-amber-950/10 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300">
           <div className="space-y-4">
@@ -442,10 +441,10 @@ export default function TesamorelinArticle() {
           Tesamorelin doesn&apos;t just occupy a spot on the growth hormone peptide spectrum &mdash; it occupies a <strong>unique position that no other compound in this class can claim</strong>. Its FDA approval, its visceral fat specificity, its full-length GHRH structure, and its expanding research profile collectively set it apart from every alternative.
         </p>
         <p>
-          In a field where many compounds offer overlapping benefits and interchangeable value propositions, Tesamorelin stands alone in what it does best: targeted, clinically validated visceral fat reduction through potent, physiologically aligned growth hormone stimulation.
+          In a field where many compounds offer overlapping benefits and interchangeable value propositions, Tesamorelin stands apart for one reason: it has FDA approval and randomized trial data for visceral fat reduction in HIV-associated lipodystrophy.
         </p>
         <p>
-          The growth hormone peptide you choose should match your specific goals, your health profile, and your budget. But if visceral fat is the target, the clinical evidence points in one direction.
+          Any decision about growth hormone therapy belongs with a physician who knows your health history. For visceral fat specifically, Tesamorelin is the only GHRH analog with phase 3 evidence, in the population it was approved for.
         </p>
 
       </article>

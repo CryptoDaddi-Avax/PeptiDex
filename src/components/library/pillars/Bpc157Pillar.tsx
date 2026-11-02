@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { Beaker, BookOpen, Syringe, GitCompare, User as UserIcon } from 'lucide-react';
+import { Beaker, BookOpen, Syringe, GitCompare } from 'lucide-react';
 
 export function Bpc157Pillar() {
   return (
     <div className="pd-pillar-expansion mt-12 pt-12 border-t border-zinc-800/50">
       <div className="pd-section-header mb-8">
         <h2 className="text-2xl font-bold text-zinc-100 font-serif">Comprehensive Research Guide</h2>
-        <p className="text-zinc-400 mt-2">Deep dive into the angiogenic mechanisms, gastrointestinal repair data, and systemic protocol logs for BPC-157.</p>
+        <p className="text-zinc-400 mt-2">A summary of the proposed mechanisms, the preclinical tissue-repair and gastrointestinal research, and storage notes for BPC-157. Most of the evidence below comes from animal and cell studies.</p>
       </div>
 
       {/* Deep Dive: Mechanism of Action */}
@@ -18,131 +18,89 @@ export function Bpc157Pillar() {
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            BPC-157 (Body Protection Compound-157) is a synthetic pentadecapeptide (15 amino acids) based on a naturally occurring protein isolated from human gastric juice. Its evolutionary purpose in the gut is to maintain mucosal integrity and orchestrate immediate tissue repair in highly acidic, hostile environments.
+            BPC-157 (Body Protection Compound-157) is a synthetic pentadecapeptide (15 amino acids) based on a sequence from a protein found in human gastric juice. The literature describes it as a gastric peptide studied in the context of the stomach&apos;s mucosal-protective environment (PMID: 27138887).
           </p>
           <p>
-            The fundamental mechanism by which BPC-157 accelerates healing across nearly all tissue types—tendons, ligaments, muscle, bone, and gastrointestinal mucosa—is driven by its potent <strong>angiogenic</strong> capabilities. BPC-157 drastically upregulates the expression of Vascular Endothelial Growth Factor (VEGF). By doing so, it triggers the formation of new blood vessels (angiogenesis) specifically at the site of injury. 
+            The mechanism most often proposed for BPC-157&apos;s effects in preclinical tendon, ligament, muscle, bone, and gastrointestinal models is <strong>angiogenic</strong> signaling. In rodent and cell studies, BPC-157 has been reported to activate the VEGFR2-Akt-eNOS pathway and promote new blood-vessel formation.
           </p>
           <p>
-            Tendons and ligaments are notoriously slow to heal due to their inherently poor vascularity. By forcing new capillary networks to infiltrate the damaged avascular tissue, BPC-157 bypasses this biological limitation, delivering the oxygen, nutrients, and fibroblasts required for structural regeneration. 
+            Tendons and ligaments are poorly vascularized, which is one reason researchers have examined whether increased angiogenesis could support repair in these tissues. Whether these animal findings translate to humans has not been established in controlled trials.
           </p>
           <p>
-            Furthermore, BPC-157 promotes the survival and migration of tendon fibroblasts. It alters the expression of focal adhesion kinase (FAK) and paxillin, proteins critical for cell migration and adherence, essentially marshaling repair cells directly to the wound site. Systemically, it modulates the dopaminergic and serotonergic systems, offering profound neuroprotective effects, and acts as a potent cytoprotective agent in the gut, antagonizing the damaging effects of NSAIDs and alcohol on the gastric lining.
+            In tendon explant and fibroblast studies, BPC-157 has been reported to enhance tendon fibroblast outgrowth and survival via FAK-paxillin signaling (PMID: 21030672). Other preclinical work has examined its interaction with dopaminergic and serotonergic signaling, its effects in neurological injury models, and its effects in gastric and intestinal lesion models (PMID: 22300085).
           </p>
-          <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-zinc-400 bg-zinc-900/30 p-4 rounded-r-lg">
-            "BPC 157 accelerates the healing of transected rat Achilles tendon and outgrows the healing effects of bFGF, EGF, and V-DAMP... promoting angiogenesis and collagen production." (Staresinic et al., 2003, PMID: 14554208)
-          </blockquote>
         </div>
       </section>
 
-      {/* Clinical Trial Data: Phase-by-Phase Breakdown */}
+      {/* Research Data */}
       <section className="mb-12">
         <div className="flex items-center gap-3 mb-6">
           <BookOpen className="w-6 h-6 text-emerald-400" />
-          <h3 className="text-xl font-bold text-zinc-100">Research Data: Tissue Regeneration and Cytoprotection</h3>
+          <h3 className="text-xl font-bold text-zinc-100">Research Data: Tissue Repair and Cytoprotection Models</h3>
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            The body of evidence supporting BPC-157 is extensive, though primarily concentrated in robust animal models (rats, dogs) due to its lack of patentability by major pharmaceutical entities.
-          </p>
-          
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">Tendon and Ligament Repair</h4>
-          <p>
-            The most cited studies regarding BPC-157 involve the repair of the Achilles tendon and the medial collateral ligament (MCL). In models involving completely transected Achilles tendons, BPC-157 administration resulted in accelerated cellular infiltration, increased collagen synthesis, and crucially, improved biomechanical recovery (load-bearing capability) compared to controls. It essentially forces the tendon to heal with organized Type I collagen rather than disorganized, weak scar tissue.
-          </p>
-          
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">Gastrointestinal Healing (IBD/Leaky Gut)</h4>
-          <p>
-            As a gastric peptide, its effects on the GI tract are unparalleled. Research demonstrates that BPC-157 can rescue the gastrointestinal mucosa from extreme insults, including NSAID-induced lesions (e.g., ibuprofen ulcers) and chemically induced colitis mimicking Inflammatory Bowel Disease (IBD). It accomplishes this by preserving the endothelial integrity of the mucosal vasculature and downregulating inflammatory cytokines.
+            Most of the evidence on BPC-157 comes from animal models, chiefly rats. A recent clinical primer for orthopaedic and sports medicine physicians notes that the evidence is overwhelmingly preclinical, with a significant lack of human clinical evidence (PMID: 41476424).
           </p>
 
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">Neuroprotection and CNS Recovery</h4>
+          <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">Tendon and Ligament Models</h4>
           <p>
-            Emerging research points to BPC-157's efficacy in the central nervous system. It has demonstrated the ability to attenuate neuroinflammation, mitigate the damage from traumatic brain injury (TBI) models, and modulate the dopaminergic system to reverse amphetamine-induced behavioral disturbances. It achieves this, in part, by stabilizing the blood-brain barrier and mitigating systemic neuro-toxicity.
+            The most cited studies of BPC-157 use rat models of Achilles tendon transection and ligament injury. In these models, BPC-157-treated animals showed faster healing measures than controls, including increased tendon fibroblast outgrowth (PMID: 21030672) and improved ligament healing (PMID: 20225319). A review summarizes tendon, ligament, and gut findings across preclinical models. These are animal results and have not been confirmed in human trials.
+          </p>
+
+          <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">Gastrointestinal Lesion Models</h4>
+          <p>
+            As a gastric-derived peptide, BPC-157 has been studied in rat models of gastrointestinal injury, including ulcers, fistulas, and inflammatory bowel lesions (PMID: 22300085). Proposed mechanisms include preservation of mucosal blood vessels and reduced inflammatory signaling. BPC-157 has not been evaluated as a treatment for inflammatory bowel disease in human trials.
+          </p>
+
+          <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2">Central Nervous System Models</h4>
+          <p>
+            Rodent studies have examined BPC-157 in stroke and spinal cord injury models. Other preclinical work has looked at dopaminergic signaling and behavioral models. These findings are preliminary and limited to animals.
           </p>
         </div>
       </section>
 
-      {/* Stacking Synergies */}
+      {/* Combination Research */}
       <section className="mb-12">
         <div className="flex items-center gap-3 mb-6">
           <GitCompare className="w-6 h-6 text-amber-400" />
-          <h3 className="text-xl font-bold text-zinc-100">Stacking Synergies: What the Research Supports</h3>
+          <h3 className="text-xl font-bold text-zinc-100">Combination Research: What Has and Hasn&apos;t Been Studied</h3>
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            BPC-157 is the foundation of almost all injury-recovery and tissue-repair protocols. It is universally combined with other regenerative peptides to create a synergistic healing environment.
-          </p>
-          
-          <h4 className="text-lg font-bold text-zinc-200 mt-4">1. The Ultimate Wolverine Stack: BPC-157 + TB-500</h4>
-          <p>
-            This is the gold standard for musculoskeletal injury recovery. While BPC-157 works via angiogenesis (building new blood vessels to deliver nutrients) and collagen synthesis, <Link href="/library/tb-500" className="text-gold hover:underline">TB-500</Link> (Thymosin Beta-4) acts by upregulating actin—a vital cellular protein responsible for cell mobility and structural integrity. TB-500 allows repair cells to migrate to the injury site rapidly, while BPC-157 provides the vascular infrastructure to keep them alive and functioning.
+            BPC-157 is frequently discussed alongside other peptides studied in tissue-repair models. We are not aware of a published controlled study evaluating these combinations, so the rationale below is mechanistic only.
           </p>
 
-          <h4 className="text-lg font-bold text-zinc-200 mt-4">2. The GI Repair Stack: Oral BPC-157 + KPV</h4>
+          <h4 className="text-lg font-bold text-zinc-200 mt-4">1. BPC-157 + TB-500</h4>
           <p>
-            For researchers targeting Crohn's disease, ulcerative colitis, or severe gut dysbiosis, stacking the Arginate salt form of oral BPC-157 with KPV (a potent anti-inflammatory tri-peptide) yields massive reductions in mucosal inflammation. KPV drastically lowers intestinal inflammation via alpha-MSH pathways, allowing BPC-157 an unobstructed environment to physically rebuild the intestinal lining.
+            BPC-157 has been studied mainly for angiogenic signaling and tendon fibroblast activity (PMID: 21030672), while <Link href="/library/tb-500" className="text-gold hover:underline">TB-500</Link> (a Thymosin Beta-4 fragment) is studied for actin regulation and cell migration. The two mechanisms are distinct, which is why they are often discussed together; whether they interact in vivo has not been tested in a published trial.
+          </p>
+
+          <h4 className="text-lg font-bold text-zinc-200 mt-4">2. BPC-157 + KPV in Gut-Inflammation Models</h4>
+          <p>
+            BPC-157 has been studied in rodent gastrointestinal lesion models (PMID: 22300085), and KPV, a tripeptide fragment of alpha-MSH, has been studied separately for anti-inflammatory signaling in preclinical intestinal models. The two have not been studied together, and neither has been evaluated as a treatment for Crohn&apos;s disease or ulcerative colitis in human trials.
           </p>
         </div>
       </section>
 
-      {/* Administration Route & Storage */}
+      {/* Administration in Studies & Storage */}
       <section className="mb-12">
         <div className="flex items-center gap-3 mb-6">
           <Syringe className="w-6 h-6 text-blue-400" />
-          <h3 className="text-xl font-bold text-zinc-100">Administration Route & Storage</h3>
+          <h3 className="text-xl font-bold text-zinc-100">Administration in Studies &amp; Storage</h3>
         </div>
         <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
           <p>
-            BPC-157 is highly stable compared to larger peptides (like GH or Tesamorelin), making it straightforward to store and transport.
+            BPC-157 is relatively stable compared to larger peptides (like GH or Tesamorelin), which simplifies storage and transport.
           </p>
           <p>
-            <strong>Systemic vs. Local Administration:</strong> A long-standing debate exists regarding administration sites. Current consensus suggests BPC-157 works systemically; a subcutaneous injection in the abdomen will upregulate VEGF across the entire body, reaching the injury. However, many researchers anecdotally report superior, faster localized results when administering via subcutaneous or intra-muscular injection as close to the injury site as safely possible (e.g., near the patellar tendon for knee issues).
+            <strong>Systemic vs. Local Administration:</strong> Preclinical studies have compared systemic and local administration in rodent injury models; see cited studies.
           </p>
           <p>
-            <strong>Storage Protocols:</strong> Lyophilized BPC-157 is stable at room temperature for weeks but should be frozen (-20°C) for long-term storage. Once reconstituted, store at 2°C to 8°C. It is remarkably stable in solution, retaining potency for upwards of 4-6 weeks.
+            <strong>Storage:</strong> Lyophilized BPC-157 is stable at room temperature for weeks but should be kept frozen (-20°C) for long-term storage, in a sealed vial protected from light.
           </p>
           <p>
-            <em>Note on Sourcing:</em> I source BPC-157 from <Link href="/vendors/amino-club" className="text-gold hover:underline">Amino Club</Link> (batch 2604-AC-BPC). Because BPC is heavily counterfeited, utilizing a vendor with third-party mass spectrometry is non-negotiable. Use the <Link href="/peptidex-coupon" className="text-gold hover:underline font-bold">PEPTIDEX coupon</Link> for their regenerative line.
-          </p>
-        </div>
-      </section>
-
-      {/* My N=1 Long-Form Protocol Log */}
-      <section className="mb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <UserIcon className="w-6 h-6 text-gold" />
-          <h3 className="text-xl font-bold text-zinc-100">My N=1 Long-Form Protocol Log</h3>
-        </div>
-        <div className="prose prose-invert max-w-none text-zinc-300 leading-relaxed space-y-4">
-          <p>
-            This protocol tracks the rehabilitation of a Grade 2 partial tear of the distal bicep tendon, sustained during heavy deadlifting. Standard orthopedic prognosis dictated 8-12 weeks of complete immobilization and physical therapy before any load-bearing could resume.
-          </p>
-          
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 border-b border-zinc-800 pb-2">The Protocol Design</h4>
-          <p>
-            I deployed an aggressive 'Wolverine Protocol': 500mcg of BPC-157 administered twice daily (1mg total per day), injected subcutaneously approximately 2 inches proximal to the injury site (avoiding the nerve bundles in the antecubital fossa). This was stacked with 2.5mg of TB-500 twice a week systemically.
-          </p>
-
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 border-b border-zinc-800 pb-2">Days 1-7: Acute Inflammation and Pain Mitigation</h4>
-          <p>
-            The most profound immediate effect of BPC-157 is its analgesic (pain-relieving) and anti-inflammatory action. By Day 3, the deep, throbbing ache at rest had entirely subsided. Edema (swelling) around the elbow joint decreased by an estimated 70%. I discontinued all NSAIDs (ibuprofen), as they impede natural inflammatory healing signals, relying solely on the peptides to modulate the repair environment.
-          </p>
-
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 border-b border-zinc-800 pb-2">Weeks 2-3: Accelerated Fibroblast Activity</h4>
-          <p>
-            By the end of Week 2, range of motion (ROM) in supination and flexion had returned to 90% pain-free. I initiated light, high-rep, blood-flow-restriction (BFR) therapy. The BPC-157 was driving aggressive angiogenesis; the local tissue felt consistently warmer than the non-injured arm, indicating massive localized blood flow. 
-          </p>
-          <p>
-            <em>Side Effects:</em> Zero negative side effects noted. A secondary benefit observed was a complete cessation of chronic acid reflux, highlighting the systemic healing nature of the gastric peptide.
-          </p>
-
-          <h4 className="text-lg font-bold text-zinc-200 mt-6 border-b border-zinc-800 pb-2">Weeks 4-5: Load Testing and Return to Function</h4>
-          <p>
-            At Week 4, ultrasound imaging (performed independently) showed dense, organized collagen bridging the tear, lacking the chaotic, scar-tissue formation typical of unassisted tendon healing. By Week 5, I was deadlifting 75% of my previous 1RM with zero pain or instability. 
-          </p>
-          <p>
-            <strong>Final Takeaway:</strong> BPC-157 fundamentally alters the timeline of musculoskeletal injury. It cut my recovery time from a projected 12 weeks down to 5 weeks for return to heavy loading. It is the single most valuable peptide in the arsenal for mechanical repair, acting as a biological time machine for avascular tissues.
+            <em>Note on Sourcing:</em> PeptiDex&apos;s reference sample (batch 2604-AC-BPC) was sourced from <Link href="/vendors/amino-club" className="text-gold hover:underline">Amino Club</Link> for purity/cold-chain verification. Because BPC-157 is frequently counterfeited, third-party mass spectrometry data is the key item to check on any vendor&apos;s COA. The <Link href="/peptidex-coupon" className="text-gold hover:underline font-bold">PEPTIDEX coupon</Link> applies at checkout.
           </p>
         </div>
       </section>

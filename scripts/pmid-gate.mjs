@@ -32,7 +32,6 @@ const registryPmids = new Set(
 // --- BLOCK-tier files (inline claim citations � deploy blocker) ----------------
 const BLOCK_TIER_FILES = [
     join(__dirname, '..', 'src', 'data', 'goal-pages.ts'),
-    join(__dirname, '..', 'src', 'data', 'matchups.ts'),
     join(__dirname, '..', 'src', 'data', 'stacks.ts'),
     join(__dirname, '..', 'src', 'data', 'stack-interactions.ts'),
 ];

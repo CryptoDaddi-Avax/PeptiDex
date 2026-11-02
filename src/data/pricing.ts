@@ -11,8 +11,6 @@ export interface PeptidePricing {
     typical_vial_mg: number;
     avg_price_usd: number;
     price_range_usd: [number, number];
-    cost_per_dose_usd?: number;
-    doses_per_vial?: number;
     notes?: string;
     vendors: VendorPrice[];
 }
@@ -27,8 +25,6 @@ export const pricingData: PeptidePricing[] = [
             49.99,
             64.99
         ],
-        "cost_per_dose_usd": 3.83,
-        "doses_per_vial": 15,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -53,8 +49,6 @@ export const pricingData: PeptidePricing[] = [
             39.99,
             70
         ],
-        "cost_per_dose_usd": 2.75,
-        "doses_per_vial": 20,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -79,8 +73,6 @@ export const pricingData: PeptidePricing[] = [
             50,
             59.99
         ],
-        "cost_per_dose_usd": 6.88,
-        "doses_per_vial": 8,
         "notes": "Amino Club is Combo; Ascension offers No DAC 5mg.",
         "vendors": [
             {
@@ -106,8 +98,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             75
         ],
-        "cost_per_dose_usd": 5.25,
-        "doses_per_vial": 10,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -132,8 +122,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             69.99
         ],
-        "cost_per_dose_usd": 2.5,
-        "doses_per_vial": 20,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -158,8 +146,6 @@ export const pricingData: PeptidePricing[] = [
             0,
             0
         ],
-        "cost_per_dose_usd": 0,
-        "doses_per_vial": 10,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -184,8 +170,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             50
         ],
-        "cost_per_dose_usd": 1.6,
-        "doses_per_vial": 25,
         "notes": "Ascension is 100mg vial.",
         "vendors": [
             {
@@ -211,8 +195,6 @@ export const pricingData: PeptidePricing[] = [
             0,
             69.99
         ],
-        "cost_per_dose_usd": 3.5,
-        "doses_per_vial": 10,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -237,8 +219,6 @@ export const pricingData: PeptidePricing[] = [
             49.99,
             50
         ],
-        "cost_per_dose_usd": 1.67,
-        "doses_per_vial": 30,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -263,8 +243,6 @@ export const pricingData: PeptidePricing[] = [
             39.99,
             79.99
         ],
-        "cost_per_dose_usd": 6,
-        "doses_per_vial": 10,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -289,8 +267,6 @@ export const pricingData: PeptidePricing[] = [
             39.99,
             79.99
         ],
-        "cost_per_dose_usd": 30,
-        "doses_per_vial": 2,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -315,8 +291,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             40
         ],
-        "cost_per_dose_usd": 1.75,
-        "doses_per_vial": 20,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -341,8 +315,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             50
         ],
-        "cost_per_dose_usd": 4,
-        "doses_per_vial": 10,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -367,8 +339,6 @@ export const pricingData: PeptidePricing[] = [
             0,
             65
         ],
-        "cost_per_dose_usd": 6.5,
-        "doses_per_vial": 5,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -393,8 +363,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             55
         ],
-        "cost_per_dose_usd": 0.71,
-        "doses_per_vial": 60,
         "notes": "Pricing for 30mg/10mg spray depending on vendor.",
         "vendors": [
             {
@@ -420,8 +388,6 @@ export const pricingData: PeptidePricing[] = [
             29.99,
             55
         ],
-        "cost_per_dose_usd": 0.71,
-        "doses_per_vial": 60,
         "notes": "Pricing for 30mg/10mg spray depending on vendor.",
         "vendors": [
             {
@@ -447,8 +413,6 @@ export const pricingData: PeptidePricing[] = [
             0,
             85
         ],
-        "cost_per_dose_usd": 6.07,
-        "doses_per_vial": 7,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -473,8 +437,6 @@ export const pricingData: PeptidePricing[] = [
             39.99,
             50
         ],
-        "cost_per_dose_usd": 6.43,
-        "doses_per_vial": 7,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -499,8 +461,6 @@ export const pricingData: PeptidePricing[] = [
             69.99,
             89.99
         ],
-        "cost_per_dose_usd": 8,
-        "doses_per_vial": 10,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",
@@ -525,8 +485,6 @@ export const pricingData: PeptidePricing[] = [
             0,
             39.99
         ],
-        "cost_per_dose_usd": 2.5,
-        "doses_per_vial": 8,
         "vendors": [
             {
                 "vendor": "Ascension Peptides",

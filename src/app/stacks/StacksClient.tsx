@@ -46,11 +46,11 @@ export default function StacksClient() {
                     <div className="breadcrumb">
                         <Link href="/">Home</Link><span className="sep">/</span><span className="current">Stacks</span>
                     </div>
-                    <div className="section-label">§ Curated Protocols</div>
+                    <div className="section-label">§ Curated Stacks</div>
                     <h1 className="page-title">{stacks.length} expert-curated <em>stacks</em>.</h1>
-                    <p className="page-subtitle">Each protocol is built around a specific outcome, dosed against published literature, and cross-referenced with sourcing data. Pick a goal, get a stack, plan a cycle.</p>
+                    <p className="page-subtitle">Each stack groups compounds studied for a shared research area, cross-referenced with published literature and sourcing data.</p>
                     <div className="page-meta">
-                        <div className="page-meta-item"><strong>{stacks.length}</strong> protocols</div>
+                        <div className="page-meta-item"><strong>{stacks.length}</strong> stacks</div>
                         <div className="page-meta-item"><strong>{stacks.length}</strong> goal categories</div>
                         <div className="page-meta-item"><strong>Updated</strong> for 2026</div>
                     </div>
@@ -173,14 +173,14 @@ export default function StacksClient() {
                 <div style={{ marginTop: '80px', padding: '48px', background: 'var(--bg-card)', borderLeft: '3px solid var(--gold)' }} className="fade-up is-visible">
                     <div className="section-label">§ Need help choosing?</div>
                     <h3 style={{ fontFamily: 'var(--serif)', fontSize: '36px', fontWeight: 300, marginBottom: '16px', letterSpacing: '-0.02em' }}>
-                        Try the <em className="text-gold italic">Cycle Planner</em>.
+                        Try the <em className="text-gold italic">Stack Quiz</em>.
                     </h3>
                     <p style={{ color: 'var(--ink-dim)', fontSize: '16px', lineHeight: 1.6, maxWidth: '680px', marginBottom: '24px' }}>
-                        Get a personalized peptide protocol based on your goals, experience level, and timeline. Free, instant, and based on published research dosing.
+                        Answer three quick questions about your research interests and see which stacks the published literature covers. Free and instant.
                     </p>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <Link href="/tools/cycle-planner" className="btn-primary">
-                            <span>Open the Cycle Planner</span>
+                        <Link href="/quiz" className="btn-primary">
+                            <span>Take the Stack Quiz</span>
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ marginLeft: '8px' }}><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5"/></svg>
                         </Link>
                         <Link href="/tools/compare" className="btn-ghost">

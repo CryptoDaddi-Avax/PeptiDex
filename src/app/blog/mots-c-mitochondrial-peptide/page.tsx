@@ -56,7 +56,7 @@ export default function MOTSCDeepDivePage() {
     mainEntity: [
       { '@type': 'Question', name: 'What is MOTS-c?', acceptedAnswer: { '@type': 'Answer', text: 'MOTS-c (Mitochondrial Open Reading Frame of the Twelve S rRNA Type-c) is a 16-amino acid peptide encoded within the mitochondrial genome — making it one of only a handful of known mitochondrial-derived peptides (MDPs). It functions as a metabolic regulator that targets skeletal muscle, activating AMPK and enhancing glucose uptake, fatty acid oxidation, and overall energy metabolism.' } },
       { '@type': 'Question', name: 'How does MOTS-c mimic exercise?', acceptedAnswer: { '@type': 'Answer', text: 'MOTS-c activates AMPK (AMP-activated protein kinase), the same master metabolic sensor activated during physical exercise. AMPK activation triggers glucose uptake in skeletal muscle, fatty acid oxidation, mitochondrial biogenesis, and insulin sensitization — metabolic effects that closely mirror the benefits of endurance exercise at the molecular level.' } },
-      { '@type': 'Question', name: 'Does MOTS-c help with weight loss?', acceptedAnswer: { '@type': 'Answer', text: 'In animal studies, MOTS-c has prevented diet-induced obesity and insulin resistance in mice fed a high-fat diet. It promotes fat oxidation (converting stored fat into energy) rather than fat storage. While these results are promising, large-scale controlled human trials for weight loss have not yet been completed.' } },
+      { '@type': 'Question', name: 'Has MOTS-c been studied for weight?', acceptedAnswer: { '@type': 'Answer', text: 'In animal studies, MOTS-c prevented diet-induced obesity and insulin resistance in mice fed a high-fat diet, and it was associated with fat oxidation rather than fat storage. No controlled human trials for weight loss have been completed.' } },
       { '@type': 'Question', name: 'What are the side effects of MOTS-c?', acceptedAnswer: { '@type': 'Answer', text: 'Published research has reported minimal adverse effects from MOTS-c administration. The first-in-human clinical trial (2024) demonstrated safety and tolerability at multiple dose levels in healthy volunteers. Potential side effects based on mechanism may include transient hypoglycemia (due to enhanced glucose uptake) and mild GI discomfort.' } },
       { '@type': 'Question', name: 'Is MOTS-c the same as SS-31 (Elamipretide)?', acceptedAnswer: { '@type': 'Answer', text: 'No. Both target mitochondrial function but through different mechanisms. MOTS-c is an endogenous mitochondrial-derived peptide that activates AMPK in skeletal muscle. SS-31 (Elamipretide) is a synthetic tetrapeptide that targets cardiolipin in the inner mitochondrial membrane to stabilize electron transport chain function and reduce oxidative stress. They are complementary but distinct compounds.' } },
     ],
@@ -152,10 +152,10 @@ export default function MOTSCDeepDivePage() {
           </p>
           <p>When MOTS-c activates AMPK in skeletal muscle, it triggers a cascade of metabolic effects:</p>
           <ul>
-            <li><strong>Enhanced glucose uptake:</strong> Skeletal muscle cells pull glucose from the bloodstream independently of insulin, improving blood sugar regulation</li>
+            <li><strong>Glucose uptake:</strong> In cell and mouse studies, skeletal muscle glucose uptake increased independently of insulin</li>
             <li><strong>Increased fatty acid oxidation:</strong> Stored fat is mobilized and converted to energy in the mitochondria</li>
             <li><strong>Mitochondrial biogenesis:</strong> New mitochondria are produced, increasing the cell&apos;s total energy production capacity</li>
-            <li><strong>Insulin sensitization:</strong> AMPK activation improves downstream insulin signaling, reversing insulin resistance</li>
+            <li><strong>Insulin sensitivity:</strong> AMPK activation improved downstream insulin signaling and prevented diet-induced insulin resistance in mice</li>
             <li><strong>Inhibition of the folate cycle:</strong> MOTS-c accumulates in the nucleus during stress and directly regulates gene expression related to the methionine-folate cycle, influencing cellular stress resistance²</li>
           </ul>
           <p>
@@ -171,12 +171,12 @@ export default function MOTSCDeepDivePage() {
             Subsequent studies expanded these findings:
           </p>
           <ul>
-            <li>MOTS-c improved exercise capacity and endurance in aged mice, restoring physical performance to near-youthful levels³</li>
-            <li>MOTS-c administration protected against age-related metabolic decline, preserving skeletal muscle function and insulin sensitivity in older animals⁴</li>
+            <li>MOTS-c improved exercise capacity and endurance in aged mice³</li>
+            <li>In older animals, MOTS-c administration was associated with preserved skeletal muscle function and insulin sensitivity⁴</li>
             <li>Endogenous MOTS-c levels increase in skeletal muscle following exercise in both mice and humans, suggesting it functions as an endogenous exercise-response signal⁵</li>
           </ul>
           <p>
-            The implication is powerful: MOTS-c may represent one of the molecular mechanisms through which exercise produces its metabolic benefits. And if that mechanism can be amplified exogenously, it could have profound applications for patients who cannot exercise due to injury, disability, or severe metabolic disease.
+            One hypothesis is that MOTS-c is one of the molecular mechanisms through which exercise produces its metabolic effects. Whether giving it exogenously has any benefit in humans is unknown; the human data so far is limited to early safety studies.
           </p>
 
           <div className="section-label mt-12 mb-2">§ 03</div>

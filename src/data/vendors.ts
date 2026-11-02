@@ -1,11 +1,11 @@
 /**
- * Centralized Vendor Registry â€” Single Source of Truth
+ * Centralized Vendor Registry — Single Source of Truth
  * =====================================================
  * Created: 2026-04-30
  * 
  * WHY THIS FILE EXISTS:
  * Previously, vendor data was fragmented across 4 separate files:
- *   - vendor-comparison.ts  (vendorProfiles â€” rating, COA, shipping metadata)
+ *   - vendor-comparison.ts  (vendorProfiles — rating, COA, shipping metadata)
  *   - vendor-pricing.ts     (per-peptide vendor pricing)
  *   - pricing.ts            (legacy pricing data for /tools/pricing)
  *   - affiliates.ts         (Amino Club product URL mapping)
@@ -30,7 +30,7 @@
  *     7. LVLUP Health        — Oral specialist, 20+ compounds
  */
 
-// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 export type VendorCategory = "injectable" | "oral";
 export type BadgeStyle = "gold" | "green" | "premium" | "blue" | "orange";
@@ -50,7 +50,7 @@ export interface Vendor {
   sortOrder: number;
   /** Injectable or oral */
   category: VendorCategory;
-  /** Full affiliate URL â€” used for all outbound links */
+  /** Full affiliate URL — used for all outbound links */
   affiliateUrl: string;
   /** Discount code (if any) */
   discountCode?: string;
@@ -288,7 +288,7 @@ export const vendors: Vendor[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA"],
     catalogSize: "50+ compounds",
@@ -301,7 +301,7 @@ export const vendors: Vendor[] = [
     verificationTier: "bronze",
   },
 
-  // â”€â”€ #6: LVLUP Health (Oral) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── #6: LVLUP Health (Oral) ─────────────────────────────────────────────
   {
     slug: "lvlup-health",
     name: "LVLUP Health",
@@ -319,7 +319,7 @@ export const vendors: Vendor[] = [
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $75",
     shipsTo: ["USA"],
     catalogSize: "20+ compounds",
@@ -333,7 +333,7 @@ export const vendors: Vendor[] = [
   },
 ];
 
-// â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
 /** All ACTIVE vendors sorted by sortOrder */
 export const vendorsSorted = [...vendors]

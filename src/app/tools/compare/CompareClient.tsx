@@ -21,6 +21,7 @@ import type { CompareCardData } from "@/components/share-card/card-templates";
 import type { Peptide } from "@/data/types";
 import './compare-redesign.css';
 import { AffiliateLink } from "@/components/affiliate-link";
+import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
 
@@ -58,7 +59,7 @@ function generateComparisonSummary(compared: Peptide[]): string {
 
         summary = `${a.name} and ${b.name} are${sameCat ? ` both ${cats[0]} peptides` : ` from different classes (${a.category} vs ${b.category})`} commonly compared in peptide research. `;
         summary += `${a.name} is primarily used for ${a.primary_benefits.toLowerCase()}, while ${b.name} focuses on ${b.primary_benefits.toLowerCase()}. `;
-        summary += `Their half-lives differ significantly \u2014 ${a.name} at ${halfA} vs ${b.name} at ${halfB} \u2014 which affects dosing frequency and protocol design. `;
+        summary += `Their half-lives differ significantly \u2014 ${a.name} at ${halfA} vs ${b.name} at ${halfB} \u2014 which shapes how long each compound remains active in published pharmacokinetic studies. `;
         summary += `Evidence levels are ${evidenceLevels[0]} for ${a.name} and ${evidenceLevels[1]} for ${b.name}. `;
     } else {
         summary = `This comparison examines ${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}, covering ${sameCat ? `the ${cats[0]} category` : `multiple categories (${[...new Set(cats)].join(", ")})`}. `;
@@ -66,7 +67,7 @@ function generateComparisonSummary(compared: Peptide[]): string {
     }
 
     if (synergyPairs.length > 0) {
-        summary += `Notably, ${synergyPairs.join(" and ")} ${synergyPairs.length === 1 ? "is a" : "are"} recognized synergistic ${synergyPairs.length === 1 ? "combination" : "combinations"} frequently used together in research protocols.`;
+        summary += `Notably, ${synergyPairs.join(" and ")} ${synergyPairs.length === 1 ? "is a" : "are"} recognized synergistic ${synergyPairs.length === 1 ? "combination" : "combinations"} frequently studied together.`;
     }
 
     return summary;
@@ -258,7 +259,7 @@ function CompareClientInner() {
                         Compare <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Peptides</em>.
                     </h1>
                     <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 680, lineHeight: 1.6 }}>
-                        Select 2–3 peptides for a side-by-side analysis of evidence, dosing, half-life, synergies, and safety profiles.
+                        Select 2–3 peptides for a side-by-side analysis of evidence, half-life, synergies, and safety profiles.
                     </p>
                 </div>
             </header>
@@ -363,16 +364,8 @@ function CompareClientInner() {
                             ))}
                         </ComparisonRow>
 
-                        <ComparisonRow label="Route" icon={<Syringe style={{width:14, color: '#2dd4bf'}} />} count={compared.length}>
-                            {compared.map((p) => <div className="cmp-row-content" key={p.slug}><span className="cmp-badge">{p.dosing?.route || "N/A"}</span></div>)}
-                        </ComparisonRow>
-
-                        <ComparisonRow label="Dose Range" icon={<Syringe style={{width:14, color: '#2dd4bf'}} />} count={compared.length}>
-                            {compared.map((p) => <div className="cmp-row-content" key={p.slug}>{p.dosing ? `${p.dosing.typical_dose_mcg[0]}-${p.dosing.typical_dose_mcg[1]} mcg` : "N/A"}</div>)}
-                        </ComparisonRow>
-
-                        <ComparisonRow label="Frequency" icon={<Clock style={{width:14, color: '#fbbf24'}} />} count={compared.length}>
-                            {compared.map((p) => <div className="cmp-row-content" key={p.slug}>{p.dosing?.frequency || "N/A"}</div>)}
+                        <ComparisonRow label="Route Studied" icon={<Syringe style={{width:14, color: '#2dd4bf'}} />} count={compared.length}>
+                            {compared.map((p) => <div className="cmp-row-content" key={p.slug}><span className="cmp-badge">{p.route_studied || "N/A"}</span></div>)}
                         </ComparisonRow>
 
                         <ComparisonRow label="Legal Status" icon={<ShieldAlert style={{width:14, color: '#34d399'}} />} count={compared.length} highlight>
@@ -413,6 +406,8 @@ function CompareClientInner() {
                                 <ShoppingBag style={{width: 24, height: 24, color: '#34d399'}} />
                                 <h2 className="cmp-cta-title">Source These Peptides</h2>
                             </div>
+                            {/* Research-use-only notice — rendered with the sourcing CTAs */}
+                            <DisclaimerCard variant="vendor" className="!mt-0" />
                             <div className="cmp-cta-grid" style={{ "--cols": compared.length } as React.CSSProperties}>
                                 {compared.map((p, i) => {
                                     const baseUrl = aminoClubProductMapping[p.slug] || PRIMARY_PROMO.shopUrl;
@@ -455,7 +450,7 @@ function CompareClientInner() {
 
 export default function CompareClient() {
     return (
-        <Suspense fallback={<div className="cmp-empty">Loading...</div>}>
+        <Suspense fallback={<div className="cmp-empty"><DisclaimerCard variant="vendor" className="!mt-0" />Loading...</div>}>
             <CompareClientInner />
         </Suspense>
     );

@@ -5,7 +5,7 @@ import { SITE_STATS } from '@/data/site-stats';
 
 export const metadata: Metadata = {
     title: 'Your Cheat Sheet is Ready',
-    description: `Download your 2026 Peptide Stack Cheat Sheet — ${SITE_STATS.stacks.count} research-backed stacks with exact dosages and timing.`,
+    description: `Download your 2026 Peptide Stack Cheat Sheet — ${SITE_STATS.stacks.count} research stacks with compound roles, evidence levels, and cited research.`,
     robots: { index: false, follow: false },
 };
 
@@ -29,7 +29,7 @@ export default function ThankYouPage() {
             <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-900/10 to-zinc-900 p-6 md:p-8 text-center space-y-4">
                 <h2 className="text-lg font-bold text-zinc-100">2026 Peptide Stack Cheat Sheet</h2>
                 <p className="text-sm text-zinc-400 max-w-md mx-auto">
-                    {SITE_STATS.stacks.count} curated stacks &bull; exact dosages &bull; cycle lengths &bull; timing protocols &bull; verified sources
+                    {SITE_STATS.stacks.count} curated stacks &bull; compound roles &bull; evidence levels &bull; cited research &bull; verified sources
                 </p>
                 <Link
                     href="/lead/cheat-sheet"

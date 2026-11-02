@@ -1,5 +1,5 @@
 /**
- * @deprecated â€” Use `/data/vendors.ts` instead.
+ * @deprecated — Use `/data/vendors.ts` instead.
  * This file is preserved as a backward-compatible re-export shim.
  * It will be removed once all imports are migrated to the centralized vendor registry.
  * Migration date: 2026-04-30
@@ -58,7 +58,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
-    shippingSpeed: "2â€“4 business days (US)",
+    shippingSpeed: "2–4 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA", "International"],
     catalogSize: "40+ compounds",
@@ -78,7 +78,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $150",
     shipsTo: ["USA"],
     catalogSize: "60+ compounds",
@@ -96,7 +96,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA"],
     catalogSize: "90+ compounds",
@@ -114,7 +114,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
-    shippingSpeed: "2â€“5 business days (US)",
+    shippingSpeed: "2–5 business days (US)",
     shippingCost: "Free over $150",
     shipsTo: ["USA", "International"],
     catalogSize: "80+ compounds",
@@ -132,7 +132,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $100",
     shipsTo: ["USA"],
     catalogSize: "50+ compounds",
@@ -149,7 +149,7 @@ export const vendorProfiles: Record<string, VendorProfile> = {
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
-    shippingSpeed: "3â€“5 business days (US)",
+    shippingSpeed: "3–5 business days (US)",
     shippingCost: "Free over $75",
     shipsTo: ["USA"],
     catalogSize: "20+ compounds",

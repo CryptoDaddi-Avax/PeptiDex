@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { goalPages } from '@/data/goal-pages';
 
 export const metadata: Metadata = {
-  title: 'Best Peptides by Goal — Research-Backed Protocols | PeptiDex',
+  title: 'Best Peptides by Goal — Research Guides | PeptiDex',
   description: 'Browse curated peptide stacks organized by research goal: fat loss, muscle growth, injury recovery, longevity, cognitive enhancement, and more.',
   alternates: { canonical: 'https://peptidex.app/best' },
 };
@@ -15,7 +15,7 @@ export default function BestIndexPage() {
         Best Peptides by <em style={{ color: '#8b5cf6' }}>Goal</em>
       </h1>
       <p style={{ color: '#a1a1aa', fontSize: '1.1rem', marginBottom: 40, maxWidth: 600 }}>
-        Research-backed peptide protocols organized by health and performance objective.
+        Peptide research guides organized by health and performance objective.
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
         {goalPages.map(g => (

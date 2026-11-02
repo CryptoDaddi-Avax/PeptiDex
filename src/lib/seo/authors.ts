@@ -6,12 +6,6 @@ export interface AuthorProfile {
 }
 
 export const authors: Record<string, AuthorProfile> = {
-  vance: {
-    name: "Dr. E. Vance",
-    jobTitle: "Clinical Research Director",
-    url: "https://peptidex.app/team/dr-e-vance",
-    sameAs: [],
-  },
   researchTeam: {
     name: "PEPTIDEX Research Team",
     jobTitle: "Editorial Team",

@@ -1,5 +1,5 @@
 ﻿/**
- * @deprecated â€” Will be consolidated into /data/vendors.ts pricing module.
+ * @deprecated — Will be consolidated into /data/vendors.ts pricing module.
  * This file is preserved for backward compatibility. Migration date: 2026-04-30
  */
 
@@ -705,7 +705,7 @@ export const vendorPricing: PeptideVendorPricing[] =
             // Prices pending verification
         ]
     },
-    // NAD+ (slug "nad") is a duplicate â€” see "nad-" entry above for the real pricing
+    // NAD+ (slug "nad") is a duplicate — see "nad-" entry above for the real pricing
     {
         "slug": "argireline",
         "name": "Argireline",

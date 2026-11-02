@@ -3,7 +3,7 @@ title: "Where to Buy Research Peptides Legally in 2026: A Complete Guide"
 description: "A comprehensive guide on where to buy research peptides legally in 2026. We explain the regulatory landscape, FDA guidelines, and how to source verified peptides safely."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "Dr. E. Vance"
+author: "PeptiDex Editorial Team"
 readingTime: "18 Min Read"
 faqSchema: |
   {
@@ -138,7 +138,7 @@ Purchasing from a domestic vendor who has already successfully imported the raw 
 Legitimate research vendors understand the laws governing their industry, and their website presentation reflects this understanding. They will strictly use research-oriented language. 
 
 If you visit a vendor's website and see them:
-- Providing human dosing protocols (e.g., "Take 250mcg twice daily")
+- Providing human dosing instructions
 - Promising "miracle weight loss" or "rapid muscle growth"
 - Selling "stacks for bodybuilding"
 - Using images of muscular athletes or fitness models

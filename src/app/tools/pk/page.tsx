@@ -5,11 +5,11 @@ import PKClient from "./PKClient";
 export const metadata: Metadata = {
     title: "Peptide PK Plasma Curve Simulator — Pharmacokinetics Tool",
     description:
-        "Free PK curve simulator: visualize plasma concentration over time for any peptide with adjustable dose and frequency.",
+        "Free PK curve simulator: visualize the shape of a peptide's plasma concentration curve over time, from published half-life data.",
     alternates: { canonical: "https://peptidex.app/tools/pk" },
     openGraph: {
         title: "PK Plasma Curve Simulator | PeptiDex",
-        description: "Simulate peptide pharmacokinetics with adjustable dosing frequency and concentration curves.",
+        description: "Simulate peptide pharmacokinetics: normalized plasma concentration curves from published half-life data.",
         url: "https://peptidex.app/tools/pk",
         type: "website",
     },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 const schema = buildSoftwareApplicationSchema({
     name: "PeptiDex PK Curve Simulator",
-    description: "Simulate pharmacokinetic plasma concentration curves for peptides with adjustable dose and frequency parameters.",
+    description: "Simulate normalized pharmacokinetic plasma concentration curves for peptides from published half-life and time-to-peak data.",
     url: "https://peptidex.app/tools/pk",
     applicationCategory: "UtilityApplication",
 });

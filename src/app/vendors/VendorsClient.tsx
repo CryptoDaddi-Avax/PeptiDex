@@ -94,7 +94,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
 
           {/* 2-sentence subhead — must include "where to buy peptides" */}
           <p className="vn-subtitle">
-            Our independent editorial team has tested and ranked the best{' '}
+            PeptiDex has compared and ranked the best{' '}
             <strong>where to buy peptides online</strong> options in 2026 — every vendor
             in this index provides a batch-specific Certificate of Analysis verified by
             HPLC and Mass Spectrometry. Use the comparison table below to find the best
@@ -375,8 +375,8 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
               </h3>
               <p>
                 Most peptides are stable at room temperature when lyophilized (freeze-dried)
-                for short transit durations. However, reconstituted peptides and some
-                formulations require refrigeration. Verify with your chosen vendor whether
+                for short transit durations. However, some liquid formulations require
+                refrigeration. Verify with your chosen vendor whether
                 your specific compound ships with cold packs and whether the estimated
                 transit time is within the stability window for that formulation. Domestic
                 US orders from the vendors in this index typically arrive in 2–5 business
@@ -429,7 +429,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
                 <span className="vn-tool-callout-label">Price Comparison Tool</span>
                 <span className="vn-tool-callout-desc">
                   Compare live cross-vendor pricing for BPC-157, TB-500, Ipamorelin, and
-                  20+ other peptides — cost per vial, per dose, with PEPTIDEX discounts
+                  20+ other peptides — cost per vial, per mg, with PEPTIDEX discounts
                   applied →
                 </span>
               </div>

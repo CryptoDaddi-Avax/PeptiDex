@@ -51,15 +51,15 @@ export const citationMap: Record<string, FieldCitations> = {
     //   angiogenic potential via VEGFR2-Akt-eNOS pathway
     // → PMID 27138887: "Brain-gut Axis and Pentadecapeptide BPC 157" — describes multi-pathway
     //   repair mechanisms
-    mechanism: ['24186725', '27138887'],
+    mechanism: ['27138887'],
 
-    // "Injury recovery, gut healing, tissue repair, reduced inflammation"
+    // "Tendon and ligament repair (rodent models), GI lesion healing (rodent models)..."
     // → PMID 41898733: "From Regeneration to Analgesia" — covers angiogenesis, collagen
     //   synthesis, and tissue repair across diverse preclinical models
     // → PMID 27138887: "Brain-gut Axis" — covers gut-healing mechanism
     primary_benefits: ['41898733', '27138887'],
 
-    // "Excellent research safety profile; commonly used for recovery..."
+    // "No significant toxicity reported in animal studies, but human safety data are very limited"
     // → PMID 41476424: "Injectable Peptide Therapy: A Primer" — notes significant lack
     //   of human clinical evidence; safety profile from animal data
     safety_notes: ['41476424'],
@@ -72,19 +72,11 @@ export const citationMap: Record<string, FieldCitations> = {
     // → PMID 27138887: "Brain-gut Axis" — describes BPC-157 as a gastric pentadecapeptide
     laypersonSummary: ['27138887'],
 
-    // "Reduced inflammation markers; accelerated wound healing"
-    outcome_week_1: ['41898733'],
+    // "Rat Achilles tendon transection: accelerated tendon healing... (PMID 21030672)"
+    // → PMID 21030672: the rat Achilles tendon study quoted in the timeline text
+    outcome_week_2_4: ['21030672'],
 
-    // "Soft-tissue remodeling; tendon and ligament strength gains"
-    // → PMID 41754849: "Tendon, Ligament, and Muscle Injury..." — directly covers
-    //   tendon/ligament/muscle healing
-    outcome_week_2_4: ['41754849'],
-
-    // "Near-complete tissue repair in animal models; functional recovery"
-    // → PMID 20225319: "BPC-157 and neuroprotection" — functional recovery in stroke/spinal models
-    outcome_month_2_3: ['20225319'],
-
-    // "Maintenance doses for chronic conditions; long-term safety profile clean..."
+    // outcomes_timeline.long_term (long-term safety context)
     outcome_long_term: ['41476424'],
   },
 
@@ -93,39 +85,30 @@ export const citationMap: Record<string, FieldCitations> = {
   // ═══════════════════════════════════════════════════════════════════════════
   'mots-c': {
     // "Regulates mitochondrial function and AMPK. Enhances glucose uptake..."
-    // → PMID 25710270: Discovery paper — MOTS-c regulates insulin sensitivity and
+    // → PMID 25738459: Discovery paper — MOTS-c regulates insulin sensitivity and
     //   metabolic homeostasis via AMPK
     // → PMID 31577362: "MOTS-c improves skeletal muscle glucose metabolism" — directly
     //   covers glucose uptake mechanism
-    mechanism: ['25710270', '31577362'],
+    mechanism: ['25738459'],
 
-    // "Energy, metabolism, fat loss, longevity"
+    // "Insulin sensitivity and AMPK activation (mouse models), skeletal muscle glucose metabolism..."
     // → PMID 30975990: "MOTS-c prevents age-related insulin resistance" — covers
     //   metabolic benefits and obesity prevention
-    // → PMID 25710270: Discovery paper — metabolic regulation
-    primary_benefits: ['30975990', '25710270'],
+    // → PMID 25738459: Discovery paper — metabolic regulation
+    primary_benefits: ['25738459'],
 
-    // "Promising but limited human data. As an endogenous peptide..."
+    // "Endogenous peptide; no controlled human safety data for administered MOTS-c..."
     // → PMID 29474084: Human observational study — circulating MOTS-c levels
     //   decline with age/obesity (only human data reference)
-    safety_notes: ['29474084'],
+    safety_notes: [],
 
     // Half-life: 4 hours
     // No specific PK study
     half_life: [],
 
     // "MOTS-c is a mitochondrial-derived peptide..."
-    // → PMID 25710270: Discovery paper — defines MOTS-c
-    laypersonSummary: ['25710270'],
-
-    // "Metabolic marker improvements; enhanced glucose regulation"
-    outcome_week_1: ['25710270'],
-
-    // "Improved insulin sensitivity in preclinical models"
-    outcome_week_2_4: ['31577362'],
-
-    // "Reduced fat mass; metabolic normalization in obese models"
-    outcome_month_2_3: ['30975990'],
+    // → PMID 25738459: Discovery paper — defines MOTS-c
+    laypersonSummary: ['25738459'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -135,23 +118,22 @@ export const citationMap: Record<string, FieldCitations> = {
     // "Proprietary 8-amino acid peptide... Activates p53-mediated clearance..."
     // → PMID 36380323: "OS-01 reduces senescence markers" — directly describes
     //   p21/p16 senescence marker reduction in skin explants
-    mechanism: ['36380323'],
+    mechanism: [],
 
-    // "Skin cellular age reversal, senescent skin cell clearance..."
+    // "Senescence markers (p21, p16) in human skin explants, skin barrier function..."
     // → PMID 36380323: Same study — only published evidence
-    primary_benefits: ['36380323'],
+    primary_benefits: [],
 
     // "TOPICAL USE ONLY. Not for injection..."
     // Regulatory/usage statement — no PMID needed
     safety_notes: [],
 
     // "OS-01 is a topical cosmetic peptide by OneSkin..."
-    laypersonSummary: ['36380323'],
+    laypersonSummary: [],
 
     // "Measurable reduction in biological skin age markers at 12 weeks"
-    outcome_month_2_3: ['36380323'],
+    outcome_month_2_3: [],
   },
-
 
   // ═══════════════════════════════════════════════════════════════════════════
   // AOD-9604
@@ -159,53 +141,42 @@ export const citationMap: Record<string, FieldCitations> = {
   'aod-9604': {
     mechanism: ['11146367', '11713213'],
     primary_benefits: ['11146367'],
-    safety_notes: ['19268492'],
+    safety_notes: [],
     half_life: [],
     laypersonSummary: ['11146367'],
-    outcome_week_2_4: ['11146367'],
-    outcome_month_2_3: ['15655039'],
-    outcome_long_term: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SS-31 (Elamipretide)
   // ═══════════════════════════════════════════════════════════════════════════
   'ss-31': {
-    mechanism: ['32102697'],
-    primary_benefits: ['32102697'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
-    laypersonSummary: ['32102697'],
-    outcome_week_2_4: ['32102697'],
-    outcome_long_term: ['31637556'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // TB-500
   // ═══════════════════════════════════════════════════════════════════════════
   'tb-500': {
-    mechanism: ['14657002', '17379810'],
-    primary_benefits: ['17379810'],
+    mechanism: ['14657002'],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
     laypersonSummary: ['14657002'],
-    outcome_week_1: ['14657002'],
-    outcome_week_2_4: ['17379810'],
-    outcome_month_2_3: ['17379810'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // GHK-Cu
   // ═══════════════════════════════════════════════════════════════════════════
   'ghk-cu': {
-    mechanism: ['18047532', '17703734'],
-    primary_benefits: ['18047532'],
+    mechanism: ['17703734'],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
     laypersonSummary: ['17703734'],
-    outcome_week_1: ['17703734'],
-    outcome_week_2_4: ['18047532'],
-    outcome_month_2_3: ['18047532'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -217,7 +188,6 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: [],
     half_life: [],
     laypersonSummary: ['11227856'],
-    outcome_month_2_3: ['11227856'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -230,7 +200,6 @@ export const citationMap: Record<string, FieldCitations> = {
     half_life: [],
     laypersonSummary: ['9849822'],
     outcome_week_1: ['9849822'],
-    outcome_month_2_3: ['9849822'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -242,8 +211,6 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: [],
     half_life: ['16352683'],
     laypersonSummary: ['16352683'],
-    outcome_week_2_4: ['16352683'],
-    outcome_month_2_3: ['16352683'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -255,8 +222,7 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: ['22050344'],
     half_life: [],
     laypersonSummary: ['20554713'],
-    outcome_week_2_4: ['20554713'],
-    outcome_month_2_3: ['20554713'],
+    outcome_long_term: ['20554713'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -268,8 +234,6 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: ['18454096'],
     half_life: [],
     laypersonSummary: ['18488898'],
-    outcome_week_1: ['28280289'],
-    outcome_long_term: ['18454096'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -281,7 +245,6 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: [],
     half_life: [],
     laypersonSummary: ['17353092'],
-    outcome_week_2_4: ['20387390'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -302,10 +265,9 @@ export const citationMap: Record<string, FieldCitations> = {
   'sermorelin': {
     mechanism: ['9360512'],
     primary_benefits: ['9360512'],
-    safety_notes: ['10334586'],
+    safety_notes: [],
     half_life: [],
     laypersonSummary: ['9360512'],
-    outcome_long_term: ['10334586'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -317,7 +279,6 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: [],
     half_life: [],
     laypersonSummary: ['8637402'],
-    outcome_week_2_4: ['12851303'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -325,21 +286,20 @@ export const citationMap: Record<string, FieldCitations> = {
   // ═══════════════════════════════════════════════════════════════════════════
   'pt-141': {
     mechanism: ['12851303'],
-    primary_benefits: ['30689646'],
-    safety_notes: ['30689646'],
+    primary_benefits: [],
+    safety_notes: [],
     half_life: [],
-    laypersonSummary: ['30689646'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // KPV
   // ═══════════════════════════════════════════════════════════════════════════
   'kpv': {
-    mechanism: ['17095019'],
-    primary_benefits: ['17095019'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['17095019'],
-    outcome_week_1: ['17095019'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -350,22 +310,16 @@ export const citationMap: Record<string, FieldCitations> = {
     primary_benefits: ['32982998'],
     safety_notes: [],
     laypersonSummary: ['32982998'],
-    outcome_week_1: ['23838041'],
-    outcome_week_2_4: ['24828484'],
-    outcome_month_2_3: ['24828484'],
-    outcome_long_term: ['23838041'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Thymosin Alpha-1
   // ═══════════════════════════════════════════════════════════════════════════
   'thymosin-alpha-1': {
-    mechanism: ['17936025'],
-    primary_benefits: ['18274638'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['17936025'],
-    outcome_week_2_4: ['18274638'],
-    outcome_long_term: ['17936025'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -393,23 +347,22 @@ export const citationMap: Record<string, FieldCitations> = {
   // GHRP-6
   // ═══════════════════════════════════════════════════════════════════════════
   'ghrp-6': {
-    mechanism: ['15265829'],
-    primary_benefits: ['15265829'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
-    laypersonSummary: ['15265829'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Hexarelin
   // ═══════════════════════════════════════════════════════════════════════════
   'hexarelin': {
-    mechanism: ['15240607'],
-    primary_benefits: ['15240607'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
-    laypersonSummary: ['15240607'],
-    outcome_week_2_4: ['9150611'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -421,7 +374,6 @@ export const citationMap: Record<string, FieldCitations> = {
     safety_notes: [],
     half_life: [],
     laypersonSummary: ['27787698'],
-    outcome_long_term: ['25358937'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -439,77 +391,71 @@ export const citationMap: Record<string, FieldCitations> = {
   // Kisspeptin-10
   // ═══════════════════════════════════════════════════════════════════════════
   'kisspeptin-10': {
-    mechanism: ['21795442'],
+    mechanism: [],
     primary_benefits: ['30590872'],
-    safety_notes: ['24456164'],
+    safety_notes: [],
     half_life: [],
-    laypersonSummary: ['21795442'],
-    outcome_week_1: ['24828487'],
-    outcome_month_2_3: ['30590872'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Argireline
   // ═══════════════════════════════════════════════════════════════════════════
   'argireline': {
-    mechanism: ['11697020'],
-    primary_benefits: ['11697020'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['11697020'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // 5-Amino-1MQ
   // ═══════════════════════════════════════════════════════════════════════════
   '5-amino-1mq': {
-    mechanism: ['29382845'],
-    primary_benefits: ['29382845'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['29382845'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // ARA-290
   // ═══════════════════════════════════════════════════════════════════════════
   'ara-290': {
-    mechanism: ['24510175'],
-    primary_benefits: ['25662851'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['25662851'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Gonadorelin
   // ═══════════════════════════════════════════════════════════════════════════
   'gonadorelin': {
-    mechanism: ['23211033'],
-    primary_benefits: ['23211033'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['23211033'],
-    outcome_month_2_3: ['23211033'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Larazotide
   // ═══════════════════════════════════════════════════════════════════════════
   'larazotide': {
-    mechanism: ['18824503'],
-    primary_benefits: ['26055953'],
-    safety_notes: ['26055953'],
-    laypersonSummary: ['18824503'],
-    outcome_week_2_4: ['26055953'],
-    outcome_month_2_3: ['18824503'],
+    mechanism: [],
+    primary_benefits: [],
+    safety_notes: [],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // VIP
   // ═══════════════════════════════════════════════════════════════════════════
   'vip': {
-    mechanism: ['23209310'],
-    primary_benefits: ['23209310'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['23209310'],
-    outcome_week_1: ['23209310'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -518,102 +464,93 @@ export const citationMap: Record<string, FieldCitations> = {
   'oxytocin': {
     mechanism: ['18498743'],
     primary_benefits: ['18498743'],
-    safety_notes: ['30218869'],
+    safety_notes: [],
     laypersonSummary: ['18498743'],
-    outcome_week_2_4: ['18498743'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Thymalin
   // ═══════════════════════════════════════════════════════════════════════════
   'thymalin': {
-    mechanism: ['9226264'],
-    primary_benefits: ['12930627'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['9226264'],
-    outcome_week_2_4: ['9226264'],
-    outcome_month_2_3: ['12930627'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Humanin
   // ═══════════════════════════════════════════════════════════════════════════
   'humanin': {
-    mechanism: ['11606396'],
+    mechanism: [],
     primary_benefits: [],
     safety_notes: [],
     half_life: [],
-    laypersonSummary: ['11606396'],
-    outcome_week_2_4: ['22912423'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PE-22-28
   // ═══════════════════════════════════════════════════════════════════════════
   'pe-22-28': {
-    mechanism: ['20142043'],
-    primary_benefits: ['20142043'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
-    laypersonSummary: ['27317793'],
-    outcome_week_1: ['20142043'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Pinealon
   // ═══════════════════════════════════════════════════════════════════════════
   'pinealon': {
-    mechanism: ['22070069'],
+    mechanism: [],
     primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['22070069'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Cortagen
   // ═══════════════════════════════════════════════════════════════════════════
   'cortagen': {
-    mechanism: ['19830544'],
+    mechanism: [],
     primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['19830544'],
-    outcome_week_1: ['21877140'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Dihexa
   // ═══════════════════════════════════════════════════════════════════════════
   'dihexa': {
-    mechanism: ['22940599'],
-    primary_benefits: ['19427331'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
     laypersonSummary: [],
-    outcome_week_2_4: ['22940599'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // FOXO4-DRI
   // ═══════════════════════════════════════════════════════════════════════════
   'foxo4-dri': {
-    mechanism: ['28479325'],
-    primary_benefits: ['28479325'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
     half_life: [],
     laypersonSummary: [],
-    outcome_week_2_4: ['28479325'],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Klotho
   // ═══════════════════════════════════════════════════════════════════════════
   'klotho': {
-    mechanism: ['35594855'],
+    mechanism: [],
     primary_benefits: [],
     safety_notes: [],
     half_life: [],
-    laypersonSummary: ['35594855'],
-    outcome_month_2_3: ['35594855'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -630,11 +567,10 @@ export const citationMap: Record<string, FieldCitations> = {
   // FGL Loop
   // ═══════════════════════════════════════════════════════════════════════════
   'fgl-loop': {
-    mechanism: ['15917452'],
-    primary_benefits: ['20398623'],
+    mechanism: [],
+    primary_benefits: [],
     safety_notes: [],
-    laypersonSummary: ['15917452'],
-    outcome_week_2_4: ['15917452'],
+    laypersonSummary: [],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -671,7 +607,6 @@ export const qualifiers: Record<string, FieldQualifiers> = {
   },
   'os-01': {
     safety_notes: 'usage guidance; not an empirical claim',
-    outcome_week_2_4: 'based on user reports; no controlled trial data',
   },
   'synapsin': {
     mechanism: 'compounded formulation; individual component data cited',

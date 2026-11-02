@@ -18,7 +18,7 @@ const drugSchema = buildDrugSchema({
     alternateName: peptide.aliases,
     description: peptide.primary_benefits,
     mechanismOfAction: peptide.mechanism,
-    clinicalPharmacology: peptide.half_life_hours ? `Half-life: ${peptide.half_life_hours} hours. Route: ${peptide.dosing?.route || 'Varies'}` : undefined
+    clinicalPharmacology: peptide.half_life_hours ? `Half-life: ${peptide.half_life_hours} hours. Route studied: ${peptide.route_studied || 'Varies'}` : undefined
 });
 
 const peptideArticle = buildMedicalWebPageSchema({
@@ -26,7 +26,6 @@ const peptideArticle = buildMedicalWebPageSchema({
     description: `Comprehensive research profile for ${peptide.name} covering mechanism of action, published studies, safety data, and clinical context.`,
     url: `https://peptidex.app/peptides/${slug}`,
     lastReviewed: "2026-05-04",
-    reviewedBy: { name: 'PeptiDex Medical Reviewer' },
     about: drugSchema
 });
 
@@ -68,7 +67,7 @@ const blogArticle = buildArticleSchema({
     description: "A deep dive into longevity peptides.",
     datePublished: "2026-04-01",
     dateModified: "2026-05-04",
-    author: { name: 'Dr. E. Vance', url: `https://peptidex.app/about/dr-e-vance` },
+    author: { name: 'PeptiDex Editorial Team', url: `https://peptidex.app/team/peptidex-research` },
     url: "https://peptidex.app/blog/top-5-peptides"
 });
 
@@ -80,7 +79,7 @@ console.log("\n");
 // 4. Tool Page
 const toolSchema = buildSoftwareApplicationSchema({
     name: "PeptiDex Pharmacokinetics Simulator",
-    description: "Model peptide concentration over time from half-life and dosing inputs.",
+    description: "Model peptide concentration over time from published half-life data.",
     url: "https://peptidex.app/tools/pk",
     applicationCategory: "UtilityApplication"
 });

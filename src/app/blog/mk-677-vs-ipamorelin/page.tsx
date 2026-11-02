@@ -54,11 +54,11 @@ export default function MK677VsIpamorelinPage() {
   const faqSchema = {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: [
-      { '@type': 'Question', name: 'Is MK-677 or ipamorelin better for growth hormone release?', acceptedAnswer: { '@type': 'Answer', text: 'Both effectively stimulate GH release via the ghrelin receptor (GHS-R1a), but they have different profiles. MK-677 provides stronger, more sustained GH elevation over 24 hours with oral dosing. Ipamorelin produces shorter, more physiological GH pulses with fewer off-target effects — no significant appetite stimulation, cortisol elevation, or prolactin increase. The "better" choice depends on your priorities: convenience (MK-677) or selectivity (ipamorelin).' } },
+      { '@type': 'Question', name: 'Is MK-677 or ipamorelin better for growth hormone release?', acceptedAnswer: { '@type': 'Answer', text: 'Both effectively stimulate GH release via the ghrelin receptor (GHS-R1a), but they have different profiles. MK-677 is orally active and provides stronger, more sustained GH elevation over 24 hours. Ipamorelin produces shorter, more physiological GH pulses with fewer off-target effects — no significant appetite stimulation, cortisol elevation, or prolactin increase. The two differ mainly in duration of action (MK-677) versus selectivity (ipamorelin).' } },
       { '@type': 'Question', name: 'Does MK-677 cause water retention?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. MK-677 commonly causes noticeable water retention, particularly in the first 2-4 weeks of use. This is a direct consequence of elevated GH and IGF-1 levels promoting sodium retention. The effect typically stabilizes but does not fully resolve with continued use. Ipamorelin causes significantly less water retention due to its shorter duration of action.' } },
       { '@type': 'Question', name: 'Can you stack MK-677 with ipamorelin?', acceptedAnswer: { '@type': 'Answer', text: 'While both target the same receptor, some research protocols do combine them. However, stacking two ghrelin-pathway agonists increases the risk of GH-related side effects (water retention, insulin resistance, joint stiffness) without necessarily producing proportional benefits. Most clinicians prefer combining ipamorelin with CJC-1295 (a GHRH analog) for synergistic GH release through complementary pathways.' } },
       { '@type': 'Question', name: 'Does MK-677 affect blood sugar?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Multiple clinical trials have shown that MK-677 can increase fasting blood glucose and reduce insulin sensitivity with chronic use. A 2-year trial in healthy elderly adults showed a small but statistically significant increase in fasting glucose. This makes MK-677 potentially problematic for individuals with pre-diabetes or metabolic syndrome. Ipamorelin does not appear to have the same glucose-disrupting effects.' } },
-      { '@type': 'Question', name: 'How long should you cycle MK-677 or ipamorelin?', acceptedAnswer: { '@type': 'Answer', text: 'MK-677 is typically studied in cycles of 8-16 weeks followed by a 4-8 week break to monitor metabolic markers and allow insulin sensitivity to recover. Ipamorelin, due to its cleaner side effect profile, is sometimes used for longer durations (12-24 weeks) in clinical settings, often paired with CJC-1295. Bloodwork monitoring (IGF-1, fasting glucose, insulin) is essential with either compound.' } },
+      { '@type': 'Question', name: 'How long were MK-677 trials?', acceptedAnswer: { '@type': 'Answer', text: 'The longest published MK-677 trial (Nass et al., Annals of Internal Medicine, 2008) ran for 2 years in healthy older adults. It reported sustained IGF-1 elevation and increased fat-free mass, alongside increased fasting glucose and reduced insulin sensitivity. Published ipamorelin data come mainly from Phase 2 trials in post-surgical ileus rather than long-term studies.' } },
     ],
   };
 
@@ -153,7 +153,7 @@ export default function MK677VsIpamorelinPage() {
 
           <h3 className="flex items-center gap-2 text-emerald-300 border-b border-zinc-800 pb-2">Ipamorelin: Selective Pulsatile Release</h3>
           <p>
-            <Link href="/library/ipamorelin">Ipamorelin</Link> is a synthetic pentapeptide with a half-life of approximately 2 hours. It produces a sharp, physiological GH pulse that mimics the body&apos;s natural pulsatile secretion pattern.² Crucially, ipamorelin is the most selective GHRP available — at therapeutic doses, it does not significantly stimulate cortisol, prolactin, or appetite.
+            <Link href="/library/ipamorelin">Ipamorelin</Link> is a synthetic pentapeptide with a half-life of approximately 2 hours. It produces a sharp, physiological GH pulse that mimics the body&apos;s natural pulsatile secretion pattern.² Crucially, ipamorelin is the most selective GHRP available — at the doses studied, it did not significantly stimulate cortisol, prolactin, or appetite.
           </p>
           <p>
             This selectivity means ipamorelin produces &quot;cleaner&quot; GH elevation: you get the GH pulse without the metabolic noise.
@@ -184,7 +184,7 @@ export default function MK677VsIpamorelinPage() {
           <div className="section-label mt-12 mb-2">§ 03</div>
           <h2 id="clinical-data">Clinical Data</h2>
           <p>
-            MK-677 has the stronger clinical evidence base for long-term use. The 2-year Nass et al. trial demonstrated sustained IGF-1 elevation, increased fat-free mass (+1.6 kg), and improved body composition in elderly adults without exercise intervention.¹ However, it also showed increased fasting glucose and worsened insulin sensitivity.
+            MK-677 has the stronger clinical evidence base for long-term use. The 2-year Nass et al. trial demonstrated sustained IGF-1 elevation, and increased fat-free mass in healthy older adults without exercise intervention.¹ However, it also showed increased fasting glucose and worsened insulin sensitivity.
           </p>
           <p>
             Ipamorelin has Phase 2 clinical trial data in post-surgical ileus (gut recovery after abdominal surgery) demonstrating safety and GH-releasing efficacy.² Its clinical use as a GH secretagogue for body composition is primarily documented through clinical practice and compounding pharmacy data rather than large registrational trials.
@@ -193,19 +193,19 @@ export default function MK677VsIpamorelinPage() {
           <div className="section-label mt-12 mb-2">§ 04</div>
           <h2 id="stacking">Optimal Stacking Protocols</h2>
           <p>
-            <strong>MK-677</strong> is typically used as a standalone due to its 24-hour duration. It pairs well with compounds from different pathways — such as BPC-157 for recovery or GHK-Cu for anti-aging — but stacking with additional GH secretagogues adds risk without proportional benefit.
+            <strong>MK-677</strong> is typically used as a standalone due to its 24-hour duration. It is sometimes discussed alongside compounds that act through different pathways, but those combinations have not been studied, and stacking with additional GH secretagogues adds risk without demonstrated benefit.
           </p>
           <p>
-            <strong>Ipamorelin</strong> is optimally stacked with <Link href="/library/cjc-1295">CJC-1295</Link> (a GHRH analog). This combination leverages complementary mechanisms: CJC-1295 primes the pituitary to produce GH, while ipamorelin triggers a clean release pulse. The synergistic effect produces 3-6x greater GH output than either compound alone.³ This is widely regarded as the gold standard GH peptide stack in clinical and research settings.
+            <strong>Ipamorelin</strong> is most often discussed alongside <Link href="/library/cjc-1295">CJC-1295</Link> (a GHRH analog). The rationale is complementary mechanisms: CJC-1295 acts on the GHRH receptor, while ipamorelin triggers a release pulse via the ghrelin receptor. GHRH + GHRP co-administration has been reported to amplify GH output beyond either agent alone,³ but this specific pairing has not been tested in controlled human trials.
           </p>
 
           <div className="section-label mt-12 mb-2">§ 05</div>
           <h2 id="verdict">Research Verdict</h2>
           <p>
-            <strong>Choose MK-677 if:</strong> Convenience (oral dosing) is paramount, you want sustained 24-hour GH/IGF-1 elevation, and you can monitor and manage the metabolic side effects (appetite, glucose, water retention).
+            <strong>MK-677:</strong> The relevant compound where an orally active agent and sustained 24-hour GH/IGF-1 elevation are the research focus, with its metabolic side effects (appetite, glucose, water retention) as key variables to monitor.
           </p>
           <p>
-            <strong>Choose Ipamorelin if:</strong> You want the cleanest possible GH secretagogue with minimal side effects, plan to stack with CJC-1295 for synergistic release, and want to maintain physiological pulsatile GH patterns.
+            <strong>Ipamorelin:</strong> The relevant compound where selectivity, minimal off-target effects, synergy with CJC-1295, and physiological pulsatile GH patterns are the research focus.
           </p>
 
           <hr className="border-zinc-800 my-10" />

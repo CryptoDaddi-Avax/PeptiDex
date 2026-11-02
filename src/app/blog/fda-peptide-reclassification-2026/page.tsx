@@ -119,19 +119,19 @@ const faqSchema = {
 
 /* ─── PEPTIDE DATA ─────────────────────────────────────────────────── */
 const PEPTIDES = [
-  { name: 'BPC-157', desc: 'Tissue repair, gut healing, anti-inflammatory support' },
+  { name: 'BPC-157', desc: 'Studied in rodent tissue-repair and GI-lesion models' },
   { name: 'Thymosin Alpha-1', desc: 'Immune modulation, approved in 30+ countries outside the U.S.' },
-  { name: 'TB-500', desc: 'Cell migration, wound healing, muscle recovery' },
+  { name: 'TB-500', desc: 'Thymosin beta-4 fragment studied for cell migration in wound models' },
   { name: 'CJC-1295', desc: 'Growth hormone\u2013releasing hormone analog' },
-  { name: 'Ipamorelin', desc: 'Growth hormone secretagogue for sleep & metabolism' },
-  { name: 'AOD-9604', desc: 'Fat metabolism peptide fragment' },
-  { name: 'GHK-Cu', desc: 'Copper-binding peptide for skin, hair, and anti-aging' },
-  { name: 'MOTS-c', desc: 'Mitochondrial peptide for metabolic regulation' },
+  { name: 'Ipamorelin', desc: 'Selective growth hormone secretagogue' },
+  { name: 'AOD-9604', desc: 'GH fragment studied for fat metabolism' },
+  { name: 'GHK-Cu', desc: 'Copper-binding peptide studied in skin and wound models' },
+  { name: 'MOTS-c', desc: 'Mitochondrial peptide studied for metabolic regulation' },
   { name: 'Selank', desc: 'Neuropeptide studied for anxiety and cognition' },
-  { name: 'Semax', desc: 'Neuropeptide for cognitive function and focus' },
+  { name: 'Semax', desc: 'Neuropeptide studied for cognitive and neuroprotective endpoints' },
   { name: 'KPV', desc: 'Anti-inflammatory tripeptide derived from \u03B1-MSH' },
-  { name: 'Epitalon', desc: 'Telomerase-activating tetrapeptide for longevity' },
-  { name: 'Kisspeptin-10', desc: 'Hormonal signaling and reproductive health' },
+  { name: 'Epitalon', desc: 'Tetrapeptide studied for telomerase activation in cell models' },
+  { name: 'Kisspeptin-10', desc: 'Studied for reproductive hormone signaling' },
   { name: 'GHRP-6', desc: 'Growth hormone-releasing peptide' },
 ];
 

@@ -134,7 +134,7 @@ export default function GHKCuArticle() {
           GHK-Cu stands for <strong>glycyl-L-histidyl-L-lysine</strong> bound to a copper (II) ion. It&apos;s a naturally occurring tripeptide — meaning it consists of just three amino acids: glycine, histidine, and lysine — that forms a stable complex with copper. This copper-binding characteristic is central to its biological activity.
         </p>
         <p>
-          The compound was first isolated from human blood plasma in 1973 by Dr. Loren Pickart during his Ph.D. research at the University of California, San Francisco. Pickart observed that adding plasma from younger individuals to liver tissue from older donors caused the aged cells to resume protein synthesis patterns characteristic of younger tissue.² ³ Decades of follow-up research have since confirmed that this observation wasn&apos;t a fluke.
+          The compound was first isolated from human blood plasma in 1973 by Dr. Loren Pickart during his doctoral research at the University of California, San Francisco. Pickart observed that adding plasma from younger individuals to liver tissue from older donors caused the aged cells to resume protein synthesis patterns characteristic of younger tissue.² ³ Decades of follow-up research have since confirmed that this observation wasn&apos;t a fluke.
         </p>
         <p>
           GHK-Cu is found naturally in plasma, saliva, and urine. At age 20, average plasma levels sit around 200 ng/mL. By age 60, that figure drops below 80 ng/mL — a decline of more than 60%. As noted in a peer-reviewed paper published in <em>BioMed Research International</em>, this decline &quot;coincides with the noticeable decrease in regenerative capacity of an organism.&quot;⁴
@@ -169,7 +169,7 @@ export default function GHKCuArticle() {
         </p>
 
         <p>
-          <strong>Wound healing.</strong> GHK-Cu has been shown to accelerate wound closure and increase collagen deposition in animal models. A study published in <em>Wound Repair and Regeneration</em> found that topical GHK-Cu reduced wound size by 64.5% over 13 days in rats with ischemic wounds, compared to 45.6% with vehicle treatment and 28.2% in untreated controls. The GHK-Cu group also showed significantly reduced levels of tumor necrosis factor-alpha (TNF-α).¹² Notably, GHK-Cu has demonstrated <em>systemic</em> healing effects — meaning an injection administered in one area of the body can improve tissue repair at distant sites — a finding replicated across rat, mouse, and pig models.⁴ ⁶
+          <strong>Wound healing.</strong> GHK-Cu has been shown to accelerate wound closure and increase collagen deposition in animal models. A study published in <em>Wound Repair and Regeneration</em> found that topical GHK-Cu reduced wound size by 64.5% over 13 days in rats with ischemic wounds, compared to 45.6% with vehicle treatment and 28.2% in untreated controls. The GHK-Cu group also showed significantly reduced levels of tumor necrosis factor-alpha (TNF-α).¹² In rat, mouse, and pig models, GHK-Cu given at one site was also associated with improved repair at distant wound sites, a <em>systemic</em> effect that has not been tested in humans.⁴ ⁶
         </p>
 
         <p>
@@ -185,13 +185,13 @@ export default function GHKCuArticle() {
         </p>
 
         <div className="section-label mt-12 mb-2">§ 04</div>
-          <h2>How Is GHK-Cu Used?</h2>
+          <h2>How Is GHK-Cu Formulated?</h2>
         <p>GHK-Cu is available in two primary forms.</p>
         <p>
-          <strong>Topical</strong> formulations — serums and creams — are the most accessible option. Look for products listing &quot;Copper Tripeptide-1&quot; in their ingredient panel, which is the INCI name for GHK-Cu. Topical delivery is best suited for skin-focused goals like improving elasticity, reducing fine lines, and supporting overall complexion quality. Concentrations in the range of 2–4% are common in the consumer market.
+          <strong>Topical</strong> formulations — serums and creams — are the most accessible option. Look for products listing &quot;Copper Tripeptide-1&quot; in their ingredient panel, which is the INCI name for GHK-Cu. Most of the clinical skin research on GHK-Cu used topical formulations, with endpoints such as elasticity, fine lines and skin density. Concentrations in the range of 2–4% are common in the consumer market.
         </p>
         <p>
-          <strong>Injectable</strong> formulations are used in clinical and research contexts. Subcutaneous administration allows the peptide to enter systemic circulation, which is relevant for its broader regenerative and anti-inflammatory effects beyond the skin. This route is typically overseen by medical professionals within the context of peptide therapy protocols.
+          <strong>Injectable</strong> formulations have been examined in clinical and research contexts. Studies using subcutaneous administration looked at the peptide in systemic circulation, which is relevant to its broader regenerative and anti-inflammatory effects beyond the skin. Doses studied in published research varied by model and route; see the cited studies.
         </p>
 
         <div className="section-label mt-12 mb-2">§ 05</div>
@@ -200,10 +200,10 @@ export default function GHKCuArticle() {
           In a peptide landscape increasingly dominated by compounds that target metabolic pathways, GHK-Cu occupies a distinct niche. It&apos;s not a weight-loss peptide. It&apos;s a <em>repair and regeneration</em> peptide with a uniquely broad mechanism of action.
         </p>
         <p>
-          Where BPC-157 is often favored for musculoskeletal injuries and TB-500 for systemic tissue repair, GHK-Cu brings unmatched depth in skin biology, anti-aging, and gene expression modulation. The compounds are not mutually exclusive — in fact, many researchers and practitioners are exploring combination approaches that pair GHK-Cu with BPC-157 and TB-500 for complementary recovery and regeneration protocols.¹⁴
+          Where BPC-157 is often favored for musculoskeletal injuries and TB-500 for systemic tissue repair, GHK-Cu brings unmatched depth in skin biology, anti-aging, and gene expression modulation. The compounds are not mutually exclusive — in fact, some researchers are exploring combination approaches that pair GHK-Cu with BPC-157 and TB-500, although no combination has been tested in controlled trials.¹⁴
         </p>
         <p>
-          Another differentiator: GHK-Cu has a strong safety profile. To date, no published research has identified serious safety concerns associated with its use, whether delivered topically or via injection.⁵ Its status as an endogenous compound — something your body already produces — adds an additional layer of biological plausibility to its therapeutic applications.
+          Another differentiator: no published research to date has identified serious safety concerns associated with GHK-Cu, whether delivered topically or via injection,⁵ although long-term data on injected use is limited. It is also an endogenous compound, naturally present in human plasma. Injectable GHK-Cu is not FDA-approved and is sold for research use only.
         </p>
 
         <div className="section-label mt-12 mb-2">§ 06</div>
@@ -232,7 +232,7 @@ export default function GHKCuArticle() {
         <h2 className="text-xl">Sources</h2>
         <ol className="text-sm text-zinc-400 space-y-3 marker:text-zinc-600">
             <li>&quot;State of Peptides 2026: Search Trends, Research & Market Analysis.&quot; <em>The Peptide Effect</em>, February 2026.</li>
-            <li>Pickart, L. &quot;A Tripeptide from Human Serum Which Enhances the Growth of Neoplastic Hepatocytes and the Survival of Normal Hepatocytes.&quot; Ph.D. Thesis, University of California, San Francisco, 1973.</li>
+            <li>Pickart, L. &quot;A Tripeptide from Human Serum Which Enhances the Growth of Neoplastic Hepatocytes and the Survival of Normal Hepatocytes.&quot; Doctoral thesis, University of California, San Francisco, 1973.</li>
             <li>Pickart, L., Freedman, J.H., Loker, W.J., et al. &quot;Growth-modulating plasma tripeptide may function by facilitating copper uptake into cells.&quot; <em>Nature</em>, 1980; 288: 715–717.</li>
             <li>Pickart, L., Vasquez-Soltero, J.M., Margolina, A. &quot;The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging: implications for cognitive health.&quot; <em>Oxidative Medicine and Cellular Longevity</em>, 2012; 2012: 324832.</li>
             <li>Pickart, L., Vasquez-Soltero, J.M., Margolina, A. &quot;Regenerative and Protective Actions of the GHK-Cu Peptide in the Light of the New Gene Data.&quot; <em>International Journal of Molecular Sciences</em>, 2018; 19(7): 1987.</li>

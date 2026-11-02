@@ -69,7 +69,7 @@ export function LeadMagnetInline({ source = "inline" }: Props) {
                             2026 Peptide Stack Cheat Sheet
                         </h4>
                         <p className="text-[11px] text-zinc-400 mb-3 leading-relaxed">
-                            {SITE_STATS.stacks.count} stacks &bull; exact dosages &bull; cycle lengths &bull; printable reference
+                            {SITE_STATS.stacks.count} stacks &bull; roles &bull; evidence levels &bull; printable reference
                         </p>
 
                         <form onSubmit={handleSubmit} className="flex flex-col gap-2">

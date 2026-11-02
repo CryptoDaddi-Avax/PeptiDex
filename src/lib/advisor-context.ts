@@ -17,12 +17,12 @@ export function generateSystemContext(): string {
         context += `Aliases: ${p.aliases.join(", ")}\n`;
         context += `Mechanisms: ${p.mechanism}\n`;
         context += `Benefits: ${p.primary_benefits.replace(/\n/g, ' ')}\n`;
-        
-        if (p.dosing) {
-            context += `Dosing: ${p.dosing.route}, ${p.dosing.typical_dose_mcg[0]}-${p.dosing.typical_dose_mcg[1]}mcg, ${p.dosing.frequency}. Timing: ${p.dosing.timing || "N/A"}. Cycle: ${
-                p.dosing.cycle_weeks ? p.dosing.cycle_weeks.join("-") + " weeks" : "N/A"
-            }\n`;
-            if (p.dosing.notes) context += `Dosing Notes: ${p.dosing.notes}\n`;
+
+        if (p.route_studied) {
+            context += `Route used in published studies: ${p.route_studied}\n`;
+        }
+        if (p.studied_dose_citation) {
+            context += `Doses studied in published research: see "${p.studied_dose_citation.title}" (${p.studied_dose_citation.url})\n`;
         }
 
         if (p.half_life_hours) {
@@ -35,7 +35,7 @@ export function generateSystemContext(): string {
         // Attach pricing if available
         const price = pricingData.find(pr => pr.name === p.name);
         if (price) {
-            context += `Avg Price: $${price.avg_price_usd} per ${price.typical_vial_mg}mg vial (Cost/dose: ~$${price.cost_per_dose_usd?.toFixed(2)})\n`;
+            context += `Avg Price: $${price.avg_price_usd} per ${price.typical_vial_mg}mg vial\n`;
         }
 
         // Attach legal if available
@@ -57,7 +57,7 @@ export function generateSystemContext(): string {
         context += `Nickname: ${b.nickname}\n`;
         context += `Components: ${b.components.join(" + ")}\n`;
         context += `Why stacked: ${b.primary_benefits}\n`;
-        context += `Dosing Notes: ${b.dosing_notes}\n`;
+        if (b.vial_composition) context += `${b.vial_composition}\n`;
         context += "---\n";
     });
 

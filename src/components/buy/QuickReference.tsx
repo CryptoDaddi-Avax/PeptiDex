@@ -1,5 +1,5 @@
 import type { Peptide } from '@/data/types';
-import { Clock, Syringe, BadgeCheck, Activity, ArrowRight } from 'lucide-react';
+import { Clock, BadgeCheck, Activity, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export function QuickReference({ peptide }: { peptide: Peptide }) {
@@ -15,16 +15,7 @@ export function QuickReference({ peptide }: { peptide: Peptide }) {
         </Link>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-zinc-400 text-sm font-medium">
-            <Syringe className="w-4 h-4" /> Typical Dose
-          </div>
-          <div className="text-zinc-100 font-medium">
-            {peptide.dosing ? `${peptide.dosing.typical_dose_mcg[0]}-${peptide.dosing.typical_dose_mcg[1]} mcg` : 'Varies by protocol'}
-          </div>
-        </div>
-        
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-1">
           <div className="flex items-center gap-1.5 text-zinc-400 text-sm font-medium">
             <Clock className="w-4 h-4" /> Half-Life
