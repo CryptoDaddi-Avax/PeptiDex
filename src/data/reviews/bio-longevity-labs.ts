@@ -49,7 +49,7 @@ export const bioLongevityLabsReview: VendorReviewData = {
     { peptide: 'TB-500', slug: 'tb-500', listPrice: '$115.48', withCode: '~$98.16', vial: '10mg' },
     { peptide: 'CJC-1295', slug: 'cjc-1295', listPrice: '$69.98', withCode: '~$59.48', vial: '10mg' },
     { peptide: 'Ipamorelin', slug: 'ipamorelin', listPrice: '$55.98', withCode: '~$47.58', vial: '10mg' },
-    { peptide: 'NAD+', slug: 'nad-', listPrice: '$174.98', withCode: '~$148.73', vial: '500mg', note: 'Stackable — additional % off during site sales' },
+    { peptide: 'NAD+', slug: 'nad', listPrice: '$174.98', withCode: '~$148.73', vial: '500mg', note: 'Stackable — additional % off during site sales' },
   ],
   sentiment: [
     { platform: 'Trustpilot', rating: '4.8', count: '350+', summary: 'Generally positive. Based on customer reviews, researchers frequently praise the COA documentation quality and catalog breadth. Shipping speed receives consistent 5-star mentions.', positives: ['COA transparency praised', 'Wide compound selection', 'Responsive customer service'], negatives: ['Some customers note higher prices without discount code', 'Occasional slow shipping during high-demand periods'], url: 'https://www.trustpilot.com/review/biolongevitylabs.com' },

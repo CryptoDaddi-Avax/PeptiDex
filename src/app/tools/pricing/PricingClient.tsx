@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ExternalLink, ChevronDown, ChevronUp, Info, Tag, Check, Trophy, Download } from "lucide-react";
 import { vendorsSorted, type Vendor } from "@/data/vendors";
-import { vendorPricing } from "@/data/vendor-pricing";
+import { vendorPricing, PRICES_LAST_CHECKED_LABEL } from "@/data/vendor-pricing";
 import { peptides as allPeptides } from "@/data/peptides";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
 import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
@@ -104,14 +104,6 @@ function buildEnrichedData(): EnrichedPeptide[] {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-function formatDate(iso: string) {
-  try {
-    return new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-  } catch {
-    return iso;
-  }
-}
 
 function exportCSV(peptideName: string, rows: EnrichedVendorRow[]) {
   const header = ["Vendor", "List Price (USD)", "PEPTIDEX Price (USD)", "You Save (USD)", "Vial Size (mg)", "Cost/mg (USD)", "Discount Code", "In Stock", "Shop URL"];
@@ -310,10 +302,10 @@ function MobileCard({ row }: { row: EnrichedVendorRow }) {
 
 // ── Main Component ────────────────────────────────────────────────────────────
 
-// All unique vendor names that appear in pricing data
+// All unique ACTIVE vendor names that appear in pricing data
 const ALL_PRICING_VENDORS = Array.from(
   new Set(vendorPricing.flatMap(p => p.vendors.map(v => v.vendor)))
-).sort();
+).filter(name => vendorsSorted.some(v => v.name === name)).sort();
 
 export default function PricingClient() {
   const enriched = useMemo(() => buildEnrichedData(), []);
@@ -395,7 +387,6 @@ export default function PricingClient() {
   }, []);
 
   // Today's date — used as the canonical "Last Verified" date (prices are reviewed daily)
-  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
 
   // All peptides for the dropdown, partitioned into priced vs unpriced
   const allDropdownOptions = useMemo(() => {
@@ -414,7 +405,6 @@ export default function PricingClient() {
     };
   }, [enriched, search]);
 
-  const lastUpdated = todayStr;
   const avgListPrice = useMemo(() => {
     const prices = filteredRows.filter(r => r.inStock && r.price_usd > 0).map(r => r.price_usd);
     if (!prices.length) return null;
@@ -473,7 +463,7 @@ export default function PricingClient() {
           <p style={{ fontSize: 18, color: 'var(--ink-dim)', maxWidth: 640, lineHeight: 1.6, marginBottom: 0 }}>
             Real vendor prices for {enriched.length} peptides across{" "}
             {vendorsSorted.length} verified suppliers — with{" "}
-            <strong style={{ color: 'var(--gold)' }}>PEPTIDEX discount applied</strong>. Updated {formatDate(todayStr)}.
+            <strong style={{ color: 'var(--gold)' }}>PEPTIDEX discount applied</strong>. Prices checked: {PRICES_LAST_CHECKED_LABEL}.
           </p>
 
           <div style={{
@@ -685,7 +675,7 @@ export default function PricingClient() {
                 </div>
               )}
               <div className="prc-stat">
-                Last Verified: <strong>{formatDate(todayStr)}</strong>
+                Prices checked: <strong>{PRICES_LAST_CHECKED_LABEL}</strong>
               </div>
             </div>
           )}
@@ -726,7 +716,7 @@ export default function PricingClient() {
               Bio Longevity Labs code stacks with site-wide sales for up to 40%+ savings.
             </p>
             <p>
-              Prices verified {formatDate(lastUpdated)}. Vendor pricing changes frequently —
+              Prices checked: {PRICES_LAST_CHECKED_LABEL}. Vendor pricing changes frequently —
               always confirm the final price at checkout before purchasing.{" "}
               <Link href="/about/editorial-policy" className="prc-footnote-link">
                 How we verify pricing →
