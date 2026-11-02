@@ -17,7 +17,8 @@ const UA = { "User-Agent": "PeptiDex-pricecheck/1.0 (+https://peptidex.app)" };
 
 /**
  * Elyria product id → PeptiDex peptide slug. null = sold by Elyria but not
- * listed on PeptiDex (blends, GLP-class compounds, reconstitution solution).
+ * listed on PeptiDex (blends, reconstitution solution). GLP-class products are
+ * dropped before matching (see isGlpClass) and are never mapped or linked.
  */
 export const ELYRIA_PRODUCT_SLUGS: Record<string, string | null> = {
   bpc157: "bpc-157",
@@ -29,10 +30,14 @@ export const ELYRIA_PRODUCT_SLUGS: Record<string, string | null> = {
   cjcipa: null, // CJC-1295/Ipamorelin blend
   klow: null, // KLOW blend
   wolverine: null, // BPC-157/TB-500 blend
-  tirz: null, // GLP-class compound; those pages are gone (410)
-  reta: null, // GLP-class compound; those pages are gone (410)
   bacwater: null, // reconstitution solution
 };
+
+/** GLP-class compounds: PeptiDex does not cover, map, link or snapshot them. */
+const GLP_CLASS_IDS = new Set(["tirz", "reta"]);
+function isGlpClass(id: string, name: string): boolean {
+  return GLP_CLASS_IDS.has(id) || /\bglp|tirzepatide|retatrutide|semaglutide|cagrilintide/i.test(name);
+}
 
 export interface ElyriaCatalogItem extends CatalogItem {
   productId: string;
@@ -93,6 +98,7 @@ export async function fetchElyriaCatalog(): Promise<ElyriaCatalogItem[]> {
   for (const r of rail) {
     if (r.qty !== 1 || notLive[r.product_id] || retired[`${r.product_id}|${r.mg}`]) continue;
     const p = products.get(r.product_id);
+    if (isGlpClass(r.product_id, p?.name ?? "")) continue;
     const mg = r.mg ?? p?.sizeMg ?? null;
     items.push({
       productId: r.product_id,
