@@ -12,13 +12,19 @@ import { getPeptideBySlug } from "@/data/peptides";
 const STORE_API = "https://biolongevitylabs.com/wp-json/wc/store/v1/products";
 const VENDOR_NAME = "Bio Longevity Labs";
 
-export interface BllCatalogItem {
-  id: number;
+/** One vendor product at one vial size, as the vendor's own catalog reports it. */
+export interface CatalogItem {
   name: string;
-  slug: string;
   permalink: string;
   priceUsd: number;
   regularPriceUsd: number;
+  /** null when the vendor's data does not say */
+  inStock: boolean | null;
+}
+
+export interface BllCatalogItem extends CatalogItem {
+  id: number;
+  slug: string;
   inStock: boolean;
 }
 
@@ -85,8 +91,8 @@ export interface PriceCheckRow {
   ourPrice: number;
   ourInStock: boolean;
   match: "exact" | "fuzzy" | "none";
-  product?: BllCatalogItem;
-  /** Same peptide found at BLL but only in other vial sizes */
+  product?: CatalogItem;
+  /** Same peptide found at the vendor but only in other vial sizes */
   otherSizes?: { mg: number; priceUsd: number; name: string }[];
 }
 
@@ -100,6 +106,8 @@ export interface PriceCheckReport {
   stockChanged: PriceCheckRow[];
   unmatched: PriceCheckRow[];
   fuzzy: PriceCheckRow[];
+  /** Extra vendor-specific sections, e.g. catalog products we don't list */
+  notes?: { title: string; items: string[] }[];
 }
 
 export function diffBllPrices(catalog: BllCatalogItem[], checkedAt: string): PriceCheckReport {
@@ -156,32 +164,41 @@ export function reportToMarkdown(r: PriceCheckReport): string {
   const lines = [
     `# ${r.vendor} price check — ${r.checkedAt.slice(0, 10)}`,
     "",
-    `Catalog products: ${r.catalogSize} · Our BLL rows: ${r.rows.length} · Prices last checked on site: ${r.pricesLastChecked}`,
+    `Catalog products: ${r.catalogSize} · Our ${r.vendor} rows: ${r.rows.length} · Prices last checked on site: ${r.pricesLastChecked}`,
     "",
     `## Price changes (${r.changed.length})`,
     ...r.changed.map((x) => {
       const pct = ((x.product!.priceUsd - x.ourPrice) / x.ourPrice) * 100;
-      return `- ${x.peptideName} ${x.vialMg}mg: ours ${usd(x.ourPrice)} → BLL ${usd(x.product!.priceUsd)} (${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%)${x.match === "fuzzy" ? ` [fuzzy match: "${x.product!.name}"]` : ""}`;
+      return `- ${x.peptideName} ${x.vialMg}mg: ours ${usd(x.ourPrice)} → ${r.vendor} ${usd(x.product!.priceUsd)} (${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%)${x.match === "fuzzy" ? ` [fuzzy match: "${x.product!.name}"]` : ""}`;
     }),
     "",
     `## Stock changes (${r.stockChanged.length})`,
-    ...r.stockChanged.map((x) => `- ${x.peptideName} ${x.vialMg}mg: ours ${x.ourInStock ? "in stock" : "out of stock"} → BLL ${x.product!.inStock ? "in stock" : "out of stock"}`),
+    ...r.stockChanged.map((x) => `- ${x.peptideName} ${x.vialMg}mg: ours ${x.ourInStock ? "in stock" : "out of stock"} → ${r.vendor} ${x.product!.inStock ? "in stock" : "out of stock"}`),
     "",
     `## Not found at this vial size (${r.unmatched.length})`,
-    ...r.unmatched.map((x) => `- ${x.peptideName} ${x.vialMg}mg (ours ${usd(x.ourPrice)})${x.otherSizes?.length ? ` — BLL has: ${x.otherSizes.map((o) => `${o.name} ${usd(o.priceUsd)}`).join("; ")}` : " — no matching product"}`),
+    ...r.unmatched.map((x) => `- ${x.peptideName} ${x.vialMg}mg (ours ${usd(x.ourPrice)})${x.otherSizes?.length ? ` — ${r.vendor} has: ${x.otherSizes.map((o) => `${o.name} ${usd(o.priceUsd)}`).join("; ")}` : " — no matching product"}`),
     "",
     `## Fuzzy matches to confirm (${r.fuzzy.length})`,
     ...r.fuzzy.map((x) => `- ${x.peptideName} ${x.vialMg}mg ↔ "${x.product!.name}"`),
+    ...(r.notes ?? []).flatMap((n) => ["", `## ${n.title} (${n.items.length})`, ...n.items.map((i) => `- ${i}`)]),
     "",
-    "Nothing was published. Apply changes to src/data/vendor-pricing.ts by hand and update PRICES_LAST_CHECKED.",
+    "Nothing was published. Apply changes to src/data/vendor-pricing.ts by hand and update the vendor's checked date (PRICES_LAST_CHECKED or PRICES_CHECKED_BY_VENDOR).",
   ];
   return lines.join("\n");
 }
 
-export function reportToEmailHtml(r: PriceCheckReport): { subject: string; html: string } {
+const summary = (r: PriceCheckReport) =>
+  `${r.changed.length} price change(s), ${r.stockChanged.length} stock change(s), ${r.unmatched.length} unmatched`;
+
+/** One email for one or more vendor reports from the same run. */
+export function reportToEmailHtml(...reports: PriceCheckReport[]): { subject: string; html: string } {
   const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const md = reportToMarkdown(r);
-  const subject = `BLL price check ${r.checkedAt.slice(0, 10)}: ${r.changed.length} price change(s), ${r.stockChanged.length} stock change(s), ${r.unmatched.length} unmatched`;
+  const md = reports.map(reportToMarkdown).join("\n\n---\n\n");
+  const day = reports[0]?.checkedAt.slice(0, 10) ?? "";
+  const subject =
+    reports.length === 1
+      ? `${reports[0].vendor} price check ${day}: ${summary(reports[0])}`
+      : `Price check ${day}: ${reports.map((r) => `${r.vendor} ${summary(r)}`).join(" · ")}`;
   const html = `<pre style="font-family:ui-monospace,Menlo,monospace;font-size:13px;white-space:pre-wrap">${esc(md)}</pre>`;
   return { subject, html };
 }
