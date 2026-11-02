@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { stacks, getStackBySlug } from '@/data/stacks';
 import { getVendorPricing } from '@/data/vendor-pricing';
+import { vendorBySlug } from '@/data/vendors';
 import { BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
@@ -211,7 +212,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
           <div className="stack-source-heading">
             <ShoppingBag />
             <h2>Source This Stack</h2>
-            <span className="stack-source-badge">Amino Club — Editor&apos;s Choice</span>
+            <span className="stack-source-badge">{vendorBySlug["amino-club"].name} — #{vendorBySlug["amino-club"].sortOrder} on our published criteria</span>
           </div>
 
           <div className="stack-source-items">
@@ -235,7 +236,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
                     )}
                   </div>
                   <a href={aminoUrl} target="_blank" rel="noopener noreferrer" className="stack-source-btn">
-                    Buy from Amino Club <ArrowRight />
+                    Buy from {vendorBySlug["amino-club"].name} <ArrowRight />
                   </a>
                 </div>
               );
@@ -258,7 +259,7 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
               <span className="stack-promo-sep">•</span>
               <span className="stack-promo-feature">✓ US shipping</span>
               <span className="stack-promo-sep">•</span>
-              <span className="stack-promo-feature">✓ Editor&apos;s Choice 2026</span>
+              <span className="stack-promo-feature">✓ {vendorBySlug["amino-club"].criteria.total}/100 criteria score</span>
             </div>
             <p className="stack-promo-disclaimer">
               <strong>Disclosure:</strong> PeptiDex is reader-supported. When you purchase

@@ -8,7 +8,7 @@ import { aminoClubProductMapping } from "@/data/affiliates";
 import { peptides } from "@/data/peptides";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { PRIMARY_PROMO, AMINO_PROMO, vendorLinkName } from "@/lib/promos/config";
 
 export function MobileSourcingBar() {
   const pathname = usePathname();
@@ -95,8 +95,10 @@ export function MobileSourcingBar() {
   }
 
   // Build canonical affiliate URL — use per-peptide URL if available, else PRIMARY_PROMO homepage
-  const baseUrl = (peptideSlug && aminoClubProductMapping[peptideSlug]) ?? PRIMARY_PROMO.shopUrl;
-  const targetUrl = buildAffiliateUrl({ ...PRIMARY_PROMO, shopUrl: baseUrl }, "mobile_sourcing_bar");
+  const mapped = peptideSlug ? aminoClubProductMapping[peptideSlug] : undefined;
+  const destPromo = mapped ? AMINO_PROMO : PRIMARY_PROMO;
+  const baseUrl = mapped ?? PRIMARY_PROMO.shopUrl;
+  const targetUrl = buildAffiliateUrl({ ...destPromo, shopUrl: baseUrl }, "mobile_sourcing_bar");
 
   if (isDismissed || !isVisible) return null;
 
@@ -128,7 +130,7 @@ export function MobileSourcingBar() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] sm:text-[11px] font-medium text-zinc-400 uppercase tracking-wider mb-0.5">
-                  Top Rated Vendor
+                  {vendorLinkName(destPromo)}
                 </p>
                 <p className="text-[13px] sm:text-[14px] font-bold text-white truncate leading-tight">
                   Source {displayName}

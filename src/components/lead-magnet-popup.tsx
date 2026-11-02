@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2, CheckCircle, Gift, Zap, ShieldCheck, FlaskConical, ArrowRight, Sparkles } from "lucide-react";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { AMINO_PROMO, vendorLinkName } from "@/lib/promos/config";
 import { SITE_STATS } from "@/data/site-stats";
 
 const BEEHIIV_PUBLICATION_ID = "pub_40e0b818-633b-4705-b254-36237b65b043";
@@ -178,12 +178,12 @@ export function LeadMagnetPopup({ source = "welcome_popup" }: Props) {
                                         </div>
 
                                         <AffiliateLink
-                                            href={buildAffiliateUrl(PRIMARY_PROMO, "popup_success")}
+                                            href={buildAffiliateUrl(AMINO_PROMO, "popup_success")}
                                             vendor="amino_club"
                                             source="popup_success"
                                             className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-sm font-bold hover:brightness-110 transition-all shadow-lg shadow-emerald-900/30"
                                         >
-                                            Shop Amino Club Now <ArrowRight className="w-4 h-4" />
+                                            Shop {vendorLinkName(AMINO_PROMO)} Now <ArrowRight className="w-4 h-4" />
                                         </AffiliateLink>
 
                                         <button onClick={dismiss} className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">

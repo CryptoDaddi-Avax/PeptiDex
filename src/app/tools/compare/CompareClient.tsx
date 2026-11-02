@@ -23,7 +23,7 @@ import './compare-redesign.css';
 import { AffiliateLink } from "@/components/affiliate-link";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { PRIMARY_PROMO, AMINO_PROMO, vendorLinkName } from "@/lib/promos/config";
 
 /* ═══════════════════════════════════════════════════════════
    HELPERS
@@ -410,8 +410,9 @@ function CompareClientInner() {
                             <DisclaimerCard variant="vendor" className="!mt-0" />
                             <div className="cmp-cta-grid" style={{ "--cols": compared.length } as React.CSSProperties}>
                                 {compared.map((p, i) => {
+                                    const destPromo = aminoClubProductMapping[p.slug] ? AMINO_PROMO : PRIMARY_PROMO;
                                     const baseUrl = aminoClubProductMapping[p.slug] || PRIMARY_PROMO.shopUrl;
-                                    const ctaUrl = buildAffiliateUrl({ ...PRIMARY_PROMO, shopUrl: baseUrl }, "compare_cta");
+                                    const ctaUrl = buildAffiliateUrl({ ...destPromo, shopUrl: baseUrl }, "compare_cta");
                                     return (
                                         <div key={p.slug} className={`cmp-cta-card ${i === 0 ? "winner" : ""}`}>
                                             <h4>{p.name}</h4>
@@ -422,13 +423,13 @@ function CompareClientInner() {
                                                 peptide={p.slug}
                                                 source="compare_cta"
                                                 className="cmp-cta-btn"
-                                            >Buy {p.name} <ExternalLink style={{width: 14}}/></AffiliateLink>
+                                            >Buy {p.name} at {vendorLinkName(destPromo)} <ExternalLink style={{width: 14}}/></AffiliateLink>
                                         </div>
                                     )
                                 })}
                             </div>
                             <div className="cmp-cta-footer">
-                                <span className="strong"><ShieldCheck style={{width:14}}/> Premium Sourcing from Amino Club — Editors Choice</span>
+                                <span className="strong"><ShieldCheck style={{width:14}}/> Each button names the vendor it links to</span>
                                 <span className="legal">PeptiDex may earn a commission from purchases made through affiliate links.</span>
                             </div>
                         </div>

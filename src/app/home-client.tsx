@@ -17,9 +17,11 @@ import { NewsletterSignup } from "@/components/newsletter-signup";
 import { trackAffiliateClick, trackOutboundClick, trackCTAClick } from "@/lib/ga4-events";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { AMINO_PROMO } from "@/lib/promos/config";
+import { vendorBySlug } from "@/data/vendors";
 
-const HOME_VENDOR_URL = buildAffiliateUrl(PRIMARY_PROMO, "home_vendor_card");
+const HOME_VENDOR_URL = buildAffiliateUrl(AMINO_PROMO, "home_vendor_card");
+const AMINO = vendorBySlug["amino-club"];
 
 export default function HomePage() {
   const router = useRouter();
@@ -198,16 +200,16 @@ export default function HomePage() {
         <div className="p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-center mb-4">
           <h2 className="text-xl md:text-2xl font-bold text-zinc-100 mb-3">Trusted Peptide Vendors</h2>
           <p className="text-sm md:text-[15px] text-zinc-400 leading-relaxed max-w-lg mx-auto mb-6">
-            Finding a reliable source for your laboratory is critical. We independently review and recommend the best peptide vendors who provide transparent, third-party Certificate of Analysis (COA) testing.
+            Finding a reliable source for your laboratory is critical. We score vendors on published criteria — COA availability, third-party lab testing, price, shipping, payment options and returns. PeptiDex does not test products.
           </p>
 
           <div className="max-w-md mx-auto mb-6 p-[1px] rounded-2xl bg-gradient-to-b from-emerald-500/30 to-zinc-800" style={{ animation: 'pulse-glow 3s ease-in-out infinite' }}>
             <div className="bg-zinc-950 rounded-[15px] p-6 border border-emerald-500/10 shadow-xl shadow-emerald-500/5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-[10px] font-bold text-white uppercase tracking-wider mb-4 shadow-md">
-                <Crown className="w-3 h-3" /> Our #1 Rated Source for 2026
+                <Crown className="w-3 h-3" /> #{AMINO.sortOrder} on our published criteria
               </div>
               <h3 className="text-2xl font-extrabold text-white mb-1">Amino Club</h3>
-              <p className="text-xs text-emerald-400 font-semibold mb-4">4.9/5 — PeptiDex Rating</p>
+              <p className="text-xs text-emerald-400 font-semibold mb-4">{AMINO.criteria.total}/100 criteria score</p>
 
               <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-[11px] text-zinc-300 font-medium mb-6">
                 <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> COA-verified</span>
@@ -224,7 +226,7 @@ export default function HomePage() {
                 source="home_vendor_card"
                 className="flex items-center justify-center gap-2 w-full py-3.5 min-h-[48px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-lg shadow-emerald-500/20 mb-2"
                 id="affiliate-home-vendor-card-amino-club"
-                aria-label="Compare Prices on Amino Club"
+                aria-label={`Compare Prices on ${AMINO_PROMO.vendorName}`}
               >
                 Compare Prices <ExternalLink className="w-4 h-4 text-emerald-200" />
               </AffiliateLink>

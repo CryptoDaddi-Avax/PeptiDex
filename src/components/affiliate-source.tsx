@@ -2,15 +2,15 @@ import { ExternalLink, ShieldCheck } from "lucide-react";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { aminoClubProductMapping } from "@/data/affiliates";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { AMINO_PROMO } from "@/lib/promos/config";
 
 export function AffiliateSource({ peptideName, slug }: { peptideName: string; slug: string }) {
     // 1. DATA-DRIVEN MAPPING — prefer per-peptide URL, fall back to homepage
     const baseUrl = aminoClubProductMapping[slug] ?? "https://aminoclub.com";
 
-    // 2. Build canonical affiliate URL via central builder using PRIMARY_PROMO's code
+    // 2. Build canonical affiliate URL via central builder using Amino Club's promo (the destination)
     //    Produces: ?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=detail_sourcing&code=PEPTIDEX
-    const promo = { ...PRIMARY_PROMO, shopUrl: baseUrl };
+    const promo = { ...AMINO_PROMO, shopUrl: baseUrl };
     const affiliateUrl = buildAffiliateUrl(promo, "detail_sourcing");
 
     return (
@@ -27,7 +27,7 @@ export function AffiliateSource({ peptideName, slug }: { peptideName: string; sl
                 </div>
 
                 <p className="text-sm text-zinc-300 leading-relaxed mb-4">
-                    Finding verified, high-purity {peptideName} requires rigorous COA verification. We independently evaluate vendors based on third-party HPLC testing, purity thresholds (≥98%), and batch-specific documentation.
+                    Look for batch-specific COAs from a third-party lab. Amino Club states it provides HPLC, mass-spec and endotoxin COAs for every batch. PeptiDex does not test products.
                 </p>
 
                 {/* CTA — tracked with source="detail_sourcing" */}
@@ -38,14 +38,14 @@ export function AffiliateSource({ peptideName, slug }: { peptideName: string; sl
                     source="detail_sourcing"
                     className="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors mb-2 gap-2 shadow-lg shadow-violet-900/20"
                     id={`affiliate-detail-${slug}`}
-                    aria-label={`Shop COA-verified ${peptideName} at Amino Club`}
+                    aria-label={`Shop ${peptideName} at ${AMINO_PROMO.vendorName}`}
                 >
-                    View COA-Verified {peptideName} <ExternalLink className="w-4 h-4" />
+                    View {peptideName} at {AMINO_PROMO.vendorName} <ExternalLink className="w-4 h-4" />
                 </AffiliateLink>
 
                 {/* Trust badges */}
                 <p className="text-[11px] font-medium text-emerald-400/90 mb-3 flex flex-wrap items-center gap-2">
-                    <span>✓ Third-party tested</span>
+                    <span>✓ Third-party COAs (per vendor)</span>
                     <span className="hidden sm:inline">·</span>
                     <span>✓ US shipping</span>
                     <span className="hidden sm:inline">·</span>
@@ -55,7 +55,7 @@ export function AffiliateSource({ peptideName, slug }: { peptideName: string; sl
                 {/* Affiliate disclosure */}
                 <div className="border-t border-zinc-800/50 pt-3 flex items-start gap-2">
                     <p className="text-[10px] text-zinc-500 italic">
-                        <strong>Disclosure:</strong> PeptiDex may earn a commission from purchases made through affiliate links. This does not affect our editorial independence or recommendations. We exclusively feature vendors that pass our strict quality verification protocols.
+                        <strong>Disclosure:</strong> PeptiDex earns a commission from purchases made through affiliate links. Vendors are ranked on our <a href="/about/methodology#vendor-ranking" className="underline">published criteria</a>; PeptiDex&apos;s founder owns Elyria Bio.
                     </p>
                 </div>
             </div>
