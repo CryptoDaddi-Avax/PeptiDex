@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Copy, Check, ExternalLink } from "lucide-react";
 import type { PromoCode } from "@/lib/promos/config";
+import { trackClick } from "@/lib/tracking/click";
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from "@/lib/promos/affiliateUrl";
 import {
   trackPromoView,
@@ -66,6 +67,12 @@ export function PromoCodeDisplay({
   }
 
   function handleShopClick() {
+    trackClick({
+      peptide_slug: "general",
+      vendor_slug: promo.vendorSlug,
+      page_path: window.location.pathname,
+      surface: `promo_code_${surface}`,
+    });
     trackPromoClick({
       vendor: promo.gaKey,
       code: promo.code,

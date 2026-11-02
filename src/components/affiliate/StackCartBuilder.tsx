@@ -10,6 +10,7 @@ import {
 import { vendorsSorted, type Vendor } from "@/data/vendors";
 import type { PromoSurface } from "@/lib/promos/affiliateUrl";
 import { VendorDot } from "./atoms/VendorDot";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 
 // ── Props ───────────────────────────────────────────────────────────────────
 
@@ -161,9 +162,12 @@ export function StackCartBuilder({
               )}
 
               {/* CTA */}
-              <a
+              <TrackedOutboundLink
                 href={result.ctaUrl}
                 {...AFFILIATE_LINK_ATTRS}
+                vendorSlug={result.vendor.slug}
+                peptideSlug="stack"
+                surface="stack_cart"
                 className="mt-auto flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-bold transition-colors whitespace-nowrap"
                 style={{
                   background: idx === 0 ? "rgb(22,163,74)" : "rgba(255,255,255,0.06)",
@@ -171,7 +175,7 @@ export function StackCartBuilder({
                 }}
               >
                 Build cart at {result.vendor.name} <ExternalLink className="w-3 h-3" />
-              </a>
+              </TrackedOutboundLink>
             </div>
           );
         })}

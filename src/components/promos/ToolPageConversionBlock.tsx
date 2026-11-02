@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from "@/lib/promos/affiliateUrl";
 import { PromoCodeDisplay } from "./PromoCodeDisplay";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 import type { PromoSurface } from "@/lib/promos/affiliateUrl";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -55,15 +56,17 @@ export function ToolPageConversionBlock({
       </p>
 
       {/* Right: shop link */}
-      <a
+      <TrackedOutboundLink
         href={shopUrl}
         {...AFFILIATE_LINK_ATTRS}
         className="flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-xs font-bold text-amber-400 transition-colors whitespace-nowrap"
         aria-label={`Shop ${PRIMARY_PROMO.vendorName} with ${PRIMARY_PROMO.discountPercent}% off`}
+        vendorSlug={PRIMARY_PROMO.vendorSlug}
+        surface={`tool_block_${surface}`}
       >
         Shop {PRIMARY_PROMO.vendorName}
         <ExternalLink className="w-3 h-3" />
-      </a>
+      </TrackedOutboundLink>
     </div>
   );
 }

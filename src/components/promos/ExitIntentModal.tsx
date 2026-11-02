@@ -6,6 +6,7 @@ import { X, ExternalLink } from "lucide-react";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from "@/lib/promos/affiliateUrl";
 import { PromoCodeDisplay } from "./PromoCodeDisplay";
+import { trackClick } from "@/lib/tracking/click";
 import {
   trackExitIntentShown,
   trackExitIntentDismissed,
@@ -185,6 +186,12 @@ export function ExitIntentModal() {
   }
 
   function handleShopClick() {
+    trackClick({
+      peptide_slug: "general",
+      vendor_slug: PRIMARY_PROMO.vendorSlug,
+      page_path: window.location.pathname,
+      surface: "exit_intent_modal",
+    });
     trackExitIntentClicked({
       vendor: PRIMARY_PROMO.gaKey,
       code: PRIMARY_PROMO.code,

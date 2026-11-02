@@ -16,6 +16,8 @@ import ReactMarkdown from 'react-markdown';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
 import { SchemaInjector } from '@/components/schema-injector';
+import { TrackedOutboundLink } from '@/components/tracked-outbound-link';
+import { vendorKeyFromUrl } from '@/lib/ga4-events';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -124,6 +126,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     >
                       {props.children}
                     </AffiliateLink>
+                  );
+                }
+                const vendorKey = props.href ? vendorKeyFromUrl(props.href) : 'unknown';
+                if (props.href && vendorKey !== 'unknown') {
+                  return (
+                    <TrackedOutboundLink
+                      {...props}
+                      href={props.href}
+                      vendorSlug={vendorKey.replace(/_/g, '-')}
+                      surface="blog_inline"
+                    />
                   );
                 }
                 return <a {...props} />;

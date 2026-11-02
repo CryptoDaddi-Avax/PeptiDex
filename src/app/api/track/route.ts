@@ -13,6 +13,7 @@
  *
  * Rate limiting: max 10 events per session_id per minute (checked in DB).
  */
+import { timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase-server";
 
@@ -97,13 +98,37 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ ok: true });
 }
 
+function safeEqual(a: string, b: string): boolean {
+  const ab = Buffer.from(a);
+  const bb = Buffer.from(b);
+  return ab.length === bb.length && timingSafeEqual(ab, bb);
+}
+
+// Postbacks authenticate with `Authorization: Bearer <CRON_SECRET>`, or with
+// `?token=` matching AFFILIATE_POSTBACK_TOKEN_<VENDOR> (e.g. ..._AMINO_CLUB)
+// for vendors whose postback system can't set headers.
+function isAuthorizedPostback(req: NextRequest, vendorSlug: string): boolean {
+  const cronSecret = process.env.CRON_SECRET;
+  const auth = req.headers.get("authorization");
+  if (cronSecret && auth && safeEqual(auth, `Bearer ${cronSecret}`)) return true;
+
+  const envKey = `AFFILIATE_POSTBACK_TOKEN_${vendorSlug.toUpperCase().replace(/[^A-Z0-9]/g, "_")}`;
+  const vendorToken = process.env[envKey];
+  const token = req.nextUrl.searchParams.get("token");
+  return Boolean(vendorToken && token && safeEqual(token, vendorToken));
+}
+
 // Conversion postback from vendor (optional webhook)
-// GET /api/track?conversion=1&order_id=XYZ&vendor=limitless_life
+// GET /api/track?conversion=1&order_id=XYZ&vendor=limitless_life  (authenticated, see above)
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const vendor_slug = sanitize(searchParams.get("vendor") ?? "", 60);
   const order_id = sanitize(searchParams.get("order_id") ?? "", 100);
   const peptide_slug = sanitize(searchParams.get("peptide") ?? "unknown", 80);
+
+  if (!isAuthorizedPostback(req, vendor_slug)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   if (!vendor_slug || vendor_slug === "unknown") {
     return NextResponse.json({ error: "Missing vendor" }, { status: 400 });

@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { vendorsSorted, VENDOR_COUNT, type Vendor } from '@/data/vendors';
+import { TrackedOutboundLink } from '@/components/tracked-outbound-link';
 import './VendorSection.css';
 
 // Show top 4 on homepage, link to /vendors for the rest
@@ -9,11 +10,13 @@ const remainingCount = VENDOR_COUNT - displayVendors.length;
 
 function VendorCard({ v }: { v: Vendor }) {
   return (
-    <a
+    <TrackedOutboundLink
       className="vendor-card"
       href={v.affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
+      vendorSlug={v.slug}
+      surface="redesign_vendor_section"
     >
       {v.badge && <div className="vendor-badge">{v.badge}</div>}
       <div className="vendor-header">
@@ -67,7 +70,7 @@ function VendorCard({ v }: { v: Vendor }) {
           <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
         </svg>
       </div>
-    </a>
+    </TrackedOutboundLink>
   );
 }
 

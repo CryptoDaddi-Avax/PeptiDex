@@ -7,6 +7,7 @@ import { ShareBar } from '@/components/share-bar';
 import { getVendorPair, VALID_VENDOR_COMPARISONS, TOP_COMPARISON_PEPTIDES, type VendorProfile } from '@/data/vendor-comparison';
 import { vendorPricing } from '@/data/vendor-pricing';
 import { SHORT_DISCLAIMER } from '@/data/constants';
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 
 // ─── STATIC PARAMS ─────────────────────────────────────────────────
 export function generateStaticParams() {
@@ -221,7 +222,7 @@ export default async function VendorComparisonPage({ params }: { params: Promise
                 <Globe className="w-3 h-3" /> {v.catalogSize}
               </span>
             </div>
-            <a
+            <TrackedOutboundLink vendorSlug={v.slug} surface="vendor_compare_card"
               href={v.affiliateUrl}
               target="_blank"
               rel="nofollow noopener sponsored"
@@ -232,7 +233,7 @@ export default async function VendorComparisonPage({ params }: { params: Promise
               }`}
             >
               Visit {v.name} <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            </TrackedOutboundLink>
           </div>
         ))}
       </section>
@@ -454,22 +455,22 @@ export default async function VendorComparisonPage({ params }: { params: Promise
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-          <a
+          <TrackedOutboundLink vendorSlug={vendorA.slug} surface="vendor_compare_cta"
             href={vendorA.affiliateUrl}
             target="_blank"
             rel="nofollow noopener sponsored"
             className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm transition-all shadow-lg hover:shadow-violet-600/25"
           >
             Visit {vendorA.name} <ArrowRight className="w-4 h-4" />
-          </a>
-          <a
+          </TrackedOutboundLink>
+          <TrackedOutboundLink vendorSlug={vendorB.slug} surface="vendor_compare_cta"
             href={vendorB.affiliateUrl}
             target="_blank"
             rel="nofollow noopener sponsored"
             className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-bold text-sm transition-all"
           >
             Visit {vendorB.name} <ArrowRight className="w-4 h-4" />
-          </a>
+          </TrackedOutboundLink>
         </div>
       </section>
 

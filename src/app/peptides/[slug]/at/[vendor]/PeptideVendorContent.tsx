@@ -17,6 +17,7 @@ import { vendorEditorial } from "@/data/vendorEditorial";
 import { comparisons } from "@/data/comparisons";
 import { vendorCartConfigs } from "@/data/vendor-cart-config";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -336,10 +337,13 @@ export function PeptideVendorContent({ pair }: Props) {
 
       {/* ── Section 8: Primary + Alternate CTAs ── */}
       <section style={{ ...sectionStyle, textAlign: "center", background: "linear-gradient(135deg, rgba(201,169,97,0.08) 0%, rgba(201,169,97,0.02) 100%)" }} id="buy-cta">
-        <a
+        <TrackedOutboundLink
           href={pricing.affiliateUrl || vendor.affiliateUrl}
           target="_blank"
           rel="noopener noreferrer"
+          vendorSlug={vendor.slug}
+          peptideSlug={peptide.slug}
+          surface="pxv_page"
           style={{
             display: "inline-block",
             padding: "14px 32px",
@@ -354,7 +358,7 @@ export function PeptideVendorContent({ pair }: Props) {
           }}
         >
           Buy {peptide.name} from {vendor.name} →
-        </a>
+        </TrackedOutboundLink>
         {vendor.discountCode && (
           <p style={{ ...valueStyle, fontSize: 12, color: "var(--ink-dim)", marginTop: 8 }}>
             Use code <strong>{vendor.discountCode}</strong> for {discountPct}% off
@@ -364,11 +368,14 @@ export function PeptideVendorContent({ pair }: Props) {
         {altVendors.length > 0 && (
           <div style={{ marginTop: 20, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             {altVendors.slice(0, 2).map(alt => (
-              <a
+              <TrackedOutboundLink
                 key={alt.vendorSlug}
                 href={alt.pricing.affiliateUrl || alt.vendor.affiliateUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                vendorSlug={alt.vendorSlug}
+                peptideSlug={peptide.slug}
+                surface="pxv_alternative"
                 style={{
                   display: "inline-block",
                   padding: "10px 20px",
@@ -383,7 +390,7 @@ export function PeptideVendorContent({ pair }: Props) {
                 }}
               >
                 {alt.vendor.name} — ${fmt(alt.pricing.price_usd * (1 - (alt.vendor.discountPercent ?? 0) / 100))}
-              </a>
+              </TrackedOutboundLink>
             ))}
           </div>
         )}

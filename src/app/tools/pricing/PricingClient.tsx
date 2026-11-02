@@ -9,6 +9,7 @@ import { peptides as allPeptides } from "@/data/peptides";
 import { applyDiscount, buildVendorDiscount, type DiscountResult } from "@/lib/pricing/applyDiscount";
 import { DisclaimerCard, InlineDisclaimer } from "@/components/ui/DisclaimerCard";
 import { ShoppingList } from "@/components/shopping-list";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 import './pricing-redesign.css';
 
 type SortMode = "price" | "vendor" | "cpd";
@@ -17,6 +18,7 @@ type SortMode = "price" | "vendor" | "cpd";
 
 interface EnrichedVendorRow {
   vendor: Vendor;
+  peptideSlug: string;
   price_usd: number;
   vial_mg: number;
   inStock: boolean;
@@ -72,6 +74,7 @@ function buildEnrichedData(): EnrichedPeptide[] {
 
         rows.push({
           vendor,
+          peptideSlug: p.slug,
           price_usd: vp.price_usd,
           vial_mg: vp.vial_mg,
           inStock: true,
@@ -223,9 +226,9 @@ function DesktopRow({ row }: { row: EnrichedVendorRow }) {
 
       {/* Shop */}
       <div className="prc-table-cell">
-        <a href={row.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" className="prc-shop-btn" id={`shop-${row.vendor.slug}`}>
+        <TrackedOutboundLink href={row.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" className="prc-shop-btn" id={`shop-${row.vendor.slug}`} vendorSlug={row.vendor.slug} peptideSlug={row.peptideSlug} surface="pricing_table">
           Shop <ExternalLink size={11} />
-        </a>
+        </TrackedOutboundLink>
       </div>
     </div>
   );
@@ -287,15 +290,18 @@ function MobileCard({ row }: { row: EnrichedVendorRow }) {
           </>
         )}
         <div className="prc-card-actions">
-          <a
+          <TrackedOutboundLink
             href={hasPrice ? row.affiliateUrl : row.vendor.affiliateUrl}
             target="_blank"
             rel="sponsored nofollow noopener"
             className="prc-shop-btn"
             style={{ flex: 1, justifyContent: 'center' }}
+            vendorSlug={row.vendor.slug}
+            peptideSlug={row.peptideSlug}
+            surface="pricing_card"
           >
             {hasPrice ? "Shop Now" : "Visit Vendor"} <ExternalLink size={11} />
-          </a>
+          </TrackedOutboundLink>
         </div>
       </div>
     </div>

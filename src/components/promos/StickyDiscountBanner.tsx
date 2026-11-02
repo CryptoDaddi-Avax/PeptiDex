@@ -5,6 +5,7 @@ import { X, Tag } from "lucide-react";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from "@/lib/promos/affiliateUrl";
 import { PromoCodeDisplay } from "./PromoCodeDisplay";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 import {
   trackBannerShown,
   trackBannerDismissed,
@@ -105,13 +106,15 @@ export function StickyDiscountBanner() {
             Save{" "}
             <span className="text-amber-400 font-bold">{PRIMARY_PROMO.discountPercent}%</span>
             {" "}on COA-verified peptides at{" "}
-            <a
+            <TrackedOutboundLink
               href={shopUrl}
               {...AFFILIATE_LINK_ATTRS}
               className="text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-2 transition-colors"
+              vendorSlug={PRIMARY_PROMO.vendorSlug}
+              surface="sticky_discount_banner"
             >
               {PRIMARY_PROMO.vendorName}
-            </a>
+            </TrackedOutboundLink>
             {" "}—{" "}
           </span>
 
@@ -129,13 +132,15 @@ export function StickyDiscountBanner() {
           />
 
           {/* Shop arrow */}
-          <a
+          <TrackedOutboundLink
             href={shopUrl}
             {...AFFILIATE_LINK_ATTRS}
             className="hidden md:inline-flex items-center gap-1 text-xs font-bold text-amber-500 hover:text-amber-400 transition-colors ml-1"
+            vendorSlug={PRIMARY_PROMO.vendorSlug}
+            surface="sticky_discount_banner"
           >
             Shop →
-          </a>
+          </TrackedOutboundLink>
         </div>
 
         {/* Dismiss button */}

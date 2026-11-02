@@ -14,6 +14,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { peptides } from "@/data/peptides";
 import { rankVendors, PickerInput, VendorRecommendation, Region, Payment, Priority } from "@/lib/vendor-picker-engine";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -482,7 +483,7 @@ function VendorResultCard({ rec, isPrimary }: { rec: VendorRecommendation; isPri
                 </ul>
 
                 {/* CTA */}
-                <a
+                <TrackedOutboundLink vendorSlug={rec.vendor.slug} surface="vendor_picker_tool"
                     href={rec.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -517,7 +518,7 @@ function VendorResultCard({ rec, isPrimary }: { rec: VendorRecommendation; isPri
                             {rec.vendor.discountCode}
                         </span>
                     )}
-                </a>
+                </TrackedOutboundLink>
             </div>
         </div>
     );

@@ -14,6 +14,7 @@ import {
   trackPromoClick,
 } from '@/lib/analytics/promo';
 import './PromoBanner.css';
+import { trackClick } from '@/lib/tracking/click';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -136,6 +137,12 @@ export default function PromoBanner() {
   }
 
   function handleShopClick() {
+    trackClick({
+      peptide_slug: 'general',
+      vendor_slug: PRIMARY_PROMO.vendorSlug,
+      page_path: window.location.pathname,
+      surface: 'promo_banner',
+    });
     trackPromoClick({
       vendor: PRIMARY_PROMO.gaKey,
       code: PRIMARY_PROMO.code,

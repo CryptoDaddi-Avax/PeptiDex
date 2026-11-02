@@ -16,7 +16,8 @@ export type AffiliateVendor =
   | "limitless_life"
   | "ascension"
   | "pantheon"
-  | "lvlup_health";
+  | "lvlup_health"
+  | "elyria_bio";
 
 // ─── Source component type ────────────────────────────────────────────────────
 export type AffiliateSource =
@@ -38,7 +39,12 @@ export type AffiliateSource =
   | "price_alert"      // <PriceDropAlertCapture /> context CTA
   | "pxv_page"         // programmatic peptide×vendor pages
   | "coa_vendor_cta"  // COA analyzer vendor CTA
-  | "onboarding_supplies"; // Onboarding guide supply cards
+  | "onboarding_supplies" // Onboarding guide supply cards
+  | "pricing_card"     // /tools/pricing mobile cards
+  | "pxv_alternative"  // alternative-vendor links on peptide×vendor pages
+  | "promo_banner"     // sitewide <PromoBanner /> (top bar)
+  | "sticky_discount_banner" // <StickyDiscountBanner />
+  | "redesign_vendor_section"; // <VendorSection /> on /redesign-v2
 
 // ─── Derive vendor key from URL ───────────────────────────────────────────────
 export function vendorKeyFromUrl(url: string): AffiliateVendor | "unknown" {
@@ -48,6 +54,7 @@ export function vendorKeyFromUrl(url: string): AffiliateVendor | "unknown" {
   if (url.includes("ascensionpeptides.com")) return "ascension";
   if (url.includes("pantheonpeptides.com")) return "pantheon";
   if (url.includes("lvluphealth.com")) return "lvlup_health";
+  if (url.includes("elyriabio.com")) return "elyria_bio";
   return "unknown";
 }
 
