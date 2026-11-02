@@ -1,20 +1,16 @@
 /**
  * /tools/pricing — Server Component
  * ====================================
- * Canonical price comparison page. Fetches live data from the `listings`
- * Supabase table server-side so HTML contains real rows for crawlers.
+ * Canonical price comparison page. Prices come from src/data/vendor-pricing.ts
+ * and are rendered by PricingClient.
  *
  * fix(seo): B2 — /tools/price-tracker has been merged here and redirected.
  * This is now the single canonical price tool URL.
  * All pricing math lives in src/lib/pricing/. The UI is in PricingClient.tsx.
- *
- * If the listings table is empty (migration not yet run), renders gracefully
- * with an empty state via the client component.
  */
 
 import { Metadata } from "next";
 import { SITE_STATS } from "@/data/site-stats";
-import { createServerClient } from "@/lib/supabase-server";
 import PricingClient from "./PricingClient";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -57,105 +53,16 @@ const pricingSchema = {
     }
 };
 
-// ─── Minimal row type for the SSR crawler table ──────────────────────────────
-
-interface SSRRow {
-    id: string;
-    vendor_name: string;
-    peptide_name: string;
-    route: string;
-    vial_size_mg: number | null;
-    quantity: number;
-    total_mg: number | null;
-    price_usd: number;
-    price_per_mg_usd: number | null;
-    in_stock: boolean;
-    last_checked_at: string;
-}
-
-// ─── Data fetching ─────────────────────────────────────────────────────────────
-
-async function fetchListings(): Promise<SSRRow[]> {
-    try {
-        const supabase = createServerClient();
-        const { data, error } = await supabase
-            .from("listings")
-            .select("*")
-            .order("price_per_mg_usd", { ascending: true, nullsFirst: false });
-
-        if (error) {
-            console.error("[pricing] Supabase query error:", error.message);
-            return [];
-        }
-
-        return (data ?? []) as SSRRow[];
-    } catch (err) {
-        console.error("[pricing] Failed to create Supabase client:", err);
-        return [];
-    }
-}
-
-// ─── SSR-rendered listing table (for crawlers) ────────────────────────────────
-
-function SSRListingTable({ listings }: { listings: SSRRow[] }) {
-    if (listings.length === 0) return null;
-    return (
-        <div
-            aria-hidden="true"
-            style={{ position: "absolute", left: "-9999px", top: 0, width: 1 }}
-        >
-            <table>
-                <caption>Research peptide vendor price listings</caption>
-                <thead>
-                    <tr>
-                        <th>Vendor</th>
-                        <th>Peptide</th>
-                        <th>Route</th>
-                        <th>Vial size (mg)</th>
-                        <th>Quantity</th>
-                        <th>Total mg</th>
-                        <th>Price (USD)</th>
-                        <th>$/mg (USD)</th>
-                        <th>In stock</th>
-                        <th>Last checked</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listings.map((row) => (
-                        <tr key={row.id}>
-                            <td>{row.vendor_name}</td>
-                            <td>{row.peptide_name}</td>
-                            <td>{row.route}</td>
-                            <td>{row.vial_size_mg ?? "—"}</td>
-                            <td>{row.quantity}</td>
-                            <td>{row.total_mg ?? "—"}</td>
-                            <td>${row.price_usd.toFixed(2)}</td>
-                            <td>{row.price_per_mg_usd !== null ? `$${row.price_per_mg_usd.toFixed(4)}` : "—"}</td>
-                            <td>{row.in_stock ? "In stock" : "Out of stock"}</td>
-                            <td>{new Date(row.last_checked_at).toLocaleDateString("en-US")}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}
-
 // ─── Page ──────────────────────────────────────────────────────────────────────
 
-export default async function PricingPage() {
-    // Server-side fetch — real data in HTML for crawlers
-    const listings = await fetchListings();
-
+export default function PricingPage() {
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingSchema) }}
             />
-            {/* SSR table for crawlers (off-screen, aria-hidden) */}
-            <SSRListingTable listings={listings} />
-            {/* Client component — uses its own vendorPricing data source */}
+            {/* Client component — uses the vendorPricing data source */}
             <PricingClient />
         </>
     );
