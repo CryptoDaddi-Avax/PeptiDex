@@ -388,7 +388,7 @@ export default async function VendorComparisonPage({ params }: { params: Promise
 
                 {/* Shipping Cost */}
                 <tr>
-                  <td className="px-5 py-4 text-zinc-400 font-medium">Free Shipping</td>
+                  <td className="px-5 py-4 text-zinc-400 font-medium">Shipping Cost</td>
                   <td className="px-5 py-4 text-zinc-300">{vendorA.shippingCost}</td>
                   <td className="px-5 py-4 text-zinc-300">{vendorB.shippingCost}</td>
                 </tr>

@@ -275,8 +275,9 @@ export function scoreVendorForUser(
   // Region filter
   const regionMatch =
     answers.region === "us" ? v.shipsTo.some(s => s.toUpperCase().includes("US")) :
-    answers.region === "eu" ? v.shipsTo.some(s => s.toUpperCase().includes("EU") || s.toUpperCase().includes("INTERNATIONAL")) :
-    v.shipsTo.some(s => s.toUpperCase().includes("INTERNATIONAL"));
+    // Europe/UK: only vendors stating general international shipping (not Canada-only or a limited list)
+    answers.region === "eu" ? v.shipsTo.some(s => s === "International") :
+    v.shipping.international === true;
   if (!regionMatch) return -1;
 
   // Payment filter
@@ -297,7 +298,7 @@ export function scoreVendorForUser(
   const priceScore = offer.costPerMg > 0 ? Math.max(0, 100 - offer.costPerMg * 2) : 50;
   const purityNum = parseFloat(v.purity.replace(/[^0-9.]/g, "")) || 95;
   const purityScore = Math.min(100, (purityNum / 100) * 100);
-  const speedDays = parseInt(v.shippingSpeed.replace(/[^0-9]/g, ""), 10) || 5;
+  const speedDays = v.shipping.dispatchBusinessDays ?? 10; // unpublished = slowest
   const speedScore = Math.max(0, 100 - speedDays * 10);
   const ratingScore = v.criteria.total; // published-criteria score, 0–100
 

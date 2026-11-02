@@ -9,7 +9,7 @@
  * Affiliate commission and ownership are NOT inputs. Elyria Bio is owned by
  * PeptiDex's founder and is scored exactly like every other vendor.
  */
-import type { Vendor } from "@/data/vendors";
+import type { ShippingPolicy, Vendor } from "@/data/vendors";
 import { vendorPricing } from "@/data/vendor-pricing";
 
 export type CriterionKey = "coa" | "lab" | "price" | "shipping" | "payment" | "returns";
@@ -45,7 +45,7 @@ export const RANKING_CRITERIA: Criterion[] = [
     key: "shipping",
     label: "Shipping",
     max: 15,
-    rule: "Free-shipping threshold of $75 or less = 8, $100 or less = 6, $150 or less = 4, higher or none = 0; plus 7 if the vendor ships outside the US.",
+    rule: "What a US buyer pays for standard shipping on a $50, $100 and $150 order (before discount codes; a free-shipping threshold of $X counts as free from $X): each order earns its weight × (1 − shipping cost ÷ $20), never below 0, with weights 4, 3 and 2 (9 points); free = full weight, $20 or more = 0. Plus the vendor's stated dispatch time: 1 business day or less = 4, 2 or less = 3, 5 or less = 1, longer = 0. Plus 2 if the vendor ships outside the US. Anything the vendor does not publish scores 0 and is labeled unverified. Rounded to the nearest point.",
   },
   {
     key: "payment",
@@ -84,7 +84,7 @@ export interface VendorCriteriaScore {
 
 type ScorableVendor = Pick<
   Vendor,
-  "name" | "coaStatus" | "thirdPartyLab" | "testingMethods" | "shippingCost" | "shipsTo" | "paymentMethods" | "returnPolicy"
+  "name" | "coaStatus" | "thirdPartyLab" | "testingMethods" | "shipping" | "paymentMethods" | "returnPolicy"
 >;
 
 function scoreCoa(v: ScorableVendor): [number, string] {
@@ -109,12 +109,45 @@ function scoreLab(v: ScorableVendor): [number, string] {
   return [points, basis];
 }
 
+/** Order sizes the Shipping criterion prices, weighted toward typical $50–100 orders. */
+export const SHIPPING_CARTS = [
+  { cartUsd: 50, weight: 4 },
+  { cartUsd: 100, weight: 3 },
+  { cartUsd: 150, weight: 2 },
+] as const;
+/** Shipping cost at which an order earns 0 cost points */
+const SHIPPING_COST_ANCHOR_USD = 20;
+
+/** Standard US shipping on a pre-discount order of cartUsd; null = not published (unverified). */
+export function shippingCostAt(p: ShippingPolicy, cartUsd: number): number | null {
+  if (p.freeFromUsd !== null && cartUsd >= p.freeFromUsd) return 0;
+  return p.standardRateUsd;
+}
+
+function dispatchPoints(days: number | null): number {
+  if (days === null) return 0;
+  return days <= 1 ? 4 : days <= 2 ? 3 : days <= 5 ? 1 : 0;
+}
+
+const usd = (n: number) => (n === 0 ? "free" : `$${n % 1 ? n.toFixed(2) : n}`);
+
 function scoreShipping(v: ScorableVendor): [number, string] {
-  const threshold = v.shippingCost.match(/\$(\d+)/);
-  const t = threshold ? Number(threshold[1]) : Infinity;
-  const free = t <= 75 ? 8 : t <= 100 ? 6 : t <= 150 ? 4 : 0;
-  const intl = v.shipsTo.some((s) => !/^usa?$/i.test(s.trim())) ? 7 : 0;
-  return [free + intl, `${v.shippingCost} · ships to ${v.shipsTo.join(", ")}`];
+  const p = v.shipping;
+  let cost = 0;
+  const costs = SHIPPING_CARTS.map(({ cartUsd, weight }) => {
+    const c = shippingCostAt(p, cartUsd);
+    if (c !== null) cost += weight * Math.max(0, 1 - c / SHIPPING_COST_ANCHOR_USD);
+    return `$${cartUsd} order: ${c === null ? "unverified" : usd(c)}`;
+  });
+  const points = Math.round(cost + dispatchPoints(p.dispatchBusinessDays) + (p.international ? 2 : 0));
+  const basis = [
+    costs.join(", "),
+    p.dispatchBusinessDays === null
+      ? "dispatch time unverified"
+      : `dispatch within ${p.dispatchBusinessDays} business day${p.dispatchBusinessDays === 1 ? "" : "s"}`,
+    p.international === null ? "international unverified" : p.international ? "ships outside the US" : "US only",
+  ].join(" · ");
+  return [points, basis];
 }
 
 function scorePayment(v: ScorableVendor): [number, string] {

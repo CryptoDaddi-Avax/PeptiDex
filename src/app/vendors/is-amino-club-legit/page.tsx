@@ -73,8 +73,8 @@ const VERIFICATION_PILLARS = [
   {
     icon: <Truck className="w-6 h-6 text-sky-400" />,
     label: '§ 04 — Logistics',
-    title: 'Fast & Tracked',
-    body: 'Orders are typically processed and shipped within 24 hours of payment clearing (excluding weekends). They utilize standard USPS tracking, ensuring transparency throughout the delivery process.',
+    title: 'Same-Day Dispatch & Tracked',
+    body: 'Per aminoclub.com/us/shipping, invoices placed before 3 PM ET on a business day typically ship the same day. Standard shipping goes by FedEx or USPS Ground with full tracking and takes 1–4 business days. Amino Club ships within the US only.',
   },
   {
     icon: <Lock className="w-6 h-6 text-violet-400" />,

@@ -4,6 +4,7 @@ import { ShieldCheck, FlaskConical, BookOpen, GitMerge, DollarSign, CheckSquare,
 import { vendorsSorted } from '@/data/vendors';
 import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
 import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
+import { ShippingInputsTable } from '@/components/vendors/ShippingInputsTable';
 
 export const metadata: Metadata = {
   title: 'Editorial Methodology — How PeptiDex Evaluates Peptides & Vendors',
@@ -209,6 +210,9 @@ export default function MethodologyPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="mt-6 text-zinc-300">
+            <ShippingInputsTable vendors={vendorsSorted} />
           </div>
         </section>
 

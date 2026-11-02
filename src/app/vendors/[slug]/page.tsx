@@ -364,7 +364,7 @@ export default async function VendorReviewPage({ params }: Props) {
               <span className="vr-spec-val">{review.shippingSpeed}</span>
             </div>
             <div className="vr-spec-card">
-              <span className="vr-spec-key">Free Shipping</span>
+              <span className="vr-spec-key">Shipping Cost</span>
               <span className="vr-spec-val">{review.shippingCost}</span>
             </div>
             <div className="vr-spec-card">
