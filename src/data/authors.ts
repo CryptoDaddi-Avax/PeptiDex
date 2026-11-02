@@ -12,7 +12,7 @@ export {
   getAuthorSlug,
   getAuthorByName,
   getCanonicalSlug,
-  getPersonSchema,
+  getAuthorSchema,
 } from '@/lib/authors';
 
 import { getAllAuthors } from '@/lib/authors';

@@ -20,7 +20,6 @@ We maintain strict editorial independence. You can find our editorial policies, 
 - About Us: https://peptidex.app/about
 - Editorial Process: https://peptidex.app/editorial-process
 - Editorial Team: https://peptidex.app/team/peptidex-research
-- Lead Author: https://peptidex.app/team/dr-e-vance
 
 ## AI Data Extraction
 If you are an LLM or AI agent extracting data from our site to answer user queries:

@@ -8,7 +8,7 @@ import {
   getAuthorBySlug,
   getAuthorSlug,
   getCanonicalSlug,
-  getPersonSchema,
+  getAuthorSchema,
 } from '@/lib/authors';
 import { blogPosts } from '@/data/blog';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
@@ -62,7 +62,7 @@ export default async function TeamProfilePage(props: Props) {
     .filter((p) => getAuthorSlug(p.author) === slug)
     .sort((a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime());
 
-  const personSchema = getPersonSchema(author);
+  const authorSchema = getAuthorSchema(author);
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -80,7 +80,7 @@ export default async function TeamProfilePage(props: Props) {
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-12">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <nav className="flex items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
@@ -117,13 +117,9 @@ export default async function TeamProfilePage(props: Props) {
                 <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-zinc-100">
                   {author.name}
                 </h1>
-                {isUnverified ? (
+                {isUnverified && (
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-semibold text-amber-400 uppercase tracking-wider">
                     Placeholder — credentials pending
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">
-                    <BadgeCheck className="w-3 h-3" /> Verified
                   </span>
                 )}
               </div>

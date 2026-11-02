@@ -134,7 +134,7 @@ export default function GHKCuArticle() {
           GHK-Cu stands for <strong>glycyl-L-histidyl-L-lysine</strong> bound to a copper (II) ion. It&apos;s a naturally occurring tripeptide — meaning it consists of just three amino acids: glycine, histidine, and lysine — that forms a stable complex with copper. This copper-binding characteristic is central to its biological activity.
         </p>
         <p>
-          The compound was first isolated from human blood plasma in 1973 by Dr. Loren Pickart during his Ph.D. research at the University of California, San Francisco. Pickart observed that adding plasma from younger individuals to liver tissue from older donors caused the aged cells to resume protein synthesis patterns characteristic of younger tissue.² ³ Decades of follow-up research have since confirmed that this observation wasn&apos;t a fluke.
+          The compound was first isolated from human blood plasma in 1973 by Dr. Loren Pickart during his doctoral research at the University of California, San Francisco. Pickart observed that adding plasma from younger individuals to liver tissue from older donors caused the aged cells to resume protein synthesis patterns characteristic of younger tissue.² ³ Decades of follow-up research have since confirmed that this observation wasn&apos;t a fluke.
         </p>
         <p>
           GHK-Cu is found naturally in plasma, saliva, and urine. At age 20, average plasma levels sit around 200 ng/mL. By age 60, that figure drops below 80 ng/mL — a decline of more than 60%. As noted in a peer-reviewed paper published in <em>BioMed Research International</em>, this decline &quot;coincides with the noticeable decrease in regenerative capacity of an organism.&quot;⁴
@@ -232,7 +232,7 @@ export default function GHKCuArticle() {
         <h2 className="text-xl">Sources</h2>
         <ol className="text-sm text-zinc-400 space-y-3 marker:text-zinc-600">
             <li>&quot;State of Peptides 2026: Search Trends, Research & Market Analysis.&quot; <em>The Peptide Effect</em>, February 2026.</li>
-            <li>Pickart, L. &quot;A Tripeptide from Human Serum Which Enhances the Growth of Neoplastic Hepatocytes and the Survival of Normal Hepatocytes.&quot; Ph.D. Thesis, University of California, San Francisco, 1973.</li>
+            <li>Pickart, L. &quot;A Tripeptide from Human Serum Which Enhances the Growth of Neoplastic Hepatocytes and the Survival of Normal Hepatocytes.&quot; Doctoral thesis, University of California, San Francisco, 1973.</li>
             <li>Pickart, L., Freedman, J.H., Loker, W.J., et al. &quot;Growth-modulating plasma tripeptide may function by facilitating copper uptake into cells.&quot; <em>Nature</em>, 1980; 288: 715–717.</li>
             <li>Pickart, L., Vasquez-Soltero, J.M., Margolina, A. &quot;The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging: implications for cognitive health.&quot; <em>Oxidative Medicine and Cellular Longevity</em>, 2012; 2012: 324832.</li>
             <li>Pickart, L., Vasquez-Soltero, J.M., Margolina, A. &quot;Regenerative and Protective Actions of the GHK-Cu Peptide in the Light of the New Gene Data.&quot; <em>International Journal of Molecular Sciences</em>, 2018; 19(7): 1987.</li>

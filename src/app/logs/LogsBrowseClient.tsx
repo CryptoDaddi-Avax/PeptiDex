@@ -11,7 +11,6 @@ interface LogEntry {
     id: string;
     peptide_slugs: string[];
     vendor_slug: string;
-    duration_weeks: number | null;
     goal_slug: string | null;
     efficacy_score: number;
     side_effect_score: number;
@@ -158,11 +157,6 @@ export default function LogsBrowseClient() {
                                                 via {vendors.find(v => v.slug === log.vendor_slug)?.name || log.vendor_slug}
                                             </span>
                                         </div>
-                                        {log.duration_weeks && (
-                                            <div className="flex items-center gap-3 mt-2" style={{ fontFamily: "var(--sans)", fontSize: 12, color: "var(--ink-dim)" }}>
-                                                <span>{log.duration_weeks}wk</span>
-                                            </div>
-                                        )}
                                         {log.outcome_text && (
                                             <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--ink-dim)", fontFamily: "var(--serif)", fontStyle: "italic" }}>
                                                 &quot;{log.outcome_text.substring(0, 200)}{log.outcome_text.length > 200 ? "..." : ""}&quot;

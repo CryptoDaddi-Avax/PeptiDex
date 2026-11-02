@@ -124,7 +124,7 @@ export function PeptideDetailRedesign({
             <SaveButton type="peptide" slug={peptide.slug} title={peptide.name} />
           </div>
 
-          <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="compact" className="mt-6 mb-2" />
+          <AuthorByline name="PeptiDex Editorial Team" date={LAST_REVIEWED_DATE} variant="compact" className="mt-6 mb-2" />
 
           {peptide.aliases.length > 0 && (
             <p className="pd-aliases">Also known as: {peptide.aliases.join(', ')}</p>
@@ -503,7 +503,7 @@ export function PeptideDetailRedesign({
 
       {/* ═══ AUTHOR BIO ═══ */}
       <div className="pd-container mb-12">
-        <AuthorByline name="Dr. E. Vance" variant="full" />
+        <AuthorByline name="PeptiDex Editorial Team" variant="full" />
       </div>
 
       {/* Last Reviewed */}

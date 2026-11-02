@@ -3,7 +3,7 @@ title: "Research Peptide Safety Explained: Purity, Protocols, and Risks in 2026"
 description: "A comprehensive breakdown of research peptide safety. We analyze clinical safety profiles, the dangers of synthesis byproducts, and FDA regulatory actions."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "Dr. E. Vance"
+author: "PeptiDex Editorial Team"
 readingTime: "16 Min Read"
 faqSchema: |
   {

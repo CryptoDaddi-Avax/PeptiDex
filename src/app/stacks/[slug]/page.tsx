@@ -6,7 +6,7 @@ import { getVendorPricing } from '@/data/vendor-pricing';
 import { BookOpen, ChevronRight, Layers, ShoppingBag, ArrowRight, Beaker, Quote } from 'lucide-react';
 import { AuthorByline } from '@/components/shared/AuthorByline';
 import { MedicalDisclaimer } from '@/components/medical-disclaimer';
-import { getAuthorBySlug, getAuthorSlug, getPersonSchema } from '@/lib/authors';
+import { getAuthorBySlug, getAuthorSlug, getAuthorSchema } from '@/lib/authors';
 import { buildBreadcrumbSchema, buildArticleSchema, buildFAQPageSchema, buildItemListSchema } from '@/lib/seo/schema';
 import { SchemaInjector } from '@/components/schema-injector';
 import { AutoLink, AutoLinkProvider } from '@/components/auto-link';
@@ -54,7 +54,6 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
 
   const authorSlug = stack.author ?? getAuthorSlug('PeptiDex Editorial');
   const authorRecord = getAuthorBySlug(authorSlug);
-  const reviewerRecord = stack.medicallyReviewedBy ? getAuthorBySlug(stack.medicallyReviewedBy) : undefined;
 
   // --- JSON-LD SCHEMAS ---
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -73,13 +72,12 @@ export default async function StackSeoPage({ params }: { params: Promise<{ slug:
       url: `https://peptidex.app/stacks/${slug}`
     }),
     author: authorRecord
-      ? getPersonSchema(authorRecord)
+      ? getAuthorSchema(authorRecord)
       : {
           '@type': 'Organization',
           name: 'PeptiDex Editorial Team',
           url: 'https://peptidex.app/team',
         },
-    ...(reviewerRecord ? { reviewedBy: getPersonSchema(reviewerRecord) } : {}),
     ...(stack.reviewedDate ? { lastReviewed: stack.reviewedDate } : {}),
     publisher: {
       '@type': 'Organization',

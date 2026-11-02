@@ -3,14 +3,12 @@ export function buildMedicalWebPageSchema({
   description,
   url,
   lastReviewed,
-  reviewedBy,
   about
 }: {
   name: string;
   description: string;
   url: string;
   lastReviewed: string;
-  reviewedBy: { name: string; url?: string };
   about: object;
 }) {
   return {
@@ -23,16 +21,11 @@ export function buildMedicalWebPageSchema({
     "isAccessibleForFree": "True",
     "educationalUse": "assignment",
     "educationalLevel": "expert",
-    "reviewedBy": {
-      "@type": "Person",
-      "name": reviewedBy.name,
-      "url": reviewedBy.url
-    },
     "about": about,
     "author": {
       "@type": "Organization",
       "name": "PeptiDex Editorial Team",
-      "url": "https://peptidex.app/about"
+      "url": "https://peptidex.app/team/peptidex-research"
     },
     "publisher": {
       "@type": "Organization",

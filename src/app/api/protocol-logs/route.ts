@@ -42,13 +42,12 @@ export async function POST(request: NextRequest) {
         }
 
         const body = await request.json();
-        // Dose and frequency are no longer collected; any such fields sent by
-        // older clients are ignored and never written.
+        // Dose, frequency and duration are no longer collected; any such fields
+        // sent by older clients are ignored and never written.
         const {
             peptide_slugs,
             vendor_slug,
             route,
-            duration_weeks,
             goal_slug,
             efficacy_score,
             side_effect_score,
@@ -91,7 +90,6 @@ export async function POST(request: NextRequest) {
                 peptide_slugs,
                 vendor_slug,
                 route: route || null,
-                duration_weeks: duration_weeks || null,
                 goal_slug: goal_slug || null,
                 efficacy_score,
                 side_effect_score,

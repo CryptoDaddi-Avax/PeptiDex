@@ -26,7 +26,7 @@ export function buildArticleSchema({
     "educationalUse": "assignment",
     "educationalLevel": "expert",
     "author": {
-      "@type": "Person",
+      "@type": "Organization",
       "name": author.name,
       "url": author.url
     },

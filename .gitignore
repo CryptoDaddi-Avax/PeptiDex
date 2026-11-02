@@ -64,5 +64,6 @@ check_remote_logs.js
 peptidex_out.zip
 peptidex.tar.gz
 sync.tar.gz
+peptidex_sync.tar.gz
 
 # _design-reference/  # uncomment before merge to prod

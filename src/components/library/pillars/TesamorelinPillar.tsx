@@ -100,7 +100,7 @@ export function TesamorelinPillar() {
             Tesamorelin is notorious for being structurally delicate compared to other peptides. It is supplied as a lyophilized powder and is sensitive to temperature and agitation.
           </p>
           <p>
-            <strong>Storage Protocols:</strong> Lyophilized tesamorelin must be kept in the freezer (-20°C). Once reconstituted, the solution degrades rapidly and must be refrigerated (2°C to 8°C) and utilized within 14 days. If the solution becomes cloudy, it has denatured and must be discarded.
+            <strong>Storage:</strong> Lyophilized tesamorelin should be kept frozen (-20°C) in a sealed vial, protected from light.
           </p>
           <p>
             <em>Note on Sourcing:</em> Given its fragility, cold-chain handling and verified purity data matter for tesamorelin. PeptiDex&apos;s reference sample (batch 2604-AC-TESA) was sourced from <Link href="/vendors/amino-club" className="text-gold hover:underline">Amino Club</Link> for purity/cold-chain verification. Use the <Link href="/peptidex-coupon" className="text-gold hover:underline font-bold">PEPTIDEX coupon code</Link> for standard discounts.

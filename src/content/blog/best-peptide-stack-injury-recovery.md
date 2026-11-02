@@ -3,7 +3,7 @@ title: "Best Peptide Stack for Injury Recovery in 2026: A Research Guide"
 description: "A research review of the peptides most discussed for injury recovery. We examine the preclinical evidence on BPC-157, TB-500, and growth hormone secretagogues in tissue-repair models, and what has not been tested."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "Dr. E. Vance"
+author: "PeptiDex Editorial Team"
 readingTime: "17 Min Read"
 faqSchema: |
   {

@@ -3,7 +3,7 @@ title: "How to Read a Peptide COA: A Complete 2026 Analytical Guide"
 description: "A comprehensive guide on how to read a peptide Certificate of Analysis (COA). We explain HPLC purity, mass spectrometry, endotoxin testing, and how to spot forged documents."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "Dr. E. Vance"
+author: "PeptiDex Editorial Team"
 readingTime: "14 Min Read"
 faqSchema: |
   {

@@ -3,7 +3,7 @@ title: "Best Peptide Vendor 2026: Independently Reviewed & COA Verified"
 description: "We independently evaluate peptide vendors based on third-party COA testing, purity verification, shipping speed, and pricing. Updated monthly for 2026."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "Dr. E. Vance"
+author: "PeptiDex Editorial Team"
 readingTime: "16 Min Read"
 faqSchema: |
   {

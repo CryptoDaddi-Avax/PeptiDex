@@ -97,7 +97,7 @@ export function Bpc157Pillar() {
             <strong>Systemic vs. Local Administration:</strong> Preclinical studies have compared systemic and local administration in rodent injury models; see cited studies.
           </p>
           <p>
-            <strong>Storage Protocols:</strong> Lyophilized BPC-157 is stable at room temperature for weeks but should be frozen (-20°C) for long-term storage. Once reconstituted, store at 2°C to 8°C. It is remarkably stable in solution, retaining potency for upwards of 4-6 weeks.
+            <strong>Storage:</strong> Lyophilized BPC-157 is stable at room temperature for weeks but should be kept frozen (-20°C) for long-term storage, in a sealed vial protected from light.
           </p>
           <p>
             <em>Note on Sourcing:</em> PeptiDex&apos;s reference sample (batch 2604-AC-BPC) was sourced from <Link href="/vendors/amino-club" className="text-gold hover:underline">Amino Club</Link> for purity/cold-chain verification. Because BPC-157 is frequently counterfeited, third-party mass spectrometry data is the key item to check on any vendor&apos;s COA. The <Link href="/peptidex-coupon" className="text-gold hover:underline font-bold">PEPTIDEX coupon</Link> applies at checkout.

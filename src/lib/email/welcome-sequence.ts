@@ -199,6 +199,7 @@ export function email4_verifyVendor(firstName = "there") {
     ])}
     ${p(`Compare vendors side by side on the <a href="https://peptidex.app/vendors" style="color:#16a34a;">PeptiDex vendor reviews</a> page.`)}
     ${divider()}
+    ${p(`Comparing prices? The <a href="https://peptidex.app/tools/pricing" style="color:#16a34a;">PeptiDex price comparison</a> shows each vendor's price with current coupon codes applied, and its cart optimizer finds the lowest-cost vendor and vial mix for the vials you add.`)}
     ${p(`Current coupon: <strong>${promo.vendorName}</strong> — code <strong>${promo.code}</strong> takes ${promo.discountPercent}% off at checkout. <a href="${promoUrl}" rel="sponsored nofollow" style="color:#16a34a;">Shop ${promo.vendorName}</a> (affiliate link).`)}
     ${p(`— The PeptiDex Research Team`)}
   `);

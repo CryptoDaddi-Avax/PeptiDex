@@ -119,7 +119,7 @@ export default async function BlendDetailPage({
         },
         audience: { "@type": "Audience", audienceType: "Research professionals" },
         lastReviewed: "2026-05-29",
-        reviewedBy: { "@type": "Organization", name: "PeptiDex Editorial Team", url: "https://peptidex.app/about" },
+        author: { "@type": "Organization", name: "PeptiDex Editorial Team", url: "https://peptidex.app/team/peptidex-research" },
     };
 
     const faqSchema = {

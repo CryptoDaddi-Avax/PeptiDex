@@ -23,19 +23,13 @@ export function AuthorBio({ name }: { name: string }) {
     .slice(0, 2)
     .toUpperCase();
 
-  const personSchema = {
+  const authorSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
+    '@type': 'Organization',
     name: displayName,
-    jobTitle: displayTitle,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'PeptiDex',
-      url: 'https://peptidex.app',
-    },
     description: displayBio,
-    url: `https://peptidex.app/about/${slug}`,
-    ...(author?.image ? { image: `https://peptidex.app${author.image}` } : {}),
+    url: `https://peptidex.app/team/${slug}`,
+    ...(author?.image ? { logo: `https://peptidex.app${author.image}` } : {}),
   };
 
   return (
@@ -46,7 +40,7 @@ export function AuthorBio({ name }: { name: string }) {
     }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
       />
       <h3 style={{
         fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.25em',

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Calendar, User, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Calendar, User } from 'lucide-react';
 import { getAuthorByName, getAuthorSlug } from '@/lib/authors';
 
 interface AuthorBylineProps {
@@ -30,12 +30,10 @@ export function AuthorByline({ name, date, variant = 'full', className = '' }: A
     .slice(0, 2)
     .toUpperCase();
 
-  const isPlaceholder = displayName.startsWith('[') && displayName.endsWith(']');
-
   // Variant A: Compact
   if (variant === 'compact') {
     return (
-      <div className={`flex flex-wrap items-center gap-3 text-sm text-zinc-400 ${className}`} itemScope itemType="https://schema.org/Person">
+      <div className={`flex flex-wrap items-center gap-3 text-sm text-zinc-400 ${className}`} itemScope itemType="https://schema.org/Organization">
         <div className="flex items-center gap-2">
           <User className="w-4 h-4 text-violet-400" aria-hidden="true" />
           <Link 
@@ -45,9 +43,6 @@ export function AuthorByline({ name, date, variant = 'full', className = '' }: A
           >
             <span itemProp="name">{displayName}</span>
           </Link>
-          {!isPlaceholder && (
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" aria-label="Verified author" />
-          )}
         </div>
         
         {date && (
@@ -68,20 +63,14 @@ export function AuthorByline({ name, date, variant = 'full', className = '' }: A
     <section 
       className={`rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 ${className}`}
       itemScope 
-      itemType="https://schema.org/Person"
+      itemType="https://schema.org/Organization"
     >
       <meta itemProp="name" content={displayName} />
-      <meta itemProp="jobTitle" content={displayTitle} />
       <meta itemProp="url" content={`https://peptidex.app/team/${slug}`} />
-      {displayImage && <meta itemProp="image" content={`https://peptidex.app${displayImage}`} />}
+      {displayImage && <meta itemProp="logo" content={`https://peptidex.app${displayImage}`} />}
       
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xs font-bold font-mono text-violet-400 tracking-widest uppercase">§ About the Author</span>
-        {!isPlaceholder && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">
-            <ShieldCheck className="w-3 h-3" /> Verified
-          </span>
-        )}
       </div>
 
       <div className="flex flex-col sm:flex-row items-start gap-5">

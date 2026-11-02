@@ -3,7 +3,7 @@ title: "Where to Buy Research Peptides Legally in 2026: A Complete Guide"
 description: "A comprehensive guide on where to buy research peptides legally in 2026. We explain the regulatory landscape, FDA guidelines, and how to source verified peptides safely."
 publishDate: "2026-04-30"
 lastReviewed: "2026-04-30"
-author: "Dr. E. Vance"
+author: "PeptiDex Editorial Team"
 readingTime: "18 Min Read"
 faqSchema: |
   {

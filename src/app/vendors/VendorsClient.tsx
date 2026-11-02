@@ -375,8 +375,8 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
               </h3>
               <p>
                 Most peptides are stable at room temperature when lyophilized (freeze-dried)
-                for short transit durations. However, reconstituted peptides and some
-                formulations require refrigeration. Verify with your chosen vendor whether
+                for short transit durations. However, some liquid formulations require
+                refrigeration. Verify with your chosen vendor whether
                 your specific compound ships with cold packs and whether the estimated
                 transit time is within the stability window for that formulation. Domestic
                 US orders from the vendors in this index typically arrive in 2–5 business

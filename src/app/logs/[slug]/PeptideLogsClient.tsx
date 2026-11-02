@@ -10,7 +10,6 @@ interface LogEntry {
     id: string;
     peptide_slugs: string[];
     vendor_slug: string;
-    duration_weeks: number | null;
     efficacy_score: number;
     side_effect_score: number;
     would_repeat: boolean;
@@ -142,11 +141,6 @@ export default function PeptideLogsClient({ peptideSlug, peptideName }: { peptid
                                             <span>{vendors.find(v => v.slug === log.vendor_slug)?.name}</span>
                                             {log.peptide_slugs.length > 1 && <span className="opacity-50">+{log.peptide_slugs.filter(s => s !== peptideSlug).map(s => peptides.find(p => p.slug === s)?.name || s).join(", ")}</span>}
                                         </div>
-                                        {log.duration_weeks && (
-                                            <div className="flex items-center gap-3 mt-1" style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-mute)" }}>
-                                                <span>{log.duration_weeks}wk</span>
-                                            </div>
-                                        )}
                                         {log.outcome_text && <p className="mt-2 text-sm" style={{ color: "var(--ink-dim)", fontFamily: "var(--serif)", fontStyle: "italic" }}>&quot;{log.outcome_text.substring(0, 200)}{log.outcome_text.length > 200 ? "..." : ""}&quot;</p>}
                                     </div>
                                     <div className="flex items-center gap-4 shrink-0">

@@ -31,7 +31,6 @@ export default function LogProtocolClient() {
   const [peptideSearch, setPeptideSearch] = useState("");
   const [vendorSlug, setVendorSlug] = useState("");
   const [route, setRoute] = useState("");
-  const [durationWeeks, setDurationWeeks] = useState(8);
   const [goalSlug, setGoalSlug] = useState("");
   const [startDate, setStartDate] = useState("");
 
@@ -75,7 +74,6 @@ export default function LogProtocolClient() {
           peptide_slugs: selectedPeptides,
           vendor_slug: vendorSlug,
           route: route || null,
-          duration_weeks: durationWeeks,
           goal_slug: goalSlug || null,
           efficacy_score: efficacy,
           side_effect_score: sideEffectScore,
@@ -201,12 +199,6 @@ export default function LogProtocolClient() {
             </div>
 
             <div style={cardStyle}>
-              <label style={labelStyle}>Duration (weeks)</label>
-              <input type="range" min={1} max={24} value={durationWeeks} onChange={e => setDurationWeeks(parseInt(e.target.value))} className="w-full accent-amber-500" />
-              <div style={{ fontFamily: "var(--mono)", fontSize: 14, color: "var(--gold)", textAlign: "center", marginTop: 4 }}>{durationWeeks} weeks</div>
-            </div>
-
-            <div style={cardStyle}>
               <label style={labelStyle}>Route of administration</label>
               <div className="flex flex-wrap gap-2">
                 {ROUTES.map(r => (<button key={r} onClick={() => setRoute(r)} style={chipStyle(route === r)}>{r.toUpperCase()}</button>))}
@@ -313,7 +305,6 @@ export default function LogProtocolClient() {
                 <div className="flex justify-between"><span>Peptide(s)</span><span style={{ color: "var(--gold)" }}>{selectedPeptides.map(s => peptides.find(p => p.slug === s)?.name || s).join(" + ")}</span></div>
                 <div className="flex justify-between"><span>Vendor</span><span style={{ color: "var(--ink)" }}>{vendors.find(v => v.slug === vendorSlug)?.name}</span></div>
                 {route && <div className="flex justify-between"><span>Route</span><span>{route.toUpperCase()}</span></div>}
-                <div className="flex justify-between"><span>Duration</span><span>{durationWeeks} weeks</span></div>
                 <hr style={{ borderColor: "var(--line)" }} />
                 <div className="flex justify-between"><span>Efficacy</span><span style={{ color: "var(--gold)", fontWeight: 700 }}>{efficacy}/10</span></div>
                 <div className="flex justify-between"><span>Side Effects</span><span style={{ color: sideEffectScore <= 3 ? "var(--green)" : "var(--amber)", fontWeight: 700 }}>{sideEffectScore}/10</span></div>

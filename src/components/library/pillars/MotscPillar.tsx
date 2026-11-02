@@ -92,7 +92,7 @@ export function MotscPillar() {
             MOTS-c is a 16-amino acid mitochondrial-derived peptide supplied as a lyophilized powder. Like most research peptides, it is sensitive to heat and should be kept cold.
           </p>
           <p>
-            <strong>Storage Protocols:</strong> Lyophilized MOTS-c should be stored at -20°C. Once reconstituted, store at 2°C to 8°C and use within 14 to 20 days.
+            <strong>Storage:</strong> Lyophilized MOTS-c should be stored at -20°C in a sealed vial, protected from light.
           </p>
           <p>
             <em>Note on Sourcing:</em> High-purity MOTS-c can be difficult to synthesize, so batch-level HPLC/MS data matter. PeptiDex&apos;s reference sample (batch 2604-AC-MOTS) was sourced from <Link href="/vendors/amino-club" className="text-gold hover:underline">Amino Club</Link> for purity/cold-chain verification. The <Link href="/peptidex-coupon" className="text-gold hover:underline font-bold">PEPTIDEX coupon</Link> applies to their metabolic catalog.

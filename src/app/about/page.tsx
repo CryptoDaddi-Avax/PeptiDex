@@ -126,10 +126,7 @@ export default function AboutPage() {
         </p>
         <ul>
           <li>
-            <Link href="/team/peptidex-research" className="text-emerald-400 font-bold hover:underline">PeptiDex Research Team</Link> — Our core editorial staff responsible for vendor verification, data aggregation, and library curation.
-          </li>
-          <li>
-            <Link href="/team/dr-e-vance" className="text-emerald-400 font-bold hover:underline">Dr. E. Vance, PhD</Link> — Independent contributor and principal author of our educational library.
+            <Link href="/team/peptidex-research" className="text-emerald-400 font-bold hover:underline">PeptiDex Editorial Team</Link> — Our core editorial staff responsible for vendor verification, data aggregation, and library curation.
           </li>
           <li>
             <span className="text-emerald-400 font-bold">Legal &amp; Compliance</span> — Manages our regulatory tracking and terms of service.

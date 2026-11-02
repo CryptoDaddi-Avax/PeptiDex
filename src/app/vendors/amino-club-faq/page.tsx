@@ -44,7 +44,7 @@ const faqs = [
   { q: 'How does Amino Club compare to Ascension Peptides?', a: "Both provide batch-specific testing and US-based shipping. Amino Club's website is often considered more user-friendly with easier access to COAs, while Ascension is a veteran favorite." },
   { q: 'Is my payment information secure?', a: 'Yes. They use standard, encrypted payment processors. Your credit card information is not stored directly on their servers.' },
   { q: 'What if my package is lost in transit?', a: 'If tracking shows the package is lost (not marked as delivered), contact their customer support. They typically work with the carrier to locate it or issue a replacement.' },
-  { q: 'How should I store peptides purchased from Amino Club?', a: 'Lyophilized (freeze-dried) powder should be stored in a freezer away from light. Once reconstituted, they must be stored in a refrigerator (usually between 36°F and 46°F).' },
+  { q: 'How should I store peptides purchased from Amino Club?', a: 'Lyophilized (freeze-dried) powder should be stored sealed in a freezer, away from light.' },
   { q: "Can I trust their Trustpilot reviews?", a: "Yes. Trustpilot uses automated algorithms and manual moderation to detect fake reviews. Amino Club's rating (over 4.5 stars with 87+ reviews) is a strong indicator of reliable service." },
 ];
 

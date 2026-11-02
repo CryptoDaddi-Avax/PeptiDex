@@ -79,7 +79,7 @@ export default function BestGoalClient({ slug }: BestGoalClientProps) {
                         <SaveButton type="goal" slug={slug} title={goal.h1} />
                     </div>
 
-                    <AuthorByline name="Dr. E. Vance" date={LAST_REVIEWED_DATE} variant="compact" className="justify-center mt-6 mb-2" />
+                    <AuthorByline name="PeptiDex Editorial Team" date={LAST_REVIEWED_DATE} variant="compact" className="justify-center mt-6 mb-2" />
 
                     <p className="goal-page-subtitle">{goal.intro}</p>
                     <div className="goal-page-meta">
