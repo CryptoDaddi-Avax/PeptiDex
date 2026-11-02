@@ -94,7 +94,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
 
           {/* 2-sentence subhead — must include "where to buy peptides" */}
           <p className="vn-subtitle">
-            Our independent editorial team has tested and ranked the best{' '}
+            PeptiDex has compared and ranked the best{' '}
             <strong>where to buy peptides online</strong> options in 2026 — every vendor
             in this index provides a batch-specific Certificate of Analysis verified by
             HPLC and Mass Spectrometry. Use the comparison table below to find the best

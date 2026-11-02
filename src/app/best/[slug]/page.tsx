@@ -65,14 +65,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             "@type": "MedicalSignOrSymptom",
             name: s,
         })),
-        possibleTreatment: peptides.map((p) => ({
-            "@type": "Drug",
-            name: p!.name,
-            url: `https://peptidex.app/library/${p!.slug}`,
-            description: p!.laypersonSummary || p!.mechanism.slice(0, 150),
-            drugClass: p!.category,
-            ...(p!.is_fda_approved ? {} : { legalStatus: "Research Compound (Not FDA Approved)" }),
-        })),
     } : null;
 
     const articleSchema = {

@@ -221,7 +221,7 @@ export default function MethodologyPage() {
           </div>
           <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-6 space-y-4">
             <p className="text-zinc-300 leading-relaxed">
-              PeptiDex is a self-funded, independent publication. We do not charge for access, and we do not accept payment for vendor placement, compound coverage, or favorable editorial treatment.
+              PeptiDex is an independent, affiliate-funded publication. We do not charge for access, and we do not accept payment for vendor placement, compound coverage, or favorable editorial treatment.
             </p>
             <p className="text-zinc-300 leading-relaxed">
               We earn a small affiliate commission when readers click through to verified vendors and make a qualifying purchase. This commission comes from the vendor, not from you, and does not affect the price you pay.
