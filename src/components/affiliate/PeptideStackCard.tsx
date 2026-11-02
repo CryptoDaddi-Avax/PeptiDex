@@ -8,6 +8,7 @@ import type { PromoSurface } from "@/lib/promos/affiliateUrl";
 import { RoleBadge } from "./atoms/RoleBadge";
 import { CopyCodeButton } from "./atoms/CopyCodeButton";
 import { VendorDot } from "./atoms/VendorDot";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Props ───────────────────────────────────────────────────────────────────
 
@@ -86,6 +87,7 @@ export function PeptideStackCard({
                 </span>
               )}
               <span className="text-[10px] text-zinc-600">at {cheapest.vendor.name}</span>
+              <FounderOwnershipDisclosure vendorSlug={cheapest.vendor.slug} variant="inline" />
             </div>
 
             {/* CTA */}

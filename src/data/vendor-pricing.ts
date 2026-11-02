@@ -27,10 +27,32 @@ export interface PeptideVendorPricing {
  */
 export const PRICES_LAST_CHECKED = "2026-05-09";
 
-export const PRICES_LAST_CHECKED_LABEL = new Date(`${PRICES_LAST_CHECKED}T00:00:00Z`).toLocaleDateString(
-    "en-US",
-    { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }
-);
+export const PRICES_LAST_CHECKED_LABEL = formatCheckedDate(PRICES_LAST_CHECKED);
+
+/**
+ * Vendors whose prices were checked on a different date than PRICES_LAST_CHECKED.
+ * Elyria Bio: read from elyriabio.com's own price/stock data.
+ */
+export const PRICES_CHECKED_BY_VENDOR: Record<string, string> = {
+    "Elyria Bio": "2026-11-02",
+};
+
+/** YYYY-MM-DD the given vendor's prices were last checked. */
+export function pricesCheckedFor(vendor: string): string {
+    return PRICES_CHECKED_BY_VENDOR[vendor] ?? PRICES_LAST_CHECKED;
+}
+
+/** "May 9, 2026" — the given vendor's last price-check date. */
+export function pricesCheckedLabel(vendor: string): string {
+    return formatCheckedDate(pricesCheckedFor(vendor));
+}
+
+function formatCheckedDate(day: string): string {
+    return new Date(`${day}T00:00:00Z`).toLocaleDateString(
+        "en-US",
+        { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }
+    );
+}
 
 export const vendorPricing: PeptideVendorPricing[] = 
 [
@@ -62,6 +84,13 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "lastTestedDate": "2026-05-08"
+            },
+            {
+                "vendor": "Elyria Bio",
+                "price_usd": 29.99,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://elyriabio.com/products/bpc-157.html?ref=PEPTIDEX"
             }
         ]
     },
@@ -91,6 +120,13 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "lastTestedDate": "2026-05-08"
+            },
+            {
+                "vendor": "Elyria Bio",
+                "price_usd": 39.99,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://elyriabio.com/products/tb-500.html?ref=PEPTIDEX"
             }
         ]
     },
@@ -244,6 +280,13 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "inStock": true,
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "lastTestedDate": "2026-05-08"
+            },
+            {
+                "vendor": "Elyria Bio",
+                "price_usd": 50.99,
+                "vial_mg": 10,
+                "inStock": true,
+                "affiliateUrl": "https://elyriabio.com/products/tesamorelin.html?ref=PEPTIDEX"
             }
         ]
     },
@@ -287,6 +330,13 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "badge": "Triple-Tested",
                 "lastTestedDate": "2026-05-08"
+            },
+            {
+                "vendor": "Elyria Bio",
+                "price_usd": 68.99,
+                "vial_mg": 40,
+                "inStock": false,
+                "affiliateUrl": "https://elyriabio.com/products/mots-c.html?ref=PEPTIDEX"
             }
         ]
     },
@@ -406,6 +456,13 @@ export const vendorPricing: PeptideVendorPricing[] =
         "slug": "ss-31",
         "name": "SS-31",
         "vendors": [
+            {
+                "vendor": "Elyria Bio",
+                "price_usd": 34.99,
+                "vial_mg": 10,
+                "inStock": false,
+                "affiliateUrl": "https://elyriabio.com/products/ss-31.html?ref=PEPTIDEX"
+            }
         ]
     },
     {
@@ -541,6 +598,13 @@ export const vendorPricing: PeptideVendorPricing[] =
                 "affiliateUrl": "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
                 "badge": "Triple-Tested",
                 "lastTestedDate": "2026-05-08"
+            },
+            {
+                "vendor": "Elyria Bio",
+                "price_usd": 35.99,
+                "vial_mg": 5,
+                "inStock": true,
+                "affiliateUrl": "https://elyriabio.com/products/kisspeptin.html?ref=PEPTIDEX"
             }
         ]
     },

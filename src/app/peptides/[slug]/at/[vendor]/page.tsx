@@ -8,7 +8,7 @@ import { generatePseoSchema } from "@/lib/pseo-schema";
 import { PeptideVendorContent } from "./PeptideVendorContent";
 import { PeptideVendorLogsClient } from "./PeptideVendorLogsClient";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
-import { PRICES_LAST_CHECKED_LABEL } from "@/data/vendor-pricing";
+import { pricesCheckedLabel } from "@/data/vendor-pricing";
 import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Static Params ────────────────────────────────────────────────────────────
@@ -129,7 +129,7 @@ export default async function PeptideAtVendorPage({
                                     <> · {vendorObj.discountPercent}% off with code {vendorObj.discountCode}</>
                                 )}
                                 {" "}· {vendorObj.purity} purity · {vendorObj.coaStatus}
-                                {" "}· Prices checked: {PRICES_LAST_CHECKED_LABEL}
+                                {" "}· Prices checked: {pricesCheckedLabel(vendorObj.name)}
                             </>
                         ) : (
                             <>Community batch reports for {peptide.name} from {vendorObj.name}. Research use only.</>

@@ -19,7 +19,7 @@ import { vendorCartConfigs } from "@/data/vendor-cart-config";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
-import { PRICES_LAST_CHECKED_LABEL } from "@/data/vendor-pricing";
+import { pricesCheckedLabel } from "@/data/vendor-pricing";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -395,7 +395,7 @@ export function PeptideVendorContent({ pair }: Props) {
       <div style={{ padding: 16, borderRadius: 12, background: "rgba(201,169,97,0.04)", border: "1px solid rgba(201,169,97,0.12)", marginBottom: 32 }}>
         <p style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--ink-mute)", lineHeight: 1.7 }}>
           ⚠ PeptiDex earns affiliate commissions on purchases made through links on this page.
-          Prices checked: {PRICES_LAST_CHECKED_LABEL}.
+          Prices checked: {pricesCheckedLabel(vendor.name)}.
           The criteria score reflects {vendor.name} as a vendor, not this product.
           This is not medical advice. Peptides are sold for research purposes only.
         </p>
