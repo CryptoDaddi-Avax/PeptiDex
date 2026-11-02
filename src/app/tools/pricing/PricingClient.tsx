@@ -491,8 +491,8 @@ export default function PricingClient() {
           <div className="prc-disclaimer fade-up">
             <Info />
             <p>
-              Prices are sourced directly from vendor websites and updated periodically. All listed vendors
-              are independently verified with third-party Certificates of Analysis. Prices may change —
+              Prices are sourced directly from vendor websites and checked periodically. Listed vendors
+              state that they provide Certificates of Analysis; PeptiDex does not test products. Prices may change —
               always confirm at checkout.{" "}
               <Link href="/about/editorial-policy" style={{ color: 'var(--gold)' }}>
                 How we verify pricing →

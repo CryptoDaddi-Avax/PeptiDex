@@ -117,13 +117,13 @@ When conducting an in-vitro assay or animal study with secretagogues, verifying 
 
 As we covered in our guide on [Where to Buy Research Peptides Legally](/blog/where-to-buy-research-peptides-legally), researchers should require batch-specific testing from independent third-party laboratories.
 
-### Our Recommended Vendor: Elyria Bio
+### Sourcing: Elyria Bio (owned by PeptiDex's founder)
 
 If you require unbranded analytical standards of CJC-1295, Ipamorelin, or IGF-1 LR3 for research, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>.
 
-Elyria Bio is one of the few domestic chemical suppliers that provides full MZ Biolabs or Janoshik Analytical documentation for every batch, covering identity, purity and contaminants.
+Per Elyria Bio, every batch ships with a COA from an independent US lab covering HPLC purity and mass-spec identity.
 
-By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, your laboratory can secure 10% off research-grade, COA-verified compounds. All products are sold for research use only, not for human consumption.
+By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, your laboratory can secure 10% off research-grade, COA-verified compounds. All products are sold for research use only, not for human consumption.
 
 ## 3. The Growth Factors: IGF-1 LR3 and PEG-MGF
 

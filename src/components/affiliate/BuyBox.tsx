@@ -278,7 +278,7 @@ function EmptyState({ peptideName, peptideSlug }: { peptideName: string; peptide
             Sourcing data for <strong className="text-zinc-300">{peptideName}</strong> is updating.
           </p>
           <p className="text-[10px] text-zinc-600 mt-1">
-            We verify new listings weekly — check back soon.
+            Check back soon.
           </p>
         </div>
       </div>

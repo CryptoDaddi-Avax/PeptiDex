@@ -270,7 +270,7 @@ export function COABadge({
                                         </a>
 
                                         <p className="text-[10px] text-zinc-600 text-center italic">
-                                            PeptiDex independently verifies COA documentation. Vendors with verified reports receive the green &quot;Lab Purity Verified&quot; badge.
+                                            COA data shown is supplied by vendors. PeptiDex does not test products.
                                         </p>
                                     </div>
                                 )}

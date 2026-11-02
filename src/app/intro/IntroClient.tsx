@@ -48,7 +48,7 @@ const practicalLessons = [
 const sourcingLessons = [
   { num: '§ Lesson 01', title: 'What is a COA?', desc: 'Certificate of Analysis explained — HPLC, Mass Spec, what purity means.', href: '#' },
   { num: '§ Lesson 02', title: 'Vendor red flags', desc: 'Fake COAs, rebranded generics, and the warning signs.', href: '#' },
-  { num: '§ Lesson 03', title: 'Verified vendors', desc: 'Our independently verified vendor index with COA and pricing data.', href: '/vendors' },
+  { num: '§ Lesson 03', title: 'Vendors', desc: 'Vendor index scored on published criteria, with COA and pricing data.', href: '/vendors' },
   { num: '§ Lesson 04', title: 'Legal status (US)', desc: 'Research-use-only vs prescription status — the regulatory reality.', href: '#' },
   { num: '§ Lesson 05', title: 'International shipping', desc: 'Customs, import laws, and jurisdiction-specific considerations.', href: '#' },
 ];

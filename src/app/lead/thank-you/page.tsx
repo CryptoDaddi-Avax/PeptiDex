@@ -52,7 +52,7 @@ export default function ThankYouPage() {
                         Ready to Source These Peptides?
                     </h3>
                     <p className="text-sm text-zinc-400 leading-relaxed mb-5">
-                        Every stack in the cheat sheet requires verified, high-purity compounds. Our #1 recommended vendor, <strong className="text-zinc-200">Amino Club</strong>, provides batch-specific third-party COAs with ≥99% purity on every product.
+                        Every stack in the cheat sheet requires verified, high-purity compounds. <strong className="text-zinc-200">Amino Club</strong>, the top-scoring vendor on our <Link href="/about/methodology#vendor-ranking" className="underline">published criteria</Link>, states it provides batch-specific third-party COAs with ≥99% purity.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
                         <a
@@ -91,7 +91,7 @@ export default function ThankYouPage() {
 
             {/* Affiliate disclosure */}
             <p className="text-[10px] text-zinc-600 text-center max-w-md mx-auto">
-                PeptiDex may earn a commission from purchases made through affiliate links. This does not affect our editorial independence or recommendations.
+                PeptiDex earns commission from vendor links, and PeptiDex&apos;s founder owns Elyria Bio. Vendors are ranked only on our published criteria.
             </p>
         </div>
     );

@@ -58,7 +58,7 @@ At the end of every response that recommends or discusses a SPECIFIC peptide by 
 
 1. Separate the sourcing section from your educational response with a horizontal rule (---).
 2. For each specific peptide discussed, include a line in this exact markdown format:
-   **Source COA-verified [Peptide Name]:** [Amino Club — PeptiDex Editor's Choice](PRODUCT_URL) · ✓ Third-party tested · ✓ 99%+ purity
+   **Source COA-verified [Peptide Name]:** [Amino Club](PRODUCT_URL) · ✓ Third-party COAs (per vendor) · ✓ 99%+ purity claim
 
 3. Use the AMINO CLUB PRODUCT URL MAP below to find the correct product-specific link. Append ?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=ai_chat&code=PEPTIDEX to each URL.
 4. If multiple peptides are discussed, list EACH ONE on its own line with its specific product link.

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import './disclaimer-redesign.css';
 import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
+import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
 
 export const metadata: Metadata = {
   title: 'Medical Disclaimer — PeptiDex Research Index',
@@ -96,9 +97,18 @@ export default function DisclaimerPage() {
           intended for authorized laboratory, educational, and research purposes only.
         </p>
         <p>
-          PeptiDex may earn affiliate commission on qualifying purchases through links to verified vendors.
-          This is disclosed in compliance with FTC guidelines and does not affect our editorial process or
-          vendor ranking.
+          {RANKING_DISCLOSURE} This is disclosed in compliance with FTC guidelines. Vendors are ranked on
+          these criteria, using each vendor&apos;s own published information and our checked list prices
+          (PeptiDex does not test products):
+        </p>
+        <ul>
+          {RANKING_CRITERIA.map((c) => (
+            <li key={c.key}><strong>{c.label} ({c.max} points):</strong> {c.rule}</li>
+          ))}
+        </ul>
+        <p>
+          Every vendor&apos;s current score is on <Link href="/vendors#how-we-rank">/vendors</Link>; full rules are on
+          our <Link href="/about/methodology#vendor-ranking">methodology page</Link>.
         </p>
         <p>
           <strong>Material connection:</strong> {FOUNDER_OWNERSHIP_DISCLOSURE}

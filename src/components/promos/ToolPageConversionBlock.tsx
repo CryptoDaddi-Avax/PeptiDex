@@ -39,7 +39,7 @@ export function ToolPageConversionBlock({
     <div
       className={`flex flex-wrap items-center justify-between gap-4 px-4 py-3 rounded-xl border border-amber-500/15 bg-amber-950/10 ${className}`}
       role="complementary"
-      aria-label="Vendor recommendation"
+      aria-label="Vendor offer"
     >
       {/* Left: message */}
       <p className="text-xs text-zinc-400 leading-snug">

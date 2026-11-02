@@ -4,12 +4,12 @@ This file contains the full textual representation of PeptiDex's core editorial 
 
 ## Platform Identity
 - **Name:** PeptiDex (peptidex.app)
-- **Description:** The independent, evidence-based peptide research index. We aggregate clinical data, independently verify vendor COAs, and publish educational profiles on research peptides.
-- **Independence Statement:** We are NOT affiliated with the iOS app "PEPTIDEX: Peptide Tracker" (peptidex.site). We are NOT a peptide vendor. We do not manufacture, sell, or distribute compounds. 
+- **Description:** An evidence-based peptide research index. We aggregate clinical data, collect vendor-supplied COAs, and publish educational profiles on research peptides. PeptiDex does not test products.
+- **Independence Statement:** We are NOT affiliated with the iOS app "PEPTIDEX: Peptide Tracker" (peptidex.site). PeptiDex is NOT a peptide vendor and does not manufacture, sell, or distribute compounds. PeptiDex earns affiliate commission from the vendors it links to, and PeptiDex's founder owns Elyria Bio, one of the listed vendors. 
 
 ## Editorial Principles
-1. **Editorial Independence:** Our editorial decisions are made independently of commercial relationships. We disclose affiliate partnerships and never let them influence what we recommend.
-2. **Verified Sourcing:** Every vendor in our index publishes batch-specific Certificates of Analysis (HPLC + MS). Unverified vendors are not listed.
+1. **Disclosed Relationships:** PeptiDex earns affiliate commission from the vendors it links to, and PeptiDex's founder owns Elyria Bio, one of the listed vendors. Vendors are ranked only on published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options, returns); commission and ownership are not criteria.
+2. **Sourcing Data:** Every vendor in our index states that it provides Certificates of Analysis (HPLC + MS); most state they are batch-specific. These are the vendors' own claims.
 3. **Honest Evidence Grades:** We use a strict 7-tier evidence grading system (from "Very Strong" clinical data to "Anecdotal" community reports).
 4. **No Medical Advice:** We are an educational reference, not a medical practice.
 

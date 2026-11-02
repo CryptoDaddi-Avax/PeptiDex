@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import './about-redesign.css';
 import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
+import { RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
 
 
 export const metadata: Metadata = {
@@ -153,8 +154,8 @@ export default function AboutPage() {
         <div className="principles">
           <div className="principle">
             <div className="num">§ 01</div>
-            <h4>Editorial independence</h4>
-            <p>Our editorial decisions are made independently of commercial relationships. We disclose affiliate partnerships and never let them influence what we recommend. If a vendor&apos;s quality drops, we report it. If independent lab data reveals impurities, we publish it unfiltered. Our loyalty is to the research community, not to the suppliers.</p>
+            <h4>Disclosed relationships</h4>
+            <p>We earn affiliate commission from the vendors we list, and PeptiDex&apos;s founder owns Elyria Bio. We disclose both, and vendors are ranked only on our <Link href="/about/methodology#vendor-ranking">published criteria</Link>. If a vendor&apos;s quality drops, we report it. If third-party lab data reveals impurities, we publish it unfiltered. Our loyalty is to the research community, not to the suppliers.</p>
           </div>
           <div className="principle">
             <div className="num">§ 02</div>
@@ -198,8 +199,7 @@ export default function AboutPage() {
         </p>
 
         <p className="affiliate-note">
-          PeptiDex is independent and affiliate-funded. We may earn affiliate commission on qualifying purchases through
-          links to verified vendors — this disclosure is required by FTC guidelines and does not affect our editorial.
+          PeptiDex is affiliate-funded. {RANKING_DISCLOSURE} This disclosure is required by FTC guidelines.
           {' '}{FOUNDER_OWNERSHIP_DISCLOSURE}
         </p>
       </div>

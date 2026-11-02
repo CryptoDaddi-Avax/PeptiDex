@@ -125,9 +125,9 @@ Vendor marketing is not evidence. Researchers should require batch-specific Cert
 
 If your laboratory requires analytical standards of BPC-157, TB-500, or CJC-1295, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>.
 
-Elyria Bio is our top-rated vendor for 2026 because it provides independent third-party documentation for every compound it sells, which simplifies verification when a study uses several compounds.
+Elyria Bio (owned by PeptiDex's founder) states that it provides independent third-party documentation for every compound it sells, which simplifies verification when a study uses several compounds.
 
-Through <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a>, researchers can get 10% off research-grade, COA-verified compounds. All products are sold for research use only, not for human consumption.
+Through <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, researchers can get 10% off research-grade, COA-verified compounds. All products are sold for research use only, not for human consumption.
 
 ---
 

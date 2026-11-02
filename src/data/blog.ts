@@ -233,9 +233,9 @@ export const blogPosts: BlogPost[] = [
     tags: ['ipamorelin', 'cjc-1295', 'growth hormone', 'stacking', 'ghrp', 'ghrh'],
   },
   {
-    title: 'Best Peptide Vendor 2026: Independently Reviewed & COA Verified',
+    title: 'Best Peptide Vendor 2026: Vendors Scored on Published Criteria',
     slug: 'best-peptide-vendor-2026',
-    excerpt: 'We independently evaluate peptide vendors based on third-party COA testing, purity verification, shipping speed, and pricing. Updated monthly for 2026.',
+    excerpt: 'Peptide vendors scored on six published criteria: COA availability, third-party lab testing, price per mg, shipping, payment options and returns. PeptiDex does not test products.',
     category: 'Industry Analysis',
     datePublished: '2026-04-30',
     dateModified: '2026-04-30',

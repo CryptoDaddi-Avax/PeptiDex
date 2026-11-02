@@ -26,7 +26,7 @@ export default function Footer() {
 
       <footer className="site-footer">
         <p className="affiliate-disclosure">
-          <strong>Affiliate Disclosure:</strong> Some links earn PeptiDex a small commission at no extra cost to you. This keeps the site free and ad-free. We only feature products we&apos;ve independently verified.
+          <strong>Affiliate Disclosure:</strong> Some links earn PeptiDex a small commission at no extra cost to you. This keeps the site free and ad-free. PeptiDex&apos;s founder owns Elyria Bio; vendors are ranked only on our published criteria.
         </p>
         <div className="footer-inner">
           <p className="footer-tagline">The independent, evidence-based peptide research index.</p>

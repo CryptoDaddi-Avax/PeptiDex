@@ -50,7 +50,7 @@ export function Footer() {
           <div className="md:col-span-1 space-y-4">
             <h3 className="text-xl font-bold text-zinc-100">PeptiDex</h3>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              The independent, evidence-based peptide research index. Trusted by researchers worldwide.
+              An evidence-based peptide research index. Affiliate-funded; see our disclosures.
             </p>
           </div>
 

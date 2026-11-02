@@ -128,7 +128,7 @@ export default async function BuyPeptidePage({ params }: { params: Promise<{ slu
         </div>
 
         <article className="prose prose-invert prose-violet max-w-none mb-16">
-          <h2>How We Verify {peptide.name} Purity</h2>
+          <h2>How to Check {peptide.name} Purity</h2>
           <p>
             Because {peptide.name} is often sold as a research chemical, it is not subject to FDA 
             manufacturing oversight. This means the market is flooded with under-dosed, impure, or completely 
