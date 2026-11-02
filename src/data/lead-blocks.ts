@@ -42,7 +42,7 @@ export const leadBlockOverrides: Record<string, LeadBlock> = {
   'cjc-1295': {
     intent: 'high',
     wordCount: 55,
-    text: `CJC-1295 is a GHRH analog studied for sustained GH release and often discussed alongside ipamorelin; the DAC version binds albumin, extending its half-life to 6-8 days. PeptiDex index price: Amino Club, $47.99 per 10mg vial with code PEPTIDEX (20% off, $4.80/mg), currently the only gold-tier vendor stocking CJC-1295 in the PeptiDex index. Research use only.`,
+    text: `CJC-1295 is a GHRH analog studied for sustained GH release and often discussed alongside ipamorelin; the DAC version binds albumin, extending its half-life to 6-8 days. PeptiDex index price: Amino Club, $47.99 per 10mg vial with code PEPTIDEX (20% off, $4.80/mg). Research use only.`,
   },
 
   'ipamorelin': {

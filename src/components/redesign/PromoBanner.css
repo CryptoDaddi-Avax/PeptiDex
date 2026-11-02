@@ -13,6 +13,7 @@
   width: 100%;
   min-height: 40px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   background: var(--ink-2, #12151A);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -159,6 +160,14 @@
 .promo-dismiss svg {
   width: 14px;
   height: 14px;
+}
+
+/* founder-ownership disclosure line under the promo row */
+.promo-disclosure {
+  max-width: 1240px;
+  width: 100%;
+  text-align: center;
+  color: var(--ink-dim, #a1a1aa);
 }
 
 /* ---------- MOBILE ---------- */

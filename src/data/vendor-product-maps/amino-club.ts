@@ -38,7 +38,7 @@ export const aminoClubProductMap: Record<string, AminoClubProduct> = {
   "aod-9604": { urlSlug: "aod-9604", displayName: "AOD-9604", vialSizeMg: 5, priceUsd: 49.99, lastVerifiedAt: "2026-05-10" },
   "tesamorelin": { urlSlug: "tesamorelin", displayName: "Tesamorelin", vialSizeMg: 10, priceUsd: 69.99, lastVerifiedAt: "2026-05-10" },
   "kpv": { urlSlug: "kpv", displayName: "KPV", vialSizeMg: 10, priceUsd: 39.99, lastVerifiedAt: "2026-05-10" },
-  "nad-": { urlSlug: "nad", displayName: "NAD+", vialSizeMg: 500, priceUsd: 69.99, lastVerifiedAt: "2026-05-10" },
+  "nad": { urlSlug: "nad", displayName: "NAD+", vialSizeMg: 500, priceUsd: 69.99, lastVerifiedAt: "2026-05-10" },
   "glutathione": { urlSlug: "glutathione", displayName: "Glutathione", vialSizeMg: 1500, priceUsd: 59.99, lastVerifiedAt: "2026-05-10" },
   "igf-1-lr3": { urlSlug: "igf-1-lr3", displayName: "IGF-1 LR3", vialSizeMg: 1, priceUsd: 69.99, lastVerifiedAt: "2026-05-10" },
   "ghrp-2": { urlSlug: "ghrp-2", displayName: "GHRP-2", vialSizeMg: 5, priceUsd: 86.99, lastVerifiedAt: "2026-05-10" },

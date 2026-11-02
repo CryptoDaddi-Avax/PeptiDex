@@ -15,7 +15,7 @@ import { ShoppingBag, ShieldCheck } from "lucide-react";
 import { getPeptideByName } from "@/data/peptides";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { PRIMARY_PROMO, AMINO_PROMO, vendorLinkName } from "@/lib/promos/config";
 
 /* ──────── Quiz Data ──────── */
 
@@ -346,8 +346,10 @@ export default function QuizPage() {
                                         const slug = fullPeptide?.slug || p.name.toLowerCase().replace(/\s+/g, '-');
                                         const benefits = fullPeptide?.primary_benefits || p.role_in_stack;
                                         
+                                        // Amino product page when mapped, else the primary promo's store — label follows the destination
+                                        const destPromo = aminoClubProductMapping[slug] ? AMINO_PROMO : PRIMARY_PROMO;
                                         const baseUrl = aminoClubProductMapping[slug] || PRIMARY_PROMO.shopUrl;
-                                        const affiliateUrl = buildAffiliateUrl({ ...PRIMARY_PROMO, shopUrl: baseUrl }, "quiz_sourcing");
+                                        const affiliateUrl = buildAffiliateUrl({ ...destPromo, shopUrl: baseUrl }, "quiz_sourcing");
 
                                         return (
                                             <div key={slug} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 gap-4 hover:border-emerald-500/30 transition-colors">
@@ -362,7 +364,7 @@ export default function QuizPage() {
                                                     source="quiz_sourcing"
                                                     className="inline-flex items-center justify-center whitespace-nowrap gap-2 px-5 py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 font-semibold transition-colors text-sm border border-emerald-500/20 shrink-0"
                                                 >
-                                                    Buy from Amino Club <ArrowRight className="w-4 h-4" />
+                                                    Buy from {vendorLinkName(destPromo)} <ArrowRight className="w-4 h-4" />
                                                 </AffiliateLink>
                                             </div>
                                         );
@@ -379,11 +381,11 @@ export default function QuizPage() {
                                         source="quiz_full_stack_cta"
                                         className="inline-flex items-center justify-center w-full gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold transition-all shadow-lg hover:shadow-emerald-500/20 hover:brightness-110 text-base"
                                     >
-                                        Order Full Stack from Amino Club <ArrowRight className="w-5 h-5" />
+                                        Order Full Stack from {vendorLinkName(PRIMARY_PROMO)} <ArrowRight className="w-5 h-5" />
                                     </AffiliateLink>
                                     <div className="flex items-center justify-center gap-1.5 text-xs text-zinc-500 font-medium pb-2 text-center">
                                         <ShieldCheck className="w-4 h-4 text-emerald-400/70" />
-                                        Amino Club — PeptiDex Editor's Choice 2026 · COA verified · 99%+ purity
+                                        Full-stack link goes to {vendorLinkName(PRIMARY_PROMO)} · code {PRIMARY_PROMO.code} = {PRIMARY_PROMO.discountPercent}% off
                                     </div>
                                 </div>
                             </motion.div>

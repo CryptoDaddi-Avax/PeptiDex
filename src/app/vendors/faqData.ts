@@ -1,8 +1,11 @@
-import { vendors } from '@/data/vendors';
+import { injectableVendors, vendorsSorted } from '@/data/vendors';
 
-// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
-const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
-const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
+// ── Ranking lookups (order = published criteria score, src/lib/vendor-criteria.ts) ──
+const _top    = injectableVendors[0];
+const _second = injectableVendors[1];
+const _listed = vendorsSorted
+  .map((v) => `${v.name} (${v.criteria.total}/100${v.ownedByFounder ? ", owned by PeptiDex's founder" : ""}${v.category === 'oral' ? ", oral" : ""})`)
+  .join(", ");
 
 export interface FaqItem {
   q: string;
@@ -12,7 +15,7 @@ export interface FaqItem {
 export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   {
     q: "Where is the best place to buy peptides online?",
-    a: `Based on our independent 2026 evaluation, Amino Club is the best place to buy research peptides online. They offer batch-specific HPLC, Mass Spectrometry, and Endotoxin COAs, a 60-day money-back guarantee, and international shipping. Use code PEPTIDEX for ${_aminoClub.discountPercent}% off. Bio Longevity Labs is the top alternative with triple-layer testing and a stackable ${_bioLongevity.discountPercent}% discount. → Read our full ranking at peptidex.app/vendors`,
+    a: `On our published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options and returns), ${_top.name} scores highest at ${_top.criteria.total}/100, followed by ${_second.name} at ${_second.criteria.total}/100. Scores use each vendor's own published information; PeptiDex does not test products. Use code PEPTIDEX for ${_top.discountPercent}% off at ${_top.name} or ${_second.discountPercent}% off at ${_second.name}${_second.discountStackable ? ' (stacks with sales)' : ''}. PeptiDex earns affiliate commission from these vendors and its founder owns Elyria Bio. → See every score at peptidex.app/vendors`,
   },
   {
     q: "Are peptides legal to buy?",
@@ -28,7 +31,7 @@ export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Where can I buy peptides legally?",
-    a: "Research peptides can be purchased legally from specialized synthesis laboratories for laboratory use only. In the US, the top COA-verified vendors in our 2026 index are: Amino Club (Editor's Choice, ships internationally), Bio Longevity Labs (Triple-Tested, ships internationally), Limitless Life (USA-Made, 90+ compounds), Ascension Peptides, Pantheon Peptides, and LVLUP Health (oral specialist). All provide HPLC-verified COAs. → Full comparison at peptidex.app/vendors",
+    a: `Research peptides can be purchased legally from specialized synthesis laboratories for laboratory use only. The vendors in our 2026 index, in order of their published-criteria score, are: ${_listed}. Each states that it provides HPLC COAs. → Full comparison at peptidex.app/vendors`,
   },
   {
     q: "What is the difference between research peptides and pharmaceutical peptides?",

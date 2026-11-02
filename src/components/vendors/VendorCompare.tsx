@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Star, ArrowRight } from 'lucide-react';
 import { allVendorReviews } from '@/data/reviews';
+import { vendorBySlug } from '@/data/vendors';
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 interface VendorCompareProps {
   currentSlug: string;
@@ -8,13 +10,13 @@ interface VendorCompareProps {
 
 /**
  * Renders a "Compare to other vendors" block on vendor review pages.
- * Logic: sort all vendor reviews by overallRating desc, exclude current vendor, take top 3.
+ * Logic: active vendors in published-criteria rank order, excluding the current vendor, top 3.
  * Deterministic and content-driven — no randomness.
  */
 export function VendorCompare({ currentSlug }: VendorCompareProps) {
   const others = allVendorReviews
-    .filter((r) => r.slug !== currentSlug)
-    .sort((a, b) => b.overallRating - a.overallRating)
+    .filter((r) => r.slug !== currentSlug && vendorBySlug[r.slug] && vendorBySlug[r.slug].isActive !== false)
+    .sort((a, b) => vendorBySlug[a.slug].sortOrder - vendorBySlug[b.slug].sortOrder)
     .slice(0, 3);
 
   if (others.length === 0) return null;
@@ -35,8 +37,7 @@ export function VendorCompare({ currentSlug }: VendorCompareProps) {
             <div className="vr-compare-card-header">
               <span className="vr-compare-name">{vendor.name}</span>
               <span className="vr-compare-rating">
-                {vendor.overallRating.toFixed(1)}
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 inline ml-1" />
+                {vendorBySlug[vendor.slug].criteria.total}/100
               </span>
             </div>
             <div className="vr-compare-meta">
@@ -44,6 +45,7 @@ export function VendorCompare({ currentSlug }: VendorCompareProps) {
               <span className="vr-compare-dot" />
               <span>{vendor.coaType}</span>
             </div>
+            <FounderOwnershipDisclosure vendorSlug={vendor.slug} variant="inline" />
             <div className="vr-compare-cta">
               Read review <ArrowRight className="w-3.5 h-3.5" />
             </div>

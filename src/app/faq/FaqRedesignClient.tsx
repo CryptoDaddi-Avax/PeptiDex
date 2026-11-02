@@ -15,8 +15,8 @@ const FAQ_ITEMS = [
     answer: 'In the United States, research peptides exist in a regulatory gray area. They are legal to purchase and possess for research purposes, but it is illegal for vendors to market them for human consumption.',
   },
   {
-    question: 'How does PeptiDex verify vendors?',
-    answer: 'We require independent third-party Certificates of Analysis (COAs) from each vendor batch. We test purity via HPLC and Mass Spectrometry. Vendors are reviewed quarterly.',
+    question: 'How does PeptiDex rank vendors?',
+    answer: 'Vendors must state that they provide COAs with HPLC and Mass Spectrometry data. We score every vendor on six published criteria — COA availability, third-party lab testing, price per mg, shipping, payment options and returns — using their own published information. PeptiDex does not test products. PeptiDex earns affiliate commission and its founder owns Elyria Bio.',
   },
   {
     question: 'Is PeptiDex a medical authority?',

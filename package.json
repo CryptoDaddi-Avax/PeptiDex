@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/pmid-gate.mjs --diff",
+    "prebuild": "node scripts/pmid-gate.mjs --diff && node scripts/check-vendor-link-labels.mjs --source",
     "build": "node scripts/seo-lint.mjs && next build",
+    "postbuild": "node scripts/check-vendor-link-labels.mjs --html",
     "pmid:audit": "node scripts/pmid-gate.mjs",
 
     "start": "next start",

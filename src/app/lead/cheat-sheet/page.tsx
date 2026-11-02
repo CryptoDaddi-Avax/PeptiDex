@@ -131,7 +131,7 @@ export default function CheatSheetPage() {
                     Visit Amino Club — COA-Verified Peptides <ExternalLink className="w-4 h-4" />
                 </a>
                 <p className="text-[10px] text-zinc-600 mt-3">
-                    PeptiDex may earn a commission from purchases. This does not affect our editorial independence.
+                    PeptiDex earns commission from vendor links, and PeptiDex&apos;s founder owns Elyria Bio. Vendors are ranked only on our published criteria.
                 </p>
             </div>
 

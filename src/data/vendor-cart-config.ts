@@ -55,7 +55,7 @@ export const vendorCartConfigs: Record<string, VendorCartConfig> = {
     affiliateRootUrl: "https://elyriabio.com?ref=PEPTIDEX",
     utmParams: { utm_source: "peptidex", utm_medium: "cart_builder" },
     hasVariableProducts: false,
-    notes: "New #1 vendor — cart integration pending. Deep links to homepage only until product URL pattern is confirmed.",
+    notes: "Founder-owned vendor — cart integration pending. Deep links to homepage only until product URL pattern is confirmed.",
   },
 
   "ascension-peptides": {

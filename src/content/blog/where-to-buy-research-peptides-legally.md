@@ -169,7 +169,7 @@ After evaluating dozens of suppliers across our strict 5-point quality framework
 
 The most critical factor in our evaluation is transparency. We only recommend vendors who make their testing data publicly available, update their COAs for every new batch, and respond to inquiries regarding their laboratory testing methodology. 
 
-For a complete breakdown of our top-rated suppliers and a comparison of their shipping speeds, purity standards, and pricing, explore our curated list of <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">verified vendors with code PEPTIDEX</a> to ensure you are sourcing the highest quality materials while securing the best pricing for your lab.
+For a comparison of every vendor's shipping, testing and pricing, see our <a href="/vendors" className="font-bold text-emerald-400 underline">vendor comparison, scored on published criteria</a>. Code PEPTIDEX works at every vendor listed.
 
 For specific compounds like [BPC-157](/library/bpc-157) or [TB-500](/library/tb-500), sourcing verified, high-purity reagents is the absolute only way to ensure reproducible, scientifically valid experimental data.
 

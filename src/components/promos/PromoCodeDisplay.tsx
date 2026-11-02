@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Copy, Check, ExternalLink } from "lucide-react";
 import type { PromoCode } from "@/lib/promos/config";
+import { trackClick } from "@/lib/tracking/click";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from "@/lib/promos/affiliateUrl";
 import {
   trackPromoView,
@@ -66,6 +68,12 @@ export function PromoCodeDisplay({
   }
 
   function handleShopClick() {
+    trackClick({
+      peptide_slug: "general",
+      vendor_slug: promo.vendorSlug,
+      page_path: window.location.pathname,
+      surface: `promo_code_${surface}`,
+    });
     trackPromoClick({
       vendor: promo.gaKey,
       code: promo.code,
@@ -107,6 +115,7 @@ export function PromoCodeDisplay({
             <Copy className="w-3 h-3" />
           )}
         </button>
+        <FounderOwnershipDisclosure vendorSlug={promo.vendorSlug} variant="inline" style={{ flexBasis: "100%" }} />
       </span>
     );
   }
@@ -205,6 +214,8 @@ export function PromoCodeDisplay({
         Shop {promo.vendorName}
         <ExternalLink className="w-3.5 h-3.5" />
       </a>
+
+      <FounderOwnershipDisclosure vendorSlug={promo.vendorSlug} variant="inline" style={{ marginTop: 10, textAlign: "center" }} />
 
       {/* Affiliate disclosure */}
       <p className="text-[9px] text-zinc-600 text-center mt-3 leading-relaxed">

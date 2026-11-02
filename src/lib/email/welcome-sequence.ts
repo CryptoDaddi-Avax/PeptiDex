@@ -19,7 +19,20 @@
 
 import { Resend } from "resend";
 import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { FOUNDER_OWNERSHIP_DISCLOSURE, isFounderOwned } from "@/components/disclosures/FounderOwnershipDisclosure";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
+import { vendorsSorted, vendorBySlug } from "@/data/vendors";
+import { RANKING_DISCLOSURE } from "@/lib/vendor-criteria";
+
+/** One-line notes for email 3; order and scores come from the published criteria. */
+const EMAIL3_NOTES: Record<string, string> = {
+  "amino-club": "Batch COAs from named third-party labs (HPLC + MS + endotoxin, per vendor). 60-day money-back guarantee. Ships internationally.",
+  "bio-longevity-labs": "HPLC + LC-MS + endotoxin COAs (per vendor). 80+ compounds. PEPTIDEX stacks with their sales.",
+  "limitless-life": "USA-manufactured (per vendor). 90+ compounds — largest catalog in the index. US only.",
+  "elyria-bio": "Third-party US lab COAs, lot-traceable (per vendor). 24h dispatch. US only. Prices not yet checked by us.",
+  "pantheon-peptides": "COAs available. 50+ compounds. US only.",
+  "lvlup-health": "Oral peptide specialist. Capsules + sublingual formats.",
+};
 
 const FROM   = "PeptiDex Research <brief@peptidex.app>";
 const REPLY  = "reply@peptidex.app";
@@ -28,7 +41,7 @@ const FOOTER = `
 ---
 You're receiving this because you subscribed to The Peptide Brief at peptidex.app.
 
-Affiliate disclosure: Some links in this email may be affiliate links. If you click and purchase, PeptiDex may earn a commission at no extra cost to you. We only recommend vendors we have independently reviewed. All peptides mentioned are for research purposes only and are not intended to diagnose, treat, cure, or prevent any disease.
+Affiliate disclosure: Some links in this email may be affiliate links. If you click and purchase, PeptiDex may earn a commission at no extra cost to you. PeptiDex's founder owns Elyria Bio; vendors are ranked only on our published criteria. All peptides mentioned are for research purposes only and are not intended to diagnose, treat, cure, or prevent any disease.
 
 Unsubscribe: https://peptidex.app/unsubscribe?email={{email}}
 PeptiDex · For research use only · Not medical advice
@@ -49,7 +62,7 @@ function wrap(body: string): string {
     <div style="margin-top:48px;padding-top:24px;border-top:1px solid #e5e7eb;">
       <p style="font-size:11px;line-height:1.6;color:#9ca3af;margin:0;">
         You're receiving this because you subscribed to The Peptide Brief at <a href="https://peptidex.app" style="color:#9ca3af;">peptidex.app</a>.<br><br>
-        <strong>Affiliate disclosure:</strong> Some links may be affiliate links. PeptiDex may earn a commission if you purchase — at no extra cost to you. We only recommend vendors we've independently reviewed.<br><br>
+        <strong>Affiliate disclosure:</strong> Some links may be affiliate links. PeptiDex may earn a commission if you purchase — at no extra cost to you. PeptiDex's founder owns Elyria Bio; vendors are ranked only on our published criteria.<br><br>
         All peptides are for research purposes only. Not medical advice.<br><br>
         <a href="https://peptidex.app/unsubscribe?email={{email}}" style="color:#9ca3af;">Unsubscribe</a>
       </p>
@@ -104,7 +117,7 @@ export function email1_welcome(firstName = "there") {
       "<strong>Semax</strong> — ACTH-derived peptide studied in cognitive and neurological research",
       "<strong>Epitalon</strong> — studied in telomere and pineal-gland research",
     ])}
-    ${p(`The full reference page for each is on PeptiDex — with cited studies, evidence grades, and COA data from verified vendors.`)}
+    ${p(`The full reference page for each is on PeptiDex — with cited studies, evidence grades, and vendor-supplied COA data.`)}
     ${cta("Open the full peptide library", "https://peptidex.app/learn")}
     ${divider()}
     ${p(`Over the next few weeks I'll walk you through how to read a COA, which vendors we actually trust, and how to verify a vendor before you order. Next email lands in 2 days.`)}
@@ -134,7 +147,7 @@ export function email2_coa(firstName = "there") {
     ${cta("Open the COA Analyzer", "https://peptidex.app/tools/coa")}
     ${divider()}
     ${p(`Quick tip: if a vendor doesn't have a publicly linked COA for the specific product you're buying, ask for one before ordering. Legitimate vendors have them ready.`)}
-    ${p(`Next email: the 6 vendors we've vetted and why we ranked them the way we did.`)}
+    ${p(`Next email: the vendors in our index and how they score on our published criteria.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/coa") };
@@ -145,22 +158,18 @@ export function email2_coa(firstName = "there") {
 // ══════════════════════════════════════════════════════════════════════════════
 
 export function email3_vendors(firstName = "there") {
-  const subject = "The 6 peptide vendors we actually trust (and why)";
+  const subject = "The peptide vendors in our index — and how they score";
   const html = wrap(`
-    ${h1(`The 6 vendors in the PeptiDex index — and how we ranked them`)}
-    ${p(`We review vendors on five criteria: testing methodology, COA transparency, purity specification, shipping reliability, and community sentiment. Here's the current lineup:`)}
-    ${ul([
-      `<strong>#1 Elyria Bio</strong> — Editor's Choice. ≥99% HPLC purity floor, third-party US lab COAs, lot-traceable. 24h dispatch. US only. Code <strong>PEPTIDEX</strong> = 10% off.`,
-      `<strong>#2 Amino Club</strong> — Triple-tested (HPLC + LC-MS + Endotoxin). 60-day MBG. Ships internationally. Code <strong>PEPTIDEX</strong> = 20% off.`,
-      `<strong>#3 Bio Longevity Labs</strong> — Triple-tested. 80+ compounds. PEPTIDEX discount stacks with their sales — up to 40%+ combined. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#4 Limitless Life</strong> — USA-manufactured. 90+ compounds. Largest catalog in the index. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#5 Pantheon Peptides</strong> — Competitive pricing, solid COA. 50+ compounds. Code <strong>PEPTIDEX</strong> = 15% off.`,
-      `<strong>#6 LVLUP Health</strong> — Oral peptide specialist. Capsules + sublingual formats. Code <strong>PEPTIDEX</strong> = 15% off.`,
-    ])}
-    ${p(`We update the rankings quarterly based on new COA data, Finnrick community reports, and our own verification testing.`)}
+    ${h1(`The ${vendorsSorted.length} vendors in the PeptiDex index — and how they score`)}
+    ${p(`We score every vendor out of 100 on six published criteria: COA availability, third-party lab testing, price per mg, shipping, payment options and returns. Scores use each vendor's own published information and our checked list prices — PeptiDex does not test products. Here's the current order:`)}
+    ${ul(vendorsSorted.map((v, i) =>
+      `<strong>#${i + 1} ${v.name}</strong>${v.ownedByFounder ? " (owned by PeptiDex's founder)" : ""} — ${v.criteria.total}/100. ${EMAIL3_NOTES[v.slug] ?? v.tagline}${v.discountCode ? ` Code <strong>${v.discountCode}</strong> = ${v.discountPercent}% off.` : ""}`
+    ))}
+    ${p(`<strong>Disclosure:</strong> ${FOUNDER_OWNERSHIP_DISCLOSURE}`)}
+    ${p(`Scores change when a vendor's published information or our checked prices change. The full rules are at <a href="https://peptidex.app/about/methodology#vendor-ranking" style="color:#16a34a;">peptidex.app/about/methodology</a>.`)}
     ${cta("Read the full vendor comparison", "https://peptidex.app/vendors")}
     ${divider()}
-    ${p(`One thing I want to be transparent about: PeptiDex earns an affiliate commission when you buy through our links. That's how the site stays free. It doesn't change our rankings — vendors are evaluated blind to their affiliate terms.`)}
+    ${p(`One thing I want to be transparent about: ${RANKING_DISCLOSURE} Commission is how the site stays free.`)}
     ${p(`Next email in 3 days: how to verify a vendor before you order.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
@@ -201,6 +210,7 @@ export function email4_verifyVendor(firstName = "there") {
     ${divider()}
     ${p(`Comparing prices? The <a href="https://peptidex.app/tools/pricing" style="color:#16a34a;">PeptiDex price comparison</a> shows each vendor's price with current coupon codes applied, and its cart optimizer finds the lowest-cost vendor and vial mix for the vials you add.`)}
     ${p(`Current coupon: <strong>${promo.vendorName}</strong> — code <strong>${promo.code}</strong> takes ${promo.discountPercent}% off at checkout. <a href="${promoUrl}" rel="sponsored nofollow" style="color:#16a34a;">Shop ${promo.vendorName}</a> (affiliate link).`)}
+    ${isFounderOwned(promo.vendorSlug) ? p(`<strong>Disclosure:</strong> ${FOUNDER_OWNERSHIP_DISCLOSURE}`) : ""}
     ${p(`— The PeptiDex Research Team`)}
   `);
   return { subject, html, text: textFallback(subject, "https://peptidex.app/tools/coa") };
@@ -224,7 +234,8 @@ export function email5_vendorPicker(firstName = "there") {
     ${p(`It cross-references our vendor index, catalog data, and current pricing to give you a ranked list — not a generic "all are good" answer.`)}
     ${cta("Take the 4-question picker", "https://peptidex.app/tools/vendor-picker")}
     ${divider()}
-    ${p(`Quick note: if you're outside the US, your options are limited. Amino Club and Bio Longevity Labs are the only vendors in our index that ship internationally. Elyria Bio (#1) ships US only.`)}
+    ${p(`Quick note: if you're outside the US, your options are limited. Amino Club and Bio Longevity Labs are the only vendors in our index that ship internationally. Elyria Bio ships US only.`)}
+    ${p(`<strong>Disclosure:</strong> ${FOUNDER_OWNERSHIP_DISCLOSURE}`)}
     ${p(`If your priority is value, Bio Longevity Labs lets you stack code <strong>PEPTIDEX</strong> (15% off) with their site-wide sales — the only vendor in our index where the code stacks with existing promotions. Total savings can exceed 30% during sales.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);
@@ -239,17 +250,18 @@ export function email6_deal(firstName = "there") {
   const subject = "This week's best peptide deal";
   const html = wrap(`
     ${h1(`Deal of the week`)}
-    ${p(`Every two weeks I'll drop the current best value buy across our verified vendor index. This week:`)}
+    ${p(`Every two weeks I'll drop a value buy from the vendors in our index. This week:`)}
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:0 0 24px;">
       <p style="font-size:13px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 8px;">Featured Deal</p>
       <p style="font-size:18px;font-weight:700;color:#111827;margin:0 0 4px;">Bio Longevity Labs — 15% off, stackable with sales</p>
-      <p style="font-size:14px;color:#374151;margin:0 0 12px;">Use code <strong>PEPTIDEX</strong> at checkout. Stacks with site-wide sale prices — the only vendor in our index where this works. Triple-tested (HPLC + LC-MS + Endotoxin).</p>
+      <p style="font-size:14px;color:#374151;margin:0 0 12px;">Use code <strong>PEPTIDEX</strong> at checkout. Stacks with site-wide sale prices — the only vendor in our index where this works. HPLC + LC-MS + endotoxin testing (per vendor).</p>
       <p style="font-size:13px;color:#6b7280;margin:0;">When stacked with a 20% site sale: BPC-157 10mg → <strong>~$27</strong> after combined discount | 80+ compound catalog available.</p>
     </div>
     ${p(`What makes BLL unique in the index: their PEPTIDEX code stacks with sitewide sales. Every other vendor treats the code as a standalone discount. At BLL, during a sale you can combine both — routinely hitting 30%+ total off.`)}
     ${cta("Shop Bio Longevity Labs (code: PEPTIDEX)", "https://biolongevitylabs.com/ref/PeptiDex/")}
     ${divider()}
-    ${p(`Their triple-tested standard (HPLC + LC-MS + Endotoxin) is the same tier as Elyria Bio and Amino Club — which is why it's our #3 ranked vendor. Largest catalog among the triple-tested tier at 80+ compounds.`)}
+    ${p(`Bio Longevity Labs ranks #${vendorBySlug["bio-longevity-labs"].sortOrder} on our published criteria (${vendorBySlug["bio-longevity-labs"].criteria.total}/100) and carries 80+ compounds.`)}
+    ${p(`<strong>Disclosure:</strong> ${FOUNDER_OWNERSHIP_DISCLOSURE}`)}
     ${p(`Affiliate disclosure: PeptiDex earns a commission on Bio Longevity Labs purchases through our link. This deal is featured because of the stackable discount mechanic — it's the only vendor in the index where you can combine the PEPTIDEX code with sale pricing.`)}
     ${p(`— The PeptiDex Research Team`)}
   `);

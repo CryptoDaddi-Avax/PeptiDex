@@ -19,9 +19,8 @@ export function TrustBlock() {
       <div className="pd-trust-affiliate">
         <p>
           <strong>Affiliate disclosure:</strong> PeptiDex may earn commissions from purchases
-          made through vendor links on this page. This does not affect our editorial ranking or
-          vendor recommendations — we exclusively feature vendors that pass independent COA
-          verification.{' '}
+          made through vendor links on this page, and PeptiDex&apos;s founder owns Elyria Bio. Vendors are
+          ranked only on our published criteria.{' '}
           <a href="/about/methodology" className="pd-trust-link">
             See our methodology
           </a>{' '}

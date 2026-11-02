@@ -67,3 +67,6 @@ sync.tar.gz
 peptidex_sync.tar.gz
 
 # _design-reference/  # uncomment before merge to prod
+
+# BLL price-check reports (written by /api/cron/bll-price-check)
+/price-reports/

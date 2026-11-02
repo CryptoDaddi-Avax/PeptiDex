@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { vendorsSorted, VENDOR_COUNT, type Vendor } from '@/data/vendors';
+import { TrackedOutboundLink } from '@/components/tracked-outbound-link';
+import { FounderOwnershipDisclosure } from '@/components/disclosures/FounderOwnershipDisclosure';
 import './VendorSection.css';
 
 // Show top 4 on homepage, link to /vendors for the rest
@@ -9,22 +11,24 @@ const remainingCount = VENDOR_COUNT - displayVendors.length;
 
 function VendorCard({ v }: { v: Vendor }) {
   return (
-    <a
+    <TrackedOutboundLink
       className="vendor-card"
       href={v.affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
+      vendorSlug={v.slug}
+      surface="redesign_vendor_section"
     >
       {v.badge && <div className="vendor-badge">{v.badge}</div>}
       <div className="vendor-header">
         <div className="vendor-name-row">
           <h3>{v.name}</h3>
           <div className="vendor-rating">
-            <span className="star">★</span> {v.rating}
-            <span className="count">({v.ratingCount})</span>
+            {v.criteria.total}<span className="count">/100</span>
           </div>
         </div>
-        <div className="vendor-purity">{v.purity} purity verified</div>
+        <div className="vendor-purity">{v.purity} purity (vendor claim)</div>
+        <FounderOwnershipDisclosure vendorSlug={v.slug} variant="inline" />
       </div>
 
       {/* Discount callout strip — only for vendors with a discount code */}
@@ -67,7 +71,7 @@ function VendorCard({ v }: { v: Vendor }) {
           <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" strokeWidth="1.5" />
         </svg>
       </div>
-    </a>
+    </TrackedOutboundLink>
   );
 }
 
@@ -75,13 +79,13 @@ export default function VendorSection() {
   return (
     <section className="vendors-section" id="vendors">
       <div className="vendors-head">
-        <div className="section-label">§ Verified Sourcing</div>
+        <div className="section-label">§ Sourcing</div>
         <h2 className="section-title">
           COA-verified<br /><em>vendors</em>
         </h2>
         <p className="vendors-sub">
-          Every vendor in our index is independently verified with third-party Certificates of Analysis.
-          We test purity via HPLC and Mass Spectrometry before any recommendation.
+          Vendors are ranked by score on our published criteria — COA availability, third-party lab
+          testing, price per mg, shipping, payment options and returns. PeptiDex does not test products.
         </p>
       </div>
       <div className="vendors-grid">

@@ -2,10 +2,13 @@
  * Verification Data Registry — Single Source of Truth
  * Created: 2026-05-04
  *
- * Centralizes all verification data from three sources:
+ * Centralizes verification documents from two sources:
  *   1. Vendor-supplied COAs
  *   2. Community-submitted COAs
- *   3. Independent testing (Finnrick + our own HPLC program)
+ * PeptiDex does not test products. independentTests holds third-party results
+ * only when read from the third party's own published page; it is empty today
+ * (Finnrick figures previously listed here did not match finnrick.com — removed
+ * 2026-11-02). No vendor carries a verification tier until such data exists.
  */
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -71,20 +74,18 @@ export interface VendorVerification {
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
-const FINNRICK_ATTRIBUTION = "Source: Finnrick Independent Testing Database. PeptiDex has no editorial control over Finnrick data. View full results at finnrick.com.";
-
 export const vendorVerifications: VendorVerification[] = [
   {
-    vendorSlug: "elyria-bio", vendorName: "Elyria Bio", tier: "gold",
+    vendorSlug: "elyria-bio", vendorName: "Elyria Bio", tier: "unverified",
     vendorCOAs: [
       { id: "eb-bpc157-2608", peptide: "BPC-157", batchId: "2608-EB-BPC", testDate: "2026-08-01", purity: 99.3, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Elyria Bio (independent US lab)", annotation: "≥99% HPLC purity floor. Mass-spec identity confirmed against expected monoisotopic mass. Third-party US laboratory — not in-house.", annotationReady: true, passed: true },
     ],
     communitySubmissions: [],
     independentTests: [],
-    stats: { totalDocuments: 1, totalIndependentTests: 0, overallPassRate: 100, averagePurity: 99.3, lastUpdated: "2026-08-07" },
+    stats: { totalDocuments: 1, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
   {
-    vendorSlug: "amino-club", vendorName: "Amino Club", tier: "gold",
+    vendorSlug: "amino-club", vendorName: "Amino Club", tier: "unverified",
     vendorCOAs: [
       { id: "ac-bpc157-2604", peptide: "BPC-157", batchId: "2604-AC-BPC", testDate: "2026-04-10", purity: 99.4, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec", "Endotoxin"], source: "vendor", sourceDetail: "Amino Club", documentUrl: "https://aminoclub.com/coa/bpc-157-latest.pdf", annotation: "MW confirmed at 1419.5 Da. HPLC purity ≥99.4%. Endotoxin below 1.0 EU/mg. No anomalous peaks in 1350–1500 Da range.", annotationReady: true, passed: true },
       { id: "ac-ipa-2604", peptide: "Ipamorelin", batchId: "2604-AC-IPA", testDate: "2026-04-08", purity: 99.5, molecularWeight: "711.9 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Amino Club", annotation: "GH secretagogue pentapeptide. MW 711.9 Da confirmed. Highest purity in dataset.", annotationReady: true, passed: true },
@@ -92,69 +93,57 @@ export const vendorVerifications: VendorVerification[] = [
     communitySubmissions: [
       { id: "cs-ac-001", submitter: "Anonymous Researcher", peptide: "BPC-157", vendorSlug: "amino-club", submittedDate: "2026-04-18", purity: 99.2, notes: "Private lab verification consistent with vendor COA.", verified: false },
     ],
-    independentTests: [
-      { source: "Finnrick", sourceUrl: "https://finnrick.com/vendors/amino-club", totalTests: 47, passedTests: 44, averagePurity: 98.6, lastTestDate: "2026-04-28", vendorScore: "A", attributionText: FINNRICK_ATTRIBUTION, isOwnData: false },
-    ],
-    stats: { totalDocuments: 3, totalIndependentTests: 47, overallPassRate: 93.6, averagePurity: 98.6, lastUpdated: "2026-05-04" },
+    independentTests: [],
+    stats: { totalDocuments: 3, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
   {
-    vendorSlug: "bio-longevity-labs", vendorName: "Bio Longevity Labs", tier: "gold",
+    vendorSlug: "bio-longevity-labs", vendorName: "Bio Longevity Labs", tier: "unverified",
     vendorCOAs: [
       { id: "bll-tesa-2603", peptide: "Tesamorelin", batchId: "2603-BLL-TESA", testDate: "2026-03-28", purity: 98.8, molecularWeight: "5135.8 Da", methods: ["HPLC", "LC-MS", "Endotoxin"], source: "vendor", sourceDetail: "Bio Longevity Labs", annotation: "FDA-approved GH-RH analog. MW 5135.8 Da confirmed. Trans-3-hexenoic acid modification confirmed by MS.", annotationReady: true, passed: true },
       { id: "bll-bpc-2604", peptide: "BPC-157", batchId: "2604-BLL-BPC", testDate: "2026-04-05", purity: 99.6, molecularWeight: "1419.5 Da", methods: ["HPLC", "LC-MS", "Endotoxin"], source: "vendor", sourceDetail: "Bio Longevity Labs", annotation: "Triple-tested. Highest BPC-157 purity in dataset (99.6%).", annotationReady: true, passed: true },
       { id: "bll-ghk-2604", peptide: "GHK-Cu", batchId: "2604-BLL-GHK", testDate: "2026-04-10", purity: 99.1, molecularWeight: "340.4 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Bio Longevity Labs", annotation: "Copper-peptide tripeptide. MW 340.4 Da confirmed.", annotationReady: true, passed: true },
     ],
     communitySubmissions: [],
-    independentTests: [
-      { source: "Finnrick", sourceUrl: "https://finnrick.com/vendors/bio-longevity-labs", totalTests: 62, passedTests: 59, averagePurity: 98.9, lastTestDate: "2026-04-30", vendorScore: "A+", attributionText: FINNRICK_ATTRIBUTION, isOwnData: false },
-    ],
-    stats: { totalDocuments: 3, totalIndependentTests: 62, overallPassRate: 95.2, averagePurity: 98.9, lastUpdated: "2026-05-04" },
+    independentTests: [],
+    stats: { totalDocuments: 3, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
   {
-    vendorSlug: "limitless-life", vendorName: "Limitless Life", tier: "silver",
+    vendorSlug: "limitless-life", vendorName: "Limitless Life", tier: "unverified",
     vendorCOAs: [
       { id: "ll-bpc-2604", peptide: "BPC-157", batchId: "2604-LL-BPC", testDate: "2026-04-02", purity: 98.7, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Limitless Life", annotation: "Purity 98.7% — passes ≥98% threshold. MW confirmed.", annotationReady: true, passed: true },
       { id: "ll-tb500-2604", peptide: "TB-500", batchId: "2604-LL-TB5", testDate: "2026-04-08", purity: 98.5, molecularWeight: "4963.4 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Limitless Life", annotation: "Thymosin Beta-4 fragment. MW confirmed. HPLC 98.5%.", annotationReady: true, passed: true },
     ],
     communitySubmissions: [],
-    independentTests: [
-      { source: "Finnrick", sourceUrl: "https://finnrick.com/vendors/limitless-life", totalTests: 38, passedTests: 33, averagePurity: 97.8, lastTestDate: "2026-04-22", vendorScore: "B+", attributionText: FINNRICK_ATTRIBUTION, isOwnData: false },
-    ],
-    stats: { totalDocuments: 2, totalIndependentTests: 38, overallPassRate: 86.8, averagePurity: 97.8, lastUpdated: "2026-05-04" },
+    independentTests: [],
+    stats: { totalDocuments: 2, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
   {
-    vendorSlug: "ascension-peptides", vendorName: "Ascension Peptides", tier: "silver",
+    vendorSlug: "ascension-peptides", vendorName: "Ascension Peptides", tier: "unverified",
     vendorCOAs: [
       { id: "asc-bpc-2604", peptide: "BPC-157", batchId: "2604-ASC-BPC", testDate: "2026-04-01", purity: 98.9, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Ascension Peptides", documentUrl: "https://ascensionpeptides.com/coa/bpc157.pdf", annotation: "Two-method verification. MW confirmed. Passes ≥98% threshold.", annotationReady: true, passed: true },
       { id: "asc-ipa-2604", peptide: "Ipamorelin", batchId: "2604-ASC-IPA", testDate: "2026-04-05", purity: 98.4, molecularWeight: "711.9 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Ascension Peptides", annotation: "GH secretagogue. MW confirmed. Purity 98.4%.", annotationReady: true, passed: true },
     ],
     communitySubmissions: [],
-    independentTests: [
-      { source: "Finnrick", sourceUrl: "https://finnrick.com/vendors/ascension-peptides", totalTests: 24, passedTests: 20, averagePurity: 97.4, lastTestDate: "2026-04-18", vendorScore: "B", attributionText: FINNRICK_ATTRIBUTION, isOwnData: false },
-    ],
-    stats: { totalDocuments: 2, totalIndependentTests: 24, overallPassRate: 83.3, averagePurity: 97.4, lastUpdated: "2026-05-04" },
+    independentTests: [],
+    stats: { totalDocuments: 2, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
   {
-    vendorSlug: "pantheon-peptides", vendorName: "Pantheon Peptides", tier: "bronze",
+    vendorSlug: "pantheon-peptides", vendorName: "Pantheon Peptides", tier: "unverified",
     vendorCOAs: [
       { id: "pan-bpc-2604", peptide: "BPC-157", batchId: "2604-PAN-BPC", testDate: "2026-04-10", purity: 98.2, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "Pantheon Peptides", annotation: "MW confirmed. Purity 98.2% — narrowly passes threshold.", annotationReady: true, passed: true },
     ],
     communitySubmissions: [],
-    independentTests: [
-      { source: "Finnrick", sourceUrl: "https://finnrick.com/vendors/pantheon-peptides", totalTests: 12, passedTests: 9, averagePurity: 96.8, lastTestDate: "2026-04-10", vendorScore: "B-", attributionText: FINNRICK_ATTRIBUTION, isOwnData: false },
-    ],
-    stats: { totalDocuments: 1, totalIndependentTests: 12, overallPassRate: 75.0, averagePurity: 96.8, lastUpdated: "2026-05-04" },
+    independentTests: [],
+    stats: { totalDocuments: 1, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
   {
-    vendorSlug: "lvlup-health", vendorName: "LVLUP Health", tier: "bronze",
+    vendorSlug: "lvlup-health", vendorName: "LVLUP Health", tier: "unverified",
     vendorCOAs: [
       { id: "lv-bpc-oral-2604", peptide: "BPC-157 (Oral)", batchId: "2604-LV-BPCO", testDate: "2026-04-05", purity: 97.8, molecularWeight: "1419.5 Da", methods: ["HPLC", "Mass Spec"], source: "vendor", sourceDetail: "LVLUP Health", annotation: "Oral formulation. Slightly lower HPLC purity due to excipient matrix. MW confirmed.", annotationReady: true, passed: false },
     ],
     communitySubmissions: [],
-    independentTests: [
-      { source: "Finnrick", sourceUrl: "https://finnrick.com/vendors/lvlup-health", totalTests: 8, passedTests: 5, averagePurity: 96.2, lastTestDate: "2026-03-28", vendorScore: "C+", attributionText: FINNRICK_ATTRIBUTION, isOwnData: false },
-    ],
-    stats: { totalDocuments: 1, totalIndependentTests: 8, overallPassRate: 62.5, averagePurity: 96.2, lastUpdated: "2026-05-04" },
+    independentTests: [],
+    stats: { totalDocuments: 1, totalIndependentTests: 0, overallPassRate: null, averagePurity: null, lastUpdated: "2026-11-02" },
   },
 ];
 
@@ -165,7 +154,7 @@ export const verificationBySlug: Record<string, VendorVerification> = Object.fro
 );
 
 export function getTierLabel(tier: VerificationTier): string {
-  const labels: Record<VerificationTier, string> = { gold: "Extensively Verified", silver: "Verified", bronze: "Partially Verified", unverified: "Insufficient Data" };
+  const labels: Record<VerificationTier, string> = { gold: "Extensively Verified", silver: "Verified", bronze: "Partially Verified", unverified: "Vendor COAs only — not independently tested" };
   return labels[tier];
 }
 

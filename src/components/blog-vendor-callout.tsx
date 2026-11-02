@@ -3,7 +3,7 @@
 import { ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { PRIMARY_PROMO, vendorLinkName } from "@/lib/promos/config";
 
 const BLOG_CTA_URL = buildAffiliateUrl(PRIMARY_PROMO, "blog_cta");
 
@@ -33,7 +33,7 @@ export function BlogVendorCallout() {
                             fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.15em',
                             textTransform: 'uppercase', color: 'var(--gold)', fontWeight: 500,
                         }}>
-                            <ShieldCheck style={{ width: 12, height: 12 }} /> Trusted Vendor
+                            <ShieldCheck style={{ width: 12, height: 12 }} /> {PRIMARY_PROMO.badge}
                         </span>
                     </div>
 
@@ -41,7 +41,7 @@ export function BlogVendorCallout() {
                         fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 400,
                         color: 'var(--ink)', marginBottom: 8, letterSpacing: '-0.02em',
                     }}>
-                        Amino Club &mdash; COA-Verified Research Peptides
+                        {vendorLinkName(PRIMARY_PROMO)} &mdash; Research Peptides with Batch COAs
                     </h3>
                     
                     <div style={{
@@ -50,7 +50,7 @@ export function BlogVendorCallout() {
                         fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.1em',
                         textTransform: 'uppercase', color: 'var(--gold)',
                     }}>
-                        {['Third-party tested', '99%+ purity', 'US shipping', 'Batch-specific COAs'].map(item => (
+                        {['Third-party COAs (per vendor)', '99%+ purity claim', 'US shipping', 'Batch-specific COAs'].map(item => (
                             <span key={item} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                                 <CheckCircle2 style={{ width: 12, height: 12 }} /> {item}
                             </span>
@@ -61,7 +61,7 @@ export function BlogVendorCallout() {
                         fontFamily: 'var(--sans)', fontSize: 11, color: 'var(--ink-mute)',
                         maxWidth: 560,
                     }}>
-                        PeptiDex may earn a commission from purchases made through affiliate links. This does not affect our editorial independence or rigorous vetting standards.
+                        PeptiDex earns a commission from purchases made through affiliate links, and PeptiDex&apos;s founder owns Elyria Bio.
                     </p>
                 </div>
 

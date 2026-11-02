@@ -319,19 +319,6 @@ export default function VerificationDashboard({ verification, onOpenSubmitModal 
           v.independentTests.length > 0 ? (
             <>
               {v.independentTests.map((test, i) => <IndependentCard key={i} test={test} />)}
-              {/* Placeholder for our own testing program */}
-              <div style={{
-                border: '1px dashed rgba(74,158,255,0.3)', borderRadius: 12, padding: '24px',
-                textAlign: 'center', background: 'rgba(74,158,255,0.03)',
-              }}>
-                <Clock size={20} color="var(--plasma)" style={{ marginBottom: 8 }} />
-                <div style={{ fontFamily: 'var(--serif)', fontSize: 16, color: 'var(--ink)', marginBottom: 4 }}>
-                  PeptiDex Independent Testing — <em style={{ color: 'var(--plasma)' }}>Coming Q3 2026</em>
-                </div>
-                <div style={{ fontSize: 12, color: 'var(--ink-mute)', fontFamily: 'var(--mono)', letterSpacing: '0.06em' }}>
-                  Our in-house HPLC testing program will publish blind, independently-sourced results here.
-                </div>
-              </div>
             </>
           ) : (
             <div style={{ padding: 32, textAlign: 'center', color: 'var(--ink-mute)', fontFamily: 'var(--mono)', fontSize: 13 }}>

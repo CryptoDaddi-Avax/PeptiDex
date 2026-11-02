@@ -5,6 +5,8 @@ import { AuthorByline } from '@/components/shared/AuthorByline';
 import { LAST_REVIEWED_DATE, LAST_REVIEWED_ISO } from '@/data/constants';
 import { AffiliateLink } from '@/components/affiliate-link';
 import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
+import { vendorBySlug } from '@/data/vendors';
+import { CriteriaScoreTable } from '@/components/vendors/CriteriaScoreTable';
 
 function Stars({ rating, max = 5 }: { rating: number; max?: number }) {
   return (
@@ -51,9 +53,8 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
           <p className="page-subtitle">{review.tagline}</p>
 
           <div className="flex flex-wrap items-center gap-4 mt-4">
-            <Stars rating={review.overallRating} />
-            <span className="text-2xl font-bold text-zinc-100">{review.overallRating}/5</span>
-            <span className="text-sm text-zinc-500">({review.ratingCount} reviews)</span>
+            <span className="text-2xl font-bold text-zinc-100">{vendorBySlug[review.slug]?.criteria.total ?? '—'}/100</span>
+            <span className="text-sm text-zinc-500">score on our published criteria</span>
           </div>
 
           <AuthorByline name="PeptiDex Editorial" date={LAST_REVIEWED_DATE} variant="compact" className="mt-4" />
@@ -109,7 +110,7 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
               { icon: <Globe className="w-5 h-5 text-teal-400" />, label: 'Ships To', value: review.shipsTo.join(', ') },
               { icon: <CreditCard className="w-5 h-5 text-pink-400" />, label: 'Payment', value: review.paymentMethods.join(', ') },
               { icon: <RotateCcw className="w-5 h-5 text-orange-400" />, label: 'Returns', value: review.returnPolicy },
-              { icon: <Star className="w-5 h-5 text-amber-400 fill-amber-400" />, label: 'Rating', value: `${review.overallRating}/5 (${review.ratingCount})` },
+              { icon: <Star className="w-5 h-5 text-amber-400 fill-amber-400" />, label: 'Criteria score', value: `${vendorBySlug[review.slug]?.criteria.total ?? '—'}/100` },
             ].map(({ icon, label, value }) => (
               <div key={label} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4">
                 <div className="flex items-center gap-2 mb-2">{icon}<span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">{label}</span></div>
@@ -348,14 +349,14 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
               <tbody>
                 <tr className="border-b border-zinc-800/50 bg-violet-500/5">
                   <td className="py-3 px-4 font-semibold text-violet-300">{review.name} <span className="text-xs text-zinc-500">(this review)</span></td>
-                  <td className="py-3 px-4"><Stars rating={review.overallRating} /><span className="ml-2 text-zinc-400 text-xs">{review.overallRating}</span></td>
+                  <td className="py-3 px-4 text-zinc-400 text-xs">{vendorBySlug[review.slug]?.criteria.total ?? '—'}/100</td>
                   <td className="py-3 px-4 text-zinc-400">{review.tagline.split(' with ')[0]}</td>
                   <td className="py-3 px-4" />
                 </tr>
                 {review.alternatives.map((alt, i) => (
                   <tr key={i} className="border-b border-zinc-800/50 hover:bg-zinc-900/30 transition-colors">
                     <td className="py-3 px-4 font-semibold text-zinc-200">{alt.name}</td>
-                    <td className="py-3 px-4"><Stars rating={alt.rating} /><span className="ml-2 text-zinc-400 text-xs">{alt.rating}</span></td>
+                    <td className="py-3 px-4 text-zinc-400 text-xs">{vendorBySlug[alt.slug]?.criteria.total ?? '—'}/100</td>
                     <td className="py-3 px-4 text-zinc-400">{alt.bestFor}</td>
                     <td className="py-3 px-4">
                       <Link href={alt.href} className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1 font-semibold">
@@ -389,25 +390,8 @@ export function VendorReviewTemplate({ review }: { review: VendorReviewData }) {
         {/* ── Final Verdict ── */}
         <section id="final-verdict">
           <div className="section-label">§ Final Verdict</div>
-          <h2 className="text-2xl font-bold text-zinc-100 mb-6">Editorial score breakdown</h2>
-          <div className="space-y-3 mb-8">
-            {review.scoreBreakdown.map((s, i) => (
-              <div key={i} className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900/20 p-4 flex-wrap gap-2">
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-zinc-200">{s.category}</p>
-                  <p className="text-xs text-zinc-500 mt-0.5">{s.note}</p>
-                </div>
-                <span className="text-lg font-bold text-amber-400 flex-shrink-0">{s.score}</span>
-              </div>
-            ))}
-            <div className="flex items-center justify-between rounded-xl border border-amber-500/30 bg-amber-950/15 p-5">
-              <span className="font-bold text-zinc-100 text-lg">Overall</span>
-              <div className="flex items-center gap-3">
-                <Stars rating={review.overallRating} />
-                <span className="text-2xl font-bold text-amber-400">{review.overallRating}/5</span>
-              </div>
-            </div>
-          </div>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-6">Score on our published criteria</h2>
+          {vendorBySlug[review.slug] && <CriteriaScoreTable score={vendorBySlug[review.slug].criteria} />}
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 mb-8">
             <p className="text-zinc-300 leading-relaxed">{review.finalVerdictBody}</p>
           </div>

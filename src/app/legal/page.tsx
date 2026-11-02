@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import Link from 'next/link';
+import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
+import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
 
 export const metadata: Metadata = {
     title: "Privacy Policy & Terms of Use",
@@ -83,10 +85,22 @@ export default function LegalPage() {
 
                     <h3>Affiliate Disclosure</h3>
                     <p>
-                        PeptiDex participates in affiliate programs with COA-verified peptide vendors. We may earn
-                        a commission when you click a vendor link and make a purchase. This does not increase your
-                        cost and does not influence our editorial rankings or content. All affiliate relationships
-                        are disclosed on pages where affiliate links appear.
+                        PeptiDex participates in affiliate programs with the peptide vendors it lists. We earn a
+                        commission when you click a vendor link and make a purchase; this does not increase your
+                        cost. {RANKING_DISCLOSURE} Rankings use these criteria (vendors&apos; own published
+                        information and our checked list prices; PeptiDex does not test products):
+                    </p>
+                    <ul>
+                        {RANKING_CRITERIA.map((c) => (
+                            <li key={c.key}><strong>{c.label} ({c.max} points):</strong> {c.rule}</li>
+                        ))}
+                    </ul>
+                    <p>
+                        All affiliate relationships are disclosed on pages where affiliate links appear. Full rules:{' '}
+                        <Link href="/about/methodology#vendor-ranking">methodology</Link>.
+                    </p>
+                    <p>
+                        <strong>Material connection:</strong> {FOUNDER_OWNERSHIP_DISCLOSURE}
                     </p>
 
                     <h3>Third-Party Links</h3>

@@ -8,6 +8,8 @@ import { generatePseoSchema } from "@/lib/pseo-schema";
 import { PeptideVendorContent } from "./PeptideVendorContent";
 import { PeptideVendorLogsClient } from "./PeptideVendorLogsClient";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
+import { PRICES_LAST_CHECKED_LABEL } from "@/data/vendor-pricing";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Static Params ────────────────────────────────────────────────────────────
 // Decision 1: Dynamic. Pages exist only if vendor-pricing.ts has a real row.
@@ -48,8 +50,12 @@ export async function generateMetadata({
 
     // Pricing-verified pair — full SEO metadata
     const discountedPrice = pair.pricing.price_usd * (1 - (pair.vendor.discountPercent ?? 0) / 100);
-    const title = `Buy ${peptide.name} from ${vendorObj.name} — $${discountedPrice.toFixed(2)}/vial | PeptiDex`;
-    const description = `${vendorObj.name} sells ${peptide.name} (${pair.pricing.vial_mg}mg vials) for $${pair.pricing.price_usd.toFixed(2)} before discount. ${vendorObj.purity} purity, ${vendorObj.coaStatus}. Compare with verified vendors.`;
+    const title = pair.pricing.inStock
+        ? `Buy ${peptide.name} from ${vendorObj.name} — $${discountedPrice.toFixed(2)}/vial | PeptiDex`
+        : `${peptide.name} at ${vendorObj.name} — out of stock | PeptiDex`;
+    const description = pair.pricing.inStock
+        ? `${vendorObj.name} sells ${peptide.name} (${pair.pricing.vial_mg}mg vials) for $${pair.pricing.price_usd.toFixed(2)} before discount. ${vendorObj.purity} purity (vendor claim), ${vendorObj.coaStatus}. Compare with other vendors.`
+        : `${peptide.name} (${pair.pricing.vial_mg}mg) is currently out of stock at ${vendorObj.name}. Compare other vendors' prices and COAs.`;
 
     return {
         title,
@@ -123,11 +129,13 @@ export default async function PeptideAtVendorPage({
                                     <> · {vendorObj.discountPercent}% off with code {vendorObj.discountCode}</>
                                 )}
                                 {" "}· {vendorObj.purity} purity · {vendorObj.coaStatus}
+                                {" "}· Prices checked: {PRICES_LAST_CHECKED_LABEL}
                             </>
                         ) : (
                             <>Community batch reports for {peptide.name} from {vendorObj.name}. Research use only.</>
                         )}
                     </p>
+                    <FounderOwnershipDisclosure vendorSlug={vendorObj.slug} />
                 </div>
             </div>
 

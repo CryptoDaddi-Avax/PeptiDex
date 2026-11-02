@@ -1,13 +1,11 @@
 /**
  * pSEO Schema.org JSON-LD Generator
  * ===================================
- * Generates Product + AggregateRating structured data (no offers) for
+ * Generates Product structured data (no offers, no rating) for
  * programmatic SEO pages at /peptides/[slug]/at/[vendor].
  *
- * Rating logic:
- * - Default: vendor-level rating from vendors.ts
- * - Auto-switch: per-pair community log rating when logCount >= 5
- *   (deterministic, no composite scoring)
+ * No AggregateRating: vendor ratings were not sourced from a review platform,
+ * and community protocol-log efficacy scores are not product reviews.
  *
  * Created: 2026-05-11 — pSEO route architecture
  */
@@ -27,25 +25,8 @@ interface PseoSchemaOptions {
  * Returns a serializable object ready for <script type="application/ld+json">.
  */
 export function generatePseoSchema(opts: PseoSchemaOptions): Record<string, unknown> {
-  const { pair, logCount, avgEfficacy } = opts;
+  const { pair } = opts;
   const { peptide, vendor, pricing } = pair;
-
-  // ── Rating source determination (deterministic switch) ────────────────
-  // Per user decision: use vendor-level rating by default.
-  // Auto-switch to per-pair community rating when logCount >= 5.
-  const usePerPairRating = (logCount ?? 0) >= 5 && avgEfficacy != null;
-
-  const ratingValue = usePerPairRating
-    ? (avgEfficacy! / 2).toFixed(1) // Convert 1-10 scale to 1-5 scale
-    : String(vendor.rating);
-
-  const reviewCount = usePerPairRating
-    ? String(logCount)
-    : vendor.ratingCount.replace(/[^0-9]/g, ""); // Strip "+" from "300+"
-
-  const ratingDescription = usePerPairRating
-    ? `Based on ${logCount} community protocol logs for ${peptide.name} from ${vendor.name}`
-    : `${vendor.name} vendor rating across all products`;
 
   // ── Product schema ────────────────────────────────────────────────────
   return {
@@ -59,14 +40,6 @@ export function generatePseoSchema(opts: PseoSchemaOptions): Record<string, unkn
     },
     "category": "Research Peptides",
     "sku": `${vendor.slug}-${peptide.slug}-${pricing.vial_mg}mg`,
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": ratingValue,
-      "reviewCount": reviewCount,
-      "bestRating": usePerPairRating ? "5" : "5",
-      "worstRating": "1",
-      "description": ratingDescription,
-    },
     "additionalProperty": [
       {
         "@type": "PropertyValue",
@@ -82,11 +55,6 @@ export function generatePseoSchema(opts: PseoSchemaOptions): Record<string, unkn
         "@type": "PropertyValue",
         "name": "Testing Methods",
         "value": vendor.testingMethods.join(", "),
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Verification Tier",
-        "value": vendor.verificationTier,
       },
     ],
   };

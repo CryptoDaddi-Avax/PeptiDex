@@ -49,7 +49,7 @@ function buildIndex(): IndexItem[] {
     items.push({
       type: 'vendor',
       title: v.name,
-      sub: `★ ${v.rating} · ${v.purity} purity · ${v.coaStatus}`,
+      sub: `${v.criteria.total}/100 criteria score · ${v.purity} purity · ${v.coaStatus}`,
       meta: 'Vendor',
       tags: [v.name, v.purity, v.coaStatus, ...v.testingMethods].join(' ').toLowerCase(),
       href: `/vendors/${v.slug}`,

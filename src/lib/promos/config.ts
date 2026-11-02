@@ -23,7 +23,7 @@ export interface PromoCode {
   discountPercent: number;
   /** Base affiliate URL — UTMs are appended dynamically via buildAffiliateUrl() */
   shopUrl: string;
-  /** Badge label e.g. "Editor's Choice" */
+  /** Badge label from vendors.ts, e.g. "Founder's store" */
   badge?: string;
   /** Whether the code is currently active */
   isActive: boolean;
@@ -39,7 +39,7 @@ export interface PromoCode {
 
 // ── Priority Map ──────────────────────────────────────────────────────────────
 // Defines which vendors get which priority tier for promo surfaces.
-// Elyria Bio = PRIMARY (Editor's Choice, 10% PEPTIDEX discount).
+// Elyria Bio = PRIMARY (founder's store, 10% PEPTIDEX discount; always disclosed).
 // Amino Club = SECONDARY (20% discount, COA Verified).
 // Bio Longevity Labs = TERTIARY (stackable discount).
 // Others = not featured in promo surfaces (still have codes, but not promoted).
@@ -103,6 +103,19 @@ export function getFeaturedPromos(): PromoCode[] {
 /** Get promo for a specific vendor slug */
 export function getPromoForVendor(slug: string): PromoCode | undefined {
   return PROMO_CODES.find((p) => p.vendorSlug === slug && p.isActive);
+}
+
+/** Amino Club promo — for surfaces whose copy is Amino-specific (its 20% offer, its product pages) */
+export const AMINO_PROMO: PromoCode = getPromoForVendor("amino-club") ?? PRIMARY_PROMO;
+
+/**
+ * Visible vendor name for a link label. A founder-owned store always says so,
+ * e.g. "Elyria Bio (founder's store)". Labels must name the vendor the link
+ * actually goes to — enforced by scripts/check-vendor-link-labels.mjs.
+ */
+export function vendorLinkName(promo: Pick<PromoCode, "vendorSlug" | "vendorName">): string {
+  const v = vendors.find((x) => x.slug === promo.vendorSlug);
+  return v?.ownedByFounder ? `${promo.vendorName} (founder's store)` : promo.vendorName;
 }
 
 /** Toggle to enable/disable the personalized hero variant */

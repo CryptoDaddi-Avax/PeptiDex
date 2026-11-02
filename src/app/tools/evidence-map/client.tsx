@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { buildAffiliateUrl } from "@/lib/promos/affiliateUrl";
-import { PRIMARY_PROMO } from "@/lib/promos/config";
+import { PRIMARY_PROMO, vendorLinkName } from "@/lib/promos/config";
 
 // ── Evidence Tier Logic ──────────────────────────────────────────────
 type EvidenceTier = "fda-approved" | "strong-clinical" | "moderate-preclinical" | "emerging";
@@ -341,7 +341,7 @@ export function EvidenceMapClient({ peptides }: { peptides: Peptide[] }) {
                 <div className="flex items-center gap-3">
                     <ShieldCheck className="w-5 h-5 text-violet-400 flex-shrink-0" />
                     <p className="text-sm text-zinc-300">
-                        Source COA-verified peptides from our recommended vendor
+                        Source research peptides from {vendorLinkName(PRIMARY_PROMO)}
                     </p>
                 </div>
                 <AffiliateLink
@@ -350,13 +350,13 @@ export function EvidenceMapClient({ peptides }: { peptides: Peptide[] }) {
                     source="evidence_map_footer"
                     className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-bold transition-colors shadow-lg shadow-violet-900/20 whitespace-nowrap"
                 >
-                    Visit Amino Club <ExternalLink className="w-4 h-4" />
+                    Visit {vendorLinkName(PRIMARY_PROMO)} <ExternalLink className="w-4 h-4" />
                 </AffiliateLink>
             </div>
 
             {/* ── Disclaimer ── */}
             <p className="text-[9px] text-zinc-600 text-center leading-relaxed max-w-2xl mx-auto">
-                This evidence map is for educational and research purposes only. It does not constitute medical advice. Evidence tiers reflect published peer-reviewed literature as of April 2026. PeptiDex may earn a commission from affiliate links. This does not affect our editorial independence.
+                This evidence map is for educational and research purposes only. It does not constitute medical advice. Evidence tiers reflect published peer-reviewed literature as of April 2026. PeptiDex earns commission from affiliate links, and PeptiDex's founder owns Elyria Bio.
             </p>
         </div>
     );

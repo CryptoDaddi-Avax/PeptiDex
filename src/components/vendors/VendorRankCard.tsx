@@ -7,7 +7,7 @@
  * Pulls from:
  *   - vendors.ts  (Vendor)         → data fields
  *   - vendorEditorial.ts           → shortPitch, pros, cons, blurb
- *   - verification-data.ts         → verification tier badge
+ *   - vendor-criteria.ts (via Vendor.criteria) → published ranking score
  *
  * Design: vn-* + vrk-* CSS namespace.
  */
@@ -24,15 +24,15 @@ import {
 } from "lucide-react";
 import { type Vendor } from "@/data/vendors";
 import { vendorEditorial } from "@/data/vendorEditorial";
-import { verificationBySlug, getTierLabel, getTierColor } from "@/data/verification-data";
+import { verificationBySlug } from "@/data/verification-data";
+import { CriteriaScoreTable } from "@/components/vendors/CriteriaScoreTable";
 import { VendorOutboundLink } from "@/app/vendors/vendor-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Ordinal suffix helper ─────────────────────────────────────────────────────
 
-function ordinalLabel(n: number): string {
-  if (n === 1) return "#1 Editor's Choice";
-  if (n === 2) return "#2 Runner-Up";
-  return `#${n}`;
+function ordinalLabel(n: number, total: number): string {
+  return `#${n} by our criteria · ${total}/100`;
 }
 
 // ── Badge class helper ────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ function CoaBadge({ vendor }: { vendor: Vendor }) {
       {vendor.coaStatus} — {vendor.testingMethods.join(", ")}
       {vendor.lastTestedDate && (
         <span className="vrk-coa-date">
-          &nbsp;· Verified {formatVerifiedDate(vendor.lastTestedDate)}
+          &nbsp;· Vendor COA dated {formatVerifiedDate(vendor.lastTestedDate)}
         </span>
       )}
     </span>
@@ -139,9 +139,6 @@ interface VendorRankCardProps {
 export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
   const editorial = vendorEditorial[vendor.slug];
   const vData = verificationBySlug[vendor.slug];
-  const tierColor = vendor.verificationTier
-    ? getTierColor(vendor.verificationTier)
-    : undefined;
 
   const isFeatured = rank <= 2;
   const isBLL = vendor.slug === "bio-longevity-labs";
@@ -153,38 +150,13 @@ export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
     <article
       id={vendor.slug}
       className={`vrk-card${isFeatured ? " vrk-card-featured" : ""}${isBLL ? " vrk-card-bll" : ""}`}
-      aria-label={`${ordinalLabel(rank)}: ${vendor.name}`}
+      aria-label={`${ordinalLabel(rank, vendor.criteria.total)}: ${vendor.name}`}
     >
       {/* ── Rank strip ─────────────────────────────────────────────────── */}
       <div className="vrk-rank-strip">
-        <span className="vrk-rank-num">{ordinalLabel(rank)}</span>
+        <span className="vrk-rank-num">{ordinalLabel(rank, vendor.criteria.total)}</span>
         <div className="vrk-badges">
           <span className={badgeClass(vendor.badgeStyle)}>{vendor.badge}</span>
-          <span className="vn-tag green">✓ COA Verified</span>
-          {vendor.verificationTier && tierColor && (
-            <Link
-              href={`/coa#verify-${vendor.slug}`}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 4,
-                padding: "3px 10px",
-                borderRadius: "99px",
-                fontSize: "10px",
-                fontFamily: "var(--mono)",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                background: `${tierColor}18`,
-                border: `1px solid ${tierColor}40`,
-                color: tierColor,
-                textDecoration: "none",
-              }}
-            >
-              <ShieldCheck size={10} />
-              {getTierLabel(vendor.verificationTier)}
-              {vData && ` · ${vData.stats.totalIndependentTests} tests`}
-            </Link>
-          )}
         </div>
       </div>
 
@@ -192,6 +164,7 @@ export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
       <h2 className="vrk-h2">
         {vendor.name}
       </h2>
+      <FounderOwnershipDisclosure vendorSlug={vendor.slug} />
       {editorial?.shortPitch ? (
         <p className="vrk-short-pitch">{editorial.shortPitch}</p>
       ) : (
@@ -199,15 +172,25 @@ export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
         <p className="vrk-short-pitch">{vendor.tagline}</p>
       )}
 
-      {/* ── Rating + Purity row ─────────────────────────────────────────── */}
+      {/* ── Criteria score + Purity row ─────────────────────────────────── */}
       <div className="vrk-stats-row">
         <div className="vrk-stat">
-          <div className="vrk-stat-value vrk-stat-gold">★ {vendor.rating}<span className="vrk-stat-max">/5</span></div>
-          <div className="vrk-stat-label">{vendor.ratingCount} reviews</div>
+          <div className="vrk-stat-value vrk-stat-gold">{vendor.criteria.total}<span className="vrk-stat-max">/100</span></div>
+          <div className="vrk-stat-label">Criteria score</div>
         </div>
+        {vendor.thirdPartyRating && (
+          <div className="vrk-stat">
+            <div className="vrk-stat-value">★ {vendor.thirdPartyRating.rating}<span className="vrk-stat-max">/5</span></div>
+            <div className="vrk-stat-label">
+              <a href={vendor.thirdPartyRating.url} target="_blank" rel="nofollow noopener">
+                {vendor.thirdPartyRating.reviewCount} {vendor.thirdPartyRating.platform} reviews
+              </a>
+            </div>
+          </div>
+        )}
         <div className="vrk-stat">
           <div className="vrk-stat-value vrk-stat-green">{vendor.purity}</div>
-          <div className="vrk-stat-label">Purity verified</div>
+          <div className="vrk-stat-label">Purity (vendor claim)</div>
         </div>
         <div className="vrk-stat">
           <div className="vrk-stat-value">{vendor.catalogSize}</div>
@@ -236,6 +219,8 @@ export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
           </span>
         </div>
       )}
+
+      <CriteriaScoreTable score={vendor.criteria} caption={`How ${vendor.name} scores`} />
 
       {/* ── CTA: ABOVE the fold ─────────────────────────────────────────── */}
       <AffiliateCta vendor={vendor} position="above" size="primary" />
@@ -310,7 +295,7 @@ export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
           aria-label={`View ${vendor.name} verification dashboard`}
         >
           <FlaskConical size={13} />
-          View full verification dashboard →
+          View vendor COA documents →
         </Link>
       )}
 

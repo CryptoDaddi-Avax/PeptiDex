@@ -8,6 +8,7 @@ import {
   type AffiliateSource,
 } from "@/lib/ga4-events";
 import { trackClick, type TrackSurface } from "@/lib/tracking/click";
+import { FounderOwnershipDisclosure, isFounderOwned } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 interface AffiliateLinkProps {
   href: string;
@@ -31,6 +32,12 @@ interface AffiliateLinkProps {
   "aria-label"?: string;
   /** Optional inline style override */
   style?: React.CSSProperties;
+  /**
+   * Render the founder-ownership disclosure after links to a founder-owned
+   * vendor (default true). Pass false only where the parent already shows it
+   * right next to this link.
+   */
+  disclosure?: boolean;
 }
 
 /**
@@ -56,9 +63,13 @@ export function AffiliateLink({
   id,
   "aria-label": ariaLabel,
   style,
+  disclosure = true,
 }: AffiliateLinkProps) {
+  // The link's domain wins over the `vendor` prop: several PRIMARY_PROMO links
+  // still pass vendor="amino_club" while pointing at another vendor.
+  const urlVendor = vendorKeyFromUrl(href);
   const resolvedVendor: AffiliateVendor | "unknown" =
-    vendor ?? vendorKeyFromUrl(href);
+    urlVendor !== "unknown" ? urlVendor : (vendor ?? "unknown");
 
   // Derive vendorSlug from vendorKey if not explicitly provided
   const resolvedVendorSlug =
@@ -85,7 +96,7 @@ export function AffiliateLink({
     });
   };
 
-  return (
+  const link = (
     <a
       href={href}
       target={target}
@@ -98,5 +109,14 @@ export function AffiliateLink({
     >
       {children}
     </a>
+  );
+
+  const destinationSlug = urlVendor !== "unknown" ? urlVendor.replace(/_/g, "-") : resolvedVendorSlug;
+  if (!disclosure || !isFounderOwned(destinationSlug)) return link;
+  return (
+    <>
+      {link}
+      <FounderOwnershipDisclosure variant="inline" />
+    </>
   );
 }

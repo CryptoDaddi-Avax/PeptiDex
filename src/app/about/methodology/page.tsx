@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShieldCheck, FlaskConical, BookOpen, GitMerge, DollarSign, CheckSquare, ChevronRight } from 'lucide-react';
+import { vendorsSorted } from '@/data/vendors';
+import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
+import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 export const metadata: Metadata = {
   title: 'Editorial Methodology — How PeptiDex Evaluates Peptides & Vendors',
-  description: 'A full explanation of how PeptiDex grades peptide evidence, verifies vendors, conducts editorial review, and discloses affiliate relationships.',
+  description: 'How PeptiDex grades peptide evidence, lists and ranks vendors on published criteria, conducts editorial review, and discloses affiliate relationships and ownership.',
   alternates: { canonical: 'https://peptidex.app/about/methodology' },
   openGraph: {
     title: 'Editorial Methodology — PeptiDex',
-    description: 'How we grade evidence, verify vendors, and maintain editorial independence.',
+    description: 'How we grade evidence, rank vendors on published criteria, and disclose affiliate relationships.',
     url: 'https://peptidex.app/about/methodology',
     type: 'website',
   },
@@ -124,17 +127,17 @@ export default function MethodologyPage() {
         <section id="vendor-verification">
           <div className="flex items-center gap-3 mb-6">
             <ShieldCheck className="w-6 h-6 text-emerald-400 flex-shrink-0" />
-            <h2 className="text-2xl font-bold text-zinc-100">How we verify vendors</h2>
+            <h2 className="text-2xl font-bold text-zinc-100">How we list vendors</h2>
           </div>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Any vendor that appears in the PeptiDex index must meet a specific set of sourcing criteria before we feature them. We do not accept payment for inclusion. Our vendor verification process covers three mandatory checkpoints:
+            Any vendor that appears in the PeptiDex index must state that it meets these sourcing requirements. These are the vendors&apos; own published claims — PeptiDex does not test products. We do not accept payment for inclusion.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
             {[
               {
                 num: '01',
                 title: 'COA Publication',
-                body: 'Vendors must publish batch-specific Certificates of Analysis (COAs) that are accessible publicly or on-demand. COAs must document the specific compound, batch number, purity percentage, and testing date.',
+                body: 'Vendors must provide Certificates of Analysis (COAs) publicly or on demand, documenting the compound, batch number, purity percentage, and testing date. Batch-specific COAs score higher in our ranking.',
               },
               {
                 num: '02',
@@ -155,9 +158,58 @@ export default function MethodologyPage() {
             ))}
           </div>
           <p className="text-sm text-zinc-400 leading-relaxed">
-            Vendors that fail to meet all three criteria are not listed, regardless of commercial relationship. We re-audit vendors quarterly or following credible reports of quality issues. To submit a vendor for review, email{' '}
+            Vendors that do not state all three are not listed, regardless of commercial relationship. To submit a vendor for review, email{' '}
             <a href="mailto:hello@peptidex.app" className="text-amber-400 hover:underline">hello@peptidex.app</a>.
           </p>
+        </section>
+
+        {/* ── SECTION 2b: Vendor Ranking (published criteria) ── */}
+        <section id="vendor-ranking">
+          <div className="flex items-center gap-3 mb-6">
+            <CheckSquare className="w-6 h-6 text-emerald-400 flex-shrink-0" />
+            <h2 className="text-2xl font-bold text-zinc-100">How we rank vendors</h2>
+          </div>
+          <p className="text-zinc-400 leading-relaxed mb-6">
+            Vendor order everywhere on PeptiDex comes from one score out of 100 on the criteria below, applied
+            the same way to every vendor. Inputs are each vendor&apos;s own published information and the list
+            prices we have checked. Injectable vendors are ranked first, then oral vendors. {RANKING_DISCLOSURE}
+          </p>
+          <div className="space-y-3 mb-8">
+            {RANKING_CRITERIA.map((c) => (
+              <div key={c.key} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+                <h3 className="font-bold text-zinc-100 mb-1">{c.label} — {c.max} points</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">{c.rule}</p>
+              </div>
+            ))}
+          </div>
+          <div className="overflow-x-auto rounded-xl border border-zinc-800">
+            <table className="w-full text-left text-sm" data-criteria-scores>
+              <thead className="bg-zinc-900/80">
+                <tr>
+                  <th className="px-3 py-2 text-zinc-400">Rank</th>
+                  <th className="px-3 py-2 text-zinc-400">Vendor</th>
+                  {RANKING_CRITERIA.map((c) => (
+                    <th key={c.key} className="px-3 py-2 text-zinc-400">{c.label} /{c.max}</th>
+                  ))}
+                  <th className="px-3 py-2 text-zinc-400">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vendorsSorted.map((v, i) => (
+                  <tr key={v.slug} className="border-t border-zinc-800">
+                    <td className="px-3 py-2 text-zinc-300">#{i + 1}</td>
+                    <td className="px-3 py-2 text-zinc-200">
+                      {v.name}{v.category === 'oral' ? ' (oral)' : ''}{v.ownedByFounder ? ' — owned by PeptiDex\'s founder' : ''}
+                    </td>
+                    {v.criteria.parts.map((part) => (
+                      <td key={part.key} className="px-3 py-2 text-zinc-300" title={part.basis}>{part.points}</td>
+                    ))}
+                    <td className="px-3 py-2 font-bold text-zinc-100">{v.criteria.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* ── SECTION 3: Editorial Process ── */}
@@ -221,13 +273,13 @@ export default function MethodologyPage() {
           </div>
           <div className="rounded-xl border border-amber-500/20 bg-amber-950/15 p-6 space-y-4">
             <p className="text-zinc-300 leading-relaxed">
-              PeptiDex is an independent, affiliate-funded publication. We do not charge for access, and we do not accept payment for vendor placement, compound coverage, or favorable editorial treatment.
+              PeptiDex is an affiliate-funded publication. We do not charge for access, and we do not accept payment for vendor placement, compound coverage, or favorable editorial treatment.
             </p>
             <p className="text-zinc-300 leading-relaxed">
-              We earn a small affiliate commission when readers click through to verified vendors and make a qualifying purchase. This commission comes from the vendor, not from you, and does not affect the price you pay.
+              We earn an affiliate commission when readers click through to a listed vendor and make a qualifying purchase. This commission comes from the vendor, not from you, and does not affect the price you pay.
             </p>
             <p className="text-zinc-300 leading-relaxed">
-              Our affiliate relationships are limited strictly to vendors who have passed our full verification process (COA + HPLC + Mass Spec). We do not create affiliate relationships with vendors we would not feature based on merits alone.
+              <strong>Material connection:</strong> {FOUNDER_OWNERSHIP_DISCLOSURE} Elyria Bio is featured in labeled promotional placements (site banner, footer offer, exit offer); its rank uses the same criteria as every other vendor.
             </p>
             <p className="text-zinc-300 leading-relaxed">
               All affiliate links are marked with <code className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-amber-300">rel="nofollow noopener sponsored"</code> per Google webmaster guidelines. This disclosure is required by FTC guidelines (16 CFR Part 255) and GDPR transparency requirements.

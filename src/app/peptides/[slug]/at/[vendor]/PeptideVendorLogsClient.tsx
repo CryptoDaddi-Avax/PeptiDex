@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { VerificationBadge } from "@/components/logs/VerificationBadge";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
 
 interface PairStats {
     log_count: number;
@@ -92,7 +93,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                             Submit batch report →
                         </Link>
                         {affiliateUrl && (
-                            <a
+                            <TrackedOutboundLink vendorSlug={vendorSlug} peptideSlug={peptideSlug} surface="pxv_logs_cta"
                                 href={affiliateUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -100,7 +101,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                                 style={{ background: "var(--bg-soft)", border: "1px solid var(--line-strong)", color: "var(--ink)", fontFamily: "var(--sans)", fontSize: 14 }}
                             >
                                 Buy from {vendorName} →
-                            </a>
+                            </TrackedOutboundLink>
                         )}
                     </div>
                 </div>
@@ -143,7 +144,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                         </div>
                         <div className="flex gap-3">
                             {affiliateUrl && (
-                                <a
+                                <TrackedOutboundLink vendorSlug={vendorSlug} peptideSlug={peptideSlug} surface="pxv_logs_list"
                                     href={affiliateUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -151,7 +152,7 @@ export function PeptideVendorLogsClient({ peptideSlug, peptideName, vendorSlug, 
                                     style={{ background: "var(--bg-card)", border: "1px solid var(--line-strong)", color: "var(--ink)", fontFamily: "var(--sans)" }}
                                 >
                                     Buy from {vendorName}
-                                </a>
+                                </TrackedOutboundLink>
                             )}
                             <Link
                                 href={`/log-protocol?peptide=${peptideSlug}&vendor=${vendorSlug}`}

@@ -17,25 +17,14 @@ import { vendorEditorial } from "@/data/vendorEditorial";
 import { comparisons } from "@/data/comparisons";
 import { vendorCartConfigs } from "@/data/vendor-cart-config";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
+import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
+import { PRICES_LAST_CHECKED_LABEL } from "@/data/vendor-pricing";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function fmt(n: number): string {
   return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-
-function tierLabel(tier: string): string {
-  const map: Record<string, string> = {
-    gold: "Gold — Triple-verified",
-    silver: "Silver — Vendor COA + independent data",
-    bronze: "Bronze — Vendor COA only",
-    unverified: "Unverified",
-  };
-  return map[tier] || tier;
-}
-
-function tierEmoji(tier: string): string {
-  return { gold: "🥇", silver: "🥈", bronze: "🥉", unverified: "❓" }[tier] || "❓";
 }
 
 // ── Styles ───────────────────────────────────────────────────────────────────
@@ -92,7 +81,7 @@ export function PeptideVendorContent({ pair }: Props) {
   const editorial = vendorEditorial[vendor.slug];
   const cartConfig = vendorCartConfigs[vendor.slug];
   const altVendors = getVendorsForPeptide(pair.peptideSlug).filter(
-    p => p.vendorSlug !== pair.vendorSlug
+    p => p.vendorSlug !== pair.vendorSlug && p.pricing.inStock
   );
 
   // Find related comparisons
@@ -144,13 +133,10 @@ export function PeptideVendorContent({ pair }: Props) {
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 24px" }}>
           {[
-            { label: "Rating", value: `${vendor.rating}/5 (${vendor.ratingCount} reviews)` },
+            { label: "Criteria Score", value: `${vendor.criteria.total}/100 (#${vendor.sortOrder} by our published criteria)` },
+            ...(vendor.thirdPartyRating ? [{ label: vendor.thirdPartyRating.platform, value: `${vendor.thirdPartyRating.rating}/5 from ${vendor.thirdPartyRating.reviewCount} reviews` }] : []),
             { label: "Purity Claim", value: vendor.purity },
             { label: "Testing Methods", value: vendor.testingMethods.join(", ") },
-            { label: "Verification Tier", value: `${tierEmoji(vendor.verificationTier ?? '')} ${tierLabel(vendor.verificationTier ?? '')}` },
-            ...(verification?.stats.averagePurity ? [{ label: "Independent Avg Purity", value: `${verification.stats.averagePurity}%` }] : []),
-            ...(verification?.stats.overallPassRate ? [{ label: "Pass Rate", value: `${verification.stats.overallPassRate}%` }] : []),
-            ...(verification?.independentTests[0]?.vendorScore ? [{ label: "Finnrick Score", value: verification.independentTests[0].vendorScore }] : []),
             { label: "Shipping", value: `${vendor.shippingSpeed} · ${vendor.shippingCost}` },
             { label: "Returns", value: vendor.returnPolicy },
             { label: "COA Status", value: vendor.coaStatus },
@@ -289,7 +275,10 @@ export function PeptideVendorContent({ pair }: Props) {
                   const altDisc = alt.pricing.price_usd * (1 - (alt.vendor.discountPercent ?? 0) / 100);
                   return (
                     <tr key={alt.vendorSlug} style={{ borderBottom: "1px solid var(--line)" }}>
-                      <td style={{ padding: "10px 12px", color: "var(--ink)" }}>{alt.vendor.name}</td>
+                      <td style={{ padding: "10px 12px", color: "var(--ink)" }}>
+                        {alt.vendor.name}
+                        <FounderOwnershipDisclosure vendorSlug={alt.vendorSlug} variant="inline" />
+                      </td>
                       <td style={{ padding: "10px 12px" }}>{alt.pricing.vial_mg}mg</td>
                       <td style={{ padding: "10px 12px" }}>${fmt(alt.pricing.price_usd)}</td>
                       <td style={{ padding: "10px 12px", fontWeight: 600 }}>${fmt(altDisc)}</td>
@@ -336,26 +325,35 @@ export function PeptideVendorContent({ pair }: Props) {
 
       {/* ── Section 8: Primary + Alternate CTAs ── */}
       <section style={{ ...sectionStyle, textAlign: "center", background: "linear-gradient(135deg, rgba(201,169,97,0.08) 0%, rgba(201,169,97,0.02) 100%)" }} id="buy-cta">
-        <a
-          href={pricing.affiliateUrl || vendor.affiliateUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
-            padding: "14px 32px",
-            background: "linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%)",
-            color: "#0a0a0b",
-            fontFamily: "var(--sans)",
-            fontSize: 15,
-            fontWeight: 700,
-            borderRadius: 12,
-            textDecoration: "none",
-            transition: "transform 0.15s",
-          }}
-        >
-          Buy {peptide.name} from {vendor.name} →
-        </a>
-        {vendor.discountCode && (
+        {pricing.inStock ? (
+          <TrackedOutboundLink
+            href={pricing.affiliateUrl || vendor.affiliateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            vendorSlug={vendor.slug}
+            peptideSlug={peptide.slug}
+            surface="pxv_page"
+            style={{
+              display: "inline-block",
+              padding: "14px 32px",
+              background: "linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%)",
+              color: "#0a0a0b",
+              fontFamily: "var(--sans)",
+              fontSize: 15,
+              fontWeight: 700,
+              borderRadius: 12,
+              textDecoration: "none",
+              transition: "transform 0.15s",
+            }}
+          >
+            Buy {peptide.name} from {vendor.name} →
+          </TrackedOutboundLink>
+        ) : (
+          <p style={{ ...valueStyle, fontWeight: 600 }}>
+            {peptide.name} is currently out of stock at {vendor.name}.
+          </p>
+        )}
+        {pricing.inStock && vendor.discountCode && (
           <p style={{ ...valueStyle, fontSize: 12, color: "var(--ink-dim)", marginTop: 8 }}>
             Use code <strong>{vendor.discountCode}</strong> for {discountPct}% off
           </p>
@@ -364,11 +362,14 @@ export function PeptideVendorContent({ pair }: Props) {
         {altVendors.length > 0 && (
           <div style={{ marginTop: 20, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             {altVendors.slice(0, 2).map(alt => (
-              <a
+              <TrackedOutboundLink
                 key={alt.vendorSlug}
                 href={alt.pricing.affiliateUrl || alt.vendor.affiliateUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                vendorSlug={alt.vendorSlug}
+                peptideSlug={peptide.slug}
+                surface="pxv_alternative"
                 style={{
                   display: "inline-block",
                   padding: "10px 20px",
@@ -383,7 +384,8 @@ export function PeptideVendorContent({ pair }: Props) {
                 }}
               >
                 {alt.vendor.name} — ${fmt(alt.pricing.price_usd * (1 - (alt.vendor.discountPercent ?? 0) / 100))}
-              </a>
+                <FounderOwnershipDisclosure vendorSlug={alt.vendorSlug} variant="inline" />
+              </TrackedOutboundLink>
             ))}
           </div>
         )}
@@ -393,8 +395,8 @@ export function PeptideVendorContent({ pair }: Props) {
       <div style={{ padding: 16, borderRadius: 12, background: "rgba(201,169,97,0.04)", border: "1px solid rgba(201,169,97,0.12)", marginBottom: 32 }}>
         <p style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--ink-mute)", lineHeight: 1.7 }}>
           ⚠ PeptiDex earns affiliate commissions on purchases made through links on this page.
-          Pricing last verified: {pricing.lastTestedDate || vendor.lastTestedDate || "—"}.
-          Vendor rating reflects {vendor.name}&apos;s overall reputation across all products, not a per-peptide score.
+          Prices checked: {PRICES_LAST_CHECKED_LABEL}.
+          The criteria score reflects {vendor.name} as a vendor, not this product.
           This is not medical advice. Peptides are sold for research purposes only.
         </p>
       </div>
