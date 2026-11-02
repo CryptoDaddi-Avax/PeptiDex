@@ -141,7 +141,7 @@ export function VendorCouponPageClient({
             { icon: <Zap className={`w-4 h-4 ${deal.stackable ? "text-emerald-400" : "text-zinc-600"}`} />, label: "Stackable", value: deal.stackable ? "Yes — stacks with sales" : "No" },
             { icon: <Package className="w-4 h-4 text-zinc-400" />, label: "Free Shipping", value: deal.freeShippingThreshold ? `Orders over $${deal.freeShippingThreshold}` : "See site" },
             { icon: <ShieldCheck className="w-4 h-4 text-zinc-400" />, label: "Exclusions", value: deal.exclusions && deal.exclusions.length > 0 ? deal.exclusions.join(", ") : "None — applies sitewide" },
-            { icon: <Star className="w-4 h-4 text-amber-400" />, label: "Rating", value: `${deal.rating}/5 (${vendor?.ratingCount ?? "200+"} reviews)` },
+            ...(vendor ? [{ icon: <Star className="w-4 h-4 text-amber-400" />, label: "Criteria score", value: `${vendor.criteria.total}/100 (#${vendor.sortOrder})` }] : []),
           ].map(({ icon, label, value }) => (
             <div key={label} className="flex items-start gap-2">
               <span className="mt-0.5 flex-shrink-0">{icon}</span>

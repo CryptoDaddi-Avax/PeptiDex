@@ -33,12 +33,12 @@ export function VendorMiniCards({
       ...vp,
       vendorRecord: allVendors.find(v => v.name.toLowerCase() === vp.vendor.toLowerCase()),
     }))
-    .sort((a, b) => {
-      if (a.badge === "Editor's Pick") return -1;
-      if (b.badge === "Editor's Pick") return 1;
-      return a.price_usd - b.price_usd;
-    })
+    // Published-criteria rank first (src/lib/vendor-criteria.ts), then price
+    .sort((a, b) =>
+      (a.vendorRecord?.sortOrder ?? 99) - (b.vendorRecord?.sortOrder ?? 99) || a.price_usd - b.price_usd
+    )
     .slice(0, 4); // Only top 4 for mini cards
+  const topVendor = enrichedVendors[0]?.vendor;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
@@ -47,10 +47,10 @@ export function VendorMiniCards({
         const discounted = discount > 0 ? (v.price_usd * (1 - discount / 100)) : null;
         
         return (
-          <div key={v.vendor} className={`relative p-5 rounded-2xl border ${v.badge === "Editor's Pick" ? 'border-amber-500/50 bg-amber-500/5' : 'border-zinc-800 bg-zinc-900/40'} flex flex-col`}>
-            {v.badge === "Editor's Pick" && (
+          <div key={v.vendor} className={`relative p-5 rounded-2xl border ${v.vendor === topVendor ? 'border-amber-500/50 bg-amber-500/5' : 'border-zinc-800 bg-zinc-900/40'} flex flex-col`}>
+            {v.vendor === topVendor && v.vendorRecord && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]">
-                Editor's Choice
+                Top criteria score · {v.vendorRecord.criteria.total}/100
               </span>
             )}
             <div className="flex justify-between items-start mb-3">
@@ -85,7 +85,7 @@ export function VendorMiniCards({
               peptide={peptideSlug}
               source="buy_box"
               className={`w-full py-2.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-colors ${
-                v.badge === "Editor's Pick" 
+                v.vendor === topVendor 
                   ? 'bg-amber-500 text-zinc-950 hover:bg-amber-400' 
                   : 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700 hover:text-white'
               }`}

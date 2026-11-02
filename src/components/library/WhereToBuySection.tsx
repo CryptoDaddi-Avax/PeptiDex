@@ -38,12 +38,11 @@ export function WhereToBuySection({
       );
       return { ...vp, vendorRecord };
     })
-    .sort((a, b) => {
-      // Editor's Pick first, then by price asc
-      if (a.badge === "Editor's Pick") return -1;
-      if (b.badge === "Editor's Pick") return 1;
-      return a.price_usd - b.price_usd;
-    });
+    // Published-criteria rank first (src/lib/vendor-criteria.ts), then price asc
+    .sort((a, b) =>
+      (a.vendorRecord?.sortOrder ?? 99) - (b.vendorRecord?.sortOrder ?? 99) || a.price_usd - b.price_usd
+    );
+  const topVendor = enrichedVendors[0]?.vendor;
 
   return (
     <section className="pd-where-to-buy" id="where-to-buy">
@@ -99,7 +98,7 @@ export function WhereToBuySection({
                   const code = v.vendorRecord?.discountCode;
 
                   return (
-                    <tr key={v.vendor} className={v.badge === "Editor's Pick" ? 'pd-wtb-row-featured' : ''}>
+                    <tr key={v.vendor} className={v.vendor === topVendor ? 'pd-wtb-row-featured' : ''}>
                       <td>
                         <div className="pd-wtb-vendor-cell">
                           {v.vendorRecord?.slug ? (
@@ -172,7 +171,7 @@ export function WhereToBuySection({
               return (
                 <div
                   key={v.vendor}
-                  className={`pd-wtb-card ${v.badge === "Editor's Pick" ? 'pd-wtb-card-featured' : ''}`}
+                  className={`pd-wtb-card ${v.vendor === topVendor ? 'pd-wtb-card-featured' : ''}`}
                 >
                   <div className="pd-wtb-card-top">
                     {v.vendorRecord?.slug ? (

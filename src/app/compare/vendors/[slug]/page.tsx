@@ -38,16 +38,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 // ─── HELPERS ────────────────────────────────────────────────────────
-function StarRating({ rating }: { rating: number }) {
-  const full = Math.floor(rating);
+function CriteriaScore({ vendor }: { vendor: VendorProfile }) {
   return (
     <div className="flex items-center gap-1">
-      <div className="flex gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className={`w-4 h-4 ${i < full ? 'text-amber-400 fill-amber-400' : 'text-zinc-700'}`} />
-        ))}
-      </div>
-      <span className="text-sm font-bold text-zinc-200 ml-1">{rating}</span>
+      <span className="text-sm font-bold text-zinc-200">{vendor.criteria.total}/{vendor.criteria.max}</span>
+      <span className="text-xs text-zinc-500 ml-1">#{vendor.sortOrder} by our criteria</span>
     </div>
   );
 }
@@ -148,14 +143,6 @@ export default async function VendorComparisonPage({ params }: { params: Promise
             name: v.name,
             url: v.affiliateUrl,
             description: `${v.name} is a research peptide vendor with ${v.purity} purity guarantee and ${v.coaStatus.toLowerCase()} COA verification.`,
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: v.rating.toFixed(1),
-              bestRating: '5',
-              worstRating: '1',
-              ratingCount: parseInt(v.ratingCount, 10) || 50,
-              reviewCount: parseInt(v.ratingCount, 10) || 50,
-            },
           },
         })),
       }) }} />
@@ -180,7 +167,7 @@ export default async function VendorComparisonPage({ params }: { params: Promise
           Wondering if <strong className="text-zinc-200">{vendorA.name}</strong> or <strong className="text-zinc-200">{vendorB.name}</strong> is better for research-grade peptides in 2026?
           We compared their pricing, purity, and third-party testing so you don&apos;t have to.
           Below you&apos;ll find a side-by-side breakdown of the top 5 peptides by price, shipping logistics,
-          COA verification, and our editorial rating — everything you need to make an informed sourcing decision.
+          COA documentation, and each vendor&apos;s score on our <a href="/about/methodology#vendor-ranking" className="underline">published criteria</a>.
         </p>
       </header>
 
@@ -209,8 +196,14 @@ export default async function VendorComparisonPage({ params }: { params: Promise
               <h2 className="text-xl font-bold text-zinc-100">{v.name}</h2>
               <VendorBadge vendor={v} />
             </div>
-            <StarRating rating={v.rating} />
-            <p className="text-xs text-zinc-500 mt-1">{v.ratingCount} reviews</p>
+            <CriteriaScore vendor={v} />
+            {v.thirdPartyRating && (
+              <p className="text-xs text-zinc-500 mt-1">
+                <a href={v.thirdPartyRating.url} target="_blank" rel="nofollow noopener" className="underline">
+                  {v.thirdPartyRating.platform}: {v.thirdPartyRating.rating}/5 from {v.thirdPartyRating.reviewCount} reviews
+                </a>
+              </p>
+            )}
             <div className="flex flex-wrap gap-2 mt-4">
               <span className="flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-full font-medium">
                 <CheckCircle2 className="w-3 h-3" /> {v.purity} purity
@@ -251,7 +244,6 @@ export default async function VendorComparisonPage({ params }: { params: Promise
                   <th className="px-5 py-4 text-xs font-bold text-zinc-400 uppercase tracking-wider">Peptide</th>
                   <th className="px-5 py-4 text-xs font-bold text-violet-400 uppercase tracking-wider">
                     {vendorA.name}
-                    {vendorA.badge && <span className="ml-1.5 text-[8px] text-violet-300 bg-violet-500/20 px-1.5 py-0.5 rounded-full border border-violet-500/30">★</span>}
                   </th>
                   <th className="px-5 py-4 text-xs font-bold text-blue-400 uppercase tracking-wider">{vendorB.name}</th>
                   <th className="px-5 py-4 text-xs font-bold text-zinc-400 uppercase tracking-wider text-right">Winner</th>
@@ -334,10 +326,10 @@ export default async function VendorComparisonPage({ params }: { params: Promise
                 {/* Rating */}
                 <tr>
                   <td className="px-5 py-4 text-zinc-400 font-medium flex items-center gap-2">
-                    <Star className="w-4 h-4 text-amber-400" /> User Rating
+                    <Star className="w-4 h-4 text-amber-400" /> Criteria Score
                   </td>
-                  <td className="px-5 py-4"><StarRating rating={vendorA.rating} /></td>
-                  <td className="px-5 py-4"><StarRating rating={vendorB.rating} /></td>
+                  <td className="px-5 py-4"><CriteriaScore vendor={vendorA} /></td>
+                  <td className="px-5 py-4"><CriteriaScore vendor={vendorB} /></td>
                 </tr>
 
                 {/* Purity */}

@@ -209,7 +209,7 @@ export function SmartVendorPicker({
                 <>
                   <div className="text-center mb-4">
                     <p className="text-[10px] font-mono uppercase tracking-widest text-amber-400 mb-1">
-                      Our pick for {peptideName}
+                      Top match for your answers · {peptideName}
                     </p>
                   </div>
 

@@ -27,8 +27,6 @@ export interface VendorDeal {
   proTip?: string;
   /** min order for free shipping */
   freeShippingThreshold?: number;
-  /** Star rating */
-  rating: number;
 }
 
 export interface PeptideBestDeal {
@@ -63,14 +61,13 @@ export const vendorDeals: VendorDeal[] = [
     code: "PEPTIDEX",
     discountPercent: 20,
     discountType: "percent",
-    headline: "20% off — Editor's Choice with 60-day guarantee",
+    headline: "20% off — with 60-day money-back guarantee",
     exclusions: [],
     stackable: false,
     expiresLabel: "No expiry — verified May 2026",
     affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
-    proTip: "Amino Club is our #1 pick for quality/price balance. PEPTIDEX gives 20% off all orders. Backed by a 60-day money-back guarantee — the longest in the industry.",
+    proTip: "PEPTIDEX gives 20% off all Amino Club orders — the largest code discount in our index. Backed by a 60-day money-back guarantee, the longest among the vendors we list.",
     freeShippingThreshold: 100,
-    rating: 4.9,
   },
   {
     vendorSlug: "bio-longevity-labs",
@@ -86,7 +83,6 @@ export const vendorDeals: VendorDeal[] = [
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
     proTip: "Bio Longevity Labs regularly runs 25–30% sitewide sales. Because PEPTIDEX stacks on top, you can hit 40%+ total savings during a sale — check their homepage before ordering.",
     freeShippingThreshold: 150,
-    rating: 4.8,
   },
   {
     vendorSlug: "limitless-life",
@@ -101,7 +97,6 @@ export const vendorDeals: VendorDeal[] = [
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     proTip: "Limitless Life has the widest catalog of any vendor we list (90+ compounds). Best choice when you need harder-to-find peptides.",
     freeShippingThreshold: 100,
-    rating: 4.8,
   },
   {
     vendorSlug: "pantheon-peptides",
@@ -116,7 +111,6 @@ export const vendorDeals: VendorDeal[] = [
     affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
     proTip: "Pantheon Peptides offers competitive per-mg pricing, especially on GH peptides. Good alternative when Amino Club is out of stock on specific compounds.",
     freeShippingThreshold: 100,
-    rating: 4.6,
   },
   {
     vendorSlug: "lvlup-health",
@@ -131,7 +125,6 @@ export const vendorDeals: VendorDeal[] = [
     affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
     proTip: "LVLUP is the only oral & nasal formulation specialist on our list, carrying non-injectable formats of research compounds such as BPC-157, Semax, and Selank. Code applies to all oral capsule products.",
     freeShippingThreshold: 75,
-    rating: 4.5,
   },
 ];
 
@@ -210,7 +203,7 @@ export function buildFaqSchema(deals: VendorDeal[]) {
         "name": "What is the best peptide vendor discount code right now?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `For the best value, use PEPTIDEX at Bio Longevity Labs for 15% off that stacks with site-wide sales — the only vendor where the code stacks with promotions. For Editor's Choice quality, use PEPTIDEX at Amino Club for 20% off. All codes are verified as of May 2026.`,
+          "text": `For the best value, use PEPTIDEX at Bio Longevity Labs for 15% off that stacks with site-wide sales — the only vendor where the code stacks with promotions. For the largest single discount, use PEPTIDEX at Amino Club for 20% off. All codes are verified as of May 2026.`,
         },
       },
       ...deals.map((d) => ({

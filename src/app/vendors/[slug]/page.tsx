@@ -12,9 +12,10 @@ import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard
 import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import { PurityHistory } from '@/components/lab-data/PurityHistory';
 import { allVendorReviews } from '@/data/reviews';
-import { vendorBySlug } from '@/data/vendors';
-import { verificationBySlug, getTierLabel } from '@/data/verification-data';
+import { vendorBySlug, vendorsSorted } from '@/data/vendors';
+import { verificationBySlug } from '@/data/verification-data';
 import { VendorCompare } from '@/components/vendors/VendorCompare';
+import { CriteriaScoreTable } from '@/components/vendors/CriteriaScoreTable';
 import {
   Star, CheckCircle2, XCircle, Shield, FlaskConical,
   ArrowRight, Calendar, DollarSign, Truck, HelpCircle,
@@ -52,26 +53,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ── Helpers ──────────────────────────────────────────────────────────
 const CURRENT_YEAR = new Date().getFullYear();
 
-function renderStars(rating: number) {
-  const full = Math.floor(rating);
-  const half = rating % 1 >= 0.5;
-  return (
-    <span className="vr-stars">
-      {Array.from({ length: full }, (_, i) => (
-        <Star key={`f${i}`} className="w-5 h-5 fill-amber-400 text-amber-400" />
-      ))}
-      {half && <Star className="w-5 h-5 fill-amber-400/50 text-amber-400" />}
-    </span>
-  );
-}
-
-function tierBadgeClass(tier: string): string {
-  if (tier === 'gold') return 'vr-tier-gold';
-  if (tier === 'silver') return 'vr-tier-silver';
-  if (tier === 'bronze') return 'vr-tier-bronze';
-  return 'vr-tier-default';
-}
-
 // ── Page ─────────────────────────────────────────────────────────────
 export default async function VendorReviewPage({ params }: Props) {
   const { slug } = await params;
@@ -83,52 +64,8 @@ export default async function VendorReviewPage({ params }: Props) {
   const canonical = `https://peptidex.app/vendors/${slug}`;
 
   // ── JSON-LD schemas ──
-  const reviewSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Review',
-    itemReviewed: {
-      '@type': 'Organization',
-      name: review.name,
-      url: review.affiliateUrl.split('?')[0],
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(review.overallRating),
-      bestRating: '5',
-    },
-    author: { '@type': 'Organization', name: 'PeptiDex Editorial' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'PeptiDex',
-      logo: { '@type': 'ImageObject', url: 'https://peptidex.app/favicon.ico' },
-    },
-    datePublished: `${review.datePublished}T12:00:00Z`,
-    dateModified: `${review.dateModified}T12:00:00Z`,
-  };
-
-  const productSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `${review.name} Research Peptides`,
-    brand: { '@type': 'Brand', name: review.name },
-    description: review.metaDescription,
-    review: {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: String(review.overallRating),
-        bestRating: '5',
-      },
-      author: { '@type': 'Organization', name: 'PeptiDex Editorial' },
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: String(review.overallRating),
-      reviewCount: review.ratingCount.replace('+', ''),
-      bestRating: '5',
-    },
-  };
-
+  // No Review / AggregateRating markup: PeptiDex's own scores are not user
+  // reviews, and ratings from other platforms must not be marked up as ours.
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -149,10 +86,10 @@ export default async function VendorReviewPage({ params }: Props) {
     ],
   };
 
-  const allSchemas = [reviewSchema, productSchema, faqSchema, breadcrumbSchema];
+  const allSchemas = [faqSchema, breadcrumbSchema];
 
-  const tier = vendor?.verificationTier || 'unverified';
-  const tierLabel = getTierLabel(tier);
+  const rank = vendorsSorted.findIndex((v) => v.slug === slug) + 1;
+  const tpr = vendor?.thirdPartyRating;
 
   return (
     <main id="main-content">
@@ -183,7 +120,7 @@ export default async function VendorReviewPage({ params }: Props) {
             <div className="vr-meta-dot" />
             <div className="vr-meta-chip">
               <FlaskConical className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-300 font-medium">Independent Analysis</span>
+              <span className="text-amber-300 font-medium">Scored on published criteria</span>
             </div>
           </div>
           <AuthorByline name="PeptiDex Editorial" variant="full" className="mb-6" />
@@ -201,16 +138,21 @@ export default async function VendorReviewPage({ params }: Props) {
         <section id="summary" className="vr-summary-card">
           <div className="vr-summary-header">
             <div className="vr-score-block">
-              <div className="vr-score-number">{review.overallRating}</div>
-              <div className="vr-score-label">PeptiDex Score</div>
-              {renderStars(review.overallRating)}
-              <span className="vr-rating-count">{review.ratingCount} reviews</span>
+              <div className="vr-score-number">{vendor ? vendor.criteria.total : '—'}</div>
+              <div className="vr-score-label">Criteria score /100</div>
+              {tpr && (
+                <a className="vr-rating-count" href={tpr.url} target="_blank" rel="nofollow noopener">
+                  {tpr.platform}: {tpr.rating}/5 from {tpr.reviewCount} reviews
+                </a>
+              )}
             </div>
             <div className="vr-summary-stats">
-              <div className="vr-stat">
-                <span className="vr-stat-key">Verification</span>
-                <span className={`vr-tier-badge ${tierBadgeClass(tier)}`}>{tierLabel}</span>
-              </div>
+              {rank > 0 && (
+                <div className="vr-stat">
+                  <span className="vr-stat-key">Rank</span>
+                  <span className="vr-stat-val">#{rank} of {vendorsSorted.length}</span>
+                </div>
+              )}
               <div className="vr-stat">
                 <span className="vr-stat-key">Purity</span>
                 <span className="vr-stat-val vr-green">{review.purity}</span>
@@ -243,19 +185,9 @@ export default async function VendorReviewPage({ params }: Props) {
         <section id="tldr">
           <div className="vr-section-head">
             <Award className="w-6 h-6 text-amber-400 flex-shrink-0" />
-            <h2>TL;DR — Why {review.name}?</h2>
+            <h2>How {review.name} Scores</h2>
           </div>
-          <ul className="vr-tldr-list">
-            {review.scoreBreakdown.slice(0, 3).map((s, i) => (
-              <li key={i} className="vr-tldr-item">
-                <span className="vr-tldr-score">{s.score}</span>
-                <div>
-                  <strong>{s.category}</strong>
-                  <span className="vr-tldr-note"> — {s.note}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {vendor && <CriteriaScoreTable score={vendor.criteria} />}
         </section>
 
         {/* ══════════ 3. PROS / CONS ══════════ */}
@@ -313,7 +245,7 @@ export default async function VendorReviewPage({ params }: Props) {
           {/* MW/Purity data from verification registry */}
           {verification && verification.vendorCOAs.length > 0 && (
             <div className="vr-coa-table-wrap">
-              <h3 className="vr-sub-heading">Verified COA Data</h3>
+              <h3 className="vr-sub-heading">Vendor-Supplied COA Data</h3>
               <div className="vr-coa-table-scroll">
                 <table className="vr-coa-table">
                   <thead>
@@ -447,10 +379,12 @@ export default async function VendorReviewPage({ params }: Props) {
               <span className="vr-spec-key">Return Policy</span>
               <span className="vr-spec-val">{review.returnPolicy}</span>
             </div>
-            <div className="vr-spec-card">
-              <span className="vr-spec-key">Review Count</span>
-              <span className="vr-spec-val">{review.ratingCount} on Trustpilot</span>
-            </div>
+            {tpr && (
+              <div className="vr-spec-card">
+                <span className="vr-spec-key">{tpr.platform}</span>
+                <span className="vr-spec-val">{tpr.rating}/5 from {tpr.reviewCount} reviews (checked {tpr.checked})</span>
+              </div>
+            )}
           </div>
           {review.shippingDetail.split('\n\n').map((para, i) => (
             <p key={i} className="vr-body-text">{para}</p>
@@ -468,10 +402,9 @@ export default async function VendorReviewPage({ params }: Props) {
               <Link key={alt.slug} href={alt.href} className="vr-alt-card">
                 <div className="vr-alt-top">
                   <span className="vr-alt-name">{alt.name}</span>
-                  <span className="vr-alt-rating">
-                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    {alt.rating}
-                  </span>
+                  {vendorBySlug[alt.slug] && (
+                    <span className="vr-alt-rating">{vendorBySlug[alt.slug].criteria.total}/100</span>
+                  )}
                 </div>
                 <p className="vr-alt-best">{alt.bestFor}</p>
                 <FounderOwnershipDisclosure vendorSlug={alt.slug} variant="inline" />

@@ -24,11 +24,10 @@ function VendorCard({ v }: { v: Vendor }) {
         <div className="vendor-name-row">
           <h3>{v.name}</h3>
           <div className="vendor-rating">
-            <span className="star">★</span> {v.rating}
-            <span className="count">({v.ratingCount})</span>
+            {v.criteria.total}<span className="count">/100</span>
           </div>
         </div>
-        <div className="vendor-purity">{v.purity} purity verified</div>
+        <div className="vendor-purity">{v.purity} purity (vendor claim)</div>
         <FounderOwnershipDisclosure vendorSlug={v.slug} variant="inline" />
       </div>
 
@@ -80,13 +79,13 @@ export default function VendorSection() {
   return (
     <section className="vendors-section" id="vendors">
       <div className="vendors-head">
-        <div className="section-label">§ Verified Sourcing</div>
+        <div className="section-label">§ Sourcing</div>
         <h2 className="section-title">
           COA-verified<br /><em>vendors</em>
         </h2>
         <p className="vendors-sub">
-          Every vendor in our index is independently verified with third-party Certificates of Analysis.
-          We test purity via HPLC and Mass Spectrometry before any recommendation.
+          Vendors are ranked by score on our published criteria — COA availability, third-party lab
+          testing, price per mg, shipping, payment options and returns. PeptiDex does not test products.
         </p>
       </div>
       <div className="vendors-grid">

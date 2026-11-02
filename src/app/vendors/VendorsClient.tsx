@@ -7,7 +7,7 @@
  *  1. Hero       — H1, subhead, last-reviewed timestamp, breadcrumb
  *  2. Comparison — <VendorComparisonTable> (sticky desktop, scroll mobile)
  *  3. Ranked sections — <VendorRankCard> × 6 (injectable + oral)
- *  4. Methodology — "How we rank vendors" (E-E-A-T signal)
+ *  4. Methodology — published ranking criteria + every vendor's score
  *  5. Buyer's guide — ~600 words, internal links to /tools/coa + /library
  *  6. FAQ — <VendorsFAQ> with 8 Q&As
  *
@@ -30,14 +30,8 @@ import {
   ArrowRight,
   AlertTriangle,
 } from 'lucide-react';
-import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT, vendors } from '@/data/vendors';
-
-// ── Discount lookups (single source of truth: vendors.ts) ─────────────────
-const _aminoClub    = vendors.find((v) => v.slug === 'amino-club')!;
-const _bioLongevity = vendors.find((v) => v.slug === 'bio-longevity-labs')!;
-const _limitless    = vendors.find((v) => v.slug === 'limitless-life')!;
-const _pantheon     = vendors.find((v) => v.slug === 'pantheon-peptides')!;
-const _lvlup        = vendors.find((v) => v.slug === 'lvlup-health')!;
+import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT } from '@/data/vendors';
+import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
 import { VENDORS_FAQ_ITEMS } from './faqData';
 import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTable';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
@@ -95,23 +89,23 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
 
           {/* 2-sentence subhead — must include "where to buy peptides" */}
           <p className="vn-subtitle">
-            PeptiDex has compared and ranked the best{' '}
-            <strong>where to buy peptides online</strong> options in 2026 — every vendor
-            in this index provides a batch-specific Certificate of Analysis verified by
-            HPLC and Mass Spectrometry. Use the comparison table below to find the best
-            source for your research.
+            PeptiDex compares <strong>where to buy peptides online</strong> in 2026 by
+            scoring every vendor on the same {RANKING_CRITERIA.length} published criteria —
+            COA availability, third-party lab testing, price per mg, shipping, payment
+            options and returns — using each vendor&apos;s own published information.
+            PeptiDex does not test products.
           </p>
 
           {/* Page stats */}
           <div className="vn-page-meta">
             <div className="vn-meta-item">
-              <strong>{VENDOR_COUNT}</strong> verified vendors
+              <strong>{VENDOR_COUNT}</strong> vendors
             </div>
             <div className="vn-meta-item">
-              <strong>HPLC</strong> + Mass Spec required
+              <strong>{RANKING_CRITERIA.length}</strong> published criteria
             </div>
             <div className="vn-meta-item">
-              <strong>Independent</strong> COA verification
+              <a href="#how-we-rank"><strong>How</strong> we rank</a>
             </div>
             <div className="vn-meta-item">
               <strong>Updated</strong> {formatDate(lastReviewed)}
@@ -211,24 +205,21 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
             Each vendor has a dedicated long-form review with COA analysis, pricing breakdown, community sentiment, and FAQ — written to YMYL editorial standards.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-            {[
-              { name: 'Amino Club', rating: 4.9, href: '/vendors/amino-club', badge: "Editor's Choice", note: `${_aminoClub.discountPercent}% code · Gold COA tier` },
-              { name: 'Bio Longevity Labs', rating: 4.8, href: '/vendors/bio-longevity-labs', badge: 'Triple-Tested', note: `${_bioLongevity.discountPercent}% stackable · 80+ compounds` },
-              { name: 'Limitless Life', rating: 4.5, href: '/vendors/limitless-life', badge: 'USA Made', note: `${_limitless.discountPercent}% code · 90+ compounds · ⚠ Mixed reviews` },
-              { name: 'Pantheon Peptides', rating: 4.6, href: '/vendors/pantheon-peptides', badge: 'Emerging', note: `${_pantheon?.discountPercent ? `${_pantheon.discountPercent}% code` : 'No code'} · Competitive pricing` },
-              { name: 'LVLUP Health', rating: 4.5, href: '/vendors/lvlup-health', badge: 'Oral Specialist', note: `${_lvlup?.discountPercent ? `${_lvlup.discountPercent}% code` : 'No code'} · Needle-free formulations` },
-            ].map(v => (
+            {vendorsSorted.map(v => (
               <Link
-                key={v.href}
-                href={v.href}
+                key={v.slug}
+                href={`/vendors/${v.slug}`}
                 className="block rounded-xl border border-zinc-800 bg-zinc-900/30 hover:border-violet-500/40 hover:bg-violet-500/5 p-5 transition-all group"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-mono text-violet-400 uppercase tracking-wider">{v.badge}</span>
-                  <span className="text-sm font-bold text-amber-400">{v.rating}/5</span>
+                  <span className="text-sm font-bold text-amber-400">{v.criteria.total}/{v.criteria.max}</span>
                 </div>
                 <h3 className="font-bold text-zinc-100 group-hover:text-white mb-1">{v.name}</h3>
-                <p className="text-xs text-zinc-500 mb-3">{v.note}</p>
+                <p className="text-xs text-zinc-500 mb-3">
+                  {v.discountPercent ? `${v.discountPercent}% code${v.discountStackable ? ' (stackable)' : ''}` : 'No code'} · {v.catalogSize}
+                </p>
+                <FounderOwnershipDisclosure vendorSlug={v.slug} variant="inline" />
                 <span className="text-xs font-semibold text-violet-400 flex items-center gap-1">
                   Read full review <ArrowRight className="w-3 h-3" />
                 </span>
@@ -248,67 +239,57 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
             How We <em>Rank</em> Peptide Vendors
           </h2>
           <p className="vmeth-intro">
-            PeptiDex is an independent research index — we accept affiliate commissions
-            from some vendors, but our rankings are determined solely by objective criteria
-            evaluated below. A vendor's advertising spend has zero effect on rank. Rankings
-            are re-evaluated quarterly.
+            Every vendor is scored out of 100 on the criteria below. The inputs are each
+            vendor&apos;s own published information (COA policy, testing methods, shipping,
+            payment and return terms) and the list prices we have checked. PeptiDex does
+            not test products. Commission and ownership are not criteria.
           </p>
 
           <div className="vmeth-grid">
-            <div className="vmeth-card">
-              <div className="vmeth-icon"><FlaskConical size={28} /></div>
-              <h3>COA Documentation (40%)</h3>
-              <p>
-                Batch-specific HPLC purity ≥98% is the minimum. We award additional weight
-                for LC-MS molecular identity confirmation and Endotoxin/LAL screening.
-                Generic batch-range COAs or missing documentation result in automatic
-                rank demotion.
-              </p>
-            </div>
-            <div className="vmeth-card">
-              <div className="vmeth-icon"><ShieldCheck size={28} /></div>
-              <h3>Third-Party Verification (25%)</h3>
-              <p>
-                COAs must originate from a recognized independent laboratory — not the
-                vendor's own facility. We cross-reference lab names against known analytical
-                chemistry service registries. Self-issued COAs are flagged.
-              </p>
-            </div>
-            <div className="vmeth-card">
-              <div className="vmeth-icon"><Truck size={28} /></div>
-              <h3>Shipping & Fulfillment (15%)</h3>
-              <p>
-                Biologically sensitive compounds degrade in prolonged transit. We evaluate
-                dispatch speed, cold-chain handling, and domestic vs. international
-                availability. Vendors must guarantee fulfillment within 2 business days.
-              </p>
-            </div>
-            <div className="vmeth-card">
-              <div className="vmeth-icon"><CreditCard size={28} /></div>
-              <h3>Payment Security (10%)</h3>
-              <p>
-                Legitimate research chemical suppliers often operate outside standard
-                payment processors. We evaluate payment gateway legitimacy, chargeback
-                policies, and the presence of secure checkout infrastructure.
-              </p>
-            </div>
-            <div className="vmeth-card">
-              <div className="vmeth-icon"><CheckCircle2 size={28} /></div>
-              <h3>Return Policy & Support (10%)</h3>
-              <p>
-                A meaningful return window (≥30 days) signals confidence in product quality.
-                We evaluate response time to pre-sale support queries and the vendor's
-                documented resolution process for damaged or incorrect shipments.
-              </p>
-            </div>
+            {RANKING_CRITERIA.map(c => (
+              <div className="vmeth-card" key={c.key}>
+                <h3>{c.label} ({c.max} pts)</h3>
+                <p>{c.rule}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ overflowX: 'auto', marginTop: '2rem' }}>
+            <table className="vct-table" data-criteria-scores>
+              <thead>
+                <tr className="vct-head-row">
+                  <th className="vct-th">Rank</th>
+                  <th className="vct-th">Vendor</th>
+                  {RANKING_CRITERIA.map(c => (
+                    <th className="vct-th" key={c.key}>{c.label} /{c.max}</th>
+                  ))}
+                  <th className="vct-th">Total /100</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vendorsSorted.map((v, i) => (
+                  <tr className="vct-row" key={v.slug}>
+                    <td className="vct-td">#{i + 1}</td>
+                    <td className="vct-td">
+                      {v.name}
+                      {v.category === 'oral' && ' (oral)'}
+                      <FounderOwnershipDisclosure vendorSlug={v.slug} variant="inline" />
+                    </td>
+                    {v.criteria.parts.map(part => (
+                      <td className="vct-td" key={part.key} title={part.basis}>{part.points}</td>
+                    ))}
+                    <td className="vct-td"><strong>{v.criteria.total}</strong></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           <div className="vmeth-note">
             <AlertTriangle size={14} />
             <span>
-              <strong>Affiliate disclosure:</strong> PeptiDex may earn a commission when
-              you purchase through links on this page. This does not affect our rankings.
-              All vendor claims are independently verified before publication.
+              <strong>Affiliate disclosure:</strong> {RANKING_DISCLOSURE}{' '}
+              <Link href="/about/methodology#vendor-ranking">Full methodology →</Link>
             </span>
           </div>
         </div>

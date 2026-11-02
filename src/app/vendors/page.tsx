@@ -8,14 +8,14 @@ import VendorsClient from './VendorsClient';
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 /** Update this date whenever vendor data or rankings change. */
-export const LAST_REVIEWED = '2026-05-01';
+export const LAST_REVIEWED = '2026-11-02';
 
 // ── SEO Metadata ──────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
   title: `Best Peptide Vendors 2026 — COA-Verified Sources | PeptiDex`,
   description:
-    `Independent 2026 review of the best places to buy research peptides online. We rank Amino Club, Bio Longevity Labs, Limitless Life, and ${SITE_STATS.vendors.count - 3} more on purity (HPLC/MS COA), shipping speed, discount codes, and return policy. Research use only.`,
+    `2026 comparison of research peptide vendors, scored on published criteria: COA availability, third-party lab testing, price per mg, shipping, payment options and returns. Affiliate links; our founder owns Elyria Bio. Research use only.`,
   keywords: [
     'best place to buy peptides',
     'best place to buy peptides online',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Best Peptide Vendors 2026 — COA-Verified Sources | PeptiDex`,
     description:
-      `Independent ranking of the ${SITE_STATS.vendors.count} best research peptide vendors in 2026 — evaluated on HPLC/MS purity COAs, shipping speed, discount codes, and return policy.`,
+      `${SITE_STATS.vendors.count} research peptide vendors scored on published criteria: COA availability, third-party lab testing, price per mg, shipping, payment options and returns.`,
     url: 'https://peptidex.app/vendors',
     type: 'article',
     images: [{ url: 'https://peptidex.app/og-image.png', width: 1200, height: 630 }],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `Best Peptide Vendors 2026 — COA-Verified | PeptiDex`,
     description:
-      `Independent 2026 review: Amino Club, Bio Longevity Labs, Limitless Life, and ${SITE_STATS.vendors.count - 3} more ranked on purity, shipping, and value.`,
+      `${SITE_STATS.vendors.count} peptide vendors scored on published criteria — COAs, lab testing, price, shipping, payment, returns.`,
     images: ['https://peptidex.app/og-image.png'],
   },
 };
@@ -55,7 +55,7 @@ export default function VendorsPage() {
 
   const itemListSchema = buildItemListSchema({
     name: "Best Places to Buy Peptides Online (2026)",
-    description: "Independent ranking of COA-verified research peptide vendors, evaluated on purity testing, COA transparency, shipping, and value.",
+    description: "Research peptide vendors ranked by published criteria: COA availability, third-party lab testing, price per mg, shipping, payment options and returns.",
     items: sortedVendors.map(v => ({
       name: v.name,
       description: v.tagline,

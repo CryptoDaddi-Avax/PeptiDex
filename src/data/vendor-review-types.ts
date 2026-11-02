@@ -3,8 +3,7 @@ export interface VendorFAQ { q: string; a: string; }
 export interface PricingSample { peptide: string; slug: string; listPrice: string; withCode: string; vial: string; note?: string; }
 export interface ProCon { point: string; detail?: string; }
 export interface SentimentSource { platform: string; rating: string; count: string; summary: string; positives: string[]; negatives: string[]; url: string; }
-export interface Alternative { name: string; slug: string; rating: number; bestFor: string; href: string; }
-export interface ScoreBreakdown { category: string; score: string; note: string; }
+export interface Alternative { name: string; slug: string; bestFor: string; href: string; }
 export interface SubPage { type: 'faq' | 'discount' | 'legitimacy' | 'alternatives'; slug: string; label: string; }
 
 export interface VendorReviewData {
@@ -20,13 +19,7 @@ export interface VendorReviewData {
   location: string;
   founded?: string;
 
-  // Scores
-  overallRating: number;
-  coaScore: string;
-  purityScore: string;
-  shippingScore: string;
-  valueScore: string;
-  supportScore: string;
+  // Scores come from the published ranking criteria (Vendor.criteria), not from here.
 
   // Quick verdict
   verdictHeadline: string;
@@ -42,7 +35,6 @@ export interface VendorReviewData {
   shipsTo: string[];
   paymentMethods: string[];
   returnPolicy: string;
-  ratingCount: string;
 
   // Sections
   pros: ProCon[];
@@ -55,7 +47,6 @@ export interface VendorReviewData {
   bestFor: string[]; // buyer personas
   alternatives: Alternative[];
   faqs: VendorFAQ[];
-  scoreBreakdown: ScoreBreakdown[];
   finalVerdictBody: string;
 
   // SEO

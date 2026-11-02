@@ -2,38 +2,42 @@
  * Centralized Vendor Registry — Single Source of Truth
  * =====================================================
  * Created: 2026-04-30
- * 
+ *
  * WHY THIS FILE EXISTS:
  * Previously, vendor data was fragmented across 4 separate files:
- *   - vendor-comparison.ts  (vendorProfiles — rating, COA, shipping metadata)
+ *   - vendor-comparison.ts  (vendorProfiles — COA, shipping metadata)
  *   - vendor-pricing.ts     (per-peptide vendor pricing)
  *   - pricing.ts            (legacy pricing data for /tools/pricing)
  *   - affiliates.ts         (Amino Club product URL mapping)
- * 
+ *
  * This caused data drift: Limitless Life existed in vendor-comparison.ts
  * but was missing from pricing.ts. Pantheon and LVLUP didn't exist at all.
  * The /vendors page had 100% hardcoded vendor cards, meaning adding a new
  * vendor required editing JSX, not data files.
- * 
+ *
  * This file centralizes ALL vendor metadata. The old files are preserved
  * as re-export shims for backward compatibility and will be removed later.
- * 
- * VENDOR LINEUP (as of 2026-08-07):
- *   Injectable:
- *     1. Elyria Bio          — Editor's Choice, 29 peptides
- *     2. Amino Club          — COA Verified, 40+ compounds
- *     3. Bio Longevity Labs  — Triple-Tested Premium, 80+ compounds
- *     4. Limitless Life      — USA Made, 90+ compounds
- *     5. Ascension Peptides  — COA Verified, 60+ compounds [DEACTIVATED 2026-05-24]
- *     6. Pantheon Peptides   — COA Verified, 50+ compounds
- *   Oral:
- *     7. LVLUP Health        — Oral specialist, 20+ compounds
+ *
+ * VENDOR ORDER is computed, never hand-set: sortOrder comes from the published
+ * ranking criteria in src/lib/vendor-criteria.ts (injectable first, then oral;
+ * highest score first). Ascension Peptides is deactivated (2026-05-24).
  */
+
+import { scoreVendors, type VendorCriteriaScore } from "@/lib/vendor-criteria";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 export type VendorCategory = "injectable" | "oral";
 export type BadgeStyle = "gold" | "green" | "premium" | "blue" | "orange";
+
+export interface ThirdPartyRating {
+  platform: string;
+  rating: number;
+  reviewCount: number;
+  url: string;
+  /** YYYY-MM-DD the figure was read from the platform */
+  checked: string;
+}
 
 export interface Vendor {
   /** URL-safe slug: "amino-club", "bio-longevity-labs", etc. */
@@ -42,12 +46,14 @@ export interface Vendor {
   name: string;
   /** Short tagline for cards */
   tagline: string;
-  /** Badge text: "Editor's Choice", "Triple-Tested", "USA Made", etc. */
+  /** Badge text: "Founder's store", "Triple-Tested", "USA Made", etc. Never a rank claim. */
   badge: string;
   /** Badge visual style */
   badgeStyle: BadgeStyle;
-  /** Sort order (1 = first) */
+  /** Rank on the published criteria (1 = first). Computed — see rankVendors(). */
   sortOrder: number;
+  /** Score on the published ranking criteria. Computed — see rankVendors(). */
+  criteria: VendorCriteriaScore;
   /** Injectable or oral */
   category: VendorCategory;
   /** Full affiliate URL — used for all outbound links */
@@ -58,10 +64,13 @@ export interface Vendor {
   discountPercent?: number;
   /** Whether discount is stackable with site-wide sales */
   discountStackable?: boolean;
-  /** Star rating (e.g. 4.9) */
-  rating: number;
-  /** Review count string (e.g. "400+") */
-  ratingCount: string;
+  /**
+   * Rating from a public third-party review platform. Only set when the figure
+   * was read from the platform itself — never an estimate or our own score.
+   */
+  thirdPartyRating?: ThirdPartyRating;
+  /** Independent lab the vendor states issues its COAs (the vendor's claim) */
+  thirdPartyLab?: string;
   /** Purity claim (e.g. "99%+") */
   purity: string;
   /** COA status string */
@@ -92,9 +101,7 @@ export interface Vendor {
   domainMatch: string;
   /** Finnrick vendor slug for data linking (if available) */
   finnrickSlug?: string;
-  /** Verification tier computed from verification-data.ts */
-  verificationTier?: "gold" | "silver" | "bronze" | "unverified";
-  /** 
+  /**
    * TODO: Populate this array with the slugs of all compounds this vendor carries.
    * If undefined, the system falls back to assuming the vendor carries the compound.
    */
@@ -111,24 +118,24 @@ export interface Vendor {
   ownedByFounder?: boolean;
 }
 
-// ── Vendor Data ──────────────────────────────────────────────────────────────
+type VendorInput = Omit<Vendor, "sortOrder" | "criteria">;
 
-export const vendors: Vendor[] = [
-  // ── #1: Elyria Bio ──────────────────────────────────────────────────────────
+// ── Vendor Data ──────────────────────────────────────────────────────────────
+// Display order is computed by rankVendors() below, not by position here.
+
+const vendorInputs: VendorInput[] = [
+  // ── Elyria Bio (owned by PeptiDex's founder) ───────────────────────────────
   {
     slug: "elyria-bio",
     name: "Elyria Bio",
     tagline: "Lyophilized research-grade peptides — ≥99% HPLC purity floor, third-party COA, lot-traceable",
-    badge: "Editor's Choice",
-    badgeStyle: "gold",
-    sortOrder: 1,
+    badge: "Founder's store",
+    badgeStyle: "blue",
     category: "injectable",
     affiliateUrl: "https://elyriabio.com?ref=PEPTIDEX",
     discountCode: "PEPTIDEX",
     discountPercent: 10,
     discountStackable: false,
-    rating: 4.9,
-    ratingCount: "200+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "Mass Spec"],
@@ -142,25 +149,29 @@ export const vendors: Vendor[] = [
     gaKey: "elyria_bio",
     domainMatch: "elyriabio.com",
     finnrickSlug: "elyria-bio",
-    verificationTier: "gold",
+    thirdPartyLab: "independent US lab (not named by the vendor)",
     ownedByFounder: true,
   },
 
-  // ── #2: Amino Club ──────────────────────────────────────────────────────────
+  // ── Amino Club ──────────────────────────────────────────────────────────────
   {
     slug: "amino-club",
     name: "Amino Club",
     tagline: "COA-verified research peptides with batch-specific testing",
     badge: "COA Verified",
     badgeStyle: "green",
-    sortOrder: 2,
     category: "injectable",
     affiliateUrl: "https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX",
     discountCode: "PEPTIDEX",
     discountPercent: 20,
     discountStackable: false,
-    rating: 4.7,
-    ratingCount: "400+",
+    thirdPartyRating: {
+      platform: "Trustpilot",
+      rating: 4.7,
+      reviewCount: 667,
+      url: "https://www.trustpilot.com/review/aminoclub.com",
+      checked: "2026-11-02",
+    },
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "Mass Spec", "Endotoxin"],
@@ -175,24 +186,21 @@ export const vendors: Vendor[] = [
     gaKey: "amino_club",
     domainMatch: "aminoclub.com",
     finnrickSlug: "amino-club",
-    verificationTier: "gold",
+    thirdPartyLab: "MZ Biolabs, Janoshik",
   },
 
-  // ── #3: Bio Longevity Labs ────────────────────────────────────────────────
+  // ── Bio Longevity Labs ────────────────────────────────────────────────────
   {
     slug: "bio-longevity-labs",
     name: "Bio Longevity Labs",
     tagline: "Triple-tested premium peptides with stackable PEPTIDEX discount",
     badge: "Triple-Tested",
     badgeStyle: "premium",
-    sortOrder: 3,
     category: "injectable",
     affiliateUrl: "https://go.biolongevitylabs.com/aff_c?offer_id=1&aff_id=2443",
     discountCode: "PEPTIDEX",
     discountPercent: 15,
     discountStackable: true,
-    rating: 4.6,
-    ratingCount: "350+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
@@ -207,24 +215,20 @@ export const vendors: Vendor[] = [
     gaKey: "bio_longevity_labs",
     domainMatch: "biolongevitylabs.com",
     finnrickSlug: "bio-longevity-labs",
-    verificationTier: "gold",
   },
 
-  // ── #4: Limitless Life ────────────────────────────────────────────────────
+  // ── Limitless Life ────────────────────────────────────────────────────────
   {
     slug: "limitless-life",
     name: "Limitless Life",
     tagline: "USA-manufactured research peptides with extensive catalog",
     badge: "USA Made",
     badgeStyle: "gold",
-    sortOrder: 4,
     category: "injectable",
     affiliateUrl: "https://www.kb6dp3dq.com/PEPTIDEX/",
     discountCode: "PEPTIDEX",
     discountPercent: 15,
     discountStackable: false,
-    rating: 4.6,
-    ratingCount: "300+",
     purity: "99%+",
     coaStatus: "Batch-specific COA",
     testingMethods: ["HPLC", "LC-MS", "Endotoxin"],
@@ -238,10 +242,9 @@ export const vendors: Vendor[] = [
     gaKey: "limitless_life",
     domainMatch: "kb6dp3dq.com",
     finnrickSlug: "limitless-life",
-    verificationTier: "silver",
   },
 
-  // — #5: Ascension Peptides —————————————————————————————————————————————————————
+  // — Ascension Peptides ————————————————————————————————————————————————————————
   {
     // DEACTIVATED 2026-05-24: 10% commission on post-discount basis with 50% customer
     // discount = ~$5 per $100 order. Reactivate only if commission rate is renegotiated.
@@ -251,14 +254,11 @@ export const vendors: Vendor[] = [
     tagline: "60+ COA-verified compounds — use code PEPTIDEX for 50% off",
     badge: "COA Verified",
     badgeStyle: "green",
-    sortOrder: 5,
     category: "injectable",
     affiliateUrl: "https://ascensionpeptides.com/ref/PeptiDex/",
     discountCode: "PEPTIDEX",
     discountPercent: 50,
     discountStackable: false,
-    rating: 4.5,
-    ratingCount: "250+",
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
@@ -273,24 +273,20 @@ export const vendors: Vendor[] = [
     gaKey: "ascension",
     domainMatch: "ascensionpeptides.com",
     finnrickSlug: "ascension-peptides",
-    verificationTier: "silver",
   },
 
-  // ── #6: Pantheon Peptides ─────────────────────────────────────────────────
+  // ── Pantheon Peptides ─────────────────────────────────────────────────────
   {
     slug: "pantheon-peptides",
     name: "Pantheon Peptides",
     tagline: "Emerging vendor with competitive pricing and COA verification",
     badge: "COA Verified",
     badgeStyle: "green",
-    sortOrder: 6,
     category: "injectable",
     affiliateUrl: "https://pantheonpeptides.com/partner/PeptiDex/",
     discountCode: "PEPTIDEX",
     discountPercent: 15,
     discountStackable: false,
-    rating: 4.6,
-    ratingCount: "150+",
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
@@ -304,24 +300,20 @@ export const vendors: Vendor[] = [
     gaKey: "pantheon",
     domainMatch: "pantheonpeptides.com",
     finnrickSlug: "pantheon-peptides",
-    verificationTier: "bronze",
   },
 
-  // ── #6: LVLUP Health (Oral) ─────────────────────────────────────────────
+  // ── LVLUP Health (Oral) ─────────────────────────────────────────────────
   {
     slug: "lvlup-health",
     name: "LVLUP Health",
     tagline: "Specialist in oral peptide formulations and capsules",
     badge: "Oral Specialist",
     badgeStyle: "blue",
-    sortOrder: 6,
     category: "oral",
     affiliateUrl: "https://lvluphealth.com/?ref=PEPTIDEX",
     discountCode: "PEPTIDEX",
     discountPercent: 15,
     discountStackable: false,
-    rating: 4.5,
-    ratingCount: "100+",
     purity: "98%+",
     coaStatus: "COA available",
     testingMethods: ["HPLC", "Mass Spec"],
@@ -335,16 +327,32 @@ export const vendors: Vendor[] = [
     gaKey: "lvlup_health",
     domainMatch: "lvluphealth.com",
     finnrickSlug: "lvlup-health",
-    verificationTier: "bronze",
   },
 ];
 
+// ── Ranking ──────────────────────────────────────────────────────────────────
+
+/**
+ * Order = published criteria score (src/lib/vendor-criteria.ts): active before
+ * inactive, injectable before oral, then highest score, then name. Prices are
+ * compared among active vendors only.
+ */
+function rankVendors(inputs: VendorInput[]): Vendor[] {
+  const active = inputs.filter(v => v.isActive !== false);
+  const scores = scoreVendors(active);
+  const inactiveScores = scoreVendors(inputs.filter(v => v.isActive === false));
+  const scored = inputs.map(v => ({ ...v, criteria: (scores.get(v.name) ?? inactiveScores.get(v.name))! }));
+  const group = (v: VendorInput) => (v.isActive === false ? 2 : v.category === "injectable" ? 0 : 1);
+  scored.sort((a, b) => group(a) - group(b) || b.criteria.total - a.criteria.total || a.name.localeCompare(b.name));
+  return scored.map((v, i) => ({ ...v, sortOrder: i + 1 }));
+}
+
+export const vendors: Vendor[] = rankVendors(vendorInputs);
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-/** All ACTIVE vendors sorted by sortOrder */
-export const vendorsSorted = [...vendors]
-  .filter(v => v.isActive !== false)
-  .sort((a, b) => a.sortOrder - b.sortOrder);
+/** All ACTIVE vendors in ranking order */
+export const vendorsSorted = vendors.filter(v => v.isActive !== false);
 
 /** Injectable vendors only */
 export const injectableVendors = vendorsSorted.filter(v => v.category === "injectable");
@@ -369,4 +377,4 @@ export const VENDOR_COUNT = vendorsSorted.length;
 export const INJECTABLE_VENDOR_COUNT = injectableVendors.length;
 
 /** All vendors including deactivated — for internal/admin use only */
-export const allVendorsIncludingInactive = [...vendors].sort((a, b) => a.sortOrder - b.sortOrder);
+export const allVendorsIncludingInactive = vendors;

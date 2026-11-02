@@ -77,8 +77,7 @@ function coaScore(vendor: Vendor): number {
     const methods = vendor.testingMethods.length;
     const hasBatchCoa = vendor.coaStatus.toLowerCase().includes("batch");
     const hasEndotoxin = vendor.testingMethods.some(m => m.toLowerCase().includes("endotoxin"));
-    const tier = vendor.verificationTier === "gold" ? 3 : vendor.verificationTier === "silver" ? 2 : 1;
-    return methods * 2 + (hasBatchCoa ? 4 : 0) + (hasEndotoxin ? 2 : 0) + tier;
+    return methods * 2 + (hasBatchCoa ? 4 : 0) + (hasEndotoxin ? 2 : 0);
 }
 
 // ── Purity score ──────────────────────────────────────────────────────────────
@@ -96,7 +95,7 @@ export function rankVendors(input: PickerInput): VendorRecommendation[] {
 
     // Step 1: Filter by hard constraints
     const eligible = vendors.filter(v =>
-        regionMatch(v, region) && paymentMatch(v, payment)
+        v.isActive !== false && regionMatch(v, region) && paymentMatch(v, payment)
     );
 
     if (eligible.length === 0) return [];
@@ -107,7 +106,7 @@ export function rankVendors(input: PickerInput): VendorRecommendation[] {
         let score = 0;
 
         // Base scores always applied
-        score += vendor.rating * 2;          // Rating quality signal (0–10)
+        score += vendor.criteria.total / 10; // Published-criteria score (0–10)
         score += purityScore(vendor) * 3;    // Purity
         score += coaScore(vendor) * 0.5;     // COA documentation
 

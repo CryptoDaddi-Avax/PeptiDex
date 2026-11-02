@@ -299,7 +299,7 @@ export function scoreVendorForUser(
   const purityScore = Math.min(100, (purityNum / 100) * 100);
   const speedDays = parseInt(v.shippingSpeed.replace(/[^0-9]/g, ""), 10) || 5;
   const speedScore = Math.max(0, 100 - speedDays * 10);
-  const ratingScore = (v.rating / 5) * 100;
+  const ratingScore = v.criteria.total; // published-criteria score, 0–100
 
   return (
     (priceScore * w.price +

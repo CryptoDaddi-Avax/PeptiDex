@@ -6,14 +6,14 @@ import CoaClientPage from './coa-client';
 import { FounderOwnershipDisclosure } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 export const metadata: Metadata = {
-  title: 'Verification Dashboard — Independent Peptide Quality Data',
+  title: 'COA Dashboard — Vendor & Community Peptide Documents',
   description:
-    'PeptiDex Verification Dashboard: vendor COAs, community-submitted testing, and independent lab results aggregated across all reviewed peptide vendors. Cross-referenced against published literature.',
+    'PeptiDex COA Dashboard: vendor-supplied COAs and community-submitted results for every vendor we cover. PeptiDex does not test products.',
   alternates: { canonical: 'https://peptidex.app/coa' },
   openGraph: {
     title: 'Verification Dashboard — PeptiDex',
     description:
-      'Aggregated peptide verification data: vendor COAs, community submissions, and independent testing results from Finnrick and PeptiDex labs.',
+      'Vendor-supplied COAs and community-submitted results for research peptide vendors. PeptiDex does not test products.',
     url: 'https://peptidex.app/coa',
     type: 'website',
   },
@@ -23,7 +23,7 @@ const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'Verification Dashboard — PeptiDex',
-  description: 'Aggregated peptide verification data from vendor COAs, community testing, and independent labs.',
+  description: 'Vendor-supplied COAs and community-submitted results for research peptide vendors.',
   url: 'https://peptidex.app/coa',
   isPartOf: { '@type': 'WebSite', name: 'PeptiDex', url: 'https://peptidex.app' },
   inLanguage: 'en-US',
@@ -55,14 +55,14 @@ export default function CoaPage() {
             <span className="sep">/</span>
             <span className="current">Verification Dashboard</span>
           </nav>
-          <div className="section-label">§ Independent Verification Data</div>
+          <div className="section-label">§ COA Documents</div>
           <h1 className="page-title">
             Peptide vendor <br />
             <em>verification</em> dashboard.
           </h1>
           <p className="page-subtitle">
-            Aggregated quality data from vendor COAs, community submissions, and independent
-            testing sources — displayed unfiltered for every vendor we cover.
+            Vendor-supplied COAs and community submissions, displayed unfiltered for every
+            vendor we cover. PeptiDex does not test products.
           </p>
           <FounderOwnershipDisclosure />
         </div>
@@ -80,7 +80,6 @@ export default function CoaPage() {
               { icon: <ShieldCheck size={18} />, value: stats.totalVendors, label: 'Vendors Tracked' },
               { icon: <FileText size={18} />, value: stats.totalCOAs, label: 'COA Documents' },
               { icon: <Users size={18} />, value: stats.totalCommunity, label: 'Community Reports' },
-              { icon: <FlaskConical size={18} />, value: stats.totalIndependent, label: 'Independent Tests' },
               { icon: <TrendingUp size={18} />, value: stats.totalDataPoints, label: 'Total Data Points' },
             ].map(s => (
               <div key={s.label} style={{
@@ -104,19 +103,17 @@ export default function CoaPage() {
           }}>
             <div className="section-label" style={{ marginBottom: 16 }}>§ Our approach</div>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 300, color: 'var(--ink)', marginBottom: 16, lineHeight: 1.2 }}>
-              Three layers of <em style={{ color: 'var(--gold)' }}>verification.</em>
+              Two sources of <em style={{ color: 'var(--gold)' }}>documentation.</em>
             </h2>
             <p style={{ fontFamily: 'var(--serif)', fontSize: 17, color: 'var(--ink-dim)', lineHeight: 1.75, marginBottom: 16 }}>
-              No single source is sufficient. We aggregate vendor-supplied COAs, community-submitted testing
-              results, and independent third-party lab data to give researchers a multi-layered view of vendor quality.
-              All data is displayed unfiltered — including results that may be unfavorable to vendors we have affiliate
-              relationships with.
+              We collect vendor-supplied COAs and community-submitted testing results. PeptiDex does not test
+              products and has no independent lab data for these vendors today. All data is displayed unfiltered —
+              including results that may be unfavorable to vendors we have affiliate relationships with or own.
             </p>
             <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
               {[
                 { icon: <FileText size={16} />, label: 'Vendor COAs annotated against published literature' },
                 { icon: <Users size={16} />, label: 'Community-submitted results displayed with full attribution' },
-                { icon: <FlaskConical size={16} />, label: 'Independent lab data cited editorially — never edited' },
               ].map(item => (
                 <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--gold)', fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.05em' }}>
                   {item.icon}
@@ -147,7 +144,7 @@ export default function CoaPage() {
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 18, color: 'var(--ink)' }}>{v.vendorName}</div>
                     <FounderOwnershipDisclosure vendorSlug={v.vendorSlug} variant="inline" />
                     <div style={{ fontSize: 10, color: 'var(--ink-mute)', fontFamily: 'var(--mono)', letterSpacing: '0.08em' }}>
-                      {getTierLabel(v.tier)} · {v.stats.totalDocuments} docs · {v.stats.totalIndependentTests} independent tests
+                      {getTierLabel(v.tier)} · {v.stats.totalDocuments} docs
                     </div>
                   </div>
                 </div>

@@ -29,7 +29,7 @@ export const couponVendorTable: CouponVendorRow[] = [
     verifiedDate: '2026-05-14',
     applyUrl: 'https://aminoclub.com?utm_source=peptidex&utm_medium=affiliate&utm_campaign=peptidex_code&utm_content=data_layer&code=PEPTIDEX',
     category: 'injectable',
-    badge: "Editor's Choice",
+    badge: "COA Verified",
   },
   {
     vendor: 'Bio Longevity Labs',
