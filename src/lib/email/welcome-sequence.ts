@@ -29,7 +29,7 @@ const EMAIL3_NOTES: Record<string, string> = {
   "amino-club": "Batch COAs from named third-party labs (HPLC + MS + endotoxin, per vendor). 60-day money-back guarantee. Ships internationally.",
   "bio-longevity-labs": "HPLC + LC-MS + endotoxin COAs (per vendor). 80+ compounds. PEPTIDEX stacks with their sales.",
   "limitless-life": "USA-manufactured (per vendor). 90+ compounds — largest catalog in the index. US only.",
-  "elyria-bio": "Third-party US lab COAs, lot-traceable (per vendor). 24h dispatch. US only. Prices not yet checked by us.",
+  "elyria-bio": "COAs from ILS Labs and BT Labs, lot-traceable (per vendor). Venmo, Cash App, X Money, crypto. US only.",
   "pantheon-peptides": "COAs available. 50+ compounds. US only.",
   "lvlup-health": "Oral peptide specialist. Capsules + sublingual formats.",
 };

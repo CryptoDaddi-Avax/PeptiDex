@@ -121,7 +121,7 @@ As we covered in our guide on [Where to Buy Research Peptides Legally](/blog/whe
 
 If you require unbranded analytical standards of CJC-1295, Ipamorelin, or IGF-1 LR3 for research, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>.
 
-Per Elyria Bio, every batch ships with a COA from an independent US lab covering HPLC purity and mass-spec identity.
+Per Elyria Bio, released lots have a COA from ILS Labs and BT Labs (per Elyria Bio) covering HPLC purity and identity.
 
 By utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, your laboratory can secure 10% off research-grade, COA-verified compounds. All products are sold for research use only, not for human consumption.
 

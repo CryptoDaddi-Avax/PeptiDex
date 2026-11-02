@@ -157,7 +157,7 @@ When conducting an in-vitro assay or animal study, you cannot afford to compromi
 
 If you are looking for vendors that adhere strictly to these analytical transparency standards, <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a>. 
 
-Elyria Bio is owned by PeptiDex's founder. Per Elyria Bio, it provides batch-specific COAs from an independent US lab for every compound it sells. You can verify the HPLC purity, the Mass Spectrometry identity, and the exact mass content before you make a purchase. 
+Elyria Bio is owned by PeptiDex's founder. Per Elyria Bio, it publishes lot-specific COAs from ILS Labs and BT Labs (per Elyria Bio) once a lot is tested and released. Each certificate shows the HPLC purity and the identity method (HPLC retention time or FTIR) before you make a purchase. 
 
 Furthermore, by utilizing <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, your laboratory can get 10% off. These compounds are sold for laboratory research use only, not for human consumption.
 

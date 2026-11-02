@@ -104,7 +104,7 @@ As detailed in our guide on [How to Read a Peptide COA](/blog/how-to-read-peptid
 
 If you are setting up a laboratory study requiring unbranded, analytical-grade peptides, you must use vendors who publicly post batch-specific testing from recognized labs like MZ Biolabs. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">see our full Elyria Bio review</a> for an example of a vendor that publishes batch-level third-party testing.
 
-Elyria Bio (owned by PeptiDex's founder) supplies lyophilized peptides for research purposes and, per the vendor, provides third-party laboratory documentation for every batch, confirming both HPLC purity and Mass Spectrometry identity. At <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, code PEPTIDEX gives 10% off research-grade, COA-verified compounds. Independent testing reduces, but does not eliminate, the risks of contaminated raw materials, and these products are sold for research use only, not for human consumption.
+Elyria Bio (owned by PeptiDex's founder) supplies lyophilized peptides for research purposes and, per the vendor, publishes certificates from ILS Labs and BT Labs (per Elyria Bio) for released lots, reporting HPLC purity and identity. At <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">Elyria Bio (founder's store) with code PEPTIDEX</a>, code PEPTIDEX gives 10% off research-grade, COA-verified compounds. Independent testing reduces, but does not eliminate, the risks of contaminated raw materials, and these products are sold for research use only, not for human consumption.
 
 ## 3. Inherent Risks of Specific Peptide Classes
 

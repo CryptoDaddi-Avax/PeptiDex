@@ -62,7 +62,7 @@ faqSchema: |
     <li><strong>Amino Club:</strong> Batch-specific COAs from named third-party labs, largest code discount (20% off), 60-day money-back guarantee, ships internationally.</li>
     <li><strong>Bio Longevity Labs:</strong> HPLC + LC-MS + endotoxin COAs (per vendor), stackable 15% PEPTIDEX discount, ships internationally.</li>
     <li><strong>Limitless Life:</strong> Largest catalog (90+ compounds), competitive list prices, US only.</li>
-    <li><strong>Elyria Bio (owned by PeptiDex's founder):</strong> Third-party US lab COAs per the vendor, 24h dispatch, US only, card only. Scores 0 on price until we check its prices. Code PEPTIDEX = 10% off.</li>
+    <li><strong>Elyria Bio (owned by PeptiDex's founder):</strong> COAs from ILS Labs and BT Labs (per Elyria Bio), ships within ~48 hours, US only, pays by Venmo, Cash App, X Money or crypto. Free shipping over $150, $6 flat under. Code PEPTIDEX = 10% off.</li>
     <li><strong>Pantheon Peptides:</strong> COAs available, smaller catalog, US only.</li>
   </ul>
 </div>
@@ -91,7 +91,7 @@ We advise emailing their support team to request the most recent COA for niche p
 
 ## Elyria Bio (owned by PeptiDex's founder)
 
-PeptiDex's founder owns Elyria Bio. It is scored on the same criteria as every other vendor. Per Elyria Bio, every lot is tested by an independent US lab for HPLC purity (≥99% floor) and mass-spec identity, and each vial is lot-coded to its COA. It dispatches within 24 hours, ships to the US only and accepts card payments only. We have not yet checked its prices, so it scores 0 on price per mg until we do. Code PEPTIDEX takes 10% off. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">See our full Elyria Bio review</a>.
+PeptiDex's founder owns Elyria Bio. It is scored on the same criteria as every other vendor. Per Elyria Bio, released lots are tested by ILS Labs and BT Labs (per Elyria Bio) for HPLC purity (≥99% floor) and identity (HPLC retention time or FTIR), and each vial is lot-coded to its COA. It ships within about 48 hours, to the US only, with free shipping over $150 and a $6 flat rate under $150. It accepts Venmo, Cash App, X Money and cryptocurrency. Its prices were checked on elyriabio.com on November 2, 2026. Code PEPTIDEX takes 10% off. <a href="/vendors/elyria-bio" className="font-bold text-emerald-400 underline">See our full Elyria Bio review</a>.
 
 For researchers studying delicate sequences like [BPC-157](/library/bpc-157) or [TB-500](/library/tb-500), a domestic supply chain shortens transit time.
 
