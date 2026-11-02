@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { vendorsSorted, VENDOR_COUNT, type Vendor } from '@/data/vendors';
 import { TrackedOutboundLink } from '@/components/tracked-outbound-link';
+import { FounderOwnershipDisclosure } from '@/components/disclosures/FounderOwnershipDisclosure';
 import './VendorSection.css';
 
 // Show top 4 on homepage, link to /vendors for the rest
@@ -28,6 +29,7 @@ function VendorCard({ v }: { v: Vendor }) {
           </div>
         </div>
         <div className="vendor-purity">{v.purity} purity verified</div>
+        <FounderOwnershipDisclosure vendorSlug={v.slug} variant="inline" />
       </div>
 
       {/* Discount callout strip — only for vendors with a discount code */}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ShieldCheck, FileText, FlaskConical, Users, ExternalLink, TrendingUp } from 'lucide-react';
 import { vendorVerifications, getGlobalStats, getTierColor, getTierLabel } from '@/data/verification-data';
 import CoaClientPage from './coa-client';
+import { FounderOwnershipDisclosure } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 export const metadata: Metadata = {
   title: 'Verification Dashboard — Independent Peptide Quality Data',
@@ -63,6 +64,7 @@ export default function CoaPage() {
             Aggregated quality data from vendor COAs, community submissions, and independent
             testing sources — displayed unfiltered for every vendor we cover.
           </p>
+          <FounderOwnershipDisclosure />
         </div>
       </header>
 
@@ -143,6 +145,7 @@ export default function CoaPage() {
                   }} />
                   <div>
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 18, color: 'var(--ink)' }}>{v.vendorName}</div>
+                    <FounderOwnershipDisclosure vendorSlug={v.vendorSlug} variant="inline" />
                     <div style={{ fontSize: 10, color: 'var(--ink-mute)', fontFamily: 'var(--mono)', letterSpacing: '0.08em' }}>
                       {getTierLabel(v.tier)} · {v.stats.totalDocuments} docs · {v.stats.totalIndependentTests} independent tests
                     </div>

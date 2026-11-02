@@ -15,6 +15,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { peptides } from "@/data/peptides";
 import { rankVendors, PickerInput, VendorRecommendation, Region, Payment, Priority } from "@/lib/vendor-picker-engine";
 import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -451,6 +452,7 @@ function VendorResultCard({ rec, isPrimary }: { rec: VendorRecommendation; isPri
                     <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--ink-mute)" }}>
                         {rec.vendor.badge}
                     </div>
+                    <FounderOwnershipDisclosure vendorSlug={rec.vendor.slug} variant="inline" />
                 </div>
                 {rec.price !== null && (
                     <div style={{ textAlign: "right" }}>

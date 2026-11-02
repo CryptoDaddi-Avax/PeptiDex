@@ -10,6 +10,7 @@
 
 import { type Vendor } from "@/data/vendors";
 import { VendorOutboundLink } from "@/app/vendors/vendor-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 interface VendorComparisonTableProps {
@@ -69,6 +70,7 @@ export function VendorComparisonTable({ vendors }: VendorComparisonTableProps) {
                       {vendor.name}
                     </a>
                     <span className="vct-badge-inline">{vendor.badge}</span>
+                    <FounderOwnershipDisclosure vendorSlug={vendor.slug} variant="inline" />
                   </td>
 
                   {/* Rating */}

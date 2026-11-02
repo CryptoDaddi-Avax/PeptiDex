@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './disclaimer-redesign.css';
+import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 export const metadata: Metadata = {
   title: 'Medical Disclaimer — PeptiDex Research Index',
@@ -98,6 +99,9 @@ export default function DisclaimerPage() {
           PeptiDex may earn affiliate commission on qualifying purchases through links to verified vendors.
           This is disclosed in compliance with FTC guidelines and does not affect our editorial process or
           vendor ranking.
+        </p>
+        <p>
+          <strong>Material connection:</strong> {FOUNDER_OWNERSHIP_DISCLOSURE}
         </p>
 
         <h2>No <em>warranty</em>.</h2>

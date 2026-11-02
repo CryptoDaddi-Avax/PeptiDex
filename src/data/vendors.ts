@@ -104,6 +104,11 @@ export interface Vendor {
    * Data is preserved for reactivation. Omitting this field defaults to active.
    */
   isActive?: boolean;
+  /**
+   * Owned by PeptiDex's founder (material connection). Every placement of this
+   * vendor must render <FounderOwnershipDisclosure />.
+   */
+  ownedByFounder?: boolean;
 }
 
 // ── Vendor Data ──────────────────────────────────────────────────────────────
@@ -138,6 +143,7 @@ export const vendors: Vendor[] = [
     domainMatch: "elyriabio.com",
     finnrickSlug: "elyria-bio",
     verificationTier: "gold",
+    ownedByFounder: true,
   },
 
   // ── #2: Amino Club ──────────────────────────────────────────────────────────

@@ -5,6 +5,7 @@ import { TrustScoreBadge } from "@/components/lab-data/TrustScoreBadge";
 import { DataUpdatingPlaceholder } from "@/components/lab-data/DataUpdatingPlaceholder";
 import { vendors } from "@/data/vendors";
 import { FlaskConical, ExternalLink, Info } from "lucide-react";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 export const revalidate = 3600; // ISR: re-fetch from DB every hour
 
@@ -115,6 +116,7 @@ export default async function LabDataPage() {
                             Full methodology →
                         </Link>
                     </p>
+                    <FounderOwnershipDisclosure />
                     {lastUpdated && (
                         <p style={{
                             fontFamily: "var(--mono, monospace)",

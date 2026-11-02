@@ -18,6 +18,7 @@ import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
 import { SchemaInjector } from '@/components/schema-injector';
 import { TrackedOutboundLink } from '@/components/tracked-outbound-link';
 import { vendorKeyFromUrl } from '@/lib/ga4-events';
+import { FounderOwnershipDisclosure } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -109,6 +110,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         />
         <AuthorByline name={author || 'PeptiDex Editorial'} variant="full" className="mt-6 mb-8" />
         <ShareBar title={title} url={canonical} />
+        {/elyria/i.test(post.content) && <FounderOwnershipDisclosure />}
       </header>
 
       <AutoLink>

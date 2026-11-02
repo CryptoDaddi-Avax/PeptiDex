@@ -6,6 +6,7 @@ import { vendors } from "@/data/vendors";
 import { FlagButton } from "@/components/logs/FlagButton";
 import { VerificationBadge } from "@/components/logs/VerificationBadge";
 import Link from "next/link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 interface LogEntry {
     id: string;
@@ -70,6 +71,7 @@ export default function LogsBrowseClient() {
                     <p className="page-subtitle">
                         Real-world protocol outcomes from the research community. Weighted by verification level.
                     </p>
+                    <FounderOwnershipDisclosure />
                 </div>
             </div>
 

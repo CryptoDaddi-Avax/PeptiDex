@@ -11,6 +11,7 @@ import { vendorsSorted, type Vendor } from "@/data/vendors";
 import type { PromoSurface } from "@/lib/promos/affiliateUrl";
 import { VendorDot } from "./atoms/VendorDot";
 import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Props ───────────────────────────────────────────────────────────────────
 
@@ -108,6 +109,7 @@ export function StackCartBuilder({
               <div className="flex items-center gap-2 mb-3">
                 <VendorDot vendorSlug={result.vendor.slug} />
                 <span className="text-sm font-medium text-zinc-200">{result.vendor.name}</span>
+                <FounderOwnershipDisclosure vendorSlug={result.vendor.slug} variant="inline" />
                 {idx === 0 && (
                   <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/25">
                     Best Value

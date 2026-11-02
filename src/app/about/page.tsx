@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './about-redesign.css';
+import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 
 export const metadata: Metadata = {
@@ -125,6 +126,9 @@ export default function AboutPage() {
         <p>
           PeptiDex is affiliate-funded: we may earn a commission when you buy through vendor links on the site.
         </p>
+        <p>
+          <strong>Material connection:</strong> {FOUNDER_OWNERSHIP_DISCLOSURE}
+        </p>
 
         <h2>Who We Are / Who We&apos;re Not</h2>
         
@@ -196,6 +200,7 @@ export default function AboutPage() {
         <p className="affiliate-note">
           PeptiDex is independent and affiliate-funded. We may earn affiliate commission on qualifying purchases through
           links to verified vendors — this disclosure is required by FTC guidelines and does not affect our editorial.
+          {' '}{FOUNDER_OWNERSHIP_DISCLOSURE}
         </p>
       </div>
 

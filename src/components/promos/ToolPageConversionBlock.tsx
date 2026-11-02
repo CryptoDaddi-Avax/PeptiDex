@@ -5,6 +5,7 @@ import { PRIMARY_PROMO } from "@/lib/promos/config";
 import { buildAffiliateUrl, AFFILIATE_LINK_ATTRS } from "@/lib/promos/affiliateUrl";
 import { PromoCodeDisplay } from "./PromoCodeDisplay";
 import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import type { PromoSurface } from "@/lib/promos/affiliateUrl";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -36,7 +37,7 @@ export function ToolPageConversionBlock({
 
   return (
     <div
-      className={`flex items-center justify-between gap-4 px-4 py-3 rounded-xl border border-amber-500/15 bg-amber-950/10 ${className}`}
+      className={`flex flex-wrap items-center justify-between gap-4 px-4 py-3 rounded-xl border border-amber-500/15 bg-amber-950/10 ${className}`}
       role="complementary"
       aria-label="Vendor recommendation"
     >
@@ -67,6 +68,7 @@ export function ToolPageConversionBlock({
         Shop {PRIMARY_PROMO.vendorName}
         <ExternalLink className="w-3 h-3" />
       </TrackedOutboundLink>
+      <FounderOwnershipDisclosure vendorSlug={PRIMARY_PROMO.vendorSlug} variant="inline" style={{ flexBasis: "100%" }} />
     </div>
   );
 }

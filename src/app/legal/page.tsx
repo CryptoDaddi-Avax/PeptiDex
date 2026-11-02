@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from 'next/link';
+import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
 
 export const metadata: Metadata = {
     title: "Privacy Policy & Terms of Use",
@@ -87,6 +88,9 @@ export default function LegalPage() {
                         a commission when you click a vendor link and make a purchase. This does not increase your
                         cost and does not influence our editorial rankings or content. All affiliate relationships
                         are disclosed on pages where affiliate links appear.
+                    </p>
+                    <p>
+                        <strong>Material connection:</strong> {FOUNDER_OWNERSHIP_DISCLOSURE}
                     </p>
 
                     <h3>Third-Party Links</h3>

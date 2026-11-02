@@ -43,6 +43,7 @@ import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTabl
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
 import { VendorsFAQ } from '@/components/vendors/VendorsFAQ';
 import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import './vendors-redesign.css';
 
 // ── Props ─────────────────────────────────────────────────────────────────────
@@ -121,6 +122,7 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
 
       <div className="vn-container" style={{ marginTop: '2rem' }}>
         <DisclaimerCard variant="vendor" />
+        <FounderOwnershipDisclosure />
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════

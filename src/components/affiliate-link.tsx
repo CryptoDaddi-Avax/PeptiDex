@@ -8,6 +8,7 @@ import {
   type AffiliateSource,
 } from "@/lib/ga4-events";
 import { trackClick, type TrackSurface } from "@/lib/tracking/click";
+import { FounderOwnershipDisclosure, isFounderOwned } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 interface AffiliateLinkProps {
   href: string;
@@ -31,6 +32,12 @@ interface AffiliateLinkProps {
   "aria-label"?: string;
   /** Optional inline style override */
   style?: React.CSSProperties;
+  /**
+   * Render the founder-ownership disclosure after links to a founder-owned
+   * vendor (default true). Pass false only where the parent already shows it
+   * right next to this link.
+   */
+  disclosure?: boolean;
 }
 
 /**
@@ -56,6 +63,7 @@ export function AffiliateLink({
   id,
   "aria-label": ariaLabel,
   style,
+  disclosure = true,
 }: AffiliateLinkProps) {
   const resolvedVendor: AffiliateVendor | "unknown" =
     vendor ?? vendorKeyFromUrl(href);
@@ -85,7 +93,7 @@ export function AffiliateLink({
     });
   };
 
-  return (
+  const link = (
     <a
       href={href}
       target={target}
@@ -98,5 +106,13 @@ export function AffiliateLink({
     >
       {children}
     </a>
+  );
+
+  if (!disclosure || !isFounderOwned(resolvedVendorSlug)) return link;
+  return (
+    <>
+      {link}
+      <FounderOwnershipDisclosure variant="inline" />
+    </>
   );
 }

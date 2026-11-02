@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Star, ArrowRight } from 'lucide-react';
 import { allVendorReviews } from '@/data/reviews';
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 interface VendorCompareProps {
   currentSlug: string;
@@ -44,6 +45,7 @@ export function VendorCompare({ currentSlug }: VendorCompareProps) {
               <span className="vr-compare-dot" />
               <span>{vendor.coaType}</span>
             </div>
+            <FounderOwnershipDisclosure vendorSlug={vendor.slug} variant="inline" />
             <div className="vr-compare-cta">
               Read review <ArrowRight className="w-3.5 h-3.5" />
             </div>

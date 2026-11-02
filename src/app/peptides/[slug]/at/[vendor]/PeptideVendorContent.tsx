@@ -18,6 +18,7 @@ import { comparisons } from "@/data/comparisons";
 import { vendorCartConfigs } from "@/data/vendor-cart-config";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
 import { TrackedOutboundLink } from "@/components/tracked-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -290,7 +291,10 @@ export function PeptideVendorContent({ pair }: Props) {
                   const altDisc = alt.pricing.price_usd * (1 - (alt.vendor.discountPercent ?? 0) / 100);
                   return (
                     <tr key={alt.vendorSlug} style={{ borderBottom: "1px solid var(--line)" }}>
-                      <td style={{ padding: "10px 12px", color: "var(--ink)" }}>{alt.vendor.name}</td>
+                      <td style={{ padding: "10px 12px", color: "var(--ink)" }}>
+                        {alt.vendor.name}
+                        <FounderOwnershipDisclosure vendorSlug={alt.vendorSlug} variant="inline" />
+                      </td>
                       <td style={{ padding: "10px 12px" }}>{alt.pricing.vial_mg}mg</td>
                       <td style={{ padding: "10px 12px" }}>${fmt(alt.pricing.price_usd)}</td>
                       <td style={{ padding: "10px 12px", fontWeight: 600 }}>${fmt(altDisc)}</td>
@@ -390,6 +394,7 @@ export function PeptideVendorContent({ pair }: Props) {
                 }}
               >
                 {alt.vendor.name} — ${fmt(alt.pricing.price_usd * (1 - (alt.vendor.discountPercent ?? 0) / 100))}
+                <FounderOwnershipDisclosure vendorSlug={alt.vendorSlug} variant="inline" />
               </TrackedOutboundLink>
             ))}
           </div>

@@ -15,6 +15,7 @@ import {
 } from '@/lib/analytics/promo';
 import './PromoBanner.css';
 import { trackClick } from '@/lib/tracking/click';
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -76,6 +77,7 @@ export default function PromoBanner() {
   const [copied, setCopied] = useState(false);
   const viewFired = useRef(false);
   const shownFired = useRef(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -98,6 +100,18 @@ export default function PromoBanner() {
       surface: 'sticky_banner',
     });
   }, [pathname]);
+
+  // Keep --banner-h in sync with the rendered height (the founder-ownership
+  // disclosure line makes the banner taller than the 40px default).
+  useEffect(() => {
+    const el = bannerRef.current;
+    if (!visible || !el) return;
+    const sync = () => document.documentElement.style.setProperty('--banner-h', `${el.offsetHeight}px`);
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [visible, mounted]);
 
   // Fire promo view event once
   useEffect(() => {
@@ -157,7 +171,7 @@ export default function PromoBanner() {
   const shopUrl = buildAffiliateUrl(PRIMARY_PROMO, 'sticky_banner');
 
   return (
-    <div className="promo-banner" role="region" aria-label="Site-wide promotion">
+    <div ref={bannerRef} className="promo-banner" role="region" aria-label="Site-wide promotion">
       <div className="promo-inner">
         {/* Left: icon + message */}
         <div className="promo-left">
@@ -234,6 +248,11 @@ export default function PromoBanner() {
           </svg>
         </button>
       </div>
+      <FounderOwnershipDisclosure
+        vendorSlug={PRIMARY_PROMO.vendorSlug}
+        variant="inline"
+        className="promo-disclosure"
+      />
     </div>
   );
 }

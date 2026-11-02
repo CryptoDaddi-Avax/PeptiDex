@@ -9,6 +9,7 @@ import { AffiliateLink } from '@/components/affiliate-link';
 import type { AffiliateVendor } from '@/lib/ga4-events';
 import { SchemaInjector } from '@/components/schema-injector';
 import { DisclaimerCard, InlineDisclaimer } from '@/components/ui/DisclaimerCard';
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 import { PurityHistory } from '@/components/lab-data/PurityHistory';
 import { allVendorReviews } from '@/data/reviews';
 import { vendorBySlug } from '@/data/vendors';
@@ -190,6 +191,7 @@ export default async function VendorReviewPage({ params }: Props) {
         </div>
         <div className="mt-8">
           <DisclaimerCard variant="vendor" />
+          <FounderOwnershipDisclosure vendorSlug={slug} />
         </div>
       </header>
 
@@ -472,6 +474,7 @@ export default async function VendorReviewPage({ params }: Props) {
                   </span>
                 </div>
                 <p className="vr-alt-best">{alt.bestFor}</p>
+                <FounderOwnershipDisclosure vendorSlug={alt.slug} variant="inline" />
                 <span className="vr-alt-cta">Read Review →</span>
               </Link>
             ))}

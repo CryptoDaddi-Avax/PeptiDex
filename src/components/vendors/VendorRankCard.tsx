@@ -26,6 +26,7 @@ import { type Vendor } from "@/data/vendors";
 import { vendorEditorial } from "@/data/vendorEditorial";
 import { verificationBySlug, getTierLabel, getTierColor } from "@/data/verification-data";
 import { VendorOutboundLink } from "@/app/vendors/vendor-outbound-link";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Ordinal suffix helper ─────────────────────────────────────────────────────
 
@@ -192,6 +193,7 @@ export function VendorRankCard({ vendor, rank }: VendorRankCardProps) {
       <h2 className="vrk-h2">
         {vendor.name}
       </h2>
+      <FounderOwnershipDisclosure vendorSlug={vendor.slug} />
       {editorial?.shortPitch ? (
         <p className="vrk-short-pitch">{editorial.shortPitch}</p>
       ) : (

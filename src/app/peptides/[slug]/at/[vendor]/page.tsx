@@ -8,6 +8,7 @@ import { generatePseoSchema } from "@/lib/pseo-schema";
 import { PeptideVendorContent } from "./PeptideVendorContent";
 import { PeptideVendorLogsClient } from "./PeptideVendorLogsClient";
 import { DisclaimerCard } from "@/components/ui/DisclaimerCard";
+import { FounderOwnershipDisclosure } from "@/components/disclosures/FounderOwnershipDisclosure";
 
 // ── Static Params ────────────────────────────────────────────────────────────
 // Decision 1: Dynamic. Pages exist only if vendor-pricing.ts has a real row.
@@ -128,6 +129,7 @@ export default async function PeptideAtVendorPage({
                             <>Community batch reports for {peptide.name} from {vendorObj.name}. Research use only.</>
                         )}
                     </p>
+                    <FounderOwnershipDisclosure vendorSlug={vendorObj.slug} />
                 </div>
             </div>
 
