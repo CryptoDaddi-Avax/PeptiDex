@@ -78,7 +78,7 @@ export const vendorVerifications: VendorVerification[] = [
   {
     vendorSlug: "elyria-bio", vendorName: "Elyria Bio", tier: "unverified",
     vendorCOAs: [
-      { id: "eb-bpc157-030284", peptide: "BPC-157", batchId: "030284", testDate: "2026-08-07", purity: 99.72, methods: ["HPLC"], source: "vendor", sourceDetail: "Elyria Bio (ILS Labs, per Elyria Bio)", documentUrl: "https://elyriabio.com/coa/bpc-157-030284.html", annotation: "Certificate COA-2026-955273 from ILS Labs (per Elyria Bio). Purity by RP-HPLC at 214 nm; identity by HPLC retention time against a reference standard.", annotationReady: true, passed: true },
+      { id: "eb-bpc157-030284", peptide: "BPC-157", batchId: "030284", testDate: "2026-08-07", purity: 99.72, methods: ["HPLC", "Endotoxin"], source: "vendor", sourceDetail: "Elyria Bio (ILS Labs, per Elyria Bio)", documentUrl: "https://elyriabio.com/coa/bpc-157-030284.html", annotation: "Certificate COA-2026-955273 from ILS Labs (per Elyria Bio). Purity by RP-HPLC at 214 nm; identity by HPLC retention time against a reference standard; bacterial endotoxins (USP <85>) reported.", annotationReady: true, passed: true },
     ],
     communitySubmissions: [],
     independentTests: [],

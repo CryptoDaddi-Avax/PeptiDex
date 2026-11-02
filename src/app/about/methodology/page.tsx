@@ -146,8 +146,8 @@ export default function MethodologyPage() {
               },
               {
                 num: '03',
-                title: 'Mass Spectrometry',
-                body: 'Mass Spectrometry (MS) data must accompany the HPLC report to confirm the molecular weight of the compound. This is the most reliable confirmation of authentic peptide identity and correct synthesis.',
+                title: 'Identity Test',
+                body: 'The COA must include an identity test that confirms the compound is what the label says: mass spectrometry (MS or LC-MS), FTIR, or HPLC retention time against a reference standard. Mass spectrometry confirms molecular weight directly and earns full identity points in our ranking; FTIR and HPLC-against-reference earn partial points.',
               },
             ].map((step) => (
               <div key={step.num} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">

@@ -14,7 +14,7 @@ export const elyriaBioReview: VendorReviewData = {
   verdictBody: 'Elyria Bio is a US-based research peptide vendor owned by PeptiDex\'s founder. Per Elyria Bio, released lots are tested by ILS Labs and BT Labs (per Elyria Bio) — not in-house — and each certificate reports HPLC purity (≥99% release floor) and identity by HPLC retention time (ILS Labs) or FTIR (BT Labs). Certificates are published per lot once a batch is tested and released. Code PEPTIDEX takes 10% off. For research use only.',
   purity: '99%+',
   coaType: 'Third-party (ILS Labs and BT Labs, per Elyria Bio)',
-  testingMethods: ['HPLC', 'FTIR'],
+  testingMethods: ['HPLC', 'FTIR', 'Endotoxin'],
   catalogSize: '11 research products on sale',
   shippingSpeed: 'Ships within ~48 hours',
   shippingCost: 'Free over $150 · $6 flat under $150',
@@ -23,7 +23,7 @@ export const elyriaBioReview: VendorReviewData = {
   returnPolicy: 'Replacement or refund for nonconforming product',
   pros: [
     { point: '≥99% HPLC purity floor', detail: 'Per Elyria Bio, a lot must meet a ≥99% HPLC purity floor before release; each certificate prints the measured purity.' },
-    { point: 'Named third-party labs', detail: 'Certificates come from ILS Labs and BT Labs (per Elyria Bio), not in-house testing. Identity is by HPLC retention time (ILS Labs) or FTIR (BT Labs), as printed on each certificate.' },
+    { point: 'Named third-party labs', detail: 'Certificates come from ILS Labs and BT Labs (per Elyria Bio), not in-house testing. Identity is by HPLC retention time (ILS Labs) or FTIR (BT Labs), as printed on each certificate, and bacterial endotoxin is reported for every released lot.' },
     { point: 'Lot-coded to vial', detail: 'Per Elyria Bio, each vial carries a lot number that resolves to that lot\'s certificate and analysis date.' },
     { point: 'Several payment options', detail: 'Venmo, Cash App, X Money and cryptocurrency.' },
     { point: 'Checked list prices', detail: 'BPC-157 10mg $29.99, TB-500 10mg $39.99, Tesamorelin 10mg $50.99 (checked November 2, 2026). Code PEPTIDEX = 10% off.' },
@@ -34,7 +34,7 @@ export const elyriaBioReview: VendorReviewData = {
     { point: 'Free-shipping threshold of $150', detail: 'Orders under $150 pay a $6 flat shipping rate.' },
     { point: 'Strict return policy', detail: 'Returns accepted only for materials that do not conform to published specification, with lot intact and unopened. No general money-back guarantee.' },
   ],
-  coaDescription: 'Per Elyria Bio, testing is done by ILS Labs and BT Labs (per Elyria Bio) — not in-house. Each certificate reports HPLC purity (lots must meet a ≥99% floor to be released) and identity, by HPLC retention time against a reference standard (ILS Labs) or FTIR (BT Labs). Certificates are lot-specific and published once a lot has been tested and released; not every product has one yet (Kisspeptin had none published on November 2, 2026).',
+  coaDescription: 'Per Elyria Bio, testing is done by ILS Labs and BT Labs (per Elyria Bio) — not in-house. Each certificate reports HPLC purity (lots must meet a ≥99% floor to be released) and identity, by HPLC retention time against a reference standard (ILS Labs) or FTIR (BT Labs). Bacterial endotoxin (USP <85>) is reported for all 13 released lots, on the ILS certificate or in a separate BT Labs report. Certificates are lot-specific and published once a lot has been tested and released; not every product has one yet (Kisspeptin had none published on November 2, 2026).',
   pricing: [
     { peptide: 'BPC-157', slug: 'bpc-157', listPrice: '$29.99', withCode: '~$26.99', vial: '10mg', note: 'List prices from elyriabio.com, checked November 2, 2026.' },
     { peptide: 'TB-500', slug: 'tb-500', listPrice: '$39.99', withCode: '~$35.99', vial: '10mg' },
@@ -53,7 +53,7 @@ export const elyriaBioReview: VendorReviewData = {
   ],
   faqs: [
     { q: 'Is Elyria Bio legit?', a: 'Elyria Bio is a US-based research peptide vendor owned by PeptiDex\'s founder. Per Elyria Bio, lots are released only at ≥99% HPLC purity, tested by ILS Labs and BT Labs (per Elyria Bio) rather than in-house, and each vial is lot-coded to its certificate. All compounds are sold for research use only.' },
-    { q: 'Does Elyria Bio provide COAs?', a: 'Yes, per lot once a batch is tested and released. Certificates come from ILS Labs and BT Labs (per Elyria Bio) and report HPLC purity and identity (HPLC retention time at ILS Labs, FTIR at BT Labs). Not every product has a published certificate yet.' },
+    { q: 'Does Elyria Bio provide COAs?', a: 'Yes, per lot once a batch is tested and released. Certificates come from ILS Labs and BT Labs (per Elyria Bio) and report HPLC purity, identity (HPLC retention time at ILS Labs, FTIR at BT Labs) and bacterial endotoxin. Not every product has a published certificate yet.' },
     { q: 'What discount codes work at Elyria Bio?', a: 'The code PEPTIDEX provides 10% off every order at elyriabio.com.' },
     { q: 'How long does Elyria Bio take to ship?', a: 'Per Elyria Bio, orders ship within about 48 hours. Shipping is free over $150 and a flat $6 under $150. US addresses only.' },
     { q: 'Does Elyria Bio ship internationally?', a: 'No. Elyria Bio ships to US addresses only. For international shipping, consider Amino Club or Bio Longevity Labs.' },

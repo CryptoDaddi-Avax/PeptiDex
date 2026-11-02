@@ -138,9 +138,10 @@ const vendorInputs: VendorInput[] = [
     discountStackable: false,
     purity: "99%+",
     coaStatus: "Batch-specific COA",
-    // Identity method per elyriabio.com/company/laboratories.html: HPLC retention
-    // time (ILS) or FTIR (BTLabs) — not mass spec. Endotoxin: awaiting owner confirmation.
-    testingMethods: ["HPLC", "FTIR"],
+    // Per elyriabio.com/company/laboratories.html: identity by HPLC retention time
+    // vs reference standard (ILS) or FTIR (BTLabs) — not mass spec. Endotoxin on all
+    // 13 released lots (confirmed by the owner 2026-11-02).
+    testingMethods: ["HPLC", "FTIR", "Endotoxin"],
     shippingSpeed: "Ships within ~48 hours",
     shippingCost: "Free over $150 · $6 flat under $150",
     shipsTo: ["USA"],

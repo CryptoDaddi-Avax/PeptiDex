@@ -120,7 +120,7 @@ To read this report, you must know the theoretical molecular weight of the pepti
 
 When you look at the mass spectrometry graph for a batch of BPC-157, the primary, massive peak on the X-axis must align almost perfectly with 1419.5 (often shown with various ionization states, such as [M+H]+ around 1420.5 or [M+2H]2+ around 710.8). If the primary peak is sitting at 800 or 2500, the vendor did not send you BPC-157.
 
-If a vendor provides an HPLC graph but refuses to provide Mass Spectrometry data, do not purchase from them. 
+If a vendor provides an HPLC purity graph but no identity test at all (mass spectrometry, FTIR, or HPLC against a reference standard), do not purchase from them. Mass spectrometry is the most direct identity check because it measures molecular weight. 
 
 ## 4. Net Content Verification (Label Accuracy)
 

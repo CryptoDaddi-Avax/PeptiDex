@@ -9,7 +9,7 @@ This file contains the full textual representation of PeptiDex's core editorial 
 
 ## Editorial Principles
 1. **Disclosed Relationships:** PeptiDex earns affiliate commission from the vendors it links to, and PeptiDex's founder owns Elyria Bio, one of the listed vendors. Vendors are ranked only on published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options, returns); commission and ownership are not criteria.
-2. **Sourcing Data:** Every vendor in our index states that it provides Certificates of Analysis (HPLC + MS); most state they are batch-specific. These are the vendors' own claims.
+2. **Sourcing Data:** Every vendor in our index states that it provides Certificates of Analysis with HPLC purity and an identity test (MS, LC-MS, FTIR, or HPLC against a reference standard); most state they are batch-specific. These are the vendors' own claims.
 3. **Honest Evidence Grades:** We use a strict 7-tier evidence grading system (from "Very Strong" clinical data to "Anecdotal" community reports).
 4. **No Medical Advice:** We are an educational reference, not a medical practice.
 
