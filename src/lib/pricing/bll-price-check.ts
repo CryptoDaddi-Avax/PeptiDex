@@ -64,9 +64,10 @@ function decodeEntities(s: string): string {
     .replace(/&#039;|&apos;/g, "'");
 }
 
-/** "BPC-157 (10mg)" → { base: "bpc157", mg: 10 }; blends/strips/capsules → null */
+/** "BPC-157 (10mg)" → { base: "bpc157", mg: 10 }; blends/strips/capsules → null.
+ *  A spaced " + " marks a blend; "NAD+" is a single compound. */
 export function parseProductName(name: string): { base: string; mg: number } | null {
-  if (/blend|strip|capsule|\+|\/|,/i.test(name)) return null;
+  if (/blend|strip|capsule|\s\+\s|\/|,/i.test(name)) return null;
   const mg = name.match(/(\d+(?:\.\d+)?)\s*mg\b/i);
   if (!mg) return null;
   const base = normalize(name.replace(/\([^)]*\)/g, " ").replace(/\d+(?:\.\d+)?\s*mg\b/gi, " "));
