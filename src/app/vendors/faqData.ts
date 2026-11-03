@@ -3,6 +3,10 @@ import { injectableVendors, vendorsSorted } from '@/data/vendors';
 // ── Ranking lookups (order = published criteria score, src/lib/vendor-criteria.ts) ──
 const _top    = injectableVendors[0];
 const _second = injectableVendors[1];
+// Equal totals are listed alphabetically (RANKING_ORDER_RULE), so say "tied" rather than imply a winner.
+const _topLine = _top.criteria.total === _second.criteria.total
+  ? `${_top.name} and ${_second.name} are tied for the highest score at ${_top.criteria.total}/100 (equal totals are listed alphabetically)`
+  : `${_top.name} scores highest at ${_top.criteria.total}/100, followed by ${_second.name} at ${_second.criteria.total}/100`;
 const _listed = vendorsSorted
   .map((v) => `${v.name} (${v.criteria.total}/100${v.ownedByFounder ? ", owned by PeptiDex's founder" : ""}${v.category === 'oral' ? ", oral" : ""})`)
   .join(", ");
@@ -15,7 +19,7 @@ export interface FaqItem {
 export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   {
     q: "Where is the best place to buy peptides online?",
-    a: `On our published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options and returns), ${_top.name} scores highest at ${_top.criteria.total}/100, followed by ${_second.name} at ${_second.criteria.total}/100. Scores use each vendor's own published information; PeptiDex does not test products. Use code PEPTIDEX for ${_top.discountPercent}% off at ${_top.name} or ${_second.discountPercent}% off at ${_second.name}${_second.discountStackable ? ' (stacks with sales)' : ''}. PeptiDex earns affiliate commission from these vendors and its founder owns Elyria Bio. → See every score at peptidex.app/vendors`,
+    a: `On our published criteria (COA availability, third-party lab testing, price per mg, shipping, payment options and returns), ${_topLine}. Scores use each vendor's own published information; PeptiDex does not test products. Use code PEPTIDEX for ${_top.discountPercent}% off at ${_top.name} or ${_second.discountPercent}% off at ${_second.name}${_second.discountStackable ? ' (stacks with sales)' : ''}. PeptiDex earns affiliate commission from these vendors and its founder owns Elyria Bio. → See every score at peptidex.app/vendors`,
   },
   {
     q: "Are peptides legal to buy?",
@@ -43,6 +47,6 @@ export const VENDORS_FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "How long does it take to ship research peptides?",
-    a: "It depends on the vendor. Per each vendor's own shipping page (checked Nov 2, 2026): Amino Club, Bio Longevity Labs and Pantheon Peptides ship orders placed before a same-day cutoff the same business day; Elyria Bio (owned by PeptiDex's founder) ships within about 48 hours; LVLUP Health processes orders in 2–4 business days and Limitless Life in 3–5. Amino Club states 1–4 business days for standard delivery and Limitless Life 5–7 business days from order to delivery. Limitless Life, LVLUP Health, Bio Longevity Labs (a limited number of countries, such as Canada) and Pantheon Peptides (through its Canadian store) ship outside the US; Amino Club and Elyria Bio ship within the US only. Peptides should ship refrigerated or with cold packs for temperature-sensitive compounds. → Check live shipping details at peptidex.app/vendors",
+    a: "It depends on the vendor. Per each vendor's own shipping page (checked Nov 2, 2026): Amino Club, Bio Longevity Labs and Pantheon Peptides ship orders placed before a same-day cutoff the same business day; Elyria Bio (owned by PeptiDex's founder) ships within 24 hours ($6 flat shipping, free over $150); LVLUP Health processes orders in 2–4 business days and Limitless Life in 3–5. Amino Club states 1–4 business days for standard delivery and Limitless Life 5–7 business days from order to delivery. Limitless Life, LVLUP Health, Bio Longevity Labs (a limited number of countries, such as Canada) and Pantheon Peptides (through its Canadian store) ship outside the US; Amino Club and Elyria Bio ship within the US only. Peptides should ship refrigerated or with cold packs for temperature-sensitive compounds. → Check live shipping details at peptidex.app/vendors",
   },
 ];

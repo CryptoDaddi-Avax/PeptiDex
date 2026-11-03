@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShieldCheck, FlaskConical, BookOpen, GitMerge, DollarSign, CheckSquare, ChevronRight } from 'lucide-react';
 import { vendorsSorted } from '@/data/vendors';
-import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
+import { RANKING_CRITERIA, RANKING_DISCLOSURE, RANKING_ORDER_RULE } from '@/lib/vendor-criteria';
 import { FOUNDER_OWNERSHIP_DISCLOSURE } from '@/components/disclosures/FounderOwnershipDisclosure';
 import { ShippingInputsTable } from '@/components/vendors/ShippingInputsTable';
 
@@ -211,6 +211,7 @@ export default function MethodologyPage() {
               </tbody>
             </table>
           </div>
+          <p className="mt-3 text-sm text-zinc-400 leading-relaxed" data-ranking-order-rule>{RANKING_ORDER_RULE}</p>
           <div className="mt-6 text-zinc-300">
             <ShippingInputsTable vendors={vendorsSorted} />
           </div>

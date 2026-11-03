@@ -49,7 +49,7 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Ships within the US only",
       "Free shipping only over $100; the rate below $100 is not published",
     ],
-    blurb: `Amino Club scores highest on PeptiDex's published ranking criteria. Per the vendor, where most vendors stop at HPLC purity testing, Amino Club layers in Mass Spectrometry for molecular identity verification and Endotoxin screening for biological safety. Every batch gets its own dedicated Certificate of Analysis, not a generic batch-range document, so you can trace the exact lot you receive back to the raw test data.\n\nThe 60-day money-back guarantee is the longest in the industry and speaks to the company's confidence in its product quality. Most research peptide vendors cap returns at 30 days or offer none at all. That extra buffer matters for longer-running research projects.\n\nPer its shipping page, orders placed before 3 PM ET on a business day typically ship the same day, standard delivery takes 1–4 business days, and shipping is free on invoices over $100. It ships within the US only. Payment options are broader than most competitors: major credit cards, crypto, and Zelle are all accepted — no surprises at checkout.\n\nUse code PEPTIDEX for ${getDiscountPct('amino-club')}% off your first and every subsequent order. The discount does not stack with sitewide sales, but at ${getDiscountPct('amino-club')}% it rarely needs to.`,
+    blurb: `Amino Club is tied with Elyria Bio (owned by PeptiDex's founder) for the highest score on PeptiDex's published ranking criteria; equal totals are listed alphabetically. Per the vendor, where most vendors stop at HPLC purity testing, Amino Club layers in Mass Spectrometry for molecular identity verification and Endotoxin screening for biological safety. Every batch gets its own dedicated Certificate of Analysis, not a generic batch-range document, so you can trace the exact lot you receive back to the raw test data.\n\nThe 60-day money-back guarantee is the longest in the industry and speaks to the company's confidence in its product quality. Most research peptide vendors cap returns at 30 days or offer none at all. That extra buffer matters for longer-running research projects.\n\nPer its shipping page, orders placed before 3 PM ET on a business day typically ship the same day, standard delivery takes 1–4 business days, and shipping is free on invoices over $100. It ships within the US only. Payment options are broader than most competitors: major credit cards, crypto, and Zelle are all accepted — no surprises at checkout.\n\nUse code PEPTIDEX for ${getDiscountPct('amino-club')}% off your first and every subsequent order. The discount does not stack with sitewide sales, but at ${getDiscountPct('amino-club')}% it rarely needs to.`,
   },
 
   // ── #2 Bio Longevity Labs ───────────────────────────────────────────────────
@@ -117,7 +117,7 @@ export const vendorEditorial: Record<string, VendorEditorial> = {
       "Growing catalog now at 50+ compounds",
     ],
     cons: [
-      "No affiliate discount code currently available",
+      "Code PEPTIDEX (15% off) is listed through our affiliate link, but Pantheon does not publish it on its site; confirm the discount at checkout",
       "Shipping rates are shown only at checkout (not published)",
       "COAs not stated to be batch-specific",
       "Smaller review base (150+ vs. 300–400+ for higher-ranked vendors)",
