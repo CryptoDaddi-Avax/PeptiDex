@@ -63,6 +63,10 @@ export const RANKING_CRITERIA: Criterion[] = [
 
 export const RANKING_MAX_POINTS = RANKING_CRITERIA.reduce((s, c) => s + c.max, 0);
 
+/** How order is decided; must match rankVendors() in src/data/vendors.ts. Rendered under the score tables. */
+export const RANKING_ORDER_RULE =
+  "Order: injectable vendors before oral vendors, then highest total score. Vendors with the same total are listed alphabetically by name, so a tie is not a judgement that one is better.";
+
 /** Accurate statement of how rankings relate to money. Used on /vendors, /disclaimers, /legal, /about. */
 export const RANKING_DISCLOSURE =
   "Vendor rankings use only the published criteria on our methodology page. PeptiDex earns affiliate commission when you buy through vendor links on this site, and PeptiDex's founder owns Elyria Bio. Neither commission nor ownership is a ranking criterion.";

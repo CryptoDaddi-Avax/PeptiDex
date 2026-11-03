@@ -31,7 +31,7 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { vendorsSorted, injectableVendors, oralVendors, VENDOR_COUNT } from '@/data/vendors';
-import { RANKING_CRITERIA, RANKING_DISCLOSURE } from '@/lib/vendor-criteria';
+import { RANKING_CRITERIA, RANKING_DISCLOSURE, RANKING_ORDER_RULE } from '@/lib/vendor-criteria';
 import { VENDORS_FAQ_ITEMS } from './faqData';
 import { VendorComparisonTable } from '@/components/vendors/VendorComparisonTable';
 import { VendorRankCard } from '@/components/vendors/VendorRankCard';
@@ -285,6 +285,8 @@ export default function VendorsClient({ lastReviewed }: VendorsClientProps) {
               </tbody>
             </table>
           </div>
+
+          <p className="vmeth-intro" data-ranking-order-rule style={{ marginTop: '0.75rem' }}>{RANKING_ORDER_RULE}</p>
 
           <ShippingInputsTable vendors={vendorsSorted} />
 

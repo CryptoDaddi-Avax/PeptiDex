@@ -169,22 +169,21 @@ const vendorInputs: VendorInput[] = [
     // vs reference standard (ILS) or FTIR (BTLabs) — not mass spec. Endotoxin on all
     // 13 released lots (confirmed by the owner 2026-11-02).
     testingMethods: ["HPLC", "FTIR", "Endotoxin"],
-    // Terms still say ~48h (re-checked 2026-11-02 23:00Z); switch to 24h only when the terms page does.
-    shippingSpeed: "Ships within ~48 hours",
+    // Terms of Sale (re-fetched 2026-11-03 21:58Z, "Last updated: November 2, 2026"): "Orders ship within 24 hours"
+    // and "$6 flat rate on U.S. orders under $150. Free shipping on orders of $150 or more. U.S. addresses only."
+    shippingSpeed: "Ships within 24 hours",
     shippingCost: "$6 flat shipping, free over $150",
     shipsTo: ["USA"],
     shipping: {
-      // $6 is only in the storefront checkout code (store.js SHIP_COST), not on any Elyria page,
-      // so it scores as unverified like every other checkout-only rate. Set 6 and cite the
-      // terms page once the live terms page states it.
-      standardRateUsd: null,
+      // Terms of Sale §7: "$6 flat rate on U.S. orders under $150. Free shipping on orders of
+      // $150 or more. U.S. addresses only." (a published rate, so it is scored like any other).
+      standardRateUsd: 6,
       freeFromUsd: 150,
-      dispatchBusinessDays: 2,
+      dispatchBusinessDays: 1, // "Orders ship within 24 hours"
       international: false,
       sources: [
-        { label: "Terms of Sale — ships within approximately 48 hours", url: "https://elyriabio.com/legal/terms.html", checked: "2026-11-02" },
+        { label: "Terms of Sale — $6 flat rate under $150, free over $150, ships within 24 hours, U.S. only", url: "https://elyriabio.com/legal/terms.html", checked: "2026-11-03" },
         { label: "Homepage FAQ — free over $150; U.S. addresses only", url: "https://elyriabio.com/", checked: "2026-11-02" },
-        { label: "Checkout code only — $6.00 standard rate (not on a page yet, so scored unverified)", url: "https://elyriabio.com/store.js", checked: "2026-11-02" },
       ],
     },
     catalogSize: "11 research products on sale",
